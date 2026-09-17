@@ -1,0 +1,15 @@
+# V9.4J Interrupted Run
+
+Started: ~5:00 AM ET
+Date: 2026-09-17
+Version: V9.4J
+
+## Notes
+
+- Run started after BTC maintenance ended.
+- A multi-hour internet outage occurred when the modem stopped working.
+- Tachyos later resumed using a mobile hotspot.
+- Post-reconnect telemetry is usable.
+- Structural continuity across the outage should NOT be trusted.
+- Treat Snake age, arc duration, orbital cycle duration, Boss age, Looking Glass timing, and other long-memory measures spanning the outage as contaminated.
+- Use this run primarily for local/post-reconnect behavior, not uninterrupted long-structure conclusions.
