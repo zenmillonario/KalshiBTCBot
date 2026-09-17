@@ -1,0 +1,20 @@
+# V9.4J Long Run 01
+
+Date: 2026-09-17
+Version: V9.4J
+
+## Run Notes
+
+- Clean long run after earlier internet-interrupted session.
+- No code or thresholds changed during the run.
+- Paper authority remained frozen.
+- Major observed research cases:
+  - Case 02: profitable NO exited before full directional release.
+  - EMA / Dragon Dance chop produced whipsaw losses before release.
+  - Flexible Cage / oscillation recovery concept identified.
+  - Field Medic / Battlefield Recovery doctrine proposed.
+  - Target Migration across campaigns identified as a chop/regime signal.
+  - Dance of Dragons can exist without actual EMA crossover.
+  - First large excursion may signal chop termination.
+  - Large edge excursion can favor reversal unless continuation strength is sufficient.
+  - Arc inflation and violent counter-arcs identified as useful resolution measures.
