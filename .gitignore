@@ -1,0 +1,20 @@
+# Live Tachys runtime files in repository root only
+/tachys_*.csv
+/*.log
+
+# Python environments/cache
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Secrets / credentials
+.env
+*.pem
+*.key
+secrets/
+credentials/
+# Very large high-frequency research logs
+**/tachys_structural_perception*.csv
+# Huge raw market-data files - keep local only
+**/kalshi_btc_continuous*.csv
