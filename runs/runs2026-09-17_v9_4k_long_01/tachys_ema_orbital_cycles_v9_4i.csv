@@ -1,0 +1,2 @@
+timestamp,event,cycle_id,anchor_side,start_ts,end_ts,period_sec,contracts_in_cycle,start_ema30,end_ema30,center_drift,start_btc,end_btc,btc_move,mean_threshold,boss_id,boss_side,border_state,churn_type
+2026-09-17T21:47:01.940868+00:00,MACRO_REVOLUTION_COMPLETE,OC00001,BELOW,2026-09-17T21:10:19.831317+00:00,2026-09-17T21:47:01.940868+00:00,2202.109550714493,4,76481.42760709225,76478.89014690134,-2.537460190913407,76447.0,76423.72,-23.279999999998836,10.0,BOSS0002,YES,CHURN_ACTIVE,MIXED_CHURN
