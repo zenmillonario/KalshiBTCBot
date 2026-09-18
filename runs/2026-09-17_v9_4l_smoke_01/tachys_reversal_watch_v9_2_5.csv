@@ -1,0 +1,2 @@
+timestamp,ticker,btc_start,btc_now,btc_move,threshold,seconds_to_close,suggested_next_side
+2026-09-13 02:57:31,KXBTC15M-26SEP130300-00,77269.28,77067.48,-201.8000000000029,200,148.2,YES

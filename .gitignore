@@ -17,4 +17,6 @@ credentials/
 # Very large high-frequency research logs
 **/tachys_structural_perception*.csv
 # Huge raw market-data files - keep local only
-**/kalshi_btc_continuous*.csv
+**/kalshi_btc_continuous*.csv**/tachys_settlement_elasticity_v9_4l.csv
+/kalshi_btc_continuous.csv
+/runs/tachys_v9_4l_second_spear_settlement_elasticity_shadow/tachys_settlement_elasticity_v9_4l.csv

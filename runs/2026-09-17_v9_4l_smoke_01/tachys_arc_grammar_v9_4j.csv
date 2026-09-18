@@ -1,0 +1,2 @@
+timestamp,run_id,session_id,event,arc_id,ticker,token,motif,motif_length,three_shape_spotlight,double_lobe_bridge,boss_id,boss_side,battlefield_class,reason
+2026-09-17T23:43:12.475636+00:00,J20260917_194021,J20260917_194021_PID9488,ARC_TOKEN,A00002,KXBTC15M-26SEP171945-45,D1,D1,1,0,0,BOSS0001,NO,MIXED_STORM,MOTIF_MEMORY

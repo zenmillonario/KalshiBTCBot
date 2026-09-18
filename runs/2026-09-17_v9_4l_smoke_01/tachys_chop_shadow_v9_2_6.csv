@@ -1,0 +1,1 @@
+timestamp,event,ticker,side,entry_ask,current_ask,roi_pct,mfe_pct,mae_pct,reason,seconds_left,btc_price,target_price,target_distance,ema9,ema30,arc_stage,arc_direction,chop_edge,chop_low,chop_high,range60,eff60,thesis_advantage,candidate_grade

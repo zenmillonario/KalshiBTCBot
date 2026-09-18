@@ -1,0 +1,2 @@
+timestamp,run_id,session_id,event,voyage_id,phase,ticker,launch_direction,latest_arc_id,latest_arc_direction,latest_arc_amp,arc_count,body_arc_count,contracts_seen,age_sec,maturity,release_score,boss_id,boss_side,battlefield_class,btc_start,btc_now,net_btc_move,reason
+2026-09-17T23:43:12.478623+00:00,J20260917_194021,J20260917_194021_PID9488,START,VJ0001,LAUNCH,KXBTC15M-26SEP171945-45,DOWN,A00002,DOWN,9.0544,1,0,1,0.0,YOUNG,0.0,BOSS0001,NO,MIXED_STORM,76378.51,76370.65,-7.860000000000582,first arc establishes launch

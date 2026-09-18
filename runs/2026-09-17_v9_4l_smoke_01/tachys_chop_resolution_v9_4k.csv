@@ -1,0 +1,2 @@
+timestamp,run_id,session_id,event,ticker,arc_id,direction,arc_amplitude,arc_btc_move,reference_amp,arc_expansion_ratio,prior_arc_direction,prior_arc_amplitude,counterforce_ratio,dragon_state,cage_state,target_migration_state,resolution_state,first_excursion_direction,reason
+2026-09-17T23:43:12.480367+00:00,K20260917_194021,K20260917_194021_PID9488,ARC_COMPLETE,KXBTC15M-26SEP171945-45,A00002,DOWN,9.0544,-7.860000000000582,,,,,,DRAGONS_SWIRLING,CENTER,INSUFFICIENT_HISTORY,NORMAL_ARC,,arc baseline

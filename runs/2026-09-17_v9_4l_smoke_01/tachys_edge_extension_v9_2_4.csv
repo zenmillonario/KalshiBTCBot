@@ -1,0 +1,1 @@
+timestamp,event_id,ticker,extension_direction,counter_side,arm_score,arm_exhaustion,start_ask,limit_price,yes_ask,no_ask,status,reason,age_seconds,btc_price,price_ema9_distance,ema9_ema30_distance,norm_price_ema9,norm_ema_gap,current_extension_score,current_exhaustion_score
