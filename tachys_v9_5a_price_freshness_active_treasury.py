@@ -90,7 +90,7 @@ PRICE_FIELDS = [
     "timestamp", "run_id", "session_id", "event", "candidate_id",
     "ticker", "side", "ask", "signal_grade", "setup_grade", "strategy",
     "trade_intent", "contract_elapsed_seconds", "btc_trend_efficiency_60s",
-    "late_mature_anticipation_shadow", "gate_action", "gate_reason", "aligned_with_leg",
+    "late_mature_anticipation_shadow", "swirling_anticipation_shadow", "gate_action", "gate_reason", "aligned_with_leg",
     "leg_id", "arc_id", "leg_direction", "leg_side", "leg_age_sec",
     "leg_start_bid", "leg_max_bid", "leg_min_bid",
     "premium_abs", "premium_pct", "premium_pct_threshold",
@@ -238,6 +238,10 @@ class V95AAuthority:
             and btc_trend_efficiency_60s is not None
             and btc_trend_efficiency_60s.__ge__(LATE_MATURE_ANTICIPATION_TREND_EFF)
         )
+        dragon_state = str(snap.get("dragon_state") or "").upper()
+        swirling_anticipation_shadow = int(
+            trade_intent == "ANTICIPATION" and dragon_state == "DRAGONS_SWIRLING"
+        )
         chapter_score, chapter_label, chapter_reasons = self._chapter_context(ticker, snap)
 
         aligned = False
@@ -292,6 +296,7 @@ class V95AAuthority:
             "contract_elapsed_seconds": contract_elapsed_seconds,
             "btc_trend_efficiency_60s": btc_trend_efficiency_60s,
             "late_mature_anticipation_shadow": late_mature_anticipation_shadow,
+            "swirling_anticipation_shadow": swirling_anticipation_shadow,
             "gate_action": "BLOCK" if block else "ALLOW",
             "gate_reason": gate_reason,
             "aligned_with_leg": int(aligned),
