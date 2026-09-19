@@ -322,3 +322,187 @@ Before writing a new trading version:
 - specify contradiction rules,
 - specify which execution engine may act in each terrain,
 - then replay the same Emperor Tape through that proposed decision hierarchy on paper before granting authority.
+
+
+# Phase 3 — signal quality versus management quality
+
+The contract settlement log allows a second question:
+
+**Was the entry direction wrong, or did management lose a directionally correct trade before settlement?**
+
+Across all 68 V9.5A trades:
+- 47 / 68 entry sides matched the eventual contract settlement = **69.1% directional settlement accuracy**
+- actual profitable trades = 34 / 68 = **50.0%**
+- **21 trades were directionally correct at settlement but still lost money under active management**
+- 8 trades were on the wrong eventual settlement side but still made money through tactical exits
+
+This is the strongest evidence yet that mission-specific management matters.
+
+## Hold-to-settlement counterfactual — diagnostic only
+If every historical paper entry is independently marked to binary settlement:
+- actual V9.5A net: **-$9.706**
+- independent hold-to-settlement counterfactual: **+$83.27**
+
+This number is NOT an executable portfolio result because it double-counts repeated entries and ignores capital occupancy / reentry constraints.
+
+Its value is diagnostic:
+the entry engine often identified the eventual settlement side, while the management engine failed to convert that information into realized profit.
+
+## First-entry-per-contract control
+A more conservative diagnostic keeps only the first Tachy entry in each traded contract.
+
+39 contracts had at least one trade.
+
+First entry per contract:
+- 22 wins / 17 losses under actual management
+- **+$14.831 actual P&L**
+- PF **1.312**
+- 27 / 39 first entries matched settlement = **69.2%**
+- if only those first entries were independently held to settlement: **+$48.05**
+
+All later same-contract entries:
+- 29 trades
+- 12 wins / 17 losses
+- **-$24.537**
+- PF **0.533**
+
+Therefore the full run moved from a profitable first-entry set to a losing overall run primarily through same-contract re-entry churn.
+
+This is a major architecture finding:
+
+> **The first battlefield read often had edge. Re-declaring the battlefield repeatedly destroyed it.**
+
+Do NOT translate this into a crude "one trade per contract" rule. Some re-entries were useful.
+
+Instead:
+- preserve campaign/chapter identity after exit,
+- require a genuine new structural chapter before declaring a new CAMPAIGN,
+- otherwise any re-entry must remain a tactical RAID.
+
+## Mission of same-contract re-entries
+Among the 29 subsequent entries in already-traded contracts:
+
+- RAID: 22 trades, **+$6.063**, PF 1.276
+- CAMPAIGN: 4 trades, **-$26.27**, 0 wins / 4 losses
+- SCOUT: 2 trades, **-$3.79**
+- ATTACK: 1 trade, **-$0.54**
+
+The four repeated entries that were reclassified as CAMPAIGN were trades:
+- #14
+- #17
+- #18
+- #58
+
+All four lost.
+
+This directly supports the Campaign Ledger doctrine:
+
+> A repeated signal is not a new campaign. A new campaign requires a new chapter.
+
+Repeated same-contract opportunities can still be profitable as raids, but the system should not silently reset campaign identity.
+
+## Intent-specific management result
+
+### ANTICIPATION
+- 42 trades
+- settlement-direction correct: **33 / 42 = 78.6%**
+- actual P&L: **-$19.383**
+- 15 trades were correct at settlement but lost under management
+
+Independent hold diagnostic: +$113.91, inflated by repeated entries and therefore NOT a deployable return estimate.
+
+Interpretation:
+ANTICIPATION is primarily suffering from management/horizon mismatch, not lack of directional information.
+
+The current fast-fail / structural-break machinery appears too eager for a thesis whose purpose is explicitly to enter before confirmation.
+
+### ARC_RIDER
+- 12 trades
+- settlement-direction correct: 66.7%
+- actual P&L: **+$17.84**
+- independent hold diagnostic: +$16.80
+
+Interpretation:
+Current active management is broadly adding appropriate value here. Arc Rider is already behaving much more like a properly defined mission.
+
+### EARLY_IMPULSE
+- 9 trades
+- settlement-direction correct: 55.6%
+- actual P&L: **+$3.647**
+- independent hold diagnostic: **-$8.29**
+
+Interpretation:
+Early Impulse specifically BENEFITS from active tactical management. It should not inherit Anticipation's future hold logic.
+
+### EXHAUSTION_FLIP
+Only one example in this run:
+- wrong eventual settlement side
+- still made +$1.24 tactically
+
+Interpretation:
+This is exactly a RAID-like species. A profitable short counter-move does not imply campaign direction.
+
+## Trigger families: direction versus realized management
+
+### EMA9_ROLLOVER anticipation
+- 23 examples
+- 19 / 23 = **82.6%** matched eventual settlement
+- actual P&L only +$2.123
+- 10 directionally correct examples still lost under management
+
+Therefore EMA9 rollover should NOT be broadly disabled. The issue is often what Tachy does after the entry.
+
+### PRE_CROSS anticipation
+- 11 examples
+- 81.8% settlement-direction correct
+- actual P&L: -$0.86
+
+Again: useful directional information, weak conversion to realized profit.
+
+### FADE_WEAK anticipation
+- 7 examples
+- 71.4% settlement-direction correct
+- actual P&L: **-$10.68**
+
+This is another warning against evaluating a signal only by managed-trade outcome.
+The signal often pointed to the eventual settlement side, but current management rarely monetized it.
+
+### CROSS_RESET anticipation
+- 12 examples
+- 11 / 12 = **91.7%** settlement-direction correct
+- actual P&L: +$7.87
+
+This is especially important because the existing Entry Timing shadow often says `WAIT_NEW_ARC_SHADOW` at CROSS_RESET.
+
+The replay says CROSS_RESET is not automatically a bad place to act. For an anticipation mission it may be precisely where cheap asymmetry exists.
+
+### RETURN_TO_EMA9 anticipation
+- 7 examples
+- 71.4% settlement-direction correct
+- actual P&L: **-$9.59**
+
+This remains the strongest candidate for a reaction/retest rule rather than immediate execution.
+
+## Updated primary diagnosis
+The audit now separates three problems that had previously been mixed together:
+
+1. **Signal direction**
+   - substantially better than the final P&L suggests
+
+2. **Campaign memory / re-entry**
+   - clearly destructive when repeated entries are mistaken for new campaigns
+
+3. **Mission-specific management**
+   - Anticipation is being managed too tactically
+   - Arc Rider management is comparatively effective
+   - Early Impulse needs tactical exits
+   - Exhaustion Flip is a raid, not a settlement thesis
+
+This means the next architecture should NOT simply "hold everything longer."
+
+It should make management conditional on:
+- mission,
+- entry mode,
+- parent campaign,
+- target geometry,
+- and explicit structural invalidation.
