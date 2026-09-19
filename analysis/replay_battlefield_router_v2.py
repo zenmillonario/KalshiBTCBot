@@ -11,6 +11,8 @@ V2 incorporates the cross-run J/K/M/V9.5A audit:
 - EARLY_IMPULSE stays tactical,
 - ARC_RIDER keeps its working manager,
 - SCOUT becomes TRANSITION_SCOUT,
+- SCOUT remains a battlefield mission, not a manager override,
+- ANTICIPATION provenance keeps transition-manager ownership inside SCOUT,
 - counterterrain ANTICIPATION gets a transition overlay,
 - RAID -> CAMPAIGN is the primary promotion path,
 - same-contract re-entry is allowed, but Campaign reset is explicit.
@@ -213,7 +215,16 @@ def manager_owner(entry_mode: str, mission: str, overlay: str) -> str:
     if entry_mode == "ARC_RIDER":
         return "ARC_RIDER_MANAGER_SHADOW"
 
-    if overlay == "TRANSITION_ANTICIPATION":
+    # Mission and entry provenance are separate axes. A SCOUT battlefield
+    # does not erase an executed ANTICIPATION thesis; it stays transition
+    # management while Campaign rights remain unavailable.
+    if (
+        entry_mode == "ANTICIPATION"
+        and (
+            overlay == "TRANSITION_ANTICIPATION"
+            or mission == "TRANSITION_SCOUT"
+        )
+    ):
         return "TRANSITION_ANTICIPATION_MANAGER_SHADOW"
 
     if mission == "CAMPAIGN_CANDIDATE":
