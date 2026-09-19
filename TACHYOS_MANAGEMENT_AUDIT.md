@@ -379,3 +379,105 @@ This gives the Mission Selector a concrete purpose:
 - the promotion boundary determines whether a +15% edge should be harvested or allowed to become a larger campaign
 
 The current shadow brain already approximates this distinction. The next architecture should integrate it rather than invent another manager.
+
+
+# Phase 6 — first-entry control corrects the Anticipation story
+
+The earlier all-trade hold-to-settlement diagnostic was intentionally labeled non-executable because repeated entries inflate it.
+
+A stricter first-entry-per-contract control changes the interpretation in an important way.
+
+## First-entry intent comparison
+
+### ANTICIPATION
+- 20 first entries
+- 15 / 20 settlement-direction correct = 75%
+- actual P&L: **-$9.576**
+- independent hold-to-settlement diagnostic: **+$38.70**
+
+So Anticipation still contains substantial directional information.
+
+However, looking only at the eight first-entry Anticipation trades that exited through the main structural-loss reasons:
+- actual: **-$19.28**
+- naive hold-to-settlement: **-$20.99**
+
+That means a blanket rule such as "Anticipation should simply be held longer" is WRONG.
+
+The correct conclusion is narrower:
+
+> Anticipation needs a better parent-thesis invalidation model, not infinite patience.
+
+Some early Anticipation losses are genuine bad theses and should still be killed.
+
+### ARC_RIDER
+- 11 first entries
+- 8 / 11 settlement-direction correct
+- actual: **+$18.80**
+- hold diagnostic: **+$31.44**
+
+Arc Rider remains one of the healthier species, though there is still room to improve management.
+
+### EARLY_IMPULSE
+- 7 first entries
+- actual: **+$4.367**
+- hold diagnostic: **-$7.21**
+
+This again confirms Early Impulse should remain tactical.
+
+### EXHAUSTION_FLIP
+- one first-entry example
+- actual: +$1.24
+- hold diagnostic: -$14.88
+
+This remains a textbook Raid species.
+
+## Exit-family nuance
+
+Among first entries only:
+
+### EMA9_ARC_BROKEN
+- 8 exits
+- 5 eventually settled on the original side
+- actual: -$19.52
+- hold diagnostic: -$0.64
+
+The arc-break manager is too aggressive in some cases, but not universally wrong.
+
+### ANTICIPATION_FAST_FAIL
+- 2 first-entry examples
+- only 1 eventually settled on the original side
+- actual: -$2.10
+- hold diagnostic: -$4.05
+
+This is not enough evidence to delete Fast Fail.
+
+Instead, Fast Fail should be redefined around parent-thesis failure and tested in shadow.
+
+### V92_STRUCTURE_BROKEN
+- one first-entry example
+- original side later settled
+- actual -$4.59 vs hold +$12.15
+
+Strong candidate for scale-aware invalidation.
+
+### LATE_TARGET_INVALIDATION
+- one first-entry example
+- original side later settled
+- actual -$4.84 vs hold +$7.48
+
+Strong candidate for Settlement Command redesign.
+
+## Updated management conclusion
+
+Do NOT replace the current manager with "hold Anticipation to settlement."
+
+Instead:
+
+1. preserve the early-entry edge,
+2. classify invalidation by scale,
+3. kill genuinely broken parent theses,
+4. ignore child-arc noise when parent thesis remains intact,
+5. route tactical species to tactical exits,
+6. route settlement species to target/time logic.
+
+This is exactly why the next experiment must be a Battlefield Router shadow rather than a simple stop-threshold tweak.
