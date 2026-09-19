@@ -300,3 +300,82 @@ For every legacy entry candidate and active paper position it should emit:
 - reason
 
 Then replay the frozen V9.5A run and Emperor Tape against that output before promoting any authority.
+
+
+# Phase 5 — Campaign is earned, not declared
+
+The existing Trade Mission observer contains a promotion mechanism:
+
+- RAID -> CAMPAIGN when Borders reaches `BOUNDARY_RELEASE` and Hand authority matches the trade side
+- ATTACK -> CAMPAIGN after fresh authority confirmation
+
+This shadow promotion was unexpectedly strong in the V9.5A run.
+
+## Initial CAMPAIGN assignments
+At entry:
+- 6 trades were immediately assigned CAMPAIGN
+- 1 win / 5 losses
+- net **-$29.453**
+
+## Trades promoted into CAMPAIGN later
+Eight trades were promoted after entry:
+- 7 wins / 1 loss
+- net **+$22.274**
+
+Some promotions happened while the trade itself was still negative.
+
+That is important:
+campaign status was earned from battlefield structure, not from ROI.
+
+### Interpretation
+
+> **Campaign is a status the market earns after release. It should usually not be a declaration made merely because an entry signal points in the same direction as Hand authority.**
+
+This may be one of the cleanest architectural discoveries in the audit.
+
+A trade can begin as a RAID or ATTACK and later earn CAMPAIGN status when:
+- churn boundary releases,
+- Hand authority aligns,
+- Looking Glass agrees that the chapter changed,
+- parent structure survives.
+
+This is materially different from labeling a trade CAMPAIGN at entry because the current side matches the Hand.
+
+## RAID harvest shadow
+
+The Trade Mission observer already emits `HARVEST_EDGE_SHADOW` at:
+- RAID ROI >= 15%
+
+36 V9.5A trades emitted at least one harvest signal.
+
+If each of those trades were hypothetically closed at the FIRST harvest:
+- hypothetical P&L across those 36 trades: **+$70.708**
+- actual P&L across those same trades: **+$64.373**
+- difference: **+$6.335**
+
+Again, this is a diagnostic counterfactual, not an executable backtest because altered exits change later opportunities.
+
+### Promotion-aware split
+
+For trades that later earned CAMPAIGN promotion:
+- 3 had emitted harvest before promotion
+- first-harvest hypothetical: +$5.278
+- actual outcome: +$10.750
+- harvesting early would have given up **$5.472**
+
+For trades that never promoted:
+- 33 trades
+- first-harvest hypothetical: +$65.430
+- actual outcome: +$53.623
+- first harvest would have improved observed arithmetic by **$11.807**
+
+### Doctrine
+
+> **A Raid should harvest its tactical edge unless the battlefield is actively earning Campaign promotion.**
+
+This gives the Mission Selector a concrete purpose:
+- RAID owns quick asymmetry
+- CAMPAIGN owns persistence
+- the promotion boundary determines whether a +15% edge should be harvested or allowed to become a larger campaign
+
+The current shadow brain already approximates this distinction. The next architecture should integrate it rather than invent another manager.
