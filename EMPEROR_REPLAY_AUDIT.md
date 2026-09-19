@@ -506,3 +506,46 @@ It should make management conditional on:
 - parent campaign,
 - target geometry,
 - and explicit structural invalidation.
+
+
+# Phase 4 — Campaign Ledger audit
+
+V9.4M already contains the exact kind of chapter memory we thought we might need to invent.
+
+Current-run REAL_ENTRY labels:
+- FIRST_CHAPTER: 39 trades, +$14.831
+- PARTIAL_RESET: 10 trades, -$3.830
+- FRESH_CHAPTER: 14 trades, -$18.501
+- SAME_CHAPTER: 5 trades, -$2.206
+
+All 29 non-first same-contract entries were therefore negative in aggregate regardless of chapter label.
+
+More importantly, crossing chapter label with Trade Mission reveals what actually matters:
+
+### Re-entry as RAID
+- FRESH_CHAPTER + RAID: 10 trades, 7-3, +$1.069
+- SAME_CHAPTER + RAID: 4 trades, 2-2, +$2.204
+- PARTIAL_RESET + RAID: 8 trades, 3-5, +$2.790
+- combined RAID re-entries: **+$6.063**
+
+### Re-entry as CAMPAIGN
+- FRESH_CHAPTER + CAMPAIGN: 2 trades, 0-2, -$15.780
+- SAME_CHAPTER + CAMPAIGN: 1 trade, 0-1, -$4.410
+- PARTIAL_RESET + CAMPAIGN: 1 trade, 0-1, -$6.080
+- combined CAMPAIGN re-entries: **0-4, -$26.270**
+
+This means the existing Chapter classifier is not strong enough to declare a new campaign by itself.
+
+A label such as FRESH_CHAPTER can still represent only a tactical opportunity.
+
+Updated doctrine:
+
+> **Chapter identity and mission identity are separate questions.**
+>
+> A changed chapter may permit a new RAID.
+> A new CAMPAIGN requires a stricter campaign-level authority transfer.
+
+This further supports keeping the existing Campaign Ledger but changing its role in the next architecture:
+- Looking Glass uses it as temporal evidence,
+- Mission Selector decides whether the new chapter is merely tactical or campaign-grade,
+- execution may not promote a repeated same-contract signal into CAMPAIGN without explicit campaign-reset evidence.
