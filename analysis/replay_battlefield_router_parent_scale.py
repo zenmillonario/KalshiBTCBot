@@ -12,9 +12,11 @@ Purpose:
 - never place, block, resize, flip, or close a trade.
 
 This is not a new detector. It is an evidence router over existing:
-Campaign Ledger, Trade Mission, Looking Glass/Arc Voyage, EMA Arc ancestry,
-Boss/Hand state, Borders/War Council snapshots, Target distance, and settlement
-results for after-the-fact evaluation.
+Campaign Ledger when available, plus Trade Mission, Entry Timing,
+Looking Glass/Arc Voyage, EMA Arc ancestry, Boss/Hand state,
+Borders/War Council snapshots, Target distance, and settlement results for
+after-the-fact evaluation. Pre-ledger archives are reconstructed from those
+observer streams and are explicitly marked as reconstructed evidence.
 
 The output deliberately keeps "evidence" separate from "authority".
 """
@@ -42,6 +44,8 @@ PAPER_FILE = "tachys_paper_trades_v9_2_6.csv"
 RESULTS_FILE = "tachys_contract_results_v9_2_6.csv"
 MISSIONS_FILE = "tachys_trade_missions_v9_4i.csv"
 LEDGER_FILE = "tachys_campaign_ledger_v9_4m.csv"
+TIMING_FILE = "tachys_entry_timing_v9_4j.csv"
+BOSS_FILE = "tachys_boss_columns_v9_4i.csv"
 ARCS_FILE = "tachys_ema_arcs_v9_4i.csv"
 VOYAGE_FILE = "tachys_arc_voyage_v9_4j.csv"
 
@@ -148,6 +152,51 @@ def last_event_before(
 
 def bool_int(v: bool) -> int:
     return 1 if v else 0
+
+
+def arc_at_time(rows: List[Dict[str, str]], timestamp: str) -> Dict[str, str]:
+    """Return the most recently-started EMA arc spanning timestamp.
+
+    Frozen arc rows are complete after the run, so an arc whose end_time is
+    later than the historical observation can still represent the arc that was
+    active at that observation. If no spanning arc exists, fall back to the
+    most recently completed arc before timestamp.
+    """
+    target = parse_iso(timestamp)
+    if not target:
+        return {}
+
+    spanning: List[Tuple[object, Dict[str, str]]] = []
+    completed: List[Tuple[object, Dict[str, str]]] = []
+    for row in rows:
+        start = parse_iso(row.get("start_time", ""))
+        end = parse_iso(row.get("end_time", ""))
+        if start and end and start <= target <= end:
+            spanning.append((start, row))
+        elif end and end <= target:
+            completed.append((end, row))
+
+    if spanning:
+        return max(spanning, key=lambda item: item[0])[1]
+    if completed:
+        return max(completed, key=lambda item: item[0])[1]
+    return {}
+
+
+def prior_arc(rows: List[Dict[str, str]], current: Dict[str, str]) -> Dict[str, str]:
+    """Best-effort predecessor for pre-ledger reset reconstruction."""
+    start = parse_iso(current.get("start_time", ""))
+    if not start:
+        return {}
+
+    candidates: List[Tuple[object, Dict[str, str]]] = []
+    for row in rows:
+        end = parse_iso(row.get("end_time", ""))
+        if end and end <= start and row.get("arc_id") != current.get("arc_id"):
+            candidates.append((end, row))
+    if not candidates:
+        return {}
+    return max(candidates, key=lambda item: item[0])[1]
 
 
 def first_num(*values: object, default: Optional[float] = None) -> Optional[float]:
@@ -471,42 +520,70 @@ def main() -> int:
     paper = read_csv(run_dir / PAPER_FILE)
     results = read_csv(run_dir / RESULTS_FILE)
     missions_all = read_csv(run_dir / MISSIONS_FILE)
-    ledger_all = read_csv(run_dir / LEDGER_FILE)
+    ledger_all = read_csv(run_dir / LEDGER_FILE, optional=True)
+    timing_all = read_csv(run_dir / TIMING_FILE, optional=True)
+    boss_all = read_csv(run_dir / BOSS_FILE, optional=True)
     arcs = read_csv(run_dir / ARCS_FILE)
     voyage_all = read_csv(run_dir / VOYAGE_FILE, optional=True)
 
     campaign_run_id = args.campaign_run_id
-    if not campaign_run_id:
+    if not campaign_run_id and ledger_all:
         campaign_run_id = choose_latest_run_id(
             ledger_all,
             "REAL_ENTRY",
             prefix="M",
         )
-    if not campaign_run_id:
-        raise RuntimeError("Could not identify Campaign Ledger run_id.")
 
-    ledger = [r for r in ledger_all if r.get("run_id") == campaign_run_id]
-    if not ledger:
-        raise RuntimeError(f"No Campaign Ledger rows for {campaign_run_id}")
+    ledger = (
+        [r for r in ledger_all if r.get("run_id") == campaign_run_id]
+        if campaign_run_id
+        else []
+    )
+    ledger_mode = bool(ledger)
+    source_mode = "CAMPAIGN_LEDGER" if ledger_mode else "PRE_LEDGER_RECONSTRUCTION"
 
-    start, end = derive_ledger_window(ledger_all, campaign_run_id)
-    missions = []
-    for row in missions_all:
-        dt = parse_iso(row.get("timestamp", ""))
-        if dt and start and end and start <= dt <= end:
-            missions.append(row)
+    if ledger_mode:
+        start, end = derive_ledger_window(ledger_all, campaign_run_id)
+        missions: List[Dict[str, str]] = []
+        for row in missions_all:
+            dt = parse_iso(row.get("timestamp", ""))
+            if dt and start and end and start <= dt <= end:
+                missions.append(row)
+    else:
+        # Pre-ledger archives are normally self-contained frozen run folders.
+        # Keep the reconstruction bounded by trade IDs that exist in this
+        # folder's Timing/Mission streams rather than pretending chapter
+        # telemetry existed before it was introduced.
+        missions = missions_all
+
+    timing_run_id: Optional[str] = None
+    if campaign_run_id and campaign_run_id.startswith("M"):
+        timing_run_id = "J" + campaign_run_id[1:]
+    elif timing_all:
+        timing_run_id = choose_latest_run_id(timing_all, "ENTERED", prefix="J")
+
+    if timing_run_id:
+        timing = [r for r in timing_all if r.get("run_id") == timing_run_id]
+    else:
+        timing = timing_all
+    timing.sort(key=lambda r: r.get("timestamp", ""))
 
     voyage_run_id = args.voyage_run_id
-    if not voyage_run_id and campaign_run_id.startswith("M"):
-        voyage_run_id = "J" + campaign_run_id[1:]
+    if not voyage_run_id:
+        if campaign_run_id and campaign_run_id.startswith("M"):
+            voyage_run_id = "J" + campaign_run_id[1:]
+        elif timing_run_id:
+            voyage_run_id = timing_run_id
 
     if voyage_run_id:
         voyage = [r for r in voyage_all if r.get("run_id") == voyage_run_id]
     else:
         voyage = voyage_all
     voyage.sort(key=lambda r: r.get("timestamp", ""))
+    boss_all.sort(key=lambda r: r.get("timestamp", ""))
 
     mission_by_trade = rows_by_trade(missions)
+    timing_by_trade = rows_by_trade(timing)
 
     paper_entry_by_key: Dict[Tuple[str, str], Dict[str, str]] = {}
     paper_exit_by_key: Dict[Tuple[str, str], Dict[str, str]] = {}
@@ -529,31 +606,126 @@ def main() -> int:
         if r.get("arc_id")
     }
 
-    ledger_entries = {
-        trade_key(r): r
-        for r in ledger
-        if r.get("event") == "REAL_ENTRY"
-    }
-    ledger_exits = {
-        trade_key(r): r
-        for r in ledger
-        if r.get("event") == "REAL_EXIT"
-    }
+    if ledger_mode:
+        replay_entries = {
+            trade_key(r): r
+            for r in ledger
+            if r.get("event") == "REAL_ENTRY"
+        }
+        replay_exits = {
+            trade_key(r): r
+            for r in ledger
+            if r.get("event") == "REAL_EXIT"
+        }
+    else:
+        # Build entry snapshots from the older observer streams. This does not
+        # invent chapter evidence: chapter fields remain explicitly unknown.
+        entered_by_trade: Dict[str, Dict[str, str]] = {}
+        for tid, trows in timing_by_trade.items():
+            entered_by_trade[tid] = first_event(trows, "ENTERED") or (trows[0] if trows else {})
+
+        mission_assign_by_trade = {
+            tid: first_event(mrows, "ASSIGN")
+            for tid, mrows in mission_by_trade.items()
+        }
+
+        valid_trade_keys = {
+            (
+                (entered_by_trade.get(tid, {}) or mission_assign_by_trade.get(tid, {})).get("trade_id", tid),
+                (entered_by_trade.get(tid, {}) or mission_assign_by_trade.get(tid, {})).get("ticker", ""),
+            )
+            for tid in set(entered_by_trade) | set(mission_assign_by_trade)
+        }
+
+        contract_counts: Dict[str, int] = defaultdict(int)
+        replay_entries: Dict[Tuple[str, str], Dict[str, str]] = {}
+        for row in paper:
+            if row.get("event") != "ENTRY":
+                continue
+            k = trade_key(row)
+            tid, ticker = k
+            if valid_trade_keys and k not in valid_trade_keys:
+                continue
+
+            contract_counts[ticker] += 1
+            timing_entry = entered_by_trade.get(tid, {})
+            mission_assign = mission_assign_by_trade.get(tid, {})
+            entry_ts = timing_entry.get("timestamp", "") or mission_assign.get("timestamp", "")
+            current_arc = arc_at_time(arcs, entry_ts)
+            previous_arc = prior_arc(arcs, current_arc)
+
+            replay_entries[k] = {
+                "timestamp": entry_ts,
+                "event": "RECONSTRUCTED_ENTRY",
+                "trade_id": tid,
+                "ticker": ticker,
+                "side": row.get("side", "") or timing_entry.get("side", ""),
+                "contract_trade_number": str(contract_counts[ticker]),
+                "chapter_score": "",
+                "chapter_label": "UNKNOWN_PRE_LEDGER",
+                "chapter_reasons": "",
+                "arc_id": current_arc.get("arc_id", ""),
+                "prior_arc_id": previous_arc.get("arc_id", ""),
+                "arc_direction": timing_entry.get("arc_direction", "") or current_arc.get("direction", ""),
+                "boss_side": timing_entry.get("boss_side", ""),
+                "hand_side": timing_entry.get("hand_side", "") or mission_assign.get("hand_authority", ""),
+                "battlefield_class": timing_entry.get("battlefield_class", ""),
+                "target_distance": row.get("target_distance", ""),
+                "seconds_left": timing_entry.get("seconds_left", "") or row.get("seconds_to_close", ""),
+                "strategy": row.get("strategy", ""),
+            }
+        replay_exits: Dict[Tuple[str, str], Dict[str, str]] = {}
 
     rows: List[Dict[str, object]] = []
 
     for k, entry in sorted(
-        ledger_entries.items(),
+        replay_entries.items(),
         key=lambda kv: int(fnum(kv[1].get("trade_id")) or 0),
     ):
         tid, ticker = k
-        exit_row = ledger_exits.get(k, {})
         paper_entry = paper_entry_by_key.get(k, {})
         paper_exit = paper_exit_by_key.get(k, {})
 
         mission_rows = mission_by_trade.get(tid, [])
         mission_assign = first_event(mission_rows, "ASSIGN")
-        exit_ts = exit_row.get("timestamp", "") or entry.get("timestamp", "")
+        mission_final = first_event(list(reversed(mission_rows)), "FINAL")
+        if not mission_final and mission_rows:
+            mission_final = mission_rows[-1]
+
+        if ledger_mode:
+            exit_row = replay_exits.get(k, {})
+            exit_ts = exit_row.get("timestamp", "") or mission_final.get("timestamp", "") or entry.get("timestamp", "")
+        else:
+            exit_ts = mission_final.get("timestamp", "") or entry.get("timestamp", "")
+            timing_at_exit = last_event_before(timing_by_trade.get(tid, []), exit_ts)
+            ticker_boss = [r for r in boss_all if r.get("ticker") == ticker]
+            boss_at_exit = latest_before(ticker_boss or boss_all, exit_ts)
+            arc_at_exit = arc_at_time(arcs, exit_ts)
+            voyage_probe = latest_before(voyage, exit_ts)
+
+            exit_row = {
+                "timestamp": exit_ts,
+                "event": "RECONSTRUCTED_EXIT",
+                "trade_id": tid,
+                "ticker": ticker,
+                "side": entry.get("side", "") or paper_entry.get("side", ""),
+                "arc_id": arc_at_exit.get("arc_id", ""),
+                "arc_direction": timing_at_exit.get("arc_direction", "") or arc_at_exit.get("direction", ""),
+                "boss_side": timing_at_exit.get("boss_side", "") or boss_at_exit.get("boss_side", ""),
+                "hand_side": (
+                    timing_at_exit.get("hand_side", "")
+                    or mission_final.get("hand_authority", "")
+                    or boss_at_exit.get("hand_authority", "")
+                ),
+                "battlefield_class": (
+                    timing_at_exit.get("battlefield_class", "")
+                    or voyage_probe.get("battlefield_class", "")
+                ),
+                "exit_reason": mission_final.get("actual_exit_reason", "") or paper_exit.get("reason", ""),
+                "target_distance": paper_exit.get("target_distance", ""),
+                "actual_pnl": mission_final.get("actual_pnl", "") or paper_exit.get("pnl", ""),
+            }
+
         mission_at_exit = last_event_before(mission_rows, exit_ts)
 
         voyage_at_entry = latest_before(voyage, entry.get("timestamp", ""))
@@ -584,6 +756,7 @@ def main() -> int:
         settlement_correct = int(bool(settlement and settlement == side))
 
         rows.append({
+            "source_mode": source_mode,
             "trade_id": tid,
             "ticker": ticker,
             "entry_timestamp": paper_entry.get("timestamp", "") or entry.get("timestamp", ""),
@@ -641,7 +814,9 @@ def main() -> int:
 
     summary = {
         "run_dir": str(run_dir),
+        "source_mode": source_mode,
         "campaign_run_id": campaign_run_id,
+        "timing_run_id": timing_run_id,
         "voyage_run_id": voyage_run_id,
         "trades": len(rows),
         "same_contract_reentries": len(reentries),
@@ -649,6 +824,12 @@ def main() -> int:
         "same_contract_multi_category_reset_reviews": sum(
             r["reset_status"] == "MULTI_CATEGORY_RESET_REVIEW"
             for r in reentries
+        ),
+        "campaign_reset_note": (
+            "Pre-ledger reset reconstruction is incomplete because chapter-change "
+            "reasons did not yet exist."
+            if not ledger_mode
+            else "Campaign Ledger evidence available."
         ),
         "legacy_same_contract_campaigns": {
             "n": len(legacy_reentry_campaigns),
