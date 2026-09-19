@@ -150,6 +150,14 @@ def bool_int(v: bool) -> int:
     return 1 if v else 0
 
 
+def first_num(*values: object, default: Optional[float] = None) -> Optional[float]:
+    for value in values:
+        n = fnum(value)
+        if n is not None:
+            return n
+    return default
+
+
 def campaign_reset_evidence(
     entry: Dict[str, str],
     mission_assign: Dict[str, str],
@@ -323,17 +331,19 @@ def parent_scale_exit_evidence(
         and war_side == side
     )
 
-    target_distance = fnum(
+    target_distance = first_num(
         paper_exit.get("target_distance"),
-        fnum(exit_row.get("target_distance"), 0.0),
+        exit_row.get("target_distance"),
+        default=0.0,
     ) or 0.0
     target_favorable_margin = target_distance if side == "YES" else -target_distance
     target_support = target_favorable_margin >= 0.0
     target_against = target_favorable_margin < 0.0
 
-    seconds_left = fnum(
+    seconds_left = first_num(
         paper_exit.get("seconds_to_close"),
-        fnum(entry.get("seconds_left"), None),
+        entry.get("seconds_left"),
+        default=None,
     )
 
     current_arc_support = bool(current_arc_side == side)
@@ -567,7 +577,7 @@ def main() -> int:
 
         actual_pnl = fnum(exit_row.get("actual_pnl"))
         if actual_pnl is None:
-            actual_pnl = fnum(paper_exit.get("pnl"), 0.0) or 0.0
+            actual_pnl = first_num(paper_exit.get("pnl"), default=0.0) or 0.0
 
         settlement = settlement_by_ticker.get(ticker, "")
         side = entry.get("side", "") or paper_entry.get("side", "")
