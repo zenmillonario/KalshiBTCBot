@@ -77,6 +77,11 @@ PRICE_FRESHNESS_MIN_LEG_AGE_SEC = 90.0
 
 BLOCK_OUTCOME_HORIZONS = (15, 30, 60, 120)
 
+# SHADOW ONLY: prospective marker for mature Anticipation entries.
+# This tag has no paper authority and changes no entry or exit decision.
+LATE_MATURE_ANTICIPATION_AGE_SEC = 480.0
+LATE_MATURE_ANTICIPATION_TREND_EFF = 0.50
+
 PRICE_FRESHNESS_LOG = "tachys_price_freshness_v9_5a.csv"
 ACTIVE_TREASURY_LOG = "tachys_active_treasury_v9_5a.csv"
 MANIFEST_LOG = "tachys_run_manifest_v9_5a.csv"
@@ -84,7 +89,8 @@ MANIFEST_LOG = "tachys_run_manifest_v9_5a.csv"
 PRICE_FIELDS = [
     "timestamp", "run_id", "session_id", "event", "candidate_id",
     "ticker", "side", "ask", "signal_grade", "setup_grade", "strategy",
-    "gate_action", "gate_reason", "aligned_with_leg",
+    "trade_intent", "contract_elapsed_seconds", "btc_trend_efficiency_60s",
+    "late_mature_anticipation_shadow", "gate_action", "gate_reason", "aligned_with_leg",
     "leg_id", "arc_id", "leg_direction", "leg_side", "leg_age_sec",
     "leg_start_bid", "leg_max_bid", "leg_min_bid",
     "premium_abs", "premium_pct", "premium_pct_threshold",
@@ -187,7 +193,7 @@ class V95AAuthority:
             "unchanged_authority": "SIZING;LEGACY_STOPS;CORE;EARLY_IMPULSE;HANDOFF",
             "research_layers": (
                 "V94M_CONTROL;MEDIC_SHADOW;CAMPAIGN_CONTEXT;SECOND_SPEAR_V2_SHADOW;"
-                "TWIN_GATE_SHADOW;ELASTICITY_LITE_SHADOW"
+                "TWIN_GATE_SHADOW;ELASTICITY_LITE_SHADOW;LATE_MATURE_ANTICIPATION_SHADOW"
             ),
             "note": (
                 "First authority promotion after V9.4M. Two changes only: "
@@ -222,6 +228,16 @@ class V95AAuthority:
         snap = self._snapshot(ticker, side, ask)
         leg = m.brain.active_leg.get(ticker)
         grade, setup, _score, _sig_reason, strategy = m._signal_meta(signal or {})
+        trade_intent = str((signal or {}).get("trade_intent") or (signal or {}).get("entry_mode") or "").upper()
+        contract_elapsed_seconds = _f((signal or {}).get("contract_elapsed_seconds"))
+        btc_trend_efficiency_60s = _f((signal or {}).get("btc_trend_efficiency_60s"))
+        late_mature_anticipation_shadow = int(
+            trade_intent == "ANTICIPATION"
+            and contract_elapsed_seconds is not None
+            and contract_elapsed_seconds.__ge__(LATE_MATURE_ANTICIPATION_AGE_SEC)
+            and btc_trend_efficiency_60s is not None
+            and btc_trend_efficiency_60s.__ge__(LATE_MATURE_ANTICIPATION_TREND_EFF)
+        )
         chapter_score, chapter_label, chapter_reasons = self._chapter_context(ticker, snap)
 
         aligned = False
@@ -272,6 +288,10 @@ class V95AAuthority:
             "signal_grade": grade,
             "setup_grade": setup,
             "strategy": strategy,
+            "trade_intent": trade_intent,
+            "contract_elapsed_seconds": contract_elapsed_seconds,
+            "btc_trend_efficiency_60s": btc_trend_efficiency_60s,
+            "late_mature_anticipation_shadow": late_mature_anticipation_shadow,
             "gate_action": "BLOCK" if block else "ALLOW",
             "gate_reason": gate_reason,
             "aligned_with_leg": int(aligned),
