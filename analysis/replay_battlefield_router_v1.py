@@ -169,7 +169,9 @@ def router_entry_mission(
     if legacy_mission == "ATTACK":
         return "ATTACK", "ENTER_ATTACK_SHADOW"
     if legacy_mission == "SCOUT":
-        return "WAIT", "WAIT_UNRESOLVED_MANDATE"
+        # Preserve unresolved scouts as research signal. V9.5A scouts were often
+        # directionally early even when realized management was poor.
+        return "TRANSITION_SCOUT", "LOG_TRANSITION_SCOUT_SHADOW"
 
     if legacy_mission == "CAMPAIGN":
         if trade_intent in {"EARLY_IMPULSE", "EXHAUSTION_FLIP"}:
@@ -316,6 +318,25 @@ def main() -> int:
         hand = le.get("hand_side", "") or ma.get("hand_authority", "")
         contradiction = contradiction_class(side, boss, hand, proposed_mission)
 
+        transition_candidate = int(
+            proposed_mission == "TRANSITION_SCOUT"
+            or (
+                trade_intent == "ANTICIPATION"
+                and contradiction in {
+                    "C2_TACTICAL_COUNTERTREND",
+                    "C3_AUTHORITY_TRANSFER_CANDIDATE",
+                }
+            )
+        )
+        if transition_candidate:
+            manager_owner = "TRANSITION_ANTICIPATION_SHADOW"
+        elif proposed_mission in {"RAID", "ATTACK"}:
+            manager_owner = "RAID_MANAGER_SHADOW"
+        elif proposed_mission == "CAMPAIGN_CANDIDATE":
+            manager_owner = "CAMPAIGN_CANDIDATE_MANAGER_SHADOW"
+        else:
+            manager_owner = "NONE"
+
         promo_readiness = promotion_readiness_at_harvest(side, mh)
         observed_promotion = bool(mp)
 
@@ -362,6 +383,8 @@ def main() -> int:
             "target_migration_state": le.get("target_migration_state", ""),
             "target_distance": le.get("target_distance", ""),
             "contradiction_class": contradiction,
+            "transition_candidate": transition_candidate,
+            "router_manager_owner": manager_owner,
             "first_harvest_roi": (mh or {}).get("roi", ""),
             "promotion_readiness_at_harvest": promo_readiness,
             "router_harvest_action": harvest_action,
@@ -399,6 +422,7 @@ def main() -> int:
             for r in rows
         ),
         "observed_promotions": sum(int(r["observed_campaign_promotion"]) for r in rows),
+        "transition_candidates": sum(int(r["transition_candidate"]) for r in rows),
         "parent_scale_reviews": sum(
             r["router_exit_review"] == "PARENT_SCALE_REVIEW_REQUIRED" for r in rows
         ),
