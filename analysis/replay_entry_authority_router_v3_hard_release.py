@@ -218,9 +218,14 @@ def map_release_side(v: str) -> str:
 def build_hard_events(data: Dict[str, List[dict]]) -> List[dict]:
     events: List[dict] = []
 
-    # Failed regeneration: strongest event is CONFIRMED_RELEASE.
+    # Failed regeneration: count only the actual confirmed-release event.
+    # Outcome rows retain state=CONFIRMED_RELEASE for attribution and therefore
+    # must not be mistaken for fresh releases.
     for r in data["failed_regen"]:
+        event = str(r.get("event") or "")
         if str(r.get("state") or "") != "CONFIRMED_RELEASE":
+            continue
+        if event not in ("STATE_CONFIRMED_RELEASE:EDGE_SHADOW_CANDIDATE", "EDGE_SHADOW_CANDIDATE"):
             continue
         side = map_release_side(r.get("shadow_side"))
         ts = parse_ts(r.get("timestamp", ""))
@@ -229,7 +234,7 @@ def build_hard_events(data: Dict[str, List[dict]]) -> List[dict]:
         events.append({
             "ts": ts, "timestamp": r.get("timestamp", ""), "ticker": r.get("ticker", ""),
             "side": side, "source": "FAILED_REGEN_CONFIRMED",
-            "detail": str(r.get("release_reasons") or r.get("event") or ""),
+            "detail": str(r.get("release_reasons") or event),
         })
 
     # Crest fakeout release.
