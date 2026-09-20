@@ -153,12 +153,22 @@ def pnl10(side: str, ask: Optional[float], settlement: str) -> Optional[float]:
     return 10.0 * (((1.0-ask)/ask) if side == settlement else -1.0)
 
 
-def trade_join(rs: List[dict], paper: List[dict], settlements: Dict[str,str]) -> List[dict]:
+def trade_join(
+    rs: List[dict],
+    paper: List[dict],
+    settlements: Dict[str,str],
+    rs_start: float,
+    rs_end: float,
+) -> tuple[List[dict], List[dict]]:
     proposals = [r for r in rs if r.get("event") == "LEGACY_PROPOSAL_SHADOW"]
     out = []
+    carryover = []
     for t in pair_paper_trades(paper):
         e, x, ets = t["entry"], t["exit"], t["entry_ts"]
         if ets is None:
+            continue
+        if ets < rs_start or ets > rs_end + 3.0:
+            carryover.append(t)
             continue
         p = nearest_proposal(e, ets, proposals)
         side = str(e.get("side") or "")
@@ -219,7 +229,7 @@ def trade_join(rs: List[dict], paper: List[dict], settlements: Dict[str,str]) ->
                 "proposal_setup_grade": p.get("proposal_setup_grade",""),
             })
         out.append(row)
-    return out
+    return out, carryover
 
 
 def transfer_forensics(rs: List[dict], settlements: Dict[str,str]) -> List[dict]:
@@ -303,7 +313,15 @@ def group_trade(rows: List[dict], key: str) -> List[str]:
     return lines
 
 
-def make_report(rs: List[dict], trades: List[dict], transfers: List[dict], settlements: Dict[str,str]) -> None:
+def make_report(
+    rs: List[dict],
+    trades: List[dict],
+    transfers: List[dict],
+    settlements: Dict[str,str],
+    carryover: List[dict],
+    rs_start: float,
+    rs_end: float,
+) -> None:
     events = Counter(str(r.get("event") or "") for r in rs)
     pnls = [fnum(r.get("actual_pnl")) for r in trades]
     pnls = [x for x in pnls if x is not None]
@@ -333,7 +351,9 @@ def make_report(rs: List[dict], trades: List[dict], transfers: List[dict], settl
         "## Run headline",
         "",
         f"- RS1 event rows: {len(rs)}",
-        f"- Paper entries paired: {len(trades)}",
+        f"- RS1 prospective window: {datetime.fromtimestamp(rs_start, timezone.utc).isoformat()} -> {datetime.fromtimestamp(rs_end, timezone.utc).isoformat()}",
+        f"- Archived pre-RS1 paper entries excluded as carryover: {len(carryover)}",
+        f"- Paper entries inside RS1 window: {len(trades)}",
         f"- Matched to RS1 legacy proposals: {len(matched)}/{len(trades)}",
         "- Realized paper P&L: $" + f"{sum(pnls):+.2f}",
         f"- Paper wins/losses: {wins}/{losses}",
@@ -424,15 +444,25 @@ def main() -> None:
     results = read_csv(RESULTS_FILE)
     settlements = settlement_map(results)
 
-    trades = trade_join(rs,paper,settlements)
+    rs_times = [
+        parse_ts(r.get("timestamp",""), paper_local=False)
+        for r in rs
+        if parse_ts(r.get("timestamp",""), paper_local=False) is not None
+    ]
+    if not rs_times:
+        raise SystemExit("RS1 log has no parseable timestamps")
+    rs_start, rs_end = min(rs_times), max(rs_times)
+
+    trades, carryover = trade_join(rs,paper,settlements,rs_start,rs_end)
     transfers = transfer_forensics(rs,settlements)
 
     write_csv(OUT_TRADES,trades,TRADE_FIELDS)
     write_csv(OUT_TRANSFERS,transfers,TRANSFER_FIELDS)
-    make_report(rs,trades,transfers,settlements)
+    make_report(rs,trades,transfers,settlements,carryover,rs_start,rs_end)
 
     print(f"RS1 rows={len(rs)}")
-    print(f"paper entries={len(trades)}")
+    print(f"carryover paper entries excluded={len(carryover)}")
+    print(f"paper entries in RS1 window={len(trades)}")
     print(f"transfers={len(transfers)}")
     print(f"WROTE {OUT_TRADES}")
     print(f"WROTE {OUT_TRANSFERS}")
