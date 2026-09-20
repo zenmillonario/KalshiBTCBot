@@ -126,7 +126,11 @@ def geometry(e: dict) -> dict:
     btc = fnum(e.get("btc_price"))
     ema9 = fnum(e.get("btc_ema_9_1m"))
     ema30 = fnum(e.get("btc_ema_30_1m"))
-    target = fnum(e.get("target"))
+    # In the paper log, "target" is a display string (for example
+    # "Target Price: $80,304.17"). The numeric contract PT is target_price.
+    target = fnum(e.get("target_price"))
+    if target is None:
+        target = fnum(e.get("target"))
     r60 = fnum(e.get("btc_range_60s"))
 
     pts = [x for x in (btc,ema9,ema30,target) if x is not None]
