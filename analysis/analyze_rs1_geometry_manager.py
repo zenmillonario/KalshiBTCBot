@@ -201,7 +201,7 @@ def summarize_group(rows: List[dict], label: str) -> str:
     corr=sum(int(r.get("settlement_correct") or 0) for r in known)
     wrong_mgmt=[r for r in rows if str(r.get("settlement_correct"))=="1" and (fnum(r.get("actual_pnl")) or 0)<0]
     leak=sum(fnum(r.get("manager_leakage_vs_hold")) or 0 for r in wrong_mgmt)
-    return f"- {label}: N={len(rows)} PnL=$\{sum(pnls):+.2f} settlement={corr}/{len(known)} correct-side-losers={len(wrong_mgmt)} leakageVsHold=$\{leak:+.2f}"
+    return f"- {label}: N={len(rows)} PnL=${sum(pnls):+.2f} settlement={corr}/{len(known)} correct-side-losers={len(wrong_mgmt)} leakageVsHold=${leak:+.2f}"
 
 
 def rollover_rows(handoff: List[dict], settlements: dict, start: float, end: float, trades: List[dict]) -> List[dict]:
@@ -286,7 +286,7 @@ def main() -> None:
         "",
         f"- RS1 trades: {len(trades)}",
         f"- Correct settlement side but realized loss: {len(correct_losers)}",
-        f"- Aggregate counterfactual improvement if those individual trades had instead been held to settlement: $\{leakage:+.2f}",
+        f"- Aggregate counterfactual improvement if those individual trades had instead been held to settlement: ${leakage:+.2f}",
         "",
         "### Correct-side losing trades by exit reason",
         "",
@@ -324,8 +324,8 @@ def main() -> None:
     lines += ["",f"## Watched contract {OBS_TICKER}",""]
     for r in obs:
         lines.append(
-            f"- #{r['trade_id']} {r['side']} @{r['entry_ask']} actual=$\{(fnum(r.get('actual_pnl')) or 0):+.2f} "
-            f"settle={r['settlement_result']} hold=$\{(fnum(r.get('hold_to_settlement_pnl')) or 0):+.2f} "
+            f"- #{r['trade_id']} {r['side']} @{r['entry_ask']} actual=${(fnum(r.get('actual_pnl')) or 0):+.2f} "
+            f"settle={r['settlement_result']} hold=${(fnum(r.get('hold_to_settlement_pnl')) or 0):+.2f} "
             f"span={r.get('pt_ema_price_span')} norm60={r.get('pt_ema_price_span_norm60')} "
             f"EMA-gap={r.get('ema_gap_abs')} PT-center={r.get('pt_to_ema_center_abs')} "
             f"battle={r.get('battlefield')} churn={r.get('churn')} dragon={r.get('dragon')} exit={r.get('exit_reason')}"
