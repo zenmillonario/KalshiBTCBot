@@ -119,5 +119,20 @@ Price Freshness / Active Treasury.
 - launch commit: `b8456ce5be9c68691937da22284d1cc996603816`
 - frozen run commit: `ee2db0c70ef0adeea173138a9e8c6c273cb7652a`
 
+## V9.5B
+Level-2 Battle Council / Intermission Authority / Thesis Shield.
+- designed only after RS2 archive forensics at base commit `3821fdb`
+- separates strategic parent sovereignty from tactical intermission authority
+- promotes Structural Events, Formation memory, Price Freshness, Flash presentation and Arc/EMA geometry into Level-2 evidence
+- no single observer receives unilateral entry authority
+- 3/6/9 adjudication: decisive composite after 3s, standard after 6s, explicit act-or-stand-down by 9s
+- opposite tactical legs may be entered without forcing Boss sovereignty transfer
+- Formation failure/reversal memory persists through repaint and contract rollover; genuine sovereignty transfer resolves obsolete tactical memory
+- Thesis Shield protects the first 120s from ordinary fast-fail / structural invalidation while preserving emergency, expiry, contract-close and proven-profit defenses
+- honest observer-first -> Level-2 -> entry latency accounting
+- Command Deck V2 adds Parent/Tactical state, council score/families, 3/6/9 deadline, formation memory, Thesis Shield, latency and rollover-memory views
+- PAPER ONLY long-run experiment
+- development branch: `tachys-v9-5b-battle-council`
+
 ## Next version
-Do not assign a V9.5B design until the command/authority audit and Emperor Tape replay are complete.
+Do not assign the next authority promotion until V9.5B has completed a clean long run and forensic review.
