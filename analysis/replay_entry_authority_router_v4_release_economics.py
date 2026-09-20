@@ -188,11 +188,11 @@ def scan_quotes(run_dir: Path, targets: List[dict]) -> Dict[Tuple[str,str,str], 
 
                     # Most V9.4 shadow logs are aware UTC. Legacy/core ledgers may be
                     # naive ET. If an epoch_ms field is present, it wins.
+                    raw = str(row.get("timestamp") or "")
                     epoch_ms = fnum(row.get("epoch_ms"))
                     if epoch_ms is not None:
                         ts = epoch_ms / 1000.0
                     else:
-                        raw = str(row.get("timestamp") or "")
                         # ISO strings with offset/Z parse exactly. Naive timestamps in
                         # legacy tapes were written in local ET.
                         aware = ("+" in raw[10:] or raw.endswith("Z"))
