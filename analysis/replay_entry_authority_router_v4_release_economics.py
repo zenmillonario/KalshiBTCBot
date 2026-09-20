@@ -93,15 +93,18 @@ def csv_header(path: Path) -> List[str]:
         return []
 
 
-def load_paper_entries(run_dir: Path) -> Dict[str, dict]:
+def load_paper_entries(run_dir: Path) -> Dict[Tuple[str, str], dict]:
     rows = read_csv(run_dir / "tachys_paper_trades_v9_2_6.csv")
     out = {}
     for r in rows:
         if r.get("event") != "ENTRY":
             continue
         tid = str(r.get("trade_id") or "")
-        if tid:
-            out[tid] = r
+        ticker = str(r.get("ticker") or "")
+        if tid and ticker:
+            # Trade IDs can restart in later sessions within the same archive.
+            # Ticker + trade_id is the stable identity for this replay.
+            out[(tid, ticker)] = r
     return out
 
 
@@ -264,7 +267,7 @@ def build_features() -> List[dict]:
 
         for r in targets:
             tid = str(r.get("trade_id") or "")
-            p = paper.get(tid, {})
+            p = paper.get((tid, r["ticker"]), {})
             hist_entry = fnum(r.get("entry_ask"))
             release_delay = fnum(r.get("same_hard_release_delay_sec"))
             entry_seconds_left = fnum(p.get("seconds_to_close"))
