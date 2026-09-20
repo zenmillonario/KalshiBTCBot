@@ -1,0 +1,56 @@
+{
+  "blocked_attack_promotions": 2,
+  "campaign_run_id": "M20260918_102626",
+  "contradictions": {
+    "C0_ALIGNED": 19,
+    "C1_SPLIT_COMMAND": 6,
+    "C2_TACTICAL_COUNTERTREND": 24,
+    "C3_AUTHORITY_TRANSFER_CANDIDATE": 2
+  },
+  "entry_actions": {
+    "ENTER_ATTACK_SHADOW": 2,
+    "ENTER_RAID_SHADOW": 38,
+    "LOG_CAMPAIGN_CANDIDATE_SHADOW": 3,
+    "LOG_TRANSITION_SCOUT_SHADOW": 2,
+    "RECLASSIFY_CAMPAIGN_TO_ATTACK_SHADOW": 3,
+    "WAIT_CAMPAIGN_RESET_SHADOW": 3
+  },
+  "entry_modes": {
+    "ANTICIPATION": 22,
+    "ARC_RIDER": 11,
+    "CORE": 3,
+    "EARLY_IMPULSE": 14,
+    "EXHAUSTION_FLIP": 1
+  },
+  "legacy_missions": {
+    "ATTACK": 2,
+    "CAMPAIGN": 9,
+    "RAID": 38,
+    "SCOUT": 2
+  },
+  "manager_owners": {
+    "ARC_RIDER_MANAGER_SHADOW": 11,
+    "EARLY_IMPULSE_MANAGER_SHADOW": 14,
+    "PARENT_THESIS_MANAGER_SHADOW": 2,
+    "RAID_MANAGER_SHADOW": 9,
+    "TRANSITION_ANTICIPATION_MANAGER_SHADOW": 15
+  },
+  "observed_promotions": 4,
+  "promotion_eligible": 28,
+  "router_initial_missions": {
+    "ATTACK": 5,
+    "CAMPAIGN_CANDIDATE": 6,
+    "RAID": 38,
+    "TRANSITION_SCOUT": 2
+  },
+  "run_dir": "runs\\tachys_v9_4m_battle_plan_treasury_shadow",
+  "settlement_correct": 26,
+  "settlement_known": 49,
+  "timing_run_id": "J20260918_102626",
+  "trades": 51,
+  "transition_overlays": {
+    "NONE": 36,
+    "TRANSITION_ANTICIPATION": 13,
+    "TRANSITION_SCOUT": 2
+  }
+}

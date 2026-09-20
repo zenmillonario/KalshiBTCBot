@@ -1,0 +1,55 @@
+{
+  "anticipation_structural_exit_family": {
+    "n": 15,
+    "pnl": -35.28,
+    "settlement_correct": 10
+  },
+  "campaign_run_id": "M20260918_193335",
+  "first_anticipation_structural_exit_family": {
+    "n": 8,
+    "pnl": -19.28,
+    "settlement_correct": 4
+  },
+  "high_opposition_parent_break_candidate_shadow": {
+    "n": 2,
+    "note": "Research-only falsification heuristic. It does not change paper authority or prove a parent break.",
+    "pnl": -4.52,
+    "settlement_correct": 0,
+    "trade_ids": [
+      "24",
+      "40"
+    ]
+  },
+  "legacy_same_contract_campaigns": {
+    "n": 4,
+    "pnl": -26.27,
+    "settlement_correct": 1,
+    "trade_ids": [
+      "14",
+      "17",
+      "18",
+      "58"
+    ],
+    "with_multi_category_reset_review": 0
+  },
+  "run_dir": "runs\\tachys_v9_5a_price_freshness_active_treasury",
+  "same_contract_multi_category_reset_reviews": 0,
+  "same_contract_reentries": 29,
+  "same_contract_reset_status": {
+    "NO_CAMPAIGN_RESET": 24,
+    "SINGLE_CATEGORY_ONLY": 5
+  },
+  "structural_exit_family": {
+    "by_reason": {
+      "ANTICIPATION_FAST_FAIL": 4,
+      "EMA9_ARC_BROKEN": 12,
+      "LATE_TARGET_INVALIDATION": 5,
+      "V92_STRUCTURE_BROKEN": 2
+    },
+    "n": 23,
+    "pnl": -60.28,
+    "settlement_correct": 16
+  },
+  "trades": 68,
+  "voyage_run_id": "J20260918_193335"
+}

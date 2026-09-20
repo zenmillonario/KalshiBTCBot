@@ -1,0 +1,48 @@
+{
+  "anticipation_structural_exit_family": {
+    "n": 1,
+    "pnl": -0.66,
+    "settlement_correct": 0
+  },
+  "campaign_reset_note": "Pre-ledger reset reconstruction is incomplete because chapter-change reasons did not yet exist.",
+  "campaign_run_id": null,
+  "first_anticipation_structural_exit_family": {
+    "n": 1,
+    "pnl": -0.66,
+    "settlement_correct": 0
+  },
+  "high_opposition_parent_break_candidate_shadow": {
+    "n": 0,
+    "note": "Research-only falsification heuristic. It does not change paper authority or prove a parent break.",
+    "pnl": 0,
+    "settlement_correct": 0,
+    "trade_ids": []
+  },
+  "legacy_same_contract_campaigns": {
+    "n": 1,
+    "pnl": 3.762,
+    "settlement_correct": 1,
+    "trade_ids": [
+      "5"
+    ],
+    "with_multi_category_reset_review": 0
+  },
+  "run_dir": "runs\\runs2026-09-17_v9_4k_long_01",
+  "same_contract_multi_category_reset_reviews": 0,
+  "same_contract_reentries": 3,
+  "same_contract_reset_status": {
+    "NO_CAMPAIGN_RESET": 3
+  },
+  "source_mode": "PRE_LEDGER_RECONSTRUCTION",
+  "structural_exit_family": {
+    "by_reason": {
+      "EMA9_ARC_BROKEN": 1
+    },
+    "n": 1,
+    "pnl": -0.66,
+    "settlement_correct": 0
+  },
+  "timing_run_id": "J20260917_171017",
+  "trades": 8,
+  "voyage_run_id": "J20260917_171017"
+}

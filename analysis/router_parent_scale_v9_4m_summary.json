@@ -1,0 +1,52 @@
+{
+  "anticipation_structural_exit_family": {
+    "n": 7,
+    "pnl": -13.84,
+    "settlement_correct": 3
+  },
+  "campaign_run_id": "M20260918_102626",
+  "first_anticipation_structural_exit_family": {
+    "n": 3,
+    "pnl": -3.01,
+    "settlement_correct": 2
+  },
+  "high_opposition_parent_break_candidate_shadow": {
+    "n": 0,
+    "note": "Research-only falsification heuristic. It does not change paper authority or prove a parent break.",
+    "pnl": 0,
+    "settlement_correct": 0,
+    "trade_ids": []
+  },
+  "legacy_same_contract_campaigns": {
+    "n": 4,
+    "pnl": -12.535,
+    "settlement_correct": 1,
+    "trade_ids": [
+      "2",
+      "9",
+      "27",
+      "49"
+    ],
+    "with_multi_category_reset_review": 0
+  },
+  "run_dir": "runs\\tachys_v9_4m_battle_plan_treasury_shadow",
+  "same_contract_multi_category_reset_reviews": 0,
+  "same_contract_reentries": 24,
+  "same_contract_reset_status": {
+    "NO_CAMPAIGN_RESET": 21,
+    "SINGLE_CATEGORY_ONLY": 3
+  },
+  "structural_exit_family": {
+    "by_reason": {
+      "ANTICIPATION_FAST_FAIL": 1,
+      "EMA9_ARC_BROKEN": 8,
+      "LATE_TARGET_INVALIDATION": 4,
+      "V92_STRUCTURE_BROKEN": 1
+    },
+    "n": 14,
+    "pnl": -43.17,
+    "settlement_correct": 6
+  },
+  "trades": 51,
+  "voyage_run_id": "J20260918_102626"
+}

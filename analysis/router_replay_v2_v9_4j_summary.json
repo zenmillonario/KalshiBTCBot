@@ -1,0 +1,51 @@
+{
+  "blocked_attack_promotions": 0,
+  "campaign_run_id": null,
+  "contradictions": {
+    "C0_ALIGNED": 7,
+    "C1_SPLIT_COMMAND": 2,
+    "C2_TACTICAL_COUNTERTREND": 8,
+    "C3_AUTHORITY_TRANSFER_CANDIDATE": 1
+  },
+  "entry_actions": {
+    "ENTER_RAID_SHADOW": 15,
+    "LOG_TRANSITION_SCOUT_SHADOW": 1,
+    "WAIT_CAMPAIGN_RESET_SHADOW": 2
+  },
+  "entry_modes": {
+    "ANTICIPATION": 7,
+    "ARC_RIDER": 5,
+    "CORE": 3,
+    "EARLY_IMPULSE": 1,
+    "SNIP": 2
+  },
+  "legacy_missions": {
+    "CAMPAIGN": 2,
+    "RAID": 15,
+    "SCOUT": 1
+  },
+  "manager_owners": {
+    "ARC_RIDER_MANAGER_SHADOW": 5,
+    "EARLY_IMPULSE_MANAGER_SHADOW": 1,
+    "PARENT_THESIS_MANAGER_SHADOW": 1,
+    "RAID_MANAGER_SHADOW": 6,
+    "TRANSITION_ANTICIPATION_MANAGER_SHADOW": 5
+  },
+  "observed_promotions": 0,
+  "promotion_eligible": 12,
+  "router_initial_missions": {
+    "CAMPAIGN_CANDIDATE": 2,
+    "RAID": 15,
+    "TRANSITION_SCOUT": 1
+  },
+  "run_dir": "runs\\runs2026-09-17_v9_4j_long_01",
+  "settlement_correct": 10,
+  "settlement_known": 18,
+  "timing_run_id": null,
+  "trades": 18,
+  "transition_overlays": {
+    "NONE": 13,
+    "TRANSITION_ANTICIPATION": 4,
+    "TRANSITION_SCOUT": 1
+  }
+}
