@@ -1,5 +1,5 @@
 r"""
-TACHYOS COMMAND DECK — READ-ONLY COCKPIT V1
+TACHYOS COMMAND DECK V2 — READ-ONLY BATTLE COCKPIT
 ============================================
 
 Purpose
@@ -788,7 +788,8 @@ st.subheader("Level-2 Battle Council")
 l2_df = frames["level2"]
 if not l2_df.empty and "ticker" in l2_df.columns and current_ticker != "—":
     l2_current = l2_df[l2_df["ticker"].astype(str) == str(current_ticker)]
-    l2_row = latest_row(l2_current) or level2_latest
+    _l2_current_row = latest_row(l2_current)
+    l2_row = _l2_current_row if _l2_current_row is not None else level2_latest
 else:
     l2_row = level2_latest
 
