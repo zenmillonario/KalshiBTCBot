@@ -1,5 +1,5 @@
 @echo off
-title Tachyos Command Deck V3 - Leg Geometry
+title Tachyos Command Deck V3.1 - Trader Cockpit
 cd /d C:\KalshiBTCBot
 
 call .venv\Scripts\activate.bat
@@ -21,7 +21,7 @@ if errorlevel 1 (
 
 echo.
 echo ============================================================
-echo  TACHYOS COMMAND DECK V3 - LEG GEOMETRY - READ ONLY
+echo  TACHYOS COMMAND DECK V3.1 - TRADER COCKPIT - READ ONLY
 echo ============================================================
 echo.
 
