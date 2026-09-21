@@ -419,3 +419,60 @@ Initial paper rule for replay:
 Training principle:
 
 **Campaign positions may breathe. Counter sleeves get paid and get out.**
+
+## Intra-leg transition mode — harvest local chaos without abandoning the campaign
+
+Live-run hypothesis: the smaller breaks inside a larger leg may deserve a temporary mode analogous to the older chaos session between major legs.
+
+Purpose:
+
+- preserve the main campaign position and campaign_side;
+- recognize a short period where price is fluctuating while the next local direction is being decided;
+- allow quick tactical counter-sleeve trades during that uncertainty;
+- use the resulting EMA9/EMA30 behavior as information about which direction ultimately wins;
+- end the transition mode as soon as the next directional formation becomes clear.
+
+Candidate state progression:
+
+CAMPAIGN_LEG
+-> INTRA_LEG_TRANSITION
+-> QUICK_TACTICAL_SLEEVE(S)
+-> DIRECTION_RESOLVING
+-> CAMPAIGN_RESUME
+
+or, if the larger structure truly changes:
+
+-> CAMPAIGN_TRANSFER
+
+Entry evidence for transition mode should include several of:
+
+- EMA9 begins making small alternating arcs around or toward EMA30;
+- candle direction alternates and follow-through shortens;
+- 3/6/9 displacement loses sustained agreement;
+- target distance oscillates rather than expands;
+- tactical YES/NO scores alternate without a confirmed campaign transfer;
+- EMA9 formation still belongs to the larger campaign geometry.
+
+Management:
+
+- campaign position remains open while campaign thesis is valid;
+- counter sleeves are smaller tactical positions;
+- tighter stop than the main campaign;
+- collect counter-sleeve profit at roughly +35% ROI or better;
+- do not apply main Winner Harvest breathing logic to these sleeves;
+- no counter sleeve may itself change campaign_side;
+- stop opening quick sleeves once EMA9 formation, separation, and 3/6/9 displacement establish the next directional leg.
+
+Forensic test:
+
+Replay today's mid-leg in/out sequences and compare:
+
+1. actual V9.5D behavior: exit / reverse / re-enter;
+2. hypothetical behavior: keep campaign position + trade temporary counter sleeves;
+3. hypothetical behavior: no counter sleeve, simply wait for formation resolution.
+
+Measure total P/L, number of trades, drawdown, missed main-leg profit, and time to recognize the eventual direction.
+
+Training principle:
+
+**Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
