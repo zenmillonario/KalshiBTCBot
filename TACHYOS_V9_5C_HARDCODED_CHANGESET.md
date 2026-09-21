@@ -237,40 +237,64 @@ Requirements:
 
 
 
-### P. Profit Fortress — +50% MFE protection
+### P. Winner Harvest — let expansion run, harvest the stall
 
-Whole-Leg holding must never justify giving a proven large winner back into a loss.
+This supersedes the earlier fixed profit-floor interpretation.
 
-Once a paper trade reaches **+50% MFE**, it enters \`PROFIT_FORTRESS\`.
+A trade reaching +50% to +75% MFE is **not** an automatic exit and does **not** create a rigid trailing floor by itself.
 
-Hard rules:
+The correct question is:
 
-- \`MFE >= +50%\` -> trade may **never** be allowed to close at a loss through ordinary leg-management logic.
-- At +50% MFE, activate a protected-profit floor.
-- At +60% MFE, tighten the floor further.
-- At +75% MFE, the trade is considered a major winner and must protect at least a substantial portion of the move.
-- Whole-Leg Exit Authority may continue holding only while price remains above the protected floor.
-- Leg validity does not override the protected-profit floor.
-- If the protected floor is breached, exit authority becomes immediate and does not wait for opposite-leg confirmation.
-- Catastrophic data failure / settlement handling remain separate emergency cases.
+**Is the winner still expanding, or has it stopped paying?**
 
-Initial paper protection ladder for validation:
+#### HOLD / LET IT BREATHE
 
-- \`+50% MFE\` -> floor at **+25% ROI**
-- \`+60% MFE\` -> floor at **+35% ROI**
-- \`+75% MFE\` -> floor at **+50% ROI**
+Continue holding a large winner when the move is still visibly alive, for example:
+
+- fresh MFE highs are still being made;
+- current ROI is still advancing rather than hovering;
+- 3/6/9-second displacement remains favorable;
+- EMA9 Leg Geometry remains in BUILD / EXPANSION;
+- Target Height continues improving for the held side;
+- price/quote velocity remains healthy;
+- the opposite leg has not begun a credible RETURN SLOPE / transfer.
+
+There is **no profit cap**. A +50%, +75%, or larger winner may continue running.
+
+#### HARVEST / TAKE IT
+
+Once a trade is already in the +50% to +75% winner zone, become increasingly willing to take the profit when the move stalls.
+
+A winner is a harvest candidate when several of these agree:
+
+- no fresh MFE high for a short 3/6/9-style observation window;
+- current ROI repeatedly hovers in a narrow band;
+- quote velocity slows materially;
+- 3/6/9 displacement loses directional force;
+- EMA9 expansion flattens;
+- Leg Geometry reaches MATURE / RETURN_SLOPE;
+- target progress stops improving;
+- repeated upper/lower rejection appears against the held side;
+- the opposite tactical score begins building.
+
+Initial paper behavior:
+
+- at **+50% MFE**, arm \`WINNER_HARVEST_WATCH\`;
+- while expansion continues, keep holding;
+- if the winner stalls/plateaus for roughly **9 seconds** without a meaningful new high, allow harvest;
+- at **+75% MFE or higher**, the same principle applies, but plateau/slowdown evidence receives greater weight;
+- a fresh breakout/new MFE cancels the harvest timer and returns to \`WINNER_EXPANDING\`.
 
 Required labels:
 
-- \`PROFIT_FORTRESS_ARMED_50\`
-- \`PROFIT_FORTRESS_TIGHTEN_60\`
-- \`PROFIT_FORTRESS_MAJOR_WIN_75\`
-- \`PROFIT_FLOOR_BREACH_EXIT\`
-
-This protection is independent of the current leg state.
+- \`WINNER_EXPANDING\`
+- \`WINNER_HARVEST_WATCH\`
+- \`WINNER_PLATEAU_9S\`
+- \`WINNER_HARVEST_EXIT\`
+- \`WINNER_BREAKOUT_CONTINUE\`
 
 **Training law:**  
-**A winning leg may breathe. A proven winner may not be donated back to the market.**
+**Do not cut a winner because it became large. Cut it when it stops behaving like a winner.**
 
 
 ## Required audit fields
@@ -315,7 +339,7 @@ Replay / inspect these live-run failure classes:
 - final-minute fakeout case: BTC briefly crosses PT inside the last 60 seconds, then quickly reclaims it while the larger leg remains intact; settlement-control logic must recognize the fakeout instead of treating the first cross as final truth.
 - parallel-transition case: if the opposite leg earns authority before the existing position's exit gate releases, paper trading must be able to open the opposite side immediately and manage both positions independently.
 
-- profit-fortress case: a trade reaches +50% / +60% / +75% MFE and later reverses; Whole-Leg holding must not permit the trade to cross below its protected profit floor, and +50% MFE may never degrade into an ordinary loss.
+- winner-harvest case: a trade reaches +50% to +75% MFE; if it continues making fresh highs / expanding, Tachyos must let it run, but if it plateaus or slows for a short confirmation window, Tachyos should harvest rather than donate the mature gain.
 
 ## Rule
 
