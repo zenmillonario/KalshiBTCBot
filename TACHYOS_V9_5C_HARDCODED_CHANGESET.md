@@ -148,6 +148,29 @@ When Looking Glass / Flexible Cage / War Council / Structure / Flash / Formation
 
 Do not solve this with another observer name.
 
+
+### M. Failed-break / fakeout reversal authority
+
+A target break that fails and is reclaimed must be treated as a first-class tactical reversal event.
+
+Required behavior:
+
+- if a NO leg is entered on a downside break and BTC reclaims the target quickly, NO continuation authority is disarmed;
+- if the reclaim is accompanied by improving EMA9 slope / return geometry, YES may be armed immediately;
+- the engine must not wait for `EMERGENCY_STOP_60` to discover the NO thesis was wrong;
+- likewise, a failed upside break followed by target loss must be able to disarm YES and arm NO;
+- a fakeout reversal may reuse the still-live opposite leg lineage instead of waiting for a fresh strategic-parent signal.
+
+Required labels:
+
+- `TARGET_BREAK_FAILED`
+- `TARGET_RECLAIM_REVERSAL`
+- `WRONG_SIDE_LEG_DISARMED`
+- `OPPOSITE_LEG_REARMED`
+
+This is especially important late in the contract, where a target reclaim can dominate lagging EMA30 / Boss context.
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -185,6 +208,7 @@ Replay / inspect these live-run failure classes:
 - V95A Treasury exit occurring before Thesis Shield authority;
 - `LATE_TARGET_INVALIDATION` inside a still-developing leg;
 - rollover with mature/extended leg and next-leg warning visible before fencepost.
+- #18/#19 case: YES impulse was defended out, NO entered on a fake breakdown, target was reclaimed, contract finished YES; system must either preserve the valid YES leg or immediately re-arm YES on failed-break reclaim instead of waiting for emergency stop.
 
 ## Rule
 
