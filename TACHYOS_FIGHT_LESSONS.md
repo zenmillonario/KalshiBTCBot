@@ -59,3 +59,20 @@ The return slope from one side of EMA30 and the build on the other side are one 
 
 **Training law:**  
 **Do not confuse a momentary event with a completed transfer of the leg.**
+
+
+## Lesson 004 — A proven winner cannot be donated back
+
+A trade that reaches +50% MFE has proven the thesis enough to deserve a hard profit floor.
+
+Whole-Leg Geometry can justify staying through normal pullbacks, but it cannot justify turning a +50%, +60%, or +75% winner into a routine loss.
+
+Training ladder:
+
+- +50% MFE -> protect at least +25% ROI
+- +60% MFE -> protect at least +35% ROI
+- +75% MFE -> protect at least +50% ROI
+
+**Training law:**  
+**Let the leg breathe before +50. Protect the money after +50.**
+
