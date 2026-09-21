@@ -99,3 +99,26 @@ Training behavior:
 
 **Training law:**  
 **A cross is a transfer attempt. Separation is the transfer.**
+
+
+## Lesson 006 — Pick the most likely side and make the market disprove it
+
+Anti-ping-pong does not mean permanent neutrality.
+
+If the geometry already shows the top of a small upper mountain and EMA9 is rolling down toward the Spine, the most likely next leg is NO.
+
+Take NO and stay with NO unless price/EMA geometry **breaks north** strongly enough to invalidate it.
+
+Mirror the rule at a lower valley for YES.
+
+Do not flip because of:
+
+- one EMA touch;
+- one micro-cross;
+- one alternating candle;
+- one temporary tactical-score change.
+
+Flip only after real invalidation.
+
+**Training law:**  
+**Choose the most likely leg. Stick with it until the market proves it wrong.**
