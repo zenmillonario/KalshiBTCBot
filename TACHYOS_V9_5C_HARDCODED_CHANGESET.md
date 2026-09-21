@@ -399,6 +399,68 @@ Required labels:
 **Choose the most likely leg. Stick with it until the market proves it wrong.**
 
 
+
+### S. Current-contract side vs next-leg preparation
+
+Tachyos must maintain two separate directional objects near expiry:
+
+1. **CURRENT CONTRACT SIDE** — the side most likely to settle the active contract.
+2. **NEXT LEG PREP SIDE** — the side most likely to become the next tactical leg.
+
+These may be opposite at the same time.
+
+Example:
+
+- current contract: NO remains dominant because BTC is well below target with little time left;
+- next-leg prep: YES becomes likely because the lower EMA9 leg is extended, repeated red displacement has matured, and the return slope toward EMA30 is increasingly probable.
+
+The engine must not force one object to overwrite the other.
+
+Required outputs:
+
+- \`CURRENT_SIDE_NO / CURRENT_SIDE_YES\`
+- \`NEXT_LEG_PREP_NONE\`
+- \`NEXT_LEG_PREP_YES\`
+- \`NEXT_LEG_PREP_NO\`
+- \`NEXT_LEG_CONVICTION_LOW / MEDIUM / HIGH\`
+
+#### Loud pre-arm alert
+
+When next-leg conviction is HIGH inside approximately the final 2–3 minutes, Tachyos should print a prominent terminal alert and expose it in Command Deck:
+
+\`PREPARE YES — NEXT LEG LIKELY — HIGH CONVICTION\`
+
+or
+
+\`PREPARE NO — NEXT LEG LIKELY — HIGH CONVICTION\`
+
+This is a **preparation alert**, not an automatic immediate entry.
+
+High-conviction next-leg preparation may be built from:
+
+- current leg is mature / extended;
+- repeated same-direction candles show exhaustion rather than fresh acceleration;
+- current lower/upper arc appears partly completed and the natural return-to-Spine half remains;
+- EMA9 curvature begins flattening toward a return;
+- distance from EMA30 is extended relative to recent range;
+- Target Height strongly favors the current contract side, making the opposite side more relevant for the next contract rather than the current one;
+- Time Capacity suggests the current leg may not finish its return before rollover;
+- rollover target reset could make the prepared side cheap / newly relevant.
+
+#### Rollover behavior
+
+If HIGH-conviction next-leg prep survives into rollover:
+
+- carry the preparation state through the fencepost;
+- immediately remap against the new target;
+- allow the new contract to open \`PRE_ARMED\` on that side;
+- do not require Boss / MTF / old parent to rediscover the idea;
+- if the actual return slope begins before rollover, parallel opposite-position authority may act before the old position is cut.
+
+**Training law:**  
+**Finish the current contract with the current side. Prepare the next leg before everyone else sees it.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -446,6 +508,8 @@ Replay / inspect these live-run failure classes:
 - spine-ping-pong case: price and EMA9 hover around EMA30 with small alternating candles and repeated micro-crosses; Tachyos must remain TRANSFER_ZONE_UNRESOLVED and must not rapid-fire YES/NO until directional separation persists.
 
 - most-likely-side case: at the top of a small upper EMA9 mountain with EMA9 rolling down, Tachyos should take/maintain NO and must not flip YES on micro-crosses unless a genuine north break invalidates the NO thesis; mirror for YES at a lower valley.
+
+- next-leg-prep case: with roughly 2 minutes left, BTC remains strongly below target and the active contract is still NO, but the lower leg is extended / half-built and likely to curl back toward EMA30; Tachyos must keep current-contract NO while loudly pre-arming NEXT_LEG_PREP_YES with conviction and carry it through rollover if still valid.
 
 ## Rule
 
