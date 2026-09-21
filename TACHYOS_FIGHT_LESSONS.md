@@ -259,27 +259,28 @@ Counter sleeves are short tactical trades inside a larger campaign.
 **Training law:**
 **Campaign positions may breathe. Counter sleeves get paid and get out.**
 
-## Forensic checkpoint — Trade #38: +50% winner let go
+## Forensic checkpoint — Trade #38: short counter-step inside a larger leg
 
-Review trade **#38** specifically during the post-run forensic pass.
+Operator clarification: trade **#38** was not just a +50% winner that was mishandled. It appears to have been a **short local step / counter-arc inside a larger campaign leg**.
 
-Operator observation: the trade reached roughly **+50% ROI** and was then allowed to give the winner back instead of collecting/protecting it appropriately.
+That makes #38 a key counter-sleeve / intra-leg-transition example.
 
-Questions to answer:
+Review:
 
-- exact MFE reached and timestamp;
-- how long the trade remained above +50%;
-- whether fresh highs were still occurring or the move had already stalled;
-- Winner Harvest state at +50%;
-- seconds since last meaningful MFE high;
-- 3/6/9 displacement at the peak and during the giveback;
-- EMA9 formation state and campaign side;
-- whether a +35%/+50% harvest or plateau rule would have improved the result;
-- whether this was a campaign position or a short tactical/counter-type trade and therefore should have used a tighter harvest rule.
+- exact MFE and time spent near/above +50%;
+- whether the larger campaign leg remained valid throughout;
+- whether #38 was trading the local opposite arc rather than a true campaign transfer;
+- whether a tactical +35%+ harvest would have captured the step cleanly;
+- whether the main campaign position should have remained open simultaneously;
+- where EMA9 turned back into the dominant leg after the short step;
+- whether Campaign Transfer authority incorrectly treated the local step as a larger reversal.
 
-Desired lesson:
+Desired classification:
 
-**A +50% winner must either still be demonstrably expanding or be under active harvest protection.**
+`LARGER_CAMPAIGN_LEG -> SHORT_COUNTER_STEP (#38) -> QUICK_HARVEST -> CAMPAIGN_RESUME`
+
+**Training law:**
+**A short step inside a larger leg is a tactical harvest, not automatically a new campaign.**
 
 ## Forensic hypothesis — use the little chaos while direction is deciding
 
