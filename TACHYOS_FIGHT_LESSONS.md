@@ -210,3 +210,25 @@ Do not fight every candle.
 
 **Training law:**  
 **Opposite candle = evidence. EMA9 formation = authority.**
+
+
+## Forensic training window — 2026-09-21 11:00–12:00 ET
+
+Operator observation: from roughly 11:00 ET onward, BTC entered what we call **snake territory / open Dance of Dragons** — broad EMA9/EMA30 oscillatory geometry with repeated large arcs, crossings, separation, returns, and renewed arcs.
+
+Use this window during the post-run forensic review.
+
+Questions:
+
+- Did Tachyos mistake individual opposite candles for campaign transfers?
+- Did the EMA9 formation remain readable even while candles alternated?
+- Where did EMA9 complete a meaningful upper/lower arc versus merely crossing the Spine?
+- Did Campaign Authority preserve the most-likely side long enough?
+- Did entries occur near formation turns or only after candles made the move obvious?
+- Did Exit Court abandon positions on local candle noise while the larger formation remained intact?
+- Did 3/6/9 displacement help distinguish a true formation turn from a transient candle?
+- Were there moments where waiting several more seconds for EMA9 confirmation would have materially improved entry quality?
+
+Training principle:
+
+**In open EMA9/EMA30 dance, read the formation first and the candle second.**
