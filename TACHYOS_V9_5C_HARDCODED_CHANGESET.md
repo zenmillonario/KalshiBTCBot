@@ -297,6 +297,65 @@ Required labels:
 **Do not cut a winner because it became large. Cut it when it stops behaving like a winner.**
 
 
+
+### Q. EMA30 Transfer-Zone Hysteresis — stop spine ping-pong
+
+When price/EMA9 hover around the EMA30 Spine, repeated tiny crosses are **not separate legs**.
+
+The engine must enter a neutral transfer state instead of alternating YES/NO entries.
+
+Required state:
+
+- \`TRANSFER_ZONE_UNRESOLVED\`
+
+Enter this state when several of these agree:
+
+- EMA9-to-EMA30 distance is small relative to recent BTC range;
+- EMA9 repeatedly crosses/touches EMA30 inside a short window;
+- price repeatedly crosses EMA9/EMA30 without directional separation;
+- candles are small and alternating;
+- 3/6/9-second displacement lacks consistent direction;
+- Target Height is near the settlement line and repeatedly changes sign;
+- YES/NO tactical scores alternate without a sustained score lead.
+
+While \`TRANSFER_ZONE_UNRESOLVED\`:
+
+- do not open a fresh YES or NO position merely because one tactical score temporarily leads;
+- do not declare a new opposite leg from a single cross;
+- preserve the existing leg lineage as unresolved;
+- an existing position may still be managed by Whole-Leg Exit Authority;
+- parallel opposite-position authority is suspended until a genuine transfer/escape is confirmed.
+
+A new side may earn authority only after **escape from the transfer zone**.
+
+Initial paper escape test:
+
+1. directional separation from EMA30 / Spine is increasing;
+2. 3/6/9-second displacement agrees with the same side;
+3. the directional lead persists for at least **6 seconds**;
+4. either Target Height confirms the side or Leg Geometry reaches OPPOSITE_BUILD / EXPANSION;
+5. no immediate recross back through the Spine.
+
+If the move recrosses before the escape test completes, reset to \`TRANSFER_ZONE_UNRESOLVED\`.
+
+Add hysteresis:
+
+- after a confirmed side transfer, do not flip the leg side again for ordinary evidence inside the next **9 seconds**;
+- an earlier flip is allowed only for a strong target fakeout/reclaim or catastrophic opposite displacement;
+- a prior side may regenerate only after \`REGENERATION_CONFIRMED\`, not from micro-cross chatter.
+
+Required labels:
+
+- \`TRANSFER_ZONE_UNRESOLVED\`
+- \`TRANSFER_ESCAPE_ARMED\`
+- \`TRANSFER_ESCAPE_CONFIRMED\`
+- \`TRANSFER_ESCAPE_FAILED_RECROSS\`
+- \`SIDE_FLIP_HYSTERESIS_ACTIVE\`
+
+**Training law:**  
+**A cross is a transfer attempt. Separation is the transfer.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -340,6 +399,8 @@ Replay / inspect these live-run failure classes:
 - parallel-transition case: if the opposite leg earns authority before the existing position's exit gate releases, paper trading must be able to open the opposite side immediately and manage both positions independently.
 
 - winner-harvest case: a trade reaches +50% to +75% MFE; if it continues making fresh highs / expanding, Tachyos must let it run, but if it plateaus or slows for a short confirmation window, Tachyos should harvest rather than donate the mature gain.
+
+- spine-ping-pong case: price and EMA9 hover around EMA30 with small alternating candles and repeated micro-crosses; Tachyos must remain TRANSFER_ZONE_UNRESOLVED and must not rapid-fire YES/NO until directional separation persists.
 
 ## Rule
 
