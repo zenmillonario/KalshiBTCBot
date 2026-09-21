@@ -232,3 +232,17 @@ Questions:
 Training principle:
 
 **In open EMA9/EMA30 dance, read the formation first and the candle second.**
+
+## Forensic hypothesis — trade the bend without abandoning the campaign
+
+During a larger coherent EMA9/EMA30 leg, a local opposite arc may be real enough to trade without being strong enough to invalidate the campaign.
+
+Tonight, test whether Tachyos would do better by:
+
+- keeping the campaign-side position open;
+- allowing one smaller opposite counter trade;
+- closing that counter trade when the local arc finishes;
+- reserving campaign flips for true whole-formation transfer.
+
+**Training law:**
+**Do not abandon the campaign just because the snake bends the other way for a moment.**
