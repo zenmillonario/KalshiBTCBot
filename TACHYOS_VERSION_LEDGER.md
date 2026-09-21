@@ -134,5 +134,24 @@ Level-2 Battle Council / Intermission Authority / Thesis Shield.
 - PAPER ONLY long-run experiment
 - development branch: `tachys-v9-5b-battle-council`
 
+## V9.5C — Required next implementation
+Plain architecture only; no new mythology names.
+- Leg Geometry becomes the primary tactical state model
+- Level 2 evaluates YES and NO continuously
+- strategic parent becomes context, not tactical candidate selection
+- mature-leg continuation disarms on credible return slope unless regeneration is confirmed
+- parent-aligned reclaim gets fast authority
+- Target Height is embedded in every leg state
+- Time Capacity decides whether the leg can finish inside the current contract
+- rollover can PRE-ARM the next leg and preserves unfinished geometry
+- final-minute target relationship gains direct tactical authority
+- every non-emergency exit must pass one centralized Whole-Leg Exit Authority gate
+- Active Treasury, EMA9_ARC_BROKEN, swirl TP/lock, structural broken, giveback/trailing and late target invalidation become exit proposals rather than direct flattening authority
+- position exit does not kill the active leg; valid legs remain immediately reacquirable
+- existing witnesses are routed into authority; do not create another named observer
+
+Canonical spec: `TACHYOS_LEG_GEOMETRY_DOCTRINE.md`  
+Hardcoded change list: `TACHYOS_V9_5C_HARDCODED_CHANGESET.md`
+
 ## Next version
-Do not assign the next authority promotion until V9.5B has completed a clean long run and forensic review.
+Do not add further tactical concepts until the V9.5C hardcoded changes are implemented and replayed against the documented V9.5B failures.
