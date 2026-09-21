@@ -171,6 +171,340 @@ Required labels:
 This is especially important late in the contract, where a target reclaim can dominate lagging EMA30 / Boss context.
 
 
+
+### N. Final-minute target fakeout authority
+
+The last 60 seconds are a separate tactical regime. Settlement-control processes move to the front.
+
+A brief cross of the Kalshi target is **not automatically a true directional transfer**.
+
+The engine must distinguish:
+
+- \`TARGET_TOUCH\`
+- \`TARGET_CROSS_UNCONFIRMED\`
+- \`TARGET_FAKEOUT_RECLAIM\`
+- \`TARGET_ACCEPTED\`
+- \`TARGET_TERMINAL_CONTROL\`
+
+Final-minute adjudication must weight, in this order:
+
+1. seconds remaining;
+2. Target Height and which side currently owns the settlement line;
+3. reclaim speed after the cross;
+4. hold time on the new side;
+5. current Whole-Leg Geometry state;
+6. 3/6/9-second displacement and efficiency;
+7. wick rejection / candle texture;
+8. Kalshi price and available value;
+9. strategic parent only as context.
+
+A fast cross followed by an immediate reclaim, especially when the active leg never truly transferred, is a **fakeout**, not automatic confirmation of the crossed side.
+
+Required labels:
+
+- \`FINAL_MINUTE_MODE\`
+- \`TARGET_CROSS_UNCONFIRMED\`
+- \`TARGET_FAKEOUT_RECLAIM\`
+- \`SETTLEMENT_SIDE_RESTORED\`
+- \`TARGET_TERMINAL_CONTROL\`
+
+### O. Parallel opposite-position transition
+
+Entry authority and exit authority are independent.
+
+In PAPER mode, a newly confirmed opposite leg may open an opposite-side position **before the existing position is formally closed**.
+
+Do not force:
+
+\`OLD POSITION EXIT -> WAIT -> OPPOSITE ENTRY\`
+
+when the market has already transferred.
+
+Allow:
+
+\`OLD POSITION STILL OPEN + OPPOSITE LEG CONFIRMED -> OPEN OPPOSITE PAPER POSITION -> MANAGE BOTH INDEPENDENTLY -> OLD POSITION EXIT WHEN ITS GATE RULES\`
+
+Requirements:
+
+- parallel positions must have separate trade IDs, leg IDs, entry reasons and exit gates;
+- the new opposite position must earn normal tactical authority; it is not an automatic hedge;
+- no unlimited pyramiding: one active position per side per tactical transition unless a later experiment explicitly changes this;
+- existing-position loss must not suppress a valid opposite entry;
+- an opposite entry must not automatically liquidate the old side;
+- logs must mark \`PARALLEL_TRANSITION_ACTIVE\`, \`OLD_LEG_POSITION\`, and \`NEW_LEG_POSITION\`;
+- P/L and risk accounting must remain separate for both positions;
+- this rule is PAPER ONLY until separately validated.
+
+
+
+### P. Winner Harvest — let expansion run, harvest the stall
+
+This supersedes the earlier fixed profit-floor interpretation.
+
+A trade reaching +50% to +75% MFE is **not** an automatic exit and does **not** create a rigid trailing floor by itself.
+
+The correct question is:
+
+**Is the winner still expanding, or has it stopped paying?**
+
+#### HOLD / LET IT BREATHE
+
+Continue holding a large winner when the move is still visibly alive, for example:
+
+- fresh MFE highs are still being made;
+- current ROI is still advancing rather than hovering;
+- 3/6/9-second displacement remains favorable;
+- EMA9 Leg Geometry remains in BUILD / EXPANSION;
+- Target Height continues improving for the held side;
+- price/quote velocity remains healthy;
+- the opposite leg has not begun a credible RETURN SLOPE / transfer.
+
+There is **no profit cap**. A +50%, +75%, or larger winner may continue running.
+
+#### HARVEST / TAKE IT
+
+Once a trade is already in the +50% to +75% winner zone, become increasingly willing to take the profit when the move stalls.
+
+A winner is a harvest candidate when several of these agree:
+
+- no fresh MFE high for a short 3/6/9-style observation window;
+- current ROI repeatedly hovers in a narrow band;
+- quote velocity slows materially;
+- 3/6/9 displacement loses directional force;
+- EMA9 expansion flattens;
+- Leg Geometry reaches MATURE / RETURN_SLOPE;
+- target progress stops improving;
+- repeated upper/lower rejection appears against the held side;
+- the opposite tactical score begins building.
+
+Initial paper behavior:
+
+- at **+50% MFE**, arm \`WINNER_HARVEST_WATCH\`;
+- while expansion continues, keep holding;
+- if the winner stalls/plateaus for roughly **9 seconds** without a meaningful new high, allow harvest;
+- at **+75% MFE or higher**, the same principle applies, but plateau/slowdown evidence receives greater weight;
+- a fresh breakout/new MFE cancels the harvest timer and returns to \`WINNER_EXPANDING\`.
+
+Required labels:
+
+- \`WINNER_EXPANDING\`
+- \`WINNER_HARVEST_WATCH\`
+- \`WINNER_PLATEAU_9S\`
+- \`WINNER_HARVEST_EXIT\`
+- \`WINNER_BREAKOUT_CONTINUE\`
+
+**Training law:**  
+**Do not cut a winner because it became large. Cut it when it stops behaving like a winner.**
+
+
+
+### Q. EMA30 Transfer-Zone Hysteresis — stop spine ping-pong
+
+When price/EMA9 hover around the EMA30 Spine, repeated tiny crosses are **not separate legs**.
+
+The engine must enter a neutral transfer state instead of alternating YES/NO entries.
+
+Required state:
+
+- \`TRANSFER_ZONE_UNRESOLVED\`
+
+Enter this state when several of these agree:
+
+- EMA9-to-EMA30 distance is small relative to recent BTC range;
+- EMA9 repeatedly crosses/touches EMA30 inside a short window;
+- price repeatedly crosses EMA9/EMA30 without directional separation;
+- candles are small and alternating;
+- 3/6/9-second displacement lacks consistent direction;
+- Target Height is near the settlement line and repeatedly changes sign;
+- YES/NO tactical scores alternate without a sustained score lead.
+
+While \`TRANSFER_ZONE_UNRESOLVED\`:
+
+- do not open a fresh YES or NO position merely because one tactical score temporarily leads;
+- do not declare a new opposite leg from a single cross;
+- preserve the existing leg lineage as unresolved;
+- an existing position may still be managed by Whole-Leg Exit Authority;
+- parallel opposite-position authority is suspended until a genuine transfer/escape is confirmed.
+
+A new side may earn authority only after **escape from the transfer zone**.
+
+Initial paper escape test:
+
+1. directional separation from EMA30 / Spine is increasing;
+2. 3/6/9-second displacement agrees with the same side;
+3. the directional lead persists for at least **6 seconds**;
+4. either Target Height confirms the side or Leg Geometry reaches OPPOSITE_BUILD / EXPANSION;
+5. no immediate recross back through the Spine.
+
+If the move recrosses before the escape test completes, reset to \`TRANSFER_ZONE_UNRESOLVED\`.
+
+Add hysteresis:
+
+- after a confirmed side transfer, do not flip the leg side again for ordinary evidence inside the next **9 seconds**;
+- an earlier flip is allowed only for a strong target fakeout/reclaim or catastrophic opposite displacement;
+- a prior side may regenerate only after \`REGENERATION_CONFIRMED\`, not from micro-cross chatter.
+
+Required labels:
+
+- \`TRANSFER_ZONE_UNRESOLVED\`
+- \`TRANSFER_ESCAPE_ARMED\`
+- \`TRANSFER_ESCAPE_CONFIRMED\`
+- \`TRANSFER_ESCAPE_FAILED_RECROSS\`
+- \`SIDE_FLIP_HYSTERESIS_ACTIVE\`
+
+**Training law:**  
+**A cross is a transfer attempt. Separation is the transfer.**
+
+
+
+### R. Most-Likely Scenario Bias — choose a side and require real invalidation
+
+This supersedes interpreting \`TRANSFER_ZONE_UNRESOLVED\` as automatic neutrality.
+
+When the fast geometry already presents a clearly more likely side, Tachyos should **take that side and stay with it** rather than oscillating or waiting for perfect confirmation.
+
+Examples:
+
+- top of a small upper EMA9 mountain / arc, EMA9 rolling down toward the Spine -> default tactical side = **NO**;
+- bottom of a small lower EMA9 valley / arc, EMA9 rolling up toward the Spine -> default tactical side = **YES**.
+
+Once that side is chosen:
+
+- do not flip because of one micro-cross;
+- do not flip because price briefly touches EMA9 / EMA30;
+- do not flip because one tactical score ticks higher for a moment;
+- stay with the most-likely scenario until the geometry is materially invalidated.
+
+For a NO thesis, invalidation means a genuine **north break**, for example:
+
+- EMA9 re-expands upward with increasing separation from EMA30;
+- 3/6/9 displacement turns persistently positive;
+- price breaks and holds above the local mountain / recent rejection area;
+- Target Height and target acceptance move decisively to YES;
+- the opposite YES leg reaches a confirmed BUILD / EXPANSION state.
+
+For a YES thesis, use the mirror conditions for a genuine **south break**.
+
+\`TRANSFER_ZONE_UNRESOLVED\` is reserved for genuinely balanced geometry where neither side has a clear shape advantage.
+
+Required labels:
+
+- \`MOST_LIKELY_NO\`
+- \`MOST_LIKELY_YES\`
+- \`THESIS_STICKY_UNTIL_INVALIDATED\`
+- \`NORTH_BREAK_INVALIDATES_NO\`
+- \`SOUTH_BREAK_INVALIDATES_YES\`
+
+**Training law:**  
+**Choose the most likely leg. Stick with it until the market proves it wrong.**
+
+
+
+### S. Current-contract side vs next-leg preparation
+
+Tachyos must maintain two separate directional objects near expiry:
+
+1. **CURRENT CONTRACT SIDE** — the side most likely to settle the active contract.
+2. **NEXT LEG PREP SIDE** — the side most likely to become the next tactical leg.
+
+These may be opposite at the same time.
+
+Example:
+
+- current contract: NO remains dominant because BTC is well below target with little time left;
+- next-leg prep: YES becomes likely because the lower EMA9 leg is extended, repeated red displacement has matured, and the return slope toward EMA30 is increasingly probable.
+
+The engine must not force one object to overwrite the other.
+
+Required outputs:
+
+- \`CURRENT_SIDE_NO / CURRENT_SIDE_YES\`
+- \`NEXT_LEG_PREP_NONE\`
+- \`NEXT_LEG_PREP_YES\`
+- \`NEXT_LEG_PREP_NO\`
+- \`NEXT_LEG_CONVICTION_LOW / MEDIUM / HIGH\`
+
+#### Loud pre-arm alert
+
+When next-leg conviction is HIGH inside approximately the final 2–3 minutes, Tachyos should print a prominent terminal alert and expose it in Command Deck:
+
+\`PREPARE YES — NEXT LEG LIKELY — HIGH CONVICTION\`
+
+or
+
+\`PREPARE NO — NEXT LEG LIKELY — HIGH CONVICTION\`
+
+This is a **preparation alert**, not an automatic immediate entry.
+
+High-conviction next-leg preparation may be built from:
+
+- current leg is mature / extended;
+- repeated same-direction candles show exhaustion rather than fresh acceleration;
+- current lower/upper arc appears partly completed and the natural return-to-Spine half remains;
+- EMA9 curvature begins flattening toward a return;
+- distance from EMA30 is extended relative to recent range;
+- Target Height strongly favors the current contract side, making the opposite side more relevant for the next contract rather than the current one;
+- Time Capacity suggests the current leg may not finish its return before rollover;
+- rollover target reset could make the prepared side cheap / newly relevant.
+
+#### Rollover behavior
+
+If HIGH-conviction next-leg prep survives into rollover:
+
+- carry the preparation state through the fencepost;
+- immediately remap against the new target;
+- allow the new contract to open \`PRE_ARMED\` on that side;
+- do not require Boss / MTF / old parent to rediscover the idea;
+- if the actual return slope begins before rollover, parallel opposite-position authority may act before the old position is cut.
+
+**Training law:**  
+**Finish the current contract with the current side. Prepare the next leg before everyone else sees it.**
+
+
+
+### T. First-five-minute campaign persistence
+
+The first minutes of a fresh 15-minute contract must not become a rapid-fire sequence of alternating side declarations.
+
+Concrete live example:
+
+\`#122 YES -> #123 NO -> #124 YES -> #125 NO -> #126 YES\`
+
+all inside roughly the first five minutes of one contract.
+
+This is not automatically five independent legs.
+
+When repeated opposite-side confirmations occur while price remains near the same target / EMA transfer region, Tachyos must treat the sequence as **one campaign under dispute**, not as permission to open a new thesis every few candles.
+
+Required campaign behavior:
+
+- establish a \`CAMPAIGN_SIDE\` from the most-likely Leg Geometry;
+- preserve that side through ordinary counter-candles and micro-crosses;
+- require genuine structural invalidation before changing \`CAMPAIGN_SIDE\`;
+- after a side flip, apply the existing 6-second escape confirmation and 9-second hysteresis;
+- repeated \`V95C_EXIT_OPPOSITE_LEG_CONFIRMED\` events inside the same local geometry must increase the burden of proof for another immediate reversal;
+- a fresh trade in the opposite direction requires either:
+  - clear EMA30 separation + aligned 3/6/9 displacement,
+  - decisive target acceptance/reclaim,
+  - or a confirmed new Leg Geometry BUILD / EXPANSION.
+
+Add audit fields:
+
+- \`campaign_id\`
+- \`campaign_side\`
+- \`campaign_age_sec\`
+- \`same_campaign_flip_count\`
+- \`seconds_since_last_side_flip\`
+- \`true_leg_transfer_confirmed\`
+
+Initial paper guardrail:
+
+- if \`same_campaign_flip_count >= 2\` inside five minutes without a confirmed true leg transfer, suppress further alternating entries until one side achieves a genuine escape.
+
+**Training law:**  
+**One contract can contain several trades, but one wobble does not deserve five theses.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -209,6 +543,19 @@ Replay / inspect these live-run failure classes:
 - `LATE_TARGET_INVALIDATION` inside a still-developing leg;
 - rollover with mature/extended leg and next-leg warning visible before fencepost.
 - #18/#19 case: YES impulse was defended out, NO entered on a fake breakdown, target was reclaimed, contract finished YES; system must either preserve the valid YES leg or immediately re-arm YES on failed-break reclaim instead of waiting for emergency stop.
+
+- final-minute fakeout case: BTC briefly crosses PT inside the last 60 seconds, then quickly reclaims it while the larger leg remains intact; settlement-control logic must recognize the fakeout instead of treating the first cross as final truth.
+- parallel-transition case: if the opposite leg earns authority before the existing position's exit gate releases, paper trading must be able to open the opposite side immediately and manage both positions independently.
+
+- winner-harvest case: a trade reaches +50% to +75% MFE; if it continues making fresh highs / expanding, Tachyos must let it run, but if it plateaus or slows for a short confirmation window, Tachyos should harvest rather than donate the mature gain.
+
+- spine-ping-pong case: price and EMA9 hover around EMA30 with small alternating candles and repeated micro-crosses; Tachyos must remain TRANSFER_ZONE_UNRESOLVED and must not rapid-fire YES/NO until directional separation persists.
+
+- most-likely-side case: at the top of a small upper EMA9 mountain with EMA9 rolling down, Tachyos should take/maintain NO and must not flip YES on micro-crosses unless a genuine north break invalidates the NO thesis; mirror for YES at a lower valley.
+
+- next-leg-prep case: with roughly 2 minutes left, BTC remains strongly below target and the active contract is still NO, but the lower leg is extended / half-built and likely to curl back toward EMA30; Tachyos must keep current-contract NO while loudly pre-arming NEXT_LEG_PREP_YES with conviction and carry it through rollover if still valid.
+
+- trades #122-#126: five alternating YES/NO trades occurred within roughly the first five minutes of one contract while price remained in the same local target/EMA region; replay must determine how many were true leg transfers versus campaign fragmentation, and the next engine must suppress repeated side flips without genuine escape.
 
 ## Rule
 
