@@ -346,3 +346,21 @@ V9.5D is not ready for an unattended run unless:
 - campaign flip count is visible;
 - Winner Harvest holds #120-type expansion and harvests #112-type plateau;
 - no rapid YES/NO ping-pong occurs without true transfer.
+
+
+## EMA9 Formation Confirmation Amendment
+
+Observed during V9.5D smoke testing: Campaign Authority was still reacting too quickly to individual opposite candles.
+
+Correction:
+
+- one opposite candle is evidence, not authority;
+- `RETURN_SLOPE` alone may arm awareness but does not normally confirm a campaign transfer;
+- normal transfer waits for EMA9 formation progression into `EMA30_APPROACH`, `TRANSFER`, `OPPOSITE_BUILD`, or `EXPANSION`;
+- early transfer remains possible only when EMA9 itself gives strong confirmation through curvature + 6/9-second slope + aligned 3/6/9 movement;
+- standard campaign-transfer persistence is 9 seconds;
+- strong EMA9-formation override may confirm after 6 seconds.
+
+Training law:
+
+**Opposite candle = evidence. EMA9 formation = authority.**
