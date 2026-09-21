@@ -307,3 +307,32 @@ Question: if the previous arcs establish a stable gait, can Tachyos project the 
 
 **Training law:**
 **Measure how EMA9 bends around the Spine, not how steep it looks on the screen.**
+
+## Forensic checkpoint — 3:15 PM contract: THE COBRA
+
+Operator visual label: **THE COBRA**.
+
+Observed characteristic: very early in the contract, around minute 1–2, EMA9 begins lifting sharply from the lower structure around EMA30, creating the visual impression of a cobra raising its head.
+
+Do not turn the nickname itself into trading authority. Use it as a searchable training motif for measurable EMA geometry.
+
+Forensic questions:
+
+- which trade(s) Tachyos placed during the 3:15 PM contract;
+- exact entry/exit prices, MFE, MAE, realized P/L and hold time;
+- whether the first meaningful EMA9 lift was visible by contract minute 1–2;
+- EMA9 slope over 3/6/9 seconds and curvature during the initial rise;
+- EMA9/EMA30 gap compression and subsequent separation;
+- whether the rise represented a strong early RETURN_SLOPE override, EMA30 approach, transfer, or opposite-side build;
+- whether Campaign Authority entered early enough to capture the large move;
+- whether later local counter-steps caused unnecessary exit/re-entry churn;
+- whether preserving the main campaign plus short counter sleeves would have captured more of the full move;
+- whether projected EMA flight-path requirements would have anticipated the next part of the rise.
+
+Training hypothesis:
+
+`LOWER STRUCTURE -> EMA9 HEAD RISE -> GAP COMPRESSION -> SPINE ATTACK -> SEPARATION / UPPER BUILD`
+
+Working law:
+
+**The Cobra is a visual cue to measure early EMA9 lift; the measurable formation, not the nickname, earns authority.**
