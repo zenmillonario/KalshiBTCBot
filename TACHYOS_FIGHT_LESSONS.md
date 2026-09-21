@@ -143,3 +143,32 @@ If the turn begins early, parallel transition authority may enter the new side b
 
 **Training law:**  
 **Finish the current contract with the current side. Prepare the next leg before everyone else sees it.**
+
+
+## Forensic checkpoint — Trade #120: +75% to +100%
+
+Review trade **#120** specifically.
+
+Question to answer:
+
+**Did the winner-harvest process correctly let the trade breathe from roughly +75% toward +100% because strength remained intact?**
+
+Verify:
+
+- timestamp when +75% MFE was first reached;
+- whether a harvest/plateau timer armed at that point;
+- whether fresh highs reset/cancelled that timer;
+- 3/6/9-second displacement through the +75% -> +100% transition;
+- EMA9 Leg Geometry state during the transition;
+- Target Height progression;
+- quote velocity / Kalshi price acceleration;
+- whether opposite-side score or rejection evidence ever became strong enough to justify harvesting;
+- whether the final +100% outcome came from continued expansion rather than a lucky last-second spike.
+
+Desired behavior:
+
+\`+75% MFE -> STRENGTH STILL PRESENT -> WINNER_EXPANDING -> HARVEST TIMER RESET -> LET IT BREATHE -> +100%\`
+
+This case is a positive control for Lesson 004.
+
+**Do not tighten Winner Harvest in a way that would have cut #120 early if the evidence shows the move was still expanding with strength.**
