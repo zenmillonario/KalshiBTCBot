@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
 import tachys_v9_5c_leg_geometry as c
+import tachys_execution_shadow_v9_5d as exshadow
 
 core = c.core
 a = c.a
@@ -104,7 +105,7 @@ PREARM_FIELDS = [
 MANIFEST_FIELDS = [
     "timestamp","run_id","session_id","version","base_version","start_local","pid",
     "campaign_authority","prearm_ttl_sec","winner_harvest","exit_court",
-    "parallel_transition","note"
+    "parallel_transition","execution_shadow","note"
 ]
 
 
@@ -195,7 +196,8 @@ class CampaignSupervisor:
             "winner_harvest": 1,
             "exit_court": 1,
             "parallel_transition": 1,
-            "note": "V9.5D supervises V9.5C perception; PAPER ONLY.",
+            "execution_shadow": 1,
+            "note": "V9.5D supervises V9.5C perception; PAPER ONLY; execution reality shadow has zero authority.",
         })
 
     # ------------------------------------------------------------------
@@ -838,6 +840,7 @@ class CampaignSupervisor:
 
 
 supervisor = CampaignSupervisor()
+execution_shadow = exshadow.ExecutionShadow(core, RUN_ID, SESSION_ID)
 _HOOKS_INSTALLED = False
 
 
@@ -977,6 +980,12 @@ def install_v95d_hooks() -> None:
                 pos["_v95d_campaign_side"] = supervisor.campaign_side
                 pos["_v95d_entry_reason"] = reason
                 pos["_v95d_parallel_transition"] = bool(parallel)
+                try:
+                    execution_shadow.on_entry(
+                        pos, ticker, side, ask, now=time.time()
+                    )
+                except Exception as exc:
+                    print(f"⚠️ V9.5D execution-shadow entry error: {exc}")
             if prearm_override or "ROLLOVER_PREARM" in str(signal.get("early_exception_reasons") or ""):
                 supervisor.mark_prearm_used(ticker, now)
 
@@ -989,6 +998,11 @@ def install_v95d_hooks() -> None:
 
     def paper_manage_wrapper(ticker, yes_ask, no_ask):
         now = time.time()
+        try:
+            execution_shadow.observe(ticker, yes_ask, no_ask, now)
+        except Exception as exc:
+            print(f"⚠️ V9.5D execution-shadow quote error: {exc}")
+
         positions: List[Tuple[str, Dict[str, Any]]] = []
         courts: Dict[str, Dict[str, Any]] = {}
 
@@ -1013,13 +1027,37 @@ def install_v95d_hooks() -> None:
             if old:
                 _restore(old)
 
+        # If an inherited hard-emergency path closed a position, capture its
+        # execution reality before doing anything else. Ordinary inherited exits
+        # remain suppressed by Exit Court.
+        for side, p in positions:
+            still = (getattr(core, "paper_positions", {}) or {}).get(side) is p
+            if not still:
+                try:
+                    execution_shadow.on_exit(
+                        p, ticker, side, _bid(side, yes_ask, no_ask),
+                        "INHERITED_EMERGENCY_EXIT", now=time.time(),
+                        yes_ask=yes_ask, no_ask=no_ask,
+                    )
+                except Exception as exc:
+                    print(f"⚠️ V9.5D execution-shadow inherited-exit error: {exc}")
+
         # Execute V9.5D court rulings only if the inherited emergency manager
         # did not already close the position.
         for side, p in positions:
             still = (getattr(core, "paper_positions", {}) or {}).get(side) is p
             court = courts.get(side) or {}
             if still and court.get("final_action") == "EXIT":
-                supervisor.execute_exit(p, yes_ask, no_ask, str(court.get("court_ruling")))
+                ruling = str(court.get("court_ruling"))
+                if supervisor.execute_exit(p, yes_ask, no_ask, ruling):
+                    try:
+                        execution_shadow.on_exit(
+                            p, ticker, side, _bid(side, yes_ask, no_ask),
+                            f"V95D_{ruling}", now=time.time(),
+                            yes_ask=yes_ask, no_ask=no_ask,
+                        )
+                    except Exception as exc:
+                        print(f"⚠️ V9.5D execution-shadow exit error: {exc}")
 
         return result
 
@@ -1047,11 +1085,14 @@ async def main() -> None:
     print("⚖️ EXIT COURT: local opposite-leg + legacy exits are proposals, not sovereign exits.")
     print("↔️ PARALLEL TRANSITION: one position per side may overlap after confirmed transfer.")
     print("📣 NEXT LEG PREP: current-contract side and next-leg side are tracked separately.")
+    print("🪞 EXECUTION SHADOW: 0/250/500/1000ms L2 fill + fee-adjusted live P/L; ZERO authority.")
     print("")
     print(f"CAMPAIGN LOG : {CAMPAIGN_LOG}")
     print(f"WINNER LOG   : {WINNER_LOG}")
     print(f"EXIT COURT   : {EXIT_COURT_LOG}")
     print(f"PREARM LOG   : {PREARM_LOG}")
+    print(f"EXEC QUOTES  : {exshadow.QUOTE_LOG}")
+    print(f"EXEC TRADES  : {exshadow.TRADE_LOG}")
     print("=" * 118)
 
     await core.main()
