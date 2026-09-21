@@ -280,3 +280,18 @@ Questions to answer:
 Desired lesson:
 
 **A +50% winner must either still be demonstrably expanding or be under active harvest protection.**
+
+## Forensic hypothesis — use the little chaos while direction is deciding
+
+A smaller break inside a larger campaign does not automatically mean the campaign is over.
+
+Test a temporary intra-leg transition mode:
+
+- keep the main campaign position;
+- allow small, tightly managed counter sleeves during the local oscillation;
+- harvest those sleeves quickly around +35%+;
+- let EMA9/EMA30 formation and 3/6/9 behavior reveal which direction wins;
+- once direction resolves, stop the quick counter trading and return to the dominant leg.
+
+**Training law:**
+**Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
