@@ -158,3 +158,46 @@ Smoke/overnight checklist: `TACHYOS_V9_5C_SMOKE_OVERNIGHT.md`
 
 ## Next version
 Do not add another tactical concept until V9.5C completes a clean smoke run and overnight forensic review.
+
+
+## V9.5D — Campaign Authority / Winner Harvest / State Lifecycle
+
+Status: implemented for controlled PAPER smoke.
+
+Base:
+- V9.5C overnight forensic archive
+- development branch: \`tachys-v9-5d-campaign-authority\`
+
+Engine:
+- \`tachys_v9_5d_campaign_authority.py\`
+
+Command Deck:
+- \`tachyos_command_deck_v3_2.py\`
+
+Primary corrections:
+- Campaign Authority above local Leg Geometry
+- 6-second transfer confirmation
+- 9-second side-flip hysteresis
+- repeated-flip burden of proof
+- Rollover Pre-Arm TTL = 60 seconds
+- Pre-Arm consumed after first successful use
+- Winner Harvest based on expansion vs plateau, not fixed profit floors
+- V9.5C local opposite-leg exit demoted
+- ordinary legacy exits routed beneath Exit Court
+- confirmed opposite campaign may overlap old side in PAPER mode
+- one active position per side remains enforced
+- current-contract side and next-leg preparation remain separate
+
+Forensic controls:
+- #112 large-winner donation
+- #120 +75% -> +100% expansion
+- #122-126 campaign fragmentation
+- stale ROLLOVER_PREARM entries deep into contracts
+
+Spec:
+- \`TACHYOS_V9_5D_CAMPAIGN_AUTHORITY_SPEC.md\`
+
+Smoke checklist:
+- \`TACHYOS_V9_5D_SMOKE_TEST.md\`
+
+Do not run unattended until the smoke checklist passes.
