@@ -92,21 +92,60 @@ st.markdown(
           opacity: .75;
           margin-bottom: 2px;
       }
+      .position-head {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 22px;
+          align-items: start;
+      }
       .position-main {
           font-size: 2.15rem;
           line-height: 1.05;
           font-weight: 850;
       }
+      .position-pnl-wrap {
+          text-align: right;
+          min-width: 180px;
+      }
+      .position-pnl-label {
+          font-size: .76rem;
+          opacity: .66;
+          margin-bottom: 2px;
+      }
       .position-pnl {
-          font-size: 2.05rem;
+          font-size: 2.15rem;
           line-height: 1.05;
-          font-weight: 850;
-          margin-top: 8px;
+          font-weight: 900;
+          white-space: nowrap;
+      }
+      .pnl-positive {color: #33d17a;}
+      .pnl-negative {color: #ff5c5c;}
+      .pnl-flat {color: #c7c7c7;}
+      .position-details {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+          margin-top: 14px;
+          padding-top: 10px;
+          border-top: 1px solid rgba(128,128,128,.16);
+      }
+      .position-detail-label {
+          font-size: .72rem;
+          opacity: .62;
+          margin-bottom: 1px;
+      }
+      .position-detail-value {
+          font-size: .98rem;
+          font-weight: 700;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
       }
       .position-sub {
           margin-top: 8px;
-          font-size: .98rem;
-          line-height: 1.5;
+          font-size: .90rem;
+          line-height: 1.4;
+          opacity: .82;
       }
       .recent-title {
           font-size: 1.08rem;
@@ -138,8 +177,8 @@ st.markdown(
           text-overflow: ellipsis;
           white-space: nowrap;
       }
-      .win {font-weight: 800;}
-      .loss {font-weight: 800;}
+      .win {font-weight: 800; color: #33d17a;}
+      .loss {font-weight: 800; color: #ff5c5c;}
       .section-rule {
           margin: 10px 0 5px 0;
           border-top: 1px solid rgba(128,128,128,.22);
@@ -406,20 +445,44 @@ with left:
         strategy = html.escape(txt(open_trade.get("strategy")))
         intent = html.escape(txt(open_trade.get("trade_intent")))
         live_bid = quote(mark.get("bid")) if mark else "—"
-        live_pnl = money(mark.get("pnl")) if mark else "—"
-        live_roi = "—" if not mark or mark.get("roi") is None else f"{mark.get('roi'):+.1%}"
+        live_pnl_value = mark.get("pnl") if mark else None
+        live_roi_value = mark.get("roi") if mark else None
+        live_pnl = money(live_pnl_value) if mark else "—"
+        live_roi = "—" if live_roi_value is None else f"{live_roi_value:+.1%}"
+        pnl_class = (
+            "pnl-positive" if live_pnl_value is not None and live_pnl_value > 0
+            else "pnl-negative" if live_pnl_value is not None and live_pnl_value < 0
+            else "pnl-flat"
+        )
         gate = txt(exit_row.get("gate_ruling")) if exit_row is not None and txt(exit_row.get("trade_id"), "") == trade_id else "—"
 
         st.markdown(
             f"""
             <div class="position-box">
               <div class="position-title">TRADE #{html.escape(trade_id)}</div>
-              <div class="position-main">{html.escape(side)} · ENTRY {entry}</div>
-              <div class="position-pnl">{live_pnl} · {live_roi}</div>
-              <div class="position-sub">
-                Live bid <b>{live_bid}</b> &nbsp;·&nbsp; Qty <b>{html.escape(qty)}</b><br>
-                {strategy} &nbsp;·&nbsp; {intent}<br>
-                Exit gate: <b>{html.escape(gate)}</b>
+              <div class="position-head">
+                <div>
+                  <div class="position-main">{html.escape(side)} · ENTRY {entry}</div>
+                  <div class="position-sub">{strategy} · {intent}</div>
+                </div>
+                <div class="position-pnl-wrap">
+                  <div class="position-pnl-label">LIVE P/L</div>
+                  <div class="position-pnl {pnl_class}">{live_pnl} · {live_roi}</div>
+                </div>
+              </div>
+              <div class="position-details">
+                <div>
+                  <div class="position-detail-label">LIVE BID</div>
+                  <div class="position-detail-value">{live_bid}</div>
+                </div>
+                <div>
+                  <div class="position-detail-label">QTY</div>
+                  <div class="position-detail-value">{html.escape(qty)}</div>
+                </div>
+                <div>
+                  <div class="position-detail-label">EXIT GATE</div>
+                  <div class="position-detail-value">{html.escape(gate)}</div>
+                </div>
               </div>
             </div>
             """,
