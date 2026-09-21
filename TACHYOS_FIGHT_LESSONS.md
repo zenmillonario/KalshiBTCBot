@@ -193,3 +193,20 @@ Training behavior:
 
 **Training law:**  
 **One wobble does not deserve five theses.**
+
+
+## Lesson 009 — The candle is not the formation
+
+A single opposite candle can warn Tachyos that the active leg may be changing, but it does not deserve campaign authority by itself.
+
+Use EMA9 formation as the guide:
+
+- RETURN_SLOPE = warning / preparation;
+- EMA30_APPROACH = stronger evidence;
+- TRANSFER / OPPOSITE_BUILD = legitimate campaign-transfer territory;
+- a strong early turn may act sooner only when EMA9 curvature, 6/9-second slope, and 3/6/9 displacement agree.
+
+Do not fight every candle.
+
+**Training law:**  
+**Opposite candle = evidence. EMA9 formation = authority.**
