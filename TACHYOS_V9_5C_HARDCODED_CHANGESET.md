@@ -356,6 +356,49 @@ Required labels:
 **A cross is a transfer attempt. Separation is the transfer.**
 
 
+
+### R. Most-Likely Scenario Bias — choose a side and require real invalidation
+
+This supersedes interpreting \`TRANSFER_ZONE_UNRESOLVED\` as automatic neutrality.
+
+When the fast geometry already presents a clearly more likely side, Tachyos should **take that side and stay with it** rather than oscillating or waiting for perfect confirmation.
+
+Examples:
+
+- top of a small upper EMA9 mountain / arc, EMA9 rolling down toward the Spine -> default tactical side = **NO**;
+- bottom of a small lower EMA9 valley / arc, EMA9 rolling up toward the Spine -> default tactical side = **YES**.
+
+Once that side is chosen:
+
+- do not flip because of one micro-cross;
+- do not flip because price briefly touches EMA9 / EMA30;
+- do not flip because one tactical score ticks higher for a moment;
+- stay with the most-likely scenario until the geometry is materially invalidated.
+
+For a NO thesis, invalidation means a genuine **north break**, for example:
+
+- EMA9 re-expands upward with increasing separation from EMA30;
+- 3/6/9 displacement turns persistently positive;
+- price breaks and holds above the local mountain / recent rejection area;
+- Target Height and target acceptance move decisively to YES;
+- the opposite YES leg reaches a confirmed BUILD / EXPANSION state.
+
+For a YES thesis, use the mirror conditions for a genuine **south break**.
+
+\`TRANSFER_ZONE_UNRESOLVED\` is reserved for genuinely balanced geometry where neither side has a clear shape advantage.
+
+Required labels:
+
+- \`MOST_LIKELY_NO\`
+- \`MOST_LIKELY_YES\`
+- \`THESIS_STICKY_UNTIL_INVALIDATED\`
+- \`NORTH_BREAK_INVALIDATES_NO\`
+- \`SOUTH_BREAK_INVALIDATES_YES\`
+
+**Training law:**  
+**Choose the most likely leg. Stick with it until the market proves it wrong.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -401,6 +444,8 @@ Replay / inspect these live-run failure classes:
 - winner-harvest case: a trade reaches +50% to +75% MFE; if it continues making fresh highs / expanding, Tachyos must let it run, but if it plateaus or slows for a short confirmation window, Tachyos should harvest rather than donate the mature gain.
 
 - spine-ping-pong case: price and EMA9 hover around EMA30 with small alternating candles and repeated micro-crosses; Tachyos must remain TRANSFER_ZONE_UNRESOLVED and must not rapid-fire YES/NO until directional separation persists.
+
+- most-likely-side case: at the top of a small upper EMA9 mountain with EMA9 rolling down, Tachyos should take/maintain NO and must not flip YES on micro-crosses unless a genuine north break invalidates the NO thesis; mirror for YES at a lower valley.
 
 ## Rule
 
