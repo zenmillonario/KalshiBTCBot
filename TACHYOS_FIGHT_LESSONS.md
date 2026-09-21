@@ -246,3 +246,15 @@ Tonight, test whether Tachyos would do better by:
 
 **Training law:**
 **Do not abandon the campaign just because the snake bends the other way for a moment.**
+
+## Counter-sleeve management — get paid and get out
+
+Counter sleeves are short tactical trades inside a larger campaign.
+
+- tighter stop than the campaign position;
+- local arc failure exits quickly;
+- +35% ROI or better is harvest territory;
+- do not apply the main campaign Winner Harvest breathing logic to a counter sleeve.
+
+**Training law:**
+**Campaign positions may breathe. Counter sleeves get paid and get out.**
