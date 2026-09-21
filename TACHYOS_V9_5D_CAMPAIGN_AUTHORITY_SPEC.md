@@ -476,3 +476,38 @@ Measure total P/L, number of trades, drawdown, missed main-leg profit, and time 
 Training principle:
 
 **Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
+
+## Execution Reality Shadow — paper brain vs simulated live hands
+
+V9.5D now includes a ZERO-AUTHORITY execution shadow. It does not place, block, resize, flip, cancel, or exit any paper trade.
+
+For every successful paper entry and exit it records execution scenarios at:
+
+- 0 ms
+- 250 ms
+- 500 ms (primary comparison)
+- 1000 ms
+
+The shadow walks the locally maintained Kalshi Level-2 book to estimate:
+
+- executable top price;
+- displayed depth;
+- partial-fill quantity;
+- depth-weighted average fill price (VWAP);
+- worst consumed price;
+- entry and exit fee estimates;
+- fee/slippage/depth-adjusted simulated-live P/L;
+- friction versus paper P/L.
+
+New logs:
+
+- `tachys_execution_shadow_quotes_v9_5d.csv`
+- `tachys_execution_shadow_trades_v9_5d.csv`
+
+Fee model: isolated configurable estimate using Kalshi's general event-contract taker formula (0.07 x multiplier x contracts x P x (1-P)), conservatively rounded upward to cents. Series-specific fee changes must be checked before any real-money deployment.
+
+Important: if the Level-2 book is unavailable, the shadow records the top quote but DOES NOT invent fillable depth. In that case simulated-live quantity remains unfilled/unknown rather than assuming the entire paper order would have filled.
+
+Research question:
+
+**How much of paper Tachyos' edge survives realistic spread, latency, depth, partial fills, and fees?**
