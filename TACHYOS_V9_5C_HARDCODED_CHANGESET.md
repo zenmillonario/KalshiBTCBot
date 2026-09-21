@@ -236,6 +236,43 @@ Requirements:
 - this rule is PAPER ONLY until separately validated.
 
 
+
+### P. Profit Fortress — +50% MFE protection
+
+Whole-Leg holding must never justify giving a proven large winner back into a loss.
+
+Once a paper trade reaches **+50% MFE**, it enters \`PROFIT_FORTRESS\`.
+
+Hard rules:
+
+- \`MFE >= +50%\` -> trade may **never** be allowed to close at a loss through ordinary leg-management logic.
+- At +50% MFE, activate a protected-profit floor.
+- At +60% MFE, tighten the floor further.
+- At +75% MFE, the trade is considered a major winner and must protect at least a substantial portion of the move.
+- Whole-Leg Exit Authority may continue holding only while price remains above the protected floor.
+- Leg validity does not override the protected-profit floor.
+- If the protected floor is breached, exit authority becomes immediate and does not wait for opposite-leg confirmation.
+- Catastrophic data failure / settlement handling remain separate emergency cases.
+
+Initial paper protection ladder for validation:
+
+- \`+50% MFE\` -> floor at **+25% ROI**
+- \`+60% MFE\` -> floor at **+35% ROI**
+- \`+75% MFE\` -> floor at **+50% ROI**
+
+Required labels:
+
+- \`PROFIT_FORTRESS_ARMED_50\`
+- \`PROFIT_FORTRESS_TIGHTEN_60\`
+- \`PROFIT_FORTRESS_MAJOR_WIN_75\`
+- \`PROFIT_FLOOR_BREACH_EXIT\`
+
+This protection is independent of the current leg state.
+
+**Training law:**  
+**A winning leg may breathe. A proven winner may not be donated back to the market.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -277,6 +314,8 @@ Replay / inspect these live-run failure classes:
 
 - final-minute fakeout case: BTC briefly crosses PT inside the last 60 seconds, then quickly reclaims it while the larger leg remains intact; settlement-control logic must recognize the fakeout instead of treating the first cross as final truth.
 - parallel-transition case: if the opposite leg earns authority before the existing position's exit gate releases, paper trading must be able to open the opposite side immediately and manage both positions independently.
+
+- profit-fortress case: a trade reaches +50% / +60% / +75% MFE and later reverses; Whole-Leg holding must not permit the trade to cross below its protected profit floor, and +50% MFE may never degrade into an ordinary loss.
 
 ## Rule
 
