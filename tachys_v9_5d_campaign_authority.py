@@ -613,7 +613,9 @@ class CampaignSupervisor:
                 if target_age < WINNER_PLATEAU_SEC: reasons.append("TARGET_PROGRESS")
             else:
                 if rec.get("harvest_since") is None:
-                    rec["harvest_since"] = now
+                    # Plateau clock begins at the last meaningful MFE high,
+                    # not after we finally notice the plateau.
+                    rec["harvest_since"] = rec.get("last_high_ts") or now
                 harvest_age = _safe_age(rec.get("harvest_since"), now)
                 rec["state"] = "WINNER_HARVEST_WATCH"
                 reasons.append(f"NO_HIGH_{high_age:.1f}s")
