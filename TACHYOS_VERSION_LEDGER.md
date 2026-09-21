@@ -134,24 +134,27 @@ Level-2 Battle Council / Intermission Authority / Thesis Shield.
 - PAPER ONLY long-run experiment
 - development branch: `tachys-v9-5b-battle-council`
 
-## V9.5C — Required next implementation
-Plain architecture only; no new mythology names.
-- Leg Geometry becomes the primary tactical state model
-- Level 2 evaluates YES and NO continuously
-- strategic parent becomes context, not tactical candidate selection
-- mature-leg continuation disarms on credible return slope unless regeneration is confirmed
-- parent-aligned reclaim gets fast authority
-- Target Height is embedded in every leg state
-- Time Capacity decides whether the leg can finish inside the current contract
-- rollover can PRE-ARM the next leg and preserves unfinished geometry
-- final-minute target relationship gains direct tactical authority
-- every non-emergency exit must pass one centralized Whole-Leg Exit Authority gate
-- Active Treasury, EMA9_ARC_BROKEN, swirl TP/lock, structural broken, giveback/trailing and late target invalidation become exit proposals rather than direct flattening authority
-- position exit does not kill the active leg; valid legs remain immediately reacquirable
-- existing witnesses are routed into authority; do not create another named observer
+## V9.5C
+Leg Geometry / Dual-Side Tactical Authority / Whole-Leg Exit Authority.
+- implemented from pushed V9.5B archive head `bf6d6d7`
+- development branch: `tachys-v9-5c-leg-geometry`
+- engine: `tachys_v9_5c_leg_geometry.py`
+- engine implementation commit: `d4f3001`
+- Command Deck V3: `tachyos_command_deck_v3.py`
+- EMA30 is the Spine; EMA9 return slope + transfer + opposite build are one leg
+- YES and NO evaluated continuously; parent is context only
+- stale old-side continuation blocked unless regeneration is confirmed
+- parent-aligned reclaim receives tactical authority
+- Target Height, Time Capacity and Rollover Continuity embedded in the leg
+- failed target breaks/reclaims may reverse tactical authority
+- V9.5A Active Treasury demoted to proposal-only
+- every non-emergency exit routes through Whole-Leg Exit Authority
+- old sub-arc / profit / Treasury / giveback exits are suppressed while the whole leg remains valid
+- PAPER ONLY
 
 Canonical spec: `TACHYOS_LEG_GEOMETRY_DOCTRINE.md`  
-Hardcoded change list: `TACHYOS_V9_5C_HARDCODED_CHANGESET.md`
+Hardcoded change list: `TACHYOS_V9_5C_HARDCODED_CHANGESET.md`  
+Smoke/overnight checklist: `TACHYOS_V9_5C_SMOKE_OVERNIGHT.md`
 
 ## Next version
-Do not add further tactical concepts until the V9.5C hardcoded changes are implemented and replayed against the documented V9.5B failures.
+Do not add another tactical concept until V9.5C completes a clean smoke run and overnight forensic review.
