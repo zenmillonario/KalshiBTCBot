@@ -84,6 +84,32 @@ Every live leg should carry at least:
 - next_target if known
 - inherited_leg_id across rollover
 
+## Exit law
+
+Position management must use the **whole leg**, not an isolated EMA9 sub-arc.
+
+A local EMA9 arc break is NOT automatically a leg invalidation.
+
+In particular:
+
+- `EMA9_ARC_BROKEN` may describe the RETURN SLOPE or TRANSFER portion of an intact larger leg.
+- a local swirl / snipe take-profit must not automatically flatten the entire tactical thesis while the leg remains valid.
+- profit MFE / giveback is secondary to Leg Geometry, Target Height and Time Capacity.
+- the position may be reduced, protected or re-entered later, but the battlefield thesis remains alive until the **whole leg** is invalidated or matured.
+- if a position is closed while the leg remains valid, the active leg must remain eligible for immediate reacquisition without waiting for a new strategic parent.
+
+A whole leg is invalidated only when the geometry materially fails, for example:
+
+- the expected RETURN SLOPE fails and regenerates strongly back into the prior side;
+- TRANSFER attempts fail repeatedly and the old-side build re-expands;
+- the new opposite-side BUILD fails and price/EMA9 reclaim the spine against the intended leg;
+- Target Height moves decisively against the leg with insufficient Time Capacity to recover;
+- a genuine new opposite leg begins.
+
+**Do not confuse a sub-arc ending with the leg ending.**
+
+**Do not confuse taking profit on one position with abandoning the active leg.**
+
 ## Target Height
 
 Target Height is part of the geometry, not a separate afterthought.
