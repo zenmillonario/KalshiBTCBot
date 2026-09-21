@@ -171,6 +171,71 @@ Required labels:
 This is especially important late in the contract, where a target reclaim can dominate lagging EMA30 / Boss context.
 
 
+
+### N. Final-minute target fakeout authority
+
+The last 60 seconds are a separate tactical regime. Settlement-control processes move to the front.
+
+A brief cross of the Kalshi target is **not automatically a true directional transfer**.
+
+The engine must distinguish:
+
+- \`TARGET_TOUCH\`
+- \`TARGET_CROSS_UNCONFIRMED\`
+- \`TARGET_FAKEOUT_RECLAIM\`
+- \`TARGET_ACCEPTED\`
+- \`TARGET_TERMINAL_CONTROL\`
+
+Final-minute adjudication must weight, in this order:
+
+1. seconds remaining;
+2. Target Height and which side currently owns the settlement line;
+3. reclaim speed after the cross;
+4. hold time on the new side;
+5. current Whole-Leg Geometry state;
+6. 3/6/9-second displacement and efficiency;
+7. wick rejection / candle texture;
+8. Kalshi price and available value;
+9. strategic parent only as context.
+
+A fast cross followed by an immediate reclaim, especially when the active leg never truly transferred, is a **fakeout**, not automatic confirmation of the crossed side.
+
+Required labels:
+
+- \`FINAL_MINUTE_MODE\`
+- \`TARGET_CROSS_UNCONFIRMED\`
+- \`TARGET_FAKEOUT_RECLAIM\`
+- \`SETTLEMENT_SIDE_RESTORED\`
+- \`TARGET_TERMINAL_CONTROL\`
+
+### O. Parallel opposite-position transition
+
+Entry authority and exit authority are independent.
+
+In PAPER mode, a newly confirmed opposite leg may open an opposite-side position **before the existing position is formally closed**.
+
+Do not force:
+
+\`OLD POSITION EXIT -> WAIT -> OPPOSITE ENTRY\`
+
+when the market has already transferred.
+
+Allow:
+
+\`OLD POSITION STILL OPEN + OPPOSITE LEG CONFIRMED -> OPEN OPPOSITE PAPER POSITION -> MANAGE BOTH INDEPENDENTLY -> OLD POSITION EXIT WHEN ITS GATE RULES\`
+
+Requirements:
+
+- parallel positions must have separate trade IDs, leg IDs, entry reasons and exit gates;
+- the new opposite position must earn normal tactical authority; it is not an automatic hedge;
+- no unlimited pyramiding: one active position per side per tactical transition unless a later experiment explicitly changes this;
+- existing-position loss must not suppress a valid opposite entry;
+- an opposite entry must not automatically liquidate the old side;
+- logs must mark \`PARALLEL_TRANSITION_ACTIVE\`, \`OLD_LEG_POSITION\`, and \`NEW_LEG_POSITION\`;
+- P/L and risk accounting must remain separate for both positions;
+- this rule is PAPER ONLY until separately validated.
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -209,6 +274,9 @@ Replay / inspect these live-run failure classes:
 - `LATE_TARGET_INVALIDATION` inside a still-developing leg;
 - rollover with mature/extended leg and next-leg warning visible before fencepost.
 - #18/#19 case: YES impulse was defended out, NO entered on a fake breakdown, target was reclaimed, contract finished YES; system must either preserve the valid YES leg or immediately re-arm YES on failed-break reclaim instead of waiting for emergency stop.
+
+- final-minute fakeout case: BTC briefly crosses PT inside the last 60 seconds, then quickly reclaims it while the larger leg remains intact; settlement-control logic must recognize the fakeout instead of treating the first cross as final truth.
+- parallel-transition case: if the opposite leg earns authority before the existing position's exit gate releases, paper trading must be able to open the opposite side immediately and manage both positions independently.
 
 ## Rule
 
