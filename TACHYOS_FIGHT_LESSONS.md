@@ -296,3 +296,14 @@ Test a temporary intra-leg transition mode:
 
 **Training law:**
 **Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
+
+## Forensic hypothesis — the snake's gait may be measurable
+
+Today's terrain showed repeated EMA9 arcs around EMA30 with relatively wide separation.
+
+Tonight, compare successive arcs by normalized pitch, width, curvature, duration, Spine slope, and compression/expansion rate rather than visual chart angle.
+
+Question: if the previous arcs establish a stable gait, can Tachyos project the next likely arc envelope and use deviations from that envelope as early evidence of continuation, deterioration, or transfer?
+
+**Training law:**
+**Measure how EMA9 bends around the Spine, not how steep it looks on the screen.**
