@@ -364,3 +364,39 @@ Correction:
 Training law:
 
 **Opposite candle = evidence. EMA9 formation = authority.**
+
+## Counter-sleeve hypothesis — preserve campaign, trade the local opposite arc separately
+
+Observed during the live V9.5D smoke run: even with Campaign Authority, Tachyos still exits/re-enters too often during a larger coherent leg because local opposite EMA9 arcs are being treated as reasons to abandon/rebuild the main position.
+
+For forensic testing tonight, evaluate a separate **counter sleeve**:
+
+- keep the main campaign position open while the campaign thesis remains valid;
+- allow one smaller opposite-side paper position when EMA9 forms a legitimate local counter-arc;
+- the counter sleeve is tactical only and must NOT change campaign_side;
+- the counter sleeve must NOT force the main position to exit;
+- one counter sleeve maximum at a time;
+- counter sleeve should be smaller than the main campaign position in the initial paper test;
+- counter sleeve exits on local arc completion, return to the Spine, counter-arc failure, or short winner plateau;
+- when the main campaign resumes, close the counter sleeve and keep the campaign position;
+- if the larger campaign truly transfers, the ordinary Campaign Transfer process takes over and the counter position can become the new campaign-side position only through explicit state promotion.
+
+Required distinction:
+
+CAMPAIGN_POSITION
+vs
+COUNTER_SLEEVE_POSITION
+
+Audit questions:
+- how many V9.5D exits/re-entries would have been unnecessary if the original campaign position had remained open?
+- could the opposite local arc have been traded profitably as a small independent sleeve?
+- did the counter arc end at/near EMA30 or another repeatable geometric landmark?
+- did keeping the main position open improve total campaign P/L and reduce churn?
+
+Initial paper-only sizing idea for replay:
+- main campaign stake remains unchanged;
+- counter sleeve begins at roughly one-third of main stake, subject to replay evidence.
+
+Training principle:
+
+**Do not abandon the campaign just because the snake bends the other way for a moment. Trade the bend separately if it earns it.**
