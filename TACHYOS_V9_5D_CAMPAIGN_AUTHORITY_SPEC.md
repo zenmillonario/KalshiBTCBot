@@ -1,0 +1,348 @@
+# TACHYOS V9.5D — CAMPAIGN AUTHORITY / WINNER HARVEST / STATE LIFECYCLE
+
+Mode: PAPER ONLY
+
+Base:
+- V9.5C Leg Geometry
+- frozen overnight reference: runs/2026-09-21_v9_5c_leg_geometry_overnight_01
+- forensic reference head: ce392e3
+- development base head: 83a894c
+
+## Why V9.5D exists
+
+V9.5C proved Leg Geometry can find real asymmetric winners, but it over-fragmented one battlefield into many short-lived theses.
+
+Overnight evidence:
+- 281 exits, +$164.67 realized
+- 47% win rate
+- median hold ~25s
+- 238 exits via V95C_EXIT_OPPOSITE_LEG_CONFIRMED, contributing only about +$23.25
+- 39 of 45 contracts had 6+ trades
+- stale ROLLOVER_PREARM remained usable deep into contracts
+- trade #112 reached +85.7% MFE and finished negative
+- trade #120 correctly expanded from +75% toward +100% and should remain the positive control
+
+V9.5D does not add a new perception system. It supervises existing perception.
+
+---
+
+## 1. Campaign Authority
+
+A Campaign is the current most-likely tactical side across local sub-arcs.
+
+States:
+- CAMPAIGN_NONE
+- CAMPAIGN_YES
+- CAMPAIGN_NO
+- CAMPAIGN_TRANSFER_ARMED_YES
+- CAMPAIGN_TRANSFER_ARMED_NO
+- CAMPAIGN_TRANSFER_CONFIRMED_YES
+- CAMPAIGN_TRANSFER_CONFIRMED_NO
+
+The campaign side is sticky.
+
+A local Leg Geometry state may move against the campaign without automatically changing campaign authority.
+
+### Campaign establishment
+
+Campaign side may be established by a coherent composite:
+- current Leg Geometry side/state
+- EMA9 slope and separation from EMA30
+- 3/6/9-second displacement agreement
+- target relationship / reclaim / acceptance
+- wick rejection
+- structural event / formation support
+- rollover preparation if fresh
+
+### Transfer burden
+
+A campaign transfer requires all of:
+1. candidate opposite side has score lead >= 2;
+2. 3/6/9 displacement agrees with candidate side;
+3. EMA9 is separating from EMA30 in candidate direction OR target reclaim/acceptance is decisive;
+4. evidence persists at least 6 seconds;
+5. no immediate recross through the Spine;
+6. existing campaign is materially invalidated, not merely challenged.
+
+After a confirmed transfer:
+- apply 9-second side-flip hysteresis;
+- a second opposite flip inside that window requires emergency-strength evidence.
+
+### Same-campaign flip control
+
+Track:
+- campaign_id
+- campaign_side
+- campaign_age_sec
+- campaign_flip_count
+- seconds_since_last_flip
+- true_transfer_confirmed
+
+If campaign_flip_count >= 2 inside 5 minutes without a true transfer:
+- suppress new alternating entries;
+- keep current campaign side;
+- require a fresh escape event.
+
+Training law:
+**One wobble does not deserve five theses.**
+
+---
+
+## 2. Rollover Pre-Arm lifecycle
+
+ROLLOVER_PREARM is temporary memory, never standing authority.
+
+States:
+- PREARM_NONE
+- PREARM_FRESH
+- PREARM_USED
+- PREARM_INVALIDATED
+- PREARM_EXPIRED
+
+Rules:
+- create pre-arm only in final 2–3 minutes when next-leg evidence exists;
+- after rollover, pre-arm TTL = 60 seconds maximum;
+- consume after first successful use;
+- invalidate immediately if new target / geometry contradicts it;
+- expire at 60 seconds even if unused;
+- never authorize another entry after PREARM_USED;
+- never survive multiple campaign flips.
+
+Audit:
+- prearm_side
+- prearm_created_ts
+- prearm_age_sec
+- prearm_state
+- prearm_use_count
+- prearm_invalidated_reason
+
+Training law:
+**Memory may cross the fencepost. Authority may not live forever.**
+
+---
+
+## 3. Most-Likely Scenario / Transfer-Zone behavior
+
+Near EMA30, do not default to neutral if one side clearly owns the shape.
+
+If at top of a small upper mountain and EMA9 rolls down:
+- MOST_LIKELY_NO
+
+If at bottom of a small lower valley and EMA9 rolls up:
+- MOST_LIKELY_YES
+
+TRANSFER_ZONE_UNRESOLVED is used only when shape advantage is genuinely balanced.
+
+A cross is not a transfer.
+
+A transfer requires separation.
+
+Training law:
+**Choose the most likely leg. Stick with it until the market proves it wrong.**
+
+---
+
+## 4. Winner Harvest
+
+Winner Harvest starts awareness at +50% MFE but does not cap a winner.
+
+States:
+- WINNER_NONE
+- WINNER_EXPANDING
+- WINNER_HARVEST_WATCH
+- WINNER_PLATEAU_9S
+- WINNER_HARVEST_EXIT
+
+### Continue holding
+
+Keep WINNER_EXPANDING when:
+- fresh MFE highs continue;
+- quote/bid advances meaningfully;
+- favorable 3/6/9 displacement remains alive;
+- target height continues improving;
+- campaign remains aligned;
+- opposite transfer is not confirmed.
+
+Every meaningful fresh high resets the harvest timer.
+
+### Harvest
+
+When MFE >= +50%:
+- if no meaningful new MFE high for ~9 seconds AND
+- quote velocity slows or tactical displacement decays AND
+- campaign/leg is mature, flattening, or beginning return behavior,
+then authorize WINNER_HARVEST_EXIT.
+
+At MFE >= +75%:
+- continue to let strength run;
+- plateau evidence gets greater weight;
+- do not demand perfection after the move has effectively finished.
+
+Positive control:
+- trade #120 must remain held through the +75% -> +100% expansion because fresh highs persisted.
+
+Negative control:
+- trade #112 must not be allowed to give +85.7% MFE back into a loss.
+
+Training law:
+**Do not cut a winner because it became large. Cut it when it stops behaving like a winner.**
+
+---
+
+## 5. Exit Court
+
+All ordinary exit reasons become proposals.
+
+Priority:
+1. emergency / settlement integrity
+2. Winner Harvest exit
+3. confirmed Campaign transfer
+4. terminal target/time invalidation
+5. legacy exit proposals
+6. HOLD
+
+Legacy proposals include:
+- V95C_EXIT_OPPOSITE_LEG_CONFIRMED
+- EMA9_ARC_BROKEN
+- Bird-in-Hand variants
+- Swirl profit-lock/snips
+- King Guard
+- legacy giveback/trailing exits
+
+No ordinary proposal may flatten a position by itself.
+
+V95C_EXIT_OPPOSITE_LEG_CONFIRMED is demoted:
+- local opposite leg may arm a campaign transfer
+- only confirmed campaign transfer may force ordinary opposite-side exit
+
+---
+
+## 6. Parallel transition
+
+Entry authority for a newly confirmed opposite campaign is independent of exit timing.
+
+In PAPER mode:
+- one active position per side may coexist during a confirmed transition;
+- new opposite side may enter before old side is cut;
+- positions get separate IDs and exit courts;
+- no unlimited pyramiding.
+
+Parallel transition is blocked in TRANSFER_ZONE_UNRESOLVED.
+
+---
+
+## 7. Next-leg preparation
+
+Maintain:
+- CURRENT_CONTRACT_SIDE
+- NEXT_LEG_PREP_SIDE
+- NEXT_LEG_CONVICTION
+
+They may be opposite.
+
+When high conviction appears near expiry:
+- print PREPARE YES/NO — NEXT LEG LIKELY — HIGH CONVICTION
+- carry preparation through rollover as PREARM_FRESH
+- then enforce the pre-arm lifecycle above
+
+---
+
+## 8. Audit files
+
+New:
+- tachys_campaign_authority_v9_5d.csv
+- tachys_winner_harvest_v9_5d.csv
+- tachys_exit_court_v9_5d.csv
+- tachys_prearm_lifecycle_v9_5d.csv
+- tachys_run_manifest_v9_5d.csv
+
+Campaign fields:
+- timestamp
+- ticker
+- campaign_id
+- campaign_side
+- campaign_state
+- campaign_age_sec
+- candidate_side
+- candidate_since
+- candidate_age_sec
+- yes_score
+- no_score
+- score_lead
+- leg_id
+- leg_side
+- leg_state
+- target_height
+- target_event
+- btc_change3
+- btc_change6
+- btc_change9
+- ema_gap
+- gap_delta6
+- transfer_confirmed
+- flip_count
+- seconds_since_last_flip
+- ruling
+- reasons
+
+Winner fields:
+- trade_id
+- side
+- entry_ask
+- current_bid
+- roi
+- mfe
+- seconds_since_mfe_high
+- last_mfe_high
+- campaign_side
+- leg_state
+- target_height
+- btc_change3
+- btc_change6
+- btc_change9
+- winner_state
+- harvest_timer_age
+- ruling
+- reasons
+
+Exit Court fields:
+- trade_id
+- proposed_reason
+- proposal_source
+- winner_state
+- campaign_side
+- campaign_transfer_state
+- target_terminal_state
+- court_ruling
+- final_action
+
+Prearm fields:
+- prearm_side
+- created_ts
+- age_sec
+- state
+- use_count
+- invalidated_reason
+- originating_leg_id
+- from_ticker
+- to_ticker
+
+---
+
+## 9. Required replay checks before long run
+
+Mandatory cases:
+- #112: large winner donation
+- #120: +75% -> +100% expansion
+- #122–126: first-five-minute fragmentation
+- worst churn contract KXBTC15M-26SEP210630-30
+- stale ROLLOVER_PREARM examples >180s into contract
+- final-minute target fakeout
+- next-leg pre-arm case before rollover
+
+V9.5D is not ready for an unattended run unless:
+- stale pre-arm cannot fire after 60 seconds;
+- ordinary opposite-leg signals cannot directly flatten;
+- campaign flip count is visible;
+- Winner Harvest holds #120-type expansion and harvests #112-type plateau;
+- no rapid YES/NO ping-pong occurs without true transfer.
