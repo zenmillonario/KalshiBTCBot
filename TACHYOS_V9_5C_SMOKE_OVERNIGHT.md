@@ -44,3 +44,8 @@ Suggested archive folder after the overnight run:
 `runs\2026-09-20_v9_5c_leg_geometry_overnight_01`
 
 Archive all CSVs before any threshold changes.
+
+
+## Overnight forensic priority
+
+- **Trade #120:** inspect the +75% -> +100% transition. Confirm that continued strength / fresh highs kept the trade in \`WINNER_EXPANDING\` behavior and would have cancelled any plateau-harvest timer. Preserve this behavior in the next revision.
