@@ -258,3 +258,25 @@ Counter sleeves are short tactical trades inside a larger campaign.
 
 **Training law:**
 **Campaign positions may breathe. Counter sleeves get paid and get out.**
+
+## Forensic checkpoint — Trade #38: +50% winner let go
+
+Review trade **#38** specifically during the post-run forensic pass.
+
+Operator observation: the trade reached roughly **+50% ROI** and was then allowed to give the winner back instead of collecting/protecting it appropriately.
+
+Questions to answer:
+
+- exact MFE reached and timestamp;
+- how long the trade remained above +50%;
+- whether fresh highs were still occurring or the move had already stalled;
+- Winner Harvest state at +50%;
+- seconds since last meaningful MFE high;
+- 3/6/9 displacement at the peak and during the giveback;
+- EMA9 formation state and campaign side;
+- whether a +35%/+50% harvest or plateau rule would have improved the result;
+- whether this was a campaign position or a short tactical/counter-type trade and therefore should have used a tighter harvest rule.
+
+Desired lesson:
+
+**A +50% winner must either still be demonstrably expanding or be under active harvest protection.**
