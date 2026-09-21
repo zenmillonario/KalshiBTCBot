@@ -461,6 +461,50 @@ If HIGH-conviction next-leg prep survives into rollover:
 **Finish the current contract with the current side. Prepare the next leg before everyone else sees it.**
 
 
+
+### T. First-five-minute campaign persistence
+
+The first minutes of a fresh 15-minute contract must not become a rapid-fire sequence of alternating side declarations.
+
+Concrete live example:
+
+\`#122 YES -> #123 NO -> #124 YES -> #125 NO -> #126 YES\`
+
+all inside roughly the first five minutes of one contract.
+
+This is not automatically five independent legs.
+
+When repeated opposite-side confirmations occur while price remains near the same target / EMA transfer region, Tachyos must treat the sequence as **one campaign under dispute**, not as permission to open a new thesis every few candles.
+
+Required campaign behavior:
+
+- establish a \`CAMPAIGN_SIDE\` from the most-likely Leg Geometry;
+- preserve that side through ordinary counter-candles and micro-crosses;
+- require genuine structural invalidation before changing \`CAMPAIGN_SIDE\`;
+- after a side flip, apply the existing 6-second escape confirmation and 9-second hysteresis;
+- repeated \`V95C_EXIT_OPPOSITE_LEG_CONFIRMED\` events inside the same local geometry must increase the burden of proof for another immediate reversal;
+- a fresh trade in the opposite direction requires either:
+  - clear EMA30 separation + aligned 3/6/9 displacement,
+  - decisive target acceptance/reclaim,
+  - or a confirmed new Leg Geometry BUILD / EXPANSION.
+
+Add audit fields:
+
+- \`campaign_id\`
+- \`campaign_side\`
+- \`campaign_age_sec\`
+- \`same_campaign_flip_count\`
+- \`seconds_since_last_side_flip\`
+- \`true_leg_transfer_confirmed\`
+
+Initial paper guardrail:
+
+- if \`same_campaign_flip_count >= 2\` inside five minutes without a confirmed true leg transfer, suppress further alternating entries until one side achieves a genuine escape.
+
+**Training law:**  
+**One contract can contain several trades, but one wobble does not deserve five theses.**
+
+
 ## Required audit fields
 
 Every entry and exit decision must record:
@@ -510,6 +554,8 @@ Replay / inspect these live-run failure classes:
 - most-likely-side case: at the top of a small upper EMA9 mountain with EMA9 rolling down, Tachyos should take/maintain NO and must not flip YES on micro-crosses unless a genuine north break invalidates the NO thesis; mirror for YES at a lower valley.
 
 - next-leg-prep case: with roughly 2 minutes left, BTC remains strongly below target and the active contract is still NO, but the lower leg is extended / half-built and likely to curl back toward EMA30; Tachyos must keep current-contract NO while loudly pre-arming NEXT_LEG_PREP_YES with conviction and carry it through rollover if still valid.
+
+- trades #122-#126: five alternating YES/NO trades occurred within roughly the first five minutes of one contract while price remained in the same local target/EMA region; replay must determine how many were true leg transfers versus campaign fragmentation, and the next engine must suppress repeated side flips without genuine escape.
 
 ## Rule
 
