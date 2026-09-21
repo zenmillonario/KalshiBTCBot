@@ -80,3 +80,22 @@ Training behavior:
 
 **Training law:**  
 **Do not cut a winner because it became large. Cut it when it stops behaving like a winner.**
+
+
+## Lesson 005 — A cross is not a new leg
+
+When price and EMA9 hover around the EMA30 Spine, the market may cross back and forth many times without actually transferring direction.
+
+Tiny alternating candles, repeated EMA touches/crosses and rapidly changing tactical scores are a **transfer zone**, not permission to rapid-fire both sides.
+
+Training behavior:
+
+- declare \`TRANSFER_ZONE_UNRESOLVED\`;
+- stop fresh side entries while the market is knitting around the Spine;
+- require increasing separation plus aligned 3/6/9 displacement;
+- require roughly 6 seconds of directional persistence before confirming the escape;
+- after confirmation, use roughly 9 seconds of side-flip hysteresis so one tiny recross cannot immediately reverse authority;
+- a fast target fakeout/reclaim or genuinely violent opposite displacement may override the hysteresis.
+
+**Training law:**  
+**A cross is a transfer attempt. Separation is the transfer.**
