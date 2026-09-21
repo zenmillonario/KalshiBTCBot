@@ -172,3 +172,24 @@ Desired behavior:
 This case is a positive control for Lesson 004.
 
 **Do not tighten Winner Harvest in a way that would have cut #120 early if the evidence shows the move was still expanding with strength.**
+
+
+## Lesson 008 — Five trades can still be one campaign
+
+Live case: trades #122 through #126 occurred inside roughly the first five minutes of one contract and alternated:
+
+\`YES -> NO -> YES -> NO -> YES\`
+
+The market was hovering around the same target / EMA transfer region.
+
+This is the signature of **campaign fragmentation**: Tachyos may be recognizing every small counter-move as a brand-new leg.
+
+Training behavior:
+
+- choose the most-likely campaign side;
+- keep the campaign side sticky through ordinary micro-crosses;
+- require actual separation / target acceptance / Leg Geometry transfer before flipping;
+- after two rapid same-campaign flips without a true escape, stop alternating entries until the market proves a side.
+
+**Training law:**  
+**One wobble does not deserve five theses.**
