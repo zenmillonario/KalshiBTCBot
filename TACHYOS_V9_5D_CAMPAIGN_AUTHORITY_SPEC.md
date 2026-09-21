@@ -400,3 +400,22 @@ Initial paper-only sizing idea for replay:
 Training principle:
 
 **Do not abandon the campaign just because the snake bends the other way for a moment. Trade the bend separately if it earns it.**
+
+### Counter-sleeve management amendment
+
+Counter sleeves use a different management regime from the main campaign position.
+
+- Counter sleeves are tactical, not runners.
+- Use a tighter stop than the campaign position.
+- Exit quickly if the local counter-arc fails, EMA9 reclaims back into the campaign direction, or the counter move loses separation.
+- Once a counter sleeve reaches roughly +35% ROI or better, collect the profit rather than applying the main Winner Harvest breathe/plateau logic.
+- Do not let a profitable counter sleeve turn into a large giveback while waiting for whole-leg confirmation.
+- The exact numeric stop distance remains a replay variable; do not invent a fixed stop until the forensic review measures the counter-arc behavior.
+
+Initial paper rule for replay:
+
+`COUNTER_SLEEVE >= +35% ROI -> HARVEST`
+
+Training principle:
+
+**Campaign positions may breathe. Counter sleeves get paid and get out.**
