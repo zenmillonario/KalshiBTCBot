@@ -336,3 +336,19 @@ Training hypothesis:
 Working law:
 
 **The Cobra is a visual cue to measure early EMA9 lift; the measurable formation, not the nickname, earns authority.**
+
+## Forensic checkpoint — 3:30 PM repeat / possible two-headed cobra
+
+Operator observation on 2026-09-21: the snake / cobra-like EMA9 behavior seen earlier repeated again around **3:30 PM ET**.
+
+Hypothesis for replay: the recurring structure may have **two heads** — i.e. the apparent first terminal curl/head may not end the formation; a second comparable head/arc may form before the larger directional release.
+
+Questions for forensic review:
+- compare the earlier snake/cobra window with the ~3:30 PM repeat;
+- measure whether the two head/arc structures have similar amplitude, duration, EMA9 curvature, EMA30 relationship, and target-height behavior;
+- determine whether the first head tends to create a false directional resolution and the second head supplies the actual release;
+- test whether projected EMA flight-path math (3/6/9-minute required candle path) could anticipate the second head;
+- check whether Tachyos exited/reversed after the first head when the larger formation was still incomplete.
+
+Working phrase:
+**The cobra may have two heads. Do not assume the first terminal curl is the final release.**
