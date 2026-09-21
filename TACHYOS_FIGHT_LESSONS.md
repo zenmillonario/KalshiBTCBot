@@ -352,3 +352,20 @@ Questions for forensic review:
 
 Working phrase:
 **The cobra may have two heads. Do not assume the first terminal curl is the final release.**
+
+## Forensic checkpoint — 3:30 PM repeat: Cobra may have two heads
+
+Operator observation on 2026-09-21: the snake / open EMA9-EMA30 dance pattern seen earlier repeated again around **3:30 PM ET**.
+
+Hypothesis for post-run forensics:
+
+- what looks like one snake/cobra formation may contain **two directional heads** or two linked decision points;
+- the first head may be a local counter-step / transition inside the larger leg;
+- the second head may be the actual directional resolution / next committed leg;
+- compare the earlier 11:00–12:15 ET pattern with the ~3:30 PM ET repeat;
+- test whether the same EMA9 arc spacing, EMA30 interaction, gap compression/expansion, target relation, and 3/6/9 displacement sequence recur;
+- determine whether recognizing the first head should trigger only tactical counter-sleeve authority while the second head earns campaign-transfer authority.
+
+Training phrase:
+
+**Cobra may have two heads: the first can be the local bend; the second can be the true directional release.**
