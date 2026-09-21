@@ -122,3 +122,24 @@ Flip only after real invalidation.
 
 **Training law:**  
 **Choose the most likely leg. Stick with it until the market proves it wrong.**
+
+
+## Lesson 007 — Finish this contract while preparing the next leg
+
+Near expiry, the side most likely to settle the current contract and the side most likely to form the next leg can be opposite.
+
+Example:
+
+- BTC is still deeply below target with two minutes left -> current contract remains NO;
+- the lower EMA9 geometry is extended and the next natural motion may be the return slope back toward EMA30 -> prepare YES for the next leg.
+
+Tachyos should shout the preparation clearly:
+
+\`PREPARE YES — NEXT LEG LIKELY — HIGH CONVICTION\`
+
+without confusing that with an instruction to abandon the current NO immediately.
+
+If the turn begins early, parallel transition authority may enter the new side before the old position exits.
+
+**Training law:**  
+**Finish the current contract with the current side. Prepare the next leg before everyone else sees it.**
