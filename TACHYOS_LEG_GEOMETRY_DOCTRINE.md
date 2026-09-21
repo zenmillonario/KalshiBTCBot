@@ -199,6 +199,137 @@ Outputs should include:
 - `LEG_INCOMPLETE_EXPECT_ROLLOVER`
 - `ROLLOVER_CONTINUATION_ACTIVE`
 
+
+## Hardcoded authority laws
+
+These are engine rules, not observer suggestions.
+
+### Dual-side tactical evaluation
+
+Level 2 must evaluate **YES and NO on every tactical cycle**.
+
+It is forbidden to define the candidate side merely as `opposite(parent)`.
+
+A tactical leg may be:
+
+- parent-aligned continuation / reclaim;
+- parent-opposed intermission / reversal;
+- rollover continuation;
+- post-exit reacquisition of the still-valid leg.
+
+### Mature-leg continuation disarm
+
+A mature leg loses same-side continuation authority when a credible RETURN SLOPE begins.
+
+The old side may not re-enter by default merely because it was the previous successful direction.
+
+Same-side authority is restored only by **regeneration**:
+
+`RETURN_SLOPE_FAILS -> EMA9 TURNS BACK AWAY FROM SPINE -> OLD-SIDE AMPLITUDE RE-EXPANDS -> REGENERATION_CONFIRMED`
+
+Without confirmed regeneration, old-side continuation is stale ancestry.
+
+### Parent-aligned reclaim
+
+When the strategic parent and current emerging leg agree, Level 2 may arm the aligned side early.
+
+Do not require the legacy Early Impulse displacement gate to be satisfied first.
+
+A valid parent-aligned reclaim may be recognized from:
+
+- old opposite leg reaching maturity;
+- RETURN SLOPE toward EMA30;
+- target reclaim / favorable Target Height;
+- EMA9 slope and curvature turning;
+- fast candle / volume confirmation;
+- sufficient Time Capacity.
+
+### Rollover pre-arm
+
+Before contract rollover, if the active leg is mature/extended and a RETURN SLOPE is emerging, Tachyos must evaluate the likely next leg before the fencepost.
+
+At T-30 / T-9 / T-3, log and maintain:
+
+- current leg side/state;
+- next-leg candidate;
+- Target Height to the current target;
+- projected Target Height to the next target when available;
+- upper/lower wick rejection;
+- EMA9 slope and distance to EMA30;
+- estimated leg time remaining;
+- contract seconds remaining.
+
+If the next leg is coherent, the next contract may open **PRE_ARMED**.
+
+### Target and time authority near expiry
+
+As time decays, Target Height gains tactical authority and strategic parent weight falls.
+
+A target cross/reclaim in the final minute cannot remain observer-only by design.
+
+Late-contract tactical evaluation must explicitly consider:
+
+- target side;
+- target distance;
+- target hold / reclaim;
+- 3/6/9 displacement;
+- direction efficiency;
+- price of the corresponding Kalshi side;
+- seconds remaining.
+
+The engine must not print `NO NEW TRADE` merely because a fixed cushion threshold missed by a few dollars while the settlement relationship is rapidly becoming decisive.
+
+### Universal whole-leg exit gate
+
+**Every non-emergency exit must pass one centralized Whole-Leg Exit Authority gate.**
+
+No module may flatten a paper position directly because of a local sub-arc, profit lock, Treasury recommendation, or target wobble without this gate.
+
+The following become advisory until the Whole-Leg Exit Authority approves:
+
+- `V95A_ACTIVE_TREASURY_DEFEND`
+- `EMA9_ARC_BROKEN`
+- `CORE_SWIRL_SNIP_TP_22_5`
+- `CORE_SWIRL_PROFIT_LOCK`
+- `V92_STRUCTURE_BROKEN`
+- `V92_PROTECT_WINNER_DIVERGENCE`
+- ordinary MFE / giveback / trailing exits
+- `LATE_TARGET_INVALIDATION`
+
+The gate asks:
+
+1. Is the whole leg still developing?
+2. Has the whole leg matured?
+3. Has the whole leg been materially invalidated?
+4. Has a genuine opposite leg begun?
+5. Does Target Height plus remaining Time Capacity make recovery implausible?
+
+Hard bypasses may remain only for:
+
+- contract close / settlement;
+- unrecoverable market-data failure;
+- explicit catastrophic opposite-leg confirmation;
+- truly terminal expiry conditions;
+- any separate paper-risk emergency stop intentionally retained for experiment safety.
+
+### Position death is not leg death
+
+If a position exits while its leg remains valid:
+
+- preserve the active leg;
+- preserve its leg_id / lineage;
+- allow immediate reacquisition subject to price sanity;
+- do not require Boss/Hand to rediscover the thesis;
+- do not require a fresh opposite-parent event.
+
+### Authority routing
+
+If multiple observers already agree on a tactical side, the problem is authority, not perception.
+
+Existing witnesses such as Looking Glass, Flexible Cage, War Council, Structural Events, Flash, Formation, Reentry Watch and Leg Geometry must be routed into the same dual-side tactical adjudication layer.
+
+Do not create another named observer to solve an authority problem.
+
 ## Canonical doctrine
 
 **The slope returning from one side of EMA30 and the build on the other side are one leg.**
