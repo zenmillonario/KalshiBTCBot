@@ -511,3 +511,34 @@ Important: if the Level-2 book is unavailable, the shadow records the top quote 
 Research question:
 
 **How much of paper Tachyos' edge survives realistic spread, latency, depth, partial fills, and fees?**
+
+## Arc-angle / snake-gait hypothesis — normalize geometry, not chart pixels
+
+Live observation on 2026-09-21: much of the session behaved like snake territory, but with wider EMA9/EMA30 separation than some earlier chop windows.
+
+Do not use the literal visual chart angle because zoom and price-axis scaling can change it. Measure a normalized geometric equivalent.
+
+Candidate measurements:
+
+- **EMA9 pitch**: EMA9 slope over 3/6/9 seconds normalized by recent BTC range;
+- **Arc width**: peak absolute EMA9-EMA30 gap normalized by range60 or another stable local volatility measure;
+- **Turning intensity**: EMA9 curvature normalized by recent range;
+- **Spine pitch**: EMA30 slope over 6/30 seconds, normalized similarly;
+- **Arc symmetry / deterioration**: compare successive upper and lower arc amplitude, duration, pitch, and curvature;
+- **Gap compression/expansion rate**: how quickly EMA9 approaches or separates from EMA30.
+
+Research question:
+
+If the current snake gait persists, can the prior 1-3 arcs define an expected envelope for the next arc's pitch, width, duration, and direction? Then ask what BTC candle path would be required to remain inside that envelope.
+
+Potential use:
+
+- distinguish harmless mid-leg bends from true campaign transfer;
+- tune counter-sleeve timing;
+- identify unusually steep arcs that deserve faster action;
+- identify shallow/deteriorating arcs that should not trigger aggressive entries;
+- carry the same flight-path model across contract rollover.
+
+Training principle:
+
+**The useful angle is not what the chart looks like. It is the normalized rate at which EMA9 bends around the Spine.**
