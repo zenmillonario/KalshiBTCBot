@@ -193,3 +193,179 @@ Training behavior:
 
 **Training law:**  
 **One wobble does not deserve five theses.**
+
+
+## Lesson 009 — The candle is not the formation
+
+A single opposite candle can warn Tachyos that the active leg may be changing, but it does not deserve campaign authority by itself.
+
+Use EMA9 formation as the guide:
+
+- RETURN_SLOPE = warning / preparation;
+- EMA30_APPROACH = stronger evidence;
+- TRANSFER / OPPOSITE_BUILD = legitimate campaign-transfer territory;
+- a strong early turn may act sooner only when EMA9 curvature, 6/9-second slope, and 3/6/9 displacement agree.
+
+Do not fight every candle.
+
+**Training law:**  
+**Opposite candle = evidence. EMA9 formation = authority.**
+
+
+## Forensic training window — 2026-09-21 11:00–12:00 ET
+
+Operator observation: from roughly 11:00 ET onward, BTC entered what we call **snake territory / open Dance of Dragons** — broad EMA9/EMA30 oscillatory geometry with repeated large arcs, crossings, separation, returns, and renewed arcs.
+
+Use this window during the post-run forensic review.
+
+Questions:
+
+- Did Tachyos mistake individual opposite candles for campaign transfers?
+- Did the EMA9 formation remain readable even while candles alternated?
+- Where did EMA9 complete a meaningful upper/lower arc versus merely crossing the Spine?
+- Did Campaign Authority preserve the most-likely side long enough?
+- Did entries occur near formation turns or only after candles made the move obvious?
+- Did Exit Court abandon positions on local candle noise while the larger formation remained intact?
+- Did 3/6/9 displacement help distinguish a true formation turn from a transient candle?
+- Were there moments where waiting several more seconds for EMA9 confirmation would have materially improved entry quality?
+
+Training principle:
+
+**In open EMA9/EMA30 dance, read the formation first and the candle second.**
+
+## Forensic hypothesis — trade the bend without abandoning the campaign
+
+During a larger coherent EMA9/EMA30 leg, a local opposite arc may be real enough to trade without being strong enough to invalidate the campaign.
+
+Tonight, test whether Tachyos would do better by:
+
+- keeping the campaign-side position open;
+- allowing one smaller opposite counter trade;
+- closing that counter trade when the local arc finishes;
+- reserving campaign flips for true whole-formation transfer.
+
+**Training law:**
+**Do not abandon the campaign just because the snake bends the other way for a moment.**
+
+## Counter-sleeve management — get paid and get out
+
+Counter sleeves are short tactical trades inside a larger campaign.
+
+- tighter stop than the campaign position;
+- local arc failure exits quickly;
+- +35% ROI or better is harvest territory;
+- do not apply the main campaign Winner Harvest breathing logic to a counter sleeve.
+
+**Training law:**
+**Campaign positions may breathe. Counter sleeves get paid and get out.**
+
+## Forensic checkpoint — Trade #38: short counter-step inside a larger leg
+
+Operator clarification: trade **#38** was not just a +50% winner that was mishandled. It appears to have been a **short local step / counter-arc inside a larger campaign leg**.
+
+That makes #38 a key counter-sleeve / intra-leg-transition example.
+
+Review:
+
+- exact MFE and time spent near/above +50%;
+- whether the larger campaign leg remained valid throughout;
+- whether #38 was trading the local opposite arc rather than a true campaign transfer;
+- whether a tactical +35%+ harvest would have captured the step cleanly;
+- whether the main campaign position should have remained open simultaneously;
+- where EMA9 turned back into the dominant leg after the short step;
+- whether Campaign Transfer authority incorrectly treated the local step as a larger reversal.
+
+Desired classification:
+
+`LARGER_CAMPAIGN_LEG -> SHORT_COUNTER_STEP (#38) -> QUICK_HARVEST -> CAMPAIGN_RESUME`
+
+**Training law:**
+**A short step inside a larger leg is a tactical harvest, not automatically a new campaign.**
+
+## Forensic hypothesis — use the little chaos while direction is deciding
+
+A smaller break inside a larger campaign does not automatically mean the campaign is over.
+
+Test a temporary intra-leg transition mode:
+
+- keep the main campaign position;
+- allow small, tightly managed counter sleeves during the local oscillation;
+- harvest those sleeves quickly around +35%+;
+- let EMA9/EMA30 formation and 3/6/9 behavior reveal which direction wins;
+- once direction resolves, stop the quick counter trading and return to the dominant leg.
+
+**Training law:**
+**Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
+
+## Forensic hypothesis — the snake's gait may be measurable
+
+Today's terrain showed repeated EMA9 arcs around EMA30 with relatively wide separation.
+
+Tonight, compare successive arcs by normalized pitch, width, curvature, duration, Spine slope, and compression/expansion rate rather than visual chart angle.
+
+Question: if the previous arcs establish a stable gait, can Tachyos project the next likely arc envelope and use deviations from that envelope as early evidence of continuation, deterioration, or transfer?
+
+**Training law:**
+**Measure how EMA9 bends around the Spine, not how steep it looks on the screen.**
+
+## Forensic checkpoint — 3:15 PM contract: THE COBRA
+
+Operator visual label: **THE COBRA**.
+
+Observed characteristic: very early in the contract, around minute 1–2, EMA9 begins lifting sharply from the lower structure around EMA30, creating the visual impression of a cobra raising its head.
+
+Do not turn the nickname itself into trading authority. Use it as a searchable training motif for measurable EMA geometry.
+
+Forensic questions:
+
+- which trade(s) Tachyos placed during the 3:15 PM contract;
+- exact entry/exit prices, MFE, MAE, realized P/L and hold time;
+- whether the first meaningful EMA9 lift was visible by contract minute 1–2;
+- EMA9 slope over 3/6/9 seconds and curvature during the initial rise;
+- EMA9/EMA30 gap compression and subsequent separation;
+- whether the rise represented a strong early RETURN_SLOPE override, EMA30 approach, transfer, or opposite-side build;
+- whether Campaign Authority entered early enough to capture the large move;
+- whether later local counter-steps caused unnecessary exit/re-entry churn;
+- whether preserving the main campaign plus short counter sleeves would have captured more of the full move;
+- whether projected EMA flight-path requirements would have anticipated the next part of the rise.
+
+Training hypothesis:
+
+`LOWER STRUCTURE -> EMA9 HEAD RISE -> GAP COMPRESSION -> SPINE ATTACK -> SEPARATION / UPPER BUILD`
+
+Working law:
+
+**The Cobra is a visual cue to measure early EMA9 lift; the measurable formation, not the nickname, earns authority.**
+
+## Forensic checkpoint — 3:30 PM repeat / possible two-headed cobra
+
+Operator observation on 2026-09-21: the snake / cobra-like EMA9 behavior seen earlier repeated again around **3:30 PM ET**.
+
+Hypothesis for replay: the recurring structure may have **two heads** — i.e. the apparent first terminal curl/head may not end the formation; a second comparable head/arc may form before the larger directional release.
+
+Questions for forensic review:
+- compare the earlier snake/cobra window with the ~3:30 PM repeat;
+- measure whether the two head/arc structures have similar amplitude, duration, EMA9 curvature, EMA30 relationship, and target-height behavior;
+- determine whether the first head tends to create a false directional resolution and the second head supplies the actual release;
+- test whether projected EMA flight-path math (3/6/9-minute required candle path) could anticipate the second head;
+- check whether Tachyos exited/reversed after the first head when the larger formation was still incomplete.
+
+Working phrase:
+**The cobra may have two heads. Do not assume the first terminal curl is the final release.**
+
+## Forensic checkpoint — 3:30 PM repeat: Cobra may have two heads
+
+Operator observation on 2026-09-21: the snake / open EMA9-EMA30 dance pattern seen earlier repeated again around **3:30 PM ET**.
+
+Hypothesis for post-run forensics:
+
+- what looks like one snake/cobra formation may contain **two directional heads** or two linked decision points;
+- the first head may be a local counter-step / transition inside the larger leg;
+- the second head may be the actual directional resolution / next committed leg;
+- compare the earlier 11:00–12:15 ET pattern with the ~3:30 PM ET repeat;
+- test whether the same EMA9 arc spacing, EMA30 interaction, gap compression/expansion, target relation, and 3/6/9 displacement sequence recur;
+- determine whether recognizing the first head should trigger only tactical counter-sleeve authority while the second head earns campaign-transfer authority.
+
+Training phrase:
+
+**Cobra may have two heads: the first can be the local bend; the second can be the true directional release.**

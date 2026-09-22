@@ -107,3 +107,16 @@ Do NOT leave V9.5D unattended until:
 - Winner Harvest does not cut an expanding winner.
 
 After a clean smoke, archive before any threshold changes.
+
+## Execution Reality Shadow smoke checks
+
+- [ ] Startup banner shows `EXECUTION SHADOW ... ZERO authority`.
+- [ ] `tachys_execution_shadow_quotes_v9_5d.csv` is created after the first paper entry.
+- [ ] Entry rows appear for 0/250/500/1000 ms as quote updates arrive.
+- [ ] Exit rows appear for 0/250/500/1000 ms after a paper exit.
+- [ ] `tachys_execution_shadow_trades_v9_5d.csv` contains one reconstruction row per available latency scenario.
+- [ ] 500 ms reconstruction is marked `primary_scenario=1`.
+- [ ] L2 depth walk may produce partial fills; unmatched quantity is never fabricated.
+- [ ] Fee-adjusted `live_net_pnl` and `friction_vs_paper` populate when both entry and exit are fillable.
+- [ ] Console may print `EXEC SHADOW | #... paper=... live500=...` after the 500 ms exit snapshot.
+- [ ] Execution shadow never changes Entry Court, Campaign Authority, Winner Harvest, or Exit Court rulings.

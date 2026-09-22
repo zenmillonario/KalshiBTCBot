@@ -346,3 +346,199 @@ V9.5D is not ready for an unattended run unless:
 - campaign flip count is visible;
 - Winner Harvest holds #120-type expansion and harvests #112-type plateau;
 - no rapid YES/NO ping-pong occurs without true transfer.
+
+
+## EMA9 Formation Confirmation Amendment
+
+Observed during V9.5D smoke testing: Campaign Authority was still reacting too quickly to individual opposite candles.
+
+Correction:
+
+- one opposite candle is evidence, not authority;
+- `RETURN_SLOPE` alone may arm awareness but does not normally confirm a campaign transfer;
+- normal transfer waits for EMA9 formation progression into `EMA30_APPROACH`, `TRANSFER`, `OPPOSITE_BUILD`, or `EXPANSION`;
+- early transfer remains possible only when EMA9 itself gives strong confirmation through curvature + 6/9-second slope + aligned 3/6/9 movement;
+- standard campaign-transfer persistence is 9 seconds;
+- strong EMA9-formation override may confirm after 6 seconds.
+
+Training law:
+
+**Opposite candle = evidence. EMA9 formation = authority.**
+
+## Counter-sleeve hypothesis — preserve campaign, trade the local opposite arc separately
+
+Observed during the live V9.5D smoke run: even with Campaign Authority, Tachyos still exits/re-enters too often during a larger coherent leg because local opposite EMA9 arcs are being treated as reasons to abandon/rebuild the main position.
+
+For forensic testing tonight, evaluate a separate **counter sleeve**:
+
+- keep the main campaign position open while the campaign thesis remains valid;
+- allow one smaller opposite-side paper position when EMA9 forms a legitimate local counter-arc;
+- the counter sleeve is tactical only and must NOT change campaign_side;
+- the counter sleeve must NOT force the main position to exit;
+- one counter sleeve maximum at a time;
+- counter sleeve should be smaller than the main campaign position in the initial paper test;
+- counter sleeve exits on local arc completion, return to the Spine, counter-arc failure, or short winner plateau;
+- when the main campaign resumes, close the counter sleeve and keep the campaign position;
+- if the larger campaign truly transfers, the ordinary Campaign Transfer process takes over and the counter position can become the new campaign-side position only through explicit state promotion.
+
+Required distinction:
+
+CAMPAIGN_POSITION
+vs
+COUNTER_SLEEVE_POSITION
+
+Audit questions:
+- how many V9.5D exits/re-entries would have been unnecessary if the original campaign position had remained open?
+- could the opposite local arc have been traded profitably as a small independent sleeve?
+- did the counter arc end at/near EMA30 or another repeatable geometric landmark?
+- did keeping the main position open improve total campaign P/L and reduce churn?
+
+Initial paper-only sizing idea for replay:
+- main campaign stake remains unchanged;
+- counter sleeve begins at roughly one-third of main stake, subject to replay evidence.
+
+Training principle:
+
+**Do not abandon the campaign just because the snake bends the other way for a moment. Trade the bend separately if it earns it.**
+
+### Counter-sleeve management amendment
+
+Counter sleeves use a different management regime from the main campaign position.
+
+- Counter sleeves are tactical, not runners.
+- Use a tighter stop than the campaign position.
+- Exit quickly if the local counter-arc fails, EMA9 reclaims back into the campaign direction, or the counter move loses separation.
+- Once a counter sleeve reaches roughly +35% ROI or better, collect the profit rather than applying the main Winner Harvest breathe/plateau logic.
+- Do not let a profitable counter sleeve turn into a large giveback while waiting for whole-leg confirmation.
+- The exact numeric stop distance remains a replay variable; do not invent a fixed stop until the forensic review measures the counter-arc behavior.
+
+Initial paper rule for replay:
+
+`COUNTER_SLEEVE >= +35% ROI -> HARVEST`
+
+Training principle:
+
+**Campaign positions may breathe. Counter sleeves get paid and get out.**
+
+## Intra-leg transition mode — harvest local chaos without abandoning the campaign
+
+Live-run hypothesis: the smaller breaks inside a larger leg may deserve a temporary mode analogous to the older chaos session between major legs.
+
+Purpose:
+
+- preserve the main campaign position and campaign_side;
+- recognize a short period where price is fluctuating while the next local direction is being decided;
+- allow quick tactical counter-sleeve trades during that uncertainty;
+- use the resulting EMA9/EMA30 behavior as information about which direction ultimately wins;
+- end the transition mode as soon as the next directional formation becomes clear.
+
+Candidate state progression:
+
+CAMPAIGN_LEG
+-> INTRA_LEG_TRANSITION
+-> QUICK_TACTICAL_SLEEVE(S)
+-> DIRECTION_RESOLVING
+-> CAMPAIGN_RESUME
+
+or, if the larger structure truly changes:
+
+-> CAMPAIGN_TRANSFER
+
+Entry evidence for transition mode should include several of:
+
+- EMA9 begins making small alternating arcs around or toward EMA30;
+- candle direction alternates and follow-through shortens;
+- 3/6/9 displacement loses sustained agreement;
+- target distance oscillates rather than expands;
+- tactical YES/NO scores alternate without a confirmed campaign transfer;
+- EMA9 formation still belongs to the larger campaign geometry.
+
+Management:
+
+- campaign position remains open while campaign thesis is valid;
+- counter sleeves are smaller tactical positions;
+- tighter stop than the main campaign;
+- collect counter-sleeve profit at roughly +35% ROI or better;
+- do not apply main Winner Harvest breathing logic to these sleeves;
+- no counter sleeve may itself change campaign_side;
+- stop opening quick sleeves once EMA9 formation, separation, and 3/6/9 displacement establish the next directional leg.
+
+Forensic test:
+
+Replay today's mid-leg in/out sequences and compare:
+
+1. actual V9.5D behavior: exit / reverse / re-enter;
+2. hypothetical behavior: keep campaign position + trade temporary counter sleeves;
+3. hypothetical behavior: no counter sleeve, simply wait for formation resolution.
+
+Measure total P/L, number of trades, drawdown, missed main-leg profit, and time to recognize the eventual direction.
+
+Training principle:
+
+**Use the little chaos to get paid while the market decides; once it decides, stop fighting the leg.**
+
+## Execution Reality Shadow — paper brain vs simulated live hands
+
+V9.5D now includes a ZERO-AUTHORITY execution shadow. It does not place, block, resize, flip, cancel, or exit any paper trade.
+
+For every successful paper entry and exit it records execution scenarios at:
+
+- 0 ms
+- 250 ms
+- 500 ms (primary comparison)
+- 1000 ms
+
+The shadow walks the locally maintained Kalshi Level-2 book to estimate:
+
+- executable top price;
+- displayed depth;
+- partial-fill quantity;
+- depth-weighted average fill price (VWAP);
+- worst consumed price;
+- entry and exit fee estimates;
+- fee/slippage/depth-adjusted simulated-live P/L;
+- friction versus paper P/L.
+
+New logs:
+
+- `tachys_execution_shadow_quotes_v9_5d.csv`
+- `tachys_execution_shadow_trades_v9_5d.csv`
+
+Fee model: isolated configurable estimate using Kalshi's general event-contract taker formula (0.07 x multiplier x contracts x P x (1-P)), conservatively rounded upward to cents. Series-specific fee changes must be checked before any real-money deployment.
+
+Important: if the Level-2 book is unavailable, the shadow records the top quote but DOES NOT invent fillable depth. In that case simulated-live quantity remains unfilled/unknown rather than assuming the entire paper order would have filled.
+
+Research question:
+
+**How much of paper Tachyos' edge survives realistic spread, latency, depth, partial fills, and fees?**
+
+## Arc-angle / snake-gait hypothesis — normalize geometry, not chart pixels
+
+Live observation on 2026-09-21: much of the session behaved like snake territory, but with wider EMA9/EMA30 separation than some earlier chop windows.
+
+Do not use the literal visual chart angle because zoom and price-axis scaling can change it. Measure a normalized geometric equivalent.
+
+Candidate measurements:
+
+- **EMA9 pitch**: EMA9 slope over 3/6/9 seconds normalized by recent BTC range;
+- **Arc width**: peak absolute EMA9-EMA30 gap normalized by range60 or another stable local volatility measure;
+- **Turning intensity**: EMA9 curvature normalized by recent range;
+- **Spine pitch**: EMA30 slope over 6/30 seconds, normalized similarly;
+- **Arc symmetry / deterioration**: compare successive upper and lower arc amplitude, duration, pitch, and curvature;
+- **Gap compression/expansion rate**: how quickly EMA9 approaches or separates from EMA30.
+
+Research question:
+
+If the current snake gait persists, can the prior 1-3 arcs define an expected envelope for the next arc's pitch, width, duration, and direction? Then ask what BTC candle path would be required to remain inside that envelope.
+
+Potential use:
+
+- distinguish harmless mid-leg bends from true campaign transfer;
+- tune counter-sleeve timing;
+- identify unusually steep arcs that deserve faster action;
+- identify shallow/deteriorating arcs that should not trigger aggressive entries;
+- carry the same flight-path model across contract rollover.
+
+Training principle:
+
+**The useful angle is not what the chart looks like. It is the normalized rate at which EMA9 bends around the Spine.**

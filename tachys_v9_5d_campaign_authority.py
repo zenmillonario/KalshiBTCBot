@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
 import tachys_v9_5c_leg_geometry as c
+import tachys_execution_shadow_v9_5d as exshadow
 
 core = c.core
 a = c.a
@@ -44,7 +45,8 @@ os.environ["TACHYOS_V95D_SESSION_ID"] = SESSION_ID
 # FORENSICALLY JUSTIFIED PARAMETERS
 # ---------------------------------------------------------------------------
 
-CAMPAIGN_TRANSFER_CONFIRM_SEC = 6.0
+CAMPAIGN_TRANSFER_CONFIRM_SEC = 9.0
+CAMPAIGN_STRONG_FORMATION_CONFIRM_SEC = 6.0
 CAMPAIGN_FLIP_HYSTERESIS_SEC = 9.0
 CAMPAIGN_FLIP_WINDOW_SEC = 300.0
 CAMPAIGN_MAX_SOFT_FLIPS = 2
@@ -103,7 +105,7 @@ PREARM_FIELDS = [
 MANIFEST_FIELDS = [
     "timestamp","run_id","session_id","version","base_version","start_local","pid",
     "campaign_authority","prearm_ttl_sec","winner_harvest","exit_court",
-    "parallel_transition","note"
+    "parallel_transition","execution_shadow","note"
 ]
 
 
@@ -194,7 +196,8 @@ class CampaignSupervisor:
             "winner_harvest": 1,
             "exit_court": 1,
             "parallel_transition": 1,
-            "note": "V9.5D supervises V9.5C perception; PAPER ONLY.",
+            "execution_shadow": 1,
+            "note": "V9.5D supervises V9.5C perception; PAPER ONLY; execution reality shadow has zero authority.",
         })
 
     # ------------------------------------------------------------------
@@ -239,8 +242,57 @@ class CampaignSupervisor:
         threshold = max(0.5, 0.015 * r60)
         return gd6 * _sign(side) > threshold
 
-    def _strong_transfer(self, side: str, align: int, separation: bool, target_decisive: bool) -> bool:
-        return align >= 3 and separation and target_decisive
+    def _ema9_formation_confirmed(self, side: str, leg: Dict[str, Any],
+                                  geom: Dict[str, Any], metrics: Dict[str, Any]) -> Tuple[bool, List[str]]:
+        """
+        The EMA9 formation is the guide. A single opposite candle may warn,
+        but it cannot flip the campaign.
+
+        Normal confirmation requires the Leg Geometry to progress beyond a
+        bare RETURN_SLOPE. An early leap is still allowed when the EMA9 itself
+        is clearly turning with curvature + 6/9-second slope + 3/6/9 agreement.
+        """
+        sign = _sign(side)
+        state = str(leg.get("state") or "")
+        e9d3 = _f(geom.get("e9d3"), 0.0) or 0.0
+        e9d6 = _f(geom.get("e9d6"), 0.0) or 0.0
+        e9d9 = _f(geom.get("e9d9"), 0.0) or 0.0
+        curvature = _f(geom.get("curvature"), 0.0) or 0.0
+        r60 = max(1.0, _f(metrics.get("r60"), 1.0) or 1.0)
+        slope_min = max(0.5, 0.01 * r60)
+        curve_min = max(0.25, 0.004 * r60)
+        align = self._alignment_369(side, metrics)
+
+        progressed = state in ("EMA30_APPROACH", "TRANSFER", "OPPOSITE_BUILD", "EXPANSION")
+        slope_agree = (e9d6 * sign >= slope_min) and (e9d9 * sign >= slope_min)
+        curvature_agree = curvature * sign >= curve_min
+        fast_slope_agree = e9d3 * sign >= 0.0
+
+        reasons: List[str] = []
+        if progressed:
+            reasons.append(f"FORMATION_PROGRESS_{state}")
+        if slope_agree:
+            reasons.append("EMA9_SLOPE_6_9")
+        if curvature_agree:
+            reasons.append("EMA9_CURVATURE_TURN")
+        if align >= 2:
+            reasons.append(f"369_ALIGN_{align}")
+
+        strong_early_turn = (
+            state == "RETURN_SLOPE"
+            and slope_agree
+            and curvature_agree
+            and fast_slope_agree
+            and align >= 3
+        )
+        if strong_early_turn:
+            reasons.append("STRONG_RETURN_SLOPE_OVERRIDE")
+
+        return (progressed or strong_early_turn), reasons
+
+    def _strong_transfer(self, side: str, align: int, separation: bool, target_decisive: bool,
+                         formation_confirmed: bool) -> bool:
+        return formation_confirmed and align >= 3 and separation and target_decisive
 
     def _recent_flip_count(self, now: float) -> int:
         self.flip_times = [x for x in self.flip_times if now - x <= CAMPAIGN_FLIP_WINDOW_SEC]
@@ -302,12 +354,22 @@ class CampaignSupervisor:
         align = self._alignment_369(candidate, metrics)
         separation = self._separation_ok(candidate, geom, metrics)
         target_decisive = self._target_decisive(candidate, target, metrics)
-        leg_support = leg_side == candidate and str(leg.get("state") or "") in (
-            "RETURN_SLOPE","EMA30_APPROACH","TRANSFER","OPPOSITE_BUILD","EXPANSION"
+        formation_confirmed, formation_reasons = self._ema9_formation_confirmed(
+            candidate, leg, geom, metrics
         )
+        leg_support = leg_side == candidate
 
-        evidence = lead >= CAMPAIGN_MIN_SCORE_LEAD and align >= 2 and (separation or target_decisive) and leg_support
-        strong = self._strong_transfer(candidate, align, separation, target_decisive)
+        # RETURN_SLOPE alone may ARM awareness but cannot normally transfer the
+        # campaign. The EMA9 formation must either progress toward/through the
+        # Spine or present a strong curvature+slope early-turn override.
+        evidence = (
+            lead >= CAMPAIGN_MIN_SCORE_LEAD
+            and align >= 2
+            and (separation or target_decisive)
+            and leg_support
+            and formation_confirmed
+        )
+        strong = self._strong_transfer(candidate, align, separation, target_decisive, formation_confirmed)
         in_hysteresis = self.last_flip_ts is not None and now - self.last_flip_ts < CAMPAIGN_FLIP_HYSTERESIS_SEC
         overflip = self._recent_flip_count(now) >= CAMPAIGN_MAX_SOFT_FLIPS
 
@@ -317,6 +379,7 @@ class CampaignSupervisor:
         if separation: reasons.append("SPINE_SEPARATION")
         if target_decisive: reasons.append("TARGET_DECISIVE")
         if leg_support: reasons.append(f"LEG_{leg.get('state')}")
+        reasons.extend(formation_reasons)
 
         if evidence and (not in_hysteresis or strong) and (not overflip or strong):
             if not self.transfer_candidate or self.transfer_candidate.get("side") != candidate:
@@ -324,7 +387,12 @@ class CampaignSupervisor:
                 self.campaign_state = f"CAMPAIGN_TRANSFER_ARMED_{candidate}"
             else:
                 age = now - float(self.transfer_candidate.get("since") or now)
-                if age >= CAMPAIGN_TRANSFER_CONFIRM_SEC:
+                required = (
+                    CAMPAIGN_STRONG_FORMATION_CONFIRM_SEC
+                    if "STRONG_RETURN_SLOPE_OVERRIDE" in formation_reasons
+                    else CAMPAIGN_TRANSFER_CONFIRM_SEC
+                )
+                if age >= required:
                     self._confirm_transfer(candidate, now, reasons)
         else:
             if self.transfer_candidate and self.transfer_candidate.get("side") == candidate:
@@ -772,6 +840,7 @@ class CampaignSupervisor:
 
 
 supervisor = CampaignSupervisor()
+execution_shadow = exshadow.ExecutionShadow(core, RUN_ID, SESSION_ID)
 _HOOKS_INSTALLED = False
 
 
@@ -911,6 +980,12 @@ def install_v95d_hooks() -> None:
                 pos["_v95d_campaign_side"] = supervisor.campaign_side
                 pos["_v95d_entry_reason"] = reason
                 pos["_v95d_parallel_transition"] = bool(parallel)
+                try:
+                    execution_shadow.on_entry(
+                        pos, ticker, side, ask, now=time.time()
+                    )
+                except Exception as exc:
+                    print(f"⚠️ V9.5D execution-shadow entry error: {exc}")
             if prearm_override or "ROLLOVER_PREARM" in str(signal.get("early_exception_reasons") or ""):
                 supervisor.mark_prearm_used(ticker, now)
 
@@ -923,6 +998,11 @@ def install_v95d_hooks() -> None:
 
     def paper_manage_wrapper(ticker, yes_ask, no_ask):
         now = time.time()
+        try:
+            execution_shadow.observe(ticker, yes_ask, no_ask, now)
+        except Exception as exc:
+            print(f"⚠️ V9.5D execution-shadow quote error: {exc}")
+
         positions: List[Tuple[str, Dict[str, Any]]] = []
         courts: Dict[str, Dict[str, Any]] = {}
 
@@ -947,13 +1027,37 @@ def install_v95d_hooks() -> None:
             if old:
                 _restore(old)
 
+        # If an inherited hard-emergency path closed a position, capture its
+        # execution reality before doing anything else. Ordinary inherited exits
+        # remain suppressed by Exit Court.
+        for side, p in positions:
+            still = (getattr(core, "paper_positions", {}) or {}).get(side) is p
+            if not still:
+                try:
+                    execution_shadow.on_exit(
+                        p, ticker, side, _bid(side, yes_ask, no_ask),
+                        "INHERITED_EMERGENCY_EXIT", now=time.time(),
+                        yes_ask=yes_ask, no_ask=no_ask,
+                    )
+                except Exception as exc:
+                    print(f"⚠️ V9.5D execution-shadow inherited-exit error: {exc}")
+
         # Execute V9.5D court rulings only if the inherited emergency manager
         # did not already close the position.
         for side, p in positions:
             still = (getattr(core, "paper_positions", {}) or {}).get(side) is p
             court = courts.get(side) or {}
             if still and court.get("final_action") == "EXIT":
-                supervisor.execute_exit(p, yes_ask, no_ask, str(court.get("court_ruling")))
+                ruling = str(court.get("court_ruling"))
+                if supervisor.execute_exit(p, yes_ask, no_ask, ruling):
+                    try:
+                        execution_shadow.on_exit(
+                            p, ticker, side, _bid(side, yes_ask, no_ask),
+                            f"V95D_{ruling}", now=time.time(),
+                            yes_ask=yes_ask, no_ask=no_ask,
+                        )
+                    except Exception as exc:
+                        print(f"⚠️ V9.5D execution-shadow exit error: {exc}")
 
         return result
 
@@ -975,17 +1079,20 @@ async def main() -> None:
     print(f"RUN ID: {RUN_ID} | SESSION: {SESSION_ID}")
     print("PAPER ONLY | V9.5C Leg Geometry remains the perception layer.")
     print("")
-    print("🧭 CAMPAIGN AUTHORITY: local leg wiggles cannot flip the battlefield by themselves.")
+    print("🧭 CAMPAIGN AUTHORITY: EMA9 formation guides transfer; opposite candles are evidence, not authority.")
     print("⏳ PREARM TTL: rollover memory expires in 60s and is consumed after first use.")
     print("🏁 WINNER HARVEST: strong winners breathe; mature plateaus are collected.")
     print("⚖️ EXIT COURT: local opposite-leg + legacy exits are proposals, not sovereign exits.")
     print("↔️ PARALLEL TRANSITION: one position per side may overlap after confirmed transfer.")
     print("📣 NEXT LEG PREP: current-contract side and next-leg side are tracked separately.")
+    print("🪞 EXECUTION SHADOW: 0/250/500/1000ms L2 fill + fee-adjusted live P/L; ZERO authority.")
     print("")
     print(f"CAMPAIGN LOG : {CAMPAIGN_LOG}")
     print(f"WINNER LOG   : {WINNER_LOG}")
     print(f"EXIT COURT   : {EXIT_COURT_LOG}")
     print(f"PREARM LOG   : {PREARM_LOG}")
+    print(f"EXEC QUOTES  : {exshadow.QUOTE_LOG}")
+    print(f"EXEC TRADES  : {exshadow.TRADE_LOG}")
     print("=" * 118)
 
     await core.main()
