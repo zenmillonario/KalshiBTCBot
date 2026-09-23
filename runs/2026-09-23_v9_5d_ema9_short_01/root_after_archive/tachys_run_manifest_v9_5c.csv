@@ -1,0 +1,2 @@
+timestamp,run_id,session_id,version,base_version,paper_authority,start_local,pid,dual_side,leg_geometry,target_height,time_capacity,rollover_continuity,active_treasury,exit_authority,note
+2026-09-23T04:52:32.824513+00:00,C20260923_005232,C20260923_005232_PID8244,V9.5C,V9.5B archive -> V9.5A/RS1/RS2 control stack,LEG_GEOMETRY_DUAL_SIDE_AND_WHOLE_LEG_EXIT,2026-09-23T00:52:32.824411-04:00,8244,1,1,1,1,1,PROPOSAL_ONLY,CENTRAL_WHOLE_LEG_GATE,EMA30=Spine; EMA9 return+transfer+build=one leg.

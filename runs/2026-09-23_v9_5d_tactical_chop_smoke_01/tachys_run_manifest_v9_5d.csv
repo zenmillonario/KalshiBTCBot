@@ -1,0 +1,2 @@
+timestamp,run_id,session_id,version,base_version,start_local,pid,campaign_authority,prearm_ttl_sec,winner_harvest,exit_court,parallel_transition,execution_shadow,note
+2026-09-23T07:26:17.215964+00:00,D20260923_032617,D20260923_032617_PID22208,V9.5D-TACTICAL-PAPER-01,V9.5C Leg Geometry,2026-09-23T03:26:17.215842-04:00,22208,1,60.0,1,1,1,1,"V9.5D tactical paper 01; prearm lifecycle, narrow entry checks, sub50 plateau, narrow churn 30; quote/execution shadows zero authority."
