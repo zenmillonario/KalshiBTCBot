@@ -33,7 +33,7 @@ r = c.r
 rs2 = c.rs2
 ET = c.ET
 
-VERSION = "V9.5D-COMPRESSION-QUARANTINE-03"
+VERSION = "V9.5D-TARGETED-REPLAY-05"
 _START_TS = time.time()
 RUN_ID = datetime.now(ET).strftime("D%Y%m%d_%H%M%S")
 SESSION_ID = f"{RUN_ID}_PID{os.getpid()}"
@@ -68,6 +68,13 @@ EMERGENCY_HARD_ROI = -0.60
 TACTICAL_STAKE = 5.0
 TACTICAL_HARVEST_ROI = 0.35
 TACTICAL_INVALIDATION_ROI = -0.15
+TACTICAL_STOP_MIN_AGE_SEC = 3.0
+TACTICAL_STOP_CONFIRM_SEC = 1.5
+TACTICAL_STALLED_MFE_PCT = 30.0
+TACTICAL_STALLED_MAX_MFE_PCT = 35.0
+TACTICAL_STALLED_MIN_ROI = 0.20
+TACTICAL_STALLED_SEC = 9.0
+TACTICAL_STALLED_BTC9_AGAINST = 5.0
 MIDWINNER_ARM_MFE_PCT = 35.0
 MIDWINNER_MIN_CURRENT_ROI_PCT = 20.0
 MIDWINNER_TARGET_STALL_SEC = 30.0
@@ -352,7 +359,7 @@ class CampaignSupervisor:
             "exit_court": 1,
             "parallel_transition": 1,
             "execution_shadow": 1,
-            "note": "V9.5D compression quarantine 03; early slow-spine approach plus EMA9 cross memory; nine-second release for regular entries; emergency exits preserved.",
+            "note": "V9.5D 04 plus tactical 30-35 plateau with adverse 3/6/9, and narrow stretched-main entry wait while opposite tactical active; hard emergencies preserved.",
         })
 
     # ------------------------------------------------------------------
@@ -952,11 +959,38 @@ class CampaignSupervisor:
             final = "EXIT"
             ruling = "TACTICAL_HARVEST_EXIT"
             reasons.append("TACTICAL_PLUS_35")
+        elif tactical and roi is not None and (
+            TACTICAL_STALLED_MFE_PCT <= mfe < TACTICAL_STALLED_MAX_MFE_PCT
+            and roi >= TACTICAL_STALLED_MIN_ROI
+            and (_f(winner.get("seconds_since_mfe_high"), 0.0) or 0.0) >= TACTICAL_STALLED_SEC
+        ):
+            metrics = dict(ctx.get("metrics") or {})
+            displacements = [(_f(metrics.get(k), 0.0) or 0.0) * _sign(side)
+                             for k in ("ch3", "ch6", "ch9")]
+            if (displacements[2] <= -TACTICAL_STALLED_BTC9_AGAINST
+                    and sum(v <= -0.5 for v in displacements) >= 2):
+                final = "EXIT"
+                ruling = "TACTICAL_STALLED_HARVEST_EXIT"
+                reasons.append("MFE_30_TO_35_PLATEAU_9S;BTC_369_AGAINST")
+            else:
+                position.pop("_v95d_tactical_stop_since", None)
+                ruling = "HOLD_TACTICAL"
+                reasons.append("PLATEAU_BUT_BTC_FORMATION_NOT_AGAINST")
         elif tactical and roi is not None and roi <= TACTICAL_INVALIDATION_ROI:
-            final = "EXIT"
-            ruling = "TACTICAL_INVALIDATION_EXIT"
-            reasons.append("TACTICAL_MINUS_15")
+            if position.get("_v95d_tactical_stop_since") is None:
+                position["_v95d_tactical_stop_since"] = now
+            opened = _f(position.get("_v95d_tactical_open_ts"), now) or now
+            stop_age = max(0.0, now - float(position["_v95d_tactical_stop_since"]))
+            trade_age = max(0.0, now - opened)
+            if trade_age >= TACTICAL_STOP_MIN_AGE_SEC and stop_age >= TACTICAL_STOP_CONFIRM_SEC:
+                final = "EXIT"
+                ruling = "TACTICAL_INVALIDATION_EXIT"
+                reasons.append("TACTICAL_MINUS_15_CONFIRMED")
+            else:
+                ruling = "TACTICAL_STOP_CONFIRMING"
+                reasons.append(f"AGE_{trade_age:.1f}_ADVERSE_{stop_age:.1f}")
         elif tactical:
+            position.pop("_v95d_tactical_stop_since", None)
             ruling = "HOLD_TACTICAL"
             reasons.append("INDEPENDENT_TACTICAL_LIFECYCLE")
         elif winner.get("ruling") == "WINNER_HARVEST_EXIT":
@@ -1031,7 +1065,10 @@ class CampaignSupervisor:
 
         core.paper_realized_pnl += pnl
         if position.get("_v95d_tactical"):
-            position["_v95d_tactical_state"] = "HARVESTED" if ruling == "TACTICAL_HARVEST_EXIT" else "INVALIDATED"
+            position["_v95d_tactical_state"] = (
+                "HARVESTED" if ruling in ("TACTICAL_HARVEST_EXIT", "TACTICAL_STALLED_HARVEST_EXIT")
+                else "INVALIDATED"
+            )
             _write(TACTICAL_LOG, TACTICAL_FIELDS, {
                 "event": "TACTICAL_EXIT", "trade_id": position.get("trade_id"),
                 "ticker": position.get("ticker"), "side": side,
@@ -1183,6 +1220,33 @@ def install_v95d_hooks() -> None:
         )
         tactical = is_prearm and side != supervisor.campaign_side and not spine_aligned_main
 
+        # A new main entry can wait while a smaller opposing tactical sleeve
+        # resolves if the old leg is already stretched and its Kalshi target
+        # cushion is thin relative to current BTC movement. Existing campaign
+        # positions remain untouched. This is independent of the chop pause.
+        opposite_position = (getattr(core, "paper_positions", {}) or {}).get(_opposite(side))
+        opposing_tactical_open = (
+            isinstance(opposite_position, dict)
+            and str(opposite_position.get("ticker") or "") == str(ticker)
+            and bool(opposite_position.get("_v95d_tactical"))
+        )
+        main_stretched_with_thin_target = (
+            not tactical and not existing_snip and opposing_tactical_open
+            and gap is not None and height is not None
+            and _f(metrics.get("r60")) is not None
+            and _f(geom.get("btc")) is not None and _f(geom.get("e9")) is not None
+            and (float(geom["btc"]) - float(geom["e9"])) * _sign(side) >= r60
+            and gap * _sign(side) >= 2.0 * r60
+            and height * _sign(side) < r60
+        )
+        if main_stretched_with_thin_target:
+            _write(CHURN_LOG, CHURN_FIELDS, dict(event="MAIN_ENTRY_WAIT_OPPOSITE_TACTICAL",
+                   ticker=ticker, side=side, churn=0, gap=gap,
+                   ema30_slope6=geom.get("e30d6"), range60=r60,
+                   seconds_left=ctx.get("seconds_left"), reason="STRETCHED_SPINE_THIN_TARGET"))
+            print(f"🧱 V9.5D MAIN ENTRY WAIT | {side} | OPPOSITE_TACTICAL_STRETCHED_THIN_TARGET")
+            return False
+
         if not existing_snip and not tactical:
             paused, pause_reason = supervisor.churn.quarantine_entry(ticker, side, now)
             if paused:
@@ -1278,6 +1342,8 @@ def install_v95d_hooks() -> None:
                 pos["_v95d_parallel_transition"] = bool(parallel)
                 pos["_v95d_tactical"] = bool(tactical)
                 pos["_v95d_tactical_state"] = "ACTIVE_TACTICAL" if tactical else "MAIN"
+                if tactical:
+                    pos["_v95d_tactical_open_ts"] = time.time()
                 if tactical or spine_aligned_main:
                     _write(TACTICAL_LOG, TACTICAL_FIELDS, {
                         "event": "TACTICAL_OPEN" if tactical else "SPINE_ALIGNED_MAIN_OPEN",
@@ -1314,7 +1380,7 @@ def install_v95d_hooks() -> None:
                 if not isinstance(audit_pos, dict) or audit_pos.get("ticker") != ticker:
                     continue
                 paper_bid, l2_bid = _bid(audit_side, yes_ask, no_ask), l2_bids[audit_side]
-                if paper_bid is None or l2_bid is None or abs(paper_bid - l2_bid) < 0.10:
+                if paper_bid is None or l2_bid is None or abs(paper_bid - l2_bid) < 0.05:
                     continue
                 if now - float(audit_pos.get("_v95d_last_quote_audit", 0.0)) < 3.0:
                     continue
