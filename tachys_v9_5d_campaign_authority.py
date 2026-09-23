@@ -33,7 +33,7 @@ r = c.r
 rs2 = c.rs2
 ET = c.ET
 
-VERSION = "V9.5D-TACTICAL-PAPER-01"
+VERSION = "V9.5D-COMPRESSION-QUARANTINE-03"
 _START_TS = time.time()
 RUN_ID = datetime.now(ET).strftime("D%Y%m%d_%H%M%S")
 SESSION_ID = f"{RUN_ID}_PID{os.getpid()}"
@@ -74,6 +74,10 @@ MIDWINNER_TARGET_STALL_SEC = 30.0
 CHURN_REENTRY_WAIT_SEC = 30.0
 CHURN_MAX_NEGATIVE_HOLD_SEC = 120.0
 CHURN_MIN_EXPIRY_SEC = 90.0
+COMPRESSION_LOOKBACK_SEC = 720.0
+COMPRESSION_MIN_CROSSES = 3
+COMPRESSION_PAUSE_SEC = 180.0
+COMPRESSION_SAMPLE_SEC = 5.0
 
 CAMPAIGN_LOG = "tachys_campaign_authority_v9_5d.csv"
 WINNER_LOG = "tachys_winner_harvest_v9_5d.csv"
@@ -183,6 +187,70 @@ class ChurnController:
     """Narrow 30s entry reset and one-candle negative transfer review."""
     def __init__(self):
         self.last_exit = None
+        self.ema_samples = []
+        self.quarantine_until = 0.0
+        self.quarantine_reason = ""
+        self.last_quarantine_log = 0.0
+
+    def observe(self, ticker, geom, metrics, now):
+        """Keep EMA9 crossing memory across contracts; target alone resets at rollover."""
+        btc, e9 = _f(geom.get("btc")), _f(geom.get("e9"))
+        if btc is None or e9 is None:
+            return
+        if not self.ema_samples or now - self.ema_samples[-1][0] >= COMPRESSION_SAMPLE_SEC:
+            difference = btc - e9
+            sign = 1 if difference > 5.0 else -1 if difference < -5.0 else 0
+            self.ema_samples.append((now, sign))
+        self.ema_samples = [x for x in self.ema_samples if now - x[0] <= COMPRESSION_LOOKBACK_SEC]
+        previous, crossings = 0, 0
+        for _, sign in self.ema_samples:
+            if sign:
+                if previous and sign != previous:
+                    crossings += 1
+                previous = sign
+        gap, spine, e9s3, r60 = (_f(geom.get("gap")), _f(geom.get("e30d6")),
+                                _f(geom.get("e9d3")), _f(metrics.get("r60")))
+        if None in (gap, spine, e9s3, r60):
+            return
+        compressed = abs(gap) <= max(60.0, 0.9 * r60)
+        slow_spine = abs(spine) <= max(6.0, 0.10 * r60)
+        early_slow_approach = (compressed and abs(spine) <= max(3.0, 0.05 * r60)
+                               and abs(e9s3) <= max(5.0, 0.08 * r60))
+        if (crossings >= COMPRESSION_MIN_CROSSES and compressed and slow_spine) or early_slow_approach:
+            self.quarantine_until = max(self.quarantine_until, now + COMPRESSION_PAUSE_SEC)
+            self.quarantine_reason = (f"EMA9_REPEATED_CROSSES_{crossings}_SLOW_SPINE"
+                                      if crossings >= COMPRESSION_MIN_CROSSES else "EARLY_SLOW_SPINE_APPROACH")
+
+    def quarantine_entry(self, ticker, side, now):
+        if now >= self.quarantine_until:
+            return False, ""
+        ctx = c.brain.last_context or {}
+        if ctx.get("ticker") != ticker:
+            return True, "COMPRESSION_CONTEXT_STALE"
+        geom, metrics, target = (dict(ctx.get(k) or {}) for k in ("geom", "metrics", "target"))
+        gap, r60 = _f(geom.get("gap")), max(1.0, _f(metrics.get("r60"), 1.0) or 1.0)
+        # A new leg must prove EMA9 separation, spine agreement, 3/6/9 BTC
+        # displacement, and target progress for nine seconds. Until then,
+        # the quarantine has no regular entry exception.
+        favorable = (
+            gap is not None and gap * _sign(side) >= max(20.0, 0.4 * r60)
+            and (_f(geom.get("gd6"), 0.0) or 0.0) * _sign(side) >= max(1.0, .03 * r60)
+            and (_f(geom.get("e30d6"), 0.0) or 0.0) * _sign(side) >= 1.0
+            and (_f(target.get("height"), 0.0) or 0.0) * _sign(side) >= 8.0
+            and all((_f(metrics.get("ch" + str(n)), 0.0) or 0.0) * _sign(side) >= max(1.5, .02 * r60)
+                    for n in (3, 6, 9))
+        )
+        if favorable:
+            key = (ticker, side)
+            if getattr(self, "release_key", None) != key:
+                self.release_key, self.release_since = key, now
+            if now - self.release_since >= 9.0:
+                self.quarantine_until = 0.0
+                self.release_key = None
+                return False, "COMPRESSION_SEPARATION_CONFIRMED"
+        else:
+            self.release_key = None
+        return True, self.quarantine_reason
 
     def context(self, ticker: str, now: float):
         ctx = dict(c.brain.last_context or {})
@@ -284,7 +352,7 @@ class CampaignSupervisor:
             "exit_court": 1,
             "parallel_transition": 1,
             "execution_shadow": 1,
-            "note": "V9.5D tactical paper 01; prearm lifecycle, narrow entry checks, sub50 plateau, narrow churn 30; quote/execution shadows zero authority.",
+            "note": "V9.5D compression quarantine 03; early slow-spine approach plus EMA9 cross memory; nine-second release for regular entries; emergency exits preserved.",
         })
 
     # ------------------------------------------------------------------
@@ -1049,6 +1117,7 @@ def install_v95d_hooks() -> None:
 
     def emit_leg_wrapper(ticker, leg, geom, target, seconds_left, wick, now):
         try:
+            supervisor.churn.observe(ticker, geom, c.brain._btc_metrics(now), now)
             supervisor.observe_context(ticker, leg, geom, target, seconds_left, wick, now)
         except Exception as exc:
             print(f"⚠️ V9.5D campaign observer error: {exc}")
@@ -1114,6 +1183,21 @@ def install_v95d_hooks() -> None:
         )
         tactical = is_prearm and side != supervisor.campaign_side and not spine_aligned_main
 
+        if not existing_snip and not tactical:
+            paused, pause_reason = supervisor.churn.quarantine_entry(ticker, side, now)
+            if paused:
+                if now - supervisor.churn.last_quarantine_log >= 15.0:
+                    supervisor.churn.last_quarantine_log = now
+                    _write(CHURN_LOG, CHURN_FIELDS, dict(event="REGULAR_ENTRY_QUARANTINE", ticker=ticker,
+                           side=side, churn=1, gap=gap, ema30_slope6=geom.get("e30d6"),
+                           range60=r60, seconds_left=ctx.get("seconds_left"), reason=pause_reason))
+                    print(f"⏸️ V9.5D REGULAR ENTRY PAUSE | {side} | {pause_reason}")
+                return False
+            if pause_reason == "COMPRESSION_SEPARATION_CONFIRMED":
+                _write(CHURN_LOG, CHURN_FIELDS, dict(event="QUARANTINE_RELEASE", ticker=ticker,
+                       side=side, churn=0, gap=gap, ema30_slope6=geom.get("e30d6"),
+                       range60=r60, seconds_left=ctx.get("seconds_left"), reason=pause_reason))
+
         # Deliberately narrow entry restraints. These are context checks, not
         # global vetoes on counter-arcs or every cheap contract.
         if not is_prearm and gap is not None and height is not None:
@@ -1124,6 +1208,26 @@ def install_v95d_hooks() -> None:
                         and slope3 < -1.5 and slope6 < -1.5 and slope9 < -1.5)
             if stalled_no or weak_yes:
                 why = "NO_TARGET_AND_EMA_APPROACH_WAIT" if stalled_no else "YES_AGAINST_EMA9_FORMATION_WAIT"
+                print(f"🧱 V9.5D ENTRY BLOCK | {side} @ {float(ask):.3f} | {why}")
+                return False
+
+            # A mature arc above its target that has already rolled back on
+            # EMA9's 3/6/9 clock is a late campaign entry, not fresh release.
+            leg = dict(ctx.get("leg") or {})
+            mature_top = (
+                str(leg.get("state") or "") in ("MATURE", "RETURN_SLOPE")
+                and height * _sign(side) >= max(60.0, 2.0 * r60)
+                and all(x * _sign(side) <= -1.0 for x in (slope3, slope6, slope9))
+                and (_f(geom.get("gd6"), 0.0) or 0.0) * _sign(side) <= -1.0
+            )
+            terminal_against_ema9 = (
+                (_f(ctx.get("seconds_left")) or float("inf")) <= 90.0
+                and float(ask) >= 0.65
+                and gap * _sign(side) < 0
+                and ((_f(geom.get("btc"), 0.0) or 0.0) - (_f(geom.get("e9"), 0.0) or 0.0)) * _sign(side) < -5.0
+            )
+            if mature_top or terminal_against_ema9:
+                why = "MATURE_ARC_ROLLED_TOWARD_SPINE" if mature_top else "TERMINAL_ENTRY_AGAINST_EMA9"
                 print(f"🧱 V9.5D ENTRY BLOCK | {side} @ {float(ask):.3f} | {why}")
                 return False
 
@@ -1309,7 +1413,7 @@ async def main() -> None:
     print("🧭 CAMPAIGN AUTHORITY: EMA9 formation guides transfer; opposite candles are evidence, not authority.")
     print("🧪 V9.5D TACTICAL PAPER 01: contrary prearms have independent size/exit; stalled +35% sub-50 winners get review.")
     print("🧪 NARROW ENTRY RESTRAINTS: target/EMA approach and against-EMA9 formation; quote mismatch is observer only.")
-    print("⏸️ NARROW CHURN: 30s regular re-entry wait and one-candle negative transfer review in verified alternating compression.")
+    print("⏸️ COMPRESSION: slow-spine approach or repeated EMA9 crossings pause regular entries; nine-second release, plus 30s churn re-entry wait.")
     print("⏳ PREARM TTL: rollover memory expires in 60s and is consumed after first use.")
     print("🏁 WINNER HARVEST: strong winners breathe; mature plateaus are collected.")
     print("⚖️ EXIT COURT: local opposite-leg + legacy exits are proposals, not sovereign exits.")

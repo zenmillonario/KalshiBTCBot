@@ -18,7 +18,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import streamlit as st
 
-APP_VERSION = "Command Deck V3.2"
+APP_VERSION = "Command Deck V3.2 · session-safe"
 ET = ZoneInfo("America/New_York")
 BASE_DIR = Path(__file__).resolve().parent
 MAX_READ_BYTES = 3_000_000
@@ -392,21 +392,60 @@ campaign_row = latest(frames["campaign"])
 winner_row = latest(frames["winner"])
 exit_court_row = latest(frames["exit_court"])
 prearm_row = latest(frames["prearm"])
+manifest_row = latest(frames["manifest_d"])
 paper = frames["paper"].copy()
+all_paper = paper.copy()
 quote_row, quote_source, quote_age = discover_quote()
 
 current_ticker = txt(leg.get("ticker") if leg is not None else None)
+current_run_id = txt(manifest_row.get("run_id") if manifest_row is not None else None, "")
+run_start = None
+if manifest_row is not None:
+    try:
+        # Paper trade timestamps are local ET strings without an offset.
+        run_start = datetime.fromisoformat(str(manifest_row.get("start_local"))).replace(tzinfo=None)
+    except (ValueError, TypeError):
+        pass
 
 # Paper position + completed trades
 open_trade = None
+previous_unresolved = None
 exits = pd.DataFrame()
+manifests = frames["manifest_d"]
+if run_start is not None and len(manifests) >= 2 and not all_paper.empty:
+    try:
+        prior = manifests.iloc[-2]
+        prior_start = datetime.fromisoformat(str(prior.get("start_local"))).replace(tzinfo=None)
+        prior_times = pd.to_datetime(all_paper["timestamp"], errors="coerce")
+        prior_paper = all_paper[(prior_times >= pd.Timestamp(prior_start)) &
+                                (prior_times < pd.Timestamp(run_start))].copy()
+        prior_paper["_event"] = prior_paper["event"].astype(str).str.upper()
+        prior_paper["_key"] = prior_paper["ticker"].astype(str) + ":" + prior_paper["trade_id"].astype(str)
+        prior_exits = set(prior_paper.loc[prior_paper["_event"] == "EXIT", "_key"])
+        previous_unresolved = latest(prior_paper[(prior_paper["_event"] == "ENTRY") &
+                                                (~prior_paper["_key"].isin(prior_exits))])
+    except (KeyError, ValueError, TypeError):
+        pass
 if not paper.empty and "event" in paper.columns and {"ticker","trade_id"}.issubset(paper.columns):
+    if current_run_id:
+        # Trade IDs restart at #1 on each process. Scope both the position and
+        # recent trades to the latest V9.5D process before matching exits.
+        paper["_local_time"] = pd.to_datetime(paper.get("timestamp"), errors="coerce")
+        paper = paper[paper["_local_time"] >= pd.Timestamp(run_start)] if run_start else paper.iloc[0:0]
     paper["_event"] = paper["event"].astype(str).str.upper()
     paper["_key"] = paper["ticker"].astype(str) + ":" + paper["trade_id"].astype(str)
     exits = paper[paper["_event"]=="EXIT"].copy()
     exited_keys = set(exits["_key"])
     entries = paper[(paper["_event"]=="ENTRY") & (~paper["_key"].isin(exited_keys))]
+    entries = entries[entries["ticker"].astype(str) == current_ticker]
     open_trade = latest(entries)
+
+# Never price a stopped process or an old contract with the current quote.
+leg_age = age_seconds(path_for("leg"))
+if leg_age is None or leg_age > 20:
+    open_trade = None
+if quote_row is None or txt(quote_row.get("ticker"), "") != current_ticker or quote_age is None or quote_age > 20:
+    quote_row = None
 
 mark = live_mark(open_trade, quote_row)
 
@@ -436,12 +475,19 @@ left, right = st.columns([0.48, 0.52], gap="large")
 with left:
     st.markdown("### Current Position")
     if open_trade is None:
+        prior_note = (
+            f"Earlier stopped run: trade #{html.escape(txt(previous_unresolved.get('trade_id')))} "
+            f"{html.escape(txt(previous_unresolved.get('side')))} in "
+            f"{html.escape(txt(previous_unresolved.get('ticker')))} has no recorded exit. "
+            "Its later outcome is unknown."
+            if previous_unresolved is not None else "Waiting for the next authorized leg entry."
+        )
         st.markdown(
-            """
+            f"""
             <div class="position-box">
               <div class="position-title">PAPER POSITION</div>
               <div class="position-main">NO OPEN POSITION</div>
-              <div class="position-sub">Waiting for the next authorized leg entry.</div>
+              <div class="position-sub">{prior_note}</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -465,8 +511,9 @@ with left:
         )
         gate = (
             txt(exit_court_row.get("court_ruling"))
-            if exit_court_row is not None and txt(exit_court_row.get("trade_id"), "") == trade_id
-            else txt(exit_row.get("gate_ruling")) if exit_row is not None and txt(exit_row.get("trade_id"), "") == trade_id
+            if exit_court_row is not None and txt(exit_court_row.get("run_id"), "") == current_run_id
+            and txt(exit_court_row.get("ticker"), "") == current_ticker
+            and txt(exit_court_row.get("trade_id"), "") == trade_id
             else "—"
         )
 
