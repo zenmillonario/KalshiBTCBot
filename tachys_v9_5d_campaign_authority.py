@@ -33,7 +33,7 @@ r = c.r
 rs2 = c.rs2
 ET = c.ET
 
-VERSION = "V9.5D"
+VERSION = "V9.5D-TACTICAL-PAPER-01"
 _START_TS = time.time()
 RUN_ID = datetime.now(ET).strftime("D%Y%m%d_%H%M%S")
 SESSION_ID = f"{RUN_ID}_PID{os.getpid()}"
@@ -65,12 +65,31 @@ WINNER_LARGE_GIVEBACK_PCT = 15.0
 
 TERMINAL_TARGET_SEC = 60.0
 EMERGENCY_HARD_ROI = -0.60
+TACTICAL_STAKE = 5.0
+TACTICAL_HARVEST_ROI = 0.35
+TACTICAL_INVALIDATION_ROI = -0.15
+MIDWINNER_ARM_MFE_PCT = 35.0
+MIDWINNER_MIN_CURRENT_ROI_PCT = 20.0
+MIDWINNER_TARGET_STALL_SEC = 30.0
+CHURN_REENTRY_WAIT_SEC = 30.0
+CHURN_MAX_NEGATIVE_HOLD_SEC = 120.0
+CHURN_MIN_EXPIRY_SEC = 90.0
 
 CAMPAIGN_LOG = "tachys_campaign_authority_v9_5d.csv"
 WINNER_LOG = "tachys_winner_harvest_v9_5d.csv"
 EXIT_COURT_LOG = "tachys_exit_court_v9_5d.csv"
 PREARM_LOG = "tachys_prearm_lifecycle_v9_5d.csv"
 MANIFEST_LOG = "tachys_run_manifest_v9_5d.csv"
+TACTICAL_LOG = "tachys_tactical_lifecycle_v9_5d.csv"
+TACTICAL_FIELDS = ["timestamp","run_id","session_id","event","trade_id","ticker",
+                   "side","state","campaign_side","ema_gap","target_height","roi_pct","reason"]
+QUOTE_AUDIT_LOG = "tachys_quote_integrity_v9_5d.csv"
+QUOTE_AUDIT_FIELDS = ["timestamp","run_id","session_id","event","trade_id","ticker",
+                      "side","paper_bid","l2_bid","difference","note"]
+CHURN_LOG = "tachys_churn_court_v9_5d.csv"
+CHURN_FIELDS = ["timestamp", "run_id", "session_id", "event", "ticker", "trade_id",
+                "side", "roi_pct", "churn", "gap", "ema30_slope6", "range60",
+                "seconds_left", "hold_until", "reason"]
 
 CAMPAIGN_FIELDS = [
     "timestamp","run_id","session_id","event","ticker","campaign_id","campaign_side",
@@ -160,6 +179,73 @@ def _safe_age(ts: Optional[float], now: float) -> float:
     return 0.0 if not ts else max(0.0, now - float(ts))
 
 
+class ChurnController:
+    """Narrow 30s entry reset and one-candle negative transfer review."""
+    def __init__(self):
+        self.last_exit = None
+
+    def context(self, ticker: str, now: float):
+        ctx = dict(c.brain.last_context or {})
+        if ctx.get("ticker") != ticker:
+            return False, {}, "STALE_TICKER"
+        g, metrics = dict(ctx.get("geom") or {}), dict(ctx.get("metrics") or {})
+        gap, slope, r60 = (_f(g.get("gap")), _f(g.get("e30d6")), _f(metrics.get("r60")))
+        candles = list(getattr(core, "btc_completed_candles", []) or [])[-3:]
+        if None in (gap, slope, r60) or r60 <= 0 or len(candles) < 3:
+            return False, ctx, "MISSING_GEOMETRY_OR_CANDLES"
+        if any(_f(x.get("minute")) is None or _f(x.get("open")) is None
+               or _f(x.get("close")) is None or _f(x.get("high")) is None
+               or _f(x.get("low")) is None for x in candles):
+            return False, ctx, "INCOMPLETE_CANDLES"
+        # Bootstrap history and delayed feed do not earn holding authority.
+        if now - float(candles[-1]["minute"]) > 120:
+            return False, ctx, "STALE_CANDLES"
+        colors = [1 if x["close"] > x["open"] else -1 if x["close"] < x["open"] else 0
+                  for x in candles]
+        alternating = colors[0] != 0 and colors[1] == -colors[0] and colors[2] == colors[0]
+        two_sided = sum((x["high"] - max(x["open"], x["close"]) >= .10 * max(x["high"]-x["low"], 1.))
+                        and (min(x["open"], x["close"]) - x["low"] >= .10 * max(x["high"]-x["low"], 1.))
+                        for x in candles) >= 1
+        narrow = abs(gap) <= max(12.0, .30*r60)
+        slow_spine = abs(slope) <= max(3.0, .10*r60)
+        return bool(alternating and two_sided and narrow and slow_spine), ctx, "ALTERNATING_PARALLEL" if alternating and two_sided and narrow and slow_spine else "NO_CHURN"
+
+    def after_exit(self, ticker: str, now: float):
+        active, _, _ = self.context(ticker, now)
+        if active:
+            self.last_exit = (ticker, now)
+
+    def block_entry(self, ticker: str, now: float):
+        if not self.last_exit or self.last_exit[0] != ticker:
+            return False
+        age = now - self.last_exit[1]
+        if age < 0 or age >= CHURN_REENTRY_WAIT_SEC:
+            return False
+        active, _, _ = self.context(ticker, now)
+        return active
+
+    def delay_negative_transfer(self, ticker, side, position, roi, seconds_left, now):
+        if roi is None or roi >= 0 or seconds_left is None or seconds_left <= CHURN_MIN_EXPIRY_SEC:
+            return False, "NO_NEGATIVE_CHURN_HOLD"
+        active, ctx, reason = self.context(ticker, now)
+        if not active:
+            return False, reason
+        # Hard emergencies and contract close continue through the original manager.
+        if roi <= EMERGENCY_HARD_ROI:
+            return False, "HARD_EMERGENCY"
+        until = _f(position.get("_v95d_churn_hold_until"))
+        if until is None:
+            # Finish the next full minute candle, with an absolute two-minute cap.
+            until = min((int(now // 60) + 2)*60.0, now + CHURN_MAX_NEGATIVE_HOLD_SEC)
+            position["_v95d_churn_hold_until"] = until
+            g, m = ctx.get("geom") or {}, ctx.get("metrics") or {}
+            _write(CHURN_LOG, CHURN_FIELDS, dict(event="HOLD_STARTED", ticker=ticker,
+                   trade_id=position.get("trade_id"), side=side, roi_pct=100*roi, churn=1,
+                   gap=g.get("gap"), ema30_slope6=g.get("e30d6"), range60=m.get("r60"),
+                   seconds_left=seconds_left, hold_until=_utc(until), reason=reason))
+        return now < until, "NEXT_CANDLE_REVIEW" if now < until else "CANDLE_COMPLETED"
+
+
 class CampaignSupervisor:
     def __init__(self) -> None:
         self.campaign_counter = 0
@@ -182,6 +268,7 @@ class CampaignSupervisor:
 
         self.winner_state: Dict[str, Dict[str, Any]] = {}
         self.last_exit_court: Dict[str, Dict[str, Any]] = {}
+        self.churn = ChurnController()
 
         self._write_manifest()
 
@@ -197,7 +284,7 @@ class CampaignSupervisor:
             "exit_court": 1,
             "parallel_transition": 1,
             "execution_shadow": 1,
-            "note": "V9.5D supervises V9.5C perception; PAPER ONLY; execution reality shadow has zero authority.",
+            "note": "V9.5D tactical paper 01; prearm lifecycle, narrow entry checks, sub50 plateau, narrow churn 30; quote/execution shadows zero authority.",
         })
 
     # ------------------------------------------------------------------
@@ -668,7 +755,21 @@ class CampaignSupervisor:
         ruling = "NO_WINNER_ACTION"
         reasons: List[str] = []
 
-        if current_mfe < WINNER_ARM_MFE_PCT:
+        # A stalled, mature sub-50% winner deserves a separate review. Fresh
+        # target progress or 3/6/9 strength keeps the campaign breathing.
+        midwinner_plateau = (
+            MIDWINNER_ARM_MFE_PCT <= current_mfe < WINNER_ARM_MFE_PCT
+            and roi_pct is not None and roi_pct >= MIDWINNER_MIN_CURRENT_ROI_PCT
+            and high_age >= WINNER_PLATEAU_SEC
+            and target_age >= MIDWINNER_TARGET_STALL_SEC
+            and str(leg.get("state") or "") in ("MATURE", "RETURN_SLOPE")
+            and align <= 1
+        )
+        if midwinner_plateau:
+            rec["state"] = "WINNER_MID_PLATEAU"
+            ruling = "WINNER_HARVEST_EXIT"
+            reasons = ["SUB50_STALLED_WINNER", "MATURE_RETURN", "TARGET_STALLED", "369_DECAY"]
+        elif current_mfe < WINNER_ARM_MFE_PCT:
             rec["state"] = "WINNER_NONE"
             rec["harvest_since"] = None
         else:
@@ -757,18 +858,56 @@ class CampaignSupervisor:
         reasons: List[str] = []
         terminal = "NONE"
 
+        tactical = bool(position.get("_v95d_tactical"))
+        if tactical and self.campaign_side == side and self.campaign_state.startswith("CAMPAIGN_TRANSFER_CONFIRMED"):
+            geom = dict(ctx.get("geom") or {})
+            metrics = dict(ctx.get("metrics") or {})
+            gap = _f(geom.get("gap"), 0.0) or 0.0
+            if (gap * _sign(side) >= 30.0 and self._alignment_369(side, metrics) >= 2
+                    and self._target_decisive(side, target, metrics)):
+                tactical = False
+                position["_v95d_tactical"] = False
+                position["_v95d_tactical_state"] = "PROMOTED"
+                _write(TACTICAL_LOG, TACTICAL_FIELDS, {
+                    "event": "TACTICAL_PROMOTED", "trade_id": position.get("trade_id"),
+                    "ticker": ticker, "side": side, "state": "PROMOTED",
+                    "campaign_side": self.campaign_side, "ema_gap": gap,
+                    "target_height": target.get("height"), "roi_pct": None if roi is None else roi * 100,
+                    "reason": "CONFIRMED_TRANSFER_WITH_SPINE_AND_TARGET",
+                })
+
         if roi is not None and roi <= EMERGENCY_HARD_ROI:
             final = "ALLOW_INHERITED_EMERGENCY"
             ruling = "EMERGENCY_BYPASS"
             reasons.append("HARD_EMERGENCY")
+        elif tactical and roi is not None and roi >= TACTICAL_HARVEST_ROI:
+            final = "EXIT"
+            ruling = "TACTICAL_HARVEST_EXIT"
+            reasons.append("TACTICAL_PLUS_35")
+        elif tactical and roi is not None and roi <= TACTICAL_INVALIDATION_ROI:
+            final = "EXIT"
+            ruling = "TACTICAL_INVALIDATION_EXIT"
+            reasons.append("TACTICAL_MINUS_15")
+        elif tactical:
+            ruling = "HOLD_TACTICAL"
+            reasons.append("INDEPENDENT_TACTICAL_LIFECYCLE")
         elif winner.get("ruling") == "WINNER_HARVEST_EXIT":
             final = "EXIT"
             ruling = "WINNER_HARVEST_EXIT"
             reasons.append("WINNER_STOPPED_PAYING")
-        elif self.campaign_side == opp and self.campaign_state.startswith("CAMPAIGN_TRANSFER_CONFIRMED"):
-            final = "EXIT"
-            ruling = "CAMPAIGN_TRANSFER_EXIT"
-            reasons.append(f"CAMPAIGN_NOW_{opp}")
+        elif self.campaign_side == opp and (
+            self.campaign_state.startswith("CAMPAIGN_TRANSFER_CONFIRMED")
+            or position.get("_v95d_churn_hold_until") is not None
+        ):
+            delay, why = self.churn.delay_negative_transfer(ticker, side, position, roi, seconds_left, now)
+            if delay:
+                final = "HOLD"
+                ruling = "NEGATIVE_CHURN_CANDLE_HOLD"
+                reasons.append(why)
+            else:
+                final = "EXIT"
+                ruling = "CAMPAIGN_TRANSFER_EXIT"
+                reasons.append(f"CAMPAIGN_NOW_{opp};{why}")
         elif seconds_left is not None and seconds_left <= TERMINAL_TARGET_SEC:
             height = _f(target.get("height"))
             if height is not None and height * _sign(side) < 0:
@@ -823,6 +962,14 @@ class CampaignSupervisor:
                 pass
 
         core.paper_realized_pnl += pnl
+        if position.get("_v95d_tactical"):
+            position["_v95d_tactical_state"] = "HARVESTED" if ruling == "TACTICAL_HARVEST_EXIT" else "INVALIDATED"
+            _write(TACTICAL_LOG, TACTICAL_FIELDS, {
+                "event": "TACTICAL_EXIT", "trade_id": position.get("trade_id"),
+                "ticker": position.get("ticker"), "side": side,
+                "state": position["_v95d_tactical_state"], "campaign_side": self.campaign_side,
+                "roi_pct": roi * 100.0, "reason": ruling,
+            })
         core.log_paper_event("EXIT", position, bid, reason)
         core.record_contract_trade(position, bid, pnl, reason)
         try:
@@ -933,6 +1080,12 @@ def install_v95d_hooks() -> None:
         now = time.time()
         signal = dict(signal or {})
 
+        existing_snip = signal.get("strategy") == "CHOP_SNIPER" and signal.get("trade_intent") == "SNIP"
+        if not existing_snip and supervisor.churn.block_entry(ticker, now):
+            _write(CHURN_LOG, CHURN_FIELDS, dict(event="REENTRY_WAIT_30S", ticker=ticker,
+                   side=side, churn=1, reason="REGULAR_ENTRY_IN_ACTIVE_CHURN"))
+            return False
+
         try:
             allowed, reason, prearm_override = supervisor.entry_allowed(ticker, side, signal, now)
         except Exception as exc:
@@ -942,6 +1095,37 @@ def install_v95d_hooks() -> None:
         if not allowed:
             print(f"🧱 V9.5D ENTRY BLOCK | {side} @ {float(ask):.3f} | {reason}")
             return False
+
+        ctx = c.brain.last_context if (c.brain.last_context or {}).get("ticker") == ticker else {}
+        geom = dict(ctx.get("geom") or {})
+        target = dict(ctx.get("target") or {})
+        metrics = dict(ctx.get("metrics") or {})
+        gap = _f(geom.get("gap"))
+        height = _f(target.get("height"))
+        r60 = max(1.0, _f(metrics.get("r60"), 1.0) or 1.0)
+        slope3 = _f(geom.get("e9d3"), 0.0) or 0.0
+        slope6 = _f(geom.get("e9d6"), 0.0) or 0.0
+        slope9 = _f(geom.get("e9d9"), 0.0) or 0.0
+        is_prearm = prearm_override and "ROLLOVER_PREARM" in str(signal.get("early_exception_reasons") or "")
+        spine_aligned_main = (
+            is_prearm and gap is not None and height is not None
+            and gap * _sign(side) >= max(30.0, 0.35 * r60)
+            and height * _sign(side) >= 8.0
+        )
+        tactical = is_prearm and side != supervisor.campaign_side and not spine_aligned_main
+
+        # Deliberately narrow entry restraints. These are context checks, not
+        # global vetoes on counter-arcs or every cheap contract.
+        if not is_prearm and gap is not None and height is not None:
+            stalled_no = (side == "NO" and height >= max(30.0, 0.4 * r60)
+                          and gap < 0 and slope3 >= -0.5
+                          and (_f(signal.get("btc_price")) or 0.0) > (_f(geom.get("e9")) or float("inf")))
+            weak_yes = (side == "YES" and gap <= -40.0 and height < max(8.0, 0.12 * r60)
+                        and slope3 < -1.5 and slope6 < -1.5 and slope9 < -1.5)
+            if stalled_no or weak_yes:
+                why = "NO_TARGET_AND_EMA_APPROACH_WAIT" if stalled_no else "YES_AGAINST_EMA9_FORMATION_WAIT"
+                print(f"🧱 V9.5D ENTRY BLOCK | {side} @ {float(ask):.3f} | {why}")
+                return False
 
         # Preserve V9.5C bypass behavior while identifying V9.5D in telemetry.
         base_strategy = str(signal.get("strategy") or "V95C_LEG_GEOMETRY")
@@ -967,9 +1151,17 @@ def install_v95d_hooks() -> None:
             core.v923_mutex_entry_ok = lambda _ticker, _side, _now=None: (True, "V95D_PARALLEL_TRANSITION")
             print(f"↔️ V9.5D PARALLEL TRANSITION | existing {opposite} + new {side} candidate")
 
+        old_stakes = None
+        if tactical:
+            old_stakes = (core.PAPER_STAKE, core.A_PLUS_PAPER_STAKE)
+            core.PAPER_STAKE = min(float(core.PAPER_STAKE), TACTICAL_STAKE)
+            core.A_PLUS_PAPER_STAKE = min(float(core.A_PLUS_PAPER_STAKE), TACTICAL_STAKE)
+            signal["early_exception_reasons"] += ";V95D_TACTICAL_PREARM"
         try:
             entered = bool(original_enter(ticker, side, ask, signal))
         finally:
+            if old_stakes is not None:
+                core.PAPER_STAKE, core.A_PLUS_PAPER_STAKE = old_stakes
             if old_mutex is not None:
                 core.v923_mutex_entry_ok = old_mutex
 
@@ -980,6 +1172,15 @@ def install_v95d_hooks() -> None:
                 pos["_v95d_campaign_side"] = supervisor.campaign_side
                 pos["_v95d_entry_reason"] = reason
                 pos["_v95d_parallel_transition"] = bool(parallel)
+                pos["_v95d_tactical"] = bool(tactical)
+                pos["_v95d_tactical_state"] = "ACTIVE_TACTICAL" if tactical else "MAIN"
+                if tactical or spine_aligned_main:
+                    _write(TACTICAL_LOG, TACTICAL_FIELDS, {
+                        "event": "TACTICAL_OPEN" if tactical else "SPINE_ALIGNED_MAIN_OPEN",
+                        "trade_id": pos.get("trade_id"), "ticker": ticker, "side": side,
+                        "state": pos["_v95d_tactical_state"], "campaign_side": supervisor.campaign_side,
+                        "ema_gap": gap, "target_height": height, "reason": reason,
+                    })
                 try:
                     execution_shadow.on_entry(
                         pos, ticker, side, ask, now=time.time()
@@ -998,6 +1199,30 @@ def install_v95d_hooks() -> None:
 
     def paper_manage_wrapper(ticker, yes_ask, no_ask):
         now = time.time()
+        # Audit asynchronous top quote versus the native book. The book has no
+        # exchange sequence/age in this interface, so this has ZERO authority.
+        try:
+            book = core.level2_snapshot(now)
+            l2_bids = {"YES": _f(book.get("yes_bid")),
+                       "NO": None if _f(book.get("yes_ask")) is None else 1.0 - float(book["yes_ask"])}
+            for audit_side in ("YES", "NO"):
+                audit_pos = (getattr(core, "paper_positions", {}) or {}).get(audit_side)
+                if not isinstance(audit_pos, dict) or audit_pos.get("ticker") != ticker:
+                    continue
+                paper_bid, l2_bid = _bid(audit_side, yes_ask, no_ask), l2_bids[audit_side]
+                if paper_bid is None or l2_bid is None or abs(paper_bid - l2_bid) < 0.10:
+                    continue
+                if now - float(audit_pos.get("_v95d_last_quote_audit", 0.0)) < 3.0:
+                    continue
+                audit_pos["_v95d_last_quote_audit"] = now
+                _write(QUOTE_AUDIT_LOG, QUOTE_AUDIT_FIELDS, {
+                    "event": "PAPER_L2_MISMATCH", "trade_id": audit_pos.get("trade_id"),
+                    "ticker": ticker, "side": audit_side, "paper_bid": paper_bid,
+                    "l2_bid": l2_bid, "difference": paper_bid - l2_bid,
+                    "note": "observer only; book sequence and timestamp unverified",
+                })
+        except Exception as exc:
+            print(f"⚠️ V9.5D quote-audit observer error: {exc}")
         try:
             execution_shadow.observe(ticker, yes_ask, no_ask, now)
         except Exception as exc:
@@ -1033,6 +1258,7 @@ def install_v95d_hooks() -> None:
         for side, p in positions:
             still = (getattr(core, "paper_positions", {}) or {}).get(side) is p
             if not still:
+                supervisor.churn.after_exit(ticker, time.time())
                 try:
                     execution_shadow.on_exit(
                         p, ticker, side, _bid(side, yes_ask, no_ask),
@@ -1050,6 +1276,7 @@ def install_v95d_hooks() -> None:
             if still and court.get("final_action") == "EXIT":
                 ruling = str(court.get("court_ruling"))
                 if supervisor.execute_exit(p, yes_ask, no_ask, ruling):
+                    supervisor.churn.after_exit(ticker, time.time())
                     try:
                         execution_shadow.on_exit(
                             p, ticker, side, _bid(side, yes_ask, no_ask),
@@ -1080,6 +1307,9 @@ async def main() -> None:
     print("PAPER ONLY | V9.5C Leg Geometry remains the perception layer.")
     print("")
     print("🧭 CAMPAIGN AUTHORITY: EMA9 formation guides transfer; opposite candles are evidence, not authority.")
+    print("🧪 V9.5D TACTICAL PAPER 01: contrary prearms have independent size/exit; stalled +35% sub-50 winners get review.")
+    print("🧪 NARROW ENTRY RESTRAINTS: target/EMA approach and against-EMA9 formation; quote mismatch is observer only.")
+    print("⏸️ NARROW CHURN: 30s regular re-entry wait and one-candle negative transfer review in verified alternating compression.")
     print("⏳ PREARM TTL: rollover memory expires in 60s and is consumed after first use.")
     print("🏁 WINNER HARVEST: strong winners breathe; mature plateaus are collected.")
     print("⚖️ EXIT COURT: local opposite-leg + legacy exits are proposals, not sovereign exits.")

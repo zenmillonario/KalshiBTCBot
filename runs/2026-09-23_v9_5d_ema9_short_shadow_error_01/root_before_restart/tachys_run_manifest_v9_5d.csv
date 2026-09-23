@@ -1,0 +1,3 @@
+timestamp,run_id,session_id,version,base_version,start_local,pid,campaign_authority,prearm_ttl_sec,winner_harvest,exit_court,parallel_transition,note
+2026-09-21T14:39:22.042273+00:00,D20260921_103922,D20260921_103922_PID7892,V9.5D,V9.5C Leg Geometry,2026-09-21T10:39:22.042174-04:00,7892,1,60.0,1,1,1,V9.5D supervises V9.5C perception; PAPER ONLY.
+2026-09-23T04:34:26.998117+00:00,D20260923_003426,D20260923_003426_PID2740,V9.5D,V9.5C Leg Geometry,2026-09-23T00:34:26.997996-04:00,2740,1,60.0,1,1,1,1,V9.5D supervises V9.5C perception; PAPER ONLY; execution reality shadow has zero authority.
