@@ -1,56 +1,105 @@
-"""Patch OBS4.1 remaining-capacity score accounting for LIVE_PUBLIC_OBSERVATION.
-Observer-only bookkeeping fix; no trading authority or detector threshold change.
+"""OBS4.1 SCORE1: narrow live-public remaining-capacity score-accounting repair.
+Observer-only bookkeeping change. No engine or detector threshold changes.
 """
 from pathlib import Path
 from datetime import datetime, timezone
-import base64, hashlib, json, py_compile, shutil, subprocess, sys
+import hashlib, importlib.util, json, py_compile, shutil, subprocess, sys
 
-LAB=Path(__file__).resolve().parent
-OBS=LAB/'observer41'
-CORE=OBS/'commander_core.py'
-MANIFEST=OBS/'observer_package_manifest.json'
-TEST=OBS/'test_obs411_score_accounting.py'
-ORIG_SHA='6327bdaaeecbe3fbcaeb4b23d2f531aabb656485694c3192fde2799ebc239755'
-PATCH_SHA='5024835997eb05ad0db4dee8c19228a87110dc2fb4d03e93eadef75eae88be9d'
-TEST_SHA='64d0d86c77881f730852b2168e68bd13208a0cc219db5b5a4e4e165adef67254'
-PATCH=base64.b64decode('IiIiQ29tbWFuZGVyIE9CUzM6IHB1cmUsIGZvcndhcmQtb25seSBvYnNlcnZhdGlvbjsgbm8gZW5naW5lIGltcG9ydHMgb3IgYWN0aW9ucy4KCkJUQyBzd2luZ3MgYXJlIGEgc2VwYXJhdGUgc2FtcGxlZC1wcmljZSBvYmplY3QsIE5FVkVSIGEgcmVwbGFjZW1lbnQgZm9yIHRoZQpjYW5vbmljYWwgRU1BOSByZXR1cm4vdHJhbnNmZXIvYnVpbGQgbGVnLiBBbGwgdGhyZXNob2xkcyBhcmUgcmVzZWFyY2ggc2V0dGluZ3MuCiIiIgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgpmcm9tIGNvbGxlY3Rpb25zIGltcG9ydCBDb3VudGVyLCBkZXF1ZQpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MsIGFzZGljdApmcm9tIGNvcHkgaW1wb3J0IGRlZXBjb3B5CmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lLCB0aW1lem9uZQppbXBvcnQgbWF0aApmcm9tIHN0YXRpc3RpY3MgaW1wb3J0IG1lZGlhbgpmcm9tIHR5cGluZyBpbXBvcnQgQW55LCBDYWxsYWJsZQoKUkVWSVNJT04gPSAiVEFDSFlTLUNPTU1BTkRFUi1PQlM0LjEtRkFTVC1TSE9DSy1BRlRFUlNIT0NLIgoKQGRhdGFjbGFzcyhmcm96ZW49VHJ1ZSkKY2xhc3MgQ29uZmlnOgogICAgIyBGcm96ZW4gZW5naW5lZXJpbmcgaHlwb3RoZXNlcywgbm90IGZpdHRlZCBwcm9maXQgcGFyYW1ldGVycy4KICAgIGhpc3Rvcnlfc2Vjb25kczogZmxvYXQgPSAxODAuMAogICAgZ2FwX3Jlc2V0X3NlY29uZHM6IGZsb2F0ID0gMzAuMAogICAgY29udGV4dF9tYXhfYWdlOiBmbG9hdCA9IDkuMAogICAgc3BlY2lhbGlzdF9tYXhfYWdlOiBmbG9hdCA9IDMwLjAKICAgIG1pbmltdW1fcmVhZHlfc2Vjb25kczogZmxvYXQgPSA2MC4wCiAgICBleHRlbmRlZF9yZWFkeV9zZWNvbmRzOiBmbG9hdCA9IDE4MC4wCiAgICBzd2luZ19taW5fZG9sbGFyczogZmxvYXQgPSA2LjAKICAgIHN3aW5nX3JhbmdlX2ZyYWN0aW9uOiBmbG9hdCA9IDAuMTgKICAgIHJldmVyc2FsX2NvbmZpcm1fc2Vjb25kczogZmxvYXQgPSAzLjAKICAgIGFuYWxvZ3VlX21pbmltdW06IGludCA9IDMKICAgIGFuYWxvZ3VlX2xpbWl0OiBpbnQgPSA5CiAgICBhbmFsb2d1ZV9tYXhfYWdlOiBmbG9hdCA9IDE4MDAuMAogICAga25vdF9nYXBfZnJhY3Rpb246IGZsb2F0ID0gMC4xOAogICAga25vdF9zcHJlYWRfZnJhY3Rpb246IGZsb2F0ID0gMC4zNgogICAga25vdF9yYW5nZV9jb250cmFjdGlvbjogZmxvYXQgPSAwLjYwCiAgICBrbm90X3dpZGVuX211bHRpcGxlOiBmbG9hdCA9IDEuNTAKICAgIGtub3RfcmVsZWFzZV9jb25maXJtX3NlY29uZHM6IGZsb2F0ID0gNi4wCiAgICBrbm90X2xpZmV0aW1lX3NlY29uZHM6IGZsb2F0ID0gOTAwLjAKICAgIHBhcmVudF9wZXJzaXN0ZW5jZV9zZWNvbmRzOiBmbG9hdCA9IDYwLjAKICAgIHN1YjUwX3BlYWtfbWluX3BjdDogZmxvYXQgPSAxOC4wCiAgICBzdWI1MF9naXZlYmFja19wcDogZmxvYXQgPSA5LjAKICAgIHN1YjUwX3N0YWxsX3NlY29uZHM6IGZsb2F0ID0gOS4wCiAgICBmYXN0X3JlZW50cnlfc2Vjb25kczogZmxvYXQgPSA5LjAKICAgIHJlcG9ydF9pbnRlcnZhbF9zZWNvbmRzOiBmbG9hdCA9IDkuMAoKCiAgICAj rest of validated OBS4.1 commander_core payload omitted here intentionally; this branch handoff only needs the patch script body already packaged locally.
-');
-TEST_BYTES=base64.b64decode('aW1wb3J0IHVuaXR0ZXN0CmZyb20gY29tbWFuZGVyX2NvcmUgaW1wb3J0IHJlbWFpbmluZ19vdXRjb21lCgpjbGFzcyBTY29yZUFjY291bnRpbmdMaXZlUHVibGljKHVuaXR0ZXN0LlRlc3RDYXNlKToKICAgIGRlZiBiYXNlX3ByZWQoc2VsZiwgbW9kZSk6CiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgJ2lzc3VlZF90JzogMTAwLjAsCiAgICAgICAgICAgICdpc3N1ZWRfYXZhaWxhYmxlX3QnOiAxMDIuMCwKICAgICAgICAgICAgJ3B1YmxpY2F0aW9uX21vZGUnOiBtb2RlLAogICAgICAgICAgICAncmVtYWluaW5nX2NhcGFjaXR5JzogewogICAgICAgICAgICAgICAgJ3N0YXR1cyc6J0lTU1VFRF9DT05ESVRJT05BTF9SRU1BSU5JTkcnLAogICAgICAgICAgICAgICAgJ2FtcGxpdHVkZV9zb19mYXInOjEwLjAsCiAgICAgICAgICAgICAgICAncmVtYWluaW5nX2FtcGxpdHVkZV9tZWRpYW4nOjguMCwKICAgICAgICAgICAgICAgICdyZW1haW5pbmdfYW1wbGl0dWRlX2xvdyc6NS4wLAogICAgICAgICAgICAgICAgJ3JlbWFpbmluZ19hbXBsaXR1ZGVfaGlnaCc6MTIuMCwKICAgICAgICAgICAgICAgICdyZW1haW5pbmdfc2Vjb25kc19tZWRpYW4nOjIwLjAsCiAgICAgICAgICAgICAgICAncmVtYWluaW5nX3NlY29uZHNfbG93JzoxNS4wLAogICAgICAgICAgICAgICAgJ3JlbWFpbmluZ19zZWNvbmRzX2hpZ2gnOjMwLjAsCiAgICAgICAgICAgICAgICAnbGFzdF9jb21wYXRpYmxlX2FtcGxpdHVkZV9iYXNlbGluZSc6OS4wLAogICAgICAgICAgICAgICAgJ2xhc3RfY29tcGF0aWJsZV9zZWNvbmRzX2Jhc2VsaW5lJzoyMi4wLAogICAgICAgICAgICB9LAogICAgICAgIH0KICAgIGRlZiBjbG9zZWQoc2VsZik6CiAgICAgICAgcmV0dXJuIHsnZW5kX2V4dHJlbWVfdCc6MTIyLjAsJ2FtcGxpdHVkZSc6MTkuMH0KCiAgICBkZWYgdGVzdF9saXZlX3B1YmxpY19zY29yZXNfYXNfdGltZWx5X2ZvcndhcmQoc2VsZik6CiAgICAgICAgb3V0PXJlbWFpbmluZ19vdXRjb21lKHNlbGYuYmFzZV9wcmVkKCdMSVZFX1BVQkxJQ19PQlNFUlZBVElPTicpLHNlbGYuY2xvc2VkKCkpCiAgICAgICAgc2VsZi5hc3NlcnRFcXVhbChvdXRbJ3N0YXR1cyddLCdTQ09SRURfVElNRUxZX0ZPUldBUkQnKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwob3V0WydhY3R1YWxfcmVtYWluaW5nX2FtcGxpdHVkZSddLDkuMCkKICAgICAgICBzZWxmLmFzc2VydEVxdWFsKG91dFsnYWN0dWFsX3JlbWFpbmluZ19zZWNvbmRzJ10sMjAuMCkKCiAgICBkZWYgdGVzdF9kZWxheWVkX3B1YmxpY19pc19leHBsaWNpdGx5X2V4Y2x1ZGVkKHNlbGYpOgogICAgICAgIG91dD1yZW1haW5pbmdfb3V0Y29tZShzZWxmLmJhc2VfcHJlZCgnREVMQVlFRF9QVUJMSUNfT0JTRVJWQVRJT04nKSxzZWxmLmNsb3NlZCgpKQogICAgICAgIHNlbGYuYXNzZXJ0RXF1YWwob3V0WydzdGF0dXMnXSwnREVMQVlFRF9QVUJMSUNBVElPTl9FWENMVURFRCcpCiAgICAgICAgc2VsZi5hc3NlcnRJc05vbmUob3V0WydhbXBsaXR1ZGVfYWJzb2x1dGVfZXJyb3InXSkKCmlmIF9fbmFtZV9fPT0nX19tYWluX18nOiB1bml0dGVzdC5tYWluKCkK')
+LAB = Path(__file__).resolve().parent
+OBS = LAB / "observer41"
+CORE = OBS / "commander_core.py"
+MANIFEST = OBS / "observer_package_manifest.json"
+RUNNER = OBS / "run_observer41_tests.py"
 
-def sha(b): return hashlib.sha256(b).hexdigest()
-print('OBS4.1 SCORE1 PATCH | OBSERVER ACCOUNTING ONLY | NO ENGINE OR OBSERVER START')
-if not CORE.is_file() or not MANIFEST.is_file():
-    raise SystemExit('STOP: observer41 package is incomplete; nothing changed.')
-if sha(TEST_BYTES)!=TEST_SHA:
-    raise SystemExit('STOP: embedded test payload hash mismatch.')
-manifest=json.loads(MANIFEST.read_text(encoding='utf-8'))
-recorded=manifest.get('sha256',{}).get('commander_core.py')
-cur=sha(CORE.read_bytes())
-if cur!=ORIG_SHA:
-    raise SystemExit('STOP: observer41 commander_core.py differs from validated original bytes; nothing changed.')
-text=CORE.read_text(encoding='utf-8')
-old='if mode not in {"LIVE_CSV_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
-new='if mode not in {"LIVE_CSV_OBSERVATION","LIVE_PUBLIC_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
-if old not in text:
-    raise SystemExit('STOP: expected score-accounting line not found; nothing changed.')
-text=text.replace(old,new,1)
-old2='result["status"]="DELAYED_PUBLICATION_EXCLUDED"; return result'
-new2='result["status"]="DELAYED_PUBLICATION_EXCLUDED"; return result'
-patched=text.encode('utf-8')
-stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-shutil.copy2(CORE,OBS/('commander_core_pre_score1_'+stamp+'.py'))
-shutil.copy2(MANIFEST,OBS/('observer_package_manifest_pre_score1_'+stamp+'.json'))
-CORE.write_bytes(patched)
-manifest['sha256']['commander_core.py']=sha(patched)
-MANIFEST.write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n',encoding='utf-8')
-TEST.write_bytes(TEST_BYTES)
-py_compile.compile(str(CORE),doraise=True)
-py_compile.compile(str(TEST),doraise=True)
-runner=OBS/'run_observer41_tests.py'
-cp=subprocess.run([sys.executable,'-B',str(runner)],cwd=str(OBS),check=False)
-if cp.returncode:
-    raise SystemExit('STOP: OBS4.1 tests failed. Do not start observer41; backups remain available.')
-print('PASS  Live-public forward score accounting installed.')
-print('PASS  Delayed-public observations remain excluded from forward scoring.')
-print('PASS  Shock thresholds, transport, 3/6/9, 15/30/60, HF2 and trading logic unchanged.')
-print('OBS4.1 SCORE1 PATCH COMPLETE - BOT AND OBSERVER NOT STARTED')
+EXPECTED_ORIG_SHA = "6327bdaaeecbe3fbcaeb4b23d2f531aabb656485694c3192fde2799ebc239755"
+OLD = 'if mode not in {"LIVE_CSV_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
+NEW = 'if mode not in {"LIVE_CSV_OBSERVATION","LIVE_PUBLIC_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
+
+def sha_bytes(b):
+    return hashlib.sha256(b).hexdigest()
+
+print("OBS4.1 SCORE1 PATCH | OBSERVER ACCOUNTING ONLY | NO ENGINE OR OBSERVER START")
+
+if not CORE.is_file() or not MANIFEST.is_file() or not RUNNER.is_file():
+    raise SystemExit("STOP: observer41 package is incomplete; nothing changed.")
+
+original_bytes = CORE.read_bytes()
+original_sha = sha_bytes(original_bytes)
+manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+recorded_sha = manifest.get("sha256", {}).get("commander_core.py")
+
+if original_sha != EXPECTED_ORIG_SHA or recorded_sha != EXPECTED_ORIG_SHA:
+    raise SystemExit(
+        "STOP: observer41 commander_core.py is not the validated pre-SCORE1 source; nothing changed."
+    )
+
+text = original_bytes.decode("utf-8")
+if OLD not in text:
+    raise SystemExit("STOP: expected score-accounting line not found; nothing changed.")
+
+patched_text = text.replace(OLD, NEW, 1)
+patched_bytes = patched_text.encode("utf-8")
+patched_sha = sha_bytes(patched_bytes)
+
+stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+backup_core = OBS / f"commander_core_pre_score1_{stamp}.py"
+backup_manifest = OBS / f"observer_package_manifest_pre_score1_{stamp}.json"
+shutil.copy2(CORE, backup_core)
+shutil.copy2(MANIFEST, backup_manifest)
+
+CORE.write_bytes(patched_bytes)
+manifest["sha256"]["commander_core.py"] = patched_sha
+MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+py_compile.compile(str(CORE), doraise=True)
+
+cp = subprocess.run([sys.executable, "-B", str(RUNNER)], cwd=str(OBS), check=False)
+if cp.returncode != 0:
+    raise SystemExit(
+        "STOP: OBS4.1 test suite failed after SCORE1 patch. Do not start observer41; backups were preserved."
+    )
+
+# Narrow behavior checks on the actual patched function.
+spec = importlib.util.spec_from_file_location("score1_commander_core", CORE)
+mod = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(mod)
+
+pred = {
+    "issued_t": 100.0,
+    "issued_available_t": 102.0,
+    "remaining_capacity": {
+        "status": "ISSUED_CONDITIONAL_REMAINING",
+        "amplitude_so_far": 10.0,
+        "remaining_amplitude_median": 8.0,
+        "remaining_amplitude_low": 5.0,
+        "remaining_amplitude_high": 12.0,
+        "remaining_seconds_median": 20.0,
+        "remaining_seconds_low": 15.0,
+        "remaining_seconds_high": 30.0,
+        "last_compatible_amplitude_baseline": 9.0,
+        "last_compatible_seconds_baseline": 22.0,
+    },
+}
+closed = {"end_extreme_t": 122.0, "amplitude": 19.0}
+
+pred_live = dict(pred)
+pred_live["publication_mode"] = "LIVE_PUBLIC_OBSERVATION"
+live = mod.remaining_outcome(pred_live, closed)
+if live.get("status") != "SCORED_TIMELY_FORWARD":
+    raise SystemExit("STOP: LIVE_PUBLIC_OBSERVATION did not score as timely forward.")
+
+pred_delayed = dict(pred)
+pred_delayed["publication_mode"] = "DELAYED_PUBLIC_OBSERVATION"
+delayed = mod.remaining_outcome(pred_delayed, closed)
+if "EXCLUDED" not in str(delayed.get("status", "")):
+    raise SystemExit("STOP: delayed public observation was not excluded from forward scoring.")
+
+manifest2 = json.loads(MANIFEST.read_text(encoding="utf-8"))
+if manifest2.get("sha256", {}).get("commander_core.py") != patched_sha:
+    raise SystemExit("STOP: post-patch manifest hash mismatch.")
+
+print("PASS  Live-public remaining-capacity forecasts now score as timely forward.")
+print("PASS  Delayed-public observations remain excluded from forward scoring.")
+print("PASS  Existing OBS4.1 test suite passed.")
+print("PASS  Shock thresholds, transport, 3/6/9, 15/30/60, HF2 and trading logic unchanged.")
+print("OBS4.1 SCORE1 PATCH COMPLETE - BOT AND OBSERVER NOT STARTED")
