@@ -1,9 +1,9 @@
 """OBS4.1 SCORE1: narrow live-public remaining-capacity score-accounting repair.
-Observer-only bookkeeping change. No engine or detector threshold changes.
+Idempotent observer-only bookkeeping patch. No engine or detector threshold changes.
 """
 from pathlib import Path
 from datetime import datetime, timezone
-import hashlib, importlib.util, json, py_compile, shutil, subprocess, sys
+import hashlib, json, py_compile, shutil, subprocess, sys
 
 LAB = Path(__file__).resolve().parent
 OBS = LAB / "observer41"
@@ -25,46 +25,51 @@ print("OBS4.1 SCORE1 PATCH | OBSERVER ACCOUNTING ONLY | NO ENGINE OR OBSERVER ST
 if not CORE.is_file() or not MANIFEST.is_file() or not RUNNER.is_file():
     raise SystemExit("STOP: observer41 package is incomplete; nothing changed.")
 
-original_bytes = CORE.read_bytes()
-original_sha = sha_bytes(original_bytes)
+core_bytes = CORE.read_bytes()
+core_sha = sha_bytes(core_bytes)
 manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
 recorded_sha = manifest.get("sha256", {}).get("commander_core.py")
+text = core_bytes.decode("utf-8")
 
-if original_sha != EXPECTED_ORIG_SHA or recorded_sha != EXPECTED_ORIG_SHA:
-    raise SystemExit(
-        "STOP: observer41 commander_core.py is not the validated pre-SCORE1 source; nothing changed."
-    )
+already_patched = (NEW_DELAY in text and NEW_ALLOWED in text)
 
-text = original_bytes.decode("utf-8")
-if OLD_DELAY not in text or OLD_ALLOWED not in text:
-    raise SystemExit("STOP: expected OBS4.1 score-accounting block not found; nothing changed.")
+if already_patched:
+    if recorded_sha != core_sha:
+        raise SystemExit("STOP: SCORE1 text is present but observer41 manifest hash does not match current source.")
+    print("PASS  SCORE1 source changes are already installed; no second edit performed.")
+else:
+    if core_sha != EXPECTED_ORIG_SHA or recorded_sha != EXPECTED_ORIG_SHA:
+        raise SystemExit("STOP: observer41 source is neither validated pre-SCORE1 nor a verified SCORE1 install; nothing changed.")
+    if OLD_DELAY not in text or OLD_ALLOWED not in text:
+        raise SystemExit("STOP: expected OBS4.1 score-accounting block not found; nothing changed.")
 
-patched_text = text.replace(OLD_DELAY, NEW_DELAY, 1).replace(OLD_ALLOWED, NEW_ALLOWED, 1)
-patched_bytes = patched_text.encode("utf-8")
-patched_sha = sha_bytes(patched_bytes)
+    patched_text = text.replace(OLD_DELAY, NEW_DELAY, 1).replace(OLD_ALLOWED, NEW_ALLOWED, 1)
+    patched_bytes = patched_text.encode("utf-8")
+    patched_sha = sha_bytes(patched_bytes)
 
-stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-backup_core = OBS / f"commander_core_pre_score1_{stamp}.py"
-backup_manifest = OBS / f"observer_package_manifest_pre_score1_{stamp}.json"
-shutil.copy2(CORE, backup_core)
-shutil.copy2(MANIFEST, backup_manifest)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    shutil.copy2(CORE, OBS / f"commander_core_pre_score1_{stamp}.py")
+    shutil.copy2(MANIFEST, OBS / f"observer_package_manifest_pre_score1_{stamp}.json")
 
-CORE.write_bytes(patched_bytes)
-manifest["sha256"]["commander_core.py"] = patched_sha
-MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
-py_compile.compile(str(CORE), doraise=True)
+    CORE.write_bytes(patched_bytes)
+    manifest["sha256"]["commander_core.py"] = patched_sha
+    MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    py_compile.compile(str(CORE), doraise=True)
+    print("PASS  SCORE1 source changes installed and manifest hash updated.")
 
 cp = subprocess.run([sys.executable, "-B", str(RUNNER)], cwd=str(OBS), check=False)
 if cp.returncode != 0:
-    raise SystemExit(
-        "STOP: OBS4.1 test suite failed after SCORE1 patch. Do not start observer41; backups were preserved."
-    )
+    raise SystemExit("STOP: OBS4.1 test suite failed. Do not start observer41 until reviewed.")
 
-# Narrow behavior checks on the actual patched function.
-spec = importlib.util.spec_from_file_location("score1_commander_core", CORE)
-mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
+# Use a NORMAL module import in a subprocess. Python 3.14 dataclasses expects
+# the module to be present in sys.modules; importlib.exec_module without
+# registration caused the prior verifier-only traceback.
+probe = r'''
+import sys
+from pathlib import Path
+obs = Path(sys.argv[1])
+sys.path.insert(0, str(obs))
+import commander_core as mod
 
 pred = {
     "issued_t": 100.0,
@@ -92,14 +97,25 @@ for mode, expected in (
     p["publication_mode"] = mode
     got = mod.remaining_outcome(p, closed).get("status")
     if got != expected:
-        raise SystemExit(f"STOP: {mode} produced {got!r}, expected {expected!r}.")
+        raise SystemExit(f"{mode} produced {got!r}, expected {expected!r}")
+print("BEHAVIOR PROBE PASSED")
+'''
+probe_cp = subprocess.run(
+    [sys.executable, "-B", "-c", probe, str(OBS)],
+    cwd=str(OBS),
+    check=False,
+)
+if probe_cp.returncode != 0:
+    raise SystemExit("STOP: SCORE1 behavior probe failed. Existing OBS4.1 tests passed, but do not start observer41 until reviewed.")
 
 manifest2 = json.loads(MANIFEST.read_text(encoding="utf-8"))
-if manifest2.get("sha256", {}).get("commander_core.py") != patched_sha:
-    raise SystemExit("STOP: post-patch manifest hash mismatch.")
+current_sha = sha_bytes(CORE.read_bytes())
+if manifest2.get("sha256", {}).get("commander_core.py") != current_sha:
+    raise SystemExit("STOP: post-check observer41 manifest hash mismatch.")
 
-print("PASS  Live-public remaining-capacity forecasts now score as timely forward.")
-print("PASS  Delayed-public observations are explicitly excluded from forward scoring.")
+print("PASS  Live-public remaining-capacity forecasts score as timely forward.")
+print("PASS  Delayed-public observations remain excluded from forward scoring.")
 print("PASS  Existing OBS4.1 test suite passed.")
+print("PASS  Python 3.14 normal-import behavior probe passed.")
 print("PASS  Shock thresholds, transport, 3/6/9, 15/30/60, HF2 and trading logic unchanged.")
 print("OBS4.1 SCORE1 PATCH COMPLETE - BOT AND OBSERVER NOT STARTED")
