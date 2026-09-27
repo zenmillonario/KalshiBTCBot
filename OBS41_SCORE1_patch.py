@@ -12,8 +12,10 @@ MANIFEST = OBS / "observer_package_manifest.json"
 RUNNER = OBS / "run_observer41_tests.py"
 
 EXPECTED_ORIG_SHA = "6327bdaaeecbe3fbcaeb4b23d2f531aabb656485694c3192fde2799ebc239755"
-OLD = 'if mode not in {"LIVE_CSV_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
-NEW = 'if mode not in {"LIVE_CSV_OBSERVATION","LIVE_PUBLIC_OBSERVATION","HISTORICAL_REPLAY_FORWARD"}:'
+OLD_DELAY = 'if mode == "DELAYED_LIVE_OBSERVATION":\n        result["status"]="DELAYED_PUBLICATION_EXCLUDED"; return result'
+NEW_DELAY = 'if mode in {"DELAYED_LIVE_OBSERVATION","DELAYED_PUBLIC_OBSERVATION"}:\n        result["status"]="DELAYED_PUBLICATION_EXCLUDED"; return result'
+OLD_ALLOWED = 'if mode not in {"LIVE_CSV_OBSERVATION","REPLAY_TIMESTAMP_ASSUMPTION"}:'
+NEW_ALLOWED = 'if mode not in {"LIVE_CSV_OBSERVATION","LIVE_PUBLIC_OBSERVATION","REPLAY_TIMESTAMP_ASSUMPTION"}:'
 
 def sha_bytes(b):
     return hashlib.sha256(b).hexdigest()
@@ -34,10 +36,10 @@ if original_sha != EXPECTED_ORIG_SHA or recorded_sha != EXPECTED_ORIG_SHA:
     )
 
 text = original_bytes.decode("utf-8")
-if OLD not in text:
-    raise SystemExit("STOP: expected score-accounting line not found; nothing changed.")
+if OLD_DELAY not in text or OLD_ALLOWED not in text:
+    raise SystemExit("STOP: expected OBS4.1 score-accounting block not found; nothing changed.")
 
-patched_text = text.replace(OLD, NEW, 1)
+patched_text = text.replace(OLD_DELAY, NEW_DELAY, 1).replace(OLD_ALLOWED, NEW_ALLOWED, 1)
 patched_bytes = patched_text.encode("utf-8")
 patched_sha = sha_bytes(patched_bytes)
 
@@ -82,24 +84,22 @@ pred = {
 }
 closed = {"end_extreme_t": 122.0, "amplitude": 19.0}
 
-pred_live = dict(pred)
-pred_live["publication_mode"] = "LIVE_PUBLIC_OBSERVATION"
-live = mod.remaining_outcome(pred_live, closed)
-if live.get("status") != "SCORED_TIMELY_FORWARD":
-    raise SystemExit("STOP: LIVE_PUBLIC_OBSERVATION did not score as timely forward.")
-
-pred_delayed = dict(pred)
-pred_delayed["publication_mode"] = "DELAYED_PUBLIC_OBSERVATION"
-delayed = mod.remaining_outcome(pred_delayed, closed)
-if "EXCLUDED" not in str(delayed.get("status", "")):
-    raise SystemExit("STOP: delayed public observation was not excluded from forward scoring.")
+for mode, expected in (
+    ("LIVE_PUBLIC_OBSERVATION", "SCORED_TIMELY_FORWARD"),
+    ("DELAYED_PUBLIC_OBSERVATION", "DELAYED_PUBLICATION_EXCLUDED"),
+):
+    p = dict(pred)
+    p["publication_mode"] = mode
+    got = mod.remaining_outcome(p, closed).get("status")
+    if got != expected:
+        raise SystemExit(f"STOP: {mode} produced {got!r}, expected {expected!r}.")
 
 manifest2 = json.loads(MANIFEST.read_text(encoding="utf-8"))
 if manifest2.get("sha256", {}).get("commander_core.py") != patched_sha:
     raise SystemExit("STOP: post-patch manifest hash mismatch.")
 
 print("PASS  Live-public remaining-capacity forecasts now score as timely forward.")
-print("PASS  Delayed-public observations remain excluded from forward scoring.")
+print("PASS  Delayed-public observations are explicitly excluded from forward scoring.")
 print("PASS  Existing OBS4.1 test suite passed.")
 print("PASS  Shock thresholds, transport, 3/6/9, 15/30/60, HF2 and trading logic unchanged.")
 print("OBS4.1 SCORE1 PATCH COMPLETE - BOT AND OBSERVER NOT STARTED")
