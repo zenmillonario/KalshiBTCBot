@@ -142,8 +142,10 @@ def _tp_edge_try(ticker,yes_ask,no_ask,close_ts=None):
         support=(hand==edge_side) or (lean==edge_side)
         third_support=(loc in ('LOWER_EDGE','UPPER_EDGE')) or (hand==edge_side and (lean==edge_side or confirms>=2))
         target_ok=(fav is not None and fav>=-30.0)
-        if ask is not None and 0<ask<=cap and support and third_support and target_ok and not _tp_parent_strong_against(edge_side,now):
-            candidate=edge_side; intent='EDGE_RETURN'; why=f'{loc}_RETURN_HAND_{hand}_LEAN_{lean}'
+        strong_against=_tp_parent_strong_against(edge_side,now)
+        strong_override=bool(strong_against and fav is not None and fav>=0.0 and hand==edge_side and confirms>=2)
+        if ask is not None and 0<ask<=cap and support and third_support and target_ok and (not strong_against or strong_override):
+            candidate=edge_side; intent='EDGE_RETURN'; why=f'{loc}_RETURN_HAND_{hand}_LEAN_{lean}_STRONG_OVERRIDE_{int(strong_override)}'
 
     # Cheap target repricing lane: permits the sub-.25 convex opportunity even
     # when the box location is not a textbook return wall (#15 type).
