@@ -74,10 +74,12 @@ def _tp_decide(side,ask,rec):
 
     if rel=='UNKNOWN':
         return False,'SIDEWAYS_ARC','WAIT_FOR_EMA9_PARENT',staff_side
-    if rel=='OPPOSES_PARENT':
-        return False,'SIDEWAYS_ARC','FOLLOW_EMA9_PARENT_OR_USE_EDGE_AUTHORITY',staff_side
     if timing=='WAIT_NEW_ARC_SHADOW' and leg!='EXPANSION':
         return False,'SIDEWAYS_ARC','WAIT_NEW_PRICE_ARC',staff_side
+    if rel=='OPPOSES_PARENT':
+        # In ordinary sideways arcs, an upstream V9.5C local-leg candidate has
+        # already earned tactical consideration. EMA9 parent is context, not veto.
+        return True,'SIDEWAYS_ARC','COUNTER_PARENT_PRICE_LEG_EARNED',staff_side
 
     # Parent-aligned pullbacks are valuable, but only after the child counter-leg
     # is mature enough to offer a resumption entry.  V1 wrongly treated any
