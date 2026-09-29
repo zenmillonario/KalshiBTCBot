@@ -17,8 +17,8 @@ def validate_reference(manifest,reference):
         wanted['tachys_v9_5d_666_revival_lab.py']=ef.read_text(encoding='utf-8').strip()
         ok=(actual==wanted and manifest.get('mode')=='PAPER_ONLY' and manifest.get('source_commit')==cio.PIN
             and manifest.get('side_action_revision')==cio.SIDE
-            and manifest.get('version')=='V9.5D-666-TERRITORY-PAPER-03-CLEAN'
-            and manifest.get('hotfix_id')=='666-TERRITORY-PAPER-03-CLEAN'
+            and manifest.get('version')=='V9.5D-666-TERRITORY-PAPER-03-DATAHOLD'
+            and manifest.get('hotfix_id')=='666-TERRITORY-PAPER-03-DATAHOLD'
             and manifest.get('strategy_parameters_changed') is False
             and manifest.get('paper_sizing_changed') is False
             and manifest.get('emergency_stop_changed') is False
