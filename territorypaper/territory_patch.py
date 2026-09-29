@@ -247,9 +247,42 @@ def apply_territory_paper(source:str)->str:
     if anchor not in source:raise RuntimeError('territory helper anchor missing')
     source=source.replace(anchor,HELPERS+anchor,1)
 
+    # PAPER-04: Campaign is strategic memory/context, not tactical sovereignty.
+    # Remove the old CAMPAIGN_*_STICKY hard veto before the entry wrapper is built.
+    sticky_old="""        # Normal tactical entries must follow the campaign.
+        if self.campaign_side in ("YES", "NO") and side != self.campaign_side:
+            # A fresh high-conviction prearm gets controlled leap-of-faith authority.
+            if is_prearm:
+                ctx = c.brain.last_context or {}
+                metrics = dict(ctx.get("metrics") or {})
+                align = self._alignment_369(side, metrics)
+                score_lead = int(c.brain.last_scores.get(side, 0)) - int(c.brain.last_scores.get(_opposite(side), 0))
+                if align >= 2 and score_lead >= 0:
+                    return True, "FRESH_PREARM_OVERRIDE", True
+            return False, f"CAMPAIGN_{self.campaign_side}_STICKY", False
+
+        return True, f"CAMPAIGN_{self.campaign_side}_ALIGNED", is_prearm
+"""
+    sticky_new="""        # Campaign remains strategic context only. Local tactical authority is
+        # decided downstream by Territory + EMA9 Parent Leg + Price Leg + Target.
+        if self.campaign_side in ("YES", "NO") and side != self.campaign_side:
+            if is_prearm:
+                ctx = c.brain.last_context or {}
+                metrics = dict(ctx.get("metrics") or {})
+                align = self._alignment_369(side, metrics)
+                score_lead = int(c.brain.last_scores.get(side, 0)) - int(c.brain.last_scores.get(_opposite(side), 0))
+                if align >= 2 and score_lead >= 0:
+                    return True, "FRESH_PREARM_OVERRIDE", True
+            return True, f"CAMPAIGN_{self.campaign_side}_CONTEXT_ONLY", is_prearm
+
+        return True, f"CAMPAIGN_{self.campaign_side}_ALIGNED", is_prearm
+"""
+    if sticky_old not in source:raise RuntimeError('campaign sticky block anchor missing')
+    source=source.replace(sticky_old,sticky_new,1)
+
     # Local edge authority is deliberately narrower than a global opposite
-    # Campaign bypass.  Only a candidate created by _tp_edge_try may bypass
-    # sticky Campaign entry permission.
+    # Campaign bypass. The campaign itself no longer vetoes opposite tactical
+    # legs; all candidates still pass through the local Territory/Price-Leg court.
     old_gate="""        try:
             allowed, reason, prearm_override = supervisor.entry_allowed(ticker, side, signal, now)
         except Exception as exc:
@@ -308,7 +341,7 @@ def apply_territory_paper(source:str)->str:
     new_parallel="""        parallel = (
             isinstance(opp_pos, dict)
             and str(opp_pos.get("ticker") or "") == str(ticker)
-            and (supervisor.campaign_side == side or prearm_override or territory_edge)
+            and (tp_ok or prearm_override or territory_edge)
         )
 """
     if old_parallel not in source:raise RuntimeError('parallel transition anchor missing')
