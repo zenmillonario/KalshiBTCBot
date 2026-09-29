@@ -175,10 +175,10 @@ def _tp_edge_try(ticker,yes_ask,no_ask,close_ts=None):
 
 def apply_territory_paper(source:str)->str:
     source=apply_ea1_shadow(source)
-    if 'TERRITORY_PAPER_V2_MARKER' in source:return source
+    if 'def _tp_border()' in source:return source
     anchor='\n\nclass ChurnController:\n'
     if anchor not in source:raise RuntimeError('territory helper anchor missing')
-    source=source.replace(anchor,"\nTERRITORY_PAPER_V2_MARKER='ACTIVE'\n"+HELPERS+anchor,1)
+    source=source.replace(anchor,HELPERS+anchor,1)
 
     # Local edge authority is deliberately narrower than a global opposite
     # Campaign bypass.  Only a candidate created by _tp_edge_try may bypass
