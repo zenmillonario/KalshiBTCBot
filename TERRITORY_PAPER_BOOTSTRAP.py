@@ -13,11 +13,8 @@ import ast
 from ea1_transform import apply_ea1_shadow
 
 HELPERS = r"""
-TP_LOG='tachys_territory_authority_v9_5d.csv'
-TP_FIELDS=['timestamp','run_id','session_id','event','ticker','side','ask','territory','ruling','reason','staff','yard_score','battlefield','parent_direction','parent_phase','parent_health','parent_runway','price_leg','relation','leg_state','target_height','timing']
-
 def _tp_write(ticker,side,ask,territory,ruling,reason,staff,rec):
-    _write(TP_LOG,TP_FIELDS,{'event':'ENTRY_COURT','ticker':ticker,'side':side,'ask':ask,'territory':territory,'ruling':ruling,'reason':reason,'staff':staff,'yard_score':rec.get('yard_score'),'battlefield':rec.get('battlefield_class'),'parent_direction':rec.get('parent_arc_direction'),'parent_phase':rec.get('parent_arc_phase'),'parent_health':rec.get('parent_arc_health'),'parent_runway':rec.get('parent_runway_state'),'price_leg':rec.get('price_micro_state'),'relation':rec.get('entry_parent_relation'),'leg_state':rec.get('leg_state'),'target_height':rec.get('target_height'),'timing':rec.get('timing_shadow')})
+    _write('tachys_territory_authority_v9_5d.csv',['timestamp','run_id','session_id','event','ticker','side','ask','territory','ruling','reason','staff','yard_score','battlefield','parent_direction','parent_phase','parent_health','parent_runway','price_leg','relation','leg_state','target_height','timing'],{'event':'ENTRY_COURT','ticker':ticker,'side':side,'ask':ask,'territory':territory,'ruling':ruling,'reason':reason,'staff':staff,'yard_score':rec.get('yard_score'),'battlefield':rec.get('battlefield_class'),'parent_direction':rec.get('parent_arc_direction'),'parent_phase':rec.get('parent_arc_phase'),'parent_health':rec.get('parent_arc_health'),'parent_runway':rec.get('parent_runway_state'),'price_leg':rec.get('price_micro_state'),'relation':rec.get('entry_parent_relation'),'leg_state':rec.get('leg_state'),'target_height':rec.get('target_height'),'timing':rec.get('timing_shadow')})
 
 def _tp_decide(side,ask,rec):
     rec=rec or {}; s=_sign(side); height=_f(rec.get('target_height')); fav=None if height is None else height*s
@@ -107,7 +104,7 @@ def _transform(sources,package):
 
 def _session(sources,test_result,smoke_minutes):
     run,m=_ORIG_M(sources,test_result,smoke_minutes)
-    m.update(version='V9.5D-666-TERRITORY-PAPER-01',hotfix_id='666-TERRITORY-PAPER-01',strategy_parameters_changed=True,paper_sizing_changed=False,emergency_stop_changed=False,winner_harvest_changed=False,territory_authority_paper='Three active territories: clean slope / sideways EMA9+Price Leg / tight edge return')
+    m.update(version='V9.5D-666-TERRITORY-PAPER-01',hotfix_id='666-TERRITORY-PAPER-01',strategy_parameters_changed=False,entry_authority_changed=True,paper_sizing_changed=False,emergency_stop_changed=False,winner_harvest_changed=False,territory_authority_paper='Three active territories: clean slope / sideways EMA9+Price Leg / tight edge return')
     hf2.write_json(run/'launcher_manifest.json',m)
     for p in (HERE/'tachys_666_territory_paper.py',HERE/'territory_patch.py'):
         if p.is_file():shutil.copyfile(p,run/'source'/p.name)
