@@ -340,4 +340,50 @@ def apply_territory_paper(source:str)->str:
 """
     if manage_anchor not in source:raise RuntimeError('profit vault manage anchor missing')
     source=source.replace(manage_anchor,manage_new,1)
+
+    # PAPER-ONLY DATA HOLD: keep frozen HF2 runtime source untouched, but replace
+    # only its 30-second "kill the whole experiment" watchdog in memory.
+    # Entries and price-dependent exits remain paused until quotes recover.
+    data_hold_anchor="""    install_v95d_hooks()
+    import tachys_666_runtime_hf2 as hf2
+    hf2.install(core, execution_shadow, supervisor, side_policy={k: globals()[k] for k in hf2.SIDE_POLICY_KEYS})
+"""
+    data_hold_new="""    install_v95d_hooks()
+    import tachys_666_runtime_hf2 as hf2
+
+    def _tp_data_hold_watchdog(self, q, mono):
+        live = {}
+        prior = dict(getattr(self, "bad_positions", {}) or {})
+        max_age = 0.0
+        for side, p in self.core.paper_positions.items():
+            if not isinstance(p, dict):
+                continue
+            key = (str(p.get("ticker")), str(p.get("trade_id")), str(side))
+            available = (q is not None and q.ticker == p.get("ticker") and q.can_sell(side))
+            if available:
+                continue
+            self.side_manager.pause(p)
+            since = self.bad_positions.get(key)
+            if since is None:
+                since = self.bad_since if not self.bad_positions and self.bad_since is not None else mono
+            live[key] = since
+            max_age = max(max_age, max(0.0, mono - since))
+
+        self.bad_positions = live
+        self.bad_since = min(live.values()) if live else None
+
+        if live and max_age >= hf2.DATA_HALT_SECONDS:
+            last = float(getattr(self, "_tp_data_hold_warn_mono", -1e30) or -1e30)
+            if mono - last >= 15.0:
+                self._tp_data_hold_warn_mono = mono
+                print(f"HF2 DATA HOLD | OPEN POSITIONS UNRESOLVED | age={max_age:.1f}s | entries/exits requiring price remain PAUSED")
+        elif prior and not live:
+            print("HF2 DATA HOLD | RECOVERED | usable held-side quote restored; normal quote authority resumes")
+
+    hf2.Runtime.watchdog_step = _tp_data_hold_watchdog
+    hf2.install(core, execution_shadow, supervisor, side_policy={k: globals()[k] for k in hf2.SIDE_POLICY_KEYS})
+"""
+    if data_hold_anchor not in source:raise RuntimeError('data hold runtime hook anchor missing')
+    source=source.replace(data_hold_anchor,data_hold_new,1)
+
     ast.parse(source);return source
