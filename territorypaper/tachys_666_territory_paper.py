@@ -15,17 +15,17 @@ def _transform(sources,package):
     return fixed
 def _session(sources,test_result,smoke_minutes):
     run,m=_ORIG_M(sources,test_result,smoke_minutes)
-    m.update(version='V9.5D-666-TERRITORY-PAPER-03-CLEAN',hotfix_id='666-TERRITORY-PAPER-03-CLEAN',
+    m.update(version='V9.5D-666-TERRITORY-PAPER-03-DATAHOLD',hotfix_id='666-TERRITORY-PAPER-03-DATAHOLD',
       strategy_parameters_changed=False,entry_authority_changed=True,paper_sizing_changed=False,
       emergency_stop_changed=False,winner_harvest_changed=True,profit_vault_changed=True,
       territory_authority_paper='Master-of-Borders tight authority + EMA9/Price-Leg sideways court + qualified local Prodigal edge bypass',
       profit_vault='One-time 90% ROI vault: sell 60% ordinary high winner / 25% OBS4.2-style LEVIATHAN candidate',
-      runtime_io_hotfix='NONE: frozen HF2 runtime/transport restored unchanged')
+      runtime_io_hotfix='DATAHOLD: frozen HF2 runtime source unchanged; 30s unresolved watchdog becomes paused hold until quote recovery')
     hf2.write_json(run/'launcher_manifest.json',m)
     for p in (HERE/'tachys_666_territory_paper.py',HERE/'territory_patch.py'):
         if p.is_file():shutil.copyfile(p,run/'source'/p.name)
     return run,m
 def main(argv=None):
-    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-CLEAN';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-CLEAN'
+    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-DATAHOLD';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-DATAHOLD'
     return hf2.main(argv)
 if __name__=='__main__':raise SystemExit(main())
