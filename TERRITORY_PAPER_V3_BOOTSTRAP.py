@@ -433,10 +433,11 @@ def _transform(sources,package):
     fixed[runtime]=rt
 
     (HERE/'territory_engine_sha256.txt').write_text(hashlib.sha256(fixed[engine].encode()).hexdigest()+'\n',encoding='utf-8')
+    (HERE/'territory_runtime_sha256.txt').write_text(hashlib.sha256(fixed[runtime].encode()).hexdigest()+'\n',encoding='utf-8')
     return fixed
 def _session(sources,test_result,smoke_minutes):
     run,m=_ORIG_M(sources,test_result,smoke_minutes)
-    m.update(version='V9.5D-666-TERRITORY-PAPER-03-IO1-IO1',hotfix_id='666-TERRITORY-PAPER-03-IO1',
+    m.update(version='V9.5D-666-TERRITORY-PAPER-03-IO1',hotfix_id='666-TERRITORY-PAPER-03-IO1',
       strategy_parameters_changed=False,entry_authority_changed=True,paper_sizing_changed=False,
       emergency_stop_changed=False,winner_harvest_changed=True,profit_vault_changed=True,
       territory_authority_paper='Master-of-Borders tight authority + EMA9/Price-Leg sideways court + qualified local Prodigal edge bypass',
@@ -446,7 +447,7 @@ def _session(sources,test_result,smoke_minutes):
         if p.is_file():shutil.copyfile(p,run/'source'/p.name)
     return run,m
 def main(argv=None):
-    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-IO1-IO1';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-IO1'
+    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-IO1';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-IO1'
     return hf2.main(argv)
 if __name__=='__main__':raise SystemExit(main())
 '''
@@ -461,11 +462,17 @@ def validate_reference(manifest,reference):
     try:return orig(manifest,reference)
     except cio.ObserverError as exc:
         sf=TERR/'territory_engine_sha256.txt'
-        if not sf.is_file():raise exc
-        expected=sf.read_text(encoding='utf-8').strip(); actual=manifest.get('source_sha256_utf8'); frozen=reference['source_sha256_utf8']
-        wanted=dict(frozen);wanted['tachys_v9_5d_666_revival_lab.py']=expected
+        rf=TERR/'territory_runtime_sha256.txt'
+        if not sf.is_file() or not rf.is_file():raise exc
+        expected_engine=sf.read_text(encoding='utf-8').strip()
+        expected_runtime=rf.read_text(encoding='utf-8').strip()
+        actual=manifest.get('source_sha256_utf8'); frozen=reference['source_sha256_utf8']
+        wanted=dict(frozen)
+        wanted['tachys_v9_5d_666_revival_lab.py']=expected_engine
+        wanted['tachys_666_runtime_hf2.py']=expected_runtime
+        accepted_versions=('V9.5D-666-TERRITORY-PAPER-03-IO1','V9.5D-666-TERRITORY-PAPER-03-IO1-IO1')
         ok=(actual==wanted and manifest.get('mode')=='PAPER_ONLY' and manifest.get('source_commit')==cio.PIN
-            and manifest.get('side_action_revision')==cio.SIDE and manifest.get('version')=='V9.5D-666-TERRITORY-PAPER-03-IO1-IO1'
+            and manifest.get('side_action_revision')==cio.SIDE and manifest.get('version') in accepted_versions
             and manifest.get('hotfix_id')=='666-TERRITORY-PAPER-03-IO1' and manifest.get('paper_sizing_changed') is False
             and manifest.get('emergency_stop_changed') is False and manifest.get('winner_harvest_changed') is True
             and manifest.get('profit_vault_changed') is True)
@@ -481,6 +488,6 @@ for p in DST.glob('*.py'):py_compile.compile(str(p),doraise=True)
 print('PASS territory PAPER v3 + PROFIT VAULT + IO1 files installed:',DST)
 cp=subprocess.run([str(PYTHON),'-B','-u',str(DST/'tachys_666_territory_paper.py'),'--check'],cwd=str(LAB),check=False)
 if cp.returncode:raise SystemExit('STOP: territory engine v3 IO1 --check failed')
-print('READY V9.5D-666-TERRITORY-PAPER-03-IO1-IO1')
+print('READY V9.5D-666-TERRITORY-PAPER-03-IO1')
 print('ENGINE:',str(DST/'tachys_666_territory_paper.py'))
 print('OBS42 :',str(DST/'tachys_commander_observer42_territory.py'))
