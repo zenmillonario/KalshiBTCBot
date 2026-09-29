@@ -367,62 +367,76 @@ def _transform(sources,package):
     fixed=_ORIG_T(sources,package); engine=hf2.ENGINE
     fixed[engine]=apply_territory_paper(fixed[engine])
 
-    # PAPER-03 IO2: catch only the wrapped CheckpointIOError at the actual
-    # telemetry publication boundary. The last complete checkpoint stays valid;
-    # strategy state remains in memory and trading authority is untouched.
-    runtime='tachys_666_runtime_hf2'
-    rt=fixed[runtime]
-    old_import='from tachys_666_io_hf2 import atomic_json, IO_REVISION, error_detail'
-    new_import='from tachys_666_io_hf2 import atomic_json as _hf2_atomic_json, IO_REVISION, error_detail, CheckpointIOError'
-    if old_import not in rt:raise RuntimeError('runtime IO import anchor missing')
-    rt=rt.replace(old_import,new_import,1)
-
-    state_anchor="STATE_FILE='tachys_runtime_hf2.json'\n"
-    wrapper="""STATE_FILE='tachys_runtime_hf2.json'
-
-def atomic_json(path,payload):
-    try:
-        result=_hf2_atomic_json(path,payload)
-        if getattr(atomic_json,'_telemetry_degraded',False):
-            print('CHECKPOINT IO | RECOVERED | runtime telemetry publication resumed')
-        atomic_json._telemetry_degraded=False
-        return result
-    except CheckpointIOError as exc:
-        locked_state=(
-            Path(path).name==STATE_FILE
-            and getattr(exc,'safe_file',None)==STATE_FILE
-            and getattr(exc,'operation',None)=='replace_checkpoint'
-            and getattr(exc,'os_winerror',None) in (5,32,33)
-        )
-        if not locked_state:
-            raise
-        atomic_json._telemetry_degraded=True
-        print('CHECKPOINT IO | TELEMETRY_STALE_CONTINUE | '+error_detail(exc))
-        return None
+    # PAPER-03 IO3: leave frozen HF2 runtime source untouched.
+    # Install a narrow in-memory wrapper from the transformed engine before
+    # hf2.install(). This avoids the launcher package-copy overwrite and keeps
+    # run/source integrity identical to the manifest.
+    eng=fixed[engine]
+    old_hook="""    install_v95d_hooks()
+    import tachys_666_runtime_hf2 as hf2
+    hf2.install(core, execution_shadow, supervisor, side_policy={k: globals()[k] for k in hf2.SIDE_POLICY_KEYS})
 """
-    if state_anchor not in rt:raise RuntimeError('runtime STATE_FILE anchor missing')
-    rt=rt.replace(state_anchor,wrapper,1)
+    new_hook="""    install_v95d_hooks()
+    import tachys_666_runtime_hf2 as hf2
+    import tachys_666_io_hf2 as hf2io
+
+    _tp_atomic_json_original = hf2.atomic_json
+    def _tp_runtime_checkpoint_json(path, payload):
+        is_runtime_state = hf2.Path(path).name == hf2.STATE_FILE
+        now_mono = time.monotonic()
+        retry_after = float(getattr(_tp_runtime_checkpoint_json, '_retry_after', 0.0) or 0.0)
+        if is_runtime_state and now_mono < retry_after:
+            return None
+        try:
+            result = _tp_atomic_json_original(path, payload)
+            if is_runtime_state and getattr(_tp_runtime_checkpoint_json, '_degraded', False):
+                print('CHECKPOINT IO | RECOVERED | runtime telemetry publication resumed')
+            if is_runtime_state:
+                _tp_runtime_checkpoint_json._degraded = False
+                _tp_runtime_checkpoint_json._retry_after = 0.0
+            return result
+        except hf2io.CheckpointIOError as exc:
+            locked_runtime_state = (
+                is_runtime_state
+                and getattr(exc, 'safe_file', None) == hf2.STATE_FILE
+                and getattr(exc, 'operation', None) == 'replace_checkpoint'
+                and getattr(exc, 'os_winerror', None) in (5, 32, 33)
+            )
+            if not locked_runtime_state:
+                raise
+            _tp_runtime_checkpoint_json._degraded = True
+            _tp_runtime_checkpoint_json._retry_after = time.monotonic() + 1.5
+            last_warn = float(getattr(_tp_runtime_checkpoint_json, '_last_warn', 0.0) or 0.0)
+            if now_mono - last_warn >= 5.0:
+                _tp_runtime_checkpoint_json._last_warn = now_mono
+                print('CHECKPOINT IO | TELEMETRY_STALE_CONTINUE | ' + hf2io.error_detail(exc))
+            return None
+
+    hf2.atomic_json = _tp_runtime_checkpoint_json
+    hf2.install(core, execution_shadow, supervisor, side_policy={k: globals()[k] for k in hf2.SIDE_POLICY_KEYS})
+"""
+    if old_hook not in eng:raise RuntimeError('IO3 engine hook anchor missing')
+    eng=eng.replace(old_hook,new_hook,1)
     import ast
-    ast.parse(rt)
-    fixed[runtime]=rt
+    ast.parse(eng)
+    fixed[engine]=eng
 
     (HERE/'territory_engine_sha256.txt').write_text(hashlib.sha256(fixed[engine].encode()).hexdigest()+'\n',encoding='utf-8')
-    (HERE/'territory_runtime_sha256.txt').write_text(hashlib.sha256(fixed[runtime].encode()).hexdigest()+'\n',encoding='utf-8')
     return fixed
 def _session(sources,test_result,smoke_minutes):
     run,m=_ORIG_M(sources,test_result,smoke_minutes)
-    m.update(version='V9.5D-666-TERRITORY-PAPER-03-IO2',hotfix_id='666-TERRITORY-PAPER-03-IO2',
+    m.update(version='V9.5D-666-TERRITORY-PAPER-03-IO3',hotfix_id='666-TERRITORY-PAPER-03-IO3',
       strategy_parameters_changed=False,entry_authority_changed=True,paper_sizing_changed=False,
       emergency_stop_changed=False,winner_harvest_changed=True,profit_vault_changed=True,
       territory_authority_paper='Master-of-Borders tight authority + EMA9/Price-Leg sideways court + qualified local Prodigal edge bypass',
       profit_vault='One-time 90% ROI vault: sell 60% ordinary high winner / 25% OBS4.2-style LEVIATHAN candidate',
-      runtime_io_hotfix='IO2: exact wrapped runtime-checkpoint replace lock degrades telemetry only; all other IO remains fatal')
+      runtime_io_hotfix='IO3: frozen runtime source unchanged; exact checkpoint-lock handler installed in memory before HF2 runtime install')
     hf2.write_json(run/'launcher_manifest.json',m)
     for p in (HERE/'tachys_666_territory_paper.py',HERE/'territory_patch.py'):
         if p.is_file():shutil.copyfile(p,run/'source'/p.name)
     return run,m
 def main(argv=None):
-    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-IO2';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-IO2'
+    patches.transform=_transform;hf2.make_session=_session;hf2.VERSION='V9.5D-666-TERRITORY-PAPER-03-IO3';hf2.HOTFIX_ID='666-TERRITORY-PAPER-03-IO3'
     return hf2.main(argv)
 if __name__=='__main__':raise SystemExit(main())
 '''
@@ -431,29 +445,32 @@ observer = r'''from pathlib import Path
 import runpy,sys
 LAB=Path(r"C:\KalshiBTCBot_666Lab"); OBS=LAB/'observer42ea1'; TERR=LAB/'territorypaper'
 if not OBS.is_dir():raise SystemExit('STOP: observer42ea1 missing')
-sys.path.insert(0,str(OBS));import commander_io as cio
+sys.path.insert(0,str(OBS))
+import commander_io as cio
+import tachys_commander_observer4 as cli
 orig=cio.validate_reference
+
 def validate_reference(manifest,reference):
     try:return orig(manifest,reference)
     except cio.ObserverError as exc:
         ef=TERR/'territory_engine_sha256.txt'
-        rf=TERR/'territory_runtime_sha256.txt'
-        if not ef.is_file() or not rf.is_file():raise exc
+        if not ef.is_file():raise exc
         actual=manifest.get('source_sha256_utf8'); frozen=reference['source_sha256_utf8']
         wanted=dict(frozen)
         wanted['tachys_v9_5d_666_revival_lab.py']=ef.read_text(encoding='utf-8').strip()
-        wanted['tachys_666_runtime_hf2.py']=rf.read_text(encoding='utf-8').strip()
         ok=(actual==wanted and manifest.get('mode')=='PAPER_ONLY' and manifest.get('source_commit')==cio.PIN
             and manifest.get('side_action_revision')==cio.SIDE
-            and manifest.get('version')=='V9.5D-666-TERRITORY-PAPER-03-IO2'
-            and manifest.get('hotfix_id')=='666-TERRITORY-PAPER-03-IO2'
+            and manifest.get('version')=='V9.5D-666-TERRITORY-PAPER-03-IO3'
+            and manifest.get('hotfix_id')=='666-TERRITORY-PAPER-03-IO3'
             and manifest.get('strategy_parameters_changed') is False
             and manifest.get('paper_sizing_changed') is False
             and manifest.get('emergency_stop_changed') is False
             and manifest.get('winner_harvest_changed') is True
             and manifest.get('profit_vault_changed') is True)
         if not ok:raise exc
+
 cio.validate_reference=validate_reference
+cli.validate_reference=validate_reference
 runpy.run_path(str(OBS/'tachys_commander_observer42.py'),run_name='__main__')
 '''
 
@@ -461,9 +478,9 @@ runpy.run_path(str(OBS/'tachys_commander_observer42.py'),run_name='__main__')
 (DST/'tachys_666_territory_paper.py').write_text(launcher,encoding='utf-8')
 (DST/'tachys_commander_observer42_territory.py').write_text(observer,encoding='utf-8')
 for p in DST.glob('*.py'):py_compile.compile(str(p),doraise=True)
-print('PASS territory PAPER-03 + PROFIT VAULT + IO2 files installed:',DST)
+print('PASS territory PAPER-03 + PROFIT VAULT + IO3 files installed:',DST)
 cp=subprocess.run([str(PYTHON),'-B','-u',str(DST/'tachys_666_territory_paper.py'),'--check'],cwd=str(LAB),check=False)
-if cp.returncode:raise SystemExit('STOP: territory engine PAPER-03-IO2 --check failed')
-print('READY V9.5D-666-TERRITORY-PAPER-03-IO2')
+if cp.returncode:raise SystemExit('STOP: territory engine PAPER-03-IO3 --check failed')
+print('READY V9.5D-666-TERRITORY-PAPER-03-IO3')
 print('ENGINE:',str(DST/'tachys_666_territory_paper.py'))
 print('OBS42 :',str(DST/'tachys_commander_observer42_territory.py'))
