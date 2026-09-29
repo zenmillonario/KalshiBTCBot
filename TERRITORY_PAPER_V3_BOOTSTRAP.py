@@ -152,6 +152,11 @@ def _tp_profit_vault(supervisor,ticker,side,position,yes_ask,no_ask,now):
     except Exception:l2={}
 
     core.paper_realized_pnl+=gross
+    partial=dict(position)
+    partial['qty']=sell_qty
+    partial['cost']=cost_basis
+    try:core.log_paper_event('PARTIAL_EXIT',partial,bid,'V95D_PROFIT_VAULT')
+    except Exception:pass
     position['qty']=qty-sell_qty
     position['cost']=cost-cost_basis
     position['_v95d_profit_vault_done']=True
