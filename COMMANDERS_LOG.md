@@ -1,5 +1,8 @@
 # COMMANDERS LOG
 
+> **CURRENT STATE:** Read `TACHYS_CURRENT_HANDOFF.md` first for the latest HF10-era doctrine, active test, shadow registry, and migration instructions. This log remains the historical constitutional record.
+
+
 ## READ THIS FIRST
 This is the canonical continuity document for Tachyos/Tachys. A future chat or coding session should read this file before proposing architecture changes.
 
