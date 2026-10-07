@@ -286,3 +286,25 @@ Proposed structural grammar for offline research only:
 `SHOCK_DOWN -> POST_SHOCK_ABSORPTION -> SPINE_CONTACT_RESET -> MULTI_ARC_REGENERATION -> UPSIDE_RELEASE`
 
 Important: do **not** encode “big drop = automatic YES.” The decisive evidence is the combination of spent displacement + several contracts without fresh downside extension + sideways absorption + EMA gap closure/contact + repeated upside regeneration. Once that sequence develops, the old DOWN tube must re-earn continuation authority rather than remain sovereign by ancestry alone.
+
+
+## HF11 LIVE ANCHOR — YES starvation / directional asymmetry
+Operator live report during active HF11 2-hour PAPER run:
+- only **4 total entries so far**;
+- **all 4 entries are NO**;
+- **2 of the 4 NO entries are losses**;
+- during the same broad post-shock sequence, the operator is observing a substantial recovery structure but Tachys has produced **no YES entries**.
+
+This is a priority post-run forensic item. Do not modify the live run.
+
+Post-run checks:
+1. reconstruct all four executed NO entries and exact outcomes;
+2. count every blocked/armed/near-ready YES candidate during the run, especially from the post-shock sideways absorption through EMA9/EMA30 contact and the subsequent multi-arc upside regeneration;
+3. identify the exact veto/reason strings preventing YES entries;
+4. compare whether parent-tube inheritance or RELEASE_WATCH now over-preserves NO authority after the shock has already been absorbed;
+5. check whether YES requires too much confirmation while NO still benefits from inherited ancestry;
+6. determine whether the asymmetry comes from battlefield selection, planner/value gates, first-minute rules, micro-leg qualification, or final entry boundary;
+7. quantify missed YES price development after each blocked candidate.
+
+Working hypothesis to test, not assume:
+HF11 may have fixed stale tube retirement in one direction by making inherited parent-tube memory too sticky, creating a new **YES starvation / stale-NO persistence** problem after a completed post-shock absorption and spine reset.
