@@ -422,3 +422,15 @@ Priority post-run forensic:
 
 Working hypothesis to test, not assume:
 HF12 may have restored two-sided access but still hand off **after** the best entry window, producing a sequence where #5 and #6 are directionally sensible in isolation yet temporally inverted at the actual entry moments.
+
+
+## HF12 COMPLETED FORENSIC — 2026-10-07
+- 6 entries: 3 YES / 3 NO. Side-starvation fixed.
+- Five resolved trades: 4W / 1L, **+$13.617 gross**, **+$9.417 horizon-0 modeled net**. #6 unresolved at timed stop.
+- #1 NO: profitable +50%, but blocked/missed more important YES continuation; contract settled YES.
+- #2 YES: strong positive control, +72%, good near-spine challenger handoff and pullback tolerance.
+- #3 NO: -100%; late counter-entry with ~384s left and BTC ~$55 above PT. Add PT/time-capacity quality before cheap A+ counter sizing.
+- #4 YES: excellent multi-arc continuation; +80.4% MFE, exited +60%, later .998/settled YES. Settlement Ride failed to activate because calmness gate was brittle (r60==r180 -> ratio 1.0). Fix calmness + hysteresis.
+- #5 YES / #6 NO form a phase-inversion pair. #5 obeyed parent YES after local crest/weakening had already turned down; #6 then transferred to NO on challenger approach even though parent YES remained intact, near_spine=false, no breakthrough, no micro-leg/price support.
+- Next repair is timing quality, not another authority expansion.
+- Full forensic: `forensics/HF12_1H_FORENSIC_2026-10-07.md`
