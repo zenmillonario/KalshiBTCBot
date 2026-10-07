@@ -140,6 +140,15 @@ Keep the HF10 one-Command architecture and lifecycle rules. Make only these hier
 3. **Do not retune tube urgency yet**
    - keep the HF10 urgency mechanism and value ceiling unchanged until parent-tube continuity makes urgency actually eligible and measurable.
 
+4. **Leviathan earned-profit protection / delayed-exit repair**
+   - HF10 #1 peaked at bid .140 / +145.6% MFE but exited at .110 / +93.0%.
+   - The intended 7.5% rolling stop was .1295, corresponding to roughly +127% ROI, so the large giveback was not caused by the nominal 5–10% band alone.
+   - The first full-size bid after the tightened stop was already .120; the bounded low-price model then created a delayed exit intent and required a later fresh displayed book, which arrived at .110.
+   - Do not solve this merely by shrinking the trail percentage.
+   - Add **pre-armed runner exit intent** before the hard floor is breached so the realistic delayed-book model is already satisfied when protection must fire.
+   - Add **earned-profit retention / tick-aware crest protection** for large-MFE low-price runners: after very large gains, one cent can represent many ROI points. Protect a large fraction of peak earned profit and use quote-wave/structure deterioration to harvest at the crest rather than permitting a mechanical fall through the floor.
+   - Preserve whole-position Leviathan behavior; this is profit protection, not forced early partial harvesting.
+
 Preserve Wide Zigzag as a regular tool; HF10's failure was battlefield ownership, not evidence that WIDE itself should be removed.
 
 ## HF10 post-run forensic priorities
