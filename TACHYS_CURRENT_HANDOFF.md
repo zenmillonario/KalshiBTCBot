@@ -214,3 +214,40 @@ Measure, for every profitable position harvested before settlement:
 - maximum adverse move after the proposed hold point;
 - whether the parent EMA9/target thesis actually broke before expiry.
 This will show when settlement hold is additive versus when harvesting was protective.
+
+
+## Settlement Ride / Let-It-Close candidate doctrine
+
+Operator doctrine added after HF10:
+
+When a profitable position is already on the favorable side of PT, the contract is roughly halfway through or later, and the chart has become steady with no large adverse swings, Tachys should consider **holding the whole position to settlement instead of paying to exit early**.
+
+Purpose:
+- avoid unnecessary exit-side fees / execution cost;
+- allow the contract price to converge toward $1 as expiry approaches;
+- capture remaining value when the side is structurally secure;
+- reduce needless churn and avoid selling a winner at .70-.90 that later settles at 1.00.
+
+This is a **management state, not an entry authority**.
+
+### SETTLEMENT_RIDE candidate conditions
+Use existing Command evidence only:
+- position is already profitable / thesis intact;
+- roughly midpoint of the 15-minute contract or later;
+- BTC/settlement reference is a **safe distance on our side of PT**, preferably normalized to recent realized movement rather than a fixed-dollar distance;
+- no large recent swings or accelerating adverse volatility;
+- EMA9 / price behavior is steady or favorable, not curling aggressively toward PT;
+- no active EMA9->EMA30 handoff/contact evidence threatening the position;
+- no meaningful quote-wave deterioration suggesting contract repricing against us;
+- enough time has elapsed that remaining path-to-settlement is shorter than the earlier battle, but enough cushion remains that a normal short-term move is unlikely to cross PT.
+
+### Management
+- At +35%: PROFIT_QUALIFIED, not automatic sale. If SETTLEMENT_RIDE qualifies, hold.
+- At +50% and above: continue holding a stable SETTLEMENT_RIDE while PT cushion and structure remain intact.
+- Do not exit merely because the contract price temporarily stalls if BTC/PT safety is still strong.
+- If settlement-side safety materially deteriorates, leave SETTLEMENT_RIDE and return to ordinary whole-position protection/harvest immediately.
+- A real PT threat, volatility expansion, EMA9 handoff against the position, or meaningful quote-wave break overrides the settlement ride.
+- Leviathan PEAK_HUNT (+140-150% ROI from a cheap entry) remains a separate crest-management state. Do not force a peak-hunt winner to give back large earned ROI merely because settlement is possible; choose the management state that best protects captured value.
+- If a position is already trading very near $1 with strong PT safety, default should lean toward settlement rather than paying to sell the last few cents early.
+
+Core principle: **when the market is quiet and our side is safely winning, let time work for us.**
