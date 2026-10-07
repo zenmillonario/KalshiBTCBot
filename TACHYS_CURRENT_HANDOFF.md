@@ -397,3 +397,28 @@ Operator follow-up on #4 YES:
   - whether any genuine structural/settlement threat justified exit.
 - Quantify realized exit value vs hypothetical settlement value and fees saved.
 - If structure and PT safety remained intact, classify as **GOOD ENTRY / GOOD HOLD / PREMATURE EXIT** and refine Settlement Ride activation rather than changing the entry logic.
+
+
+## HF12 LIVE ANCHOR — #5/#6 phase-lag / mistimed side sequence
+Operator observation during active HF12 1-hour PAPER run:
+
+### #5 YES
+- Operator believes #5 should have been **NO** at entry.
+- The YES position eventually recovered only after a resurrection/Lazarus-style recovery.
+- Treat the recovery as position-management evidence, not proof that the original YES entry was correct.
+
+### #6 NO
+- Operator believes #6 should have been **YES** at entry.
+- Read together with #5, the concern is not simple side bias; the two entries appear **mistimed relative to consecutive leg turns**.
+
+Priority post-run forensic:
+1. reconstruct exact #5 and #6 entry timestamps, missions, prices, PT geography, time remaining and final outcomes;
+2. reconstruct the EMA9 leg/arc turn sequence immediately before, between and after the two entries;
+3. determine whether #5 entered the prior YES leg after its useful phase had already matured/turned toward NO;
+4. determine whether #6 entered the following NO leg after that leg had already matured/turned back toward YES;
+5. compare PLAN/ARM timestamps with the earliest causal turn evidence to measure side-handoff latency;
+6. inspect whether Command is effectively **one leg late** in alternating geometry — correct sequence recognition but delayed entry-side assignment;
+7. do not credit #5's resurrection as validating the entry; separate entry quality from Lazarus rescue quality.
+
+Working hypothesis to test, not assume:
+HF12 may have restored two-sided access but still hand off **after** the best entry window, producing a sequence where #5 and #6 are directionally sensible in isolation yet temporally inverted at the actual entry moments.
