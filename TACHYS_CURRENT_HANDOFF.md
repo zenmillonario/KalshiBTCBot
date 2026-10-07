@@ -454,3 +454,23 @@ HF13 changes only:
 Preserved: ONE COMMAND, multi-arc directional parent proof, inclined WIDE ownership, tube urgency, Wide Zigzag, Market Heist, Lazarus, <=.25 A+/$15 sizing, +35% qualified-not-auto-exit, Leviathan PEAK_HUNT, existing shadow research and OBS4.2 zero-authority research stack.
 
 Not separately activated: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
+
+## HF13 6-hour forensic — COMPLETE
+- 29 trades, 18W/11L, paper gross -$7.988, modeled horizon-0 net -$28.338.
+- CONTINUATION_PULLBACK: 9 trades, 7W/2L, +$18.110.
+- WIDE_ZIGZAG_EDGE_LEG: 20 trades, 11W/9L, -$26.098.
+- 19 of 24 contracts traded; max 3 entries in one contract.
+- Lazarus: 22 transfers; 13 profitable recoveries / 9 losses; about +$15.844 gross improvement versus immediate liquidation, but 75.9% custody is too high.
+- <=.25 A+: 4 fills, -$3.83 gross. #25 entered at ~421.1s left, just outside the 420s hard guard and lost -$14.07.
+- Settlement Ride activated only on #22; Peak Hunt had zero activations.
+- Critical defect: stale READY plan can execute after latest current pilot withdraws side. #13/#17/#19 did this; combined -$5.55 gross.
+- Qualified-winner warning: #17 reached ~+35.6% MFE then finished -100%.
+- OBS4.2 failed after ~3h44m with OBSERVER_ERROR_REFERENCE_UNCHANGED; last ~2h16m lack complete sidecar coverage.
+- Full forensic: forensics/HF13_6H_FORENSIC_2026-10-07.md
+
+### HF14 priority
+1. revalidate latest current Command side at execution;
+2. continuous low25 PT/time-capacity guard;
+3. earned-profit ratchet after +35;
+4. deep-cushion Settlement Ride hierarchy;
+5. OBS4.2 reference-unchanged reliability fix.
