@@ -548,3 +548,21 @@ Operator live observation during active HF14 6-hour PAPER run:
 
 Core principle:
 **Win the leg, not just the wiggle.** Small sideways profits are supplemental. A structurally valid parent-leg position should remain represented through the contract whenever possible.
+
+
+## HF14 LIVE ANCHOR — #25 core leg vs opposite Lazarus custody
+Operator live observation during active HF14 6-hour PAPER run:
+- #25 could likely have been held through contract close.
+- At the relevant time BTC was **more than ~$100 under PT** and still dropping with EMA9, giving strong NO settlement geography and aligned fast-EMA structure.
+- There was an **opposite-side losing position already in Lazarus custody**.
+- Operator doctrine: that wounded opposite position should **not** force liquidation or abandonment of the healthy core-leg position.
+
+Post-run forensic:
+1. reconstruct #25 exact entry, exit, MFE, PT distance, EMA9/EMA30 state, time remaining and settlement result;
+2. determine whether #25 met CORE_LEG / SETTLEMENT_RIDE conditions at exit;
+3. identify whether any occupancy/custody rule, opposite-position state, portfolio management path, or battle-identity transfer caused the healthy #25 position to be harvested early;
+4. quantify actual realized P/L versus hold-to-settlement;
+5. verify Lazarus remained loss-only custody and did not acquire authority over winner management;
+6. test the canonical rule: **an opposite losing Lazarus position is baggage, not sovereignty**. A structurally healthy core leg may remain open to settlement even while the opposite loser is being managed separately.
+
+Preserve the existing no-simultaneous-hedge doctrine: the point is not to open deliberate opposite hedges. The point is that once an opposite loser legitimately exists in Lazarus, it must not force the active winning parent-leg position out.
