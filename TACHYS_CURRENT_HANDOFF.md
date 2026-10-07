@@ -638,3 +638,21 @@ Post-run forensic:
 
 Doctrine:
 At EMA convergence, a price breakout whose internal candle/volume behavior contradicts the thrust is especially suspect. Use that weakness as supporting evidence to fade the fakeout near its extreme when broader arc history already expects the opposite handoff.
+
+
+## HF14 LIVE DOCTRINE — fakeout fade reassessment / cut on acceptance
+Operator refinement of the EMA-convergence fakeout fade:
+- The fakeout fade is not intended as a stubborn contrarian hold.
+- Entry is taken near the fakeout extreme because the price is favorable and the broader geometry expects the opposite handoff.
+- If the thrust is actually genuine, the move commonly provides a pullback/retest before continuing; use that retest as the reassessment window.
+- At the retest, decide whether the breakout has gained real acceptance:
+  - sustained EMA9/EMA30 separation;
+  - supportive candle/volume participation;
+  - higher low / lower high that holds in breakout direction;
+  - quote-wave support;
+  - failure to snap back through the convergence zone.
+- If acceptance is now clear, cut the fade promptly rather than waiting for Lazarus or a large adverse excursion.
+- If the retest fails and price loses the breakout zone, keep the fade and transition into the expected opposite leg.
+
+Core principle:
+**Fade the weak first thrust at the extreme; reassess at the retest. If the breakout proves real, cut early. If it fails, keep the better-priced opposite position.**
