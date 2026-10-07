@@ -331,3 +331,15 @@ Priority forensic:
 6. fix authority handoff before any further tuning of entry frequency.
 
 This screenshot is evidence that YES starvation is likely a **side-ownership/wiring problem**, not merely insufficient opportunities.
+
+
+## HF11 STOPPED FORENSIC — side handoff confirmed
+HF11 was stopped after ~81.1 minutes and paired with matching OBS4.2.
+- 6 entries, all NO; 4W/2L; gross -$1.27.
+- 454 YES decision rows existed but all were WAIT; zero YES ENTER.
+- 259 final NO rows occurred while physical development side was YES; 243 also had wall/tube side YES.
+- Root cause: multi-arc YES recovery failed directional proof because early tube logic still requires efficiency >=.50 (or waits for 900s). WIDE then received side sovereignty and repeatedly chose NO at the upper edge.
+- Strong example: ~603s YES wall, +$97 EMA9 displacement, 0 retracement, +$50 EMA9/EMA30 gap, all long horizons YES, efficiency ~.355 -> not tube -> WIDE NO.
+- Independent OBS4.2 confirmed UP spine persistence through the screenshot interval.
+- Repair: multi-arc directional proof; neutral-vs-inclined WIDE separation; developing pre-cross Contact/Handoff Watch; preserve explicit TUBE_MICRO_LEG counter-legs.
+- Full forensic: `forensics/HF11_SIDE_HANDOFF_FORENSIC_2026-10-07.md`
