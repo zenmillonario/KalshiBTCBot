@@ -363,3 +363,21 @@ HF11 management/sizing preserved, including <=.25 A+/$15, Settlement Ride, +35% 
 ### Shadow status carried into HF12
 Active engine-side shadow/research stack from HF11 is preserved: Looking Glass/Rescue, Dragon Dance, Failed Regeneration, King's Council, Entry Authority Router shadow, Formation/Handoff, Battlefield Zoom, Target Tube, Leg Geometry, Orbit and Settlement Elasticity Lite, plus other inherited shadows. OBS4.2 keeps Swing Forecast/Outcome, Shock/Aftershock, SUB-.20, Leviathan, Position Development/Health, Failed Progress, Knot and Commander reporting with zero trading authority.
 Not separately activated in HF12: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
+
+
+## HF12 LIVE ANCHOR — #4 YES arc-extension positive control
+Operator observation during active HF12 1-hour PAPER run:
+- #4 entered YES while price/EMA9 was moving sideways near the **top of an EMA9 arc above EMA30**.
+- Operator's normal discretionary expectation was that the arc was near completion and should roll downward.
+- Instead the structure **extended upward** and the YES position developed to roughly **+80%**.
+- Treat this as a major positive control: being at the apparent top/crest of an EMA9 arc is not itself reversal proof.
+
+Post-run forensic:
+1. reconstruct #4 exact entry, price, mission and Command reason;
+2. identify which evidence supported continuation despite apparent crest location: EMA9 slope/curvature, arc extension, EMA9/EMA30 gap behavior, higher lows/troughs, quote-wave, candle sequence, PT geography and time remaining;
+3. compare the operator's expected reversal point with the actual first causal weakening signal;
+4. determine whether the system correctly distinguished **crest-building / extension** from **crest-exhaustion / rollover**;
+5. reconstruct MFE, exit/settlement and whether +35/+50/Settlement Ride management captured the continuation appropriately.
+
+Doctrine reinforced:
+**Top-of-arc location is a decision point, not an automatic reversal.** Reversal requires weakening/exhaustion evidence. If extension is still increasing, continuation may remain the better trade.
