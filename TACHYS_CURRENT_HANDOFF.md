@@ -497,3 +497,26 @@ HF14 changes only:
 Preserved: ONE COMMAND, multi-arc directional parent proof, pre-cross handoff, tube urgency, Wide Zigzag, Market Heist, Lazarus, <=.25 A+/$15 sizing, +35 qualified-winner doctrine, Settlement Ride, Leviathan PEAK_HUNT and active zero-authority shadow research.
 
 Not separately activated: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
+
+
+## HF14 LIVE ANCHOR — adverse-first entries / premature counter-arc timing
+Operator live observations during active HF14 6-hour PAPER run:
+- #12 nearly recovered/developed, but contract rollover arrived before the thesis had enough time to mature.
+- #13 NO entered against the active EMA9 arc.
+- #14 YES also entered against the active EMA9 arc.
+- Broader operator concern: almost every position appears to go meaningfully negative before recovering; some never recover.
+
+Priority post-run forensic:
+1. compute for every HF14 trade whether the first meaningful move after entry was favorable or adverse;
+2. measure MAE-before-MFE, time-to-breakeven, time-to-first +10/+20/+35%, and fraction of trades entering against current EMA9 arc direction;
+3. separate three species:
+   - correct side / too early counter-arc anticipation;
+   - correct side / too late for contract time/PT capacity;
+   - genuinely wrong side;
+4. inspect #13/#14 for the exact authority path that allowed a side opposite active EMA9 arc;
+5. verify whether mature-turn / reversal anticipation is overpowering EMA9 Sovereign Authority before actual curl/turn evidence develops;
+6. expand time-capacity gating beyond cheap A+ entries if #12 shows ordinary-priced trades can also be too late for the remaining contract;
+7. quantify how much Lazarus is masking poor entry timing by rescuing trades that begin with large adverse excursion.
+
+Working hypothesis to test:
+HF14 may be entering the expected *next* leg too early—before the active EMA9 arc actually turns—causing widespread adverse-first excursions. This is not the same as side starvation or stale-side execution; it is premature counter-arc anticipation.
