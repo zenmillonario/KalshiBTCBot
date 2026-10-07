@@ -1,0 +1,54 @@
+{
+  "construct": "TACHYS-CONSTRUCT-V1-NEO-DOJO-01",
+  "research_only": true,
+  "lessons": [
+    [
+      "C01",
+      "EMA convergence: fakeout vs genuine breakout"
+    ],
+    [
+      "C02",
+      "Alternating arcs around EMA30"
+    ],
+    [
+      "C03",
+      "Shock -> absorption -> spine reset"
+    ],
+    [
+      "C04",
+      "Crest extension vs crest rollover"
+    ],
+    [
+      "C05",
+      "Correct side, wrong timing"
+    ],
+    [
+      "C06",
+      "CORE LEG vs tactical wiggle"
+    ],
+    [
+      "C07",
+      "Settlement Ride"
+    ],
+    [
+      "C08",
+      "Lazarus rescue != entry quality"
+    ],
+    [
+      "C09",
+      "Invalidation and EXIT_ON_RETRACE"
+    ],
+    [
+      "C10",
+      "Cheap A+ asymmetry"
+    ],
+    [
+      "C11",
+      "Peak Hunt"
+    ],
+    [
+      "C12",
+      "WIDE inside directional parent"
+    ]
+  ]
+}
