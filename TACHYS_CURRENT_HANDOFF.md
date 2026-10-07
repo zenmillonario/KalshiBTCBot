@@ -700,3 +700,16 @@ Research metric for future audits:
 
 Core principle:
 **Lazarus can rescue a mistake. It cannot certify the mistake as a good entry.**
+
+
+## HF14 LIVE DOCTRINE — invalidated anticipation exits on retrace, not panic
+Operator refinement:
+- When an anticipatory EMA9/fakeout-fade entry is proven wrong, do not automatically liquidate at the worst adverse print.
+- Markets commonly provide a pullback/retest/wiggle even when the breakout or old direction ultimately continues.
+- Once invalidated, change the mission from `THESIS_HOLD` to `EXIT_ON_RETRACE`: the original trade thesis is dead, but execution should seek the next ordinary retrace toward entry to reduce realized damage.
+- Do not let `EXIT_ON_RETRACE` become a new Lazarus-style hope state. It is a short execution window after invalidation, not renewed belief in the position.
+- Immediate liquidation overrides retrace waiting when continuation is accelerating, EMA9/price separation is expanding rapidly against the position, quote support collapses, PT/settlement danger is increasing, or remaining contract time is too short to expect a usable retrace.
+- If a retrace appears and the opposing breakout remains structurally accepted, exit into the improved price; do not reinterpret the retrace as proof the original thesis revived.
+
+Core principle:
+**Be early to admit the thesis is wrong, but patient enough to sell the normal pullback when market structure gives one. Do not confuse good exit execution with continuing to believe a dead trade.**
