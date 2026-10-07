@@ -474,3 +474,26 @@ Not separately activated: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposit
 3. earned-profit ratchet after +35;
 4. deep-cushion Settlement Ride hierarchy;
 5. OBS4.2 reference-unchanged reliability fix.
+
+
+## HF14 6-hour release — READY
+- Build: `V9.5D-666-RECONCILIATION-R15-HF14`
+- Package: `TACHYS_RECONCILIATION_R15_HF14_6H_TEST.zip`
+- SHA-256: `daadf1a410f5119e9283920ff8b4ef55fc579006961992a18268ba6289893321`
+- Exact parent HF13 ZIP SHA-256: `4f8426aaff1b0253daef0f654713a0b573cb19f2a4a91c5c9279a0bc4cd964db`
+- PAPER duration: 360 minutes / 21,600 seconds.
+- Fresh-extracted validation: **509/509 engine/unit/integration tests PASS**; 5 observer startup tests PASS; 11 R15 observer identity checks PASS; 21 install/snapshot/archive lifecycle checks PASS; exact 360-minute snapshot PASS.
+- Package inventory: 237 files including the manifest; 33 pinned engine payloads.
+- HF13->HF14 engine strategy changes are limited to `tachys_r15_pilot.py`, `tachys_r15_command.py`, `tachys_r15_lowprice.py`, and `tachys_r15_policy.py`; dashboard/revival-lab differences are identity/UI only. OBS4.2 change is durability diagnostics only and has zero trade authority.
+
+HF14 changes only:
+1. **WIDE inside directional parent** — broad/sideways WIDE may locate price but cannot ordinary-counter a strongly coherent historical parent without explicit counter/micro-leg evidence.
+2. **Latest Command revalidation at executable book** — stale READY/ARMED side cannot fill after current Command withdraws/flips it; existing nondecisive `MATURE_TURN_VALUE` anticipation is explicitly preserved.
+3. **Continuous PT/time capacity for <=.25 A+** — replaces the hard 420-second cliff with adverse PT distance versus remaining-time/realized-movement capacity; cheapness still never creates authority.
+4. **Deep-cushion Settlement Ride hysteresis** — several-safe-band PT cushion plus favorable long horizons can ignore transient micro quote/EMA noise; real cushion/long-structure deterioration still exits.
+5. **Light post-35 earned-profit ratchet** — +35% remains qualification, not auto-harvest; a small floor protects a developed winner from casually collapsing to -100%.
+6. **OBS4.2 durability diagnostics** — exact exception type/message/trace are persisted before generic failure finalization; 360-minute observer budget is validated.
+
+Preserved: ONE COMMAND, multi-arc directional parent proof, pre-cross handoff, tube urgency, Wide Zigzag, Market Heist, Lazarus, <=.25 A+/$15 sizing, +35 qualified-winner doctrine, Settlement Ride, Leviathan PEAK_HUNT and active zero-authority shadow research.
+
+Not separately activated: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
