@@ -434,3 +434,23 @@ HF12 may have restored two-sided access but still hand off **after** the best en
 - #5 YES / #6 NO form a phase-inversion pair. #5 obeyed parent YES after local crest/weakening had already turned down; #6 then transferred to NO on challenger approach even though parent YES remained intact, near_spine=false, no breakthrough, no micro-leg/price support.
 - Next repair is timing quality, not another authority expansion.
 - Full forensic: `forensics/HF12_1H_FORENSIC_2026-10-07.md`
+
+
+## HF13 6-hour release — READY
+- Build: `V9.5D-666-RECONCILIATION-R15-HF13`
+- Package: `TACHYS_RECONCILIATION_R15_HF13_6H_TEST.zip`
+- SHA-256: `4f8426aaff1b0253daef0f654713a0b573cb19f2a4a91c5c9279a0bc4cd964db`
+- Exact parent HF12 ZIP SHA-256: `ec26ff77b8b9b3de9903a19dd4c8cff9428e851c9f579654431f7ebf19b4d1d6`
+- PAPER duration: 360 minutes / 21,600 seconds.
+- Fresh-extracted validation: 496 engine/unit/integration tests PASS; 5 observer startup tests PASS; 11 R15 observer compatibility checks PASS; 21 install/snapshot/archive lifecycle checks PASS; exact 360-minute snapshot PASS.
+- Exact HF12->HF13 engine diff: strategy changes only in `tachys_r15_pilot.py`, `tachys_r15_lowprice.py`, and `tachys_r15_policy.py`; dashboard/runtime banner differences are identity/UI only.
+
+HF13 changes only:
+1. mature-parent continuation timing: mature weakening parent does not automatically buy continuation after the immediate EMA9/price leg has already turned; explicit micro-leg remains available;
+2. stronger pre-cross challenger transfer: preserve near-spine HF12 #2-style handoff, but away-from-spine challenger needs stronger coherent EMA9/candle/price evidence;
+3. late <=.25 adverse-PT/time-capacity guard: A+ sizing remains, but late remote counter-entry must show a developed turn before receiving the $15 tranche;
+4. Settlement Ride alias-safe calmness + hysteresis: avoids r60/r180 alias veto and prevents one transient wobble from disarming a strongly safe ride.
+
+Preserved: ONE COMMAND, multi-arc directional parent proof, inclined WIDE ownership, tube urgency, Wide Zigzag, Market Heist, Lazarus, <=.25 A+/$15 sizing, +35% qualified-not-auto-exit, Leviathan PEAK_HUNT, existing shadow research and OBS4.2 zero-authority research stack.
+
+Not separately activated: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
