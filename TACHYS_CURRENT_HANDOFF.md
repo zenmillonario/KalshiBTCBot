@@ -622,3 +622,19 @@ Use this only when recent geometry already supports the expected opposite releas
 
 Core principle:
 **At a mature EMA convergence, the first thrust is suspect. If history expects the opposite handoff, use the fakeout high/low as the entry opportunity rather than chasing it.**
+
+
+## HF14 LIVE ANCHOR — #24 fakeout had bearish candle/volume internals
+Operator adds important live detail for the #24 YES fakeout:
+- the apparent upside fakeout at EMA9/EMA30/price convergence contained **many red candles and substantial red volume**;
+- therefore the false upside thrust was not merely suspicious because of location/history; its internal participation/flow was also weak and bearish.
+
+Post-run forensic:
+1. reconstruct candle-color sequence and available volume/flow measures before and during #24;
+2. compare price making the temporary YES thrust versus red-candle count, red-volume dominance, wick/rejection behavior and EMA9 extension;
+3. determine whether existing Formation, Pulse/Heartbeat, quote-wave, volume or structural observers already reported bearish weakness before the YES entry;
+4. compare this with true breakout controls where the breakout direction has supportive candle/volume participation;
+5. test a convergence-fakeout qualifier where **price thrust without supporting participation** increases opposite-side anticipation but does not independently create authority.
+
+Doctrine:
+At EMA convergence, a price breakout whose internal candle/volume behavior contradicts the thrust is especially suspect. Use that weakness as supporting evidence to fade the fakeout near its extreme when broader arc history already expects the opposite handoff.
