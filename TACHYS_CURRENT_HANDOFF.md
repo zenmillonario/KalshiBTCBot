@@ -713,3 +713,31 @@ Operator refinement:
 
 Core principle:
 **Be early to admit the thesis is wrong, but patient enough to sell the normal pullback when market structure gives one. Do not confuse good exit execution with continuing to believe a dead trade.**
+
+
+## Construct V1 — Neo Dojo
+Status: **BUILT / OFFLINE SHADOW ONLY / ZERO TRADING AUTHORITY**.
+
+Dedicated Git branch: `tachys-construct-v1-offline`.
+
+Release package:
+- `TACHYS_CONSTRUCT_V1_NEO_DOJO.zip`
+- SHA-256: `edd650fecb4276abd76941e58d008b2e3f1d82f69e5a241a55e148a6e5286e06`
+
+Validated against HF13 six-hour PAPER:
+- 1,264 causal 15-second replay episodes;
+- 255 EMA-convergence lessons;
+- 582 crest decisions;
+- 392 leg handoffs;
+- 651 WIDE/compression cases;
+- 227 Settlement-cushion cases;
+- 29/29 actual HF13 entries reproduced in entry-centered mode;
+- no-future-leakage audit PASS;
+- 5/5 unit tests PASS.
+
+Construct V1 commands: BUILD -> QUIZ -> SCORE -> AUDIT.
+The Windows helper accepts a frozen engine archive ZIP and builds the replay dojo without starting engine/network/order functionality.
+
+V1 curriculum: convergence fakeout vs breakout; alternating EMA30 arcs; shock/absorption/reset; crest extension vs rollover; correct-side/wrong-timing; CORE LEG vs tactical wiggle; Settlement Ride; Lazarus rescue vs entry skill; EXIT_ON_RETRACE; <=.25 A+ asymmetry; Peak Hunt; WIDE-inside-directional-parent.
+
+Construct lessons are research evidence only. Any promotion into PAPER authority requires explicit cross-run validation and change control.
