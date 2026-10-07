@@ -180,3 +180,37 @@ For future chat migration:
 - Documentation updates may occur while a PAPER run is active.
 - Do not alter live strategy source for the active run.
 - Run packages/results should be archived with immutable hashes and a short forensic checkpoint before the next strategic change.
+
+## Candidate doctrine — Settlement Hold / Close-at-Expiry mode
+
+Operator request, 2026-10-06:
+- In a contract where the active short/side is steady, swings are modest, and roughly half the contract has elapsed, Tachys should consider **holding the whole winning position to settlement** instead of automatically harvesting around +35–50%.
+- Rationale: avoid unnecessary exit-side fee/slippage, preserve the possibility of the contract continuing toward 1.00, and let the binary payout deliver the full remaining return when the side closes correctly.
+
+### Proposed qualification
+This is a management state, not a new entry authority.
+
+Arm `SETTLEMENT_HOLD` only when all of the following are broadly true:
+1. parent EMA9 tube/leg remains intact on the held side;
+2. contract is at least roughly halfway complete;
+3. recent price action is steady/low-amplitude rather than violent alternating chop;
+4. target/settlement geography remains favorable to the held side with useful cushion;
+5. no EMA9->EMA30 CONTACT WATCH breakthrough/handoff evidence is active;
+6. no meaningful opposite price<->EMA9 leg has developed;
+7. the position is already profitable / thesis-proven and there is no better economic reason to harvest immediately.
+
+### Behavior
+- While `SETTLEMENT_HOLD` remains intact, do not sell merely because +35% or +50% was reached.
+- Allow the position to continue toward settlement/1.00 and capture the remaining binary payoff.
+- Continue to monitor for genuine structural failure. A real parent break, violent opposite expansion, target loss, or contact/handoff can cancel settlement hold and liquidate.
+- Near settlement, require less ordinary noise sensitivity, not more, when the contract is steadily repricing toward the held side.
+- This mode should work with whole-position management and should not create routine partial exits.
+- Peak-Hunt remains relevant for exceptional +140–150%+ winners before settlement; Settlement Hold applies when the contract is steadily grinding toward expiry and the safest/economically best action is to own the payout.
+
+### Research question for HF11+
+Measure, for every profitable position harvested before settlement:
+- realized exit ROI vs hypothetical same-position settlement ROI;
+- exit fees/slippage avoided by settlement;
+- maximum adverse move after the proposed hold point;
+- whether the parent EMA9/target thesis actually broke before expiry.
+This will show when settlement hold is additive versus when harvesting was protective.
