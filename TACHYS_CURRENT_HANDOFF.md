@@ -520,3 +520,31 @@ Priority post-run forensic:
 
 Working hypothesis to test:
 HF14 may be entering the expected *next* leg too early—before the active EMA9 arc actually turns—causing widespread adverse-first excursions. This is not the same as side starvation or stale-side execution; it is premature counter-arc anticipation.
+
+
+## HF14 LIVE ANCHOR — core leg / settlement anchor must survive tactical scalps
+Operator live observation during active HF14 6-hour PAPER run:
+- Tachys is repeatedly collecting small profits but is not consistently holding a position that owns the **actual parent leg** through the contract.
+- This creates bad payoff asymmetry: many small wins are repeatedly erased by occasional large/full losses.
+- Short sideways/micro legs are still desirable and may be scalped when qualified, but they must not displace the main-leg mission.
+
+### Proposed canonical management doctrine
+**CORE LEG / SETTLEMENT ANCHOR**
+- Once Command has identified a developed actual contract leg with credible parent structure, maintain a dedicated whole-position core whose mission is the parent leg / contract close whenever structurally safe.
+- Ordinary +35/+50 scalp logic must not automatically liquidate this core while the parent leg remains intact.
+- Local pullbacks, single opposite candles, WIDE edge visits and short sideways legs are tactical information; they do not by themselves terminate the core.
+- The core exits only for meaningful parent-leg break, serious PT/settlement deterioration, true EMA9 handoff/turn, Peak-Hunt collection at extreme ROI, or other existing hard risk protection.
+- If the core is collected because the leg genuinely weakens and the same parent resumes, reacquire quickly under existing re-entry rules.
+- Tactical short-leg profits may still be taken, but their mission must be separate from the parent-leg core. Do not let a tactical harvest reset or erase the larger battle identity.
+- Preserve the existing prohibition on opening simultaneous opposite positions merely as a hedge. Tactical opposite-leg participation must remain explicitly qualified and must not become hidden hedging against an intact core.
+
+### Post-run forensic
+1. identify every contract where Tachys correctly owned the eventual settlement-side parent leg but exited all inventory early;
+2. quantify realized P/L versus a protected core held until structural break or settlement;
+3. count how many small-profit exits were later followed by same-side continuation to .90/.99/settlement;
+4. measure whether those early harvests left Tachys flat during the most valuable part of the leg;
+5. separate tactical sidecar/scalp performance from parent-leg core performance;
+6. evaluate a mission-aware inventory model: `CORE_LEG` vs `TACTICAL_LEG`, both under ONE COMMAND, not independent authorities.
+
+Core principle:
+**Win the leg, not just the wiggle.** Small sideways profits are supplemental. A structurally valid parent-leg position should remain represented through the contract whenever possible.
