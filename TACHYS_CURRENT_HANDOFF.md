@@ -343,3 +343,23 @@ HF11 was stopped after ~81.1 minutes and paired with matching OBS4.2.
 - Independent OBS4.2 confirmed UP spine persistence through the screenshot interval.
 - Repair: multi-arc directional proof; neutral-vs-inclined WIDE separation; developing pre-cross Contact/Handoff Watch; preserve explicit TUBE_MICRO_LEG counter-legs.
 - Full forensic: `forensics/HF11_SIDE_HANDOFF_FORENSIC_2026-10-07.md`
+
+
+## HF12 1-hour release — READY
+- Build: `V9.5D-666-RECONCILIATION-R15-HF12`
+- Package: `TACHYS_RECONCILIATION_R15_HF12_1H_TEST.zip`
+- SHA-256: `ec26ff77b8b9b3de9903a19dd4c8cff9428e851c9f579654431f7ebf19b4d1d6`
+- Exact parent HF11 package SHA-256: `838dc757c59c020cef4ddf7ab0f1f0a517e658f435e57073c805e5bb8260db50`
+- PAPER duration: 60 minutes.
+- Fresh-extracted release validation: 487 engine/unit/integration tests PASS; 5 observer startup tests PASS; 11 R15 observer identity checks PASS; 21 install/snapshot/archive lifecycle checks PASS; exact 3600-second snapshot PASS.
+
+HF12 changes only:
+1. multi-arc directional parent proof without requiring >=.50 straight-line efficiency when stronger physical evidence agrees;
+2. inclined WIDE ordinary edge ownership aligns with physical parent; opposite edge requires explicit counter/micro-leg evidence;
+3. pre-cross challenger Contact/Handoff may transfer Command side before literal EMA9/EMA30 cross.
+
+HF11 management/sizing preserved, including <=.25 A+/$15, Settlement Ride, +35% qualified-not-auto-exit, Leviathan PEAK_HUNT, Lazarus, tube urgency, Wide Zigzag and Market Heist.
+
+### Shadow status carried into HF12
+Active engine-side shadow/research stack from HF11 is preserved: Looking Glass/Rescue, Dragon Dance, Failed Regeneration, King's Council, Entry Authority Router shadow, Formation/Handoff, Battlefield Zoom, Target Tube, Leg Geometry, Orbit and Settlement Elasticity Lite, plus other inherited shadows. OBS4.2 keeps Swing Forecast/Outcome, Shock/Aftershock, SUB-.20, Leviathan, Position Development/Health, Failed Progress, Knot and Commander reporting with zero trading authority.
+Not separately activated in HF12: ULTRA05, Hurricane/spaghetti/OBS5, spectral decomposition, precession.
