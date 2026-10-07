@@ -9,9 +9,9 @@ This file supplements the historical Commander’s Log; it does not replace the 
 - Build: **V9.5D-666-RECONCILIATION-R15-HF10**
 - Mode: **PAPER ONLY**
 - Test length: **1 hour**
-- Status at this checkpoint: **RUNNING**
-- Engine + OBS4.2 + cockpit were manually confirmed running after launcher-wrapper issues.
-- Do **not** change/restart the running engine solely to improve tooling or documentation.
+- Status at this checkpoint: **COMPLETED / FORENSIC COMPLETE**
+- Engine + OBS4.2 + cockpit completed the 1-hour PAPER test.
+- Engine archive and matching OBS4.2 archive were paired and audited.
 - Released package SHA-256: `043d09c88cbcd311b5000020b2086c96087e9862cc0efe296a9569cc59ccc944`
 
 ## Immediate ancestry
@@ -88,6 +88,59 @@ These are part of current project continuity even if not currently present by fi
 - EA1/shadow entry-authority work and Leviathan/position-development research retain their historical evidence role unless already deliberately integrated into current lifecycle code.
 
 Rule: **one Command, many senses.** Shadows compete for evidence and possible graduation, not for simultaneous sovereignty.
+
+## HF10 completed forensic — 2026-10-06
+
+### Result
+- 7 entries / 7 closed
+- 4W / 3L
+- PAPER gross: **-$7.734**
+- horizon-0 displayed-liquidity/fee model: **-$11.904**
+- WIDE_ZIGZAG_EDGE_LEG: 4 trades, 1W/3L, **-$19.834**
+- CONTINUATION_PULLBACK: 2 trades, 2W, **+$7.240**
+- TUBE_MICRO_LEG: 1 trade, 1W, **+$4.860**
+- non-WIDE missions: 3/3, **+$12.10 gross**
+
+Full forensic:
+- `forensics/HF10_1H_FORENSIC_2026-10-06.md`
+- forensic commit: `cb0fb38d6ffcfa6abc8f20fd70c325d0b76e99f0`
+
+### Acceptance matrix
+1. **Earlier tube recognition: PASS mechanically.** HF10 first promoted the NO tube with wall age about 375 seconds rather than waiting 900 seconds.
+2. **Tube urgency: NOT VALIDATED.** Zero urgency activations occurred. Do not retune urgency yet.
+3. **CONTACT WATCH: PARTIAL.** Rejection branch fired; no breakthrough retirement occurred. The damaging retirements came from older `release_pressure`, not Contact Watch.
+
+### Main HF10 defects
+- **Parent-tube amnesia across a local wall reset.** A young local wall temporarily erased a still-valid broader NO tube, allowing WIDE YES #2 before NO repriced strongly.
+- **Legacy release flapping far from EMA30.** #4 and #6 retired a proven NO tube through `release_pressure` while Contact Watch was false and EMA9 remained materially below EMA30. WIDE then inherited the battlefield and entered losing YES positions.
+
+### Positive control
+#7 YES `TUBE_MICRO_LEG` inside a parent NO tube entered on coherent EMA9 curl + pullback + price support and harvested +50%. This is the intended nested behavior and must remain possible.
+
+### Shadow finding
+Formation / Failed Regeneration / OBS4.2 provided useful early evidence around #2, and King's Council strongly favored NO around #4/#6. However King's Council was also unanimously NO during winning #7. Therefore shadows remain **advisory evidence, not veto authority**.
+
+ULTRA05 and Hurricane/spaghetti/OBS5 were not active in the supplied HF10 archives; do not infer results for them.
+
+## HF11 surgical recommendation
+
+Keep the HF10 one-Command architecture and lifecycle rules. Make only these hierarchy repairs:
+
+1. **Parent-tube continuity across local wall resets**
+   - a young child/local wall cannot erase a still-valid proven parent tube merely because its own age is small;
+   - inherit the parent side until coherent handoff/contact/breakthrough or a true opposite parent wall invalidates it;
+   - preserve default first-minute WAIT, but the existing exceptional continuation rule may use inherited proof when waiting is visibly repricing the same side away.
+
+2. **Downgrade far-from-contact legacy release**
+   - repeated price<->EMA9 crossings plus temporary opposing long-horizon motion become `RELEASE_WATCH` while a proven tube remains far from EMA30;
+   - do not hand ordinary WIDE the opposite battlefield solely from this legacy release state;
+   - coherent counter-moves may still qualify as `TUBE_MICRO_LEG` as #7 did;
+   - full tube retirement requires stronger structural handoff/contact/breakthrough evidence.
+
+3. **Do not retune tube urgency yet**
+   - keep the HF10 urgency mechanism and value ceiling unchanged until parent-tube continuity makes urgency actually eligible and measurable.
+
+Preserve Wide Zigzag as a regular tool; HF10's failure was battlefield ownership, not evidence that WIDE itself should be removed.
 
 ## HF10 post-run forensic priorities
 Archive first. Then examine:
