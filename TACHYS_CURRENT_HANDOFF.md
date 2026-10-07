@@ -741,3 +741,22 @@ The Windows helper accepts a frozen engine archive ZIP and builds the replay doj
 V1 curriculum: convergence fakeout vs breakout; alternating EMA30 arcs; shock/absorption/reset; crest extension vs rollover; correct-side/wrong-timing; CORE LEG vs tactical wiggle; Settlement Ride; Lazarus rescue vs entry skill; EXIT_ON_RETRACE; <=.25 A+ asymmetry; Peak Hunt; WIDE-inside-directional-parent.
 
 Construct lessons are research evidence only. Any promotion into PAPER authority requires explicit cross-run validation and change control.
+
+
+## HF14 COMPLETED FORENSIC — 2026-10-07
+- 35 entries; 34 resolved in the core bundle; 22W/12L; gross -$1.137; 0ms modeled net -$26.679.
+- WIDE remained negative (-$20.490); Continuation +$4.513; Tube Micro-Leg +$14.840.
+- HF14 live anchors confirmed:
+  - missed YES around 11:10 due side oscillation / parent inheritance;
+  - #12 too late vs PT/time capacity;
+  - #13 premature NO against still-UP arc;
+  - #14 profitable but short-term mistimed;
+  - #24 fakeout YES while local EMA9 arc was DOWN-building;
+  - #25 correct NO core, delayed by #24 and then harvested despite active SETTLEMENT_RIDE;
+  - #27 stale NO while local EMA9 arc already UP-building.
+- #33 Peak Hunt positive control: .14 entry, +150% MFE, +135.7% realized on first meaningful retreat.
+- <=.25 A+ group +$11.96 gross across four fills.
+- 25/35 positions entered Lazarus custody; rescue quality must remain separate from entry quality.
+- Selective CORE LEG retention is supported; blind settlement holding is not.
+- Recovered OBS4.2 coverage lasted ~4h15m, not full six hours; observer lifecycle still needs clean finalization.
+- Full forensic: `forensics/HF14_6H_FORENSIC_2026-10-07.md`.
