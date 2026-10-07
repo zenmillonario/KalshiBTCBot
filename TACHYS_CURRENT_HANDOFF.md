@@ -308,3 +308,26 @@ Post-run checks:
 
 Working hypothesis to test, not assume:
 HF11 may have fixed stale tube retirement in one direction by making inherited parent-tube memory too sticky, creating a new **YES starvation / stale-NO persistence** problem after a completed post-shock absorption and spine reset.
+
+
+## HF11 LIVE SCREENSHOT ANCHOR — Command side stuck NO inside explicit UP context
+Operator screenshot around ~23:40 ET during the active HF11 PAPER run shows a direct internal contradiction:
+- TradingView: BTC roughly 84,102; EMA9 roughly 84,070 and rising above EMA30 roughly 84,023; visible recovery structure is UP.
+- Kalshi current contract: BTC roughly $146 above PT with ~4:51 remaining; market pricing displayed UP around 97c / DOWN around 3c.
+- HF11 own context line reports approximately: `A=YES ... PARENT=UP/MID +102 | LOCAL=TREND | F=RISING_CHANNEL`.
+- Yet the decision boundary repeatedly reports `R15 COMMAND WAIT | NO`, including `LOW_INTENTION_NO_FILL_RENEWED_PLAN_REQUIRED`, `ARM_AWAIT_NEW_EXECUTABLE_OBSERVATION`, and another NO wait/denied-plan state.
+- Looking Glass nearby reports continuation / clean territory rather than a fresh downside breakdown.
+- After roughly one hour of the 2h run, only 4 total entries have executed and all 4 were NO; 2 were losses.
+
+Interpretation to verify post-run:
+This is stronger than simple selectivity or price gating. The visible frame suggests **Command-side inheritance/final-boundary state is remaining NO even after the internal physical context has already reclassified PARENT=UP, LOCAL=TREND, RISING_CHANNEL, and A=YES**. That is a likely side-handoff / stale-parent ownership defect.
+
+Priority forensic:
+1. trace exact source fields feeding `command_side` vs the physical-context fields in this frame;
+2. identify which persisted state keeps final candidate side NO;
+3. determine whether HF11 parent-tube inheritance can survive past its own reclassification to PARENT=UP;
+4. check whether RELEASE_WATCH prevents side handoff even after EMA9/EMA30 cross + multi-arc upside regeneration;
+5. count all frames where physical context is YES/UP while final Command remains NO;
+6. fix authority handoff before any further tuning of entry frequency.
+
+This screenshot is evidence that YES starvation is likely a **side-ownership/wiring problem**, not merely insufficient opportunities.
