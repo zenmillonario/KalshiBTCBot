@@ -594,3 +594,31 @@ Post-run forensic:
 
 Core lesson:
 **At EMA9/EMA30/price convergence, do not let the first fakeout own the battle. The transition must be read as a sequence. Once the real release establishes the new leg, move quickly and keep a core position on that leg.**
+
+
+## HF14 LIVE DOCTRINE — fade expected fakeout at EMA convergence
+Operator discretionary method:
+- Fakeouts are common when price, EMA9 and EMA30 converge.
+- Rather than waiting for the fakeout to fully fail, anticipate the false thrust and **bet against it near the extreme** when the broader arc sequence suggests the opposite release is more likely.
+- Example: if the market is approaching an expected downward handoff, a brief YES thrust/high at convergence may be the best-priced NO entry, not evidence to chase YES.
+
+This is an ANTICIPATION pattern under ONE COMMAND, not an independent authority.
+
+### Qualification
+Use this only when recent geometry already supports the expected opposite release:
+- mature prior arc / expected alternating over-under EMA30 sequence;
+- EMA9/EMA30 gap collapsing into contact;
+- first thrust fails to create durable separation;
+- limited follow-through / diminishing extension;
+- wick/rejection or rapid loss of quote support;
+- price/EMA9 snapback toward the spine;
+- no sustained gap expansion in the fakeout direction.
+
+### Execution
+- PLAN/ARM the opposite side before full confirmation.
+- Hunt the extreme of the fakeout for the cheapest/best opposite entry.
+- Do not wait for the full EMA cross if the rejection is already obvious.
+- If the fakeout instead develops real expansion, increasing EMA9/EMA30 separation, and sustained quote/price support, cancel the fade immediately and treat it as a genuine breakout.
+
+Core principle:
+**At a mature EMA convergence, the first thrust is suspect. If history expects the opposite handoff, use the fakeout high/low as the entry opportunity rather than chasing it.**
