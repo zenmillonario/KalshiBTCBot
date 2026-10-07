@@ -566,3 +566,31 @@ Post-run forensic:
 6. test the canonical rule: **an opposite losing Lazarus position is baggage, not sovereignty**. A structurally healthy core leg may remain open to settlement even while the opposite loser is being managed separately.
 
 Preserve the existing no-simultaneous-hedge doctrine: the point is not to open deliberate opposite hedges. The point is that once an opposite loser legitimately exists in Lazarus, it must not force the active winning parent-leg position out.
+
+
+## HF14 LIVE ANCHOR — #24 fakeout delayed #25 NO core
+Operator live reconstruction during active HF14 6-hour PAPER run:
+
+### #24 YES
+- #24 YES was a **fakeout at EMA9/EMA30/price convergence**, immediately before the EMAs crossed/released downward.
+- Instead of treating the convergence as a handoff/contact decision point and waiting for rejection/breakthrough evidence, Tachys committed to the temporary YES fakeout.
+- This consumed timing/inventory during the actual transition.
+
+### #25 NO
+- The real next leg was NO as EMA9/EMA30 crossed/released downward.
+- Because Tachys was occupied by #24 YES, #25 NO was delayed and entered only around **$0.64**, materially worse than the earlier NO opportunity.
+- #25 then became the position that matched the active parent/contract leg, with BTC >~$100 under PT and EMA9 continuing down.
+- Tachys nevertheless exited #25 too early instead of maintaining it as the CORE LEG / Settlement Ride position toward close.
+
+Post-run forensic:
+1. reconstruct exact #24 entry and the EMA9/EMA30/price convergence frame immediately before it;
+2. identify which fakeout/rejection/contact evidence existed and why YES was granted authority;
+3. locate the earliest causal NO plan/ask during the downward handoff and quantify the price lost before #25's ~.64 fill;
+4. measure whether #24 occupancy, Lazarus transfer, or entry-cooldown/reentry logic delayed #25;
+5. reconstruct #25 exit, remaining PT cushion, EMA9 direction, time-to-close and settlement result;
+6. quantify opportunity cost as a chain:
+   **bad #24 YES fakeout -> delayed/expensive #25 NO -> premature #25 exit**;
+7. determine whether EMA-convergence handoff logic needs an explicit rule that a brief fakeout cannot seize a new side before the contact decision resolves.
+
+Core lesson:
+**At EMA9/EMA30/price convergence, do not let the first fakeout own the battle. The transition must be read as a sequence. Once the real release establishes the new leg, move quickly and keep a core position on that leg.**
