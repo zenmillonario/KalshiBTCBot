@@ -381,3 +381,19 @@ Post-run forensic:
 
 Doctrine reinforced:
 **Top-of-arc location is a decision point, not an automatic reversal.** Reversal requires weakening/exhaustion evidence. If extension is still increasing, continuation may remain the better trade.
+
+
+## HF12 LIVE ANCHOR — #4 possible premature exit vs Settlement Ride
+Operator follow-up on #4 YES:
+- Entry/side read appears excellent; the apparent crest extended and trade reached roughly +80%.
+- Main concern is management, not entry: operator believes #4 could potentially have remained open through contract rollover/settlement rather than exiting early.
+- Post-run, determine whether #4 met SETTLEMENT_RIDE conditions at/near its exit:
+  - time remaining / contract phase;
+  - BTC distance from PT normalized by recent realized movement;
+  - whether PT cushion was increasing or stable;
+  - EMA9 and EMA30 structure;
+  - volatility contraction vs expansion;
+  - quote-wave deterioration or lack thereof;
+  - whether any genuine structural/settlement threat justified exit.
+- Quantify realized exit value vs hypothetical settlement value and fees saved.
+- If structure and PT safety remained intact, classify as **GOOD ENTRY / GOOD HOLD / PREMATURE EXIT** and refine Settlement Ride activation rather than changing the entry logic.
