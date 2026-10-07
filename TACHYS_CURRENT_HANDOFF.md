@@ -251,3 +251,15 @@ Use existing Command evidence only:
 - If a position is already trading very near $1 with strong PT safety, default should lean toward settlement rather than paying to sell the last few cents early.
 
 Core principle: **when the market is quiet and our side is safely winning, let time work for us.**
+
+
+## HF11 2-hour release — READY
+- Build: `V9.5D-666-RECONCILIATION-R15-HF11`
+- Package: `TACHYS_RECONCILIATION_R15_HF11_2H_TEST.zip`
+- SHA-256: `838dc757c59c020cef4ddf7ab0f1f0a517e658f435e57073c805e5bb8260db50`
+- Planned PAPER duration: 120 minutes.
+- Parent exact HF10 ZIP SHA-256: `043d09c88cbcd311b5000020b2086c96087e9862cc0efe296a9569cc59ccc944`.
+- Fresh-extracted release validation: 482 engine/unit/integration tests PASS; 5 observer startup tests PASS; 11 R15 observer identity checks PASS; 21 install/snapshot/archive lifecycle checks PASS; exact 7200-second snapshot PASS; wrapper paths PASS.
+- Historical component replays retained and release-validated separately so Windows install does not rerun the old forensic replay bundle.
+
+HF11 changes only the agreed set: parent-tube inheritance across child wall reset; far-from-contact legacy release becomes RELEASE_WATCH; +35% qualified-not-auto-exit; SETTLEMENT_RIDE; Leviathan PEAK_HUNT around +140–150%; Command-qualified <=.25 is A+ with $15 entry cap. Existing tube urgency is preserved rather than retuned.
