@@ -140,14 +140,17 @@ Keep the HF10 one-Command architecture and lifecycle rules. Make only these hier
 3. **Do not retune tube urgency yet**
    - keep the HF10 urgency mechanism and value ceiling unchanged until parent-tube continuity makes urgency actually eligible and measurable.
 
-4. **Leviathan earned-profit protection / delayed-exit repair**
-   - HF10 #1 peaked at bid .140 / +145.6% MFE but exited at .110 / +93.0%.
-   - The intended 7.5% rolling stop was .1295, corresponding to roughly +127% ROI, so the large giveback was not caused by the nominal 5–10% band alone.
-   - The first full-size bid after the tightened stop was already .120; the bounded low-price model then created a delayed exit intent and required a later fresh displayed book, which arrived at .110.
-   - Do not solve this merely by shrinking the trail percentage.
-   - Add **pre-armed runner exit intent** before the hard floor is breached so the realistic delayed-book model is already satisfied when protection must fire.
-   - Add **earned-profit retention / tick-aware crest protection** for large-MFE low-price runners: after very large gains, one cent can represent many ROI points. Protect a large fraction of peak earned profit and use quote-wave/structure deterioration to harvest at the crest rather than permitting a mechanical fall through the floor.
-   - Preserve whole-position Leviathan behavior; this is profit protection, not forced early partial harvesting.
+4. **Leviathan Peak-Hunt / Highest-Possible Collection**
+   - Canonical operator doctrine: **play how high it can get, not how high it can stay.**
+   - HF10 #1 peaked at bid .140 / +145.6% MFE but exited at .110 / +93.0%; that giveback is unacceptable once a winner has already reached the +140–150% zone.
+   - Preserve whole-position management. Do not introduce routine partial harvesting.
+   - Below roughly +140% MFE, the existing structural runner logic may continue to give a strong winner room.
+   - At about **+140%**, pre-arm an immediate whole-position exit path and enter **PEAK_HUNT** mode. Do not begin a new delayed-book waiting cycle after weakness appears.
+   - From **+140% to +150%**, hold only while real momentum is still clearly increasing / making fresh meaningful highs. If acceleration stalls, the bid fails to improve meaningfully, or the first meaningful weakness appears, collect the whole position immediately.
+   - At **+150% and above**, every fresh meaningful high becomes the new collection high-water mark. Continue only while the move is actively extending. On the first meaningful failure to extend or first meaningful real-bid retreat, collect all immediately; do not wait for a 5–10% drawdown.
+   - For low-price contracts, use tick-aware logic because one cent can represent many ROI points. A single real full-size bid tick off a post-150% high can be economically meaningful.
+   - Momentum/extension evidence must come from the existing Command stack (real bid/quote wave, price<->EMA9 behavior, EMA9 arc/extension); this is a management state, not a new independent authority.
+   - If liquidation occurs and continuation immediately resumes, treat it as a fresh re-entry opportunity under the existing re-entry rules rather than sacrificing captured profit to keep the old position alive.
 
 Preserve Wide Zigzag as a regular tool; HF10's failure was battlefield ownership, not evidence that WIDE itself should be removed.
 
