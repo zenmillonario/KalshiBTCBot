@@ -656,3 +656,22 @@ Operator refinement of the EMA-convergence fakeout fade:
 
 Core principle:
 **Fade the weak first thrust at the extreme; reassess at the retest. If the breakout proves real, cut early. If it fails, keep the better-priced opposite position.**
+
+
+## HF14 LIVE ANCHOR — #27 stale NO versus expected bottom-arc closure
+Operator live observation during active HF14 6-hour PAPER run:
+- #27 entered/stayed NO early in the contract while EMA9 was traveling mostly sideways from the prior contract.
+- Recent history suggested an alternating EMA9 arc sequence around EMA30.
+- Operator expected the current phase to turn back UP to close/complete the bottom arc toward EMA30.
+- Therefore Tachys should have been **looking for a cheap YES**, not remaining anchored in NO.
+
+Post-run forensic:
+1. reconstruct the final 1–2 contracts before #27 and the alternating over/under EMA30 arc sequence;
+2. identify whether the prior NO/down arc was already mature/spent before the new contract opened;
+3. inspect EMA9 flattening, sideways travel, pullback count/depth, price<->EMA9 crossings and distance to EMA30 at #27 entry;
+4. determine whether parent-history memory or stale NO ownership overrode the expected bottom-arc closure;
+5. find the earliest causal YES PLAN/ARM opportunity and best available YES ask before the upswing;
+6. compare #27 with #24/#25 and other live anchors to test whether Command is systematically late on **arc-sequence turn anticipation**.
+
+Doctrine:
+When recent history shows alternating arcs around EMA30 and a down arc has spent itself into sideways/flattening behavior near a bottom structure, Tachys should **anticipate the next YES arc and hunt value before the turn is obvious**. Do not require a completed cross or strong green candle if the history/geometry already makes the turn plausible.
