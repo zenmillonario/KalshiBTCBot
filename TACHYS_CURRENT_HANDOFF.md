@@ -263,3 +263,26 @@ Core principle: **when the market is quiet and our side is safely winning, let t
 - Historical component replays retained and release-validated separately so Windows install does not rerun the old forensic replay bundle.
 
 HF11 changes only the agreed set: parent-tube inheritance across child wall reset; far-from-contact legacy release becomes RELEASE_WATCH; +35% qualified-not-auto-exit; SETTLEMENT_RIDE; Leviathan PEAK_HUNT around +140–150%; Command-qualified <=.25 is A+ with $15 entry cap. Existing tube urgency is preserved rather than retuned.
+
+
+## HF11 LIVE ANCHOR — crash -> absorption -> spine reset -> upside regeneration
+Operator reconstruction during active HF11 PAPER run:
+- BTC dropped almost straight down in roughly **one 15-minute contract**, about **85.3k -> 83.5k** (~$1.8k).
+- The next roughly **four contracts** did **not** continue the crash; price zigzagged mostly sideways.
+- By about the **fifth contract after the shock**, EMA9 and EMA30 had converged/met.
+- After that compression/contact, EMA9 produced roughly **three arcs/crests**, crossed/released upward, and BTC recovered about **$200**.
+- Despite the crash having stopped extending and this recovery geometry developing, Tachys continued favoring NO repeatedly.
+
+Post-run forensic requirement:
+1. reconstruct exact shock contract and every subsequent HF11 NO entry/blocked YES;
+2. measure new-low extension per contract after the crash;
+3. measure the four-contract sideways absorption range and price<->EMA9 crossing density;
+4. measure EMA9/EMA30 gap contraction into contact;
+5. reconstruct the three post-contact EMA9 arcs/crests and exact upward cross/release;
+6. determine at what earliest causal point old DOWN authority should have become POST_SHOCK_ABSORPTION / CONTACT_RESET rather than ordinary continuation;
+7. compare whether existing Command or advisory shadows already saw the handoff.
+
+Proposed structural grammar for offline research only:
+`SHOCK_DOWN -> POST_SHOCK_ABSORPTION -> SPINE_CONTACT_RESET -> MULTI_ARC_REGENERATION -> UPSIDE_RELEASE`
+
+Important: do **not** encode “big drop = automatic YES.” The decisive evidence is the combination of spent displacement + several contracts without fresh downside extension + sideways absorption + EMA gap closure/contact + repeated upside regeneration. Once that sequence develops, the old DOWN tube must re-earn continuation authority rather than remain sovereign by ancestry alone.
