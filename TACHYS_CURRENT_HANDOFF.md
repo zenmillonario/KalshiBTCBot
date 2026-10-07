@@ -675,3 +675,28 @@ Post-run forensic:
 
 Doctrine:
 When recent history shows alternating arcs around EMA30 and a down arc has spent itself into sideways/flattening behavior near a bottom structure, Tachys should **anticipate the next YES arc and hunt value before the turn is obvious**. Do not require a completed cross or strong green candle if the history/geometry already makes the turn plausible.
+
+
+## HF14 LIVE DOCTRINE — Lazarus success must not validate bad entry
+Operator clarification during active HF14 PAPER run:
+- Lazarus sometimes appears successful because a wrongly timed/positioned trade later gets a normal market wiggle back toward its entry and can escape or even become profitable.
+- That recovery does **not** retroactively make the original entry correct.
+- Entry quality and custody/rescue quality must be scored separately.
+
+Canonical forensic rule:
+- **ENTRY SCORE:** Was the side, arc phase, timing, PT geography, price and opportunity cost correct at the moment of entry?
+- **LAZARUS SCORE:** Given an already-wounded position, did custody improve the economic outcome versus immediate liquidation?
+- A trade may be `BAD_ENTRY / GOOD_LAZARUS_RESCUE`.
+- Do not use final P/L alone to graduate entry logic.
+- Specifically flag trades that go materially adverse first, require Lazarus, then recover on ordinary zigzag/arc noise; these may indicate premature next-leg anticipation rather than genuine entry skill.
+
+Research metric for future audits:
+- MAE before recovery;
+- time underwater;
+- time to breakeven;
+- whether the expected leg actually began only after entry had already gone deeply adverse;
+- counterfactual better entry price at the true turn;
+- Lazarus value-added versus immediate liquidation.
+
+Core principle:
+**Lazarus can rescue a mistake. It cannot certify the mistake as a good entry.**
