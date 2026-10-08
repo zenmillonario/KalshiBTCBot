@@ -825,3 +825,25 @@ Priority forensic:
 
 Acceptance principle:
 A clean directional/alternating EMA9 chart should produce **better entry quality than a difficult compression regime**. If HF15 performs poorly in the easier environment, treat it as strategy timing/authority failure rather than market difficulty.
+
+
+## HF15 LIVE ANCHOR — anticipation fabricating YES legs inside persistent downtrend
+Operator live report during active HF15 PAPER run:
+- chart has been a clear DOWN trend for roughly **4–5 contracts**, with mostly red candles;
+- HF15 is nevertheless producing repeated YES entries;
+- the YES counter-legs do not have enough extension/"juice" to become meaningful legs;
+- operator describes Tachys as effectively "making up the chart" by expecting an alternating YES arc that has not actually earned existence.
+
+Interpretation:
+This is a regression against EMA9 Sovereign Authority. Arc-sequence anticipation must be conditional, not a symmetry engine. A persistent directional leg does **not** owe the market an equal opposite arc.
+
+Required next repair:
+1. persistent multi-contract EMA9 direction remains primary until actual weakening develops;
+2. opposite anticipation requires concrete leg-body evidence: reduced same-side extension, EMA9 flatten/curl, increasing opposite candles, meaningful price<->EMA9 reclaim, quote deterioration, or comparable counter-leg excursion;
+3. red-candle / red-volume persistence and continuing EMA9 downside extension suppress speculative YES anticipation;
+4. "expected alternating arc" is only a prior, never authority by itself;
+5. if the opposite move lacks minimum excursion/capacity, classify it as pullback/wobble rather than a new leg;
+6. preserve fakeout-fade anticipation only at mature convergence/turn zones with real weakness evidence.
+
+Core rule:
+**Do not invent the next arc. The current EMA9 leg remains sovereign until the market actually begins to build the opposite leg.**
