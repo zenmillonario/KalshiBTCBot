@@ -1332,3 +1332,20 @@ Post-run forensic requirements:
 
 Core lesson candidate:
 **Do not harvest a healthy parent-leg position merely because a modest profit threshold is reached; distinguish tactical wobble from a real continuation leg.**
+
+
+## LATEST LIVE ANCHOR — #1 premature exit .42 -> .50, later ~.87
+Immediately before chat migration, operator reported:
+- Trade #1 entered around **.42** and exited around **.50**;
+- afterward the same side traded around **.87**;
+- operator judged the exit far too early.
+
+Preserve as a priority management forensic:
+1. reconstruct exact run/build, side, timestamps, mission and exit reason;
+2. determine whether ordinary weakness / +35-style harvesting / short-compass wobble evicted a position whose parent/core structure remained intact;
+3. compare exit-time EMA9/EMA30 geometry, PT cushion, quote structure and leg maturity against subsequent move to ~.87;
+4. test whether this should have remained a CORE LEG / runner / Settlement Ride candidate;
+5. do not let a small profitable exit be scored as good merely because it was green — quantify opportunity cost and leg capture.
+
+Core reminder:
+**Win the leg, not just the wiggle.**
