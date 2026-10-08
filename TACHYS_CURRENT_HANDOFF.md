@@ -871,3 +871,34 @@ Post-run test:
 
 Core lesson:
 **In a persistent EMA9 downtrend, weak YES thrusts are presumed pullback/fakeout until they prove enough body and follow-through to become a real leg.**
+
+
+## HF15 LIVE PATTERN — persistent-trend fakeout entries
+Operator chart observation during HF15 PAPER run:
+- clear persistent DOWN structure across multiple contracts;
+- EMA9 below EMA30 and both sloping down;
+- price repeatedly produces small countertrend YES/green thrusts that fail to establish durable new leg structure;
+- these failed countertrend thrusts can be treated as **entry opportunities in the dominant NO direction**, rather than as reasons to reverse into YES.
+
+Working pattern: **Persistent-Trend Fakeout Harvest**
+- dominant parent: multi-contract EMA9 trend intact;
+- opposite-color/countertrend thrust appears;
+- thrust lacks enough body, duration, EMA9 curl/reclaim, EMA30 handoff, quote follow-through, or comparable leg excursion to qualify as a true opposite leg;
+- use the fakeout/pullback toward EMA9/EMA30/target as a better-priced dominant-side entry;
+- repeated fakeouts may create a staircase of re-entry opportunities while the parent trend remains intact;
+- do not fade a countertrend move once it proves durable separation and genuine handoff.
+
+For DOWN parent:
+- repeated weak YES/green pops are presumed pullback/fakeout until proven otherwise;
+- prefer NO entry near the failed pop/rejection, especially when EMA9 remains below EMA30 and resumes downward extension.
+
+For UP parent, symmetric logic applies to weak NO/red dips.
+
+Guardrails:
+1. Never enter merely because one opposite candle appears.
+2. Require dominant EMA9 trend continuity and failure of the counter-move to build real leg body.
+3. If EMA9 flattens/curls, opposite candles expand, price reclaims EMA9 durably, or EMA9/EMA30 handoff develops, stop harvesting fakeouts and reassess.
+4. The pattern is an entry-improvement tactic inside a coherent parent trend, not blanket contrarian fading.
+
+Core principle:
+**In a persistent parent trend, use failed countertrend moves as discounted entries into the prevailing leg instead of inventing a reversal.**
