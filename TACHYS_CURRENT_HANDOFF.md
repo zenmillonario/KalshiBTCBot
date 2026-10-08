@@ -1114,3 +1114,54 @@ This is evidence that arc-sequence anticipation can also predict the stale paren
 
 Core verified lesson:
 **HF15 was phase-inverted: it reversed too early when the DOWN parent was still sovereign, then reversed too late after the bullish release had actually earned sovereignty.**
+
+
+## HF16 2H RELEASE — TERRITORY-FIRST REPAIR
+Built from the stopped HF15 PAPER forensic.
+
+Release identity:
+- `V9.5D-666-RECONCILIATION-R15-HF16`
+- PAPER ONLY
+- default run duration: 120 minutes
+- package: `TACHYS_RECONCILIATION_R15_HF16_2H_TEST.zip`
+- SHA-256: `309c7e8e1c9deed7a2f5efaaa82a452f5229b1464920c70ef4e3c56864cd5b50`
+
+Verified HF15 evidence driving HF16:
+- 15 entries; 13 resolved = 6W/7L, -$32.71 gross.
+- resolved NO = +$14.11; resolved YES = -$46.82.
+- suspect countertrend YES #6/#7/#9/#10 = -$44.36 combined.
+- merely skipping those four changes resolved gross to +$11.65.
+- #5 NO / #6 YES verified Lazarus same-battle opposite-exposure loophole.
+- final bullish handoff verified: stale #14 NO arrived >5m after EMA9 crossed above EMA30.
+
+HF16 changes:
+1. **Territory-first tactics**
+   - directional trend -> lean with parent and harvest failed countertrend fakeouts;
+   - clean sideways alternating arcs -> early alternating anticipation allowed;
+   - compression/unclear -> wait for expansion/real excursion.
+2. **Persistent-Trend Fakeout Harvest**
+   - weak opposite thrust cannot become sovereign merely from WIDE outer-edge location.
+3. **Multi-Attempt Release Ladder**
+   - count attempts, penetration, duration, long-horizon EMA9 support, candle participation and follow-through;
+   - early probes remain fakeout/pullback candidates;
+   - strengthening sequence creates release-pressure WAIT;
+   - durable release creates sovereignty transfer.
+4. **Explicit sovereignty transfer**
+   - release-ladder transfer or strongly established current structure retires stale parent authority.
+5. **Lazarus distinct-generation gate**
+   - custody does not free opposite-side sovereignty;
+   - same-generation opposite entry is blocked;
+   - explicit transfer or genuinely distinct wall/generation may trade while old Lazarus baggage remains.
+6. Battle generation ID is persisted on each entered position for admission checks.
+
+Offline validation:
+- 526/526 unit tests PASS.
+- 21/21 full install/snapshot/observer/archive handshake PASS.
+- 7200-second / 120-minute lifecycle verified.
+- engine_started=false and network_connected=false during validation.
+- final launcher `--check` PASS.
+
+HF16 acceptance controls reconstruct the stopped HF15 failures: persistent-NO fakeout YES block, first-attempt non-reversal, multi-attempt release pressure, bullish sovereignty transfer, same-generation Lazarus block, and explicit-transfer allowance.
+
+Core rule:
+**Do not invent the reversal early; do not deny it after it earns the battlefield.**
