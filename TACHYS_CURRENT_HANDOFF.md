@@ -1202,3 +1202,67 @@ Validation:
 Artifact:
 - `TACHYS_RECONCILIATION_R15_HF16_2H_FIX1.zip`
 - SHA-256: `9519e25d2511b90fdbedef125d8e20d40e304a849fd1aca9d2beb1c274401c8a`
+
+
+## HF16 FIX1 FORENSIC — 47.8m partial run
+Reviewed:
+- engine: `666_lab_20261008_021713_538582_PID21636`
+- observer: `commander_obs42_20261008T061840_393348Z_c42cf95c_records_63aac4ba`
+
+Runtime:
+- started 2026-10-08 02:17:13 ET
+- stopped 2026-10-08 03:05:00 ET
+- actual runtime ≈ **47m46.7s**, not 2h
+- exit code 78 / `VENUE_FINAL_RESULT_TIMEOUT_POSITIONS_UNRESOLVED`
+- cause: trade #4 remained awaiting venue final result >300s after contract close; runtime globally paused entries and then halted the whole session.
+
+Trade headline:
+- 4 entries across 3 contracts.
+- 3 resolved before halt: #1 YES -$14.79, #2 YES +$2.64, #3 NO -$9.44 = **-$21.59 realized gross**.
+- #4 YES remained unresolved by venue result; last verified bid .999, sampled MFE +53.69%, last verified open P/L +$5.235. Do not credit as settlement without final result.
+
+Trade quality:
+1. **#1 YES .51** — DIRECTIONAL_TREND / parent YES / wall YES / EMA9-EMA30 +$40.81. Actual short EMA9 compass was NO and WIDE upper edge wanted NO, but parent guard correctly blocked the opposite WIDE. This was a defensible parent-pullback attempt that failed; not the main HF16 regression.
+2. **#2 YES .40 at 02:30:45** — bad entry despite eventual +$2.64 winner.
+   - first 45s of new contract;
+   - current wall NO for ~529s;
+   - EMA9-EMA30 ≈ -$101.37;
+   - current_history_strength=true;
+   - release ladder Attempt 3, current wall already crossed EMA30;
+   - actual EMA9 compass NO;
+   - WIDE lower edge selected YES because stale dominant historical YES anchor still defined `physical_parent`.
+   - MAE -52.5%, MFE +40%.
+   - This violates the intended first-minute WAIT and Persistent-Trend Fakeout Harvest concept. A rescue/win does not validate the entry.
+3. **#3 NO .59** — explicit RELEASE_LADDER sovereignty transfer to NO, EMA gap ≈ -$114.21, 30/60/120 horizons all NO. This confirms the transfer mechanism can fire.
+   - MFE +33.90% around 02:35:05;
+   - then decayed to +22%, +12%, crossed negative, entered Lazarus and eventually settled -100%.
+   - This is more a mature-leg / management classification failure than a raw side-authority failure: nearly +34% tactical excursion was treated as CORE-to-settlement and surrendered.
+4. **#4 YES .65** — strong positive control.
+   - wall/tube YES, EMA gap +$12.35, 30/60 horizons YES;
+   - held under CORE LEG / SETTLEMENT RIDE / full-position runner management;
+   - last verified bid .999, MFE +53.69%.
+   - engine failure was venue-result handling, not strategy behavior.
+
+HF16 repair status:
+- **Same-generation Lazarus hedge loophole:** improved. #3 opposite NO was admitted only after explicit sovereignty transfer, not merely because #2 was in custody.
+- **Explicit sovereignty transfer:** works (#3).
+- **Settlement Ride hierarchy:** works on #4; +50% was held rather than prematurely harvested.
+- **WIDE directly overriding directional parent:** largely repaired, but a deeper parent-identification bug remains.
+- **Territory-first fakeout harvest:** incomplete. Stale historical anchor can remain `physical_parent` even when the opposite current wall is already mature, strongly separated from EMA30 and current_history_strength=true.
+- **Opening-minute doctrine:** loophole remains because admission allows `inherited_wide_edge` as a first-minute exception. #2 entered at 45s. User doctrine allows first-minute exceptions only for unusually strong inherited continuation, not a WIDE edge.
+
+Required next surgical changes:
+1. Remove `inherited_wide_edge` as an opening-minute exception; first 60s remains WAIT unless unusually strong same-direction inherited continuation qualifies.
+2. Add stale-anchor retirement / current-wall supremacy threshold:
+   - when opposite current wall is mature (e.g. >=300s), current_history_strength=true, EMA9 is materially separated through EMA30, candle/body evidence aligns, and release ladder has >=2 meaningful attempts/cross evidence, old anchor cannot continue defining physical_parent;
+   - at minimum enter RELEASE_PRESSURE WAIT; when durable criteria are met emit sovereignty transfer.
+3. Mature transfer/tactical leg management:
+   - do not automatically label an already-developed transfer leg CORE-to-settlement;
+   - near +30–35% with clear weakening/short-compass turn should be eligible for tactical harvest rather than surrendering the excursion.
+4. Terminal settlement robustness:
+   - an old closed-contract position awaiting final venue result must not globally pause trading in later contracts;
+   - after final-result grace expires, preserve that holding as unresolved and continue the 2h session instead of halting the engine;
+   - pending closed-contract settlement should not count against active current-contract entry capacity.
+
+Core verified lesson:
+**HF16 fixed the obvious same-state hedge and demonstrated a real sovereignty-transfer path, but stale historical parent ownership still survives too long, and the first-minute WIDE exception can still manufacture a bad countertrend entry.**
