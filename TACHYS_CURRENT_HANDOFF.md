@@ -1001,3 +1001,116 @@ Priority HF16 repair:
 
 Core principle:
 **The same logic that prevents premature reversals must also guarantee timely retirement of the old trend once the reversal proves itself.**
+
+
+## HF15 STOPPED RUN — VERIFIED FORENSIC FROM ENGINE + OBS4.2
+Artifacts reviewed:
+- engine archive session: `666_lab_20261007_203855_609038_PID8516`
+- OBS4.2 archive: `commander_obs42_20261008T005026_241099Z_ffccf2e5_records_27ff9ab3.zip`
+- runtime status: STOPPED / OPERATOR_OR_ENGINE_STOP
+- run duration approximately 1h55m (20:38:55–22:33:58 ET)
+
+### Headline
+- 15 entries total.
+- 13 resolved before stop: **6W / 7L, -$32.71 gross**.
+- 2 positions open/unresolved at stop (#14 NO, #15 YES).
+- Resolved NO: **7 trades, 5W / 2L, +$14.11 gross**.
+- Resolved YES: **6 trades, 1W / 5L, -$46.82 gross**.
+- Custody transfers: **12 of 15 entries** (#1,#3,#4,#5,#6,#7,#8,#9,#10,#11,#13,#14), confirming Lazarus overuse / adverse-first entry quality.
+
+### User fakeout hypothesis is quantitatively supported
+Four clear suspect YES entries during the persistent DOWN parent were #6, #7, #9, #10:
+- #6 YES .51: -$9.69, -100%.
+- #7 YES .65: -$14.95, -100%.
+- #9 YES .28: -$9.80, -100%.
+- #10 YES .62: -$9.92, -100%.
+Combined = **-$44.36**.
+
+If HF15 had merely **stayed out** of those four entries — without assuming any profit from fading them NO — the resolved gross would move from **-$32.71 to +$11.65**. This directly validates the operator's live statement that recognizing the weak YES attempts as fakeouts/pullbacks would have left the run green.
+
+### Exact #5 / #6 opposite-exposure case
+- #5 NO entered 21:16:01 ET at .49.
+- #5 transferred to Lazarus 21:17:03.
+- #6 YES entered 21:18:27 at .51 while #5 NO remained economically open.
+- Opposite exposures coexisted until #5 exited at 21:27:08 — about **8m41s** of concurrent YES/NO exposure in the same contract.
+- #5 NO eventually exited .98, **+$9.80 / +100% ROI**.
+- #6 YES settled at zero, **-$9.69 / -100%**.
+This verifies the Lazarus slot-release loophole: custody allowed a near-same-state opposite battle before a genuinely distinct structural generation had been proven.
+
+### Why the fake YES entries happened
+#6:
+- underlying development side = NO;
+- strong continuation = true;
+- current candle = NO;
+- 9-candle body dominance = NO;
+- EMA9/EMA30 gap ≈ -$1.47;
+- WIDE classified the lower edge as YES and took sovereignty anyway.
+This is a direct WIDE-vs-parent authority failure.
+
+#7:
+- arc-sequence anticipation explicitly armed YES;
+- EMA9 still below EMA30 by ≈ $12.31;
+- 3- and 6-candle windows were NO-dominant;
+- trade lost -100%.
+This is premature arc-sequence anticipation.
+
+#9:
+- EMA9 below EMA30 by ≈ $36.01;
+- underlying development side NO with strong continuation = true;
+- WIDE lower-edge YES overrode the directional parent;
+- trade lost -100%.
+
+#10:
+- EMA9 below EMA30 by ≈ $70.64;
+- 3/6/9 candle windows all NO-dominant;
+- WIDE lower-edge YES again entered against the persistent parent;
+- trade lost -100%.
+
+Mission economics among the 13 resolved:
+- CONTINUATION_PULLBACK: 5, 3W/2L, -$1.29.
+- MATURE_TURN_VALUE: 4, 2W/2L, -$14.43.
+- WIDE_ZIGZAG_EDGE_LEG: 4, 1W/3L, **-$16.99**.
+
+### Verified bullish handoff failure at end
+The release ladder eventually succeeded:
+- EMA9 crossed from below to above EMA30 at approximately **22:26:00.66 ET**.
+- Gap was already positive and expanding afterward.
+
+Yet:
+- #14 NO entered **22:31:25 ET**, roughly **5m24s after the bullish cross**, at .50.
+- At #14 entry EMA9-EMA30 gap ≈ **+$17.69**.
+- 30s/60s physical slopes were positive.
+- 3/6/9 candle windows were YES-dominant.
+- engine development side = YES and wall/tube side = YES.
+- nevertheless WIDE outer-upper-edge logic chose NO.
+- OBS4.2 last mark before stop showed #14 NO bid .35 on .50 entry, about **-30% sampled ROI**.
+
+HF15 did not finally enter YES until #15 at **22:33:45**, about **7m45s after the EMA9 bullish cross**, at .66.
+At that point:
+- EMA9-EMA30 gap ≈ **+$22.50**;
+- directional tube/wall side = YES;
+- long horizons were aligned positive.
+This verifies the operator's live description: HF15 was early to fabricate YES during the real DOWN trend, then late to recognize YES after the actual bullish release.
+
+### #13 is the transition warning immediately before the bullish cross
+- #13 NO .32 at 22:23:39 used `ARC_SEQUENCE_ANTICIPATION_NEXT_LEG`.
+- long horizons were already +0.406 / +8.99 / +15.43;
+- 3-candle body dominance was YES;
+- market was in a strengthening release attempt;
+- #13 settled zero, -$9.92.
+This is evidence that arc-sequence anticipation can also predict the stale parent side while the release ladder is strengthening.
+
+### HF16 / next-build acceptance requirements
+1. **Territory-first classifier** owns tactic selection.
+2. Persistent directional parent => harvest weak opposite fakeouts; do not promote them to new-leg sovereignty.
+3. WIDE cannot take opposite-side sovereignty inside a coherent directional parent merely because price reaches an outer edge.
+4. Arc-sequence anticipation is a prior/ARM signal only; it cannot override strong current parent continuation or contradictory candle/body evidence.
+5. Track **Multi-Attempt Release Ladder**: attempt count, EMA30 penetration, hold duration, EMA9 curl/separation, candle/quote follow-through, and counter-leg body.
+6. When release graduates, emit an explicit **SOVEREIGNTY_TRANSFER** event that retires the old parent immediately.
+7. Lazarus preserves the wounded old position but cannot preserve old battlefield authority after transfer.
+8. Opposite-side entry while Lazarus exists requires a genuinely distinct battle generation; custody alone can never unlock a same-state hedge.
+9. After bullish transfer, prohibit stale-parent NO entries such as #14; after bearish transfer, symmetric rule.
+10. Add HF15 cases #6/#7/#9/#10/#13/#14/#15 and #5/#6 pair to Construct/Dojo curriculum as contrastive drills.
+
+Core verified lesson:
+**HF15 was phase-inverted: it reversed too early when the DOWN parent was still sovereign, then reversed too late after the bullish release had actually earned sovereignty.**
