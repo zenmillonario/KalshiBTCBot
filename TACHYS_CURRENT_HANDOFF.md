@@ -760,3 +760,24 @@ Construct lessons are research evidence only. Any promotion into PAPER authority
 - Selective CORE LEG retention is supported; blind settlement holding is not.
 - Recovered OBS4.2 coverage lasted ~4h15m, not full six hours; observer lifecycle still needs clean finalization.
 - Full forensic: `forensics/HF14_6H_FORENSIC_2026-10-07.md`.
+
+
+## HF15 6-hour release — READY
+- Build: `V9.5D-666-RECONCILIATION-R15-HF15`
+- Package: `TACHYS_RECONCILIATION_R15_HF15_6H_TEST.zip`
+- SHA-256: `3ef771e2cda757841cd091c66160c5579e4a94ea3487ab1033e0dbef6dd5d745`
+- Exact parent HF14 ZIP SHA-256: `daadf1a410f5119e9283920ff8b4ef55fc579006961992a18268ba6289893321`
+- PAPER duration: 360 minutes / 21,600 seconds.
+- Fresh-extracted validation: **519/519 engine/unit/integration tests PASS**; 5 observer startup tests PASS; 11 R15 observer compatibility checks PASS; 21 install/snapshot/archive lifecycle checks PASS; exact 360-minute snapshot PASS; launcher `--check` PASS.
+
+HF15 changes only:
+1. **Arc-sequence anticipation** — alternating EMA9 history around EMA30 may arm the expected next leg before obvious confirmation when the old leg is spent/flattening and physical evidence has begun to rotate.
+2. **EMA-convergence fakeout fade + EXIT_ON_RETRACE** — a weak first thrust at mature convergence may be faded at the extreme when broader history expects the opposite handoff; if acceptance proves real, thesis invalidates early and exits on the next normal retrace unless runaway/late conditions require immediate cut.
+3. **Mission-aware CORE LEG** — only earned parent-leg positions receive core rights; ordinary +35/+50 weakness does not evict a structurally intact core, while tactical WIDE/Heist/micro positions cannot silently become cores.
+4. **All-entry PT/time capacity from contract midpoint onward** — adverse PT distance is compared continuously with realized movement/time capacity for every entry species, not only <=.25 A+ entries.
+5. **Lazarus/battle decoupling** — old opposite losing custody does not preserve old battlefield sovereignty or block a decisive new leg.
+6. **Observer orphan recovery** — OBS4.2 now writes heartbeat/PID state and the exporter can safely create a copy-only recovery archive only after the engine is STOPPED/FAILED and the observer heartbeat is stale.
+
+Preserved: ONE COMMAND; EMA9 sovereignty; multi-arc directional parent proof; WIDE directional-parent protection; current-Pilot fill revalidation; tube urgency; Wide Zigzag; Market Heist; <=.25 A+/$15; +35 qualified-winner doctrine; Settlement Ride; Lazarus; Leviathan PEAK_HUNT; zero-authority shadow research; first-minute WAIT default.
+
+Construct V1 remains separate/offline with zero trading authority.
