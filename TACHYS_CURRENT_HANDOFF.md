@@ -956,3 +956,23 @@ When EMA9/EMA30 are nearly parallel, tightly separated, and flips are frequent:
 
 Core principle:
 **Territory chooses the tactics. Sideways arcs permit earlier alternating bets; directional trends demand trend-following fakeout harvests; compression demands patience.**
+
+
+## HF15 LIVE ANCHOR — release ladder completed but YES handoff missed
+Operator live observation during active HF15 PAPER run:
+- after the persistent DOWN regime, the market produced **two countertrend release attempts and then broke through**;
+- HF15 produced **no YES entry** on the real release;
+- one prior NO remains in Lazarus.
+
+Interpretation:
+This is the complementary failure to the earlier fabricated-YES problem. HF15 must not promote Attempt 1 into a reversal, but it also must not keep stale DOWN sovereignty after the release ladder has genuinely completed.
+
+Required behavior:
+1. Early weak release attempts remain fakeout/pullback candidates and may be harvested as dominant-side entries.
+2. Each attempt updates a release-ladder state: attempt count, EMA30 penetration, hold time, EMA9 curl/separation, counter-leg body, quote/candle follow-through.
+3. Once the sequence crosses a genuine handoff threshold, the old parent trend is retired.
+4. A Lazarus position from the old battle does **not** block a new opposite-side CORE/tactical entry after a structurally distinct handoff.
+5. This must remain separated from the earlier same-state hedge bug: opposite entry is allowed only after a clear new battle generation, not immediately upon custody transfer.
+
+Core principle:
+**Do not invent the reversal early; do not deny it after it has earned the battlefield.**
