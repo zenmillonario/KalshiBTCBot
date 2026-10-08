@@ -976,3 +976,28 @@ Required behavior:
 
 Core principle:
 **Do not invent the reversal early; do not deny it after it has earned the battlefield.**
+
+
+## HF15 STOP ANCHOR — authority inverted after bullish handoff
+Operator stopped HF15 PAPER run after a clear regime failure:
+- earlier persistent DOWN regime produced repeated bad YES entries on weak countertrend fakeouts;
+- later the market completed multiple release attempts and became visibly BULLISH;
+- HF15 then failed to enter YES and instead began favoring/entering expensive NO;
+- operator stopped the run rather than waste the remaining 6h window.
+
+Interpretation:
+HF15 has an authority handoff inversion:
+1. during the true DOWN parent it releases sovereignty too early and fabricates YES legs;
+2. after a genuine bullish release it retires the DOWN parent too late and continues betting NO at poor value;
+3. this is not merely side-selection error but a state-transition problem: regime recognition, release-ladder graduation, stale-parent retirement, and entry-price timing are misaligned.
+
+Priority HF16 repair:
+- territory-first regime classifier;
+- persistent-trend fakeout harvest;
+- multi-attempt release ladder;
+- explicit sovereignty-transfer event that retires stale parent state;
+- Lazarus battle decoupling after genuine handoff;
+- prohibit expensive stale-parent entries after opposite-side durable release.
+
+Core principle:
+**The same logic that prevents premature reversals must also guarantee timely retirement of the old trend once the reversal proves itself.**
