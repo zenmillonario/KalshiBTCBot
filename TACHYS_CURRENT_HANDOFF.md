@@ -902,3 +902,24 @@ Guardrails:
 
 Core principle:
 **In a persistent parent trend, use failed countertrend moves as discounted entries into the prevailing leg instead of inventing a reversal.**
+
+
+## MULTI-ATTEMPT RELEASE LADDER — reversal needs attempts, not prophecy
+Operator doctrine refinement:
+In a strong persistent parent trend, the opposite-side release often develops through **multiple attempts**, not one clean reversal.
+
+Typical DOWN-parent -> UP-release sequence:
+1. **Attempt 1:** countertrend YES thrust begins but may fail before reaching EMA30; treat as pullback/fakeout unless it develops real body.
+2. **Attempt 2:** stronger YES thrust may reach/tag or briefly cross EMA30 but still fail to establish durable separation; this is increased handoff pressure, not automatic sovereignty transfer.
+3. **Attempt 3+:** a later attempt may finally cross EMA30 with durable EMA9 curl/separation, stronger candle/quote participation, and enough excursion to form a true opposite arc.
+
+Tactical implications:
+- Do not declare a new opposite leg on the first countertrend attempt.
+- Track attempt count, penetration depth toward/through EMA30, duration, extension, pullback depth, and whether each attempt strengthens or weakens.
+- Early failed attempts can still be harvested as dominant-parent entries.
+- As successive attempts reach deeper into EMA30 territory and hold longer, reduce confidence in blindly fading them and arm for a genuine handoff.
+- A real reversal earns authority through **progressive structural improvement**, not because an alternating arc is "due."
+- Third attempt is a decision point, not an automatic reversal rule.
+
+Core principle:
+**Count the release attempts. Fade the weak ones; respect the strengthening sequence; transfer sovereignty only when the opposite side actually builds durable structure.**
