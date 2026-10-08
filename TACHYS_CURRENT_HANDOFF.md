@@ -847,3 +847,27 @@ Required next repair:
 
 Core rule:
 **Do not invent the next arc. The current EMA9 leg remains sovereign until the market actually begins to build the opposite leg.**
+
+
+## HF15 LIVE HYPOTHESIS — fakeout recognition would flip run economics
+Operator live hypothesis during active HF15 PAPER run:
+- many of HF15's losing YES entries occurred during a clear multi-contract DOWN environment;
+- operator believes most of those YES moves were temporary fakeouts/pullbacks rather than true new legs;
+- if those temporary YES thrusts had been recognized and faded instead of chased, the run likely would be materially greener.
+
+Post-run test:
+1. identify every YES entry during the persistent downtrend;
+2. classify each candidate as true counter-leg vs fakeout/pullback using:
+   - EMA9 direction and extension before entry;
+   - duration/amplitude of the YES attempt;
+   - candle/volume participation;
+   - price<->EMA9 reclaim quality;
+   - EMA9/EMA30 separation;
+   - quote-wave follow-through;
+   - whether the move established durable new structure;
+3. compute counterfactual opposite-side price available at the fakeout extreme;
+4. compare actual YES P/L with hypothetical NO fade and with simply staying out;
+5. determine whether HF15's arc-sequence anticipation systematically converted weak pullbacks into fabricated YES legs.
+
+Core lesson:
+**In a persistent EMA9 downtrend, weak YES thrusts are presumed pullback/fakeout until they prove enough body and follow-through to become a real leg.**
