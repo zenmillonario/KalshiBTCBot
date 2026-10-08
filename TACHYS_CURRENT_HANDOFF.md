@@ -1266,3 +1266,49 @@ Required next surgical changes:
 
 Core verified lesson:
 **HF16 fixed the obvious same-state hedge and demonstrated a real sovereignty-transfer path, but stale historical parent ownership still survives too long, and the first-minute WIDE exception can still manufacture a bad countertrend entry.**
+
+
+## HF16 FIX2 2H RELEASE — stale-parent / first-minute / transfer-management / settlement-runtime repair
+
+Artifact:
+- `TACHYS_RECONCILIATION_R15_HF16_2H_FIX2.zip`
+- SHA-256: `6e96fca3e259e0463f0ac4c142a01919225d8e6288fed91dae54824d24b30c2a`
+- PAPER ONLY
+- default duration: 120 minutes
+- installs separately to `reconciliation_r15_hf16_fix2` and `observer42r15_hf16_fix2`.
+
+Live FIX1 evidence driving this surgical child:
+- #2 YES .40 entered 45s into a contract despite a ~529s NO wall, EMA9 about $101 below EMA30, strong current-history proof, release attempt 3, and NO short compass. Stale historical YES parent plus WIDE lower-edge logic survived too long.
+- #3 NO .59 proved explicit release-ladder sovereignty transfer can work, but gave back ~+33.9% MFE and eventually settled -100%, exposing mature-transfer management.
+- #4 YES .65 was a positive CORE/Settlement Ride control and reached a last verified .999 bid / +53.69% sampled MFE before venue-final-result handling halted the session.
+- FIX1 stopped after ~47m47s because an old closed-contract position awaiting venue final result exceeded the grace period and globally halted the engine.
+
+HF16 FIX2 changes:
+1. **Strict first-minute WAIT**
+   - removes `inherited_wide_edge` as an opening-minute exception;
+   - before 60s, only unusually strong inherited hard continuation in the same direction may qualify.
+2. **Stale historical parent retirement pressure**
+   - a mature, strongly proven opposite current wall can force `RELEASE_PRESSURE` and suppress stale-parent side ownership while transfer is still unproven;
+   - uses wall age, current-history strength, EMA9/EMA30 separation, displacement, candle consensus, and release-ladder attempts/cross evidence.
+3. **Mature transfer-leg harvest**
+   - entries tagged from explicit sovereignty transfer/current-structure establishment can collect the full lot after >=30% MFE when a real retreat combines with short-structure weakness;
+   - ordinary CORE LEG / Settlement Ride positions remain unchanged.
+4. **Nonfatal old-contract settlement wait**
+   - an old closed-contract holding that exceeds the venue final-result grace remains explicitly unresolved;
+   - no invented payout or sale;
+   - it does not halt the two-hour engine, pause later-contract entries, or consume current-contract active entry capacity.
+
+Validation:
+- **531/531 unit tests PASS**.
+- observer startup: **5/5 PASS**.
+- OBS4.2 R14 exact checks PASS.
+- R15 observer compatibility: **11 assertions PASS**.
+- full install/frozen-snapshot/observer/archive handshake: **21/21 PASS**.
+- 33 frozen engine source files verified.
+- 120-minute / 7200-second lifecycle identity verified.
+- `engine_started=false` and `network_connected=false` during validation.
+- final launcher `--check` PASS.
+- The exhaustive legacy `run_r15_tests.py` historical replay was attempted separately but did not complete within the tool time limit; it is not part of the HF16 FIX2 release gate and is **not claimed as passed**.
+
+Core acceptance target:
+**Do not invent the reversal early; do not preserve a stale parent after the current wall has earned retirement pressure; and never let unresolved settlement baggage stop the next battle.**
