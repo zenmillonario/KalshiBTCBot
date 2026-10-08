@@ -923,3 +923,36 @@ Tactical implications:
 
 Core principle:
 **Count the release attempts. Fade the weak ones; respect the strengthening sequence; transfer sovereignty only when the opposite side actually builds durable structure.**
+
+
+## TERRITORY-FIRST TACTICS — sideways arcs vs directional trend
+Operator doctrine refinement:
+Tachys must choose tactics from the **territory/regime first**, not apply one entry style everywhere.
+
+### 1. SIDEWAYS / BEAUTIFUL ARC TERRITORY
+When EMA9 is producing clean alternating arcs around EMA30, with balanced excursion and repeated leg handoffs:
+- early YES/NO anticipation is acceptable;
+- take calculated tactical risk near mature crest/trough zones;
+- use arc history, approach depth, EMA9 curl, and prior leg sequence to arm the next side before full confirmation;
+- this is the territory where alternating-side tactics have value.
+
+### 2. PERSISTENT DIRECTIONAL TREND
+When EMA9/price have been traveling materially in one direction across multiple contracts and opposite moves lack real body:
+- lean with the parent trend;
+- treat weak opposite thrusts as pullback/fakeout candidates;
+- use those fakeouts as better-priced entries into the prevailing side;
+- do not invent a reversal because an opposite arc is "due";
+- track multi-attempt release ladder and only reduce/finally transfer trend sovereignty as successive opposite attempts gain penetration, duration and durable structure.
+
+Example DOWN parent:
+- weak green/YES pop that dies before EMA30 -> tactical NO opportunity;
+- stronger later attempt that tags/crosses EMA30 but fails -> still possible NO fade, but confidence reduced;
+- durable EMA9 curl/cross/separation + real leg body -> stop fading and reassess for genuine YES handoff.
+
+### 3. COMPRESSION / UNCLEAR TERRITORY
+When EMA9/EMA30 are nearly parallel, tightly separated, and flips are frequent:
+- do not borrow either trend-following or beautiful-arc assumptions blindly;
+- require expansion, clear extremity, or monetizable excursion before commitment.
+
+Core principle:
+**Territory chooses the tactics. Sideways arcs permit earlier alternating bets; directional trends demand trend-following fakeout harvests; compression demands patience.**
