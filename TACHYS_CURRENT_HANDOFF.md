@@ -806,3 +806,22 @@ Required next repair:
 
 Core rule:
 **Lazarus may preserve an old loser while a later opposite leg is traded, but it may never manufacture a hedge from the same battle state.**
+
+
+## HF15 LIVE ANCHOR — 5 losses / 4 wins on easy chart
+Operator live report during active HF15 PAPER run:
+- current tally approximately **5 losses / 4 wins**;
+- operator characterizes the chart as relatively easy/clean rather than difficult chop;
+- this follows the #5 NO / #6 YES same-state opposite-exposure loophole.
+
+Priority forensic:
+1. classify all nine early trades by active EMA9 arc direction at entry;
+2. measure MAE-first behavior and time-to-breakeven;
+3. identify whether losses come from premature arc-sequence anticipation, stale parent authority, fakeout-fade overuse, or tactical WIDE/counter-leg ownership;
+4. compare winning entries versus losing entries on PT geography, arc phase, time remaining and current Command side;
+5. determine whether HF15's new anticipation logic is firing before a genuine turn zone instead of at the turn;
+6. quantify how many losers required Lazarus and whether rescue behavior is masking poor entry timing;
+7. inspect #5/#6 opposite exposure as a separate wiring defect, not merely another losing sequence.
+
+Acceptance principle:
+A clean directional/alternating EMA9 chart should produce **better entry quality than a difficult compression regime**. If HF15 performs poorly in the easier environment, treat it as strategy timing/authority failure rather than market difficulty.
