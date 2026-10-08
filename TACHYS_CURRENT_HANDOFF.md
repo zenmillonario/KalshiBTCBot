@@ -1312,3 +1312,23 @@ Validation:
 
 Core acceptance target:
 **Do not invent the reversal early; do not preserve a stale parent after the current wall has earned retirement pressure; and never let unresolved settlement baggage stop the next battle.**
+
+
+## HF16 FIX2 LIVE ANCHOR — #1 premature exit
+Operator live observation during HF16 FIX2 PAPER run:
+- Trade #1 entered around **.42** and exited around **.50**.
+- Market later traded around **.87** on the same side.
+- Approximate realized move captured: +19.0% from .42 -> .50.
+- Approximate available move to .87 from .42: +107.1%.
+- This is a priority management/exit-quality anchor, not an entry-side failure.
+
+Post-run forensic requirements:
+1. reconstruct exact entry/exit timestamps, side, mission, and exit reason;
+2. measure MFE before exit and post-exit MFE to .87;
+3. identify whether +35/+50 weakness, tactical-leg classification, stale short-compass weakness, or another exit layer forced collection;
+4. compare structure at .50 exit versus subsequent continuation;
+5. determine whether the position should have graduated to CORE LEG / Settlement Ride / runner management instead of being harvested;
+6. preserve the principle that a good entry should not be converted into a small scalp when the parent leg remains structurally intact.
+
+Core lesson candidate:
+**Do not harvest a healthy parent-leg position merely because a modest profit threshold is reached; distinguish tactical wobble from a real continuation leg.**
