@@ -1165,3 +1165,40 @@ HF16 acceptance controls reconstruct the stopped HF15 failures: persistent-NO fa
 
 Core rule:
 **Do not invent the reversal early; do not deny it after it earns the battlefield.**
+
+
+## HF16 STARTUP FAILURE + FIX1
+Original HF16 2H Windows launch failed immediately before feed connection.
+
+Failed session:
+- `666_lab_20261008_020012_072146_PID25404`
+- status: FAILED
+- runtime error: `FileNotFoundError`
+- failure path: Commander constructor in `tachys_r15_command.py` attempted to load `r15_bookkeeping_source.txt` from the frozen run `source/` snapshot.
+
+Root cause:
+- the package contained `engine/r15_bookkeeping_source.txt`;
+- however `source_hashes.json` listed only the Python runtime files;
+- `make_run()` copies only hash-pinned source inventory into the frozen per-run snapshot;
+- therefore the sidecar text dependency was omitted from `run/source/`;
+- offline checks did not instantiate Commander from the frozen snapshot, so the packaging gap escaped release validation.
+
+HF16 STARTUP FIX1:
+- strategy logic unchanged;
+- `r15_bookkeeping_source.txt` is now hash-pinned in `source_hashes.json`;
+- every run snapshot now contains the sidecar before engine invocation;
+- OBS4.2 exact R15 reference updated to the corrected 33-file source inventory;
+- added a regression test requiring the sidecar to be present and hash-matched in the frozen snapshot;
+- FIX1 installs to separate `reconciliation_r15_hf16_fix1` and `observer42r15_hf16_fix1` folders so the failed original installation remains untouched;
+- familiar CMD launcher names are preserved inside the package.
+
+Validation:
+- 527/527 unit tests PASS;
+- 21/21 install/snapshot/observer/archive handshake PASS;
+- package hash/source compilation `--check` PASS;
+- 33 source snapshot files verified;
+- engine_started=false and network_connected=false during validation.
+
+Artifact:
+- `TACHYS_RECONCILIATION_R15_HF16_2H_FIX1.zip`
+- SHA-256: `9519e25d2511b90fdbedef125d8e20d40e304a849fd1aca9d2beb1c274401c8a`
