@@ -781,3 +781,28 @@ HF15 changes only:
 Preserved: ONE COMMAND; EMA9 sovereignty; multi-arc directional parent proof; WIDE directional-parent protection; current-Pilot fill revalidation; tube urgency; Wide Zigzag; Market Heist; <=.25 A+/$15; +35 qualified-winner doctrine; Settlement Ride; Lazarus; Leviathan PEAK_HUNT; zero-authority shadow research; first-minute WAIT default.
 
 Construct V1 remains separate/offline with zero trading authority.
+
+
+## HF15 LIVE ANCHOR — simultaneous opposite exposure through Lazarus slot release
+Operator live observation during active HF15 PAPER run:
+- #5 entered NO around .49 while #6 entered YES around .51, leaving opposite exposures open at the same time / effectively the same market state.
+- This violates the doctrine that opposite positions are allowed only as a later distinct battle generation, not as same-state hedging.
+
+Confirmed source mechanism:
+- losing-position custody may activate after minimum age (~9s), after the entry minute changes, and after at least ~1c additional bid decline in custody territory;
+- custody keeps the old economic exposure but clears the normal `paper_positions[side]` slot;
+- admission then permits an opposite side if Command sees a fresh opposite move/new battle;
+- HF15 does not require enough structural/time separation between custody transfer and the opposite entry.
+
+Required next repair:
+1. Lazarus may free management ownership but **must not immediately free opposite-side entry sovereignty**.
+2. Opposite entry while a Lazarus position exists requires a genuine new battle generation:
+   - distinct EMA9 wall/leg generation or explicit handoff;
+   - minimum structural separation from the custody event;
+   - current Command decisive on the new side;
+   - not the same quote/near-identical .49/.51 market state;
+   - no simultaneous opposite opening merely because custody freed a slot.
+3. If the new battle is not structurally distinct, remain flat on the new side and manage the wounded position only.
+
+Core rule:
+**Lazarus may preserve an old loser while a later opposite leg is traded, but it may never manufacture a hedge from the same battle state.**
