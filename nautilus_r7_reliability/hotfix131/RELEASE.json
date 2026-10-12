@@ -1,0 +1,17 @@
+{
+  "version": "1.3.1-R7",
+  "parent_ui_version": "1.3.0-R7",
+  "source_package": "The_Nautilus_R7_Reliability_1_3_1.zip",
+  "sha256": "518da28be8053680c1b47dc031437013e48b230fad719f11f4a8fbb1ecfd21c3",
+  "zip_bytes": 96509,
+  "installer": "UPDATE_NAUTILUS_1_3_1.cmd",
+  "installer_bytes": 133328,
+  "execution_authority": false,
+  "destination": "C:\\KalshiBTCBot_666Lab\\nautilus_r7_reliability_1_3_1",
+  "python_tests_passed": 113,
+  "node_rule_tests_passed": 15,
+  "offline_browser_component_checks_passed": 12,
+  "windows_host_execution": "PENDING",
+  "original_engine_package_modified": false,
+  "new_engine_run_started": false
+}

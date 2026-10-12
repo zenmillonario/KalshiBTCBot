@@ -1,0 +1,62 @@
+{
+  "nautilus/adapter.py": {
+    "source_sha256": "658b31b9b2158eed6074dd4dfcb14e5267b0013c75b8964ca7ad339599a1a073",
+    "result_sha256": "1752bbab80c9e608edbde7f24083c43d699ca0bcebb2083c204b43084ac88a5f",
+    "edits": [
+      {"start":0,"end":1,"after":"\"\"\"Nautilus read-only Reassembled telemetry adapter. No trading imports or writes.\n"},
+      {"start":19,"end":20,"after":"VERSION = \"1.3.1-R7\"\n"},
+      {"start":443,"end":444,"after":"        # An explicit time is a deterministic evaluation instant for tests/review.\n        # Live freshness uses a local timestamp sampled AFTER source reads.\n        evaluation_override = now\n        read_started_wall = time.time()\n        read_started_mono = time.monotonic()\n"},
+      {"start":475,"end":476,"after":""},
+      {"start":488,"end":489,"after":""},
+      {"start":518,"end":518,"after":"        # Runtime can advance between poll start and file read. Do not judge it\n        # against the earlier poll-start clock, or extend validity to accommodate it.\n        read_ended_wall = time.time()\n        read_ended_mono = time.monotonic()\n        now = read_ended_wall if evaluation_override is None else evaluation_override\n        runtime_age = now - updated if updated is not None else None\n        runtime_fresh = bool(not stopped and identity_ok and runtime_age is not None\n                             and 0 <= runtime_age <= 5)\n        freshness_reason = (\"IDENTITY_UNVERIFIED\" if not identity_ok else\n                            \"STOPPED\" if stopped else\n                            \"TIMESTAMP_MISSING\" if updated is None else\n                            \"FUTURE_TIMESTAMP\" if runtime_age < 0 else\n                            \"EXPIRED\" if runtime_age > 5 else \"CURRENT\")\n        freshness_check = dict(read_started_wall=read_started_wall,\n            read_ended_wall=read_ended_wall, evaluated_wall=now,\n            read_duration_seconds=max(0.0, read_ended_mono-read_started_mono),\n            read_clock_delta_seconds=(read_ended_wall-read_started_wall)-\n                                     (read_ended_mono-read_started_mono),\n            runtime_updated_wall=updated, runtime_age_seconds=runtime_age,\n            reason=freshness_reason, runtime_ttl_seconds=5,\n            quote_ttl_seconds=3, deterministic_time_override=evaluation_override is not None,\n            update_arrived_during_read=bool(updated is not None and\n                read_started_wall < updated <= read_ended_wall))\n"},
+      {"start":611,"end":612,"after":"                    diagnostics=dict(freshness_check=freshness_check,\n                                     issues=sorted(set(self.errors + accounting_issues)),\n"}
+    ]
+  },
+  "nautilus/candle_history.py": {
+    "source_sha256":"2ded950af39f98075345e5b98ab1af8291ca6ee103d6f777380c99ff447dea4b",
+    "result_sha256":"5c70aaf1869bff516a91d01a1804d426db45ed30a897347c8c7543c4219742c6",
+    "edits":[
+      {"start":181,"end":182,"after":"        self.run_end = None\n        self.run_end_source = None\n        self.boundary_error = None\n        self.stop_observed = False\n        self.boundary_changes = 0\n        self.manifest_pin = {k:manifest.get(k) for k in\n            ('version','mode','pid','run_directory','source_commit','hotfix_id','reconciliation_build')}\n        self.sync_lifecycle(manifest, runtime, time.time())\n"},
+      {"start":184,"end":184,"after":"\n    def sync_lifecycle(self, manifest, runtime, observed_at):\n        \"\"\"Learn a stopped session's real boundary without changing chart position.\n\n        Prefer the final launcher timestamp. While that file is still being\n        finalized, a same-session explicit STOPPED runtime update is a provisional\n        upper bound, not wall time or future chart padding. A final bound is frozen.\n        \"\"\"\n        from adapter import epoch, STOPPED\n        def reject(reason):\n            self.boundary_error = reason\n            return False\n        with self.lock:\n            if (not self.identity.get('run_id') or not self.identity.get('session_id') or\n                any(runtime.get(k) != self.identity.get(k) for k in ('run_id','session_id','pid')) or\n                any(manifest.get(k) != v for k,v in self.manifest_pin.items()) or\n                epoch(manifest.get('started_utc')) != self.run_start):\n                return reject('BOUNDARY_IDENTITY_UNVERIFIED')\n            manifest_stopped = manifest.get('status') in STOPPED\n            runtime_stopped = runtime.get('status') in STOPPED\n            if not (manifest_stopped or runtime_stopped):\n                if self.run_end is not None:\n                    return reject('TERMINAL_STATE_REVERSAL')\n                self.boundary_error = None\n                return True\n            self.stop_observed = True\n            raw_end = manifest.get('ended_utc')\n            final = manifest_stopped and raw_end not in (None,'')\n            candidate = epoch(raw_end) if final else finite(runtime.get('updated_wall')) if runtime_stopped else None\n            if (candidate is None or isinstance(raw_end,bool) or self.run_start is None or\n                candidate < self.run_start or finite(observed_at) is None or candidate > observed_at):\n                return reject('FINAL_END_INVALID' if final else 'STOPPED_END_UNVERIFIED')\n            if self.run_end_source == 'FINAL_MANIFEST':\n                if final and abs(candidate-self.run_end)>0.000001:\n                    return reject('FINAL_END_CONFLICT')\n                self.boundary_error = None\n                return True\n            if self.run_end_source == 'STOPPED_RUNTIME' and not final:\n                if abs(candidate-self.run_end)>0.000001:\n                    return reject('STOPPED_RUNTIME_END_CONFLICT')\n                self.boundary_error = None\n                return True\n            self.run_end = candidate\n            self.ended_utc = raw_end if final else candidate\n            self.run_end_source = 'FINAL_MANIFEST' if final else 'STOPPED_RUNTIME'\n            self.boundary_changes += 1\n            self.boundary_error = None\n            if self.requested_end is not None:\n                self.requested_end = min(self.requested_end, candidate)\n            # A view completely after stop has no in-run completed minutes. Do\n            # not recenter it or make up a longer run merely to fill the chart.\n            self.completed = False\n            self.cache_dirty = True\n            return True\n"},
+      {"start":189,"end":195,"after":""},
+      {"start":196,"end":196,"after":"            # All paths share the same learned session end, including requests\n            # already queued before shutdown. The viewport itself is untouched.\n            high = self.run_end if self.run_end is not None else time.time()\n            low = max((self.run_start or high)-4*3600, high-MAX_BARS*60)\n            start, end = max(start, low), min(end, high)\n            if start >= end:\n                return False\n"},
+      {"start":204,"end":207,"after":"        # Startup/shutdown partial minutes are not completed in-run minutes.\n        # Reclip here as well as request(): shutdown may happen after a request.\n        with self.lock:\n            if self.run_end is not None:\n                end = min(end, self.run_end)\n            a = max(math.floor(start/60)*60, math.ceil((self.run_start or start)/60)*60)\n            return set(range(int(math.ceil(a/60)*60), int(end//60*60), 60))\n"},
+      {"start":447,"end":448,"after":"            status='BOUNDARY_UNVERIFIED' if self.boundary_error else 'MISSING' if self.error=='SNAPSHOT_SOURCE_MISSING' else 'READ_ERROR' if self.error else 'READY' if not missing else 'GAPS' if exhausted else 'BACKFILLING'\n"},
+      {"start":449,"end":449,"after":"                run_end=self.run_end,run_end_source=self.run_end_source,\n                boundary_error=self.boundary_error,boundary_changes=self.boundary_changes,\n"}
+    ]
+  },
+  "nautilus/reliability.py": {
+    "source_sha256":"6df219d12b438ff7615d61d280d8e62796352e6297902bb6e5b962e4cf678493",
+    "result_sha256":"6293afc5eae7c83e308769661f0554c7623a8d88a39368cc3497c53bd8dcf599",
+    "edits":[
+      {"start":17,"end":18,"after":"VERSION='1.3.1-R7'\n"},
+      {"start":153,"end":153,"after":"            check=state['diagnostics'].get('freshness_check')\n            if check:\n                self.body['latest_freshness_check']=check\n                counts=self.body.setdefault('freshness_reason_samples',{})\n                reason=check.get('reason') or 'UNKNOWN'\n                counts[reason]=counts.get(reason,0)+1\n                if check.get('update_arrived_during_read'):\n                    self.body['updates_during_read']=self.body.get('updates_during_read',0)+1\n                if reason not in ('CURRENT','STOPPED') or check.get('update_arrived_during_read'):\n                    records=self.body.setdefault('recent_freshness_checks',[])\n                    records.append(check)\n                    del records[:-32]  # bounded diagnostics, not a new telemetry stream\n"},
+      {"start":217,"end":218,"after":"        state=super().poll(now)\n        now=state['server_now']  # sampled after source reads (or explicit test time)\n        check=state['diagnostics']['freshness_check']\n"},
+      {"start":219,"end":220,"after":"        # Also detect discontinuity DURING this read, even on the first poll.\n        if abs(check['read_clock_delta_seconds'])>2:\n            self.clock_guard.untrusted_until=time.monotonic()+30\n            clock['continuous']=False\n"},
+      {"start":231,"end":231,"after":"        if self.history:\n            self.history.sync_lifecycle(self.manifest_record,runtime,now)\n"},
+      {"start":259,"end":260,"after":"        health=dict(engine=component(engine_status,updated=r['updated'],now=now,reason=runtime.get('halt_reason') or (None if r['fresh'] else check['reason'])),\n"}
+    ]
+  },
+  "nautilus/static/app.js": {
+    "source_sha256":"b4b610f2d043c5e179d11d99d9b7394da95c88ea5315e1d324a23b9337340ca7",
+    "result_sha256":"88c90c7824f892ed06aeb342eecad300f4466cbe4d75a01873b143538679f255",
+    "edits":[
+      {"start":88,"end":89,"after":"      const timeLabel=h.status==='FAILED'&&finite(d.failed_at)?' · '+clock(d.failed_at)+' ET':h.status==='STALE'&&finite(h.age)?(h.age<0?' · FUTURE '+(-h.age).toFixed(2)+'s':' · '+h.age.toFixed(0)+'s'):'';\n"},
+      {"start":208,"end":209,"after":"    row(wrap,'Contract clock',state.clock);row(wrap,'Freshness timing',state.diagnostics.freshness_check);row(wrap,'Candle history',{...state.history});\n"}
+    ]
+  },
+  "nautilus/VERSION": {
+    "source_sha256":"889f86e06557d0c953d17bc63460cb8b130b2a54658c7f9d5b97ed852b6d5da4",
+    "result_sha256":"444b28859794b6f3f5effd39b5ae28d05e7cca55e9f38fc99810bfc803438b80",
+    "edits":[{"start":0,"end":1,"after":"1.3.1-R7\n"}]
+  },
+  "install_ui.py": {
+    "source_sha256":"5ac3fca7728afcd4b8efb2aa57bd0d3f01e9a4723c21cb0848df960c16969a65",
+    "result_sha256":"a802a8e5c167208aea4abf8d766e9d9d3036a785ab2c83cf5f252985524d536f",
+    "edits":[
+      {"start":18,"end":19,"after":"NAME='nautilus_r7_reliability_1_3_1'\n"},
+      {"start":27,"end":28,"after":"    if m.get('product')!='NAUTILUS_R7_RELIABILITY' or m.get('version')!='1.3.1-R7' or m.get('execution_authority') is not False:\n"},
+      {"start":84,"end":85,"after":"    print('STOPPED-run review only is sufficient for the next check. Do not start a new engine run.')\n    print('Nautilus can reuse the existing session-matched candle cache.')\n"}
+    ]
+  }
+}
