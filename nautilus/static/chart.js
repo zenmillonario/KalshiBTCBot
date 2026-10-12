@@ -5,7 +5,7 @@ class NautilusChart {
   constructor(canvas, tooltip, onSelect) {
     this.canvas=canvas; this.ctx=canvas.getContext('2d'); this.tooltip=tooltip;
     this.onSelect=onSelect; this.data=null; this.follow=true; this.end=null;
-    this.span=2700; this.fitTarget=false; this.manualY=null; this.selected=null;
+    this.fontScale=1; this.touches=new Map(); this.pinch=null; this.span=2700; this.fitTarget=false; this.manualY=null; this.selected=null;
     this.pointer=null; this.drag=null; this.markers=[]; this.ratio=.75; this.raf=0;
     try { const n=Number(localStorage.getItem('nautilus.span')); if(n>=300&&n<=64800)this.span=n; } catch(e){}
     this.resizeObserver=new ResizeObserver(()=>this.requestDraw());
@@ -14,7 +14,7 @@ class NautilusChart {
     canvas.addEventListener('pointerdown',e=>this.down(e));
     canvas.addEventListener('pointermove',e=>this.move(e));
     canvas.addEventListener('pointerup',e=>this.up(e));
-    canvas.addEventListener('pointercancel',()=>{this.drag=null;});
+    canvas.addEventListener('pointercancel',e=>this.cancelPointer(e));
     canvas.addEventListener('pointerleave',()=>{if(!this.drag){this.pointer=null;this.tooltip.classList.add('hidden');this.requestDraw();}});
     canvas.addEventListener('dblclick',e=>{if(e.offsetX>this.w-73)this.manualY=null;else this.toLive();this.requestDraw();});
     canvas.addEventListener('keydown',e=>{
@@ -32,8 +32,26 @@ class NautilusChart {
   setData(data){this.data=data;if(this.end===null||this.follow)this.end=this.liveEnd();this.requestDraw();}
   requestDraw(){if(!this.raf)this.raf=requestAnimationFrame(()=>{this.raf=0;this.draw();});}
   localPoint(e){const r=this.canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
-  down(e){if(e.button!==0)return;const p=this.localPoint(e);this.canvas.focus();this.canvas.setPointerCapture(e.pointerId);let mode='pan';if(p.x>this.w-73)mode='scale';else if(Math.abs(p.y-this.divider)<7)mode='divider';this.drag={...p,end:this.end,mode,moved:false,range:this.range?{...this.range}:null};}
+  down(e){
+    if(e.pointerType==='touch'){
+      this.touches.set(e.pointerId,this.localPoint(e));
+      this.canvas.setPointerCapture(e.pointerId);
+      if(this.touches.size===2){const [a,b]=[...this.touches.values()],mid=(a.x+b.x)/2;
+        this.pinch={distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),span:this.span,anchor:this.end-this.span+(mid-this.left)/this.plotW*this.span};
+        this.drag=null;this.follow=false;this.tooltip.classList.add('hidden');return;
+      }
+      if(this.touches.size>2)return;
+    }
+    if(e.button!==0)return;const p=this.localPoint(e);this.canvas.focus();this.canvas.setPointerCapture(e.pointerId);let mode='pan';if(p.x>this.w-73)mode='scale';else if(Math.abs(p.y-this.divider)<7)mode='divider';this.drag={...p,end:this.end,mode,moved:false,range:this.range?{...this.range}:null};}
   move(e){const p=this.localPoint(e);this.pointer=p;
+    if(e.pointerType==='touch'&&this.touches.has(e.pointerId)){
+      this.touches.set(e.pointerId,p);
+      if(this.pinch&&this.touches.size>=2){const [a,b]=[...this.touches.values()],mid=(a.x+b.x)/2;
+        this.span=Math.max(300,Math.min(64800,this.pinch.span*this.pinch.distance/Math.max(1,Math.hypot(a.x-b.x,a.y-b.y))));
+        this.end=this.pinch.anchor+(1-(mid-this.left)/this.plotW)*this.span;
+        this.manualY=null;this.saveSpan();this.requestDraw();return;
+      }
+    }
     if(this.drag){const d=this.drag;d.moved=d.moved||Math.abs(p.x-d.x)+Math.abs(p.y-d.y)>4;
       if(d.mode==='scale'&&d.range){const mid=(d.range.high+d.range.low)/2,half=(d.range.high-d.range.low)/2*Math.exp((p.y-d.y)/110);this.manualY={low:Math.max(1,mid-half),high:mid+half};}
       else if(d.mode==='divider'){this.ratio=Math.max(.5,Math.min(.87,p.y/Math.max(200,this.h)));}
@@ -42,8 +60,12 @@ class NautilusChart {
     }
     this.canvas.style.cursor=this.drag?'grabbing':p.x>this.w-73?'ns-resize':Math.abs(p.y-this.divider)<7?'row-resize':'crosshair';this.requestDraw();
   }
-  up(e){if(this.drag&&!this.drag.moved){const p=this.localPoint(e);const near=this.markers.map(m=>({...m,d:Math.hypot(m.x-p.x,m.y-p.y)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<20)this.onSelect(near.trade);}
+  up(e){
+    if(e.pointerType==='touch'&&this.pinch){this.touches.delete(e.pointerId);if(!this.touches.size)this.pinch=null;this.drag=null;try{this.canvas.releasePointerCapture(e.pointerId);}catch(_){}this.requestDraw();return;}
+    this.touches.delete(e.pointerId);
+    if(this.drag&&!this.drag.moved){const p=this.localPoint(e);const near=this.markers.map(m=>({...m,d:Math.hypot(m.x-p.x,m.y-p.y)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<20)this.onSelect(near.trade);}
     this.drag=null;try{this.canvas.releasePointerCapture(e.pointerId);}catch(e){}this.requestDraw();}
+  cancelPointer(e){this.touches.delete(e.pointerId);if(!this.touches.size)this.pinch=null;this.drag=null;this.pointer=null;this.tooltip.classList.add('hidden');this.requestDraw();}
   wheel(e){e.preventDefault();const p=this.localPoint(e);if(p.x>this.w-73){const r=this.manualY||this.range;if(r){const mid=(r.low+r.high)/2,half=(r.high-r.low)/2*Math.exp(e.deltaY*.002);this.manualY={low:Math.max(1,mid-half),high:mid+half};}}
     else{const old=this.span,f=(Math.max(0,Math.min(this.plotW,p.x-this.left)))/this.plotW;const anchor=this.end-old+f*old;this.span=Math.max(300,Math.min(64800,old*Math.exp(e.deltaY*.0015)));this.end=this.follow?this.liveEnd():anchor+(1-f)*this.span;this.saveSpan();this.manualY=null;}this.requestDraw();}
   x(t){return this.left+(t-(this.end-this.span))/this.span*this.plotW;}
@@ -51,14 +73,15 @@ class NautilusChart {
   qy(v){return this.quoteBottom-v*(this.quoteBottom-this.quoteTop);}
   clock(t,seconds=false){return new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit',...(seconds?{second:'2-digit'}:{}),hour12:false}).format(new Date(t*1000));}
   price(v,d=2){return Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
-  text(s,x,y,color='#7897a9',size=10,align='left'){const c=this.ctx;c.fillStyle=color;c.font=`${size}px "Segoe UI",sans-serif`;c.textAlign=align;c.fillText(s,x,y);c.textAlign='left';}
+  text(s,x,y,color='#7897a9',size=10,align='left'){const c=this.ctx;c.fillStyle=color;c.font=`${size*this.fontScale}px "Segoe UI",sans-serif`;c.textAlign=align;c.fillText(s,x,y);c.textAlign='left';}
   line(x1,y1,x2,y2,color,width=1,dash=[]){const c=this.ctx;c.beginPath();c.strokeStyle=color;c.lineWidth=width;c.setLineDash(dash);c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();c.setLineDash([]);}
   badge(s,y,color){const c=this.ctx;const yy=Math.max(this.top+8,Math.min(this.mainBottom-8,y));c.fillStyle=color;c.fillRect(this.w-73,yy-10,73,20);this.text(s,this.w-5,yy+3,'#07141c',10,'right');}
   draw(){
-    const r=this.canvas.parentElement.getBoundingClientRect();this.w=Math.max(200,Math.floor(r.width));this.h=Math.max(240,Math.floor(r.height));const dpr=window.devicePixelRatio||1;
+    const r=this.canvas.parentElement.getBoundingClientRect();this.w=Math.max(1,Math.floor(r.width));this.h=Math.max(1,Math.floor(r.height));const dpr=window.devicePixelRatio||1;
     if(this.canvas.width!==Math.round(this.w*dpr)||this.canvas.height!==Math.round(this.h*dpr)){this.canvas.width=Math.round(this.w*dpr);this.canvas.height=Math.round(this.h*dpr);}
     const c=this.ctx;c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,this.w,this.h);
-    this.left=10;this.top=13;this.plotW=this.w-85;this.divider=Math.floor(this.h*this.ratio);this.mainBottom=this.divider-15;this.quoteTop=this.divider+29;this.quoteBottom=this.h-28;
+    if(this.w<160||this.h<180){this.text('Expand chart to inspect',this.w/2,this.h/2,'#829daa',10,'center');return;}
+    this.left=10;this.top=13;this.plotW=this.w-85;this.divider=Math.floor(Math.min(this.h*this.ratio,this.h-90));this.mainBottom=this.divider-15;this.quoteTop=this.divider+29;this.quoteBottom=this.h-28;
     if(!this.data||!this.data.candles?.length)return;
     const from=this.end-this.span;const bars=this.data.candles.filter(b=>b.time>=from-60&&b.time<=this.end+60);const emas=this.data.emas.filter(b=>b.time>=from-60&&b.time<=this.end+60);
     const vals=bars.flatMap(b=>[b.low,b.high]);emas.forEach(e=>{if(Number.isFinite(e.e9))vals.push(e.e9);if(Number.isFinite(e.e30))vals.push(e.e30);});
@@ -81,7 +104,7 @@ class NautilusChart {
     for(const [field,color]of[['e30','#e8ad51'],['e9','#37cede']]){c.beginPath();c.strokeStyle=color;c.lineWidth=field==='e9'?1.8:1.5;let previous=null;for(const e of emas){const x=this.x(e.time),y=this.y(e[field]);if(!Number.isFinite(y)){previous=null;continue;}if(previous===null||e.time-previous>90)c.moveTo(x,y);else c.lineTo(x,y);previous=e.time;}c.stroke();}
     const market=this.data.market;if(Number.isFinite(market.btc)&&market.time>=from&&market.time<=this.end){this.line(this.left,this.y(market.btc),this.w-74,this.y(market.btc),market.fresh?'#30ceac77':'#758b9844',1,[2,4]);}
     this.markers=[];
-    for(const t of this.data.trades){for(const event of['entry','exit']){const time=t[event+'_ts'];if(time===null||time<from||time>this.end)continue;const b=bars.find(b=>b.time===Math.floor(time/60)*60);if(!b)continue;const x=this.x(time),below=t.side==='YES',y=this.y(below?b.low:b.high)+(below?14:-14),color=event==='exit'?'#a5bbc7':t.side==='YES'?'#51dfbc':'#f1c272';c.beginPath();c.fillStyle=color;c.strokeStyle=color;if(event==='exit'){c.arc(x,y,3,0,Math.PI*2);c.stroke();}else{c.moveTo(x,y+(below?-5:5));c.lineTo(x-4,y+(below?3:-3));c.lineTo(x+4,y+(below?3:-3));c.closePath();c.fill();}this.markers.push({x,y,trade:t,event});const selected=this.selected?.key===t.key;if(selected||event==='entry'){const label=`#${t.trade_id} ${event==='exit'?'EXIT':t.side} ${(Number.isFinite(t[event==='entry'?'entry_ask':'exit_bid'])?t[event==='entry'?'entry_ask':'exit_bid'].toFixed(3):'—')}`;this.text(label,x+(x>this.w-190?-7:7),y+(below?14:-8),color,selected?10:9,x>this.w-190?'right':'left');}}}
+    for(const t of this.data.trades){for(const event of['entry','exit']){const time=t[event+'_ts'];if(time===null||time<from||time>this.end)continue;const b=bars.find(b=>b.time===Math.floor(time/60)*60);if(!b)continue;const x=this.x(time),below=t.side==='YES',y=this.y(below?b.low:b.high)+(below?14:-14),color=event==='exit'?'#a5bbc7':t.side==='YES'?'#51dfbc':'#f1c272';c.beginPath();c.fillStyle=color;c.strokeStyle=color;if(event==='exit'){c.arc(x,y,3,0,Math.PI*2);c.stroke();}else{c.moveTo(x,y+(below?-5:5));c.lineTo(x-4,y+(below?3:-3));c.lineTo(x+4,y+(below?3:-3));c.closePath();c.fill();}this.markers.push({x,y,trade:t,event});const selected=this.selected?.key===t.key;if(selected||event==='entry'){const label=this.compactLabels?`#${t.trade_id} ${event==='exit'?'OUT':t.side}`:`#${t.trade_id} ${event==='exit'?'EXIT':t.side} ${(Number.isFinite(t[event==='entry'?'entry_ask':'exit_bid'])?t[event==='entry'?'entry_ask':'exit_bid'].toFixed(3):'—')}`;this.text(label,x+(x>this.w-190?-7:7),y+(below?14:-8),color,selected?10:9,x>this.w-190?'right':'left');}}}
     c.restore();
     if(Number.isFinite(market.btc)&&market.time>=from&&market.time<=this.end)this.badge(this.price(market.btc),this.y(market.btc),market.fresh?'#36cdb2':'#8dabb6');
     if(Number.isFinite(market.target)&&(this.y(market.target)<this.top||this.y(market.target)>this.mainBottom))this.text((this.y(market.target)<this.top?'↑ ':'↓ ')+'TARGET OFF SCALE',this.w-85,this.y(market.target)<this.top?this.top+5:this.mainBottom-4,'#d4b369',8,'right');

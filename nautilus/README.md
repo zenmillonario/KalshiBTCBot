@@ -1,7 +1,43 @@
-# The Nautilus 1.0.0
+# The Nautilus 1.1.0 — Bridge
 
 A separate, local, **read-only PAPER dashboard** for the Tachys Reassembled lab.
 The engine, existing cockpit, observers, launchers, run pointers and strategy remain unchanged.
+
+## New in 1.1 — viewport-fit Bridge
+
+The main screen is now **feed + Trades/Decisions on the left, chart in the center,
+positions/protection on the right**. Wide screens no longer place the evidence deck
+below the chart. Panel contents scroll independently instead of hiding below the page.
+
+Use **Display** for Auto, TV/Bridge, compact Desktop, Tablet, or Phone layout, plus
+standard / 115% / 130% text. Preferences are stored in the local browser, not the engine.
+Auto chooses Bridge at 1400+ CSS pixels, Desktop at 1150+, Tablet at 700+, otherwise Phone.
+Explicit wide-screen preferences fall back when the window is too narrow. Browser zoom
+changes available CSS pixels; a 55-inch diagonal alone does not determine layout.
+
+**Fullscreen** in the top bar expands the whole dashboard. The chart's separate icon
+expands only the chart. Unsupported or rejected requests show a visible fallback;
+Windows F11 also works with the viewport-fitting layout. Fullscreen is user-initiated,
+not silently entered. Normal browser Escape behavior is not intercepted.
+
+Tablet keeps a chart plus a selected dock (below in portrait). Phone has directly
+accessible Chart / Positions / Feed / Trades / Decisions / Briefing tabs. Right-side
+Positions / Briefing / Navigator tabs keep detailed panels accessible. Selecting a trade
+opens its recorded review on the right or in the phone dock. Touch pinch zoom and +/−
+buttons are available. Feed pause, chart zoom/pan and table scroll survive updates.
+
+Very short windows, including phone heights below 680 CSS pixels, intentionally allow
+page scrolling rather than cropping panels to unusable heights. This is different from
+the viewport-fit wide-screen Bridge at the user's 1664 × 806 screenshot size.
+
+**Phone/tablet are layout modes, not remote device access.** The server still binds only
+to 127.0.0.1. No firewall, LAN exposure, authentication model, account access or trading
+authority changes are included. Use device layouts locally for now; remote access would
+need a separate secure design.
+
+The telemetry adapter is byte-identical to 1.0.0; `adapter_version` identifies it while
+`version` identifies the 1.1.0 UI. Market freshness rules, accounting, candle provenance,
+strategy logic and current run attachment semantics are unchanged.
 
 ## Launch on Windows
 
@@ -30,7 +66,7 @@ Ctrl+C closes only Nautilus. It never stops or restarts Tachys.
 
 `INSTALL_NAUTILUS_FROM_GIT.cmd` in the repository root fetches the separate Nautilus
 branch and uses `git archive` to export **only** `nautilus/` and `RUN_NAUTILUS.cmd` into
-`C:\KalshiBTCBot_666Lab\nautilus_v1_0_0`. It does not checkout, merge, reset, or pull
+`C:\KalshiBTCBot_666Lab\nautilus_v1_1_0`. It does not checkout, merge, reset, or pull
 into your running working tree. An existing destination is refused, not overwritten.
 
 ## What is implemented
@@ -113,5 +149,7 @@ Optional Chromium component test (developer Playwright installation only):
 ```
 python nautilus/tests/browser_checks.py /path/to/recorded_state.json /path/to/output
 ```
+
+For the new display checks: `python nautilus/tests/bridge_checks.py /path/to/recorded_state.json /path/to/output`.
 
 See `VALIDATION.md` for what was actually tested and what still needs on-host acceptance.

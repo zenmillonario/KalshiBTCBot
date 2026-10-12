@@ -22,8 +22,8 @@
   const connected=()=>online&&receivedAt>0&&performance.now()-receivedAt<5500;
   const monitorFresh=()=>connected()&&state?.run?.fresh&&!state.run.stopped&&finite(state.run.updated)&&backendNow()-state.run.updated<=5;
   function syncModes(){ $('liveMode').classList.toggle('active',mode==='monitor');$('reviewMode').classList.toggle('active',mode==='review'); }
-  function selectTrade(trade){selectedKey=trade.key;mode='review';chart.inspect(trade);syncModes();renderDetails();renderProtection();renderTable();}
-  function monitor(){mode='monitor';selectedKey=null;chart.selected=null;chart.toLive();syncModes();renderDetails();renderProtection();renderTable();}
+  function selectTrade(trade){selectedKey=trade.key;mode='review';chart.inspect(trade);syncModes();renderDetails();renderProtection();renderTable();document.dispatchEvent(new CustomEvent('nautilus:trade-selected',{detail:{key:trade.key}}));}
+  function monitor(){mode='monitor';selectedKey=null;chart.selected=null;chart.toLive();syncModes();renderDetails();renderProtection();renderTable();document.dispatchEvent(new Event('nautilus:monitor'));}
   $('liveMode').onclick=monitor;
   $('reviewMode').onclick=()=>{mode='review';chart.follow=false;syncModes();const t=state?.trades?.find(t=>t.key===selectedKey)||state?.trades?.at(-1);if(t)selectTrade(t);};
   $('liveEdge').onclick=()=>{chart.toLive();};
@@ -152,7 +152,7 @@
     else {['naevyr_residence','return_clock','uranus_radar','dragon_backbone_warning'].forEach(k=>{if(n[k]!=null)row(nav,k.replaceAll('_',' '),n[k]);});note(nav,'Shadow-only · '+readable(n.timestamp_utc||n.updated_utc),'snapshot-label');}
   }
   function renderTable(){
-    const parent=$('tableArea');clear(parent);if(!state)return;
+    const parent=$('tableArea'),savedScroll={top:parent.scrollTop,left:parent.scrollLeft};clear(parent);if(!state)return;
     if(tab==='health'){renderHealth(parent);return;}
     const table=el('table'),head=el('thead'),hr=el('tr');
     const headers=tab==='trades'?['# / ET','SIDE','ENTRY','EXIT','GROSS P&L','RETURN']:['TIME · ET','EVENT','SIDE','REASON'];headers.forEach(h=>hr.append(el('th',h)));head.append(hr);table.append(head);const body=el('tbody');
@@ -163,7 +163,7 @@
       const target=tab==='trades'?t:state.trades.find(x=>x.key===t.key);
       if(target){tr.tabIndex=0;tr.setAttribute('aria-label','Inspect '+target.side+' trade '+target.trade_id);tr.onclick=()=>selectTrade(target);tr.onkeydown=e=>{if(e.key==='Enter')selectTrade(target);};}
       body.append(tr);
-    });table.append(body);parent.append(table);if(!rows.length)note(parent,'No recorded '+(tab==='trades'?'trades':'commands in the loaded window')+'.','empty');
+    });table.append(body);parent.append(table);parent.scrollTop=savedScroll.top;parent.scrollLeft=savedScroll.left;if(!rows.length)note(parent,'No recorded '+(tab==='trades'?'trades':'commands in the loaded window')+'.','empty');
   }
   function renderHealth(parent){
     clear(parent);if(!state){note(parent,'No response from local adapter.','empty');return;}

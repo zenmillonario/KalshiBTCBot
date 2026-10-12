@@ -19,12 +19,15 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 sys.dont_write_bytecode = True
-from adapter import Adapter, VERSION, resolve_run
+from adapter import Adapter, VERSION as ADAPTER_VERSION, resolve_run
 
 ROOT = Path(__file__).resolve().parent
+VERSION = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
 ASSETS = {"/": ("index.html", "text/html; charset=utf-8"),
           "/app.js": ("app.js", "application/javascript; charset=utf-8"),
           "/chart.js": ("chart.js", "application/javascript; charset=utf-8"),
+          "/bridge.js": ("bridge.js", "application/javascript; charset=utf-8"),
+          "/bridge.css": ("bridge.css", "text/css; charset=utf-8"),
           "/style.css": ("style.css", "text/css; charset=utf-8")}
 
 
@@ -53,6 +56,8 @@ class Publisher:
     def once(self):
         try:
             state = finite_json(self.adapter.poll())
+            state["adapter_version"] = ADAPTER_VERSION
+            state["version"] = VERSION
             self.last_good = state
             self.last_error = None
         except Exception as exc:
