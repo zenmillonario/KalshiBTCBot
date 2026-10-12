@@ -1,0 +1,22 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {timer,health}=require('../static/reliability-ui.js');
+let checks=0;
+const check=(name,fn)=>{fn();checks++;console.log('PASS '+name);};
+function state(){return {run:{fresh:true,stopped:false,review:false,updated:1000,pointer_changed:false},market:{fresh:false,time:800},clock:{verified:true,close_ts:1577,valid_until:1005,clock:{continuous:true}}};}
+check('stale market does not stop verified countdown',()=>assert.equal(timer(state(),1001,true).text,'09:36'));
+check('disconnection pauses countdown',()=>assert.equal(timer(state(),1001,false).running,false));
+check('stale runtime pauses after five seconds',()=>assert.equal(timer(state(),1006,true).running,false));
+check('pointer change pauses clock',()=>{let s=state();s.run.pointer_changed=true;assert.equal(timer(s,1001,true).running,false);});
+check('unverified clock pauses',()=>{let s=state();s.clock.verified=false;assert.equal(timer(s,1001,true).running,false);});
+check('wall-clock discontinuity pauses',()=>{let s=state();s.clock.clock.continuous=false;assert.equal(timer(s,1001,true).running,false);});
+check('no client-side fabricated next contract',()=>{let s=state();s.clock.close_ts=1001;assert.equal(timer(s,1002,true).text,'00:00');});
+check('archive not a running instrument',()=>{let s=state();s.run.review=true;assert.equal(timer(s,1001,true).text,'ARCHIVE');});
+check('stopped not a running instrument',()=>{let s=state();s.run.stopped=true;assert.equal(timer(s,1001,true).text,'ENDED');});
+check('missing clock never borrows old market timer',()=>{let s=state();s.clock={};s.market.close_ts=1500;assert.equal(timer(s,1001,true).running,false);});
+check('failed observer is red when engine connected',()=>assert.equal(health({status:'FAILED',updated:1000},'observer',1001,true,false).color,'red'));
+check('missing is not green',()=>assert.equal(health({},'navigator',1001,true,false).color,'amber'));
+check('old navigator loses current status',()=>assert.equal(health({status:'CURRENT',updated:950},'navigator',1001,true,false).status,'STALE'));
+check('future timestamp is not current',()=>assert.equal(health({status:'CURRENT',updated:1100},'observer',1001,true,false).status,'STALE'));
+check('failed observer retained after disconnection',()=>assert.equal(health({status:'FAILED'},'observer',1001,false,false).status,'FAILED'));
+console.log(JSON.stringify({checks_passed:checks}));
