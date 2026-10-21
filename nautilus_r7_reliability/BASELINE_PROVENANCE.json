@@ -1,0 +1,22 @@
+{
+  "source_package": "TACHYS_R7_4H.zip",
+  "source_version": "1.2.0-R7",
+  "source_zip_sha256": "ba1d531ea974c391acc7b41240c956bdd69a925e4f843136312f726b8bf1782c",
+  "sha256": {
+    "VERSION": "2e17400a2a3c5b7b2ccc4a33153c37aa41fcf708417ba115aa8dfae792bd029d",
+    "VALIDATION.md": "98b8135f181f002470f74ae4fb7f33b59914c6ff3d9f1eeb501949c8e5f78488",
+    "server.py": "0f44e3057e3ea0bb2c56ec3b9c872852f2ce710860dee276e0093951a004240b",
+    "adapter.py": "658b31b9b2158eed6074dd4dfcb14e5267b0013c75b8964ca7ad339599a1a073",
+    "README.md": "c577954354f1583cc57ed03a877d5ce257632f3352ff0e9490c93922c75bd0b0",
+    "static/bridge.css": "0c8c628bf66d3c0a08feffc2e6c946173bd52f9452ec53608796ace83fa622ac",
+    "static/index.html": "9a19525a47c49cb4133a47ef881eb2e3c5124ef4386dbcaa75b0a9789c66d4f6",
+    "static/app.js": "7d374c35b656ab0ac67413c5c3b6417258d5308bca80cf8fa075c92c15df1599",
+    "static/bridge.js": "14f42376df5cfc7b3ea32b65e3b503562244459b8935f3fd3ca02179aff9b313",
+    "static/style.css": "abe60f6d17069fb7975a3442cee08f1174113b1b0c4c67ea51be91c5c3eed1a0",
+    "static/chart.js": "783ed8f366acf864579d7a5137af7e4c16dfee7c57993b02a82369b4cc376830",
+    "tests/bridge_checks.py": "5c6195b615c3dc612ea418cc48e6635296e54acf044395d0447e66c6a2e42b56",
+    "tests/browser_checks.py": "4f79cfcca8e7c45911e43ec0178083ac449e887996e8b8b16fb2828d2cbf2d5d",
+    "tests/test_bridge_server.py": "c25d889c42a1511d60aa6c4f34eafacbb3a714c8d199863cbcbcd9c5adb58183",
+    "tests/test_nautilus.py": "6d1c59008bce0209f9e25007f688f1b15075d4edd248313acdc83ddcbbb37909"
+  }
+}
