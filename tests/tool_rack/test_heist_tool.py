@@ -169,6 +169,49 @@ class MarketHeistToolTests(
             "HEIST_RELEASE_CONFIRMED_STOP_FADING_BOX",
         )
 
+    def test_same_physical_visit_cannot_rearm_when_box_bounds_reestimate(self):
+        tool = MarketHeistTool(
+            territory_id="HEIST_001"
+        )
+        first = list(
+            tool.on_activate(
+                self.snap(
+                    yes=0.30,
+                    heist={
+                        "qualified_box": True,
+                        "at_lower_edge": True,
+                        "box_id": "B1",
+                        "visit_id": "LOWER:1000",
+                    },
+                )
+            )
+        )[0]
+        tool.mark_entry_filled(first.opportunity_id)
+        tool.mark_position_closed()
+
+        duplicate = list(
+            tool.on_market_event(
+                self.snap(
+                    yes=0.29,
+                    ts=1001,
+                    heist={
+                        "qualified_box": True,
+                        "at_lower_edge": True,
+                        "box_id": "B1_REESTIMATED",
+                        "visit_id": "LOWER:1000",
+                    },
+                )
+            )
+        )[0]
+        self.assertEqual(
+            duplicate.action,
+            Action.WAIT,
+        )
+        self.assertEqual(
+            duplicate.reason,
+            "HEIST_EDGE_VISIT_ALREADY_FILLED",
+        )
+
     def test_h6_new_edge_visit_can_trade_after_prior_position_closed(self):
         tool = MarketHeistTool(
             territory_id="HEIST_001"
