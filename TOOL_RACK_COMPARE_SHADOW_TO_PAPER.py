@@ -7,7 +7,7 @@ from pathlib import Path
 from strategy_core.shadow_compare import (
     compare_shadow_to_paper,
     load_paper_entries,
-    load_shadow_timeline,
+    load_shadow_event_journal,
     markdown_report,
 )
 
@@ -42,20 +42,30 @@ def main() -> int:
         type=Path,
         default=Path(r"E:\TachyosToolRackShadow"),
     )
-    parser.add_argument("--before-seconds",type=float,default=15.0)
-    parser.add_argument("--after-seconds",type=float,default=90.0)
+    parser.add_argument("--before-seconds",type=float,default=120.0)
+    parser.add_argument("--after-seconds",type=float,default=120.0)
     args=parser.parse_args()
 
     run=(args.run_dir or latest_paper_run(args.runs_root)).resolve()
     shadow=args.shadow_root/run.name
-    timeline_path=shadow/"TOOL_RACK_SHADOW_TIMELINE.json"
+    event_path=shadow/"tool_rack_events.jsonl"
+    status_path=shadow/"TOOL_RACK_SHADOW_STATUS.json"
     ledger_path=run/"r20_verified_paper_trade_events.csv"
 
-    timeline=load_shadow_timeline(timeline_path)
+    timeline=load_shadow_event_journal(event_path)
+    status=(
+        json.loads(
+            status_path.read_text(
+                encoding="utf-8"
+            )
+        )
+        if status_path.is_file()
+        else {}
+    )
     entries=load_paper_entries(
         ledger_path,
-        run_id=timeline.get("run_id"),
-        session_id=timeline.get("session_id"),
+        run_id=status.get("run_id"),
+        session_id=status.get("session_id"),
     )
     report=compare_shadow_to_paper(
         timeline,
