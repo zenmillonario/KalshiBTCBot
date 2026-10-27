@@ -23,6 +23,14 @@ class ConfigAndCompatibilityTests(unittest.TestCase):
     def test_all_tool_configs_load_from_separate_files(self):
         cfg = load_default_tool_configs()
         self.assertEqual(cfg.rail.size_tier, 25.0)
+        self.assertEqual(
+            cfg.rail_detector.qualification_min_persistence_s,
+            900.0,
+        )
+        self.assertEqual(
+            cfg.rail_detector.current_residence_window_s,
+            900.0,
+        )
         self.assertEqual(cfg.mountain.regular_size, 10.0)
         self.assertEqual(cfg.mountain.a_plus_size, 15.0)
         self.assertEqual(cfg.mountain.exceptional_size, 25.0)
