@@ -87,6 +87,75 @@ class MountainControllerTests(
             Side.NO,
         )
 
+    def test_raw_heist_flicker_cannot_steal_living_mountain(self):
+        rack = ToolRackController()
+        first = rack.observe(
+            self.evidence(Side.YES),
+            self.snap(
+                side=Side.YES,
+                no=0.30,
+                ts=1000,
+            ),
+        )
+        flicker = rack.observe(
+            PhysicalEvidence(
+                qualified_heist=True,
+                ema9_direction=Side.YES,
+            ),
+            self.snap(
+                side=Side.YES,
+                mature=False,
+                ts=1010,
+            ),
+        )
+        self.assertEqual(
+            flicker.owned_territory,
+            Territory.ALTERNATING_MOUNTAIN,
+        )
+        self.assertEqual(
+            flicker.territory_id,
+            first.territory_id,
+        )
+        self.assertEqual(
+            flicker.ownership_reason,
+            "MOUNTAIN_OWNER_PERSISTS_UNTIL_EDGE_RELAY_OR_RELEASE",
+        )
+
+    def test_same_direction_mountain_can_graduate_to_rail(self):
+        rack = ToolRackController()
+        rack.observe(
+            self.evidence(Side.NO),
+            self.snap(
+                side=Side.NO,
+                yes=0.30,
+                ts=1000,
+            ),
+        )
+        out = rack.observe(
+            PhysicalEvidence(
+                ema9_direction=Side.NO,
+                ema30_direction=Side.NO,
+                ema_pair_parallel=True,
+                directional_residence=True,
+                contracts_persistent=1.0,
+                rolling_mountain=True,
+            ),
+            self.snap(
+                side=Side.NO,
+                yes=0.70,
+                no=0.30,
+                ts=1100,
+            ),
+        )
+        self.assertEqual(
+            out.owned_territory,
+            Territory.DOWN_RAIL,
+        )
+        self.assertEqual(
+            out.active_tool,
+            "RAIL",
+        )
+
     def test_mountain_territory_id_persists_after_relay_side_changes(self):
         rack = ToolRackController()
         first = rack.observe(
