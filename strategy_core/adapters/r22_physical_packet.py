@@ -178,20 +178,16 @@ def frame_from_r22_physical_packet(
             )
             is True
         ),
-        qualified_heist=(
-            legacy_heist_described
-        ),
+        # Legacy Heist ownership is descriptive only in the bridge. The clean
+        # Tool Rack Heist detector must qualify the box independently.
+        qualified_heist=False,
         compression_unresolved=False,
         release_handoff_confirmed=(
             territory_handoff
         ),
         release_side=release_side,
-        heist_takeover_confirmed=bool(
-            ctx.get(
-                "qualified_heist_handoff_from_rail"
-            )
-            is True
-        ),
+        # Legacy takeover labels cannot transfer Tool Rack authority.
+        heist_takeover_confirmed=False,
     )
 
     snapshot = MarketSnapshot(
@@ -222,6 +218,8 @@ def frame_from_r22_physical_packet(
             ),
             "legacy_routes_ignored": True,
             "legacy_heist_is_provisional_telemetry": True,
+            "legacy_heist_described": legacy_heist_described,
+            "legacy_release_labels_have_zero_tool_authority": True,
         },
     )
     return ShadowFrame(
