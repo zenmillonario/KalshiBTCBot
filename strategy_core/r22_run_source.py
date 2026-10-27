@@ -12,6 +12,10 @@ from strategy_core.detectors.heist_geometry import (
 )
 from strategy_core.detectors.mountain_geometry import detect_mountain_geometry
 from strategy_core.detectors.release_geometry import build_release_probe
+from strategy_core.config_loader import (
+    ToolConfigBundle,
+    load_default_tool_configs,
+)
 from strategy_core.router import PhysicalEvidence
 from strategy_core.shadow_frame import ShadowFrame
 from strategy_core.types import MarketSnapshot, Side
@@ -52,8 +56,13 @@ class R22RunShadowSource:
     It never imports the engine and never writes inside the PAPER run.
     """
 
-    def __init__(self, run_dir: str | Path) -> None:
+    def __init__(
+        self,
+        run_dir: str | Path,
+        configs: ToolConfigBundle | None = None,
+    ) -> None:
         self.run_dir = Path(run_dir)
+        self.configs = configs or load_default_tool_configs()
         self.runtime_path = self.run_dir / "tachys_runtime_hf2.json"
         self.geometry_path = self.run_dir / "tachys_ema_geometry_v9_4i.csv"
         self._last_qualified_heist: HeistGeometryDetection | None = None
@@ -242,8 +251,14 @@ class R22RunShadowSource:
 
         # Raw tool-specific physical detectors. Their outputs describe geometry
         # only; they do not read legacy R22 strategy routes or permissions.
-        mountain = detect_mountain_geometry(rows)
-        heist = detect_heist_geometry(rows)
+        mountain = detect_mountain_geometry(
+            rows,
+            self.configs.mountain_detector,
+        )
+        heist = detect_heist_geometry(
+            rows,
+            self.configs.heist_detector,
+        )
         if heist.qualified_box:
             self._last_qualified_heist = heist
 
