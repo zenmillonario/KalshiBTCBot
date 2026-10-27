@@ -6,8 +6,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from strategy_core.detectors.heist_geometry import detect_heist_geometry
+from strategy_core.detectors.heist_geometry import (
+    HeistGeometryDetection,
+    detect_heist_geometry,
+)
 from strategy_core.detectors.mountain_geometry import detect_mountain_geometry
+from strategy_core.detectors.release_geometry import build_release_probe
 from strategy_core.router import PhysicalEvidence
 from strategy_core.shadow_frame import ShadowFrame
 from strategy_core.types import MarketSnapshot, Side
@@ -52,6 +56,7 @@ class R22RunShadowSource:
         self.run_dir = Path(run_dir)
         self.runtime_path = self.run_dir / "tachys_runtime_hf2.json"
         self.geometry_path = self.run_dir / "tachys_ema_geometry_v9_4i.csv"
+        self._last_qualified_heist: HeistGeometryDetection | None = None
 
     def _runtime(self) -> dict[str, Any]:
         return json.loads(
@@ -239,6 +244,18 @@ class R22RunShadowSource:
         # only; they do not read legacy R22 strategy routes or permissions.
         mountain = detect_mountain_geometry(rows)
         heist = detect_heist_geometry(rows)
+        if heist.qualified_box:
+            self._last_qualified_heist = heist
+
+        release_probe = build_release_probe(
+            rows,
+            heist=(
+                self._last_qualified_heist
+                if self._last_qualified_heist is not None
+                else heist
+            ),
+            mountain=mountain,
+        )
 
         rail_established = bool(
             aligned_now
@@ -308,6 +325,7 @@ class R22RunShadowSource:
                 "recent_arcs": arcs,
                 "mountain": mountain.tool_metadata(),
                 "heist": heist.tool_metadata(),
+                "release_probe": release_probe,
                 "territory_detector_summary": {
                     "rail_established": rail_established,
                     "qualified_heist": qualified_heist,
