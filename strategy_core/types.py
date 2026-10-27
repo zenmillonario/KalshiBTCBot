@@ -32,6 +32,7 @@ class Territory(str, Enum):
     UP_RAIL = "UP_RAIL"
     DOWN_RAIL = "DOWN_RAIL"
     MARKET_HEIST = "MARKET_HEIST"
+    RELEASE_TRANSITION = "RELEASE_TRANSITION"
 
 
 @dataclass(frozen=True)
