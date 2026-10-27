@@ -76,6 +76,8 @@ class NautilusTimelinePatchTests(unittest.TestCase):
             self.assertIn("TOOL_RACK_SHADOW_TIMELINE.json",adapter)
             self.assertIn("territory-release-transition",css)
             self.assertIn("marker-handoff",css)
+            self.assertIn("paper-entry",css)
+            self.assertIn("PAPER '+kind.toUpperCase()",app)
         finally:
             temp.cleanup()
 
