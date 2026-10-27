@@ -166,7 +166,9 @@ def patch_app(root: Path) -> None:
     $('toolRackPrimary').textContent=readable(tr.active_tool||'NONE');
     $('toolRackOverlay').textContent=(tr.active_overlays||[]).join(' + ')||'NONE';
     const action=tr.commander_action||'WAIT',side=tr.accepted_side?' '+tr.accepted_side:'';
-    $('toolRackIntent').textContent=action+side;
+    const ask=finite(tr.accepted_observed_ask)?' · '+quote(tr.accepted_observed_ask):'';
+    const cap=finite(tr.accepted_max_price)?' ≤ '+quote(tr.accepted_max_price):'';
+    $('toolRackIntent').textContent=action+side+ask+cap;
     $('toolRackReason').textContent=readable(tr.commander_reason||tr.lane_resolution_reason||tr.ownership_reason);
   }
   function renderPositions(){
@@ -200,7 +202,7 @@ body:is([data-layout="bridge"],[data-layout="desktop"]) .chart-legend{padding-to
 body:is([data-layout="bridge"],[data-layout="desktop"]) .history-status{padding-top:2px;padding-bottom:3px}
 body:is([data-layout="bridge"],[data-layout="desktop"]) .chart-foot{min-height:21px;padding-top:1px;padding-bottom:1px}
 body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel{
-  max-height:190px;min-height:0;overflow:hidden;
+  max-height:190px;min-height:0;overflow:auto;
 }
 body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .panel-heading{min-height:34px;height:34px}
 body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .card-body{padding:6px 9px}
