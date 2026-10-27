@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve native Windows launcher bytes in every checkout and built bundle.
+01_START_TOOL_RACK_PAPER_90M.cmd text eol=crlf
+02_CHECK_TOOL_RACK_PAPER.cmd text eol=crlf
+03_INSTALL_TOOL_RACK_DEPENDENCIES.cmd text eol=crlf
+04_EXPORT_LAST_TOOL_RACK_RUN.cmd text eol=crlf

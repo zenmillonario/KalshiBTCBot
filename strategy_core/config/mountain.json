@@ -2,11 +2,11 @@
   "regular_size": 10.0,
   "a_plus_size": 15.0,
   "exceptional_size": 25.0,
-  "soft_max_price": 0.50,
+  "soft_max_price": 0.5,
   "mid_leg_entries": false,
   "strong_active_release_defers_fade": true,
   "detector": {
-    "protected_middle_fraction": 0.60,
+    "protected_middle_fraction": 0.6,
     "minimum_comparable_count": 2,
     "preferred_comparable_count": 4,
     "edge_window_min_s": 90.0,
@@ -16,5 +16,13 @@
     "retreat_range60_fraction": 0.12,
     "min_retreat_dollars": 2.0,
     "mature_phase_fallback_min_age_s": 60.0
-  }
+  },
+  "floor_policy": {
+    "arm_roi": 0.5,
+    "trail_fraction": 0.05,
+    "min_age_s": 30.0,
+    "immediate_arm_roi": 1.0
+  },
+  "late_counter_window_s": 60.0,
+  "late_counter_max_ask": 0.01
 }

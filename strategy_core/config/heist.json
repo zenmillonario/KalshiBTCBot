@@ -1,10 +1,15 @@
 {
   "regular_size": 10.0,
   "lean_favored_size": 15.0,
-  "soft_max_price": 0.50,
+  "soft_max_price": 0.5,
   "release_ends_box_immediately": true,
   "detector": {
-    "candidate_windows_s": [180.0, 360.0, 540.0, 720.0],
+    "candidate_windows_s": [
+      180.0,
+      360.0,
+      540.0,
+      720.0
+    ],
     "min_observed_span_s": 150.0,
     "min_box_range_dollars": 20.0,
     "prominence_multiple": 2.0,
@@ -16,7 +21,15 @@
     "minimum_upper_visits": 2,
     "minimum_center_traversals": 2,
     "max_ema9_drift_fraction": 0.45,
-    "max_ema30_drift_fraction": 0.30,
+    "max_ema30_drift_fraction": 0.3,
     "lean_min_drift_fraction": 0.08
-  }
+  },
+  "floor_policy": {
+    "arm_roi": 0.5,
+    "trail_fraction": 0.03,
+    "min_age_s": 30.0,
+    "immediate_arm_roi": 1.0
+  },
+  "late_counter_window_s": 60.0,
+  "late_counter_max_ask": 0.01
 }

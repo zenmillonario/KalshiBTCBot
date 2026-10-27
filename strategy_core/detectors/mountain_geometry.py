@@ -100,6 +100,10 @@ class MountainGeometryDetection:
             "meaningful_retreat": self.meaningful_retreat,
             "strong_active_release": self.strong_active_release,
             "edge_id": self.edge_id,
+            "current_arc_id": self.current_arc_id,
+            "owner_extreme_btc": self.owner_extreme_btc,
+            "edge_tolerance_dollars": self.edge_tolerance_dollars,
+            "retreat_dollars": self.retreat_dollars,
             "quality": "REGULAR",
             "detector": "TOOL_RACK_RAW_EMA9_ARC_EDGE_V1",
             "diagnostics": dict(self.diagnostics),
@@ -342,7 +346,10 @@ def detect_mountain_geometry(
         if extreme_btc is not None and price == extreme_btc
     ]
     extreme_ts = (
-        extreme_candidates[-1][0]
+        # Equal-price retests belong to the existing physical extreme. Only a
+        # strict new high/low starts another turn attempt; repeated timestamps
+        # at the same price must not mint new opportunities.
+        extreme_candidates[0][0]
         if extreme_candidates
         else None
     )

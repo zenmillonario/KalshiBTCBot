@@ -1,0 +1,6 @@
+# Direct dependencies verified locally and against their versioned upstream docs.
+# These are installer pins, not a claim that older compatible environments fail.
+# https://websockets.readthedocs.io/en/16.0/reference/sync/client.html
+# https://cryptography.io/en/50.0.2/installation/
+websockets==16.0
+cryptography==50.0.2

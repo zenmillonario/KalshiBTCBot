@@ -59,6 +59,10 @@ class HeistGeometryDetection:
             "at_upper_edge": self.at_upper_edge,
             "box_id": self.box_id,
             "visit_id": self.visit_id,
+            "lower": self.lower,
+            "upper": self.upper,
+            "edge_tolerance": self.edge_tolerance,
+            "current_zone": self.diagnostics.get("current_zone"),
             "lean_side": (
                 self.lean_side.value
                 if self.lean_side
@@ -97,10 +101,25 @@ def _compressed_zones(zones: Sequence[tuple[float, str]]) -> list[tuple[float, s
 
 
 def _visit_counts(compressed: Sequence[tuple[float, str]]) -> tuple[int, int, int]:
-    lower = sum(zone == "LOWER" for _, zone in compressed)
-    upper = sum(zone == "UPPER" for _, zone in compressed)
-    centers = sum(zone == "CENTER" for _, zone in compressed)
+    # Brief INNER excursions do not complete an edge visit. A revisit must be
+    # separated by center traversal or the opposite edge, not a boundary wiggle.
+    visits = _physical_visits(compressed)
+    lower = sum(zone == "LOWER" for _, zone in visits)
+    upper = sum(zone == "UPPER" for _, zone in visits)
+    centers = sum(zone == "CENTER" for _, zone in visits)
     return lower, upper, centers
+
+
+def _physical_visits(
+    compressed: Sequence[tuple[float, str]],
+) -> list[tuple[float, str]]:
+    out: list[tuple[float, str]] = []
+    for ts, zone in compressed:
+        if zone == "INNER":
+            continue
+        if not out or out[-1][1] != zone:
+            out.append((ts, zone))
+    return out
 
 
 def _current_visit_id(
@@ -108,7 +127,11 @@ def _current_visit_id(
 ) -> str | None:
     if not compressed:
         return None
-    ts, zone = compressed[-1]
+    _, current_zone = compressed[-1]
+    if current_zone not in ("LOWER", "UPPER"):
+        return None
+    visits = _physical_visits(compressed)
+    ts, zone = visits[-1]
     if zone not in ("LOWER", "UPPER"):
         return None
     return f"{zone}:{int(ts)}"
@@ -270,6 +293,7 @@ def _candidate(
             "ema30_drift": e30_drift,
             "sideways_enough": sideways_enough,
             "compressed_zones": compressed[-16:],
+            "current_zone": current_zone,
             "minimum_box_range": min_range,
         },
     )

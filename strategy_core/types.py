@@ -51,9 +51,22 @@ class MarketSnapshot:
     quote_current: bool = True
     depth_available: bool = True
     metadata: Mapping[str, Any] = field(default_factory=dict)
+    # Exact held-contract bid permissions are independent of entry permission.
+    # Missing bid evidence can never authorize an EXIT at an invented price.
+    yes_bid: float | None = None
+    no_bid: float | None = None
+    entry_allowed: bool = True
+    yes_sell_allowed: bool = False
+    no_sell_allowed: bool = False
 
     def ask_for(self, side: Side) -> float | None:
         return self.yes_ask if side is Side.YES else self.no_ask
+
+    def bid_for(self, side: Side) -> float | None:
+        return self.yes_bid if side is Side.YES else self.no_bid
+
+    def can_sell(self, side: Side) -> bool:
+        return self.yes_sell_allowed if side is Side.YES else self.no_sell_allowed
 
 
 @dataclass(frozen=True)

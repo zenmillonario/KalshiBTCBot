@@ -1,0 +1,9 @@
+{
+  "schema": "TOOL_RACK_DIRECT_PHYSICAL_V1",
+  "history_seconds": 7200.0,
+  "gap_reset_seconds": 15.0,
+  "max_source_age_seconds": 5.0,
+  "minimum_arc_prominence_dollars": 5.0,
+  "arc_prominence_range60_fraction": 0.12,
+  "minute_horizon_tolerance_seconds": 2.0
+}

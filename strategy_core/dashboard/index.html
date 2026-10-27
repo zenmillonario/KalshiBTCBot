@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tachyos · Tool Rack PAPER</title>
+  <link rel="stylesheet" href="/dashboard.css">
+  <script defer src="/dashboard.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="identity"><span class="mark" aria-hidden="true">◈</span><div><h1>TACHYOS <span>TOOL RACK</span></h1><p>Independent strategy · One Commander · Native market data</p></div></div>
+    <div class="head-right"><span class="paper-tag">PAPER</span><span id="run-state" class="status-chip neutral">AWAITING ENGINE</span><div class="clock"><strong id="last-observed">—</strong><span>last engine observation · UTC</span></div></div>
+  </header>
+  <main>
+    <section class="overview" aria-label="Paper treasury">
+      <article><label>Available cash</label><strong id="cash">—</strong><small>Paper treasury</small></article>
+      <article><label>Realized net</label><strong id="net">—</strong><small id="gross">Gross —</small></article>
+      <article><label>Fees paid</label><strong id="fees">—</strong><small>Nominal taker model</small></article>
+      <article><label>Open positions</label><strong id="position-count">—</strong><small id="inventory-note">Waiting for ledger</small></article>
+      <article class="btc-stat"><label>BTC / USD</label><strong id="btc-price">—</strong><small id="btc-source">Awaiting actual Coinbase trades</small></article>
+      <article class="contract-stat"><label>Current contract</label><strong id="contract-countdown">—</strong><small id="ticker">Discovering KXBTC15M</small></article>
+    </section>
+
+    <section class="command-strip" aria-label="Tool Rack command state">
+      <div><label>Owned territory</label><strong id="owned">UNAVAILABLE</strong><small id="raw">Raw · —</small></div>
+      <div><label>Primary tool</label><strong id="primary">—</strong><small id="territory-id">No physical ownership yet</small></div>
+      <div><label>Release overlay</label><strong id="overlay">—</strong><small id="handoff">No confirmed handoff</small></div>
+      <div class="commander-cell"><label>One Commander <span id="command-action">—</span></label><strong id="command-reason">Waiting for the engine to publish</strong><small id="owner-reason">Read-only view. No trading controls.</small></div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel chart-panel">
+        <div class="panel-heading"><div><p class="eyebrow">PHYSICAL TERRAIN</p><h2>Bitcoin <span>1 minute observed candles</span></h2></div><div class="chart-controls" aria-label="Chart time range"><button data-range="15">15m</button><button data-range="45" class="selected">45m</button><button data-range="90">90m</button></div></div>
+        <div class="chart-key"><span><i class="candle-key"></i>Received samples</span><span><i class="ema9-key"></i>EMA 9 <b id="ema9">—</b></span><span><i class="ema30-key"></i>EMA 30 <b id="ema30">—</b></span><span class="contract-key">┆ 15m contract boundary</span></div>
+        <div id="chart-wrap"><canvas id="chart" aria-label="Observed Bitcoin minute candles with EMA9 and EMA30"></canvas><div id="chart-empty" class="chart-empty"><div>Waiting for physical observations</div><p>Only actual received BTC samples appear here.</p><small>Historical minute closes initialize EMA values; they do not create a live path.</small></div><div id="chart-tooltip" class="chart-tooltip" hidden></div></div>
+        <div class="chart-footer"><span id="chart-coverage">0 observed samples</span><span id="chart-mode">45 minutes · 3 contract windows · UTC</span></div>
+      </section>
+
+      <aside class="panel engine-panel">
+        <div class="panel-heading"><div><p class="eyebrow">ENGINE & SOURCES</p><h2>Current evidence</h2></div><span id="engine-dot" class="source-dot neutral"></span></div>
+        <div class="source-row"><div><strong>Native Kalshi book</strong><small id="book-note">Awaiting sequence snapshot</small></div><span id="book-state" class="status-chip neutral">WAITING</span></div>
+        <div class="source-row"><div><strong>Coinbase BTC / EMA</strong><small id="geometry-note">No current geometry</small></div><span id="geometry-state" class="status-chip neutral">WAITING</span></div>
+        <div class="source-row"><div><strong>Paper ledger</strong><small id="ledger-note">No committed record</small></div><span id="ledger-state" class="status-chip neutral">WAITING</span></div>
+        <dl class="engine-facts"><div><dt>YES bid / ask</dt><dd id="yes-quote">— / —</dd></div><div><dt>NO bid / ask</dt><dd id="no-quote">— / —</dd></div><div><dt>Source receive age</dt><dd id="book-age">—</dd></div><div><dt>Exchange timestamp</dt><dd id="exchange-age">Unknown</dd></div><div><dt>Observed terrain</dt><dd id="history-span">—</dd></div></dl>
+        <div class="feed-heading"><h3>Decision feed</h3><span id="engine-sequence">—</span></div>
+        <div id="decision-feed" class="decision-feed"><p class="empty-small">No Commander decisions published.</p></div>
+        <div id="source-error" class="source-error" hidden></div>
+      </aside>
+    </div>
+
+    <section class="position-section"><div class="section-heading"><h2>Position custody</h2><span>Exact contract · held-side native bid</span></div><div id="positions"><div class="flat-state"><span class="flat-icon">◇</span><div><strong>Awaiting paper inventory</strong><p>Positions appear only after a committed PAPER entry.</p></div></div></div></section>
+
+    <section class="panel activity-panel"><div class="section-heading"><h2>Committed paper activity</h2><span id="event-count">0 events</span></div><div class="table-scroll"><table><thead><tr><th>Time · UTC</th><th>Event</th><th>Tool / side</th><th>Contract</th><th>Qty</th><th>Price</th><th>Net P&amp;L</th><th>Reason</th></tr></thead><tbody id="events"><tr><td colspan="8" class="empty-row">No committed trade events.</td></tr></tbody></table></div></section>
+    <footer><span id="run-id">No run attached</span><span>Local read-only dashboard · Simulated fills and fees · No account or order API</span></footer>
+  </main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "structural_size": 25.0,
-  "soft_max_price": 0.50,
+  "soft_max_price": 0.5,
   "first_slowdown_confirms_release": false,
   "requires_boundary_break": true,
   "requires_directional_expansion": true,
@@ -10,5 +10,11 @@
     "new_side_residence_fraction": 0.65,
     "new_side_stack_fraction": 0.55,
     "heist_break_edge_tolerance_fraction": 0.35
+  },
+  "floor_policy": {
+    "arm_roi": 1.0,
+    "trail_fraction": 0.1,
+    "min_age_s": 30.0,
+    "immediate_arm_roi": 1.0
   }
 }

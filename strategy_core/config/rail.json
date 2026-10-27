@@ -1,10 +1,10 @@
 {
   "size_tier": 25.0,
   "opening_value": {
-    "first_60s": 0.40,
+    "first_60s": 0.4,
     "sec_60_120": 0.42,
     "sec_120_240": 0.44,
-    "later_soft": 0.50
+    "later_soft": 0.5
   },
   "activation_window_s": 240.0,
   "reentry_after_exit": true,
@@ -16,10 +16,23 @@
     "current_residence_window_s": 900.0,
     "current_residence_min_fraction": 0.62,
     "current_residence_min_samples": 8,
-    "persistence_windows_s": [1800.0, 1500.0, 1200.0, 900.0, 720.0, 600.0],
-    "persistence_alignment_min_fraction": 0.70,
-    "persistence_residence_min_fraction": 0.60,
+    "persistence_windows_s": [
+      1800.0,
+      1500.0,
+      1200.0,
+      900.0,
+      720.0,
+      600.0
+    ],
+    "persistence_alignment_min_fraction": 0.7,
+    "persistence_residence_min_fraction": 0.6,
     "persistence_min_samples": 8,
     "qualification_min_persistence_s": 900.0
+  },
+  "floor_policy": {
+    "arm_roi": 1.0,
+    "trail_fraction": 0.1,
+    "min_age_s": 30.0,
+    "immediate_arm_roi": 1.0
   }
 }

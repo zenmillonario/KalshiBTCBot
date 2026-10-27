@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Any, Iterable, Mapping
 
 from strategy_core.tools.base import StrategyTool
+from strategy_core.tools.management import (
+    floor_policy, opposing_transfer, position_intent,
+)
 from strategy_core.types import (
     Action,
     Lane,
@@ -17,6 +20,10 @@ from strategy_core.types import (
 class ReleaseConfig:
     structural_size: float = 25.0
     soft_max_price: float = 0.50
+    floor_arm_roi: float = 1.0
+    floor_trail_fraction: float = 0.10
+    floor_min_age_s: float = 30.0
+    floor_immediate_arm_roi: float | None = 1.0
 
 
 @dataclass(frozen=True)
@@ -27,6 +34,16 @@ class ReleaseEvidence:
     old_owner_failed_reextension: bool = False
     new_side_residence: bool = False
     first_slowdown_only: bool = False
+
+    @property
+    def confirmed(self) -> bool:
+        return bool(
+            not self.first_slowdown_only
+            and self.candidate_side is not None
+            and self.boundary_break
+            and self.directional_expansion
+            and (self.old_owner_failed_reextension or self.new_side_residence)
+        )
 
 
 class ReleaseWatcher(StrategyTool):
@@ -51,6 +68,10 @@ class ReleaseWatcher(StrategyTool):
         self.config = config or ReleaseConfig()
         self._active = True
         self._evidence = ReleaseEvidence()
+        self._current_ticker: str | None = None
+        self._open_tickers: set[str] = set()
+        self._filled_opportunities: set[tuple[str, str]] = set()
+        self._exit_latches: dict[str, str] = {}
 
     @property
     def active(self) -> bool:
@@ -78,18 +99,7 @@ class ReleaseWatcher(StrategyTool):
         self._evidence = evidence
 
     def _confirmed(self) -> bool:
-        e = self._evidence
-        if e.first_slowdown_only:
-            return False
-        return bool(
-            e.candidate_side is not None
-            and e.boundary_break
-            and e.directional_expansion
-            and (
-                e.old_owner_failed_reextension
-                or e.new_side_residence
-            )
-        )
+        return self._evidence.confirmed
 
     def _wait(
         self,
@@ -121,6 +131,7 @@ class ReleaseWatcher(StrategyTool):
     ) -> Iterable[ToolIntent]:
         if not self._active:
             return []
+        self._current_ticker = snapshot.ticker
 
         e = self._evidence
         if e.first_slowdown_only:
@@ -141,6 +152,11 @@ class ReleaseWatcher(StrategyTool):
 
         side = e.candidate_side
         assert side is not None
+        opportunity_id = f"{self.territory_id}:RELEASE:{side.value}:{snapshot.ticker}"
+        if snapshot.ticker in self._open_tickers:
+            return [self._wait(snapshot, "RELEASE_POSITION_ALREADY_OPEN")]
+        if (snapshot.ticker, opportunity_id) in self._filled_opportunities:
+            return [self._wait(snapshot, "RELEASE_OPPORTUNITY_ALREADY_FILLED")]
         ask = snapshot.ask_for(side)
         if ask is None:
             return [
@@ -165,10 +181,7 @@ class ReleaseWatcher(StrategyTool):
                 lane=Lane.HANDOFF,
                 side=side,
                 action=Action.RELAY,
-                opportunity_id=(
-                    f"{self.territory_id}:RELEASE:"
-                    f"{side.value}:{snapshot.ticker}"
-                ),
+                opportunity_id=opportunity_id,
                 max_price=self.config.soft_max_price,
                 size_tier=self.config.structural_size,
                 reason="RELEASE_CONFIRMED_LEVIATHAN_HANDOFF",
@@ -187,9 +200,41 @@ class ReleaseWatcher(StrategyTool):
                         e.old_owner_failed_reextension
                     ),
                     "new_side_residence": e.new_side_residence,
+                    "floor_policy": floor_policy(self.config),
                 },
             )
         ]
+
+    def mark_entry_filled(
+        self, opportunity_id: str, *, ticker: str | None = None,
+    ) -> None:
+        ticker = ticker or self._current_ticker
+        if ticker is not None:
+            self._filled_opportunities.add((ticker, opportunity_id))
+            self._open_tickers.add(ticker)
+            self._exit_latches.pop(ticker, None)
+
+    def mark_position_closed(
+        self, *, ticker: str | None = None, release_handoff: bool = False,
+    ) -> None:
+        ticker = ticker or self._current_ticker
+        if ticker is not None:
+            self._open_tickers.discard(ticker)
+            self._exit_latches.pop(ticker, None)
+
+    def manage_position(
+        self, position: Mapping[str, Any], snapshot: MarketSnapshot,
+    ) -> Iterable[ToolIntent]:
+        ticker = str(position.get("ticker") or "")
+        if opposing_transfer(position, snapshot):
+            self._exit_latches[ticker] = "RELEASE_CONFIRMED_OPPOSING_TRANSFER"
+        action = Action.EXIT if ticker in self._exit_latches else Action.HOLD
+        reason = self._exit_latches.get(ticker, "RELEASE_STRUCTURAL_CUSTODY_INTACT")
+        return [position_intent(
+            tool=self.name, territory_id=self.territory_id, lane=Lane.HANDOFF,
+            position=position, snapshot=snapshot, action=action, reason=reason,
+            config=self.config, metadata={"custody": "LEVIATHAN_RELEASE"},
+        )]
 
     def on_deactivate(
         self,

@@ -34,6 +34,15 @@ def _read(path: str | Path) -> dict:
     )
 
 
+def _floor_fields(raw: dict) -> dict[str, float | None]:
+    policy = raw.get("floor_policy") or {}
+    return {
+        "floor_" + key: float(value) if value is not None else None
+        for key, value in policy.items()
+        if key in ("arm_roi", "trail_fraction", "min_age_s", "immediate_arm_roi")
+    }
+
+
 def load_rail_config(
     path: str | Path,
 ) -> RailConfig:
@@ -59,6 +68,7 @@ def load_rail_config(
         reentry_after_exit=bool(
             raw["reentry_after_exit"]
         ),
+        **_floor_fields(raw),
     )
 
 
@@ -118,6 +128,9 @@ def load_mountain_config(
         soft_max_price=float(
             raw["soft_max_price"]
         ),
+        **_floor_fields(raw),
+        late_counter_window_s=float(raw.get("late_counter_window_s", 60.0)),
+        late_counter_max_ask=float(raw.get("late_counter_max_ask", 0.01)),
     )
 
 
@@ -173,6 +186,9 @@ def load_heist_config(
         soft_max_price=float(
             raw["soft_max_price"]
         ),
+        **_floor_fields(raw),
+        late_counter_window_s=float(raw.get("late_counter_window_s", 60.0)),
+        late_counter_max_ask=float(raw.get("late_counter_max_ask", 0.01)),
     )
 
 
@@ -238,6 +254,7 @@ def load_release_config(
         soft_max_price=float(
             raw["soft_max_price"]
         ),
+        **_floor_fields(raw),
     )
 
 

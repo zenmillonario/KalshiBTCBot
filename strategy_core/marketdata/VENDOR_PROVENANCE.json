@@ -1,0 +1,44 @@
+{
+  "source": "TACHYOS_REASSEMBLED_R22_HF15 source capsule matching the recorded R22 manifest; copied files have no strategy authority",
+  "modules": [
+    {
+      "original": "engine/tachys_666_quotes_hf2.py",
+      "original_sha256_bytes": "4e07cf21863321af6a8064ac7ce82946a3f683dddcbe9507b73ff7b50924a927",
+      "vendored": "native_book.py",
+      "changes": [],
+      "authority": "MARKET_DATA_ONLY"
+    },
+    {
+      "original": "engine/r22_native_ws_receiver.py",
+      "original_sha256_bytes": "219c18d9740adb89469228a3b94a26ad6665490703cd9fd3046721609589d693",
+      "vendored": "native_receiver.py",
+      "changes": [
+        "lazy websocket dependency import",
+        "transport/thread labels",
+        "bounded open/close/message limits",
+        "exceptions contain type only, no credentials/remote body",
+        "interruptible reconnect wait"
+      ],
+      "authority": "MARKET_DATA_ONLY"
+    },
+    {
+      "original": "observer/btc_observation.py",
+      "original_sha256_bytes": "c99303f59f3f61c9701428487508c01ee2809991af24250a5ccfc4a7b15942f1",
+      "vendored": "btc_observation.py",
+      "changes": [
+        "replace observer/commander helper imports with isolated numeric/time helpers"
+      ],
+      "authority": "MARKET_DATA_ONLY"
+    },
+    {
+      "original": "observer/btc_transport.py",
+      "original_sha256_bytes": "c608af60611ea55cfc71d9b338a7cdeb6a2a28397bed26af6d25de24f7ba77ab",
+      "vendored": "btc_transport.py",
+      "changes": [
+        "local parser/time helper imports only",
+        "worker/user agent labels"
+      ],
+      "authority": "MARKET_DATA_ONLY"
+    }
+  ]
+}

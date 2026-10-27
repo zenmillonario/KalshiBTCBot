@@ -1,0 +1,74 @@
+name: Tool Rack standalone PAPER acceptance
+
+on:
+  push:
+    branches:
+      - tachyos-tool-rack-paper-v1
+  pull_request:
+    branches:
+      - tachyos-tool-rack-paper-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paper:
+    if: github.ref == 'refs/heads/tachyos-tool-rack-paper-v1' || github.base_ref == 'tachyos-tool-rack-paper-v1'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python-version: "3.12"
+          - os: windows-latest
+            python-version: "3.14"
+    steps:
+      - name: Checkout isolated PAPER branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /strategy_core/
+            /tests/tool_rack/
+            /tests/__init__.py
+            /.gitattributes
+            /TOOL_RACK_PAPER.py
+            /TOOL_RACK_EXPORT.py
+            /CHECK_TOOL_RACK_PAPER.py
+            /BUILD_TOOL_RACK_PAPER_BUNDLE.py
+            /01_START_TOOL_RACK_PAPER_90M.cmd
+            /02_CHECK_TOOL_RACK_PAPER.cmd
+            /03_INSTALL_TOOL_RACK_DEPENDENCIES.cmd
+            /04_EXPORT_LAST_TOOL_RACK_RUN.cmd
+            /requirements_tool_rack_paper.txt
+            /README_TOOL_RACK_PAPER.md
+            /docs/TOOL_RACK_PAPER_HANDOFF_2026-10-27.md
+            /.github/workflows/tool-rack-paper.yml
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements_tool_rack_paper.txt
+
+      - name: Install explicit market-data dependencies
+        run: python -m pip install -r requirements_tool_rack_paper.txt
+
+      - name: Check independent tools and real PAPER execution
+        run: python CHECK_TOOL_RACK_PAPER.py
+
+      - name: Build and test extracted standalone bundle
+        run: python BUILD_TOOL_RACK_PAPER_BUNDLE.py --output TACHYOS_TOOL_RACK_PAPER_V1.zip
+
+      - name: Upload checked PAPER bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: tachyos-tool-rack-paper-${{ matrix.os }}-python-${{ matrix.python-version }}
+          path: TACHYOS_TOOL_RACK_PAPER_V1.zip
+          if-no-files-found: error
+          retention-days: 14

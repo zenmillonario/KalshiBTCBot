@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Any, Iterable, Mapping
 
 from strategy_core.types import Action, Lane, MarketSnapshot, Side, ToolIntent
 from strategy_core.tools.base import StrategyTool
+from strategy_core.tools.management import (
+    floor_policy, opposing_transfer, position_intent,
+)
 
 
 @dataclass(frozen=True)
@@ -22,6 +25,10 @@ class RailConfig:
     later_soft_max: float = 0.50
     activation_window_s: float = 240.0
     reentry_after_exit: bool = True
+    floor_arm_roi: float = 1.0
+    floor_trail_fraction: float = 0.10
+    floor_min_age_s: float = 30.0
+    floor_immediate_arm_roi: float | None = 1.0
 
 
 class RailTool(StrategyTool):
@@ -48,8 +55,9 @@ class RailTool(StrategyTool):
         self._active = True
         self._current_ticker: str | None = None
         self._filled_opportunity_ids: set[str] = set()
-        self._same_ticker_position_open = False
-        self._rearm_generation = 0
+        self._open_tickers: set[str] = set()
+        self._rearm_generations: dict[str, int] = {}
+        self._exit_latches: dict[str, str] = {}
 
     @property
     def active(self) -> bool:
@@ -72,7 +80,7 @@ class RailTool(StrategyTool):
     def _opportunity_id(self, snapshot: MarketSnapshot) -> str:
         return (
             f"{self.territory_id}:RAIL_VALUE:{snapshot.ticker}:"
-            f"REARM{self._rearm_generation}"
+            f"REARM{self._rearm_generations.get(snapshot.ticker, 0)}"
         )
 
     def _wait(
@@ -107,13 +115,12 @@ class RailTool(StrategyTool):
             # New Kalshi contract = fresh economic slice of the same physical
             # Rail. It is NOT a new Rail territory.
             self._current_ticker = snapshot.ticker
-            self._same_ticker_position_open = False
-            self._rearm_generation = 0
+            self._rearm_generations.setdefault(snapshot.ticker, 0)
 
         max_price = self._max_price(snapshot)
         opportunity_id = self._opportunity_id(snapshot)
 
-        if self._same_ticker_position_open:
+        if snapshot.ticker in self._open_tickers:
             return [
                 self._wait(
                     snapshot,
@@ -164,16 +171,27 @@ class RailTool(StrategyTool):
                 reason="RAIL_MAIN_VALUE",
                 source_time=snapshot.now_ts,
                 expires_when="RAIL_HANDOFF_OR_VALUE_WINDOW_CHANGE",
-                metadata={"observed_ask": ask},
+                metadata={"observed_ask": ask, "floor_policy": floor_policy(self.config)},
             )
         ]
 
-    def mark_entry_filled(self, opportunity_id: str) -> None:
+    def mark_entry_filled(
+        self, opportunity_id: str, *, ticker: str | None = None,
+    ) -> None:
         self._filled_opportunity_ids.add(opportunity_id)
-        self._same_ticker_position_open = True
+        ticker = ticker or self._current_ticker
+        if ticker is not None:
+            self._open_tickers.add(ticker)
+            self._exit_latches.pop(ticker, None)
 
-    def mark_position_closed(self, *, release_handoff: bool = False) -> None:
-        self._same_ticker_position_open = False
+    def mark_position_closed(
+        self, *, ticker: str | None = None, release_handoff: bool = False,
+    ) -> None:
+        ticker = ticker or self._current_ticker
+        if ticker is None:
+            return
+        self._open_tickers.discard(ticker)
+        self._exit_latches.pop(ticker, None)
         if release_handoff:
             self._active = False
             return
@@ -181,7 +199,23 @@ class RailTool(StrategyTool):
             # A profit/protection exit does not end the Rail. Rearm a fresh
             # value opportunity immediately. A genuine release is what stops
             # the cycle.
-            self._rearm_generation += 1
+            self._rearm_generations[ticker] = self._rearm_generations.get(ticker, 0) + 1
+
+    def manage_position(
+        self, position: Mapping[str, Any], snapshot: MarketSnapshot,
+    ) -> Iterable[ToolIntent]:
+        ticker = str(position.get("ticker") or "")
+        if opposing_transfer(position, snapshot):
+            self._exit_latches[ticker] = "RAIL_CONFIRMED_OPPOSING_RELEASE"
+        action = Action.EXIT if ticker in self._exit_latches else Action.HOLD
+        reason = self._exit_latches.get(ticker, "RAIL_STRUCTURAL_CUSTODY_INTACT")
+        # Quote validity and ticker matching remain independent execution
+        # constraints. A structural EXIT stays latched while its quote recovers.
+        return [position_intent(
+            tool=self.name, territory_id=self.territory_id, lane=Lane.MAIN,
+            position=position, snapshot=snapshot, action=action, reason=reason,
+            config=self.config,
+        )]
 
     def on_deactivate(
         self,
