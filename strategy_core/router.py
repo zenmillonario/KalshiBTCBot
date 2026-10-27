@@ -93,18 +93,18 @@ class TerritoryRouter:
                 "PARALLEL_EMAS_WITH_PERSISTENT_SAME_DIRECTION_ROLLING_STRUCTURE",
             )
 
-        if e.rolling_mountain:
-            return TerritoryDecision(
-                Territory.ROLLING_MOUNTAIN,
-                e.ema9_direction,
-                "SAME_DIRECTION_MOUNTAIN_NOT_YET_RAIL",
-            )
-
         if e.alternating_mountain:
             return TerritoryDecision(
                 Territory.ALTERNATING_MOUNTAIN,
                 e.ema9_direction,
                 "ALTERNATING_EMA9_MOUNTAIN",
+            )
+
+        if e.rolling_mountain:
+            return TerritoryDecision(
+                Territory.ROLLING_MOUNTAIN,
+                e.ema9_direction,
+                "SAME_DIRECTION_MOUNTAIN_NOT_YET_RAIL",
             )
 
         return TerritoryDecision(
