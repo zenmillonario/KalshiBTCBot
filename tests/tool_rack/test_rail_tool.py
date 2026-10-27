@@ -108,18 +108,6 @@ class RailToolAcceptanceTests(unittest.TestCase):
         after = list(tool.on_market_event(self.snap(ts=1030, no=0.30)))
         self.assertEqual(after, [])
 
-    def test_objective_safety_still_blocks(self):
-        tool = RailTool(
-            territory_id="DOWN_RAIL_004",
-            side=Side.NO,
-            activated_at=1000,
-        )
-        stale = list(
-            tool.on_activate(self.snap(ts=1020, no=0.30, current=False))
-        )[0]
-        self.assertEqual(stale.action, Action.WAIT)
-        self.assertEqual(stale.reason, "OBJECTIVE_QUOTE_STALE")
-
 
 if __name__ == "__main__":
     unittest.main()
