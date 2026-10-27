@@ -93,7 +93,7 @@ TIMELINE_JS = r'''  function renderToolRackTimeline(){
 
     const label=document.createElement('span');
     label.className='territory-ribbon-label';
-    label.textContent='SHADOW 45M';
+    label.textContent='SHADOW / PAPER 45M';
     host.appendChild(label);
 
     const track=document.createElement('div');
@@ -132,6 +132,23 @@ TIMELINE_JS = r'''  function renderToolRackTimeline(){
         (e.reason?' · '+readable(e.reason):'');
       track.appendChild(marker);
     });
+
+    const paperTrades=Array.isArray(state?.trades)?state.trades:[];
+    paperTrades.forEach(t=>{
+      [
+        ['entry',t.entry_ts,t.entry_ask,'▲'],
+        ['exit',t.exit_ts,t.exit_bid,'○']
+      ].forEach(([kind,ts,px,symbol])=>{
+        if(!finite(ts)||Number(ts)<start||Number(ts)>latest)return;
+        const marker=document.createElement('span');
+        marker.className='territory-ribbon-marker paper-'+kind;
+        marker.style.left=((Number(ts)-start)/span*100)+'%';
+        marker.textContent=symbol;
+        marker.title='PAPER '+kind.toUpperCase()+' #'+t.trade_id+' '+t.side+
+          (finite(px)?' · '+quote(px):'');
+        track.appendChild(marker);
+      });
+    });
   }
 '''
 
@@ -165,7 +182,7 @@ CSS = r'''
   margin:-2px var(--gutter) 7px;padding:3px 9px;border:1px solid #1a3442;border-radius:5px;background:#07131b;
   min-height:25px;
 }
-.territory-ribbon-label{font-size:8px;letter-spacing:.8px;color:#5d7b8b;white-space:nowrap}
+.territory-ribbon-label{font-size:7.5px;letter-spacing:.55px;color:#5d7b8b;white-space:nowrap}
 .territory-ribbon-track{position:relative;height:16px;border-radius:3px;overflow:visible;background:#091923;border:1px solid #17303d}
 .territory-ribbon-segment{position:absolute;top:0;height:100%;overflow:hidden;padding:1px 5px;font-size:7.5px;line-height:13px;white-space:nowrap;text-overflow:ellipsis;color:#c9dce4;border-right:1px solid rgba(255,255,255,.12)}
 .territory-up-rail{background:#123e37}
@@ -179,6 +196,8 @@ CSS = r'''
 .marker-enter{color:#78d8ff}
 .marker-relay{color:#f5c56d}
 .marker-handoff{color:#ff936d}
+.paper-entry{color:#ffffff;top:8px;font-size:9px}
+.paper-exit{color:#a5bbc7;top:8px;font-size:9px}
 '''
 
 
