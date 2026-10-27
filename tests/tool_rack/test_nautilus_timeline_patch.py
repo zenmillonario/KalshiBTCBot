@@ -66,10 +66,10 @@ class NautilusTimelinePatchTests(unittest.TestCase):
         temp,root=self.fixture()
         try:
             timeline.apply(root)
-            index=(root/"static/index.html").read_text()
-            app=(root/"static/app.js").read_text()
-            adapter=(root/"adapter.py").read_text()
-            css=(root/"static/bridge.css").read_text()
+            index=(root/"static/index.html").read_text(encoding="utf-8")
+            app=(root/"static/app.js").read_text(encoding="utf-8")
+            adapter=(root/"adapter.py").read_text(encoding="utf-8")
+            css=(root/"static/bridge.css").read_text(encoding="utf-8")
             self.assertIn('id="toolRackTimeline"',index)
             self.assertIn("renderToolRackTimeline",app)
             self.assertIn("tool_rack_timeline",adapter)
@@ -86,8 +86,8 @@ class NautilusTimelinePatchTests(unittest.TestCase):
         try:
             timeline.apply(root)
             timeline.apply(root)
-            index=(root/"static/index.html").read_text()
-            css=(root/"static/bridge.css").read_text()
+            index=(root/"static/index.html").read_text(encoding="utf-8")
+            css=(root/"static/bridge.css").read_text(encoding="utf-8")
             self.assertEqual(index.count('id="toolRackTimeline"'),1)
             self.assertEqual(css.count(timeline.MARKER),1)
         finally:
