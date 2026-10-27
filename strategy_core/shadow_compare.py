@@ -290,56 +290,135 @@ def compare_shadow_to_paper(
         timeline
     )
 
+    used_paper: set[int] = set()
     used_shadow: set[int] = set()
-    paper_comparisons: list[dict[str, Any]] = []
+    pairings: dict[int, tuple[int, str]] = {}
 
-    for entry in paper_entries:
+    def eligible(
+        entry: PaperEntry,
+        event: dict[str, Any],
+    ) -> tuple[bool, float | None]:
+        if (
+            str(event.get("ticker") or "")
+            != entry.ticker
+        ):
+            return False, None
+        event_ts = _epoch(event.get("ts"))
+        if event_ts is None:
+            return False, None
+        delta = entry.ts - event_ts
+        if (
+            delta < -after_seconds
+            or delta > before_seconds
+        ):
+            return False, None
+        return True, delta
+
+    # Pass 1: reserve the best same-side pairings globally. This prevents an
+    # earlier opposite PAPER entry from consuming a shadow opportunity that is
+    # a much better same-side match for the next PAPER entry on the same ticker.
+    same_pairs: list[
+        tuple[float, int, int]
+    ] = []
+    for paper_index, entry in enumerate(
+        paper_entries
+    ):
+        for shadow_index, event in enumerate(
+            shadow
+        ):
+            ok, delta = eligible(
+                entry,
+                event,
+            )
+            if (
+                not ok
+                or delta is None
+                or str(
+                    event.get(
+                        "accepted_side"
+                    )
+                    or ""
+                ).upper()
+                != entry.side
+            ):
+                continue
+            same_pairs.append(
+                (
+                    abs(delta),
+                    paper_index,
+                    shadow_index,
+                )
+            )
+
+    for _, paper_index, shadow_index in sorted(
+        same_pairs
+    ):
+        if (
+            paper_index in used_paper
+            or shadow_index in used_shadow
+        ):
+            continue
+        used_paper.add(paper_index)
+        used_shadow.add(shadow_index)
+        pairings[paper_index] = (
+            shadow_index,
+            "MATCHED_SAME_SIDE",
+        )
+
+    # Pass 2: remaining nearby opposite-side opportunities are useful negative
+    # controls, but only after every possible same-side match has been reserved.
+    opposite_pairs: list[
+        tuple[float, int, int]
+    ] = []
+    for paper_index, entry in enumerate(
+        paper_entries
+    ):
+        if paper_index in used_paper:
+            continue
+        for shadow_index, event in enumerate(
+            shadow
+        ):
+            if shadow_index in used_shadow:
+                continue
+            ok, delta = eligible(
+                entry,
+                event,
+            )
+            if not ok or delta is None:
+                continue
+            opposite_pairs.append(
+                (
+                    abs(delta),
+                    paper_index,
+                    shadow_index,
+                )
+            )
+
+    for _, paper_index, shadow_index in sorted(
+        opposite_pairs
+    ):
+        if (
+            paper_index in used_paper
+            or shadow_index in used_shadow
+        ):
+            continue
+        used_paper.add(paper_index)
+        used_shadow.add(shadow_index)
+        pairings[paper_index] = (
+            shadow_index,
+            "OPPOSITE_PAPER_ENTRY",
+        )
+
+    paper_comparisons: list[
+        dict[str, Any]
+    ] = []
+
+    for paper_index, entry in enumerate(
+        paper_entries
+    ):
         territory = _territory_at(
             timeline,
             entry.ts,
-        )
-
-        candidates = [
-            (index, event)
-            for index, event in enumerate(shadow)
-            if index not in used_shadow
-            and str(event.get("ticker") or "")
-            == entry.ticker
-            and (
-                (event_ts := _epoch(event.get("ts")))
-                is not None
-            )
-            and entry.ts - before_seconds
-            <= event_ts
-            <= entry.ts + after_seconds
-        ]
-
-        same_side = [
-            pair
-            for pair in candidates
-            if str(
-                pair[1].get("accepted_side")
-                or ""
-            ).upper()
-            == entry.side
-        ]
-
-        pool = (
-            same_side
-            if same_side
-            else candidates
-        )
-
-        chosen_pair = (
-            min(
-                pool,
-                key=lambda pair: abs(
-                    float(_epoch(pair[1].get("ts")))
-                    - entry.ts
-                ),
-            )
-            if pool
-            else None
         )
 
         chosen = None
@@ -347,24 +426,11 @@ def compare_shadow_to_paper(
         delay_seconds = None
         price_delta = None
 
-        if chosen_pair is not None:
-            shadow_index, chosen = chosen_pair
-            used_shadow.add(shadow_index)
-
-            shadow_side = str(
-                chosen.get("accepted_side")
-                or ""
-            ).upper()
-
-            if shadow_side == entry.side:
-                classification = (
-                    "MATCHED_SAME_SIDE"
-                )
-            else:
-                classification = (
-                    "OPPOSITE_PAPER_ENTRY"
-                )
-
+        if paper_index in pairings:
+            shadow_index, classification = (
+                pairings[paper_index]
+            )
+            chosen = shadow[shadow_index]
             chosen_ts = _epoch(
                 chosen.get("ts")
             )
@@ -512,7 +578,6 @@ def compare_shadow_to_paper(
             unmatched_shadow
         ),
     }
-
 
 def markdown_report(
     report: dict[str, Any],
