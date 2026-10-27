@@ -3,5 +3,12 @@
   "soft_max_price": 0.50,
   "first_slowdown_confirms_release": false,
   "requires_boundary_break": true,
-  "requires_directional_expansion": true
+  "requires_directional_expansion": true,
+  "detector": {
+    "ema9_cross_range60_fraction": 0.08,
+    "min_cross_dollars": 2.0,
+    "new_side_residence_fraction": 0.65,
+    "new_side_stack_fraction": 0.55,
+    "heist_break_edge_tolerance_fraction": 0.35
+  }
 }
