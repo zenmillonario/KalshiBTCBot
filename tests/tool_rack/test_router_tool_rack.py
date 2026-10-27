@@ -1,5 +1,6 @@
 import unittest
 
+from strategy_core.commander import OneCommander
 from strategy_core.router import PhysicalEvidence, TerritoryRouter
 from strategy_core.tool_rack import ToolRackController
 from strategy_core.types import Action, MarketSnapshot, Side, Territory
@@ -66,6 +67,10 @@ class RouterAndToolRackTests(unittest.TestCase):
             Territory.DOWN_RAIL,
         )
         self.assertEqual(result.active_tool, "RAIL")
+        self.assertEqual(
+            result.active_overlays,
+            ("RELEASE_WATCHER",),
+        )
         self.assertEqual(result.intents[0].action, Action.ENTER)
         self.assertEqual(result.intents[0].side, Side.NO)
         self.assertEqual(result.intents[0].size_tier, 25.0)
@@ -91,18 +96,20 @@ class RouterAndToolRackTests(unittest.TestCase):
             result.owned_territory,
             Territory.DOWN_RAIL,
         )
-        self.assertEqual(
+        self.assertIn(
+            "LATCHED_RAIL_OWNER",
             result.ownership_reason,
-            "LATCHED_RAIL_OWNER_UNTIL_AFFIRMATIVE_HANDOFF",
         )
 
-    def test_release_can_handoff_down_rail_to_up_rail(self):
+    def test_confirmed_release_suppresses_old_rail_then_next_beat_acquires_up_rail(self):
         rack = ToolRackController()
+        commander = OneCommander()
         rack.observe(
             self.down_rail_evidence(),
             self.snap(no=0.35),
         )
-        up = PhysicalEvidence(
+
+        release = PhysicalEvidence(
             ema9_direction=Side.YES,
             ema30_direction=Side.YES,
             ema_pair_parallel=True,
@@ -110,20 +117,74 @@ class RouterAndToolRackTests(unittest.TestCase):
             rolling_mountain_repetitions=2,
             contracts_persistent=1.0,
             rolling_mountain=True,
-            release_handoff_confirmed=True,
-            release_side=Side.YES,
+            release_candidate_side=Side.YES,
+            release_boundary_break=True,
+            release_directional_expansion=True,
+            release_old_owner_failed_reextension=True,
         )
-        result = rack.observe(
-            up,
-            self.snap(ts=1100, yes=0.30, no=0.70),
+        snap = self.snap(
+            ts=1100,
+            yes=0.30,
+            no=0.30,
         )
+        result = rack.observe(release, snap)
+
         self.assertEqual(
             result.owned_territory,
+            Territory.DOWN_RAIL,
+        )
+        self.assertEqual(len(result.intents), 1)
+        self.assertEqual(
+            result.intents[0].tool,
+            "RELEASE_WATCHER",
+        )
+        self.assertEqual(
+            result.intents[0].action,
+            Action.RELAY,
+        )
+        self.assertEqual(
+            result.intents[0].side,
+            Side.YES,
+        )
+
+        decision = commander.decide(
+            result.intents,
+            snap,
+        )
+        self.assertEqual(decision.action, Action.RELAY)
+        rack.commit_accepted_intent(
+            decision.intent,
+            snap,
+        )
+
+        next_result = rack.observe(
+            PhysicalEvidence(
+                ema9_direction=Side.YES,
+                ema30_direction=Side.YES,
+                ema_pair_parallel=True,
+                directional_residence=True,
+                rolling_mountain_repetitions=2,
+                contracts_persistent=1.0,
+                rolling_mountain=True,
+            ),
+            self.snap(
+                ts=1110,
+                yes=0.30,
+                no=0.70,
+            ),
+        )
+        self.assertEqual(
+            next_result.owned_territory,
             Territory.UP_RAIL,
         )
-        self.assertEqual(result.owned_side, Side.YES)
-        self.assertEqual(result.intents[0].action, Action.ENTER)
-        self.assertEqual(result.intents[0].side, Side.YES)
+        self.assertEqual(
+            next_result.intents[0].action,
+            Action.ENTER,
+        )
+        self.assertEqual(
+            next_result.intents[0].side,
+            Side.YES,
+        )
 
 
 if __name__ == "__main__":
