@@ -63,6 +63,12 @@ class ToolRackShadowEngine:
             "lane_resolution_reason": (
                 rack_result.lane_resolution_reason
             ),
+            "release_boundary_name": (
+                rack_result.release_boundary_name
+            ),
+            "release_diagnostics": dict(
+                rack_result.release_diagnostics
+            ),
             "primary_intents": [
                 asdict(intent_)
                 for intent_
