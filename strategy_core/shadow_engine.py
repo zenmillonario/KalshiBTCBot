@@ -69,6 +69,10 @@ class ToolRackShadowEngine:
             "release_diagnostics": dict(
                 rack_result.release_diagnostics
             ),
+            "handoff_confirmed": rack_result.handoff_confirmed,
+            "release_transition_pending": (
+                rack_result.release_transition_pending
+            ),
             "primary_intents": [
                 asdict(intent_)
                 for intent_
