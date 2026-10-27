@@ -259,6 +259,7 @@ class ToolRackController:
         evidence: PhysicalEvidence,
         snapshot: MarketSnapshot,
     ) -> ToolRackShadowResult:
+        territory_id_before = self._territory_id
         raw = self.router.classify(evidence)
         ownership_reason = raw.reason
         (
@@ -365,12 +366,15 @@ class ToolRackController:
         ):
             self._owned_side = raw.side
 
-        # If a territory was activated on this beat, resolve release again
-        # against the newly owned territory before updating its overlay.
+        # Re-resolve only if a genuinely new territory was activated on
+        # this beat. A side update inside the same Mountain territory must not
+        # rewrite the old owner before ReleaseWatcher finishes evaluating the
+        # transfer that caused the side change.
         if (
             self._release_watcher is not None
             and snapshot.metadata.get("release_probe") is not None
             and self._owned_territory is not Territory.UNKNOWN
+            and self._territory_id != territory_id_before
         ):
             (
                 release_evidence,
