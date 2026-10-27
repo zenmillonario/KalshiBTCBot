@@ -24,9 +24,21 @@ class PhysicalEvidence:
     rolling_mountain: bool = False
     qualified_heist: bool = False
     compression_unresolved: bool = False
+    heist_takeover_confirmed: bool = False
+
+    # Clean Tool Rack release measurements. These are physical observations,
+    # not permission labels.
+    release_candidate_side: Side | None = None
+    release_boundary_break: bool = False
+    release_directional_expansion: bool = False
+    release_old_owner_failed_reextension: bool = False
+    release_new_side_residence: bool = False
+    release_first_slowdown_only: bool = False
+
+    # Legacy R22 release labels are retained only as migration telemetry.
+    # ReleaseWatcher does not accept these alone as authority.
     release_handoff_confirmed: bool = False
     release_side: Side | None = None
-    heist_takeover_confirmed: bool = False
 
 
 @dataclass(frozen=True)
