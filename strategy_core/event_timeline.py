@@ -57,6 +57,7 @@ class ShadowEventTimeline:
         self._territory_key: tuple[Any, ...] | None = None
         self._decision_key: tuple[Any, ...] | None = None
         self._handoff_key: tuple[Any, ...] | None = None
+        self._seen_actionable_opportunities: set[str] = set()
 
     @property
     def events(self) -> tuple[ShadowEvent, ...]:
@@ -224,9 +225,27 @@ class ShadowEventTimeline:
         if decision_key != self._decision_key:
             self._decision_key = decision_key
             action = result.get("commander_action")
-            # ENTER/RELAY are always useful. WAIT is recorded only when its
-            # reason changes, making block transitions visible without flooding.
-            if action in ("ENTER", "RELAY", "EXIT", "HOLD", "WAIT"):
+            opportunity_id = result.get("accepted_opportunity_id")
+
+            duplicate_actionable = False
+            if (
+                action in ("ENTER", "RELAY")
+                and opportunity_id
+            ):
+                opportunity_key = str(opportunity_id)
+                if opportunity_key in self._seen_actionable_opportunities:
+                    duplicate_actionable = True
+                else:
+                    self._seen_actionable_opportunities.add(opportunity_key)
+
+            # ENTER/RELAY are recorded once per physical opportunity ID.
+            # WAIT is still recorded when its reason changes so objective blocks
+            # remain visible without turning stale/fresh quote toggles into new
+            # shadow "trades".
+            if (
+                action in ("ENTER", "RELAY", "EXIT", "HOLD", "WAIT")
+                and not duplicate_actionable
+            ):
                 new.append(
                     self._append(
                         ts=ts,
