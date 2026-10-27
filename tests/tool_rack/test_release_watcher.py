@@ -143,6 +143,44 @@ class ReleaseWatcherTests(unittest.TestCase):
             "RELEASE_WATCHER",
         )
 
+    def test_confirmed_release_value_wait_still_suppresses_old_primary(self):
+        primary = ToolIntent(
+            tool="RAIL",
+            territory_id="DOWN_RAIL_001",
+            lane=Lane.MAIN,
+            side=Side.NO,
+            action=Action.ENTER,
+            opportunity_id="OLD",
+            max_price=0.40,
+            size_tier=25.0,
+            reason="RAIL_MAIN_VALUE",
+            source_time=1000,
+        )
+        release_wait = ToolIntent(
+            tool="RELEASE_WATCHER",
+            territory_id="DOWN_RAIL_001",
+            lane=Lane.HANDOFF,
+            side=Side.YES,
+            action=Action.WAIT,
+            opportunity_id=None,
+            max_price=0.50,
+            size_tier=None,
+            reason="RELEASE_CONFIRMED_BUT_PRICE_ABOVE_SOFT_VALUE",
+            source_time=1000,
+        )
+        out = LaneResolver().resolve(
+            primary=(primary,),
+            overlays=(release_wait,),
+            handoff_confirmed=True,
+        )
+        self.assertEqual(len(out.intents), 1)
+        self.assertEqual(out.intents[0].tool, "RELEASE_WATCHER")
+        self.assertEqual(out.intents[0].action, Action.WAIT)
+        self.assertEqual(
+            out.reason,
+            "CONFIRMED_HANDOFF_VALUE_WAIT_SUPPRESSES_OLD_TERRITORY",
+        )
+
     def test_overlay_wait_never_blocks_valid_primary_entry(self):
         primary = ToolIntent(
             tool="RAIL",
