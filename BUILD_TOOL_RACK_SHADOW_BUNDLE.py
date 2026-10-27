@@ -42,6 +42,8 @@ def sha256_bytes(data: bytes) -> str:
 
 def allowed(relative: str) -> bool:
     normalized = relative.replace("\\", "/")
+    if normalized == "tests/tool_rack/test_shadow_bundle.py":
+        return False
     if normalized in ALLOWED_ROOT_FILES:
         return True
     return any(normalized.startswith(prefix) for prefix in ALLOWED_PREFIXES)
