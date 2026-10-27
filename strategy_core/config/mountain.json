@@ -4,5 +4,17 @@
   "exceptional_size": 25.0,
   "soft_max_price": 0.50,
   "mid_leg_entries": false,
-  "strong_active_release_defers_fade": true
+  "strong_active_release_defers_fade": true,
+  "detector": {
+    "protected_middle_fraction": 0.60,
+    "minimum_comparable_count": 2,
+    "preferred_comparable_count": 4,
+    "edge_window_min_s": 90.0,
+    "edge_window_max_s": 360.0,
+    "edge_window_duration_fraction": 0.35,
+    "edge_tolerance_range60_fraction": 0.08,
+    "retreat_range60_fraction": 0.12,
+    "min_retreat_dollars": 2.0,
+    "mature_phase_fallback_min_age_s": 60.0
+  }
 }
