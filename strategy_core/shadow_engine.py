@@ -54,12 +54,29 @@ class ToolRackShadowEngine:
             ),
             "territory_id": rack_result.territory_id,
             "active_tool": rack_result.active_tool,
+            "active_overlays": list(
+                rack_result.active_overlays
+            ),
             "ownership_reason": (
                 rack_result.ownership_reason
             ),
-            "tool_intents": [
+            "lane_resolution_reason": (
+                rack_result.lane_resolution_reason
+            ),
+            "primary_intents": [
                 asdict(intent_)
-                for intent_ in rack_result.intents
+                for intent_
+                in rack_result.primary_intents
+            ],
+            "overlay_intents": [
+                asdict(intent_)
+                for intent_
+                in rack_result.overlay_intents
+            ],
+            "resolved_intents": [
+                asdict(intent_)
+                for intent_
+                in rack_result.intents
             ],
             "commander_action": (
                 decision.action.value
