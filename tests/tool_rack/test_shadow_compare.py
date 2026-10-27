@@ -134,6 +134,40 @@ class ShadowCompareTests(unittest.TestCase):
             1,
         )
 
+    def test_same_side_pairing_wins_over_earlier_opposite_paper_entry(self):
+        timeline={"events":[
+            territory(1,1000,"ALTERNATING_MOUNTAIN","NO"),
+            intent(2,1100,"NO",0.30,"NO_OP"),
+        ]}
+        entries=[
+            PaperEntry(
+                index=0,ts=1090,ticker="KX1",trade_id="10",
+                side="YES",price=0.52,reason="legacy"
+            ),
+            PaperEntry(
+                index=1,ts=1110,ticker="KX1",trade_id="11",
+                side="NO",price=0.35,reason="legacy"
+            ),
+        ]
+        report=compare_shadow_to_paper(
+            timeline,
+            entries,
+            before_seconds=120,
+            after_seconds=120,
+        )
+        rows={
+            row["paper"]["trade_id"]: row
+            for row in report["paper_comparisons"]
+        }
+        self.assertEqual(
+            rows["10"]["classification"],
+            "PAPER_ONLY",
+        )
+        self.assertEqual(
+            rows["11"]["classification"],
+            "MATCHED_SAME_SIDE",
+        )
+
     def test_missed_shadow_and_paper_only_against_rail_are_counted(self):
         timeline={"events":[
             territory(1,1000,"DOWN_RAIL","NO"),
