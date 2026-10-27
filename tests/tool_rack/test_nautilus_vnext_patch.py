@@ -69,11 +69,11 @@ class NautilusVNextPatchTests(unittest.TestCase):
         temp, root = self.fixture()
         try:
             mod.apply(root, verify_hashes=False)
-            index = (root / "static/index.html").read_text()
-            chart = (root / "static/chart.js").read_text()
-            app = (root / "static/app.js").read_text()
-            css = (root / "static/bridge.css").read_text()
-            adapter = (root / "adapter.py").read_text()
+            index = (root / "static/index.html").read_text(encoding="utf-8")
+            chart = (root / "static/chart.js").read_text(encoding="utf-8")
+            app = (root / "static/app.js").read_text(encoding="utf-8")
+            css = (root / "static/bridge.css").read_text(encoding="utf-8")
+            adapter = (root / "adapter.py").read_text(encoding="utf-8")
 
             self.assertIn("toolRackStrip", index)
             self.assertIn("this.ratio=.83", chart)
@@ -92,8 +92,8 @@ class NautilusVNextPatchTests(unittest.TestCase):
         try:
             mod.apply(root, verify_hashes=False)
             mod.apply(root, verify_hashes=False)
-            css = (root / "static/bridge.css").read_text()
-            index = (root / "static/index.html").read_text()
+            css = (root / "static/bridge.css").read_text(encoding="utf-8")
+            index = (root / "static/index.html").read_text(encoding="utf-8")
             self.assertEqual(css.count(mod.MARKER), 1)
             self.assertEqual(index.count("toolRackStrip"), 1)
         finally:
