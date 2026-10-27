@@ -1,0 +1,8 @@
+{
+  "regular_size": 10.0,
+  "a_plus_size": 15.0,
+  "exceptional_size": 25.0,
+  "soft_max_price": 0.50,
+  "mid_leg_entries": false,
+  "strong_active_release_defers_fade": true
+}
