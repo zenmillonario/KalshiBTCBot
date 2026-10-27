@@ -25,6 +25,72 @@ FIELDS = [
 
 
 class R22RunShadowSourceTests(unittest.TestCase):
+    def test_startup_geometry_without_arc_ids_does_not_crash(self):
+        temp = tempfile.TemporaryDirectory()
+        try:
+            root = Path(temp.name)
+            run = root / "PAPER_STARTUP"
+            run.mkdir()
+
+            now = 1000.0
+            close = 1800.0
+            (run / "tachys_runtime_hf2.json").write_text(
+                json.dumps({
+                    "updated_wall": now,
+                    "run_id": "RUN",
+                    "session_id": "SESSION",
+                    "quote": {
+                        "ticker": "KXSTART",
+                        "yes_ask": 0.50,
+                        "no_ask": 0.50,
+                        "valid": True,
+                        "exchange_age_sec": 1.0,
+                        "yes_bid_size": 100.0,
+                        "no_bid_size": 100.0,
+                        "close_ts": close,
+                    },
+                }),
+                encoding="utf-8",
+            )
+
+            with (
+                run / "tachys_ema_geometry_v9_4i.csv"
+            ).open(
+                "w",
+                newline="",
+                encoding="utf-8",
+            ) as handle:
+                writer = csv.DictWriter(
+                    handle,
+                    fieldnames=FIELDS,
+                )
+                writer.writeheader()
+                for i in range(3):
+                    writer.writerow({
+                        "epoch_ms": (now - 2 + i) * 1000,
+                        "ticker": "KXSTART",
+                        "btc_price": 80000 + i,
+                        "ema9": 80000 + i,
+                        "ema30": 80000,
+                        "struct_slope3m": 0.0,
+                        "struct_slope6m": 0.0,
+                        "struct_slope9m": 0.0,
+                        "ema30_slope3m": 0.0,
+                        "arc_id": "",
+                        "arc_direction": "",
+                    })
+
+            state = R22RunShadowSource(run).read()
+            out = ToolRackShadowEngine().evaluate(
+                state.frame
+            )
+            self.assertIn(
+                out["owned_territory"],
+                ("UNKNOWN", "COMPRESSION_UNRESOLVED"),
+            )
+        finally:
+            temp.cleanup()
+
     def make_run(self, *, side="NO", ask=0.30):
         temp = tempfile.TemporaryDirectory()
         root = Path(temp.name)
