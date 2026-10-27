@@ -11,9 +11,7 @@ from strategy_core.types import (
 )
 
 
-class HeistControllerTests(
-    unittest.TestCase
-):
+class HeistControllerTests(unittest.TestCase):
     def snap(
         self,
         *,
@@ -28,9 +26,7 @@ class HeistControllerTests(
             contract_age_s=500,
             yes_ask=yes,
             no_ask=no,
-            metadata={
-                "heist": heist
-            },
+            metadata={"heist": heist},
         )
 
     def test_heist_router_activates_tool_and_lower_edge_enters_yes(self):
@@ -50,10 +46,7 @@ class HeistControllerTests(
                 "visit_id": "L1",
             },
         )
-        out = rack.observe(
-            evidence,
-            snap,
-        )
+        out = rack.observe(evidence, snap)
         decision = commander.decide(
             out.intents,
             snap,
@@ -67,6 +60,10 @@ class HeistControllerTests(
             "MARKET_HEIST",
         )
         self.assertEqual(
+            out.active_overlays,
+            ("RELEASE_WATCHER",),
+        )
+        self.assertEqual(
             decision.action,
             Action.ENTER,
         )
@@ -75,8 +72,9 @@ class HeistControllerTests(
             Side.YES,
         )
 
-    def test_heist_release_can_handoff_into_down_rail(self):
+    def test_heist_release_relay_then_next_beat_down_rail(self):
         rack = ToolRackController()
+        commander = OneCommander()
         heist_evidence = PhysicalEvidence(
             qualified_heist=True,
             ema9_direction=Side.NO,
@@ -93,7 +91,7 @@ class HeistControllerTests(
             ),
         )
 
-        rail_evidence = PhysicalEvidence(
+        release_evidence = PhysicalEvidence(
             ema9_direction=Side.NO,
             ema30_direction=Side.NO,
             ema_pair_parallel=True,
@@ -101,36 +99,84 @@ class HeistControllerTests(
             rolling_mountain_repetitions=2,
             contracts_persistent=1.0,
             rolling_mountain=True,
-            release_handoff_confirmed=True,
-            release_side=Side.NO,
+            release_candidate_side=Side.NO,
+            release_boundary_break=True,
+            release_directional_expansion=True,
+            release_new_side_residence=True,
+        )
+        snap = self.snap(
+            ts=1100,
+            no=0.30,
+            yes=0.70,
+            heist={
+                "qualified_box": False,
+                "release_confirmed": True,
+                "release_side": "NO",
+            },
         )
         out = rack.observe(
-            rail_evidence,
+            release_evidence,
+            snap,
+        )
+        self.assertEqual(
+            out.owned_territory,
+            Territory.MARKET_HEIST,
+        )
+        self.assertEqual(
+            out.intents[0].tool,
+            "RELEASE_WATCHER",
+        )
+        self.assertEqual(
+            out.intents[0].action,
+            Action.RELAY,
+        )
+        self.assertEqual(
+            out.intents[0].side,
+            Side.NO,
+        )
+
+        decision = commander.decide(
+            out.intents,
+            snap,
+        )
+        rack.commit_accepted_intent(
+            decision.intent,
+            snap,
+        )
+
+        next_out = rack.observe(
+            PhysicalEvidence(
+                ema9_direction=Side.NO,
+                ema30_direction=Side.NO,
+                ema_pair_parallel=True,
+                directional_residence=True,
+                rolling_mountain_repetitions=2,
+                contracts_persistent=1.0,
+                rolling_mountain=True,
+            ),
             self.snap(
-                ts=1100,
+                ts=1110,
                 no=0.30,
                 yes=0.70,
                 heist={
                     "qualified_box": False,
-                    "release_confirmed": True,
-                    "release_side": "NO",
                 },
             ),
         )
         self.assertEqual(
-            out.owned_territory,
+            next_out.owned_territory,
             Territory.DOWN_RAIL,
         )
         self.assertEqual(
-            out.active_tool,
+            next_out.active_tool,
             "RAIL",
         )
         self.assertEqual(
-            out.intents[0].action,
+            next_out.intents[0].action,
             Action.ENTER,
         )
         self.assertEqual(
-            out.intents[0].side,
+            next_out.intents[0].side,
             Side.NO,
         )
 
