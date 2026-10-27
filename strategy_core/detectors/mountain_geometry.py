@@ -217,7 +217,12 @@ def _sample_interval_s(rows: Sequence[Mapping[str, Any]]) -> float:
         for a, b in zip(values, values[1:])
         if b > a
     ]
-    return median(diffs) if diffs else 5.0
+    if not diffs:
+        return 5.0
+    # "One native beat" should follow the current source cadence, not be
+    # inflated by a historical gap earlier in the arc. Use the shortest recent
+    # positive beat with a conservative upper cap.
+    return min(30.0, max(1.0, min(diffs[-10:])))
 
 
 def detect_mountain_geometry(
