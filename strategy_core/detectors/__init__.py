@@ -16,6 +16,9 @@ __all__ = [
     "ReleaseProbe",
     "build_release_probe",
     "detect_release_for_owner",
+    "RailGeometryConfig",
+    "RailGeometryDetection",
+    "detect_rail_geometry",
 ]
 
 from .heist_geometry import (
@@ -30,4 +33,10 @@ from .release_geometry import (
     ReleaseProbe,
     build_release_probe,
     detect_release_for_owner,
+)
+
+from .rail_geometry import (
+    RailGeometryConfig,
+    RailGeometryDetection,
+    detect_rail_geometry,
 )
