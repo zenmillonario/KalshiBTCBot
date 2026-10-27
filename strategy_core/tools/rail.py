@@ -114,20 +114,32 @@ class RailTool(StrategyTool):
         opportunity_id = self._opportunity_id(snapshot)
 
         if self._same_ticker_position_open:
-            return [self._wait(snapshot, "RAIL_POSITION_ALREADY_OPEN", max_price=max_price)]
+            return [
+                self._wait(
+                    snapshot,
+                    "RAIL_POSITION_ALREADY_OPEN",
+                    max_price=max_price,
+                )
+            ]
 
         if opportunity_id in self._filled_opportunity_ids:
-            return [self._wait(snapshot, "RAIL_VALUE_OPPORTUNITY_ALREADY_FILLED", max_price=max_price)]
-
-        if not snapshot.quote_current:
-            return [self._wait(snapshot, "OBJECTIVE_QUOTE_STALE", max_price=max_price)]
-
-        if not snapshot.depth_available:
-            return [self._wait(snapshot, "OBJECTIVE_DEPTH_UNAVAILABLE", max_price=max_price)]
+            return [
+                self._wait(
+                    snapshot,
+                    "RAIL_VALUE_OPPORTUNITY_ALREADY_FILLED",
+                    max_price=max_price,
+                )
+            ]
 
         ask = snapshot.ask_for(self.side)
         if ask is None:
-            return [self._wait(snapshot, "MAIN_SIDE_ASK_UNAVAILABLE", max_price=max_price)]
+            return [
+                self._wait(
+                    snapshot,
+                    "MAIN_SIDE_ASK_UNAVAILABLE",
+                    max_price=max_price,
+                )
+            ]
 
         if ask > max_price:
             # Critical doctrine: WAIT does not consume the opportunity.
@@ -171,7 +183,11 @@ class RailTool(StrategyTool):
             # the cycle.
             self._rearm_generation += 1
 
-    def on_deactivate(self, snapshot: MarketSnapshot, reason: str) -> Iterable[ToolIntent]:
+    def on_deactivate(
+        self,
+        snapshot: MarketSnapshot,
+        reason: str,
+    ) -> Iterable[ToolIntent]:
         self._active = False
         return [
             ToolIntent(
