@@ -56,6 +56,10 @@ class ReleaseWatcher(StrategyTool):
     def active(self) -> bool:
         return self._active
 
+    @property
+    def confirmed(self) -> bool:
+        return self._confirmed()
+
     def update_owner_side(
         self,
         side: Side | None,
