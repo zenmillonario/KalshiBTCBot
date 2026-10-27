@@ -146,7 +146,18 @@ class R22RunShadowSource:
         # deliberately tolerates shallow pullbacks/fakeouts instead of requiring
         # every callback to remain perfectly aligned.
         last_ms = _num(last.get("epoch_ms"))
-        recent = rows[-180:]
+        if last_ms is not None:
+            current_residence_cutoff = last_ms - 900_000.0
+            recent = [
+                row
+                for row in rows
+                if (
+                    (_num(row.get("epoch_ms")) or -1.0)
+                    >= current_residence_cutoff
+                )
+            ]
+        else:
+            recent = rows[-90:]
         residence_votes = 0
         residence_total = 0
         if ema9_side is not None:
