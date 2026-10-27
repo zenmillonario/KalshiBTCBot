@@ -292,7 +292,10 @@ def compare_shadow_to_paper(
 
     used_paper: set[int] = set()
     used_shadow: set[int] = set()
-    pairings: dict[int, tuple[int, str]] = {}
+    pairings: dict[
+        int,
+        tuple[int, str],
+    ] = {}
 
     def eligible(
         entry: PaperEntry,
@@ -306,18 +309,18 @@ def compare_shadow_to_paper(
         event_ts = _epoch(event.get("ts"))
         if event_ts is None:
             return False, None
-        delta = entry.ts - event_ts
+        delay = entry.ts - event_ts
         if (
-            delta < -after_seconds
-            or delta > before_seconds
+            delay < -after_seconds
+            or delay > before_seconds
         ):
             return False, None
-        return True, delta
+        return True, delay
 
-    # Pass 1: reserve the best same-side pairings globally. This prevents an
-    # earlier opposite PAPER entry from consuming a shadow opportunity that is
-    # a much better same-side match for the next PAPER entry on the same ticker.
-    same_pairs: list[
+    # Pass 1: same-side Tool Rack opportunities that existed BEFORE the PAPER
+    # entry. These are the only pairings that can legitimately measure legacy
+    # delay/chase. Choose the closest prior opportunity globally.
+    prior_same: list[
         tuple[float, int, int]
     ] = []
     for paper_index, entry in enumerate(
@@ -326,13 +329,14 @@ def compare_shadow_to_paper(
         for shadow_index, event in enumerate(
             shadow
         ):
-            ok, delta = eligible(
+            ok, delay = eligible(
                 entry,
                 event,
             )
             if (
                 not ok
-                or delta is None
+                or delay is None
+                or delay < 0
                 or str(
                     event.get(
                         "accepted_side"
@@ -342,16 +346,16 @@ def compare_shadow_to_paper(
                 != entry.side
             ):
                 continue
-            same_pairs.append(
+            prior_same.append(
                 (
-                    abs(delta),
+                    delay,
                     paper_index,
                     shadow_index,
                 )
             )
 
     for _, paper_index, shadow_index in sorted(
-        same_pairs
+        prior_same
     ):
         if (
             paper_index in used_paper
@@ -362,11 +366,66 @@ def compare_shadow_to_paper(
         used_shadow.add(shadow_index)
         pairings[paper_index] = (
             shadow_index,
-            "MATCHED_SAME_SIDE",
+            "TOOL_RACK_LED_SAME_SIDE",
         )
 
-    # Pass 2: remaining nearby opposite-side opportunities are useful negative
-    # controls, but only after every possible same-side match has been reserved.
+    # Pass 2: same-side opportunity that appears only AFTER PAPER. Preserve it
+    # as useful agreement evidence, but never call the PAPER entry "late".
+    future_same: list[
+        tuple[float, int, int]
+    ] = []
+    for paper_index, entry in enumerate(
+        paper_entries
+    ):
+        if paper_index in used_paper:
+            continue
+        for shadow_index, event in enumerate(
+            shadow
+        ):
+            if shadow_index in used_shadow:
+                continue
+            ok, delay = eligible(
+                entry,
+                event,
+            )
+            if (
+                not ok
+                or delay is None
+                or delay >= 0
+                or str(
+                    event.get(
+                        "accepted_side"
+                    )
+                    or ""
+                ).upper()
+                != entry.side
+            ):
+                continue
+            future_same.append(
+                (
+                    abs(delay),
+                    paper_index,
+                    shadow_index,
+                )
+            )
+
+    for _, paper_index, shadow_index in sorted(
+        future_same
+    ):
+        if (
+            paper_index in used_paper
+            or shadow_index in used_shadow
+        ):
+            continue
+        used_paper.add(paper_index)
+        used_shadow.add(shadow_index)
+        pairings[paper_index] = (
+            shadow_index,
+            "TOOL_RACK_FOLLOWED_SAME_SIDE",
+        )
+
+    # Pass 3: remaining nearby opposite-side opportunities are negative
+    # controls. Same-side agreement always has first priority.
     opposite_pairs: list[
         tuple[float, int, int]
     ] = []
@@ -380,15 +439,15 @@ def compare_shadow_to_paper(
         ):
             if shadow_index in used_shadow:
                 continue
-            ok, delta = eligible(
+            ok, delay = eligible(
                 entry,
                 event,
             )
-            if not ok or delta is None:
+            if not ok or delay is None:
                 continue
             opposite_pairs.append(
                 (
-                    abs(delta),
+                    abs(delay),
                     paper_index,
                     shadow_index,
                 )
@@ -486,20 +545,20 @@ def compare_shadow_to_paper(
         if index not in used_shadow
     ]
 
-    same_rows = [
+    led_rows = [
         row
         for row in paper_comparisons
         if row["classification"]
-        == "MATCHED_SAME_SIDE"
+        == "TOOL_RACK_LED_SAME_SIDE"
     ]
-    delay_values = [
+    led_delays = [
         row["delay_seconds"]
-        for row in same_rows
+        for row in led_rows
         if row["delay_seconds"] is not None
     ]
-    price_deltas = [
+    led_deltas = [
         row["price_delta"]
-        for row in same_rows
+        for row in led_rows
         if row["price_delta"] is not None
     ]
 
@@ -514,9 +573,22 @@ def compare_shadow_to_paper(
         "paper_entries": len(
             paper_entries
         ),
+        "tool_rack_led_same_side": sum(
+            row["classification"]
+            == "TOOL_RACK_LED_SAME_SIDE"
+            for row in paper_comparisons
+        ),
+        "tool_rack_followed_same_side": sum(
+            row["classification"]
+            == "TOOL_RACK_FOLLOWED_SAME_SIDE"
+            for row in paper_comparisons
+        ),
         "matched_same_side": sum(
             row["classification"]
-            == "MATCHED_SAME_SIDE"
+            in (
+                "TOOL_RACK_LED_SAME_SIDE",
+                "TOOL_RACK_FOLLOWED_SAME_SIDE",
+            )
             for row in paper_comparisons
         ),
         "opposite_paper_entry": sum(
@@ -542,23 +614,37 @@ def compare_shadow_to_paper(
             )
             for row in paper_comparisons
         ),
+        "average_tool_rack_lead_seconds": (
+            sum(led_delays)
+            / len(led_delays)
+            if led_delays
+            else None
+        ),
+        "average_paper_price_minus_tool_rack_price_when_tool_rack_led": (
+            sum(led_deltas)
+            / len(led_deltas)
+            if led_deltas
+            else None
+        ),
+        # Backward-compatible aliases now explicitly refer only to rows where
+        # Tool Rack existed first.
         "average_same_side_delay_seconds": (
-            sum(delay_values)
-            / len(delay_values)
-            if delay_values
+            sum(led_delays)
+            / len(led_delays)
+            if led_delays
             else None
         ),
         "average_same_side_price_delta": (
-            sum(price_deltas)
-            / len(price_deltas)
-            if price_deltas
+            sum(led_deltas)
+            / len(led_deltas)
+            if led_deltas
             else None
         ),
     }
 
     return {
         "schema": (
-            "TACHYOS_TOOL_RACK_SHADOW_VS_PAPER_V2"
+            "TACHYOS_TOOL_RACK_SHADOW_VS_PAPER_V3"
         ),
         "summary": summary,
         "paper_comparisons": paper_comparisons,
@@ -595,7 +681,15 @@ def markdown_report(
             f"**{s['shadow_unique_opportunities']}**"
         ),
         f"- PAPER entries: **{s['paper_entries']}**",
-        f"- Matched same side: **{s['matched_same_side']}**",
+        (
+            "- Tool Rack led same-side PAPER entry: "
+            f"**{s['tool_rack_led_same_side']}**"
+        ),
+        (
+            "- Tool Rack followed PAPER on same side: "
+            f"**{s['tool_rack_followed_same_side']}**"
+        ),
+        f"- Same-side agreement total: **{s['matched_same_side']}**",
         (
             "- PAPER entry opposite nearby Tool Rack opportunity: "
             f"**{s['opposite_paper_entry']}**"
