@@ -65,8 +65,16 @@ class OneCommander:
                 "OBJECTIVE_DEPTH_UNAVAILABLE",
             )
 
-        if intent.action is Action.ENTER and intent.side is not None:
-            ask = snapshot.ask_for(intent.side)
+        if (
+            intent.action in (
+                Action.ENTER,
+                Action.RELAY,
+            )
+            and intent.side is not None
+        ):
+            ask = snapshot.ask_for(
+                intent.side
+            )
             if ask is None:
                 return CommanderDecision(
                     Action.WAIT,
