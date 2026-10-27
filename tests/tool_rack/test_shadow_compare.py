@@ -62,10 +62,10 @@ class ShadowCompareTests(unittest.TestCase):
         ]
         report=compare_shadow_to_paper(timeline,entries)
         row=report["matches"][0]
-        self.assertEqual(row["classification"],"MATCHED_SAME_SIDE")
+        self.assertEqual(row["classification"],"TOOL_RACK_LED_SAME_SIDE")
         self.assertEqual(row["delay_seconds"],30)
         self.assertAlmostEqual(row["price_delta"],0.13)
-        self.assertEqual(report["summary"]["matched_same_side"],1)
+        self.assertEqual(report["summary"]["tool_rack_led_same_side"],1)
 
     def test_duplicate_actionable_events_same_opportunity_count_once(self):
         timeline={"events":[
@@ -134,6 +134,31 @@ class ShadowCompareTests(unittest.TestCase):
             1,
         )
 
+    def test_same_side_after_paper_is_classified_as_followed_not_lead(self):
+        timeline={"events":[
+            territory(1,1000,"DOWN_RAIL","NO"),
+            intent(2,1050,"NO",0.30,"OP1"),
+        ]}
+        entries=[
+            PaperEntry(
+                index=0,ts=1020,ticker="KX1",trade_id="7",
+                side="NO",price=0.31,reason="legacy"
+            )
+        ]
+        report=compare_shadow_to_paper(timeline,entries)
+        row=report["paper_comparisons"][0]
+        self.assertEqual(
+            row["classification"],
+            "TOOL_RACK_FOLLOWED_SAME_SIDE",
+        )
+        self.assertEqual(
+            report["summary"]["tool_rack_followed_same_side"],
+            1,
+        )
+        self.assertIsNone(
+            report["summary"]["average_tool_rack_lead_seconds"]
+        )
+
     def test_same_side_pairing_wins_over_earlier_opposite_paper_entry(self):
         timeline={"events":[
             territory(1,1000,"ALTERNATING_MOUNTAIN","NO"),
@@ -165,7 +190,7 @@ class ShadowCompareTests(unittest.TestCase):
         )
         self.assertEqual(
             rows["11"]["classification"],
-            "MATCHED_SAME_SIDE",
+            "TOOL_RACK_LED_SAME_SIDE",
         )
 
     def test_missed_shadow_and_paper_only_against_rail_are_counted(self):
