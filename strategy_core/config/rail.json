@@ -1,0 +1,13 @@
+{
+  "size_tier": 25.0,
+  "opening_value": {
+    "first_60s": 0.40,
+    "sec_60_120": 0.42,
+    "sec_120_240": 0.44,
+    "later_soft": 0.50
+  },
+  "activation_window_s": 240.0,
+  "reentry_after_exit": true,
+  "opposite_fades": false,
+  "rollover_creates_new_slice": true
+}
