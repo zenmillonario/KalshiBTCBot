@@ -11,8 +11,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 7
     steps:
-      - name: Checkout
+      - name: Checkout isolated Tool Rack surfaces
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            strategy_core
+            tests/tool_rack
+            nautilus_vnext
+            docs
+            CHECK_TOOL_RACK_V1.py
+            00_CHECK_TOOL_RACK_SHADOW.cmd
+            START_TOOL_RACK_SHADOW.cmd
+            TOOL_RACK_ATTACH_R22_SHADOW.py
+            TOOL_RACK_SHADOW_REPLAY.py
+            TOOL_RACK_COMPARE_SHADOW_TO_PAPER.py
+            02_COMPARE_SHADOW_TO_PAPER.cmd
+            README_TOOL_RACK_SHADOW.md
+            BUILD_TOOL_RACK_SHADOW_BUNDLE.py
+          sparse-checkout-cone-mode: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
