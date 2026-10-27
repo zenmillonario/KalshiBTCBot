@@ -1,6 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any, Mapping
+
+from strategy_core.detectors.release_geometry import (
+    ReleaseProbe,
+    detect_release_for_owner,
+)
 
 from strategy_core.config_loader import (
     ToolConfigBundle,
@@ -44,6 +50,8 @@ class ToolRackShadowResult:
     intents: tuple[ToolIntent, ...]
     ownership_reason: str
     lane_resolution_reason: str
+    release_boundary_name: str | None
+    release_diagnostics: Mapping[str, Any]
 
 
 class ToolRackController:
@@ -126,6 +134,7 @@ class ToolRackController:
             self._active_tool = AlternatingMountainTool(
                 territory_id=self._territory_id,
                 owner_side=decision.side,
+                config=self.configs.mountain,
             )
         elif (
             decision.territory
@@ -173,46 +182,77 @@ class ToolRackController:
         self._active_tool = None
         self._release_watcher = None
 
-    def _release_in_progress(
+    def _resolve_release_evidence(
         self,
         evidence: PhysicalEvidence,
+        snapshot: MarketSnapshot,
+    ) -> tuple[ReleaseEvidence, str | None, Mapping[str, Any]]:
+        probe = snapshot.metadata.get("release_probe")
+        if (
+            isinstance(probe, ReleaseProbe)
+            and self._owned_territory is not Territory.UNKNOWN
+        ):
+            detection = detect_release_for_owner(
+                probe,
+                owner_territory=self._owned_territory,
+                owner_side=self._owned_side,
+            )
+            return (
+                detection.evidence,
+                detection.boundary_name,
+                detection.diagnostics,
+            )
+
+        fallback = ReleaseEvidence(
+            candidate_side=evidence.release_candidate_side,
+            boundary_break=evidence.release_boundary_break,
+            directional_expansion=evidence.release_directional_expansion,
+            old_owner_failed_reextension=(
+                evidence.release_old_owner_failed_reextension
+            ),
+            new_side_residence=evidence.release_new_side_residence,
+            first_slowdown_only=evidence.release_first_slowdown_only,
+        )
+        return (
+            fallback,
+            "EXPLICIT_TEST_EVIDENCE"
+            if any(
+                (
+                    fallback.candidate_side is not None,
+                    fallback.boundary_break,
+                    fallback.directional_expansion,
+                    fallback.old_owner_failed_reextension,
+                    fallback.new_side_residence,
+                    fallback.first_slowdown_only,
+                )
+            )
+            else None,
+            {"source": "PHYSICAL_EVIDENCE_FIELDS"},
+        )
+
+    @staticmethod
+    def _release_in_progress(
+        release: ReleaseEvidence,
     ) -> bool:
         return bool(
-            evidence.release_candidate_side is not None
-            or evidence.release_boundary_break
-            or evidence.release_directional_expansion
-            or evidence.release_old_owner_failed_reextension
-            or evidence.release_new_side_residence
-            or evidence.release_first_slowdown_only
+            release.candidate_side is not None
+            or release.boundary_break
+            or release.directional_expansion
+            or release.old_owner_failed_reextension
+            or release.new_side_residence
+            or release.first_slowdown_only
         )
 
     def _update_release_watcher(
         self,
-        evidence: PhysicalEvidence,
+        release: ReleaseEvidence,
     ) -> None:
         if self._release_watcher is None:
             return
         self._release_watcher.update_owner_side(
             self._owned_side
         )
-        self._release_watcher.update_evidence(
-            ReleaseEvidence(
-                candidate_side=evidence.release_candidate_side,
-                boundary_break=evidence.release_boundary_break,
-                directional_expansion=(
-                    evidence.release_directional_expansion
-                ),
-                old_owner_failed_reextension=(
-                    evidence.release_old_owner_failed_reextension
-                ),
-                new_side_residence=(
-                    evidence.release_new_side_residence
-                ),
-                first_slowdown_only=(
-                    evidence.release_first_slowdown_only
-                ),
-            )
-        )
+        self._release_watcher.update_evidence(release)
 
     def observe(
         self,
@@ -221,8 +261,16 @@ class ToolRackController:
     ) -> ToolRackShadowResult:
         raw = self.router.classify(evidence)
         ownership_reason = raw.reason
+        (
+            release_evidence,
+            release_boundary_name,
+            release_diagnostics,
+        ) = self._resolve_release_evidence(
+            evidence,
+            snapshot,
+        )
         release_in_progress = self._release_in_progress(
-            evidence
+            release_evidence
         )
 
         if self._is_rail(self._owned_territory):
@@ -317,7 +365,22 @@ class ToolRackController:
         ):
             self._owned_side = raw.side
 
-        self._update_release_watcher(evidence)
+        # If a territory was activated on this beat, resolve release again
+        # against the newly owned territory before updating its overlay.
+        if (
+            self._release_watcher is not None
+            and snapshot.metadata.get("release_probe") is not None
+            and self._owned_territory is not Territory.UNKNOWN
+        ):
+            (
+                release_evidence,
+                release_boundary_name,
+                release_diagnostics,
+            ) = self._resolve_release_evidence(
+                evidence,
+                snapshot,
+            )
+        self._update_release_watcher(release_evidence)
 
         primary_intents: tuple[ToolIntent, ...] = ()
         if self._active_tool is not None:
@@ -360,6 +423,8 @@ class ToolRackController:
             intents=resolution.intents,
             ownership_reason=ownership_reason,
             lane_resolution_reason=resolution.reason,
+            release_boundary_name=release_boundary_name,
+            release_diagnostics=release_diagnostics,
         )
 
     def commit_accepted_intent(
