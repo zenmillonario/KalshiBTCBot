@@ -9,5 +9,17 @@
   "activation_window_s": 240.0,
   "reentry_after_exit": true,
   "opposite_fades": false,
-  "rollover_creates_new_slice": true
+  "rollover_creates_new_slice": true,
+  "detector": {
+    "ema9_slope_epsilon": 0.02,
+    "ema30_slope_epsilon": 0.01,
+    "current_residence_window_s": 900.0,
+    "current_residence_min_fraction": 0.62,
+    "current_residence_min_samples": 8,
+    "persistence_windows_s": [1800.0, 1500.0, 1200.0, 900.0, 720.0, 600.0],
+    "persistence_alignment_min_fraction": 0.70,
+    "persistence_residence_min_fraction": 0.60,
+    "persistence_min_samples": 8,
+    "qualification_min_persistence_s": 900.0
+  }
 }
