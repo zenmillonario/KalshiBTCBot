@@ -46,6 +46,15 @@ def _opposite(side: Side | None) -> Side | None:
 
 
 @dataclass(frozen=True)
+class ReleaseGeometryConfig:
+    ema9_cross_range60_fraction: float = 0.08
+    min_cross_dollars: float = 2.0
+    new_side_residence_fraction: float = 0.65
+    new_side_stack_fraction: float = 0.55
+    heist_break_edge_tolerance_fraction: float = 0.35
+
+
+@dataclass(frozen=True)
 class ReleaseProbe:
     btc: float | None
     ema9: float | None
@@ -167,7 +176,9 @@ def detect_release_for_owner(
     *,
     owner_territory: Territory,
     owner_side: Side | None,
+    config: ReleaseGeometryConfig | None = None,
 ) -> ReleaseGeometryDetection:
+    cfg = config or ReleaseGeometryConfig()
     # A neutral Heist can release either direction. Directional territories
     # normally hand off to the opposite side.
     candidate: Side | None = None
@@ -180,7 +191,9 @@ def detect_release_for_owner(
             and probe.heist_upper is not None
             and probe.heist_edge_tolerance is not None
             and probe.btc
-            > probe.heist_upper + 0.35 * probe.heist_edge_tolerance
+            > probe.heist_upper
+            + cfg.heist_break_edge_tolerance_fraction
+            * probe.heist_edge_tolerance
         ):
             candidate = Side.YES
             boundary_break = True
@@ -190,14 +203,19 @@ def detect_release_for_owner(
             and probe.heist_lower is not None
             and probe.heist_edge_tolerance is not None
             and probe.btc
-            < probe.heist_lower - 0.35 * probe.heist_edge_tolerance
+            < probe.heist_lower
+            - cfg.heist_break_edge_tolerance_fraction
+            * probe.heist_edge_tolerance
         ):
             candidate = Side.NO
             boundary_break = True
             boundary_name = "HEIST_LOWER_BREAK"
     else:
         candidate = _opposite(owner_side)
-        cross_tolerance = max(2.0, 0.08 * probe.range60)
+        cross_tolerance = max(
+            cfg.min_cross_dollars,
+            cfg.ema9_cross_range60_fraction * probe.range60,
+        )
         if (
             candidate is Side.YES
             and probe.btc is not None
@@ -255,10 +273,10 @@ def detect_release_for_owner(
     )
 
     new_side_residence = bool(
-        residence >= 0.65
+        residence >= cfg.new_side_residence_fraction
         and (
             probe.short_struct_side is candidate
-            or stack >= 0.55
+            or stack >= cfg.new_side_stack_fraction
         )
     )
 
