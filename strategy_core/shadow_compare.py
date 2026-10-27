@@ -94,10 +94,7 @@ def load_paper_entries(
                 continue
             ts = _epoch(row.get("timestamp"))
             side = str(row.get("side") or "").upper()
-            if (
-                ts is None
-                or side not in ("YES", "NO")
-            ):
+            if ts is None or side not in ("YES", "NO"):
                 continue
             out.append(
                 PaperEntry(
@@ -133,7 +130,37 @@ def load_shadow_timeline(
     )
 
 
-def _shadow_intents(
+def load_shadow_event_journal(
+    event_path: Path,
+) -> dict[str, Any]:
+    events: list[dict[str, Any]] = []
+    with event_path.open(
+        "r",
+        encoding="utf-8",
+        errors="replace",
+    ) as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(event, dict):
+                events.append(event)
+    events.sort(
+        key=lambda event: (
+            _epoch(event.get("ts"))
+            if _epoch(event.get("ts")) is not None
+            else float("inf"),
+            int(event.get("seq") or 0),
+        )
+    )
+    return {"events": events}
+
+
+def _all_actionable_events(
     timeline: dict[str, Any],
 ) -> list[dict[str, Any]]:
     return [
@@ -149,6 +176,28 @@ def _shadow_intents(
             is not None
         )
     ]
+
+
+def _shadow_opportunities(
+    timeline: dict[str, Any],
+) -> list[dict[str, Any]]:
+    # Shadow does not simulate fills yet. For forensics, one physical
+    # opportunity ID must count once, even if quote stale/fresh toggles cause
+    # the same intent to be emitted repeatedly.
+    out: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    for event in _all_actionable_events(timeline):
+        opportunity_id = str(
+            event.get("opportunity_id") or ""
+        )
+        if opportunity_id:
+            if opportunity_id in seen:
+                continue
+            seen.add(opportunity_id)
+        out.append(event)
+
+    return out
 
 
 def _territory_at(
@@ -175,12 +224,14 @@ def _territory_alignment(
 ) -> str:
     if not territory:
         return "NO_SHADOW_TERRITORY"
+
     name = str(
         territory.get("territory") or ""
     )
     side = str(
         territory.get("side") or ""
     )
+
     if name == "DOWN_RAIL":
         return (
             "ALIGNED"
@@ -202,114 +253,148 @@ def _territory_alignment(
     return "TERRITORY_SIDE_CONTEXT_ONLY"
 
 
+def _shadow_summary(
+    event: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "seq": event.get("seq"),
+        "ts": _epoch(event.get("ts")),
+        "ticker": event.get("ticker"),
+        "territory": event.get("territory"),
+        "tool": event.get("tool"),
+        "action": event.get("action"),
+        "side": event.get("accepted_side"),
+        "observed_ask": _number(
+            event.get("observed_ask")
+        ),
+        "max_price": _number(
+            event.get("max_price")
+        ),
+        "opportunity_id": event.get(
+            "opportunity_id"
+        ),
+    }
+
+
 def compare_shadow_to_paper(
     timeline: dict[str, Any],
     paper_entries: list[PaperEntry],
     *,
-    before_seconds: float = 15.0,
-    after_seconds: float = 90.0,
+    before_seconds: float = 120.0,
+    after_seconds: float = 120.0,
 ) -> dict[str, Any]:
-    shadow = _shadow_intents(timeline)
-    used_paper: set[int] = set()
-    matches: list[dict[str, Any]] = []
+    actionable_events = _all_actionable_events(
+        timeline
+    )
+    shadow = _shadow_opportunities(
+        timeline
+    )
 
-    for event in shadow:
-        ts = float(event["ts"])
-        side = str(event["accepted_side"])
+    used_shadow: set[int] = set()
+    paper_comparisons: list[dict[str, Any]] = []
+
+    for entry in paper_entries:
+        territory = _territory_at(
+            timeline,
+            entry.ts,
+        )
+
         candidates = [
-            entry
-            for entry in paper_entries
-            if entry.index not in used_paper
-            and ts - before_seconds
-            <= entry.ts
-            <= ts + after_seconds
+            (index, event)
+            for index, event in enumerate(shadow)
+            if index not in used_shadow
+            and str(event.get("ticker") or "")
+            == entry.ticker
+            and (
+                (event_ts := _epoch(event.get("ts")))
+                is not None
+            )
+            and entry.ts - before_seconds
+            <= event_ts
+            <= entry.ts + after_seconds
         ]
-        same = [
-            entry
-            for entry in candidates
-            if entry.side == side
+
+        same_side = [
+            pair
+            for pair in candidates
+            if str(
+                pair[1].get("accepted_side")
+                or ""
+            ).upper()
+            == entry.side
         ]
-        pool = same if same else candidates
-        chosen = (
+
+        pool = (
+            same_side
+            if same_side
+            else candidates
+        )
+
+        chosen_pair = (
             min(
                 pool,
-                key=lambda entry: abs(
-                    entry.ts - ts
+                key=lambda pair: abs(
+                    float(_epoch(pair[1].get("ts")))
+                    - entry.ts
                 ),
             )
             if pool
             else None
         )
 
-        if chosen is None:
-            classification = "MISSED_SHADOW"
-        elif chosen.side == side:
-            classification = "MATCHED_SAME_SIDE"
-            used_paper.add(chosen.index)
-        else:
-            classification = "OPPOSITE_PAPER_ENTRY"
-            used_paper.add(chosen.index)
+        chosen = None
+        classification = "PAPER_ONLY"
+        delay_seconds = None
+        price_delta = None
 
-        shadow_ask = _number(
-            event.get("observed_ask")
-        )
-        price_delta = (
-            chosen.price - shadow_ask
-            if (
-                chosen is not None
-                and chosen.price is not None
-                and shadow_ask is not None
+        if chosen_pair is not None:
+            shadow_index, chosen = chosen_pair
+            used_shadow.add(shadow_index)
+
+            shadow_side = str(
+                chosen.get("accepted_side")
+                or ""
+            ).upper()
+
+            if shadow_side == entry.side:
+                classification = (
+                    "MATCHED_SAME_SIDE"
+                )
+            else:
+                classification = (
+                    "OPPOSITE_PAPER_ENTRY"
+                )
+
+            chosen_ts = _epoch(
+                chosen.get("ts")
             )
-            else None
-        )
+            if chosen_ts is not None:
+                delay_seconds = (
+                    entry.ts - chosen_ts
+                )
 
-        matches.append(
+            shadow_ask = _number(
+                chosen.get("observed_ask")
+            )
+            if (
+                entry.price is not None
+                and shadow_ask is not None
+            ):
+                price_delta = (
+                    entry.price - shadow_ask
+                )
+
+        paper_comparisons.append(
             {
                 "classification": classification,
-                "shadow": {
-                    "seq": event.get("seq"),
-                    "ts": ts,
-                    "ticker": event.get("ticker"),
-                    "territory": event.get("territory"),
-                    "tool": event.get("tool"),
-                    "action": event.get("action"),
-                    "side": side,
-                    "observed_ask": shadow_ask,
-                    "max_price": _number(
-                        event.get("max_price")
-                    ),
-                    "opportunity_id": (
-                        event.get(
-                            "opportunity_id"
-                        )
-                    ),
-                },
-                "paper": (
-                    chosen.as_dict()
+                "paper": entry.as_dict(),
+                "shadow": (
+                    _shadow_summary(chosen)
                     if chosen is not None
                     else None
                 ),
-                "delay_seconds": (
-                    chosen.ts - ts
-                    if chosen is not None
-                    else None
-                ),
+                "delay_seconds": delay_seconds,
                 "price_delta": price_delta,
-            }
-        )
-
-    paper_only: list[dict[str, Any]] = []
-    for entry in paper_entries:
-        if entry.index in used_paper:
-            continue
-        territory = _territory_at(
-            timeline,
-            entry.ts,
-        )
-        paper_only.append(
-            {
-                **entry.as_dict(),
-                "classification": "PAPER_ONLY",
                 "shadow_territory": (
                     territory.get("territory")
                     if territory
@@ -320,80 +405,112 @@ def compare_shadow_to_paper(
                     if territory
                     else None
                 ),
-                "alignment": _territory_alignment(
-                    territory,
-                    entry.side,
+                "alignment": (
+                    _territory_alignment(
+                        territory,
+                        entry.side,
+                    )
                 ),
             }
         )
 
+    unmatched_shadow = [
+        _shadow_summary(event)
+        for index, event in enumerate(shadow)
+        if index not in used_shadow
+    ]
+
+    same_rows = [
+        row
+        for row in paper_comparisons
+        if row["classification"]
+        == "MATCHED_SAME_SIDE"
+    ]
+    delay_values = [
+        row["delay_seconds"]
+        for row in same_rows
+        if row["delay_seconds"] is not None
+    ]
+    price_deltas = [
+        row["price_delta"]
+        for row in same_rows
+        if row["price_delta"] is not None
+    ]
+
     summary = {
+        "shadow_actionable_events": len(
+            actionable_events
+        ),
         "shadow_actionable": len(shadow),
+        "shadow_unique_opportunities": len(
+            shadow
+        ),
+        "paper_entries": len(
+            paper_entries
+        ),
         "matched_same_side": sum(
             row["classification"]
             == "MATCHED_SAME_SIDE"
-            for row in matches
+            for row in paper_comparisons
         ),
         "opposite_paper_entry": sum(
             row["classification"]
             == "OPPOSITE_PAPER_ENTRY"
-            for row in matches
+            for row in paper_comparisons
         ),
-        "missed_shadow": sum(
+        "paper_only": sum(
             row["classification"]
-            == "MISSED_SHADOW"
-            for row in matches
+            == "PAPER_ONLY"
+            for row in paper_comparisons
         ),
-        "paper_entries": len(paper_entries),
-        "paper_only": len(paper_only),
+        "missed_shadow": len(
+            unmatched_shadow
+        ),
         "paper_only_against_shadow_territory": sum(
-            row["alignment"]
+            row["classification"]
+            == "PAPER_ONLY"
+            and row["alignment"]
             in (
                 "AGAINST_TERRITORY",
                 "AGAINST_RELEASE",
             )
-            for row in paper_only
+            for row in paper_comparisons
+        ),
+        "average_same_side_delay_seconds": (
+            sum(delay_values)
+            / len(delay_values)
+            if delay_values
+            else None
+        ),
+        "average_same_side_price_delta": (
+            sum(price_deltas)
+            / len(price_deltas)
+            if price_deltas
+            else None
         ),
     }
 
-    same_delays = [
-        row["delay_seconds"]
-        for row in matches
-        if (
-            row["classification"]
-            == "MATCHED_SAME_SIDE"
-            and row["delay_seconds"]
-            is not None
-        )
-    ]
-    same_deltas = [
-        row["price_delta"]
-        for row in matches
-        if (
-            row["classification"]
-            == "MATCHED_SAME_SIDE"
-            and row["price_delta"]
-            is not None
-        )
-    ]
-    summary["average_same_side_delay_seconds"] = (
-        sum(same_delays) / len(same_delays)
-        if same_delays
-        else None
-    )
-    summary["average_same_side_price_delta"] = (
-        sum(same_deltas) / len(same_deltas)
-        if same_deltas
-        else None
-    )
-
     return {
         "schema": (
-            "TACHYOS_TOOL_RACK_SHADOW_VS_PAPER_V1"
+            "TACHYOS_TOOL_RACK_SHADOW_VS_PAPER_V2"
         ),
         "summary": summary,
-        "matches": matches,
-        "paper_only": paper_only,
+        "paper_comparisons": paper_comparisons,
+        "matches": [
+            row
+            for row in paper_comparisons
+            if row["classification"]
+            != "PAPER_ONLY"
+        ],
+        "paper_only": [
+            row
+            for row in paper_comparisons
+            if row["classification"]
+            == "PAPER_ONLY"
+        ],
+        "unmatched_shadow_opportunities": (
+            unmatched_shadow
+        ),
     }
 
 
@@ -404,28 +521,65 @@ def markdown_report(
     lines = [
         "# Tool Rack Shadow vs Legacy PAPER",
         "",
-        f"- Shadow actionable intents: **{s['shadow_actionable']}**",
+        (
+            "- Raw actionable event observations: "
+            f"**{s['shadow_actionable_events']}**"
+        ),
+        (
+            "- Unique physical shadow opportunities: "
+            f"**{s['shadow_unique_opportunities']}**"
+        ),
+        f"- PAPER entries: **{s['paper_entries']}**",
         f"- Matched same side: **{s['matched_same_side']}**",
-        f"- Opposite PAPER entry near shadow intent: **{s['opposite_paper_entry']}**",
-        f"- Missed shadow intents: **{s['missed_shadow']}**",
-        f"- PAPER entries with no matched shadow intent: **{s['paper_only']}**",
-        f"- PAPER-only entries against Tool Rack territory/release: **{s['paper_only_against_shadow_territory']}**",
+        (
+            "- PAPER entry opposite nearby Tool Rack opportunity: "
+            f"**{s['opposite_paper_entry']}**"
+        ),
+        f"- PAPER-only entries: **{s['paper_only']}**",
+        (
+            "- Unmatched Tool Rack opportunities: "
+            f"**{s['missed_shadow']}**"
+        ),
+        (
+            "- PAPER-only entries against Tool Rack Rail/release: "
+            f"**{s['paper_only_against_shadow_territory']}**"
+        ),
         "",
     ]
-    if s["average_same_side_delay_seconds"] is not None:
+
+    if (
+        s["average_same_side_delay_seconds"]
+        is not None
+    ):
         lines.append(
-            "- Average same-side PAPER delay: "
-            f"**{s['average_same_side_delay_seconds']:.1f}s**"
+            "- Average PAPER time minus matched "
+            "Tool Rack opportunity time: "
+            f"**{s['average_same_side_delay_seconds']:+.1f}s**"
         )
-    if s["average_same_side_price_delta"] is not None:
+
+    if (
+        s["average_same_side_price_delta"]
+        is not None
+    ):
         lines.append(
-            "- Average actual entry ask minus shadow ask: "
+            "- Average PAPER ask minus matched "
+            "Tool Rack observed ask: "
             f"**{s['average_same_side_price_delta']:+.3f}**"
         )
+
     lines.extend(
         [
             "",
-            "This report is forensic/read-only. It does not authorize or simulate a Tool Rack fill.",
+            (
+                "The comparison uses the full "
+                "tool_rack_events.jsonl journal, matches only "
+                "within the same Kalshi ticker, and counts each "
+                "Tool Rack opportunity ID once."
+            ),
+            (
+                "This report is forensic/read-only. It does not "
+                "authorize or simulate a Tool Rack fill."
+            ),
             "",
         ]
     )
