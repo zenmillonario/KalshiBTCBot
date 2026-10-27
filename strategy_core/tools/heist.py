@@ -188,10 +188,12 @@ class MarketHeistTool(StrategyTool):
             details.get("visit_id")
             or f"{snapshot.now_ts:.3f}"
         )
+        # The consumed identity is the physical edge visit, not the estimated
+        # box bounds. Small boundary re-estimation cannot mint a duplicate
+        # trade at the same visit; center traversal / a genuinely new visit can.
         opportunity_id = (
             f"{self.territory_id}:"
-            f"HEIST:{box_id}:"
-            f"{visit_id}:{side.value}"
+            f"HEIST_VISIT:{visit_id}:{side.value}"
         )
 
         if (
