@@ -12,9 +12,31 @@ from strategy_core.shadow_compare import (
 )
 
 
+def latest_paper_run(root: Path) -> Path:
+    candidates = [
+        path
+        for path in root.glob("PAPER_*")
+        if path.is_dir()
+        and (path / "r20_verified_paper_trade_events.csv").is_file()
+    ]
+    if not candidates:
+        raise FileNotFoundError(
+            f"No PAPER run with canonical trade ledger found under {root}"
+        )
+    return max(
+        candidates,
+        key=lambda path: path.stat().st_mtime,
+    )
+
+
 def main() -> int:
     parser=argparse.ArgumentParser()
-    parser.add_argument("run_dir",type=Path)
+    parser.add_argument("run_dir",type=Path,nargs="?")
+    parser.add_argument(
+        "--runs-root",
+        type=Path,
+        default=Path(r"E:\TachyosR22IndependentPaperExperiments"),
+    )
     parser.add_argument(
         "--shadow-root",
         type=Path,
@@ -24,7 +46,7 @@ def main() -> int:
     parser.add_argument("--after-seconds",type=float,default=90.0)
     args=parser.parse_args()
 
-    run=args.run_dir.resolve()
+    run=(args.run_dir or latest_paper_run(args.runs_root)).resolve()
     shadow=args.shadow_root/run.name
     timeline_path=shadow/"TOOL_RACK_SHADOW_TIMELINE.json"
     ledger_path=run/"r20_verified_paper_trade_events.csv"
