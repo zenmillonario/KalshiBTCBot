@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from strategy_core.detectors.heist_geometry import detect_heist_geometry
+from strategy_core.detectors.mountain_geometry import detect_mountain_geometry
 from strategy_core.router import PhysicalEvidence
 from strategy_core.shadow_frame import ShadowFrame
 from strategy_core.types import MarketSnapshot, Side
@@ -126,9 +128,11 @@ class R22RunShadowSource:
             eps=0.01,
         )
 
-        # Directional residence is measured from recent physical price/EMA
-        # relationships, not from a legacy territory label.
-        recent = rows[-120:]
+        # Directional residence is measured from raw geometry. Rail persistence
+        # deliberately tolerates shallow pullbacks/fakeouts instead of requiring
+        # every callback to remain perfectly aligned.
+        last_ms = _num(last.get("epoch_ms"))
+        recent = rows[-180:]
         residence_votes = 0
         residence_total = 0
         if ema9_side is not None:
@@ -144,9 +148,14 @@ class R22RunShadowSource:
                 elif ema9_side is Side.NO and btc <= e9 <= e30:
                     residence_votes += 1
 
+        residence_fraction = (
+            residence_votes / residence_total
+            if residence_total
+            else 0.0
+        )
         directional_residence = bool(
             residence_total >= 8
-            and residence_votes / residence_total >= 0.62
+            and residence_fraction >= 0.62
         )
 
         aligned_now = bool(
@@ -155,42 +164,58 @@ class R22RunShadowSource:
             and directional_residence
         )
 
-        # Measure how long the current aligned/parallel physical condition has
-        # persisted in the geometry stream. This is descriptive persistence,
-        # not a contract-count permission gate.
-        persistence_start_ms: float | None = None
-        if aligned_now:
-            for row in reversed(rows):
-                s9 = _sign_side(_num(row.get("struct_slope3m")), eps=0.02)
-                s30 = _sign_side(_num(row.get("ema30_slope3m")), eps=0.01)
-                btc = _num(row.get("btc_price"))
-                e9 = _num(row.get("ema9"))
-                e30 = _num(row.get("ema30"))
-                if (
-                    s9 is not ema9_side
-                    or s30 is not ema9_side
-                    or btc is None
-                    or e9 is None
-                    or e30 is None
-                ):
+        rail_persistence_seconds = 0.0
+        rail_alignment_fraction = 0.0
+        rail_residence_fraction = 0.0
+        if aligned_now and last_ms is not None:
+            for window_s in (1800.0, 1500.0, 1200.0, 900.0, 720.0, 600.0):
+                cutoff = last_ms - window_s * 1000.0
+                window_rows = [
+                    row for row in rows
+                    if (_num(row.get("epoch_ms")) or -1.0) >= cutoff
+                ]
+                if len(window_rows) < 8:
+                    continue
+                align = 0
+                reside = 0
+                usable = 0
+                first_window_ms = None
+                for row in window_rows:
+                    ts = _num(row.get("epoch_ms"))
+                    s9 = _sign_side(_num(row.get("struct_slope3m")), eps=0.02)
+                    s30 = _sign_side(_num(row.get("ema30_slope3m")), eps=0.01)
+                    btc = _num(row.get("btc_price"))
+                    e9 = _num(row.get("ema9"))
+                    e30 = _num(row.get("ema30"))
+                    if (
+                        ts is None
+                        or btc is None
+                        or e9 is None
+                        or e30 is None
+                    ):
+                        continue
+                    if first_window_ms is None:
+                        first_window_ms = ts
+                    usable += 1
+                    if s9 is ema9_side and s30 is ema9_side:
+                        align += 1
+                    if (
+                        (ema9_side is Side.YES and btc >= e9 >= e30)
+                        or (ema9_side is Side.NO and btc <= e9 <= e30)
+                    ):
+                        reside += 1
+                if usable < 8 or first_window_ms is None:
+                    continue
+                align_fraction = align / usable
+                reside_fraction = reside / usable
+                span_s = max(0.0, (last_ms - first_window_ms) / 1000.0)
+                if align_fraction >= 0.70 and reside_fraction >= 0.60:
+                    rail_persistence_seconds = span_s
+                    rail_alignment_fraction = align_fraction
+                    rail_residence_fraction = reside_fraction
                     break
-                resident = (
-                    (ema9_side is Side.YES and btc >= e9 >= e30)
-                    or (ema9_side is Side.NO and btc <= e9 <= e30)
-                )
-                if not resident:
-                    break
-                persistence_start_ms = _num(row.get("epoch_ms"))
 
-        last_ms = _num(last.get("epoch_ms"))
-        persistence_seconds = (
-            max(0.0, (last_ms - persistence_start_ms) / 1000.0)
-            if (
-                last_ms is not None
-                and persistence_start_ms is not None
-            )
-            else 0.0
-        )
+        persistence_seconds = rail_persistence_seconds
 
         arcs = self._unique_arcs(rows)
         alternating = bool(
@@ -210,27 +235,54 @@ class R22RunShadowSource:
             )
         )
 
-        rolling_repetitions = 0
-        if ema9_side is not None:
-            target = "UP" if ema9_side is Side.YES else "DOWN"
-            rolling_repetitions = sum(
-                1 for _, direction in arcs[-4:]
-                if direction == target
-            )
+        # Raw tool-specific physical detectors. Their outputs describe geometry
+        # only; they do not read legacy R22 strategy routes or permissions.
+        mountain = detect_mountain_geometry(rows)
+        heist = detect_heist_geometry(rows)
+
+        rail_established = bool(
+            aligned_now
+            and persistence_seconds >= 900.0
+        )
+
+        # A true established Rail owns before a sideways-box interpretation.
+        # A qualified Heist owns before Alternating Mountain. Unresolved
+        # compression may only suppress UNKNOWN/generic rolling terrain, never
+        # a clean already-qualified Mountain.
+        qualified_heist = bool(
+            heist.qualified_box
+            and not rail_established
+        )
+        qualified_mountain = bool(
+            mountain.qualified_alternating_mountain
+            and not rail_established
+            and not qualified_heist
+        )
+        unresolved_compression = bool(
+            heist.compression_unresolved
+            and not rail_established
+            and not qualified_heist
+            and not qualified_mountain
+        )
 
         physical = PhysicalEvidence(
             ema9_direction=ema9_side,
             ema30_direction=ema30_side,
             ema_pair_parallel=aligned_now,
             directional_residence=directional_residence,
-            rolling_mountain_repetitions=rolling_repetitions,
+            # Live raw Rail qualification currently uses tolerant 1–2 contract
+            # persistence; repeated rolling-Mountain graduation remains a core
+            # capability but is not fabricated from alternating arc counts.
+            rolling_mountain_repetitions=0,
             contracts_persistent=persistence_seconds / 900.0,
-            alternating_mountain=alternating and not aligned_now,
-            rolling_mountain=rolling,
-            # Heist and Release remain unqualified here until their clean
-            # physical sidecar detectors are wired. No legacy labels used.
-            qualified_heist=False,
-            compression_unresolved=False,
+            alternating_mountain=qualified_mountain,
+            rolling_mountain=(
+                rolling
+                and not qualified_mountain
+                and not qualified_heist
+            ),
+            qualified_heist=qualified_heist,
+            compression_unresolved=unresolved_compression,
         )
 
         snapshot = MarketSnapshot(
@@ -251,7 +303,17 @@ class R22RunShadowSource:
                 "source": "R22_RUN_FILES_READ_ONLY",
                 "geometry_last_epoch_ms": last_ms,
                 "persistence_seconds": persistence_seconds,
+                "rail_alignment_fraction": rail_alignment_fraction,
+                "rail_residence_fraction": rail_residence_fraction,
                 "recent_arcs": arcs,
+                "mountain": mountain.tool_metadata(),
+                "heist": heist.tool_metadata(),
+                "territory_detector_summary": {
+                    "rail_established": rail_established,
+                    "qualified_heist": qualified_heist,
+                    "qualified_mountain": qualified_mountain,
+                    "compression_unresolved": unresolved_compression,
+                },
                 "legacy_strategy_routes_used": False,
             },
         )
