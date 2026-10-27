@@ -72,6 +72,52 @@ class HeistControllerTests(unittest.TestCase):
             Side.YES,
         )
 
+    def test_raw_mountain_flicker_cannot_steal_live_heist(self):
+        rack = ToolRackController()
+        first = rack.observe(
+            PhysicalEvidence(
+                qualified_heist=True,
+                ema9_direction=None,
+            ),
+            self.snap(
+                heist={
+                    "qualified_box": True,
+                    "at_lower_edge": False,
+                    "at_upper_edge": False,
+                    "box_id": "B1",
+                    "visit_id": None,
+                },
+            ),
+        )
+        flicker = rack.observe(
+            PhysicalEvidence(
+                alternating_mountain=True,
+                ema9_direction=Side.NO,
+            ),
+            self.snap(
+                ts=1010,
+                heist={
+                    "qualified_box": False,
+                    "at_lower_edge": False,
+                    "at_upper_edge": False,
+                    "box_id": "B1",
+                    "visit_id": None,
+                },
+            ),
+        )
+        self.assertEqual(
+            flicker.owned_territory,
+            Territory.MARKET_HEIST,
+        )
+        self.assertEqual(
+            flicker.territory_id,
+            first.territory_id,
+        )
+        self.assertEqual(
+            flicker.ownership_reason,
+            "HEIST_OWNER_PERSISTS_UNTIL_RELEASE_TRANSFER",
+        )
+
     def test_heist_release_relay_then_next_beat_down_rail(self):
         rack = ToolRackController()
         commander = OneCommander()
