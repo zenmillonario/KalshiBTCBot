@@ -14,9 +14,10 @@ class LaneResolution:
 class LaneResolver:
     """Deterministic lane arbitration before OneCommander.
 
-    This is not a vote. A confirmed HANDOFF relay has explicit priority over
-    stale MAIN/TACTICAL entry intents from the outgoing territory. Otherwise
-    the primary tool continues normally.
+    This is not a vote. Once ReleaseWatcher physically confirms handoff, the
+    outgoing primary tool loses entry authority immediately—even when the
+    release entry itself must WAIT on value. Before confirmation, primary
+    territory behavior continues normally.
     """
 
     def resolve(
@@ -24,6 +25,7 @@ class LaneResolver:
         *,
         primary: tuple[ToolIntent, ...],
         overlays: tuple[ToolIntent, ...],
+        handoff_confirmed: bool = False,
     ) -> LaneResolution:
         handoffs = tuple(
             intent
@@ -34,10 +36,33 @@ class LaneResolver:
             )
         )
 
+        if handoff_confirmed:
+            if len(handoffs) == 1:
+                return LaneResolution(
+                    handoffs,
+                    "CONFIRMED_HANDOFF_SUPPRESSES_OUTGOING_TERRITORY_INTENTS",
+                )
+            if len(handoffs) > 1:
+                return LaneResolution(
+                    handoffs,
+                    "MULTIPLE_HANDOFF_INTENTS_REQUIRE_COMMANDER_CONFLICT_WAIT",
+                )
+            if overlays:
+                # Physical handoff is confirmed but the release tool may be
+                # waiting on price/depth. The old territory still may not act.
+                return LaneResolution(
+                    overlays,
+                    "CONFIRMED_HANDOFF_VALUE_WAIT_SUPPRESSES_OLD_TERRITORY",
+                )
+            return LaneResolution(
+                (),
+                "CONFIRMED_HANDOFF_NO_RELEASE_INTENT",
+            )
+
         if len(handoffs) == 1:
             return LaneResolution(
                 handoffs,
-                "CONFIRMED_HANDOFF_SUPPRESSES_OUTGOING_TERRITORY_INTENTS",
+                "HANDOFF_INTENT_PRIORITY",
             )
 
         if len(handoffs) > 1:
