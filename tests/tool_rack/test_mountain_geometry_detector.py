@@ -91,6 +91,16 @@ def alternating_history(current_rows):
 
 
 class MountainGeometryDetectorTests(unittest.TestCase):
+    def test_empty_geometry_returns_safe_unqualified_detection(self):
+        out = detect_mountain_geometry([])
+        self.assertFalse(out.qualified_alternating_mountain)
+        self.assertIsNone(out.owner_side)
+        self.assertFalse(out.mature_edge)
+        self.assertEqual(
+            out.diagnostics.get("reason"),
+            "NO_ARC_EPISODES",
+        )
+
     def test_mature_up_crest_stall_qualifies_alternating_edge(self):
         current = [
             row(arc_id="A7", direction="UP", epoch_ms=0, age=0, btc=1015, phase="BUILDING"),
