@@ -2,17 +2,24 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from strategy_core.lane_resolver import LaneResolver
 from strategy_core.router import (
     PhysicalEvidence,
     TerritoryDecision,
     TerritoryRouter,
 )
 from strategy_core.tools.base import StrategyTool
+from strategy_core.tools.heist import MarketHeistTool
 from strategy_core.tools.mountain import (
     AlternatingMountainTool,
 )
 from strategy_core.tools.rail import RailTool
+from strategy_core.tools.release import (
+    ReleaseEvidence,
+    ReleaseWatcher,
+)
 from strategy_core.types import (
+    Action,
     MarketSnapshot,
     Side,
     Territory,
@@ -27,15 +34,20 @@ class ToolRackShadowResult:
     owned_side: Side | None
     territory_id: str | None
     active_tool: str | None
+    active_overlays: tuple[str, ...]
+    primary_intents: tuple[ToolIntent, ...]
+    overlay_intents: tuple[ToolIntent, ...]
     intents: tuple[ToolIntent, ...]
     ownership_reason: str
+    lane_resolution_reason: str
 
 
 class ToolRackController:
-    """Stateful territory ownership + tool activation in SHADOW mode.
+    """Stateful territory ownership + compatible tool overlays.
 
-    This object produces intents only. It has no execution, account, or order
-    authority. Rail ownership is latched until an affirmative handoff.
+    This object produces intents only. It has no execution, account, or venue
+    order authority. ReleaseWatcher runs beside the primary tool and a
+    deterministic LaneResolver handles handoff priority before OneCommander.
     """
 
     def __init__(
@@ -43,22 +55,20 @@ class ToolRackController:
         router: TerritoryRouter | None = None,
     ) -> None:
         self.router = router or TerritoryRouter()
-        self._owned_territory = (
-            Territory.UNKNOWN
-        )
+        self.lane_resolver = LaneResolver()
+        self._owned_territory = Territory.UNKNOWN
         self._owned_side: Side | None = None
         self._territory_id: str | None = None
         self._serial = 0
         self._active_tool: StrategyTool | None = None
+        self._release_watcher: ReleaseWatcher | None = None
 
     def _new_territory_id(
         self,
         territory: Territory,
     ) -> str:
         self._serial += 1
-        return (
-            f"{territory.value}_{self._serial:04d}"
-        )
+        return f"{territory.value}_{self._serial:04d}"
 
     def _is_rail(
         self,
@@ -69,26 +79,32 @@ class ToolRackController:
             Territory.DOWN_RAIL,
         )
 
+    def _supports_release_overlay(
+        self,
+        territory: Territory,
+    ) -> bool:
+        return territory in (
+            Territory.UP_RAIL,
+            Territory.DOWN_RAIL,
+            Territory.ALTERNATING_MOUNTAIN,
+            Territory.MARKET_HEIST,
+        )
+
     def _activate(
         self,
         decision: TerritoryDecision,
         snapshot: MarketSnapshot,
     ) -> None:
-        self._owned_territory = (
+        self._owned_territory = decision.territory
+        self._owned_side = decision.side
+        self._territory_id = self._new_territory_id(
             decision.territory
         )
-        self._owned_side = decision.side
-        self._territory_id = (
-            self._new_territory_id(
-                decision.territory
-            )
-        )
         self._active_tool = None
+        self._release_watcher = None
 
         if (
-            self._is_rail(
-                decision.territory
-            )
+            self._is_rail(decision.territory)
             and decision.side is not None
         ):
             self._active_tool = RailTool(
@@ -100,11 +116,9 @@ class ToolRackController:
             decision.territory
             is Territory.ALTERNATING_MOUNTAIN
         ):
-            self._active_tool = (
-                AlternatingMountainTool(
-                    territory_id=self._territory_id,
-                    owner_side=decision.side,
-                )
+            self._active_tool = AlternatingMountainTool(
+                territory_id=self._territory_id,
+                owner_side=decision.side,
             )
         elif (
             decision.territory
@@ -112,6 +126,17 @@ class ToolRackController:
         ):
             self._active_tool = MarketHeistTool(
                 territory_id=self._territory_id,
+            )
+
+        if (
+            self._active_tool is not None
+            and self._supports_release_overlay(
+                decision.territory
+            )
+        ):
+            self._release_watcher = ReleaseWatcher(
+                territory_id=self._territory_id,
+                owner_side=self._owned_side,
             )
 
     def _deactivate_current(
@@ -126,93 +151,97 @@ class ToolRackController:
                     reason,
                 )
             )
-        self._owned_territory = (
-            Territory.UNKNOWN
-        )
+        if self._release_watcher is not None:
+            list(
+                self._release_watcher.on_deactivate(
+                    snapshot,
+                    reason,
+                )
+            )
+        self._owned_territory = Territory.UNKNOWN
         self._owned_side = None
         self._territory_id = None
         self._active_tool = None
+        self._release_watcher = None
+
+    def _release_in_progress(
+        self,
+        evidence: PhysicalEvidence,
+    ) -> bool:
+        return bool(
+            evidence.release_candidate_side is not None
+            or evidence.release_boundary_break
+            or evidence.release_directional_expansion
+            or evidence.release_old_owner_failed_reextension
+            or evidence.release_new_side_residence
+            or evidence.release_first_slowdown_only
+        )
+
+    def _update_release_watcher(
+        self,
+        evidence: PhysicalEvidence,
+    ) -> None:
+        if self._release_watcher is None:
+            return
+        self._release_watcher.update_owner_side(
+            self._owned_side
+        )
+        self._release_watcher.update_evidence(
+            ReleaseEvidence(
+                candidate_side=evidence.release_candidate_side,
+                boundary_break=evidence.release_boundary_break,
+                directional_expansion=(
+                    evidence.release_directional_expansion
+                ),
+                old_owner_failed_reextension=(
+                    evidence.release_old_owner_failed_reextension
+                ),
+                new_side_residence=(
+                    evidence.release_new_side_residence
+                ),
+                first_slowdown_only=(
+                    evidence.release_first_slowdown_only
+                ),
+            )
+        )
 
     def observe(
         self,
         evidence: PhysicalEvidence,
         snapshot: MarketSnapshot,
     ) -> ToolRackShadowResult:
-        raw = self.router.classify(
+        raw = self.router.classify(evidence)
+        ownership_reason = raw.reason
+        release_in_progress = self._release_in_progress(
             evidence
         )
-        ownership_reason = raw.reason
 
-        if self._is_rail(
-            self._owned_territory
-        ):
+        if self._is_rail(self._owned_territory):
             if (
-                evidence.release_handoff_confirmed
-            ):
-                self._deactivate_current(
-                    snapshot,
-                    "AFFIRMATIVE_RELEASE_HANDOFF",
-                )
-                if (
-                    raw.territory
-                    is not Territory.UNKNOWN
-                ):
-                    self._activate(
-                        raw,
-                        snapshot,
-                    )
-                    ownership_reason = (
-                        "RELEASE_HANDOFF_TO_NEW_TERRITORY"
-                    )
-                else:
-                    ownership_reason = (
-                        "RELEASE_HANDOFF_AWAITING_NEXT_TERRITORY"
-                    )
-            elif (
                 evidence.heist_takeover_confirmed
                 and raw.territory
                 is Territory.MARKET_HEIST
+                and not release_in_progress
             ):
                 self._deactivate_current(
                     snapshot,
                     "QUALIFIED_HEIST_TAKEOVER",
                 )
-                self._activate(
-                    raw,
-                    snapshot,
-                )
-                ownership_reason = (
-                    "QUALIFIED_HEIST_TAKEOVER"
-                )
+                self._activate(raw, snapshot)
+                ownership_reason = "QUALIFIED_HEIST_TAKEOVER"
             else:
                 ownership_reason = (
-                    "LATCHED_RAIL_OWNER_UNTIL_AFFIRMATIVE_HANDOFF"
+                    "LATCHED_RAIL_OWNER_UNTIL_RELEASE_OR_CONFIRMED_TERRITORY_TRANSFER"
                 )
 
         elif (
             self._owned_territory
             is Territory.MARKET_HEIST
         ):
-            if evidence.release_handoff_confirmed:
-                self._deactivate_current(
-                    snapshot,
-                    "HEIST_RELEASE_HANDOFF",
+            if release_in_progress:
+                ownership_reason = (
+                    "HEIST_BOX_RETAINS_OWNER_DURING_RELEASE_WATCH"
                 )
-                if raw.territory not in (
-                    Territory.UNKNOWN,
-                    Territory.MARKET_HEIST,
-                ):
-                    self._activate(
-                        raw,
-                        snapshot,
-                    )
-                    ownership_reason = (
-                        "HEIST_RELEASE_HANDOFF_TO_NEW_TERRITORY"
-                    )
-                else:
-                    ownership_reason = (
-                        "HEIST_RELEASE_HANDOFF_AWAITING_NEXT_TERRITORY"
-                    )
             elif (
                 raw.territory
                 is Territory.MARKET_HEIST
@@ -230,10 +259,7 @@ class ToolRackController:
                     raw.territory
                     is not Territory.UNKNOWN
                 ):
-                    self._activate(
-                        raw,
-                        snapshot,
-                    )
+                    self._activate(raw, snapshot)
 
         elif (
             self._owned_territory
@@ -241,8 +267,6 @@ class ToolRackController:
             and raw.territory
             is Territory.ALTERNATING_MOUNTAIN
         ):
-            # Alternating Mountain is one territory across successive EMA9
-            # legs. Update the living owner instead of minting a new territory.
             self._owned_side = raw.side
             if isinstance(
                 self._active_tool,
@@ -253,6 +277,15 @@ class ToolRackController:
                 )
             ownership_reason = (
                 "MOUNTAIN_TERRITORY_PERSISTS_ACROSS_EDGE_RELAYS"
+            )
+
+        elif (
+            self._owned_territory
+            is Territory.ALTERNATING_MOUNTAIN
+            and release_in_progress
+        ):
+            ownership_reason = (
+                "MOUNTAIN_RETAINS_OWNER_DURING_RELEASE_WATCH"
             )
 
         elif (
@@ -267,10 +300,7 @@ class ToolRackController:
                 raw.territory
                 is not Territory.UNKNOWN
             ):
-                self._activate(
-                    raw,
-                    snapshot,
-                )
+                self._activate(raw, snapshot)
 
         elif (
             raw.side
@@ -278,19 +308,32 @@ class ToolRackController:
         ):
             self._owned_side = raw.side
 
-        intents: tuple[ToolIntent, ...] = ()
+        self._update_release_watcher(evidence)
+
+        primary_intents: tuple[ToolIntent, ...] = ()
         if self._active_tool is not None:
-            intents = tuple(
+            primary_intents = tuple(
                 self._active_tool.on_market_event(
                     snapshot
                 )
             )
 
+        overlay_intents: tuple[ToolIntent, ...] = ()
+        if self._release_watcher is not None:
+            overlay_intents = tuple(
+                self._release_watcher.on_market_event(
+                    snapshot
+                )
+            )
+
+        resolution = self.lane_resolver.resolve(
+            primary=primary_intents,
+            overlays=overlay_intents,
+        )
+
         return ToolRackShadowResult(
             raw_decision=raw,
-            owned_territory=(
-                self._owned_territory
-            ),
+            owned_territory=self._owned_territory,
             owned_side=self._owned_side,
             territory_id=self._territory_id,
             active_tool=(
@@ -298,9 +341,39 @@ class ToolRackController:
                 if self._active_tool
                 else None
             ),
-            intents=intents,
+            active_overlays=(
+                (self._release_watcher.name,)
+                if self._release_watcher
+                else ()
+            ),
+            primary_intents=primary_intents,
+            overlay_intents=overlay_intents,
+            intents=resolution.intents,
             ownership_reason=ownership_reason,
+            lane_resolution_reason=resolution.reason,
         )
+
+    def commit_accepted_intent(
+        self,
+        intent: ToolIntent,
+        snapshot: MarketSnapshot,
+    ) -> None:
+        """Advance territory state after an actually accepted/committed intent.
+
+        Production integration must call this only after the corresponding
+        guarded PAPER transaction commits. Shadow/replay may call it to model
+        the same lifecycle.
+        """
+
+        if (
+            intent.tool == "RELEASE_WATCHER"
+            and intent.action is Action.RELAY
+            and intent.lane.value == "HANDOFF"
+        ):
+            self._deactivate_current(
+                snapshot,
+                "COMMITTED_RELEASE_HANDOFF",
+            )
 
     @property
     def active_rail_tool(
