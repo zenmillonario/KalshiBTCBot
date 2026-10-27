@@ -391,7 +391,6 @@ class ToolRackController:
         # rewrite the old owner mid-beat.
         if (
             self._release_watcher is not None
-            and snapshot.metadata.get("release_probe") is not None
             and self._owned_territory is not Territory.RELEASE_TRANSITION
             and self._territory_id != territory_id_before
         ):
