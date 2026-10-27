@@ -15,6 +15,7 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
         side="NO",
         release=False,
         release_side=None,
+        legacy_heist=False,
     ):
         sg = -1 if side == "NO" else 1
         af = {
@@ -24,7 +25,7 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
                     "side": side,
                     "kind": "CONTINUATION",
                 },
-                "heist_owns_territory": False,
+                "heist_owns_territory": legacy_heist,
             }
         }
         facts = {
@@ -43,8 +44,10 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
                     "terrain_release_catcher_ready": release,
                     "territory_handoff_side": release_side,
                     "terrain_release_catcher_side": release_side,
-                    "qualified_heist_handoff_from_rail": False,
-                    "terrain_tool": "RAIL",
+                    "qualified_heist_handoff_from_rail": legacy_heist,
+                    "terrain_tool": (
+                        "HEIST" if legacy_heist else "RAIL"
+                    ),
                 }
             },
             "routes": {
@@ -56,21 +59,23 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
         }
         return af, facts
 
-    def test_legacy_route_false_cannot_starve_tool_rack_rail(self):
-        af, facts = self.packet(side="NO")
-        frame = frame_from_r22_physical_packet(
+    def frame(self, af, facts, *, yes=0.70, no=0.30):
+        return frame_from_r22_physical_packet(
             af=af,
             facts=facts,
             now_ts=1000,
             ticker="KX1",
             contract_age_s=20,
-            yes_ask=0.70,
-            no_ask=0.30,
+            yes_ask=yes,
+            no_ask=no,
             quote_current=True,
             depth_available=True,
         )
+
+    def test_legacy_route_false_cannot_starve_tool_rack_rail(self):
+        af, facts = self.packet(side="NO")
         out = ToolRackShadowEngine().evaluate(
-            frame
+            self.frame(af, facts)
         )
         self.assertEqual(
             out["owned_territory"],
@@ -87,19 +92,13 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
 
     def test_adapter_derives_up_rail_from_physical_slopes(self):
         af, facts = self.packet(side="YES")
-        frame = frame_from_r22_physical_packet(
-            af=af,
-            facts=facts,
-            now_ts=1000,
-            ticker="KX1",
-            contract_age_s=20,
-            yes_ask=0.30,
-            no_ask=0.70,
-            quote_current=True,
-            depth_available=True,
-        )
         out = ToolRackShadowEngine().evaluate(
-            frame
+            self.frame(
+                af,
+                facts,
+                yes=0.30,
+                no=0.70,
+            )
         )
         self.assertEqual(
             out["owned_territory"],
@@ -112,6 +111,45 @@ class R22PhysicalPacketAdapterTests(unittest.TestCase):
         self.assertEqual(
             out["accepted_side"],
             "YES",
+        )
+
+    def test_legacy_release_label_alone_cannot_trigger_release_watcher(self):
+        af, facts = self.packet(
+            side="NO",
+            release=True,
+            release_side="YES",
+        )
+        out = ToolRackShadowEngine().evaluate(
+            self.frame(af, facts)
+        )
+        self.assertEqual(
+            out["owned_territory"],
+            "DOWN_RAIL",
+        )
+        self.assertEqual(
+            out["commander_action"],
+            "ENTER",
+        )
+        self.assertEqual(
+            out["accepted_tool"],
+            "RAIL",
+        )
+
+    def test_legacy_heist_label_alone_cannot_take_tool_rack_authority(self):
+        af, facts = self.packet(
+            side="NO",
+            legacy_heist=True,
+        )
+        out = ToolRackShadowEngine().evaluate(
+            self.frame(af, facts)
+        )
+        self.assertEqual(
+            out["owned_territory"],
+            "DOWN_RAIL",
+        )
+        self.assertEqual(
+            out["active_tool"],
+            "RAIL",
         )
 
 
