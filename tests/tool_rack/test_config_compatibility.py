@@ -29,6 +29,18 @@ class ConfigAndCompatibilityTests(unittest.TestCase):
         self.assertEqual(cfg.heist.regular_size, 10.0)
         self.assertEqual(cfg.heist.lean_favored_size, 15.0)
         self.assertEqual(cfg.release.structural_size, 25.0)
+        self.assertEqual(
+            cfg.mountain_detector.protected_middle_fraction,
+            0.60,
+        )
+        self.assertEqual(
+            cfg.heist_detector.candidate_windows_s,
+            (180.0, 360.0, 540.0, 720.0),
+        )
+        self.assertEqual(
+            cfg.release_detector.new_side_residence_fraction,
+            0.65,
+        )
 
     def test_rail_release_watcher_allowed(self):
         rule = compatibility(
