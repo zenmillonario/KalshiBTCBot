@@ -43,6 +43,44 @@ class ShadowEventTimelineTests(unittest.TestCase):
         self.assertEqual(second, ())
         self.assertEqual(len(timeline.events), 2)
 
+    def test_same_actionable_opportunity_is_not_re_emitted_after_wait_toggle(self):
+        timeline = ShadowEventTimeline()
+        timeline.observe(
+            ts=1000,
+            ticker="KX1",
+            result=result(),
+        )
+        timeline.observe(
+            ts=1001,
+            ticker="KX1",
+            result=result(
+                commander_action="WAIT",
+                commander_reason="OBJECTIVE_QUOTE_STALE",
+                accepted_tool=None,
+                accepted_side=None,
+                accepted_opportunity_id=None,
+                accepted_observed_ask=None,
+                accepted_max_price=None,
+            ),
+        )
+        repeat = timeline.observe(
+            ts=1002,
+            ticker="KX1",
+            result=result(
+                accepted_observed_ask=0.28,
+            ),
+        )
+        self.assertEqual(repeat, ())
+        actionable = [
+            event
+            for event in timeline.events
+            if (
+                event.event_type == "INTENT"
+                and event.action in ("ENTER", "RELAY")
+            )
+        ]
+        self.assertEqual(len(actionable), 1)
+
     def test_new_rail_slice_opportunity_records_new_intent_not_new_territory(self):
         timeline = ShadowEventTimeline()
         timeline.observe(ts=1000, ticker="KX1", result=result())
