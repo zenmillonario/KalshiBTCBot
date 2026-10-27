@@ -9,7 +9,7 @@ on:
 jobs:
   tool-rack:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,3 +21,14 @@ jobs:
 
       - name: Run isolated Tool Rack acceptance suite
         run: python CHECK_TOOL_RACK_V1.py
+
+      - name: Build whitelisted read-only shadow bundle
+        run: python BUILD_TOOL_RACK_SHADOW_BUNDLE.py --output TACHYOS_TOOL_RACK_V1_SHADOW_VALIDATION.zip
+
+      - name: Upload shadow-validation bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: tachyos-tool-rack-shadow-validation
+          path: TACHYOS_TOOL_RACK_V1_SHADOW_VALIDATION.zip
+          if-no-files-found: error
+          retention-days: 14
