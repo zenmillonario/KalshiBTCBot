@@ -30,6 +30,8 @@ def build(root: Path, output: Path) -> dict:
         "mode": "PAPER",
         "strategy_authority": "TOOL_RACK_ONE_COMMANDER",
         "execution_authority": "PASSIVE_PAPER_LEDGER",
+        "dashboard": "THE_NAUTILUS_TOOL_RACK",
+        "dashboard_revision": "TOOL_RACK_NAUTILUS_V1",
         "venue_order_authority": "NONE",
         "simulated_fills_are_venue_fills": False,
         "contains_legacy_r22_engine": False,

@@ -36,7 +36,9 @@
       "vendored": "btc_transport.py",
       "changes": [
         "local parser/time helper imports only",
-        "worker/user agent labels"
+        "worker/user agent labels",
+        "publish validated real historical OHLC separately for Nautilus chart display; trading seed and forward geometry unchanged",
+        "optional chart projection exceptions are isolated from validated seed and transport startup"
       ],
       "authority": "MARKET_DATA_ONLY"
     }

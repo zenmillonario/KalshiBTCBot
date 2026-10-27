@@ -9,7 +9,7 @@ This package is the standalone successor to the shadow attachment. R22/PID12156 
 1. Extract the **whole ZIP** to a writable folder. Keep its files together.
 2. Open `02_CHECK_TOOL_RACK_PAPER.cmd`. It checks the package, dependency APIs, tools, and real PAPER execution/journal tests without starting a live market session.
 3. If dependencies are missing or incompatible, explicitly run `03_INSTALL_TOOL_RACK_DEPENDENCIES.cmd`, then repeat the check. The installer creates this extracted folder's `.venv`; it does not modify `C:\KalshiBTCBot\.venv`.
-4. Keep the existing market-data credential settings in `C:\KalshiBTCBot`. Start `01_START_TOOL_RACK_PAPER_90M.cmd` when ready. One process receives the feeds, runs the Tool Rack, writes the PAPER ledger, and opens its read-only local dashboard.
+4. Keep the existing market-data credential settings in `C:\KalshiBTCBot`. Start `01_START_TOOL_RACK_PAPER_90M.cmd` when ready. One process receives the feeds, runs the Tool Rack, writes the PAPER ledger, and opens **The Nautilus** with its live engine feed.
 5. Press **Ctrl+C once** for an orderly PAPER stop. The 90-minute deadline uses the same stop path: entries cease and Commander requests exits using current held-side depth. The default exit grace is up to 120 seconds. A second Ctrl+C stops immediately and preserves any unresolved PAPER inventory.
 6. After the process stops, use `04_EXPORT_LAST_TOOL_RACK_RUN.cmd` to create a diagnostic ZIP. The exporter verifies the durable economic journal before archiving it.
 
@@ -29,7 +29,22 @@ python TOOL_RACK_PAPER.py --minutes 90 --output-root "D:\TachyosToolRackPaper" -
 python TOOL_RACK_EXPORT.py --run "D:\TachyosToolRackPaper\TOOL_RACK_PAPER_..."
 ```
 
-Use the selected environment's Python executable when it is not on `PATH`. Port `0` chooses an available loopback port. Closing the browser does not stop the PAPER engine; use its console. The dashboard has no trading controls and loads no third-party browser resources. Sources: [launcher](TOOL_RACK_PAPER.py), [dashboard](strategy_core/paper_dashboard.py).
+Use the selected environment's Python executable when it is not on `PATH`. Nautilus defaults to its familiar loopback port `8580`, trying `8581` through `8589` when occupied; using the same origin preserves saved display preferences across sessions. An explicit port `0` chooses an ephemeral loopback port. Closing the browser does not stop the PAPER engine; use its console. The dashboard has no trading controls and loads no third-party browser resources. Sources: [launcher](TOOL_RACK_PAPER.py), [dashboard](strategy_core/paper_dashboard.py).
+
+## The Nautilus and its feeds
+
+The default dashboard is the familiar **Nautilus Bridge**, adapted to standalone Tool Rack telemetry. Start it using the launcher in this package; the earlier R22 Nautilus launcher is not needed. Its retained features include the wider left-hand Engine feed, a persistent 45-minute chart with zoom/pan and EMA9/EMA30, native YES/NO quote history, compact positions with MAX @ $1 potential, protection, trades, and individual trade review. Net P&L, gross P&L, and modeled fees are labelled separately.
+
+| Feed | Source and meaning |
+| --- | --- |
+| BTC / candles / EMAs | Coinbase public trades and validated historical minute candles. Seed candles are chart history; they do not create forward strategy evidence. Gaps and sampled candles remain explicit. |
+| Contract quotes | Current sequence-checked native Kalshi depth for the exact ticker; stale quotes and marks are identified. |
+| Engine feed | Recorded Tool Rack ownership, Commander decisions, WAIT/rejection reasons, committed PAPER trades, protection and source transitions. Unchanged polling does not generate new trade or decision events. |
+| AI / Navigator commentary | Not running in this standalone package. The Sources panel states this explicitly. Tool Rack decisions and engine activity do not depend on an AI response. |
+
+The Engine feed is held by the local session, so refreshing the browser preserves its bounded recent history. Every engine beat is observed before the slower browser publication; a page refresh is not an event reset. A separate 30-second heartbeat reports the current tool, WAIT reason and original source ages while the engine continues to run. Frozen engine time cannot produce a fresh heartbeat. The full durable evidence remains in `decisions.jsonl`, `paper_journal/`, and the diagnostic export. The Nautilus HTTP thread receives detached display bytes, has no engine objects or command endpoints, and cannot delay the runtime waiting for an AI or browser response. [Native projection](strategy_core/nautilus_projection.py), [frontend](strategy_core/nautilus/), [source provenance](strategy_core/nautilus/PROVENANCE.json).
+
+The displayed target comes only from an available positive, supported exact-market venue strike. An absent target is shown as unavailable; current Coinbase BTC or a title is never substituted. Target distance is a display comparison, not the venue settlement index or a settlement decision.
 
 ## Four tools, one authority boundary
 

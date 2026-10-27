@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Nautilus · Tool Rack PAPER</title>
+<link rel="stylesheet" href="/nautilus/style.css"><link rel="stylesheet" href="/nautilus/bridge.css">
+<script src="/nautilus/chart.js" defer></script><script src="/nautilus/reliability-ui.js" defer></script><script src="/nautilus/app.js" defer></script><script src="/nautilus/bridge.js" defer></script>
+</head>
+<body data-layout="bridge" data-deck="chart" data-right="positions">
+<header class="masthead">
+ <div class="brand"><span class="shell" aria-hidden="true">◎</span><div><h1>The Nautilus</h1><small>TOOL RACK · DISCIPLINE DIVES DEEPER</small></div></div>
+ <nav class="mode-nav" aria-label="Workspace"><button id="liveMode" class="active">◉ MONITOR</button><button id="reviewMode">⌕ REVIEW</button></nav>
+ <div class="display-tools"><button id="displaySettings" aria-haspopup="dialog" title="Display mode and text size">Display: Auto</button><button id="bridgeFullscreen" aria-pressed="false" title="Fullscreen the whole Nautilus dashboard">⛶ Fullscreen</button></div>
+ <div class="mast-status"><span class="badge paper">PAPER</span><span class="badge">READ ONLY</span><span id="connection" class="badge muted">CONNECTING</span><button id="healthButton" title="Run identity and diagnostics">ⓘ</button></div>
+</header>
+<div id="errorBanner" class="error-banner hidden" role="alert"></div>
+<section class="instruments" aria-label="Contract instruments">
+ <article class="instrument target"><div class="eyebrow">BTC · TO BEAT</div><div class="hero" id="targetValue">—</div><div class="submetric" id="contractLabel">Waiting for exact run identity</div></article>
+ <article class="instrument now"><div class="eyebrow">BTC · NOW <span id="priceAge" class="mini"></span></div><div class="hero" id="btcValue">—</div><div class="submetric">Physical price · market observations, not execution prices</div></article>
+ <article class="instrument clock"><div class="eyebrow">TIME REMAINING · TARGET DISTANCE</div><div class="clock-hero-row"><div class="clock-metric timer-metric"><div class="metric-label">TIME REMAINING</div><div class="hero" id="timerValue">—:—</div></div><div class="clock-metric distance-metric"><div class="metric-label">ABOVE / BELOW TARGET</div><div class="hero target-distance" id="distanceValue">—</div></div></div><div class="timer-track"><span id="timerProgress"></span></div><div class="submetric"><span id="distanceLabel">Target distance unavailable</span> · <span id="closeLabel">Contract close · Eastern time</span></div></article>
+ <article class="instrument quotes quote-card yes-card"><div class="eyebrow yes">YES · BID / ASK</div><strong class="quote-pair" id="yesQuote">— / —</strong><div class="submetric quote-status" id="quoteSource">Native book · asks from opposite-side bid</div></article>
+ <article class="instrument quotes quote-card no-card"><div class="eyebrow no">NO · BID / ASK</div><strong class="quote-pair" id="noQuote">— / —</strong><div class="submetric quote-status" id="quoteSourceNo">Native book · asks from opposite-side bid</div></article>
+ <article class="instrument ledger"><div class="eyebrow">REALIZED · PAPER NET</div><div class="pnl-hero" id="realizedValue">—</div><div class="submetric" id="recordSummary">Allocated model fees included · PAPER ledger</div></article>
+</section>
+<div id="componentHealth" class="component-health" aria-label="Independent component health"></div>
+<div id="componentAlert" class="component-alert hidden" role="status"></div>
+<div class="identity-strip"><span id="runIdentity">Attaching to the selected run…</span><span id="sourceStatus">No trading authority</span></div>
+<div id="toolRackStrip" class="tool-rack-strip hidden" aria-label="Tool Rack strategy status"><span><b>TERRITORY</b> <strong id="toolRackTerritory">—</strong></span><span><b>PRIMARY</b> <strong id="toolRackPrimary">—</strong></span><span><b>OVERLAY</b> <strong id="toolRackOverlay">—</strong></span><span><b>INTENT</b> <strong id="toolRackIntent">—</strong></span><span class="tool-rack-reason" id="toolRackReason">Waiting for Tool Rack observation</span></div>
+<nav id="deckNav" class="deck-nav" aria-label="Workspace panels">
+ <button data-deck="chart" aria-pressed="true">Chart</button><button data-deck="positions" aria-pressed="false">Positions</button><button data-deck="feed" aria-pressed="false">Feed</button><button data-deck="trades" aria-pressed="false">Trades</button><button data-deck="decisions" aria-pressed="false">Decisions</button><button data-deck="briefing" aria-pressed="false">Briefing</button>
+</nav>
+<main class="workspace">
+ <section class="panel chart-panel" id="chartPanel">
+  <div class="panel-heading chart-toolbar"><div class="chart-name">BTC / USD <span class="badge cyan">1m</span></div><div class="toolbar-controls"><select id="spanSelect" aria-label="Visible chart window"><option value="15">1 contract · 15m</option><option value="45" selected>3 contracts · 45m</option><option value="90">6 contracts · 90m</option><option value="180">12 contracts · 3h</option></select><button id="targetToggle" aria-pressed="false" title="Include target in vertical scale">Fit target</button><button id="liveEdge">Return to Live →</button><button id="zoomOut" title="Zoom chart out" aria-label="Zoom chart out">−</button><button id="zoomIn" title="Zoom chart in" aria-label="Zoom chart in">+</button><button id="fullChart" title="Fullscreen chart" aria-label="Fullscreen chart">⛶</button></div></div>
+  <div class="chart-legend"><span class="ema9">● NAEVYR · EMA9 <b id="ema9Value">—</b></span><span class="ema30">● THAERYON · EMA30 <b id="ema30Value">—</b></span><span id="chartQuality" class="quality">Waiting for candle data</span></div>
+  <div id="historyStatus" class="history-status">Candle history · waiting for source identity</div>
+  <div id="chartHost" class="chart-host"><canvas id="marketChart" aria-label="BTC candles, EMA9, EMA30, contract targets and synchronized native quote history" tabindex="0"></canvas><div id="chartTooltip" class="chart-tooltip hidden"></div><div id="chartEmpty" class="empty chart-empty">Waiting for recorded market data.<br>No placeholder prices are shown.</div></div>
+  <div class="chart-foot"><span id="chartHint">Drag to inspect · wheel to zoom · double-click to follow · drag price axis to scale</span><span class="quote-key"><i class="yes-dot"></i>YES bid/ask <i class="no-dot"></i>NO bid/ask · separate contracts</span></div>
+ </section>
+ <aside class="intelligence-rail" aria-label="Positions and intelligence">
+  <nav class="rail-tabs" aria-label="Intelligence panels"><button data-right="positions" aria-pressed="true">Positions</button><button data-right="briefing" aria-pressed="false" id="briefingTab">Briefing</button><button data-right="navigator" aria-pressed="false">Sources</button></nav>
+  <section class="panel" id="positionsPanel"><div class="panel-heading"><h2 id="positionTitle">Open positions</h2><span id="positionCount" class="badge">—</span></div><div id="positions" class="card-body"><div class="empty">Waiting for canonical ledger</div></div></section>
+  <section class="panel trades-panel" id="tradesPanel"><div class="panel-heading"><div class="tabs"><button class="active" data-tab="trades">Trades</button><button data-tab="decisions">Decisions</button><button data-tab="health">Health</button></div><span id="tradeHint" class="mini">Select a row to inspect</span></div><div class="table-scroll" id="tableArea"></div></section>
+  <section class="panel" id="protectionPanel"><div class="panel-heading"><h2>Position protection</h2><span class="mini">ENGINE-REPORTED</span></div><div id="protection" class="card-body"><div class="empty">No protection state recorded</div></div></section>
+  <section class="panel" id="briefingPanel"><div class="panel-heading"><h2 id="detailsTitle">Tool Rack briefing</h2><span id="detailsBadge" class="badge cyan">RECORDED</span></div><div id="details" class="card-body"><div class="empty">Waiting for current play</div></div></section>
+  <section class="panel navigator-panel" id="navigatorPanel"><div class="panel-heading"><h2>Sources &amp; advisors</h2><span class="badge">READ ONLY</span></div><div id="navigator" class="card-body"><div class="empty">Waiting for Tool Rack source status</div></div></section>
+ </aside>
+ <section class="operations" aria-label="Engine activity and evidence">
+  <section class="panel feed-panel"><div class="panel-heading"><h2><span class="feed-dot"></span> Engine feed</h2><div class="feed-tools"><select id="feedFilter" aria-label="Engine feed filter"><option value="all">All</option><option value="important">Important</option><option value="trade">Trades / protection</option></select><button id="pauseFeed" aria-pressed="false">Pause scroll</button></div></div><div id="engineFeed" class="engine-feed" tabindex="0" aria-label="Engine console feed"></div><div class="feed-foot"><span>Tool Rack decisions + ledger events · source timestamps</span><span id="newLines"></span></div></section>
+ </section>
+</main>
+<div id="displayNotice" class="display-notice hidden" role="status" aria-live="polite"></div>
+<footer><span id="footerStatus">THE NAUTILUS · Local, read-only observation</span><span>TOOL RACK · ONE COMMANDER · ONE PAPER LEDGER</span></footer>
+<dialog id="healthDialog"><div class="panel-heading"><h2>Nautilus · source integrity</h2><button id="closeHealth" aria-label="Close diagnostics">✕</button></div><div id="healthContent" class="card-body"></div></dialog>
+<dialog id="displayDialog" aria-labelledby="displayTitle">
+ <div class="panel-heading"><h2 id="displayTitle">Display · The Nautilus</h2><button id="closeDisplay" aria-label="Close display settings">✕</button></div>
+ <div class="display-form">
+  <label for="layoutMode">Workspace layout</label>
+  <select id="layoutMode"><option value="auto">Auto · adapt to available screen</option><option value="bridge">TV / Bridge · three columns</option><option value="desktop">Desktop · compact three columns</option><option value="tablet">Tablet · chart + selected panel</option><option value="mobile">Phone · panel tabs</option></select>
+  <label for="readability">Text size</label>
+  <select id="readability"><option value="1">Standard</option><option value="1.15">Large · 115%</option><option value="1.3">Extra large · 130%</option></select>
+  <p class="context-note">Recorded Trades sits directly below Open Positions on the right. Engine Feed occupies the left column. On smaller screens use the Trades tab.</p>
+  <p id="displayResolution" class="snapshot-label"></p>
+  <p class="context-note">Phone/tablet here means the layout. This viewer is still local-only; this update does not open network access to another device.</p>
+  <button id="resetDisplay">Reset display preferences</button>
+ </div>
+</dialog>
+</body></html>

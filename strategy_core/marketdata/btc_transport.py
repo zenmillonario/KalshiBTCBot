@@ -11,6 +11,7 @@ from email.utils import parsedate_to_datetime
 import gzip
 import hashlib
 import json
+import math
 from pathlib import Path
 import queue
 import shutil
@@ -21,7 +22,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
-from .btc_observation import TradeStream, FeedFault, validate_candles, SEED_BARS
+from .btc_observation import TradeStream, FeedFault, validate_candles, SEED_BARS, ema
 from .common import utc
 
 WS_URL='wss://advanced-trade-ws.coinbase.com'
@@ -121,6 +122,52 @@ def get_seed():
     return seed,meta,rows
 
 
+def seed_chart_candles(seed, rows, *, epoch, received):
+    """Display only: real OHLC for the exact completed closes already accepted.
+
+    This never supplies geometry, trade events, or decision evidence. Ambiguous
+    duplicate OHLC is omitted from the chart without changing EMA initialization.
+    The early EMA points remain absent until the actual prefix has enough bars.
+    """
+    accepted = dict(seed[-SEED_BARS:])
+    observed = {}
+    conflicts = set()
+    for raw in rows:
+        try:
+            ts = int(raw[0])
+            values = tuple(float(value) for value in raw[1:5])
+            if (ts not in accepted or raw[0] != ts or
+                    not all(math.isfinite(value) and value > 0 for value in values)):
+                continue
+            low, high, opened, closed = values
+            if not low <= min(opened, closed) <= max(opened, closed) <= high:
+                continue
+            if closed != accepted[ts]:
+                continue
+            if ts in observed and observed[ts] != values:
+                conflicts.add(ts)
+            observed[ts] = values
+        except (TypeError, ValueError, IndexError, OverflowError):
+            continue
+    candles = []
+    prefix = []
+    for ts, closed in seed[-SEED_BARS:]:
+        prefix.append(closed)
+        if ts not in observed or ts in conflicts:
+            continue
+        low, high, opened, closed = observed[ts]
+        candles.append({
+            "time": ts, "open": opened, "high": high, "low": low, "close": closed,
+            "e9": ema(prefix, 9), "e30": ema(prefix, 30),
+            "ema_source": "RECONSTRUCTED_FROM_VALIDATED_COINBASE_MINUTE_CLOSES",
+            "quality": "coinbase-completed", "known_at": received,
+            "source": "COINBASE_EXCHANGE_PUBLIC_CANDLES_60S",
+            "connection_epoch": epoch, "complete": True, "full_minute": True,
+            "historical_seed_is_not_forward_observation": True,
+        })
+    return candles
+
+
 class PublicFeed:
     """Bounded daemon companion worker; main process observes explicit errors.
 
@@ -186,7 +233,17 @@ class PublicFeed:
                 self.epoch+=1;now=time.time()
                 self._record({'kind':'PUBLIC_SEED','epoch':self.epoch,'received_wall':now,'metadata':meta,'candles':rows})
                 stream=TradeStream(seed,meta,self.epoch)
-                self._put('btc_status',now,{'state':'PUBLIC_SEED_READY','epoch':self.epoch,'seed':meta},now)
+                # Reuse the existing status event; the chart history is a
+                # display projection, never emitted as forward BTC geometry.
+                try:
+                    chart_candles=seed_chart_candles(seed,rows,epoch=self.epoch,received=now)
+                    chart_error=None
+                except Exception as exc:
+                    # A display projection failure cannot invalidate the
+                    # independently validated EMA seed or interrupt transport.
+                    chart_candles=[];chart_error=type(exc).__name__
+                self._put('btc_status',now,{'state':'PUBLIC_SEED_READY','epoch':self.epoch,'seed':meta,
+                    'chart_candles':chart_candles,'chart_history_error':chart_error},now)
                 self.state='CONNECTING'
                 async with connect(WS_URL,ping_interval=20,ping_timeout=20,open_timeout=10,close_timeout=2,max_size=1_000_000,max_queue=64) as ws:
                     await ws.send(json.dumps({'type':'subscribe','product_ids':['BTC-USD'],'channel':'market_trades'}))

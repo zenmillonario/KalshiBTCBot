@@ -27,7 +27,7 @@ from typing import Any, Mapping
 
 from strategy_core.marketdata.btc_observation import FeedFault
 from strategy_core.marketdata.btc_transport import PublicFeed
-from strategy_core.marketdata.common import parse_time
+from strategy_core.marketdata.common import ObserverError, parse_time
 from strategy_core.marketdata.kalshi_public import (
     MarketDataCredentials, MarketDataError, MarketInfo, PublicMarketClient,
     PublicReceipt, WS_URL, checked_ticker, select_current_market, source_timestamp,
@@ -43,6 +43,175 @@ from strategy_core.types import Side
 FEED_REVISION = "TOOL_RACK_DIRECT_MARKET_DATA_V1"
 GEOMETRY_HISTORY_LIMIT = 3600
 BTC_GEOMETRY_MAX_AGE = 3.0
+CHART_HISTORY_LIMIT = 720
+
+
+class _ChartHistory:
+    """Bounded display-only OHLC, separate from physical strategy evidence.
+
+    Complete historical bars come only from the validated Coinbase response.
+    Forward bars consume every accepted public trade, not the 1 Hz geometry
+    sample. The first observed minute and any interrupted minute remain partial.
+    """
+
+    def __init__(self):
+        self.bars: dict[int, dict[str, Any]] = {}
+        self.epoch: int | None = None
+        self.generation = 0
+        self.gaps = 0
+        self.last_trade_ts: float | None = None
+        self.last_receive_mono: float | None = None
+        self.last_trade_id: str | None = None
+        self.current_minute: int | None = None
+        self.available = False
+        self.reason = "AWAITING_ACCEPTED_PUBLIC_TRADES"
+
+    def _trim(self) -> None:
+        if len(self.bars) > CHART_HISTORY_LIMIT:
+            for stamp in sorted(self.bars)[:-CHART_HISTORY_LIMIT]:
+                del self.bars[stamp]
+
+    def gap(self, reason: str) -> None:
+        observed = self.available or self.current_minute is not None
+        if self.current_minute in self.bars:
+            bar = self.bars[self.current_minute]
+            if not bar.get("complete"):
+                bar.update(quality="sampled", full_minute=False, interrupted=True)
+        self.available = False
+        self.reason = reason
+        self.gaps += int(observed)
+        self.generation += 1
+        self.current_minute = None
+        self.last_trade_ts = None
+        self.last_receive_mono = None
+        self.last_trade_id = None
+
+    def begin(self, epoch: int) -> None:
+        if epoch == self.epoch:
+            return
+        if self.epoch is not None:
+            self.gap("BTC_CONNECTION_EPOCH_CHANGED")
+        self.epoch = epoch
+        self.available = False
+        self.reason = "AWAITING_ACCEPTED_PUBLIC_TRADES"
+        self.generation += 1
+
+    def seed(self, candles: Any, epoch: int) -> None:
+        self.begin(epoch)
+        if not isinstance(candles, (list, tuple)):
+            return
+        for item in candles[-240:]:
+            if not isinstance(item, Mapping) or item.get("connection_epoch") != epoch:
+                continue
+            try:
+                stamp = float(item.get("time"))
+                values = [float(item.get(name)) for name in ("open", "high", "low", "close")]
+                if (not math.isfinite(stamp) or stamp <= 0 or stamp != int(stamp) or int(stamp) % 60
+                        or not all(math.isfinite(value) and value > 0 for value in values)):
+                    continue
+                opened, high, low, closed = values
+                if not low <= min(opened, closed) <= max(opened, closed) <= high:
+                    continue
+                if item.get("complete") is not True or item.get("full_minute") is not True:
+                    continue
+                # This is the validated source's recorded OHLC, not a local gap
+                # interpolation. A later real seed can replace a partial bar.
+                self.bars[int(stamp)] = dict(item)
+            except (TypeError, ValueError, OverflowError):
+                continue
+        self._trim()
+        self.generation += 1
+
+    def trade(self, row: Mapping[str, Any]) -> None:
+        try:
+            epoch = int(row.get("connection_epoch"))
+            stamp, price = float(row.get("timestamp_epoch")), float(row.get("price"))
+            receive_mono = float(row.get("received_monotonic"))
+            known_at = parse_time(row.get("received_utc"))
+            trade_id = str(row.get("trade_id"))
+            if (not math.isfinite(stamp) or stamp <= 0 or not math.isfinite(price) or price <= 0
+                    or not math.isfinite(receive_mono) or not trade_id.isdecimal()):
+                return
+        except (TypeError, ValueError, OverflowError, ObserverError):
+            return
+        self.begin(epoch)
+        if trade_id == self.last_trade_id or (self.last_trade_ts is not None and stamp < self.last_trade_ts):
+            return
+        minute = int(stamp // 60) * 60
+        if minute != self.current_minute:
+            previous = self.bars.get(self.current_minute)
+            continuous = (self.current_minute is not None and minute == self.current_minute + 60
+                          and self.last_trade_ts is not None and stamp - self.last_trade_ts <= 30)
+            if previous is not None and not previous.get("complete"):
+                previous["complete"] = bool(continuous)
+                if continuous and previous.get("full_minute"):
+                    previous["quality"] = "coinbase-completed"
+                else:
+                    previous["quality"] = "sampled"
+                    previous["full_minute"] = False
+                    previous["interrupted"] = not continuous
+            self.bars[minute] = {
+                "time": minute, "open": price, "high": price, "low": price, "close": price,
+                "quality": "coinbase-developing" if continuous else "sampled",
+                "known_at": known_at,
+                "source": "COINBASE_ACCEPTED_PUBLIC_TRADES", "connection_epoch": epoch,
+                "complete": False, "full_minute": continuous,
+                "coverage": "CONTINUOUS_ACCEPTED_TRADES" if continuous else "PARTIAL_FROM_FIRST_OBSERVED_TRADE",
+                "first_observation_ts": stamp, "last_observation_ts": stamp,
+                "historical_seed_is_not_forward_observation": False,
+            }
+            self.current_minute = minute
+            self._trim()
+        else:
+            bar = self.bars[minute]
+            bar.update(high=max(bar["high"], price), low=min(bar["low"], price), close=price,
+                       known_at=known_at, last_observation_ts=stamp)
+        self.last_trade_ts = stamp
+        self.last_receive_mono = receive_mono
+        self.last_trade_id = trade_id
+        self.available = True
+        self.reason = "ACCEPTED_PUBLIC_TRADE_OHLC"
+        self.generation += 1
+
+    def geometry(self, row: Mapping[str, Any]) -> None:
+        try:
+            stamp = float(row.get("epoch_ms")) / 1000
+            minute = int(stamp // 60) * 60
+            if row.get("connection_epoch") != self.epoch or minute not in self.bars:
+                return
+            e9, e30 = float(row.get("ema9")), float(row.get("ema30"))
+            if not all(math.isfinite(value) and value > 0 for value in (e9, e30)):
+                return
+            self.bars[minute].update(e9=e9, e30=e30,
+                ema_source="RECORDED_FORWARD_GEOMETRY_SAMPLE", ema_observed_at=stamp)
+        except (TypeError, ValueError, OverflowError):
+            return
+
+    def snapshot(self) -> dict[str, Any]:
+        now, mono = time.time(), time.monotonic()
+        age = now - self.last_trade_ts if self.last_trade_ts is not None else None
+        receive_age = mono - self.last_receive_mono if self.last_receive_mono is not None else None
+        current = (self.available and age is not None and receive_age is not None
+                   and -FUTURE_TOLERANCE <= age <= BTC_GEOMETRY_MAX_AGE
+                   and 0 <= receive_age <= BTC_GEOMETRY_MAX_AGE)
+        candles = [dict(self.bars[stamp]) for stamp in sorted(self.bars)]
+        available_completed = sum(bar.get("complete") is True and bar.get("full_minute") is True for bar in candles)
+        last = candles[-1] if candles else None
+        end = last["time"] - (0 if last.get("complete") else 60) if last else 0
+        completed = sum(bar.get("complete") is True and bar.get("full_minute") is True
+                        and end - 239 * 60 <= bar["time"] <= end for bar in candles)
+        return {"generation": self.generation, "candles": candles, "history": {
+            "requested_minutes": 240, "completed_minutes": completed,
+            "status": "READY" if completed >= 240 else "PARTIAL" if candles else "UNAVAILABLE",
+            "developing_status": "LIVE" if current else "STALE" if self.last_trade_ts is not None else "UNAVAILABLE",
+            "developing_note": "Actual accepted public trades; first and interrupted minutes are partial. "
+                "Historical OHLC is separate from forward physical qualification. EMA points retain their source.",
+            "source": "COINBASE_VALIDATED_HISTORY_AND_ACCEPTED_TRADES",
+            "source_reason": self.reason, "connection_epoch": self.epoch,
+            "source_gap_count": self.gaps, "last_trade_ts": self.last_trade_ts,
+            "available_completed_minutes": available_completed,
+            "last_trade_age_seconds": age, "read_only_chart_projection": True,
+        }}
 
 
 def freeze_data(value: Any) -> Any:
@@ -190,6 +359,8 @@ class DirectPaperFeed:
         self._hub = QuoteHub()
         self._market: MarketInfo | None = None
         self._rows: deque[Mapping[str, Any]] = deque(maxlen=history_limit)
+        self._chart = _ChartHistory()
+        self._chart_error: str | None = None
         self._btc_epoch: int | None = None
         self._btc_usable = False
         self._generation = 0
@@ -304,6 +475,7 @@ class DirectPaperFeed:
                 self._rows.clear()
                 self._last_geometry_serial = None
                 self._last_source_error = str(row.get("reason") or "BTC_SOURCE_GAP")
+                self._update_chart("gap", self._last_source_error)
                 self._generation += 1
                 self._record("BTC_GEOMETRY_RESET", row)
             elif kind == "btc_status":
@@ -314,7 +486,17 @@ class DirectPaperFeed:
                     self._last_geometry_serial = None
                     self._btc_epoch = epoch
                     self._generation += 1
-                self._record("BTC_STATUS", row)
+                if isinstance(epoch, int):
+                    self._update_chart("begin", epoch)
+                    self._update_chart("seed", row.get("chart_candles"), epoch)
+                if row.get("chart_history_error"):
+                    self._chart_error = str(row["chart_history_error"])[:100]
+                # Raw seed OHLC is already captured in PUBLIC_SEED. Exclude
+                # optional display payload from the source integrity journal.
+                self._record("BTC_STATUS", {key: value for key, value in row.items()
+                                            if key != "chart_candles"})
+            elif kind == "btc_trade":
+                self._update_chart("trade", row)
             elif kind == "btc_geometry":
                 epoch = int(row.get("connection_epoch"))
                 serial = int(row.get("sample_serial"))
@@ -331,6 +513,7 @@ class DirectPaperFeed:
                 copied["source_row_id"] = f"COINBASE:{epoch}:{serial}"
                 copied["historical_seed_is_not_forward_observation"] = True
                 frozen = freeze_data(copied)
+                self._update_chart("geometry", frozen)
                 self._rows.append(frozen)
                 self._last_geometry_serial = (epoch, serial)
                 self._btc_usable = True
@@ -340,6 +523,30 @@ class DirectPaperFeed:
         if self._btc.error:
             self._btc_usable = False
             self._last_source_error = "BTC_WORKER_" + str(self._btc.error)
+            if self._chart.available:
+                self._update_chart("gap", self._last_source_error)
+
+    def _update_chart(self, operation: str, *args: Any) -> None:
+        """Isolate optional display calculations from source validity."""
+        try:
+            getattr(self._chart, operation)(*args)
+        except Exception as exc:
+            self._chart_error = "CHART_PROJECTION_" + type(exc).__name__
+
+    def chart_snapshot(self) -> dict[str, Any]:
+        """Detached display data only; never returned as physical evidence."""
+        try:
+            result = self._chart.snapshot()
+        except Exception as exc:
+            self._chart_error = "CHART_PROJECTION_" + type(exc).__name__
+            result = {"generation": 0, "candles": [], "history": {
+                "requested_minutes": 240, "completed_minutes": 0,
+                "status": "UNAVAILABLE", "developing_status": "UNAVAILABLE",
+                "developing_note": "Chart projection unavailable; source and strategy are independent."}}
+        if self._chart_error:
+            result["history"]["display_error"] = self._chart_error
+            result["history"]["status"] = "DEGRADED"
+        return result
 
     def _drain_native(self) -> None:
         if self._native is None:

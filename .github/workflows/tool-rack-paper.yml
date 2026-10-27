@@ -62,6 +62,13 @@ jobs:
       - name: Check independent tools and real PAPER execution
         run: python CHECK_TOOL_RACK_PAPER.py
 
+      - name: Check Nautilus browser sources
+        run: |
+          node --check strategy_core/nautilus/app.js
+          node --check strategy_core/nautilus/chart.js
+          node --check strategy_core/nautilus/bridge.js
+          node --check strategy_core/nautilus/reliability-ui.js
+
       - name: Build and test extracted standalone bundle
         run: python BUILD_TOOL_RACK_PAPER_BUNDLE.py --output TACHYOS_TOOL_RACK_PAPER_V1.zip
 

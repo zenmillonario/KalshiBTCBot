@@ -110,7 +110,7 @@ async def run_session(args: argparse.Namespace, run_dir: Path) -> int:
         try:
             dashboard = Dashboard(run_dir, port=args.dashboard_port)
             url = dashboard.start()
-            print(f"Read-only bridge: {url}", flush=True)
+            print(f"The Nautilus | Tool Rack PAPER | live engine feed: {url}", flush=True)
             if not args.no_browser:
                 webbrowser.open(url, new=2)
         except OSError as exc:
@@ -150,10 +150,16 @@ async def run_session(args: argparse.Namespace, run_dir: Path) -> int:
             # Do not pass the capture wall as the execution wall. Each live
             # dispatch rechecks real time after detector / journal work.
             outcome = engine.process(frame, stop_requested=stop_reason is not None)
-            if dashboard is not None and time.monotonic() >= next_dashboard:
-                next_dashboard = time.monotonic() + 1.0
+            if dashboard is not None:
                 try:
-                    dashboard.publish(outcome["status"], tuple(engine.physical.geometry.rows))
+                    # Retain every observed decision/ledger transition even
+                    # though the browser projection publishes at most 1 Hz.
+                    dashboard.observe(outcome["status"])
+                    if time.monotonic() >= next_dashboard:
+                        next_dashboard = time.monotonic() + 1.0
+                        chart_data = feed.chart_snapshot() if hasattr(feed, "chart_snapshot") else None
+                        dashboard.publish(outcome["status"], tuple(engine.physical.geometry.rows),
+                                          chart_data=chart_data)
                 except Exception as exc:
                     print(f"READ_ONLY_BRIDGE_UPDATE_WAIT {type(exc).__name__}", flush=True)
             if stop_reason is not None:
@@ -196,7 +202,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--minutes", type=float, default=90.0)
     result.add_argument("--output-root", type=Path, default=default_output_root())
     result.add_argument("--credential-dir", type=Path, default=Path(r"C:\KalshiBTCBot"))
-    result.add_argument("--dashboard-port", type=int, default=0)
+    result.add_argument("--dashboard-port", type=int, default=8580)
     result.add_argument("--no-browser", action="store_true")
     result.add_argument("--stop-grace-seconds", type=float, default=120.0)
     return result

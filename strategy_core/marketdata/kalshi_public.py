@@ -59,6 +59,10 @@ class MarketInfo:
     close_ts: float
     status: str
     title: str = ""
+    # Display-only exact-market metadata. Neither field grants a permission or
+    # determines settlement; missing/unsupported strikes stay unavailable.
+    target: float | None = None
+    target_source: str | None = None
 
     @property
     def interval_start_ts(self) -> float:
@@ -95,7 +99,18 @@ def select_current_market(body: Mapping[str, Any], now_ts: float) -> MarketInfo:
                 or not opened <= now_ts < closed
                 or not closed - 900.0 <= now_ts):
             continue
-        choices.append(MarketInfo(ticker, opened, closed, str(row["status"]), str(row.get("title") or "")))
+        target = None
+        if row.get("strike_type") in ("greater", "greater_or_equal"):
+            raw_target = row.get("floor_strike")
+            try:
+                candidate = float(raw_target) if not isinstance(raw_target, bool) else float("nan")
+                if math.isfinite(candidate) and candidate > 0:
+                    target = candidate
+            except (TypeError, ValueError, OverflowError):
+                pass
+        choices.append(MarketInfo(
+            ticker, opened, closed, str(row["status"]), str(row.get("title") or ""),
+            target, "KALSHI_MARKET_FLOOR_STRIKE" if target is not None else None))
     if not choices:
         raise MarketDataError("NO_CURRENT_OPEN_KXBTC15M_MARKET")
     return min(choices, key=lambda market: (market.close_ts, market.ticker))

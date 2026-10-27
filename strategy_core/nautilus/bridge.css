@@ -1,0 +1,348 @@
+/* Nautilus 1.1: viewport-fit, three-column bridge. No hidden bottom evidence deck. */
+body[data-layout] { --type-scale:1.15; --gutter:10px; height:100vh; height:100dvh; min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+body[data-layout] .masthead { flex:0 0 auto; min-height:58px; padding:8px 14px; gap:14px; }
+body[data-layout] .brand { min-width:215px; gap:9px; }
+body[data-layout] .shell { font-size:38px; }
+body[data-layout] h1 { font-size:27px; }
+body[data-layout] .brand small { font-size:8px; letter-spacing:2.6px; }
+body[data-layout] .mode-nav { margin-left:auto; }
+body[data-layout] .mode-nav button { padding:8px 12px; font-size:11px; }
+body[data-layout] .mast-status { gap:6px; }
+.display-tools { display:flex; gap:7px; }
+.display-tools button { min-height:32px; font-size:11px; }
+body[data-layout] .badge { font-size:calc(9px * var(--type-scale)); padding:4px 6px; }
+body[data-layout] .instruments { flex:0 0 auto; margin:8px var(--gutter) 0; grid-template-columns:1.1fr 1.1fr .8fr 1fr .85fr; }
+body[data-layout] .instrument { display:block; padding:10px 15px; }
+body[data-layout] .eyebrow { font-size:calc(10px * var(--type-scale)); letter-spacing:.8px; }
+body[data-layout] .hero { font-size:clamp(33px,3.15vw,84px); line-height:1.16; margin-top:6px; }
+body[data-layout] .pnl-hero { font-size:clamp(27px,2.5vw,64px); line-height:1.4; }
+body[data-layout] .submetric { font-size:calc(10px * var(--type-scale)); margin-top:5px; }
+body[data-layout] .quote-top { gap:12px; }
+body[data-layout] .quote-top strong { font-size:clamp(17px,1.55vw,38px); }
+body[data-layout] .quotes .submetric { font-size:calc(9px * var(--type-scale)); margin-top:14px; }
+body[data-layout] .clock .submetric { display:block; }
+body[data-layout] .clock .timer-track { margin-top:7px; }
+body[data-layout] .identity-strip { flex:0 0 auto; margin:7px 13px; font-size:calc(9px * var(--type-scale)); }
+body[data-layout] .workspace { flex:1 1 0; min-height:0; margin:0 var(--gutter); display:grid; gap:10px; grid-template-columns:minmax(280px,24fr) minmax(430px,52fr) minmax(275px,24fr); grid-template-rows:minmax(0,1fr); }
+body[data-layout] .chart-panel { grid-column:2; grid-row:1; min-height:0; }
+body[data-layout] .operations { grid-column:1; grid-row:1; min-height:0; display:grid; gap:10px; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr); }
+body[data-layout] .feed-panel { grid-column:1; grid-row:1; display:flex; min-height:0; }
+body[data-layout] .trades-panel { display:flex; min-height:145px; height:clamp(180px,30vh,330px); flex:0 0 auto; flex-direction:column; overflow:hidden; }
+body[data-layout] .intelligence-rail .trades-panel .table-scroll { flex:1 1 0; min-height:0; overflow:auto; }
+body[data-layout] .intelligence-rail .trades-panel th,body[data-layout] .intelligence-rail .trades-panel td { white-space:nowrap; }
+body[data-layout] .intelligence-rail { grid-column:3; grid-row:1; min-height:0; display:flex; gap:10px; overflow:auto; padding-right:2px; }
+body[data-layout] .intelligence-rail > .panel { flex-shrink:0; order:0; }
+body[data-layout] .rail-tabs { display:flex; flex:0 0 auto; position:sticky; top:0; z-index:3; gap:4px; padding:0 0 3px; background:var(--bg); }
+.rail-tabs button { flex:1; padding:8px 4px; font-size:calc(10px * var(--type-scale)); min-height:33px; }
+body[data-layout] .panel-heading { min-height:40px; height:40px; padding:0 10px; gap:7px; }
+body[data-layout] .panel-heading h2 { font-size:calc(12px * var(--type-scale)); }
+body[data-layout] .panel-heading .mini { font-size:calc(8px * var(--type-scale)); }
+body[data-layout] .card-body { padding:12px; }
+body[data-layout] .context-note,body[data-layout] .warning-note { font-size:calc(11px * var(--type-scale)); }
+body[data-layout] .detail-row { font-size:calc(11px * var(--type-scale)); grid-template-columns:75px minmax(0,1fr); }
+body[data-layout] .metric-grid label { font-size:calc(9px * var(--type-scale)); }
+body[data-layout] .metric-grid strong { font-size:calc(15px * var(--type-scale)); }
+body[data-layout] .snapshot-label { font-size:calc(10px * var(--type-scale)); }
+body[data-layout] .state-title { font-size:calc(16px * var(--type-scale)); }
+body[data-layout] .position-value { font-size:calc(25px * var(--type-scale)); }
+body[data-layout] .evidence-title { font-size:calc(10px * var(--type-scale)); }
+body[data-layout] .side-label { font-size:calc(17px * var(--type-scale)); }
+body[data-layout] .trade-number { font-size:calc(11px * var(--type-scale)); }
+body[data-layout] .chart-toolbar { flex-wrap:wrap; height:auto; min-height:43px; padding:7px 10px; }
+body[data-layout] .toolbar-controls { flex-wrap:wrap; gap:5px; }
+body[data-layout] .toolbar-controls button,body[data-layout] .toolbar-controls select { font-size:calc(10px * var(--type-scale)); min-height:29px; padding:5px 7px; }
+body[data-layout] .chart-name { font-size:calc(12px * var(--type-scale)); }
+body[data-layout] .chart-legend { flex-wrap:wrap; height:auto; padding:6px 10px; gap:6px 15px; font-size:calc(10px * var(--type-scale)); }
+body[data-layout] .quality { font-size:calc(9px * var(--type-scale)); max-width:none; }
+body[data-layout] .chart-host { min-height:0; flex:1 1 0; }
+body[data-layout] .chart-host canvas { position:absolute; inset:0; }
+body[data-layout] .chart-foot { min-height:25px; padding:3px 10px; font-size:calc(8px * var(--type-scale)); }
+body[data-layout] .chart-foot .quote-key { display:none; }
+body[data-layout] .chart-tooltip { font-size:calc(10px * var(--type-scale)); max-width:min(290px,90%); }
+body[data-layout] .chart-empty { left:10%; right:10%; }
+body[data-layout] .engine-feed { font-size:calc(11px * var(--type-scale)); line-height:1.5; padding:8px 10px; }
+body[data-layout] .feed-line { color:#acc1cd; padding:3px 0; }
+body[data-layout] .feed-line.watch { color:#c8c598; }
+body[data-layout] .feed-line.warning { color:var(--red); }
+body[data-layout] .feed-line.trade { color:var(--green); }
+body[data-layout] .feed-line.protection { color:var(--cyan); }
+body[data-layout] .feed-tools { gap:4px; }
+body[data-layout] .feed-tools button,body[data-layout] .feed-tools select { font-size:calc(9px * var(--type-scale)); padding:5px; }
+body[data-layout] .feed-foot { font-size:calc(8px * var(--type-scale)); flex-wrap:wrap; }
+body[data-layout] #tradeHint { display:none; }
+body[data-layout] .tabs { width:100%; }
+body[data-layout] .tabs button { flex:1; font-size:calc(11px * var(--type-scale)); padding:0 6px; }
+body[data-layout] table { font-size:calc(10px * var(--type-scale)); }
+body[data-layout] th { font-size:calc(9px * var(--type-scale)); padding:9px 7px; }
+body[data-layout] td { padding:9px 7px; }
+body[data-layout] .health-list { font-size:calc(11px * var(--type-scale)); }
+body[data-layout] .empty { font-size:calc(11px * var(--type-scale)); }
+body[data-layout] .error-banner { flex:0 0 auto; margin:6px 10px 0; max-height:70px; overflow:auto; }
+body[data-layout] footer { flex:0 0 auto; padding:7px 12px; font-size:calc(8px * var(--type-scale)); }
+.display-hidden { display:none!important; }
+.deck-nav { display:none; }
+.display-notice { position:fixed; z-index:20; bottom:25px; left:50%; transform:translateX(-50%); width:min(570px,90vw); padding:12px 16px; border:1px solid #65794e; border-radius:6px; background:#172a2e; color:#e7d6a0; font-size:14px; box-shadow:0 5px 22px #0009; }
+.display-form { padding:20px; display:grid; gap:14px; }
+.display-form > label { font-size:14px; color:#baceda; }
+.display-form > select,.display-form > button { min-height:44px; font-size:14px; }
+#displayDialog { width:min(540px,94vw); }
+body[data-layout] dialog .panel-heading { height:46px; }
+body[data-layout] .chart-panel:fullscreen { display:flex!important; width:100vw; height:100vh; height:100dvh; min-height:0; grid-area:auto; }
+body[data-layout] .chart-panel:fullscreen .chart-host { min-height:0; }
+/* Compact desktop is still a three-column bridge; evidence never moves below it. */
+body[data-layout="desktop"] .workspace { grid-template-columns:minmax(255px,24fr) minmax(400px,52fr) minmax(255px,24fr); gap:8px; }
+body[data-layout="desktop"] .instrument { padding:9px 12px; }
+body[data-layout="desktop"] .hero { font-size:clamp(31px,2.8vw,64px); }
+body[data-layout="desktop"] .masthead { gap:8px; }
+body[data-layout="desktop"] .brand { min-width:190px; }
+body[data-layout="desktop"] h1 { font-size:25px; }
+/* Tablet keeps the chart and a selectable dock together. Portrait moves dock below. */
+body[data-layout="tablet"] { --gutter:8px; }
+body[data-layout="tablet"] .workspace { grid-template-columns:minmax(0,1.5fr) minmax(285px,1fr); grid-template-rows:minmax(0,1fr); gap:8px; }
+body[data-layout="tablet"] .chart-panel { grid-column:1; grid-row:1; }
+body[data-layout="tablet"] .operations,body[data-layout="tablet"] .intelligence-rail { grid-column:2; grid-row:1; }
+body[data-layout="tablet"] .operations { grid-template-rows:minmax(0,1fr); }
+body[data-layout="tablet"] .feed-panel { grid-row:1; }
+body[data-layout="tablet"][data-deck="chart"] .chart-panel { grid-column:1 / -1; }
+body[data-layout="tablet"] .ledger,body[data-layout="tablet"] .quotes { display:none; }
+body[data-layout="tablet"] .instruments { grid-template-columns:1.1fr 1.1fr .85fr; }
+body[data-layout="tablet"] .instrument { padding:8px 12px; }
+body[data-layout="tablet"] .hero { font-size:clamp(32px,4vw,47px); }
+body[data-layout="tablet"] .masthead { flex-wrap:wrap; gap:7px 10px; padding:7px 10px; }
+body[data-layout="tablet"] .brand { min-width:175px; }
+body[data-layout="tablet"] .mast-status .badge:not(.paper):not(#connection) { display:none; }
+body[data-layout="tablet"] .identity-strip span:last-child { display:none; }
+body[data-layout="tablet"] .deck-nav,body[data-layout="mobile"] .deck-nav { display:flex; flex:0 0 auto; gap:5px; margin:0 var(--gutter) 7px; overflow:auto; scrollbar-width:thin; }
+.deck-nav button { flex:1 0 auto; min-height:38px; font-size:12px; }
+body[data-layout="tablet"] .rail-tabs button { min-height:40px; }
+body[data-layout="tablet"] .chart-name { display:none; }
+body[data-layout="tablet"] .chart-legend b { display:none; }
+body[data-layout="tablet"] #targetToggle { display:inline-block; }
+/* The active dock stays mounted; quote/feed collection continues behind every tab. */
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="chart"],[data-deck="positions"],[data-deck="briefing"]) .operations { display:none; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="chart"],[data-deck="feed"],[data-deck="trades"],[data-deck="decisions"]) .intelligence-rail { display:none; }
+body:is([data-layout="tablet"],[data-layout="mobile"])[data-deck="feed"] .trades-panel { display:none; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="trades"],[data-deck="decisions"]) .feed-panel { display:none; }
+/* Phone is one large workspace pane, not a squeezed three-column dashboard. */
+body[data-layout="mobile"] { --gutter:7px; }
+body[data-layout="mobile"] .masthead { flex-wrap:wrap; gap:7px; padding:7px 9px; }
+body[data-layout="mobile"] .brand { min-width:0; flex:1; }
+body[data-layout="mobile"] h1 { font-size:23px; }
+body[data-layout="mobile"] .shell { font-size:31px; }
+body[data-layout="mobile"] .brand small { font-size:7px; letter-spacing:2px; }
+body[data-layout="mobile"] .mode-nav { margin:0; }
+body[data-layout="mobile"] .mode-nav button { min-height:38px; font-size:10px; padding:7px; }
+body[data-layout="mobile"] .display-tools { order:3; }
+body[data-layout="mobile"] .mast-status { width:auto; order:4; margin:0 0 0 auto; }
+body[data-layout="mobile"] .mast-status .badge:not(.paper):not(#connection) { display:none; }
+body[data-layout="mobile"] .mast-status #healthButton { min-width:32px; padding:7px; }
+body[data-layout="mobile"] .badge { font-size:9px; }
+body[data-layout="mobile"] .instruments { grid-template-columns:minmax(0,1fr) minmax(0,1fr); margin-top:5px; }
+body[data-layout="mobile"] .instrument { padding:8px 10px; }
+body[data-layout="mobile"] .hero { font-size:clamp(22px,7vw,39px); margin-top:3px; }
+body[data-layout="mobile"] .eyebrow { font-size:10px; }
+body[data-layout="mobile"] .submetric { font-size:10px; }
+body[data-layout="mobile"] .clock { grid-column:1 / 3; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.65fr); gap:2px 10px; align-items:center; padding:6px 11px; }
+body[data-layout="mobile"] .clock .hero { grid-column:2; grid-row:1 / 3; margin:0; text-align:right; font-size:clamp(22px,6.5vw,32px); }
+body[data-layout="mobile"] .clock .timer-track { margin-top:3px; }
+body[data-layout="mobile"] .clock .submetric { display:none; }
+body[data-layout="mobile"] .quotes,body[data-layout="mobile"] .ledger { display:none; }
+body[data-layout="mobile"] .identity-strip { margin:5px 9px; font-size:9px; }
+body[data-layout="mobile"] .identity-strip span:last-child { display:none; }
+body[data-layout="mobile"] .workspace { display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr); gap:0; }
+body[data-layout="mobile"] .chart-panel,body[data-layout="mobile"] .operations,body[data-layout="mobile"] .intelligence-rail { grid-column:1; grid-row:1; }
+body[data-layout="mobile"] .operations { grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr); }
+body[data-layout="mobile"] .feed-panel { grid-row:1; }
+body[data-layout="mobile"]:not([data-deck="chart"]) .chart-panel { display:none; }
+body[data-layout="mobile"] .chart-name { display:none; }
+body[data-layout="mobile"] .chart-toolbar { padding:5px 7px; }
+body[data-layout="mobile"] .toolbar-controls { width:100%; gap:4px; }
+body[data-layout="mobile"] .toolbar-controls select { flex:1; min-width:0; }
+body[data-layout="mobile"] .toolbar-controls button,body[data-layout="mobile"] .toolbar-controls select { font-size:11px; min-height:40px; padding:6px; }
+body[data-layout="mobile"] #targetToggle { display:none; }
+body[data-layout="mobile"] .chart-legend { font-size:10px; gap:5px 9px; }
+body[data-layout="mobile"] .chart-legend b { display:none; }
+body[data-layout="mobile"] .quality { flex-basis:100%; font-size:9px; text-align:left; margin:0; }
+body[data-layout="mobile"] .chart-foot { display:none; }
+body[data-layout="mobile"] footer { font-size:8px; padding:5px 8px max(5px,env(safe-area-inset-bottom)); }
+body[data-layout="mobile"] footer span:last-child { display:none; }
+body[data-layout="mobile"] .engine-feed { font-size:calc(12px * var(--type-scale)); }
+body[data-layout="mobile"] .deck-nav button { min-height:40px; }
+body[data-layout="mobile"] #displaySettings,body[data-layout="mobile"] #bridgeFullscreen { min-height:36px; font-size:10px; padding:5px 8px; }
+@media(max-width:899px) {
+ body[data-layout="tablet"] .workspace { grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1.1fr) minmax(0,1fr); }
+ body[data-layout="tablet"] .operations,body[data-layout="tablet"] .intelligence-rail { grid-column:1; grid-row:2; }
+ body[data-layout="tablet"][data-deck="chart"] .chart-panel { grid-row:1 / -1; }
+ body[data-layout="tablet"] .identity-strip { font-size:9px; }
+}
+@media(max-width:1399px) {
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .hero { font-size:clamp(30px,2.8vw,46px); }
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .instrument { padding:8px 11px; }
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .quality { flex-basis:100%; margin:0; text-align:left; }
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .mast-status .badge:not(.paper):not(#connection) { display:none; }
+}
+@media(pointer:coarse) {
+ body[data-layout] button,body[data-layout] select { min-height:44px; }
+ body[data-layout] .panel-heading { min-height:49px; height:auto; }
+ body[data-layout] .tabs button { min-height:44px; }
+ body[data-layout] .feed-tools button,body[data-layout] .feed-tools select { padding:5px; }
+}
+/* Very short windows are allowed to scroll rather than permanently clipping content. */
+body[data-layout][data-low-height="true"] { overflow:auto; height:auto; min-height:100dvh; }
+body[data-layout][data-low-height="true"] .workspace { flex:none; height:430px; }
+body[data-layout="tablet"][data-low-height="true"] .workspace { height:530px; }
+body[data-layout="mobile"][data-low-height="true"] .workspace { height:390px; }
+@media(prefers-reduced-motion:reduce) { body[data-layout] .hero { text-shadow:none; } }
+/* Keep phone branding and controls in two deliberate rows, never overlapping. */
+body[data-layout="mobile"] .masthead { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:7px; }
+body[data-layout="mobile"] .brand { grid-column:1; grid-row:1; min-width:0; gap:6px; }
+body[data-layout="mobile"] h1 { font-size:clamp(18px,5.8vw,23px); white-space:nowrap; }
+body[data-layout="mobile"] .shell { font-size:25px; }
+body[data-layout="mobile"] .brand small { display:none; }
+body[data-layout="mobile"] .mode-nav { grid-column:1; grid-row:2; min-width:0; width:100%; gap:4px; }
+body[data-layout="mobile"] .mode-nav button { flex:1; padding:5px 4px; font-size:9px; }
+body[data-layout="mobile"] .display-tools { grid-column:2; grid-row:2; width:100%; min-width:0; gap:4px; }
+body[data-layout="mobile"] .display-tools button { flex:1; }
+body[data-layout="mobile"] #displaySettings,body[data-layout="mobile"] #bridgeFullscreen { font-size:9px; padding:5px 4px; }
+body[data-layout="mobile"] .mast-status { grid-column:2; grid-row:1; width:100%; justify-content:flex-end; gap:4px; }
+body[data-layout="mobile"] .mast-status .badge { font-size:8px; padding:4px; }
+body[data-layout="mobile"] .mast-status #healthButton { min-width:28px; padding:5px; }
+@media(pointer:coarse) {
+ body[data-layout] :is(.mode-nav,.display-tools,.toolbar-controls,.feed-tools,.rail-tabs,.deck-nav) :is(button,select),
+ body[data-layout] #displaySettings,body[data-layout] #bridgeFullscreen,body[data-layout] #healthButton { min-height:44px; }
+ body[data-layout] :is(#zoomIn,#zoomOut,#fullChart) { min-width:44px; }
+}
+
+/* 1.3 R7 reliability. Fits inside the existing Bridge; no bottom evidence deck. */
+.component-health{display:flex;gap:6px;flex:0 0 auto;margin:7px var(--gutter) 0;flex-wrap:wrap;}
+.component-health button{font-size:calc(9px * var(--type-scale));padding:5px 8px;min-height:26px;flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;}
+.component-health .green{color:var(--green);border-color:#286252;}
+.component-health .red{color:#ffa19a;border-color:#95423c;background:#331c22;}
+.component-health .amber{color:var(--amber);border-color:#695635;}
+.component-alert{color:#ffa29a;background:#321c24;border:1px solid #753c40;border-radius:5px;margin:5px var(--gutter) 0;padding:5px 10px;font-size:calc(10px * var(--type-scale));flex:0 0 auto;max-height:48px;overflow:auto;}
+.history-status{font-size:calc(9px * var(--type-scale));color:#92b2c3;padding:3px 10px 6px;line-height:1.4;flex:0 0 auto;}
+.history-status.incomplete{color:var(--amber);}
+body[data-layout="mobile"] .component-health{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;margin-top:4px;}
+body[data-layout="mobile"] .component-health button{padding:4px;font-size:9px;min-height:25px;}
+body[data-layout="mobile"] .component-alert{font-size:10px;max-height:34px;}
+body[data-layout="mobile"] .history-status{font-size:9px;}
+
+/* R20.7: recorded trades under positions; narrow decks preserve Trade/Decision access. */
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="trades"],[data-deck="decisions"]) .operations { display:none; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="trades"],[data-deck="decisions"]) .intelligence-rail { display:flex!important; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="trades"],[data-deck="decisions"]) .intelligence-rail > :not(#tradesPanel) { display:none!important; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="trades"],[data-deck="decisions"]) #tradesPanel { display:flex!important; flex:1 1 0; height:auto; min-height:0; }
+body:is([data-layout="tablet"],[data-layout="mobile"]):is([data-deck="chart"],[data-deck="positions"],[data-deck="briefing"],[data-deck="feed"]) #tradesPanel { display:none!important; }
+
+/* R22 restores user-approved Hotfix6 large distance adjacent to countdown. */
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock-hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);align-items:end;gap:14px;margin-top:7px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock-metric{min-width:0;display:flex;flex-direction:column}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .timer-metric{align-items:flex-start}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .distance-metric{align-items:flex-end}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .metric-label{font-size:10px;letter-spacing:.7px;white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .distance-metric .metric-label{text-align:right}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .target-distance{font-size:clamp(28px,2.25vw,44px);line-height:1.1;letter-spacing:-.5px;text-align:right;white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .timer-metric .hero{font-size:clamp(36px,2.55vw,50px)}
+body:is([data-layout="tablet"],[data-layout="mobile"]) .clock-hero-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+body:is([data-layout="tablet"],[data-layout="mobile"]) .clock-hero-row .hero{font-size:clamp(26px,5vw,42px)}
+body:is([data-layout="tablet"],[data-layout="mobile"]) .clock-hero-row .target-distance{text-align:right}
+
+/* R22 restores the approved six-cell Hotfix6 Bridge composition. The clock
+   owns enough width for two independent numbers, rather than overlapping. */
+body:is([data-layout="bridge"],[data-layout="desktop"]) .instruments{
+  grid-template-columns:minmax(0,.92fr) minmax(0,.92fr) minmax(0,1.62fr)
+                        minmax(0,.5fr) minmax(0,.5fr) minmax(0,.86fr);
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock-hero-row{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:20px;min-width:0;align-items:end;
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock-metric{min-width:0}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .timer-metric .hero{font-size:clamp(32px,2.45vw,47px);white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .target-distance{font-size:clamp(29px,2.2vw,42px);white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .quote-card{min-width:0;display:flex;flex-direction:column;justify-content:center}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .quote-card .quote-pair{
+  font-size:clamp(17px,1.32vw,24px);white-space:nowrap;margin-top:10px;
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .quote-card .quote-status{
+  font-size:8px;line-height:1.3;margin-top:8px;overflow-wrap:anywhere;
+}
+@media (max-width:1550px) and (min-width:951px){
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .instruments{
+   grid-template-columns:minmax(0,.9fr) minmax(0,.9fr) minmax(0,1.65fr)
+                         minmax(0,.54fr) minmax(0,.54fr) minmax(0,.8fr);
+ }
+ body:is([data-layout="bridge"],[data-layout="desktop"]) .clock .hero{
+  font-size:clamp(27px,2.25vw,42px)
+ }
+}
+
+
+/* Tool Rack / TradingView proportion pass vNext. Visual-only. */
+body[data-layout="bridge"] .workspace{
+  grid-template-columns:minmax(390px,31fr) minmax(520px,47fr) minmax(285px,22fr);
+}
+body[data-layout="desktop"] .workspace{
+  grid-template-columns:minmax(350px,31fr) minmax(480px,48fr) minmax(270px,21fr);
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .engine-feed{
+  font-size:calc(12px * var(--type-scale));line-height:1.55;
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .chart-toolbar{padding-top:5px;padding-bottom:5px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .chart-legend{padding-top:4px;padding-bottom:4px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .history-status{padding-top:2px;padding-bottom:3px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .chart-foot{min-height:21px;padding-top:1px;padding-bottom:1px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel{
+  max-height:190px;min-height:0;overflow:auto;
+}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .panel-heading{min-height:34px;height:34px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .card-body{padding:6px 9px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .position-header{margin-bottom:3px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .position-value{font-size:calc(19px * var(--type-scale));line-height:1.15}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .metric-grid{margin:5px 0;gap:4px}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .metric-grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .metric-grid label{font-size:calc(7.5px * var(--type-scale));margin-bottom:2px;white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .metric-grid strong{font-size:calc(11px * var(--type-scale));white-space:nowrap}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .context-note,
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .warning-note{font-size:calc(8px * var(--type-scale));line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel .side-label{font-size:calc(14px * var(--type-scale))}
+body:is([data-layout="bridge"],[data-layout="desktop"]) #positionsPanel button{padding:4px 7px;min-height:26px;font-size:9px}
+.tool-rack-strip{
+  flex:0 0 auto;display:grid;grid-template-columns:auto auto auto auto minmax(160px,1fr);gap:6px 14px;align-items:center;
+  margin:0 var(--gutter) 7px;padding:6px 10px;border:1px solid #24495b;border-radius:6px;background:linear-gradient(90deg,#0a1d29,#0a1721);
+  font-size:calc(9px * var(--type-scale));color:#7598aa;min-height:31px;
+}
+.tool-rack-strip b{font-size:.82em;letter-spacing:.65px;color:#5f8092;margin-right:4px}
+.tool-rack-strip strong{font-weight:600;color:#d0e8f1;white-space:nowrap}
+.tool-rack-strip span:first-child strong{color:var(--cyan)}
+.tool-rack-strip .tool-rack-reason{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;color:#9db2be}
+@media(max-width:1399px){.tool-rack-strip{grid-template-columns:repeat(4,auto) minmax(100px,1fr);gap:5px 8px;font-size:9px}}
+
+/* Standalone Tool Rack refinements: keep full reasons and narrow layouts usable. */
+body[data-layout] .snapshot-label{overflow-wrap:anywhere}
+body[data-layout] .tool-rack-strip .tool-rack-reason{min-width:0}
+body:is([data-layout="tablet"],[data-layout="mobile"]) .tool-rack-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px}
+body:is([data-layout="tablet"],[data-layout="mobile"]) .tool-rack-strip .tool-rack-reason{grid-column:1/-1;text-align:left}
+body[data-layout="mobile"] .tool-rack-strip{font-size:9px;max-height:72px;overflow:auto}
+body[data-layout] .ledger .submetric{font-size:calc(8px * var(--type-scale));line-height:1.35}
+body[data-layout] .engine-feed .feed-line{white-space:pre-wrap;overflow-wrap:anywhere}
+body[data-layout] #positionsPanel .snapshot-label{font-size:calc(8px * var(--type-scale));line-height:1.35;margin:4px 0}
+body[data-layout] .tool-rack-strip span{min-width:0}
+body[data-layout] .tool-rack-strip strong{overflow:hidden;text-overflow:ellipsis}
+
+body[data-layout] #positionsPanel .metric-grid.four>div:last-child strong{white-space:normal;line-height:1.35;font-size:calc(9px * var(--type-scale))}
+
+/* Fit instrument values to their own cell, including narrow six-cell desktop. */
+body:is([data-layout="bridge"],[data-layout="desktop"]) .instrument{container-type:inline-size}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .instrument:is(.now,.target) .hero{font-size:clamp(23px,16cqw,58px)}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .quote-card .quote-pair{font-size:clamp(10px,10cqw,20px);letter-spacing:0}
+body:is([data-layout="bridge"],[data-layout="desktop"]) .ledger .pnl-hero{font-size:clamp(22px,17cqw,54px)}
+body[data-layout="mobile"] .clock{display:block;grid-column:1/-1;padding:8px 10px}
+body[data-layout="mobile"] .clock>.eyebrow{font-size:9px}
+body[data-layout="mobile"] .clock-hero-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+body[data-layout="mobile"] .clock-metric{min-width:0}
+body[data-layout="mobile"] .clock .metric-label{font-size:9px;white-space:nowrap}
+body[data-layout="mobile"] .clock .hero{grid-column:auto;grid-row:auto;text-align:left;font-size:30px;line-height:1.2;margin-top:2px;letter-spacing:0}
+body[data-layout="mobile"] .clock .distance-metric{text-align:right}
+body[data-layout="mobile"] .clock .target-distance{text-align:right}
+body[data-layout="mobile"] .clock .timer-track{margin-top:7px}

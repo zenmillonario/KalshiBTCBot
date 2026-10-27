@@ -8,12 +8,15 @@ from __future__ import annotations
 from dataclasses import fields, is_dataclass
 from decimal import Decimal
 from enum import Enum
+import errno
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
 import threading
 from typing import Any, Mapping
 from urllib.parse import urlsplit
+
+from strategy_core.nautilus_projection import NautilusProjection
 
 
 def _plain(value: Any) -> Any:
@@ -46,17 +49,30 @@ class Dashboard:
         self._lock = threading.Lock()
         self._version = 0
         self._payload = json.dumps({"version": 0, "status": None, "geometry_rows": []}).encode()
+        self._projection = NautilusProjection()
+        self._nautilus_payload = b"null"
         self._server = None
         self._thread = None
         self._closed = False
-        directory = Path(__file__).with_name("dashboard")
+        directory = Path(__file__).with_name("nautilus")
         self._assets = {
             "/": ("text/html; charset=utf-8", (directory / "index.html").read_bytes()),
-            "/dashboard.css": ("text/css; charset=utf-8", (directory / "dashboard.css").read_bytes()),
-            "/dashboard.js": ("application/javascript; charset=utf-8", (directory / "dashboard.js").read_bytes()),
         }
+        for filename in ("style.css", "bridge.css", "chart.js", "reliability-ui.js", "app.js", "bridge.js"):
+            content_type = "text/css; charset=utf-8" if filename.endswith(".css") else "application/javascript; charset=utf-8"
+            self._assets["/nautilus/" + filename] = (content_type, (directory / filename).read_bytes())
 
-    def publish(self, status: Mapping[str, Any], geometry_rows: tuple | list) -> None:
+    def observe(self, status: Mapping[str, Any]) -> None:
+        """Capture every engine beat before the slower browser publication.
+
+        Called only by the engine owner. The projection stores detached,
+        bounded display records; the HTTP thread only reads published bytes.
+        """
+        if not self._closed:
+            self._projection.observe(status)
+
+    def publish(self, status: Mapping[str, Any], geometry_rows: tuple | list,
+                chart_data: Mapping[str, Any] | None = None) -> None:
         if self._closed:
             return
         # Bound the chart independently of the engine's physical history.
@@ -67,8 +83,12 @@ class Dashboard:
         payload = json.dumps({"version": version, "status": _plain(status),
                               "geometry_rows": _plain(rows)},
                              ensure_ascii=True, allow_nan=False, separators=(",", ":")).encode("utf-8")
+        projected = self._projection.project(status, geometry_rows, chart_data=chart_data)
+        nautilus_payload = json.dumps(projected, ensure_ascii=True, allow_nan=False,
+                                     separators=(",", ":")).encode("utf-8")
         with self._lock:
             self._payload = payload
+            self._nautilus_payload = nautilus_payload
             self._version = version
 
     def start(self) -> str:
@@ -90,7 +110,7 @@ class Dashboard:
                 self.send_header("X-Content-Type-Options", "nosniff")
                 self.send_header("Referrer-Policy", "no-referrer")
                 self.send_header("Content-Security-Policy",
-                    "default-src 'self'; script-src 'self'; style-src 'self'; "
+                    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
                     "connect-src 'self'; img-src 'self' data:; object-src 'none'; "
                     "frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
                 self.end_headers()
@@ -111,6 +131,10 @@ class Dashboard:
                     with owner._lock:
                         payload = owner._payload
                     return self._respond(200, "application/json; charset=utf-8", payload, head=head)
+                if path == "/api/nautilus":
+                    with owner._lock:
+                        payload = owner._nautilus_payload
+                    return self._respond(200, "application/json; charset=utf-8", payload, head=head)
                 asset = owner._assets.get(path)
                 if asset is None:
                     return self._respond(404, "text/plain", b"Not found", head=head)
@@ -128,7 +152,16 @@ class Dashboard:
 
             do_POST = do_PUT = do_PATCH = do_DELETE = do_OPTIONS = _readonly
 
-        self._server = _LocalServer(("127.0.0.1", self.port), Handler)
+        # Match the familiar Nautilus origin so saved display preferences can
+        # survive sessions. Explicit port 0 still requests an ephemeral port.
+        ports = range(8580, 8590) if self.port == 8580 else (self.port,)
+        for port in ports:
+            try:
+                self._server = _LocalServer(("127.0.0.1", port), Handler)
+                break
+            except OSError as exc:
+                if exc.errno not in (errno.EADDRINUSE, 10048) or port == ports[-1]:
+                    raise
         self.port = self._server.server_address[1]
         self._thread = threading.Thread(target=self._server.serve_forever,
                                         kwargs={"poll_interval": .1}, daemon=True,

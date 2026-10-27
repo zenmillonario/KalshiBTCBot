@@ -128,6 +128,21 @@ class DirectPaperBookTests(unittest.TestCase):
 
 
 class DirectMarketAndFinalityTests(unittest.TestCase):
+    def test_display_target_is_exact_market_strike_and_never_inferred(self):
+        selected = select_current_market({"markets": [market_row(
+            strike_type="greater", floor_strike="80321.75")]}, NOW)
+        self.assertEqual(selected.target, 80321.75)
+        self.assertEqual(selected.target_source, "KALSHI_MARKET_FLOOR_STRIKE")
+        for values in ({"title": "Bitcoin above $80000"},
+                       {"strike_type": "between", "floor_strike": 80000},
+                       {"strike_type": "greater", "floor_strike": "NaN"},
+                       {"strike_type": "greater", "floor_strike": True},
+                       {"strike_type": "greater", "floor_strike": 0}):
+            with self.subTest(values=values):
+                market = select_current_market({"markets": [market_row(**values)]}, NOW)
+                self.assertIsNone(market.target)
+                self.assertIsNone(market.target_source)
+
     def test_discovery_selects_current_exact_series_not_upcoming_or_expired(self):
         rows = [market_row("KXBTC15M-FUTURE", close=NOW + 1800),
                 market_row("KXBTC15M-EXPIRED", close=NOW),

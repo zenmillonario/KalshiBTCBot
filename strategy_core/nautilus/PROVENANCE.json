@@ -1,0 +1,33 @@
+{
+  "component": "TACHYOS Nautilus standalone Tool Rack presentation",
+  "source": "User-provided verified HF15 source; static assets only",
+  "source_revision": "HF15 reviewed source, exact run source hashes matched",
+  "source_original_sha256": {
+    "index.html": "0a9bc18d5bc776b43489c10cff7119fc93d36b0e192b38f52c3627dd055f887f",
+    "app.js": "2b1ad96cc52832b4789bf09fddb7f1d58e238e25d2d40af44c71d70a8247ca64",
+    "chart.js": "a62f9a0f6dd2ed1a363ba73c7aa78074bdb39a5aa9d2690a5ac9dcd895c40a82",
+    "bridge.js": "91d42cd707281ff6fd28ef29d83f0e12ffc59355e475c767f2df0b03e40d2e39",
+    "reliability-ui.js": "ba92ce359939e17377b6c60ad6281c0bca9b94a2a37663fc87eb8bc423146a91",
+    "style.css": "c97861e6270521defade19ce1ba31cb7d01e86cce0d2d24380d1b8b7f4298ca1",
+    "bridge.css": "319df6d1ef02f7e96854d59a2a16ac8dccb70f7f90dbb1209f8b936108bf23b8"
+  },
+  "applied_visual_preferences": [
+    "existing nautilus_vnext visual-only patch functions: index, chart, app, bridge_css",
+    "45-minute persistent chart, 83 percent price pane, wider engine feed, compact position with MAX @ $1"
+  ],
+  "authority": "READ_ONLY_VIEW; no legacy server, adapter, strategy, executor, or sidecar code imported",
+  "changes": [
+    "Reads standalone immutable /api/nautilus projection",
+    "Shows actual Tool Rack / Commander authority and lifecycle feed",
+    "Uses current PAPER gross, fee and net accounting",
+    "No inherited Observer42/Navigator/AI running claims",
+    "Active positions appear ahead of expired inventory; default protection uses the active contract",
+    "Instrument typography and mobile clock grid corrected after actual Chromium visual inspection",
+    "Identical HTTP payloads do not renew engine or quote freshness"
+  ],
+  "limitations": [
+    "Coinbase completed source candles, developing trade aggregates and partial sampled bars keep distinct honest source labels",
+    "Missing target remains unavailable",
+    "Optional AI/legacy advisors are not started"
+  ]
+}
