@@ -60,6 +60,10 @@ class ReleaseWatcher(StrategyTool):
     def confirmed(self) -> bool:
         return self._confirmed()
 
+    @property
+    def evidence(self) -> ReleaseEvidence:
+        return self._evidence
+
     def update_owner_side(
         self,
         side: Side | None,
