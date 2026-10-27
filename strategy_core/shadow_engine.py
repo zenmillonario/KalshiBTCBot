@@ -97,4 +97,14 @@ class ToolRackShadowEngine:
                 if intent
                 else None
             ),
+            "accepted_max_price": (
+                intent.max_price
+                if intent
+                else None
+            ),
+            "accepted_observed_ask": (
+                frame.snapshot.ask_for(intent.side)
+                if intent and intent.side
+                else None
+            ),
         }
