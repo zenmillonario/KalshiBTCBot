@@ -205,9 +205,9 @@ the legacy R22 PAPER behavior without granting Nautilus any strategy authority.
 Latest completed acceptance at this freeze:
 
 - GitHub Actions workflow: **Tool Rack v1 Acceptance**
-- run: **#71**
-- commit: `a35d28eecf786cf67351c8ac5504e87a13d5785f`
-- result: **88 / 88 PASS**
+- run: **#86**
+- commit: `f48b7548fafaab5d252901070ee11ebc05f3e1ec`
+- result: **92 / 92 PASS**
 - failures: **0**
 - errors: **0**
 - log: `Ran 88 tests ... OK`
@@ -233,7 +233,9 @@ The suite includes:
 - shadow event deduplication;
 - Nautilus vNext layout/read-only patch;
 - Nautilus territory ribbon;
-- shadow-vs-PAPER ribbon markers.
+- shadow-vs-PAPER ribbon markers;
+- post-run shadow-vs-PAPER delay/chase/opposite/miss comparator;
+- whitelist-only shadow bundle packaging that excludes legacy engine/execution files.
 
 ## Explicitly NOT promoted yet
 
@@ -245,9 +247,23 @@ The suite includes:
 - Shadow performance has not yet been supervised on a fresh long live run.
 - Nautilus vNext still needs operator visual acceptance on Windows.
 
+## Shadow-validation bundle
+
+The CI workflow now builds an exact whitelisted ZIP after the acceptance suite
+passes. The bundle manifest asserts:
+
+- read-only strategy = true;
+- PAPER execution authority = NONE;
+- venue-order authority = NONE;
+- legacy R22 engine included = false.
+
+The extracted bundle includes one-click offline check, live shadow launcher,
+post-run comparator, Tool Rack configs/tests/docs, and the Nautilus vNext
+read-only patch layers.
+
 ## Next acceptance phase
 
-1. Package/run Tool Rack beside a fresh R22 PAPER session in shadow.
+1. Run the CI-built Tool Rack bundle beside a fresh R22 PAPER session in shadow.
 2. Observe at least:
    - one Rail opening;
    - one Rail re-entry after profit/protection exit if naturally encountered;
