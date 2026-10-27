@@ -13,6 +13,9 @@ ALLOWED_ROOT_FILES = {
     "START_TOOL_RACK_SHADOW.cmd",
     "TOOL_RACK_ATTACH_R22_SHADOW.py",
     "TOOL_RACK_SHADOW_REPLAY.py",
+    "TOOL_RACK_COMPARE_SHADOW_TO_PAPER.py",
+    "02_COMPARE_SHADOW_TO_PAPER.cmd",
+    "README_TOOL_RACK_SHADOW.md",
 }
 
 ALLOWED_PREFIXES = (
@@ -64,6 +67,9 @@ def validate_whitelist(root: Path, files: list[Path]) -> None:
         "00_CHECK_TOOL_RACK_SHADOW.cmd",
         "START_TOOL_RACK_SHADOW.cmd",
         "TOOL_RACK_ATTACH_R22_SHADOW.py",
+        "TOOL_RACK_COMPARE_SHADOW_TO_PAPER.py",
+        "02_COMPARE_SHADOW_TO_PAPER.cmd",
+        "README_TOOL_RACK_SHADOW.md",
         "strategy_core/tool_rack.py",
         "strategy_core/commander.py",
         "strategy_core/r22_run_source.py",
