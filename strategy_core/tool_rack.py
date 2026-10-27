@@ -232,6 +232,7 @@ class ToolRackController:
                 probe,
                 owner_territory=self._owned_territory,
                 owner_side=self._owned_side,
+                config=self.configs.release_detector,
             )
             return (
                 detection.evidence,
