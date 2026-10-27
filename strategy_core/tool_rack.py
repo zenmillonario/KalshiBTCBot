@@ -358,9 +358,12 @@ class ToolRackController:
                 self._owned_side = raw.side
                 ownership_reason = "HEIST_BOX_REMAINS_OWNER_WHILE_BOUNDED"
             else:
-                self._deactivate_current(snapshot, "HEIST_BOX_NO_LONGER_OWNS")
-                if self._supported_primary_territory(raw.territory):
-                    self._activate(raw, snapshot)
+                # A raw Mountain/UNKNOWN/rolling label cannot silently steal a
+                # qualified Heist box. The box remains owner until the universal
+                # release protocol proves physical escape/transfer.
+                ownership_reason = (
+                    "HEIST_OWNER_PERSISTS_UNTIL_RELEASE_TRANSFER"
+                )
 
         elif self._owned_territory is Territory.ALTERNATING_MOUNTAIN:
             if release_in_progress:
@@ -374,10 +377,28 @@ class ToolRackController:
                 ownership_reason = (
                     "MOUNTAIN_TERRITORY_PERSISTS_ACROSS_EDGE_RELAYS"
                 )
-            elif raw.territory is not self._owned_territory:
-                self._deactivate_current(snapshot, "TERRITORY_CHANGED")
-                if self._supported_primary_territory(raw.territory):
-                    self._activate(raw, snapshot)
+            elif (
+                self._is_rail(raw.territory)
+                and raw.side is not None
+                and raw.side is self._owned_side
+            ):
+                # Same-direction rolling Mountain may graduate directly into a
+                # Rail mid-contract. This is not an opposite-side release.
+                self._deactivate_current(
+                    snapshot,
+                    "MOUNTAIN_GRADUATED_TO_SAME_DIRECTION_RAIL",
+                )
+                self._activate(raw, snapshot)
+                ownership_reason = (
+                    "MOUNTAIN_GRADUATED_TO_SAME_DIRECTION_RAIL"
+                )
+            else:
+                # Heist/rolling/unknown classifier flicker cannot steal the
+                # living EMA9 Mountain. Only a real release/transfer or a
+                # same-direction Rail graduation changes ownership.
+                ownership_reason = (
+                    "MOUNTAIN_OWNER_PERSISTS_UNTIL_EDGE_RELAY_OR_RELEASE"
+                )
 
         elif raw.territory is not self._owned_territory:
             self._deactivate_current(snapshot, "TERRITORY_CHANGED")
