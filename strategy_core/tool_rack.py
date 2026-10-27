@@ -106,6 +106,13 @@ class ToolRackController:
                     owner_side=decision.side,
                 )
             )
+        elif (
+            decision.territory
+            is Territory.MARKET_HEIST
+        ):
+            self._active_tool = MarketHeistTool(
+                territory_id=self._territory_id,
+            )
 
     def _deactivate_current(
         self,
@@ -181,6 +188,52 @@ class ToolRackController:
                 ownership_reason = (
                     "LATCHED_RAIL_OWNER_UNTIL_AFFIRMATIVE_HANDOFF"
                 )
+
+        elif (
+            self._owned_territory
+            is Territory.MARKET_HEIST
+        ):
+            if evidence.release_handoff_confirmed:
+                self._deactivate_current(
+                    snapshot,
+                    "HEIST_RELEASE_HANDOFF",
+                )
+                if raw.territory not in (
+                    Territory.UNKNOWN,
+                    Territory.MARKET_HEIST,
+                ):
+                    self._activate(
+                        raw,
+                        snapshot,
+                    )
+                    ownership_reason = (
+                        "HEIST_RELEASE_HANDOFF_TO_NEW_TERRITORY"
+                    )
+                else:
+                    ownership_reason = (
+                        "HEIST_RELEASE_HANDOFF_AWAITING_NEXT_TERRITORY"
+                    )
+            elif (
+                raw.territory
+                is Territory.MARKET_HEIST
+            ):
+                self._owned_side = raw.side
+                ownership_reason = (
+                    "HEIST_BOX_REMAINS_OWNER_WHILE_BOUNDED"
+                )
+            else:
+                self._deactivate_current(
+                    snapshot,
+                    "HEIST_BOX_NO_LONGER_OWNS",
+                )
+                if (
+                    raw.territory
+                    is not Territory.UNKNOWN
+                ):
+                    self._activate(
+                        raw,
+                        snapshot,
+                    )
 
         elif (
             self._owned_territory
@@ -271,6 +324,19 @@ class ToolRackController:
             if isinstance(
                 self._active_tool,
                 AlternatingMountainTool,
+            )
+            else None
+        )
+
+    @property
+    def active_heist_tool(
+        self,
+    ) -> MarketHeistTool | None:
+        return (
+            self._active_tool
+            if isinstance(
+                self._active_tool,
+                MarketHeistTool,
             )
             else None
         )
