@@ -83,6 +83,14 @@ class ShadowEngineTests(unittest.TestCase):
         self.assertTrue(
             out["accepted_opportunity_id"]
         )
+        self.assertEqual(
+            out["accepted_observed_ask"],
+            0.30,
+        )
+        self.assertEqual(
+            out["accepted_max_price"],
+            0.40,
+        )
 
     def test_shadow_output_explains_objective_block(self):
         out = ToolRackShadowEngine().evaluate(
