@@ -81,6 +81,47 @@ class ShadowFrame:
                         False,
                     )
                 ),
+                heist_takeover_confirmed=bool(
+                    physical.get(
+                        "heist_takeover_confirmed",
+                        False,
+                    )
+                ),
+                release_candidate_side=_side(
+                    physical.get(
+                        "release_candidate_side"
+                    )
+                ),
+                release_boundary_break=bool(
+                    physical.get(
+                        "release_boundary_break",
+                        False,
+                    )
+                ),
+                release_directional_expansion=bool(
+                    physical.get(
+                        "release_directional_expansion",
+                        False,
+                    )
+                ),
+                release_old_owner_failed_reextension=bool(
+                    physical.get(
+                        "release_old_owner_failed_reextension",
+                        False,
+                    )
+                ),
+                release_new_side_residence=bool(
+                    physical.get(
+                        "release_new_side_residence",
+                        False,
+                    )
+                ),
+                release_first_slowdown_only=bool(
+                    physical.get(
+                        "release_first_slowdown_only",
+                        False,
+                    )
+                ),
                 release_handoff_confirmed=bool(
                     physical.get(
                         "release_handoff_confirmed",
@@ -89,12 +130,6 @@ class ShadowFrame:
                 ),
                 release_side=_side(
                     physical.get("release_side")
-                ),
-                heist_takeover_confirmed=bool(
-                    physical.get(
-                        "heist_takeover_confirmed",
-                        False,
-                    )
                 ),
             ),
             snapshot=MarketSnapshot(
