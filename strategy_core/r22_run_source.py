@@ -12,6 +12,7 @@ from strategy_core.detectors.heist_geometry import (
 )
 from strategy_core.detectors.mountain_geometry import detect_mountain_geometry
 from strategy_core.detectors.release_geometry import build_release_probe
+from strategy_core.detectors.rail_geometry import detect_rail_geometry
 from strategy_core.config_loader import (
     ToolConfigBundle,
     load_default_tool_configs,
@@ -123,124 +124,25 @@ class R22RunShadowSource:
             else max(0.0, 900.0 - (_num(last.get("seconds_left")) or 900.0))
         )
 
-        # Use source-native structural slopes already published by the physical
-        # observer. No R22 strategy permission/route fields are consulted.
-        ema9_sides = [
-            _sign_side(_num(last.get(name)), eps=0.02)
-            for name in ("struct_slope3m", "struct_slope6m", "struct_slope9m")
-        ]
-        nonnull_ema9 = [side for side in ema9_sides if side is not None]
-        ema9_side = (
-            nonnull_ema9[0]
-            if nonnull_ema9
-            and all(side is nonnull_ema9[0] for side in nonnull_ema9)
-            else None
+        # Rail perception is a standalone physical detector with all thresholds
+        # owned by rail.json. No legacy R22 strategy permission/route fields
+        # are consulted.
+        rail = detect_rail_geometry(
+            rows,
+            self.configs.rail_detector,
         )
-
-        ema30_side = _sign_side(
-            _num(last.get("ema30_slope3m")),
-            eps=0.01,
+        ema9_side = rail.side
+        ema30_side = rail.ema30_side
+        directional_residence = rail.directional_residence
+        aligned_now = rail.ema_pair_parallel
+        persistence_seconds = rail.persistence_seconds
+        rail_alignment_fraction = (
+            rail.persistence_alignment_fraction
         )
-
-        # Directional residence is measured from raw geometry. Rail persistence
-        # deliberately tolerates shallow pullbacks/fakeouts instead of requiring
-        # every callback to remain perfectly aligned.
+        rail_residence_fraction = (
+            rail.persistence_residence_fraction
+        )
         last_ms = _num(last.get("epoch_ms"))
-        if last_ms is not None:
-            current_residence_cutoff = last_ms - 900_000.0
-            recent = [
-                row
-                for row in rows
-                if (
-                    (_num(row.get("epoch_ms")) or -1.0)
-                    >= current_residence_cutoff
-                )
-            ]
-        else:
-            recent = rows[-90:]
-        residence_votes = 0
-        residence_total = 0
-        if ema9_side is not None:
-            for row in recent:
-                btc = _num(row.get("btc_price"))
-                e9 = _num(row.get("ema9"))
-                e30 = _num(row.get("ema30"))
-                if btc is None or e9 is None or e30 is None:
-                    continue
-                residence_total += 1
-                if ema9_side is Side.YES and btc >= e9 >= e30:
-                    residence_votes += 1
-                elif ema9_side is Side.NO and btc <= e9 <= e30:
-                    residence_votes += 1
-
-        residence_fraction = (
-            residence_votes / residence_total
-            if residence_total
-            else 0.0
-        )
-        directional_residence = bool(
-            residence_total >= 8
-            and residence_fraction >= 0.62
-        )
-
-        aligned_now = bool(
-            ema9_side is not None
-            and ema9_side is ema30_side
-            and directional_residence
-        )
-
-        rail_persistence_seconds = 0.0
-        rail_alignment_fraction = 0.0
-        rail_residence_fraction = 0.0
-        if aligned_now and last_ms is not None:
-            for window_s in (1800.0, 1500.0, 1200.0, 900.0, 720.0, 600.0):
-                cutoff = last_ms - window_s * 1000.0
-                window_rows = [
-                    row for row in rows
-                    if (_num(row.get("epoch_ms")) or -1.0) >= cutoff
-                ]
-                if len(window_rows) < 8:
-                    continue
-                align = 0
-                reside = 0
-                usable = 0
-                first_window_ms = None
-                for row in window_rows:
-                    ts = _num(row.get("epoch_ms"))
-                    s9 = _sign_side(_num(row.get("struct_slope3m")), eps=0.02)
-                    s30 = _sign_side(_num(row.get("ema30_slope3m")), eps=0.01)
-                    btc = _num(row.get("btc_price"))
-                    e9 = _num(row.get("ema9"))
-                    e30 = _num(row.get("ema30"))
-                    if (
-                        ts is None
-                        or btc is None
-                        or e9 is None
-                        or e30 is None
-                    ):
-                        continue
-                    if first_window_ms is None:
-                        first_window_ms = ts
-                    usable += 1
-                    if s9 is ema9_side and s30 is ema9_side:
-                        align += 1
-                    if (
-                        (ema9_side is Side.YES and btc >= e9 >= e30)
-                        or (ema9_side is Side.NO and btc <= e9 <= e30)
-                    ):
-                        reside += 1
-                if usable < 8 or first_window_ms is None:
-                    continue
-                align_fraction = align / usable
-                reside_fraction = reside / usable
-                span_s = max(0.0, (last_ms - first_window_ms) / 1000.0)
-                if align_fraction >= 0.70 and reside_fraction >= 0.60:
-                    rail_persistence_seconds = span_s
-                    rail_alignment_fraction = align_fraction
-                    rail_residence_fraction = reside_fraction
-                    break
-
-        persistence_seconds = rail_persistence_seconds
 
         arcs = self._unique_arcs(rows)
         alternating = bool(
@@ -283,10 +185,7 @@ class R22RunShadowSource:
             mountain=mountain,
         )
 
-        rail_established = bool(
-            aligned_now
-            and persistence_seconds >= 900.0
-        )
+        rail_established = rail.qualified_rail
 
         # A true established Rail owns before a sideways-box interpretation.
         # A qualified Heist owns before Alternating Mountain. Unresolved
@@ -311,8 +210,8 @@ class R22RunShadowSource:
         physical = PhysicalEvidence(
             ema9_direction=ema9_side,
             ema30_direction=ema30_side,
-            ema_pair_parallel=aligned_now,
-            directional_residence=directional_residence,
+            ema_pair_parallel=rail.ema_pair_parallel,
+            directional_residence=rail.directional_residence,
             # Live raw Rail qualification currently uses tolerant 1–2 contract
             # persistence; repeated rolling-Mountain graduation remains a core
             # capability but is not fabricated from alternating arc counts.
@@ -348,6 +247,10 @@ class R22RunShadowSource:
                 "persistence_seconds": persistence_seconds,
                 "rail_alignment_fraction": rail_alignment_fraction,
                 "rail_residence_fraction": rail_residence_fraction,
+                "rail_current_residence_fraction": (
+                    rail.current_residence_fraction
+                ),
+                "rail_detector": dict(rail.diagnostics),
                 "recent_arcs": arcs,
                 "mountain": mountain.tool_metadata(),
                 "heist": heist.tool_metadata(),
