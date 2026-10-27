@@ -67,6 +67,52 @@ class ShadowCompareTests(unittest.TestCase):
         self.assertAlmostEqual(row["price_delta"],0.13)
         self.assertEqual(report["summary"]["matched_same_side"],1)
 
+    def test_duplicate_actionable_events_same_opportunity_count_once(self):
+        timeline={"events":[
+            territory(1,1000,"DOWN_RAIL","NO"),
+            intent(2,1010,"NO",0.39,"OP1"),
+            intent(3,1020,"NO",0.35,"OP1"),
+        ]}
+        entries=[]
+        report=compare_shadow_to_paper(timeline,entries)
+        self.assertEqual(
+            report["summary"]["shadow_actionable_events"],
+            2,
+        )
+        self.assertEqual(
+            report["summary"]["shadow_unique_opportunities"],
+            1,
+        )
+        self.assertEqual(
+            report["summary"]["missed_shadow"],
+            1,
+        )
+
+    def test_same_time_other_ticker_never_matches(self):
+        timeline={"events":[
+            territory(1,1000,"DOWN_RAIL","NO"),
+            intent(2,1010,"NO",0.30,"OP1"),
+        ]}
+        entries=[
+            PaperEntry(
+                index=0,ts=1015,ticker="KX2",trade_id="8",
+                side="NO",price=0.31,reason="legacy"
+            )
+        ]
+        report=compare_shadow_to_paper(timeline,entries)
+        self.assertEqual(
+            report["summary"]["matched_same_side"],
+            0,
+        )
+        self.assertEqual(
+            report["summary"]["paper_only"],
+            1,
+        )
+        self.assertEqual(
+            report["summary"]["missed_shadow"],
+            1,
+        )
+
     def test_opposite_paper_entry_is_called_out(self):
         timeline={"events":[
             territory(1,1000,"DOWN_RAIL","NO"),
