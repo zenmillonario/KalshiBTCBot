@@ -2,5 +2,21 @@
   "regular_size": 10.0,
   "lean_favored_size": 15.0,
   "soft_max_price": 0.50,
-  "release_ends_box_immediately": true
+  "release_ends_box_immediately": true,
+  "detector": {
+    "candidate_windows_s": [180.0, 360.0, 540.0, 720.0],
+    "min_observed_span_s": 150.0,
+    "min_box_range_dollars": 20.0,
+    "prominence_multiple": 2.0,
+    "edge_band_fraction": 0.12,
+    "edge_band_min_dollars": 3.0,
+    "center_low_fraction": 0.35,
+    "center_high_fraction": 0.65,
+    "minimum_lower_visits": 2,
+    "minimum_upper_visits": 2,
+    "minimum_center_traversals": 2,
+    "max_ema9_drift_fraction": 0.45,
+    "max_ema30_drift_fraction": 0.30,
+    "lean_min_drift_fraction": 0.08
+  }
 }
