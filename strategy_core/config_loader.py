@@ -7,6 +7,7 @@ from pathlib import Path
 from strategy_core.detectors.heist_geometry import HeistGeometryConfig
 from strategy_core.detectors.mountain_geometry import MountainGeometryConfig
 from strategy_core.detectors.release_geometry import ReleaseGeometryConfig
+from strategy_core.detectors.rail_geometry import RailGeometryConfig
 from strategy_core.tools.heist import HeistConfig
 from strategy_core.tools.mountain import MountainConfig
 from strategy_core.tools.rail import RailConfig
@@ -16,6 +17,7 @@ from strategy_core.tools.release import ReleaseConfig
 @dataclass(frozen=True)
 class ToolConfigBundle:
     rail: RailConfig
+    rail_detector: RailGeometryConfig
     mountain: MountainConfig
     mountain_detector: MountainGeometryConfig
     heist: HeistConfig
@@ -56,6 +58,45 @@ def load_rail_config(
         ),
         reentry_after_exit=bool(
             raw["reentry_after_exit"]
+        ),
+    )
+
+
+def load_rail_detector_config(
+    path: str | Path,
+) -> RailGeometryConfig:
+    raw = _read(path)["detector"]
+    return RailGeometryConfig(
+        ema9_slope_epsilon=float(
+            raw["ema9_slope_epsilon"]
+        ),
+        ema30_slope_epsilon=float(
+            raw["ema30_slope_epsilon"]
+        ),
+        current_residence_window_s=float(
+            raw["current_residence_window_s"]
+        ),
+        current_residence_min_fraction=float(
+            raw["current_residence_min_fraction"]
+        ),
+        current_residence_min_samples=int(
+            raw["current_residence_min_samples"]
+        ),
+        persistence_windows_s=tuple(
+            float(value)
+            for value in raw["persistence_windows_s"]
+        ),
+        persistence_alignment_min_fraction=float(
+            raw["persistence_alignment_min_fraction"]
+        ),
+        persistence_residence_min_fraction=float(
+            raw["persistence_residence_min_fraction"]
+        ),
+        persistence_min_samples=int(
+            raw["persistence_min_samples"]
+        ),
+        qualification_min_persistence_s=float(
+            raw["qualification_min_persistence_s"]
         ),
     )
 
@@ -235,6 +276,9 @@ def load_default_tool_configs() -> ToolConfigBundle:
 
     return ToolConfigBundle(
         rail=load_rail_config(rail_path),
+        rail_detector=load_rail_detector_config(
+            rail_path
+        ),
         mountain=load_mountain_config(mountain_path),
         mountain_detector=load_mountain_detector_config(
             mountain_path
