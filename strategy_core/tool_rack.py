@@ -2,6 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from strategy_core.config_loader import (
+    ToolConfigBundle,
+    load_default_tool_configs,
+)
 from strategy_core.lane_resolver import LaneResolver
 from strategy_core.router import (
     PhysicalEvidence,
@@ -53,8 +57,10 @@ class ToolRackController:
     def __init__(
         self,
         router: TerritoryRouter | None = None,
+        configs: ToolConfigBundle | None = None,
     ) -> None:
         self.router = router or TerritoryRouter()
+        self.configs = configs or load_default_tool_configs()
         self.lane_resolver = LaneResolver()
         self._owned_territory = Territory.UNKNOWN
         self._owned_side: Side | None = None
@@ -111,6 +117,7 @@ class ToolRackController:
                 territory_id=self._territory_id,
                 side=decision.side,
                 activated_at=snapshot.now_ts,
+                config=self.configs.rail,
             )
         elif (
             decision.territory
@@ -126,6 +133,7 @@ class ToolRackController:
         ):
             self._active_tool = MarketHeistTool(
                 territory_id=self._territory_id,
+                config=self.configs.heist,
             )
 
         if (
@@ -137,6 +145,7 @@ class ToolRackController:
             self._release_watcher = ReleaseWatcher(
                 territory_id=self._territory_id,
                 owner_side=self._owned_side,
+                config=self.configs.release,
             )
 
     def _deactivate_current(
