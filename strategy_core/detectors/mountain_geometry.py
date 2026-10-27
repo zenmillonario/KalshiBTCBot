@@ -233,9 +233,27 @@ def detect_mountain_geometry(
     episodes = _episodes(rows)
     if not episodes:
         return MountainGeometryDetection(
-            False, None, None, False, False, False, False, False,
-            False, False, None, None, 0, None, None, None, None,
-            None, None, None, None, {"reason": "NO_ARC_EPISODES"},
+            qualified_alternating_mountain=False,
+            owner_side=None,
+            current_arc_id=None,
+            mature_edge=False,
+            edge_window_active=False,
+            stall=False,
+            hesitation=False,
+            failed_reextension=False,
+            meaningful_retreat=False,
+            strong_active_release=False,
+            comparable_duration_mean_s=None,
+            comparable_duration_median_s=None,
+            comparable_count=0,
+            maturity_progress=None,
+            edge_age_s=None,
+            owner_extreme_btc=None,
+            retreat_dollars=None,
+            edge_tolerance_dollars=None,
+            edge_window_s=None,
+            edge_id=None,
+            diagnostics={"reason": "NO_ARC_EPISODES"},
         )
 
     current = episodes[-1]
