@@ -11,6 +11,7 @@ __all__ = [
     "HeistGeometryConfig",
     "HeistGeometryDetection",
     "detect_heist_geometry",
+    "ReleaseGeometryConfig",
     "ReleaseGeometryDetection",
     "ReleaseProbe",
     "build_release_probe",
@@ -24,6 +25,7 @@ from .heist_geometry import (
 )
 
 from .release_geometry import (
+    ReleaseGeometryConfig,
     ReleaseGeometryDetection,
     ReleaseProbe,
     build_release_probe,
