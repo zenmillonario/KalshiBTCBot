@@ -28,3 +28,12 @@
 
 ## Incoming new run
 User will add further observations while the 45-minute PAPER run proceeds. Append each observation with timing/trade ID, image or quote evidence if supplied, and whether it is provisional or validated. **No strategy code changes were authorized by this discussion.**
+
+## New 45m PAPER run — trade #1 YES early-exit observation (2026-11-05, screen captured around 15:34:14–15:34:15 ET)
+- Source: user's Nautilus screenshot from ongoing new PAPER run; screen header appears to identify `TOOL_RACK_PAPER_20261105T201005Z_PID18244`. Treat as screenshot observation pending exact export corroboration.
+- Trade table: **#1 YES entry $0.370, exit $0.620, +56.11% net, +$5.42 net, +$6.25 gross**, recorded around 15:30 ET. User: **“1 out way early.”**
+- At screenshot time 15:34 ET, same 15:45-settling contract showed **YES bid $0.810 / ask $0.820**, BTC current ~$76,083.29 versus target ~$75,914.65, +$168.64 above target; chart visibly shows a large green impulse and higher continuation after the entry/exit period. This is later favorable mark-to-market evidence, NOT proof that any hypothetical alternate exit would have filled or made a specific profit.
+- **Next-forensics questions:** Exact #1 entry and exit timestamps; Commander exit category and structure/floor reasons; current EMA9 parent and Heist/Release watcher at exit; whether the exit fired on first slowdown / box oscillation while the new upward impulse was still expanding; how profit floor and quote-echo levels evolved, whether parent handoff to MAIN was earned before exit; whether a protective whole-lot trailing floor could avoid premature exit without sacrificing #4's proven winner-protection.
+- **Scope:** Analyze as **positive entry, potential too-early exit**; do not disable protection generally, and do not assume a guaranteed alternative profit. Preserve one Commander, MAIN/TACTICAL independence, EMA9 priority and PAPER-only execution.
+- Also visible #2 NO $0.190 opened around 15:34 with 49 NO contracts; **do not adjudicate #2 from a still-open screenshot**. Review eventual outcome and physical context in exported event/quote timeline.
+- **Status:** Observation captured only. No new run strategy code change authorized or applied.
