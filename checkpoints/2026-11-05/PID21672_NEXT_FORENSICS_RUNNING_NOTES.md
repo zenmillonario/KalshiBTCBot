@@ -37,3 +37,31 @@ User will add further observations while the 45-minute PAPER run proceeds. Appen
 - **Scope:** Analyze as **positive entry, potential too-early exit**; do not disable protection generally, and do not assume a guaranteed alternative profit. Preserve one Commander, MAIN/TACTICAL independence, EMA9 priority and PAPER-only execution.
 - Also visible #2 NO $0.190 opened around 15:34 with 49 NO contracts; **do not adjudicate #2 from a still-open screenshot**. Review eventual outcome and physical context in exported event/quote timeline.
 - **Status:** Observation captured only. No new run strategy code change authorized or applied.
+
+
+## New 45m PAPER run — trades #2 through #6 closed (Nautilus screenshot review, 2026-11-05)
+Source: Five user-provided **Looking Glass trade-review screenshots** following the #1 snapshot, with x-axis showing approximately 15:20–16:10 ET across views. These numbers are on-screen realized PAPER ledger amounts; exact timestamps, best executable quotes, and Commander decisions require export. **Do not confuse these new-run trade IDs with the original PID21672 trades.**
+
+| New-run trade | Role on screen | Entry → exit | Contracts | Gross P&L | Fees | PAPER net | Net % | Screen exit type |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| **#2 NO** | TACTICAL | $0.190 → $0.360 | 49 | +$8.33 | $1.33 | **+$7.00** | +71.14% | EXIT |
+| **#3 NO** | TACTICAL | $0.055 → $0.000 | 170 | −$9.35 | $0.62 | **−$9.97** | −100.00% | SETTLEMENT |
+| **#4 NO** | TACTICAL | $0.260 → $0.280 | 36 | +$0.72 | $1.00 | **−$0.28** | −2.84% | EXIT |
+| **#5 NO** | TACTICAL | $0.100 → $0.150 | 94 | +$4.70 | $1.44 | **+$3.26** | +32.60% | EXIT |
+| **#6 NO** | PRIMARY | $0.088 → $0.350 | 267 | +$70.03 | $5.76 | **+$64.27** | +257.96% | EXIT |
+
+New-run #2–#6 realized net subtotal **+$64.28 PAPER**; with preceding screenshot-confirmed new-run #1 +$5.42, six-trade subtotal **+$69.70 PAPER**. Not necessarily the final run total. All proceeds whole-position as presented on screen; confirm against export.
+
+### Trade-level location and mission notes
+- **#2 NO** — screen entry mission source **15:34:12 ET**; holding destination EMA9 RETURN ~$75,964.03 ±$23.81, parent leg `P002L000009`, local `G002A000030`. Apparent NO entry near a sharp small upward extension, then successful downward excursion. Candidate **positive Heist upper-edge-to-return control**. Verify entry/exit placement and whether profit was prematurely capped.
+- **#3 NO** — screen entry mission source **15:40:52 ET**; holding destination EMA9 RETURN ~$75,993.18 ±$9.25, parent `P002L000013`, local `G002A000038`. Chart shows continuation UP after near-top cheap NO purchase; NO settles worthless at zero at the 15:45 contract expiry. Candidate **late cheap counter-UP fade / insufficient physical return and runway** negative control. Research candle/wick rejection quality, latest effective EMA9 parent, TP distance, clock, and whether first-minute/last-minute regulations were met; do not treat cheap quote alone as evidence that NO was favorable.
+- **#4 NO** — screen entry mission source **15:47:30 ET**; BOX EDGE destination ~$76,002.03 ±$23.40, parent `P002L000013`, local `G002A000050`. Small quote gain ($0.26→$0.28) failed to cover PAPER modeled fees. **Fee-drag / micro-exit negative control**. Check whether whole-lot exit protected from a larger loss or was an over-eager take-profit; cannot decide from screenshot alone.
+- **#5 NO** — screen entry mission source **15:52:34 ET**; EMA9 RETURN ~$76,132.58 ±$15.13, parent `P002L000016`, local `G002A000056`. Tactical NO upper-edge scout earned +32.60% net, followed by another top opportunity (#6). Candidate positive profitable scalp, evaluate whether exit was structurally justified rather than reflexive.
+- **#6 NO** — screenshot shows **PRIMARY** position role, **purpose, destination, parent leg, local swing, and entry mission source unavailable** (instrumentation gap requiring review). Very cheap $0.088 NO purchased around a chart high and exited at $0.350 around a strong bearish candle near 15:55, with EMA9 rising but BTC retracing downward toward EMA30. **Strong positive entry/whole-lot exit example**; evaluate how the position gained PRIMARY custody and why mission parent data are unavailable. Do not assume a full new parent reversal: the visible candle alone does not prove one.
+
+### Cross-trade forensic hypotheses
+1. Why did #3's very cheap NO expire worthless during sustained UP parent movement, while #6's similarly inexpensive NO captured a rapid local downward excursion? Compare **actual top maturity, wick rejection, EMA9 parent age/slope, parent-leg runway, terminal vs mid-leg location, target and contract clock, and quote echo**; this is a higher-value test of *Heist upper edges inside directional territory* than just price caps.
+2. Examine **#2 and #5 positive tactical rotations versus #4 after-fee loss**: small increments can be structurally correct but economically nonviable after spread+fees. Avoid universal fixed-profit thresholds without analyzing post-entry favorable-excursion and subsequent adverse-excursion in the full ledger.
+3. Preserve **#1 premature-exit complaint**, **#6 positive large capture**, and prior-run **#4 protection positive control** when tuning hold rules. Look for when tactical returns should convert to longer MAIN custody; never transfer based only on a candle or profit size.
+4. **#6 missing provenance fields** must be traced: missing mission metadata under PRIMARY is a diagnostic integrity concern, not proof the trading logic was unauthorized. Verify source lane and custody transition from events.
+5. No changes authorized to existing PAPER code yet. This is forensic intake; complete source archive and event/quote/decision evidence are required before any engine correction or counterfactual performance claims.
