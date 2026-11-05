@@ -1,0 +1,67 @@
+diff --git a/strategy_core/commander_candidates.py b/strategy_core/commander_candidates.py
+--- a/strategy_core/commander_candidates.py
++++ b/strategy_core/commander_candidates.py
+@@ -1821,9 +1821,13 @@ def _physical_entry_candidates(snapshot: MarketSnapshot) -> tuple[ToolIntent, ..
+     current_age = _num(diagnostics.get("current_age_s"))
+     parent_age = _num(parent.get("parent_age_s"))
+     contract_age = float(snapshot.contract_age_s)
++    # A long-lived *parent* does not establish that the *current child arc*
++    # crossed the contract boundary. PID21672 #2 showed a 44s child inside a
++    # 93s contract while the parent was 363s old: borrowing parent age
++    # mistakenly granted the special rollover continuation entry.
++    # Preserve the parent's separate authority in normal MAIN/Rail briefs.
+     inherited_current_arc = bool(
+         current_age is not None and current_age > contract_age + 1.0
+-        or parent_age is not None and parent_age > contract_age + 1.0
+     )
+     explicit_starting_owner = bool(
+         ownership == "STARTING_LEG_FAVORED" and ownership_side is owner
+diff --git a/strategy_core/mission_policy.py b/strategy_core/mission_policy.py
+--- a/strategy_core/mission_policy.py
++++ b/strategy_core/mission_policy.py
+@@ -17,6 +17,7 @@ from statistics import median
+ from typing import Any, Mapping
+ 
+ from strategy_core.mission_scopes import PARENT_MISSION_PURPOSES, qualified_full_arc_candidate
++from strategy_core.directional_parent import directional_parent_evidence
+ from strategy_core.paper_execution import PriceLevel, _sweep, nominal_taker_fee
+ from strategy_core.source_freshness import current_source_is_fresh, current_source_receipt
+ from strategy_core.types import Action, Lane, MarketSnapshot, Side, ToolIntent
+@@ -558,7 +559,36 @@ class MissionPolicy:
+         # Conditional/history thesis is advisory once the current Rail has
+         # complete causal provenance.  A fresh process with missing history or
+         # exact target may not bootstrap permission from a raw Rail label.
+-        main = thesis_main or physical_rail_main
++        # PID21672 #3: an already-authorized MAIN Rail proposal was converted
++        # into tactical custody because mission history was not READY. That
++        # caused an unrelated fixed three-minute TACTICAL exit even while the
++        # demonstrated NO parent was alive. Custody may use the same causal,
++        # current directional-parent proof as the entry; this grants neither
++        # a new entry nor a higher quote ceiling. Advisory WAIT remains WAIT.
++        parent_receipt = current_source_receipt(snapshot, source, max_age_seconds=3.)
++        proved_parent = directional_parent_evidence(snapshot)
++        validated_rail_main_custody = bool(
++            intent.tool == "RAIL"
++            and intent.reason in {"RAIL_MAIN_VALUE", "RAIL_EMA9_DIP_VALUE"}
++            and intent.lane is Lane.MAIN
++            and intent.metadata.get("dual_lane") == "MAIN"
++            and intent.metadata.get("position_role") == "PRIMARY"
++            and _map(intent.metadata.get("dual_lane_parent_evidence")).get("qualified") is True
++            and proved_parent.get("qualified") is True
++            and proved_parent.get("side") == side
++            and _num(proved_parent.get("source_ms")) == source
++            and parent.get("status") == "ACTIVE"
++            and parent.get("supported") is True
++            and parent.get("invalidated") is not True
++            and parent.get("side") == side
++            and bool(parent.get("id"))
++            and _num(parent.get("source_ms")) == source
++            and parent.get("continuity_generation") == context.get("continuity_generation")
++            and snapshot.metadata.get("physical_current") is True
++            and _num(_map(snapshot.metadata.get("current_geometry")).get("epoch_ms")) == source
++            and parent_receipt is not None
++        )
++        main = thesis_main or physical_rail_main or validated_rail_main_custody
+         parent_mission = main or arc_return
+         box = _map(snapshot.metadata.get("heist"))
+         box_proof = _map(box.get("repeatability_proof"))
