@@ -1,0 +1,57 @@
+{
+  "regular_size": 10.0,
+  "lean_favored_size": 15.0,
+  "soft_max_price": 0.35,
+  "release_ends_box_immediately": true,
+  "detector": {
+    "candidate_windows_s": [
+      180.0,
+      360.0,
+      540.0,
+      720.0,
+      900.0,
+      1200.0,
+      1800.0
+    ],
+    "min_observed_span_s": 150.0,
+    "min_box_range_dollars": 20.0,
+    "prominence_multiple": 2.0,
+    "edge_band_fraction": 0.12,
+    "edge_band_min_dollars": 3.0,
+    "center_low_fraction": 0.35,
+    "center_high_fraction": 0.65,
+    "minimum_lower_visits": 2,
+    "minimum_upper_visits": 2,
+    "minimum_center_traversals": 2,
+    "max_ema9_drift_fraction": 0.65,
+    "max_ema30_drift_fraction": 0.45,
+    "lean_min_drift_fraction": 0.08,
+    "max_box_range_price_fraction": 0.0015,
+    "compression_drift_fraction": 0.3,
+    "parallel_drift_difference_fraction": 0.18
+  },
+  "floor_policy": {
+    "arm_roi": 0.4,
+    "trail_fraction": 0.03,
+    "min_age_s": 30.0,
+    "immediate_arm_roi": null
+  },
+  "late_counter_window_s": 60.0,
+  "late_counter_max_ask": 0.01,
+  "parallel_profit_arm_roi": 0.4,
+  "parallel_profit_trail_fraction": 0.03,
+  "wide_exceptional_max_price": 0.4,
+  "wide_normal_max_price": 0.35,
+  "quote_wave_scalp": {
+    "enabled": true,
+    "entry_max_ask": 0.08,
+    "min_reprice_spread": 0.05,
+    "min_peak_ask": 0.13,
+    "lookback_s": 60.0,
+    "min_cheap_revisits": 2,
+    "size_tier": 10.0,
+    "profit_arm_roi": 0.6,
+    "profit_trail_fraction": 0.1,
+    "max_hold_s": 120.0
+  }
+}

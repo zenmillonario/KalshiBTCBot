@@ -1,0 +1,5 @@
+{
+  "minimum_gross_roi": 0.40,
+  "quote_response_window_s": 180.0,
+  "minimum_response_pairs": 3
+}

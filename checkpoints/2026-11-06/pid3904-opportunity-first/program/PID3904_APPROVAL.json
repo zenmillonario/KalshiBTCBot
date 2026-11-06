@@ -1,0 +1,188 @@
+{
+  "added_core_files": {},
+  "approval": {
+    "basis": "Continuation of authorized next-run refinements, explicit original-trade feedback and request to update Nautilus pattern lines.",
+    "current_user_observation": "worked and did good trades 1-2; not 3 and 4, tried too early to fade the sprout.",
+    "current_user_visual_request": "if not too much trouble lets update the nautilus spaghetti lines like we talked.",
+    "earlier_visible_visual_scope": "Pattern continuation: continue the rail in a bright color, or show the next alternating mountain; support research comparison.",
+    "excluded": [
+      "No generic fade ban",
+      "No speculation about original-run hypothetical profits",
+      "No full original run replay claimed",
+      "No loosening armed whole-lot floor",
+      "No new adviser veto",
+      "No live trading authority",
+      "No automatic reversal at rail maturity; no post-20:15 prediction credited to stopped PID14156 bot",
+      "No new TACTICAL entry without actual source-current Heist lower-edge intent and 6/9s turn"
+    ],
+    "pid14156_operator_request": "2026-11-05 ET: agree, go on; source-bound review of territory transfer and why Heist was detected ahead but Commander rejected 19:50 lower-edge same-gap return; user requests positive EMA9/Heist participation and patience at false 12-second Mountain tops.",
+    "pid14156_scope": "One Commander Heist same-EMA-gap-side already-proposed current lower-edge physical return exception, and fast Mountain counter-entry requiring current parent-scale maturity. No hypothetical fills, floor/custody/quote-window changes or live orders.",
+    "pid18244_authorization": "User explicitly approved the forensic repair sequence on 2026-11-05: prevent #3 false MAIN promotion; restore #4 tactical first-floor while retaining #2/#5 and #6 controls. User approved continued 45-minute Windows PAPER development.",
+    "pid21672_gate_recovery_note": "Wider frozen positive controls exposed PID17588 #5 first-minute inherited native DOWN leg blocked by new ordinary MAIN transfer guard; restore only preauthorized physically live inherited-opening continuation, while PID21672 #2 remains WAIT.",
+    "pid21672_operator_request": "Forensics plus next PAPER build; restore existing live-parent/confirmed-Release priority over inherited opposite gap on ordinary MAIN Mountain entries.",
+    "pid21672_scope": "Only verified current CONFIRMED_RELEASE_TRANSFER opposite MAIN Mountain; preserves TACTICAL and Rail routes pending further review.",
+    "pid3860_operator_request": "2026-11-06: User explicitly authorized patient anticipation at matured, stalled excursions (excluding active breakout/huge drop/running sloped Mountain), not first pullback, with contract TP/runway; prefers collecting verified hovered fee-positive profit even if later continuation goes further.",
+    "scope": "Two narrow Commander/PAPER custody policy corrections plus existing lossless upload-budget repair; no entry strategy, market prices, budgets, time windows, trade sizes, live execution or Nautilus changes.",
+    "source_run": "TOOL_RACK_PAPER_20261105T201055Z_PID18244"
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C",
+    "PID19996_RAIL_VALUE",
+    "PID19996_SOURCE_FRESHNESS",
+    "PID19996_RESEARCH_IDENTITY",
+    "PID19996_COMPLETE_UPLOADS",
+    "PID4596_NULL_EXIT_ESTIMATE",
+    "PID17588_SCOUT_LATE_TP",
+    "PID15184_CURRENT_PARENT_CALIBRATION",
+    "PID4824_RECOVERY_IDENTITY",
+    "PID4824_FLOOR_AUTHORITY",
+    "PID10656_FRESH_SPROUT_HEIST_QUALITY",
+    "PID10656_LOOKING_GLASS_PATTERNS",
+    "PID21672_CONFIRMED_LIVE_PARENT_TRANSFER",
+    "PID18244_CURRENT_PARENT_PROMOTION",
+    "PID18244_COUNTERPARENT_TACTICAL_FLOOR",
+    "PID18244_LOSSLESS_SMALL_UPLOADS",
+    "PID19616_LEVEL_MATCH_PRECISION",
+    "PID19616_HEIST_STALLED_EDGE_PARENT_MOMENTUM",
+    "PID19616_MATURE_PREMIUM_OPENING_PACE",
+    "PID14156_EARNED_SAME_GAP_HEIST_LOWER_RETURN",
+    "PID14156_TRUE_PARENT_SCALE_FAST_MOUNTAIN_EDGE",
+    "PID10760_CAUSAL_PREOPEN_YOUNG_EMA9_CONTINUATION",
+    "PID23160_WIDE_HEIST_REPEATABLE_PHYSICAL_OWNERSHIP",
+    "PID23160_EARNED_CURRENT_EMA9_PARENT_VALUE_REJOIN",
+    "PID23160_COUNTERPARENT_LEVEL_SUSTAINED_REJECTION",
+    "PID3860_MATURE_ROLLOVER_PRICE_RETREAT_NO_CHASE",
+    "PID3860_FEE_POSITIVE_MATURE_STALL_COLLECTION",
+    "PID14048_EARNED_EDGE_BOUNDED_QUOTE_VALUE_WINDOW",
+    "PID14048_NEAR_PEAK_MATURE_STALL_NET_COLLECTION"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "changed_core_files": {
+    "strategy_core/commander.py": {
+      "baseline_sha256": "6511c85cf0ceb434a15a895f3c52708c89667e5a3b31c514cc92f104e7f91fe1",
+      "release_sha256": "f7074d1d540dd22f65d8c35b332ec2907221028ff4a5eafbf4c051988ff33e93"
+    },
+    "strategy_core/commander_candidates.py": {
+      "baseline_sha256": "db75778ef91e3b8df27741bebff3884817ef21d513aa6722cc6bf3a7adadb62d",
+      "release_sha256": "c224c731597fa51687ed799b5e37661842740edc46426497ce58b2841e980492"
+    },
+    "strategy_core/custody_evidence.py": {
+      "baseline_sha256": "98b6e98dc1dd353ac88c80753f6143922dbb239bebcb4ecf047d1ef126cdd497",
+      "release_sha256": "0c8825a5271bb63813ee453dcf8dde016ede5a146cf578da1dd361e0dc2c7ba3"
+    },
+    "strategy_core/detectors/heist_geometry.py": {
+      "baseline_sha256": "6e887ef7af526af289e45e54269412b35e249e2547af9f33fc3648e3a228a513",
+      "release_sha256": "791e9e7ca015eb02a5e945b81b1a907b6e7f28b73b101c10cebc96f0232ef98f"
+    },
+    "strategy_core/looking_glass.py": {
+      "baseline_sha256": "64d9239cb08fd88972a73967baae8c6a742e16536d76e4c7f3ab24db3a139aba",
+      "release_sha256": "d2315e327a8f4035db878443e2ecdd93ade37f480bbaf3f0712efe39f3b04b28"
+    },
+    "strategy_core/nautilus/PROVENANCE.json": {
+      "baseline_sha256": "c65355877528bab2d72bb4c5c7f2272220d1608f748308d3cafc1d8ceb2130c8",
+      "release_sha256": "acb6c81fe10aa57cec01c2bea58449714da74abe23767cfa9ae542daf7f85fe0"
+    },
+    "strategy_core/nautilus/app.js": {
+      "baseline_sha256": "22f41b67f1b66113fe316aceb6fcb6d0797a5f2c1f24e799ba54c843cd242b63",
+      "release_sha256": "7899748e2d572b9df422a52e7092dd2403f91fb3db1bcbf4bdee2ccff03954ae"
+    },
+    "strategy_core/nautilus/bridge.css": {
+      "baseline_sha256": "335e8a9569bd199188962dde44a4436a1d4c588ba28058dafeda9a81a2931e47",
+      "release_sha256": "30d37846d72f994bb90a167e47f6e900feb4f2ba09f6f56454c8374472b52cbd"
+    },
+    "strategy_core/nautilus/chart.js": {
+      "baseline_sha256": "eea8857e0f7876c5c120e30588d052f26150941fbecbb809372222b8e1b1f2e1",
+      "release_sha256": "862cc29acd0595c9f122b9862732b956a7c02b3ede41ee3449461de53eb6b5ee"
+    },
+    "strategy_core/nautilus/index.html": {
+      "baseline_sha256": "71520c931219b998deb09eafc1a3b9cb717617b07515b77362f46c638f24aaf0",
+      "release_sha256": "df2fcdea0c6c506e9a0a69bcc52fdcce8ba496819fe04ae09c68c5813f6f2df6"
+    },
+    "strategy_core/nautilus_projection.py": {
+      "baseline_sha256": "1272ca888003b4818fd7bddaf54e0f36479d384f6775433c2b0a576c75547ada",
+      "release_sha256": "a583c887fbdf04ed6f23b211198157832e8dad14fd76cddf08febf2e903e5aba"
+    },
+    "strategy_core/paper_runtime.py": {
+      "baseline_sha256": "31d20b51772f0f2fb9a750348abad12a6340750c42050570e925660924abf6cb",
+      "release_sha256": "c02af95418283848190a54a23c49a8dcbf984bc74324616c9208b6cc8f46a100"
+    },
+    "strategy_core/tool_rack.py": {
+      "baseline_sha256": "6f9cffdc27c12eefb35e8cd2035f80fcbf4a99360c8f341709cf44d25763524b",
+      "release_sha256": "5580aaf1bf3361a7fd265d19d1dc32ed9f391c4c7fa89cae4c471c17acb62d74"
+    }
+  },
+  "default_workflow_change": "None: 45-minute PAPER entry window, normal drain, verified original archive and numbered upload parts; replay remains optional.",
+  "description": "Causal operator-approved rollover and profit collection refinements; 7,776-frame original PID3860 read-only chronology, source-bound positive/negative controls and full historical release gate required.",
+  "excluded_changes": [
+    "No global EMA9/EMA30-cross entry requirement",
+    "No durable forecast archive claim",
+    "No source-clock rewrite or relaxed replay identity gate",
+    "No alternative full-run profit claim",
+    "No real venue order authority",
+    "No price cap, lot size, custody, floor or fee change; only scoped physical admission thresholds changed",
+    "No general first-minute permission: existing operator-authorized exception strictly for source-evidenced rollover continuation with new bounded pre-open observation"
+  ],
+  "historical_approval": "PREVIOUS_RELEASE_APPROVAL.json",
+  "immediate_previous_approval": "PID4824_APPROVAL.json",
+  "immediate_prior_release_zip_sha256": "4d41d7d4a837c76d7271e458ae0923825502abd522d50fdae0987ebbfb04e594",
+  "negative_controls": [
+    "PID19616 #3 failed-level $32.52 overshoot",
+    "PID19616 #7 near-zero microstall against DOWN parent",
+    "PID19616 #8 $0.51 mature inherited NO with only $1.90 BTC60 net",
+    "PID10760 21:45:21/21:45:25 price still retreating and source gap NO: WAIT",
+    "PID10760 21:45:40+ ask above $0.55: WAIT",
+    "PID10760 no pre-open continuity/stale book/unproven TP: WAIT"
+  ],
+  "original_run_archive_sha256": "31eea05ad08bae678bae1efaa5eb24053dc513f6d7987049d7a10aa7c2b97c05",
+  "original_run_id": "TOOL_RACK_PAPER_20261106T091604Z_PID14048",
+  "positive_controls": [
+    "PID18244 #6 sub20 Mountain upper-edge",
+    "PID19616 #2/#4/#5/#6 bounded Heist",
+    "PID15740 53c earned opening",
+    "PID17224 true support return",
+    "PID21672 supported parent transfer",
+    "PID18244 whole-lot floor",
+    "PID10760 21:45:30 actual physical-source frame YES .53 eligible as decision only"
+  ],
+  "previous_package_sha256": "180a120d4096b7489fdc648cc34d55c505f98af63df68ec11d322d6320a7aff6",
+  "previous_source_manifest": "PID4824_SOURCE_SHA256.json",
+  "previous_source_manifest_sha256": "7adbce1236dcde4f13174c2dc1fa3d7f0edb67abad4b51b256c061a08382f873",
+  "recorded_counterfactual_performed": false,
+  "recorded_run_id": "TOOL_RACK_PAPER_20261106T091604Z_PID14048",
+  "recorded_run_sha256": "31eea05ad08bae678bae1efaa5eb24053dc513f6d7987049d7a10aa7c2b97c05",
+  "release_id": "TACHYOS_PID14048_QUOTE_EDGE_VALUE_NEARPEAK_45M_PAPER_20261106",
+  "schema": "tachyos.approved_strategy_changes.v7",
+  "scope": {
+    "PID10656_FRESH_SPROUT_HEIST_QUALITY": "Apply existing source-bound causal-turn quality before later-Heist fallback and primary-family Commander shortcut; preserve exact good entry controls1/2 and real-turn exceptions.",
+    "PID10656_LOOKING_GLASS_PATTERNS": "Bright current physical pattern, subdued alternatives, finite observed historical leg/arc segments and bounded immutable process-local issued comparisons; zero trade authority.",
+    "PID10760_CAUSAL_PREOPEN_YOUNG_EMA9_CONTINUATION": "A short witnessed pre-open BTC/EMA9 turn can establish a strictly bounded conditional opening MAIN candidate even if no 900s EMA gap parent exists; do not fake inherited Rail ancestry; preserve all physical, quote, TP, risk, and first-minute gates.",
+    "PID14048_EARNED_EDGE_BOUNDED_QUOTE_VALUE_WINDOW": "Once ordinary real Heist/Mountain edge has independently qualified, Commander may briefly fish a live oscillating quote when the ask exceeds observed recent low; current candidate and book mandatory every tick; no future low or deferred stale mission; bypass fast Release/Rail and cheap extreme.",
+    "PID14048_NEAR_PEAK_MATURE_STALL_NET_COLLECTION": "Collect current full-lot fee-positive bid near actual prior peak only after source-observed mature ordinary Mountain stall and joint 9s BTC/EMA9 retreat; never use past peak as sale price, cut runner or weaken irreversible floor.",
+    "PID19616_HEIST_STALLED_EDGE_PARENT_MOMENTUM": "Fresh causally aligned parent push plus only a 6s microstall cannot alone admit stalled parallel-Heist edge; protect real bounded deep flushes.",
+    "PID19616_LEVEL_MATCH_PRECISION": "Completed-level proximity at live BTC price; protect earlier accepted exceptional Mountain edge.",
+    "PID19616_MATURE_PREMIUM_OPENING_PACE": "After 2.5+ 15m contracts require fresh BTC60 net movement for >35c first-minute observed parent; not forced Rail exit.",
+    "PID21672_CONFIRMED_LIVE_PARENT_TRANSFER": "Reject ordinary MAIN Mountain against current confirmed parent, while retaining existing explicitly earned first-minute inherited continuation (PID17588 #5); no generic first-minute or counterfade permission.",
+    "PID23160_COUNTERPARENT_LEVEL_SUSTAINED_REJECTION": "Actual current EMA9-gap parent opposition requires sustained 6/9/30s rejection for exceptional recent-level Mountain returns; preserve true extremes.",
+    "PID23160_EARNED_CURRENT_EMA9_PARENT_VALUE_REJOIN": "Strict same-EMA9-parent current MAIN rejoin <=$0.30/$10 with physical TP, geometry, source health, and useful runway.",
+    "PID23160_WIDE_HEIST_REPEATABLE_PHYSICAL_OWNERSHIP": "Wide-only Heist WATCH unless source-covered current 30/60s price and EMA9 are quiet and boundaries have repeated center traversals; true classic Heist unchanged.",
+    "PID3860_FEE_POSITIVE_MATURE_STALL_COLLECTION": "At a source-proven mature repeated failed extreme, whole-lot current mark fee positive at executor-observed peak may collect instead of losing hover profit; first stall, active release/rail, off-peak, missing depth and stale marks hold.",
+    "PID3860_MATURE_ROLLOVER_PRICE_RETREAT_NO_CHASE": "Source-bound PID3860 mature 02:45 UP arc already retreating sharply: old wide EMA9 gap cannot independently renew UP continuation; still allows healthy price pullback and does not itself grant opposite NO booking.",
+    "runtime_identity": "Revision label only in paper_runtime.py."
+  },
+  "scope_description": "PID14048 narrow earned-edge bounded quote fishing and mature ordinary near-peak fee-positive collection, no trade size or live authority changes.",
+  "source_run": "TOOL_RACK_PAPER_20261106T071752Z_PID3860",
+  "strategy_parameters_changed_by_this_repair": true,
+  "unchanged_previous_core_config_ui_files": 56,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  },
+  "venue_order_authority": "NONE"
+}

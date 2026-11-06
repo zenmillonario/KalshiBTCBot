@@ -1,0 +1,419 @@
+{
+  "created_utc": "2026-11-06T15:43:38.339639+00:00",
+  "files": {
+    "program/APPROVED_STRATEGY_CHANGES.json": {
+      "bytes": 15269,
+      "git_blob_sha1": "168d4ef0e7f96e2243c7526fd6f3232ef17363ef",
+      "sha256": "076c609ce3be5cbbc887c669dadf0cdc2df15e824c5302b499a40e2e4772415a"
+    },
+    "program/NEXT_RUN_README.txt": {
+      "bytes": 535,
+      "git_blob_sha1": "604cee2a65e266bed97ac8b80b33874798f8c0e8",
+      "sha256": "ad4775d4f46d7a1479ea9b41a6604f0833008c9f0a309a406a5138bcce12e698"
+    },
+    "program/NEXT_RUN_STATUS.json": {
+      "bytes": 4702,
+      "git_blob_sha1": "d86d2183365c19061102308f9b4cec94599301cb",
+      "sha256": "82944e5c5094c369f0c946ee09c6e526f8213b2c5471106923633abd8739e913"
+    },
+    "program/OPPORTUNITY_FIRST_IMPLEMENTATION.md": {
+      "bytes": 14958,
+      "git_blob_sha1": "991be5595b0ce91f39fcc8869ac06d172f621a5f",
+      "sha256": "d06471959edc4fe80805cd4933cb3ca9dae83dedd8b91badf44446b8f373584f"
+    },
+    "program/PID3904_APPROVAL.json": {
+      "bytes": 14744,
+      "git_blob_sha1": "de94c303ad435e4dab27d7fd09bdf45e5cf7db22",
+      "sha256": "24821d2496ae15b4a1ddccb8254dffb13ce28164ebe11895925b1ab07d234c9b"
+    },
+    "program/PID3904_CASE_ANNOTATIONS.json": {
+      "bytes": 132299,
+      "git_blob_sha1": "f3679e836c1bbfb792d500830bf62cb1ddec7efb",
+      "sha256": "fa9b6f16d2cb8aa61ab70ffa014c43c47f59dbe2cc1b85fb1497a44c0b645720"
+    },
+    "program/PID3904_FORENSICS.md": {
+      "bytes": 21059,
+      "git_blob_sha1": "ee6f5df05574fbdee6116a737fe79d5617bdcb3b",
+      "sha256": "44a4c5f609a921294b1c177addc7a13863b6690ebef3c04158d339cceb805448"
+    },
+    "program/PID3904_SOURCE_SHA256.json": {
+      "bytes": 7159,
+      "git_blob_sha1": "d94080c5f1e8fb8fd8bb4bfe3fc8d77da2ed6738",
+      "sha256": "c501c3b489ad5c3145e376099715d450d49b6005bdcd5f17eb19d2eddf03542a"
+    },
+    "program/PID3904_TRADE_AUDIT.json": {
+      "bytes": 10962,
+      "git_blob_sha1": "da8ff2279f4e5022e62b1e52e68f2e6582c1c6a8",
+      "sha256": "35a753df157caf71d1795fa4fbbcf8fd8141344649d805205aa5a4b9d772cee1"
+    },
+    "program/PROJECT_CHECKPOINT_NEXT_VISIT.md": {
+      "bytes": 4761,
+      "git_blob_sha1": "a1c9329edafff7209ed2f02cdf7b4528ffc2eed5",
+      "sha256": "b46164e709ae8158e4e1749aa8f271a1f5d7af94e04be6cd4ce735dfcfd5e761"
+    },
+    "program/README_TOOL_RACK_PAPER.md": {
+      "bytes": 6108,
+      "git_blob_sha1": "5e365eb42cd41abd468d299c24b02f2f14b1aac1",
+      "sha256": "5fb56de62aeefe20d9f9b1ed3ac49d8d01463feeb927c8793932d7821c5153b5"
+    },
+    "program/SOURCE_SHA256.json": {
+      "bytes": 7267,
+      "git_blob_sha1": "e90f7036bb2458ee953e487f85ddd09960d0bc45",
+      "sha256": "7eebb59e7636eae5b6fcf41ee244a79db6d2df2d3a4e4195caf665507bbe216e"
+    },
+    "program/TACHYOS_PROPOSED_OPPORTUNITY_FIRST_COMMANDER_2026-11-06.md": {
+      "bytes": 9697,
+      "git_blob_sha1": "98d6c342d9ffb4c4d6ec4d6dcb11a06ad0bd567d",
+      "sha256": "7e6f6dc83ec677f9d503aea67fb207042558692239ebe034e5ccb783cdd31c0d"
+    },
+    "program/strategy_core/__init__.py": {
+      "bytes": 304,
+      "git_blob_sha1": "524b3d8bf4443baccad8c6f7784717b0afdac96f",
+      "sha256": "5ff360092eff50e0f6e90b876eb92f68afdfab48c661f090fc1ed212c95fd3d3"
+    },
+    "program/strategy_core/commander.py": {
+      "bytes": 92784,
+      "git_blob_sha1": "0403cef20f6fc09e6e81d8d542c924f714ba3424",
+      "sha256": "3a25564bae2b6b13db575a3305d8da99c37ba61b8118c589766ddfe404db1a20"
+    },
+    "program/strategy_core/commander_candidates.py": {
+      "bytes": 142259,
+      "git_blob_sha1": "22b5c54b13061aafe6dc4dc08ca42337a904a32b",
+      "sha256": "c224c731597fa51687ed799b5e37661842740edc46426497ce58b2841e980492"
+    },
+    "program/strategy_core/compatibility.py": {
+      "bytes": 2777,
+      "git_blob_sha1": "3fadbf8200f5004a7bff00aab22f9b5bbfde2f4d",
+      "sha256": "548783fc907a10e83a88d9214e910dbf08503e465bf10815d05d4983795f439e"
+    },
+    "program/strategy_core/config/heist.json": {
+      "bytes": 1478,
+      "git_blob_sha1": "53fedcb62b7052c44308fc2a230da80c61750a88",
+      "sha256": "f02de29d5b884667e23198947fe9388d1bfe0599a19af137c61e9a9a218d7c56"
+    },
+    "program/strategy_core/config/looking_glass.json": {
+      "bytes": 58,
+      "git_blob_sha1": "aa3c113f4de705110961fa4d48b0f678d0cdcebe",
+      "sha256": "1bfbe703751e73026a57ce4cbd9df30e5c8f7aa4edb0337f50e542ad33167fc4"
+    },
+    "program/strategy_core/config/mission.json": {
+      "bytes": 99,
+      "git_blob_sha1": "ac62d200a354706088d4edd814a8d20a019c6669",
+      "sha256": "13d7b7c286a54d1c95e9b2d26cfbd0dfb8d9304a5dc46dda0f51c3ce19855ecf"
+    },
+    "program/strategy_core/config/mountain.json": {
+      "bytes": 2673,
+      "git_blob_sha1": "78a1aff14ba4ff090fdd917e9d2bb95a1442128a",
+      "sha256": "9a1b46dd9df540d5dcd3b76d616e2e857200acf259535b240a3c1cf29296762d"
+    },
+    "program/strategy_core/config/physical.json": {
+      "bytes": 299,
+      "git_blob_sha1": "0966e967e6fbbb160ff46aaa2ddc494e6d39fca0",
+      "sha256": "18e107a484d9af54a073219608f9a02dcde55b43988e6b446917e2618d260055"
+    },
+    "program/strategy_core/config/rail.json": {
+      "bytes": 1098,
+      "git_blob_sha1": "0d069577d6f5047aef56779b0697227ae1d9d4f1",
+      "sha256": "8fc11ddfce119bcb08a50e689dd8f7d834beab705bd2cf8565b374b1c6e97f4e"
+    },
+    "program/strategy_core/config/release.json": {
+      "bytes": 519,
+      "git_blob_sha1": "0ddde10411538079150c23327d8933f0aed94517",
+      "sha256": "adadffb1e475ef208a232a750aa9ee25d901a6085a927eed4f9b3433f0031015"
+    },
+    "program/strategy_core/config_loader.py": {
+      "bytes": 14954,
+      "git_blob_sha1": "6750b8ca791a22b1b897c284f27f4bed66474f76",
+      "sha256": "8abcfe33fad988fdde7e50c06d99a8acdc2709f2404e6088166041c805125497"
+    },
+    "program/strategy_core/counter_observers.py": {
+      "bytes": 6736,
+      "git_blob_sha1": "d950a2646c52f96048fba956af0b5abd67974221",
+      "sha256": "96d87b5decd86ca738793d4bdaf58e45cf28773a2034f2c0ad295356532d4e13"
+    },
+    "program/strategy_core/custody_evidence.py": {
+      "bytes": 20459,
+      "git_blob_sha1": "8443d5f090cb48f82ffa945a97caf6b3ecfdc5b1",
+      "sha256": "8345e765b4fdfa054c241e6f60ecab58ba46c44027eaae368a379e79f3b908fe"
+    },
+    "program/strategy_core/detectors/__init__.py": {
+      "bytes": 930,
+      "git_blob_sha1": "04eceb5c486c93c1fe12fcf5362744720201b394",
+      "sha256": "acde2e6b24abe985b6d2a5dafe7659a28b40bb11499a3baa31ba0c0f7b2e16cd"
+    },
+    "program/strategy_core/detectors/heist_geometry.py": {
+      "bytes": 20425,
+      "git_blob_sha1": "108e72f1caa0d6a877ec1d97ad4c661b4757d341",
+      "sha256": "791e9e7ca015eb02a5e945b81b1a907b6e7f28b73b101c10cebc96f0232ef98f"
+    },
+    "program/strategy_core/detectors/mountain_geometry.py": {
+      "bytes": 74733,
+      "git_blob_sha1": "8f8b6196c6e33626fa815c715dc5eb5e64c1dd20",
+      "sha256": "526bb40624782685ac92f37bb523f9226697338d456140747825d9985f7037db"
+    },
+    "program/strategy_core/detectors/rail_geometry.py": {
+      "bytes": 11892,
+      "git_blob_sha1": "71af6d34d8fff1d3173f71569534a79a0881f9da",
+      "sha256": "1b48131a8e0a8cccf09fc3dacdadac6c01faa49c2d8b5f405e33858d18b6c21a"
+    },
+    "program/strategy_core/detectors/release_geometry.py": {
+      "bytes": 15191,
+      "git_blob_sha1": "4ea1b0b08cc0004d36ae4fb847fc567cf86d1a8d",
+      "sha256": "8bd4e39e93835f264ba04cea1973b027c7a34167f8783d58456b8e54c853062e"
+    },
+    "program/strategy_core/directional_parent.py": {
+      "bytes": 4360,
+      "git_blob_sha1": "711719bfd77a29f49235f0997beeb1d458b0e98e",
+      "sha256": "bd736e3d4c3c98054afcf42fca9ea3d16ec90c9b2ff40cc7bf370217e0b56e01"
+    },
+    "program/strategy_core/dual_lane.py": {
+      "bytes": 13784,
+      "git_blob_sha1": "de8f2823baea01a15b7ed012125134bfee0ea667",
+      "sha256": "352f12e182328abed323c04a5381e131e2dd51af61bb840874c7808c5740dfdb"
+    },
+    "program/strategy_core/fade_evidence.py": {
+      "bytes": 8451,
+      "git_blob_sha1": "102d1be3c1712c993f1e1a63559fd86d5dbcbfc1",
+      "sha256": "c73dc3862aca5b66599e6c1aa16c06ade0c0ff275dd1452d7eccf23c29dc3867"
+    },
+    "program/strategy_core/lane_resolver.py": {
+      "bytes": 2903,
+      "git_blob_sha1": "85226ec4459db41d9ea4f134589660127bdbf08e",
+      "sha256": "8eb846c0537493946b7cfc50e06a8ddd6a18755e769691713233edb3fa70fd04"
+    },
+    "program/strategy_core/leg_ledger.py": {
+      "bytes": 25755,
+      "git_blob_sha1": "9de293500d22de01df7f7740c99bc30f222c4feb",
+      "sha256": "edf48d262c880a375bcc243eaa6af844e857d22982c024fd97f24fae16e60972"
+    },
+    "program/strategy_core/leg_weakness.py": {
+      "bytes": 13354,
+      "git_blob_sha1": "29ab0d002315726cc1494a9b8841620bc3c0b4fe",
+      "sha256": "0001c26fbb71c78553cd7bb7ab88336b4bb32861d665b60b024ab4d4bf873492"
+    },
+    "program/strategy_core/looking_glass.py": {
+      "bytes": 39392,
+      "git_blob_sha1": "9e2c6bce6327c3a11daa47b1add686f175f665f0",
+      "sha256": "d2315e327a8f4035db878443e2ecdd93ade37f480bbaf3f0712efe39f3b04b28"
+    },
+    "program/strategy_core/marketdata/VENDOR_PROVENANCE.json": {
+      "bytes": 1857,
+      "git_blob_sha1": "223d12dd344f4788a3dd9c9c5113732484bc5d77",
+      "sha256": "f244e04d0ab3e68a54ecd9db1287fe47df229bc9e35277d86c8814e97c5a53b5"
+    },
+    "program/strategy_core/marketdata/__init__.py": {
+      "bytes": 78,
+      "git_blob_sha1": "aaa66cc44a3478fe3ff4bb1d98115762543c485b",
+      "sha256": "6fe387a6828e4012fa90c3816ebaf18702e158b4da298e238e1a70baa8a00980"
+    },
+    "program/strategy_core/marketdata/btc_observation.py": {
+      "bytes": 11663,
+      "git_blob_sha1": "e2a5932d8182201351a0b6def0435e5cc3c23836",
+      "sha256": "399ff10edd45c8ba5127f12a3b4162e12f51e7e931c9a14101873fc619ee2f8c"
+    },
+    "program/strategy_core/marketdata/btc_transport.py": {
+      "bytes": 16371,
+      "git_blob_sha1": "b71e3c754c970c3e036029139149673112750e2b",
+      "sha256": "a788fee263c9f710092f99f92df6c421ffdca164c4aab55cc591594252e56f14"
+    },
+    "program/strategy_core/marketdata/common.py": {
+      "bytes": 1123,
+      "git_blob_sha1": "7deeb570df53cb818e9379a8e746e66ecd69ffe1",
+      "sha256": "595725066ac7d5ee98796a596785ba2be029c65bd4452c4532e17c3f2f44248a"
+    },
+    "program/strategy_core/marketdata/kalshi_public.py": {
+      "bytes": 12579,
+      "git_blob_sha1": "d2eb1d2195561462068c8c5b4a2e09a0218a044f",
+      "sha256": "afb7bac3198a93e9c8aa41d8e7e9db62c908381a222ecc015574ac905806374a"
+    },
+    "program/strategy_core/marketdata/native_book.py": {
+      "bytes": 27334,
+      "git_blob_sha1": "30e68b8b56c44ba5a201c16b43e06c66c1f0fcea",
+      "sha256": "4e07cf21863321af6a8064ac7ce82946a3f683dddcbe9507b73ff7b50924a927"
+    },
+    "program/strategy_core/marketdata/native_receiver.py": {
+      "bytes": 20180,
+      "git_blob_sha1": "2f5612caf01cbc1d945def2586ff527d73ebec5a",
+      "sha256": "caca426ffa7bb05ed767d0993fc1d216227c769e245d5852a0783c828d4672f4"
+    },
+    "program/strategy_core/mission_context.py": {
+      "bytes": 95274,
+      "git_blob_sha1": "da3adef6c2a8706374de2c45c7e65a4e2443128d",
+      "sha256": "19583b8574b277fefc313a3d0cec4ec0d78f5d337d85b7d2515b55cd16062f47"
+    },
+    "program/strategy_core/mission_policy.py": {
+      "bytes": 46430,
+      "git_blob_sha1": "8fbf26c4c6ef47301b91a25264b862475f1c5e6c",
+      "sha256": "83b7474efaf71ceb07cc735bd3088ce59f82ff5d3a5383efef0f41eed4667d75"
+    },
+    "program/strategy_core/mission_scopes.py": {
+      "bytes": 3468,
+      "git_blob_sha1": "c575171e1c4b3d775478f6dbdbc8eb77a1846b87",
+      "sha256": "c4d80e242a4ca5206a9d165f6265302e5a66682c4adcf4353594c70d3dde8381"
+    },
+    "program/strategy_core/nautilus/PROVENANCE.json": {
+      "bytes": 5912,
+      "git_blob_sha1": "87eed249bf6b5acd7cb8d6d7cd1d33658b1c95bc",
+      "sha256": "acb6c81fe10aa57cec01c2bea58449714da74abe23767cfa9ae542daf7f85fe0"
+    },
+    "program/strategy_core/nautilus/app.js": {
+      "bytes": 51783,
+      "git_blob_sha1": "928221d9b1c9c702a997c69bf4f03dc24440efe1",
+      "sha256": "7899748e2d572b9df422a52e7092dd2403f91fb3db1bcbf4bdee2ccff03954ae"
+    },
+    "program/strategy_core/nautilus/bridge.css": {
+      "bytes": 37765,
+      "git_blob_sha1": "0135355e4a4388115b600778d3fbf4861233b949",
+      "sha256": "30d37846d72f994bb90a167e47f6e900feb4f2ba09f6f56454c8374472b52cbd"
+    },
+    "program/strategy_core/nautilus/bridge.js": {
+      "bytes": 7825,
+      "git_blob_sha1": "fa2e7d2f21e0b6690dfd4e94246a6a836f5f60d2",
+      "sha256": "d0cefbeef76c2591837100160c35c741fd34c8bfd68e4d777223e41918006201"
+    },
+    "program/strategy_core/nautilus/chart.js": {
+      "bytes": 27132,
+      "git_blob_sha1": "8a607fc9f68c1c8e3bc028e475cbb88346852ae6",
+      "sha256": "862cc29acd0595c9f122b9862732b956a7c02b3ede41ee3449461de53eb6b5ee"
+    },
+    "program/strategy_core/nautilus/index.html": {
+      "bytes": 11879,
+      "git_blob_sha1": "99af64185c4d143f02045d6066af2b9a4871f4c6",
+      "sha256": "df2fcdea0c6c506e9a0a69bcc52fdcce8ba496819fe04ae09c68c5813f6f2df6"
+    },
+    "program/strategy_core/nautilus/reliability-ui.js": {
+      "bytes": 1963,
+      "git_blob_sha1": "918e4652f212e8aa685007de08b8cf0c901c3620",
+      "sha256": "9b060fc046b8b8691eea659086ddf40cb5429eacb714926bbb729b7dcede3009"
+    },
+    "program/strategy_core/nautilus/style.css": {
+      "bytes": 14442,
+      "git_blob_sha1": "c5bac484a74b3e3ce0373abf3442d9dcd125bfd2",
+      "sha256": "c97861e6270521defade19ce1ba31cb7d01e86cce0d2d24380d1b8b7f4298ca1"
+    },
+    "program/strategy_core/nautilus_projection.py": {
+      "bytes": 63501,
+      "git_blob_sha1": "e5c95441476440e27ca4109f0c8a6d009adbf929",
+      "sha256": "a583c887fbdf04ed6f23b211198157832e8dad14fd76cddf08febf2e903e5aba"
+    },
+    "program/strategy_core/navigator_briefing.py": {
+      "bytes": 2478,
+      "git_blob_sha1": "735ee238ef99e230820a570865a0525ed314ea9c",
+      "sha256": "cbd4bae4bb56f3ec8d9f2099373385c9b63d4f88bf766371a6fde7f076220c04"
+    },
+    "program/strategy_core/opportunity_first.py": {
+      "bytes": 63498,
+      "git_blob_sha1": "93a4bbc5dacb3462e6c8498f7a10110ca723ae50",
+      "sha256": "e762443cfb87cd9e307d065d63c6f62001bbe6946f60cf540fb06d7c0b44cf6c"
+    },
+    "program/strategy_core/paper_dashboard.py": {
+      "bytes": 7971,
+      "git_blob_sha1": "4b613f6c99c14718245b440bfbede2d1b5c24eb6",
+      "sha256": "90c5d67e2da5ffc39dd7e2e9ba4f4eee1b3415d468de76da90ef21a24a7a5441"
+    },
+    "program/strategy_core/paper_execution.py": {
+      "bytes": 60970,
+      "git_blob_sha1": "d990cbd37562b9285cc3ae060b41e995ac984efe",
+      "sha256": "7c975ccd4da949404397485c7ac8abe6868a32968d7f8501d131b61cb1c9a5fd"
+    },
+    "program/strategy_core/paper_feed.py": {
+      "bytes": 38275,
+      "git_blob_sha1": "4c40a5f6e3e1497ece87e5b4ea95aa612b33719f",
+      "sha256": "afaa3fe730c9181f0eca2b44266b9ce948ce65cf835549520654126c6c4c7536"
+    },
+    "program/strategy_core/paper_runtime.py": {
+      "bytes": 58984,
+      "git_blob_sha1": "89d9b139805389535c5a74938688c2e0452e85c5",
+      "sha256": "b73d39cd6f66972ff5108aecc96be9b7dd91c0b5072aedaa7d472605f6a84de7"
+    },
+    "program/strategy_core/parent_references.py": {
+      "bytes": 17150,
+      "git_blob_sha1": "767bf96b8d40e8c10e399d91203156214a660301",
+      "sha256": "1e5cc5fc0172e4364f3180616e66e81c9ad8a27dfa41d8ac185e27eb66ff2aad"
+    },
+    "program/strategy_core/physical_source.py": {
+      "bytes": 36433,
+      "git_blob_sha1": "c1b1bff654a0d26a151f787eb0fea3df59083200",
+      "sha256": "6959fc444560678e85f8ef79f223e16ee28c3dec9e380022976d10dcaedb24f5"
+    },
+    "program/strategy_core/position_roles.py": {
+      "bytes": 5377,
+      "git_blob_sha1": "c7457394ee7461d462fcaf3b644f2de8ccfa8316",
+      "sha256": "37abb34c894de3e5585e5fc7661f8573658e550210c478584274b573f1b493f3"
+    },
+    "program/strategy_core/recovery.py": {
+      "bytes": 15008,
+      "git_blob_sha1": "03d61d77a809f390d2c012333f0710c4c9190213",
+      "sha256": "9647efd9e5da5834d0b156baf6bc065960b9d48fc64f0690d3c25051944180fc"
+    },
+    "program/strategy_core/router.py": {
+      "bytes": 4078,
+      "git_blob_sha1": "af32135ede8ff1ec731ba23b9bc9faa66a0d8122",
+      "sha256": "1a092a367bf38fefb5defb00561ec8ec263a67773cec4560cba1583ff809e94a"
+    },
+    "program/strategy_core/source_freshness.py": {
+      "bytes": 8649,
+      "git_blob_sha1": "989f5eb36ac8805a2d32b3e0331308ffe4931028",
+      "sha256": "3892c40d16138df7682ea339b1ff3df295b88b196e542f2ecdaf029b583e2fb8"
+    },
+    "program/strategy_core/tool_rack.py": {
+      "bytes": 113100,
+      "git_blob_sha1": "1b3fbfbdec6153dd71134dfbeb6c5a7888ae02ab",
+      "sha256": "5580aaf1bf3361a7fd265d19d1dc32ed9f391c4c7fa89cae4c471c17acb62d74"
+    },
+    "program/strategy_core/tools/__init__.py": {
+      "bytes": 560,
+      "git_blob_sha1": "d8f9dd90b853cbc0bbc6863647e0e40bc3da7f75",
+      "sha256": "96a511665adfa0a8d59bca187578f13cd8eff000ff9133f909349bba21576ef8"
+    },
+    "program/strategy_core/tools/base.py": {
+      "bytes": 1869,
+      "git_blob_sha1": "54292feed485fbcd637b3a66dee84f117c7ecea5",
+      "sha256": "c23cc54cd25c429a1f620220737d7d63dfec7ae1c44391496eed5a7383e636ae"
+    },
+    "program/strategy_core/tools/heist.py": {
+      "bytes": 22430,
+      "git_blob_sha1": "dc119086076a5e7f48bcd25e7a1d6b0d832b6e7a",
+      "sha256": "d2cfee4ab6f7600a280d42b4e55900537ec74e90a4d59eaceead03ecc2dc50bf"
+    },
+    "program/strategy_core/tools/management.py": {
+      "bytes": 91591,
+      "git_blob_sha1": "6b9e3d855142ce9761666275affb01afd1cbb7de",
+      "sha256": "e96ecc1dc03753223a7fde2411af2c958d7de2065ded9ca4b01d8eaf43011491"
+    },
+    "program/strategy_core/tools/mountain.py": {
+      "bytes": 99446,
+      "git_blob_sha1": "ab9daee36c6df511a996ef43dfa28ec5e23b9085",
+      "sha256": "2c612533aa54d0b37208e3db1883c5e4f5440a734e49b36e5c6ef9056432bd8b"
+    },
+    "program/strategy_core/tools/rail.py": {
+      "bytes": 18788,
+      "git_blob_sha1": "7dd3181b4c1e9909242e11c6fb820a60ec386dc3",
+      "sha256": "a422c99f85d654c7ca3a28c365a97d6c2ca8510be5b295ea5303fbf176583200"
+    },
+    "program/strategy_core/tools/release.py": {
+      "bytes": 13639,
+      "git_blob_sha1": "1f7a395a689137d3eef2e80bd0a3803dd608e0fb",
+      "sha256": "e3bdc15b984ca5c7e6347f8e43d5f7d93fe1263060e40657a7bbc5aa6cf30bea"
+    },
+    "program/strategy_core/tp_geometry.py": {
+      "bytes": 5527,
+      "git_blob_sha1": "c7ed02d1c12f4fa4d989c9c94f6699ec225ac3df",
+      "sha256": "ffa63858830ec740a81bc9849107994a3c0063ef8e6a0fbe0fea4c569846b449"
+    },
+    "program/strategy_core/types.py": {
+      "bytes": 2219,
+      "git_blob_sha1": "87ed72397b9994c7e3fae3ed4614f3bc61048ad9",
+      "sha256": "7fcad93ea276a416bbcba308b7b107d0bd70a2f471ba5b1ba34b73b5511b77da"
+    }
+  },
+  "git_branch": "tachyos/checkpoint-2026-11-06-pid3904-opportunity-first",
+  "original_zip_sha256": "ef711c357a903e0c39d20b2b9179d8c8b7aa00a2ba8febb8f89ed716261d78b6",
+  "ready_for_new_run": false,
+  "schema": "tachyos.source_checkpoint.v1",
+  "scope": "All68 sealed strategy/config/UI source files, current governing documentation and original PID3904 audit. Source checkpoint is not the complete standalone release or binary evidence backup. Tests/fixtures/packaging/report receipts are delivered in the separately verified release archive and final checkpoint.",
+  "source_files": 68,
+  "source_plus_governing_docs_files": 81,
+  "source_run": "TOOL_RACK_PAPER_20261106T121055Z_PID3904",
+  "status": "FROZEN_SOURCE_FULL_DELIVERY_VALIDATION_PENDING"
+}
