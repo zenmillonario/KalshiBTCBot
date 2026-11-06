@@ -1,0 +1,50 @@
+{
+  "approval": {
+    "date": "2026-11-04",
+    "review_file": "TACHYOS_PID17224_RUN_REVIEW_2026-11-04.pdf",
+    "review_sha256": "3dd3cf06e409ce912e326e4fd7b17a83de326852a4d97febdfb576f273629c75",
+    "source": "User: agree, go on; following the PID17224 run review and approved A/B/C scope"
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "baseline_source_manifest_sha256": "31dda05acafc94cd6cf859ef94a33ea5f03539723e82ce6d31bbf3a436b88f4b",
+  "changed_core_files": {
+    "strategy_core/commander.py": {
+      "baseline_sha256": "72a393b5b530b948a4afbb11906109e400743c272110acdd68f4b883c26b0add",
+      "release_sha256": "be14b8b76bcb9de32c5126cd6b1ebedc605c52c7dc066046694efc0ff73a4b48"
+    },
+    "strategy_core/commander_candidates.py": {
+      "baseline_sha256": "c440608e02cef3f48b9781b43b3ddbad2aa3c9825e2fb314a376fcf132efeeed",
+      "release_sha256": "941598e6ad7f4c16b3fc6e814f4a19d29dee47a905b2f9c1795ce5fe1f891604"
+    }
+  },
+  "default_workflow_change": "45-minute PAPER entry window, normal position drain, full original export first with progress; replay separately by explicit request.",
+  "excluded_changes": [
+    "No profit floor thresholds or held-position custody implementations changed",
+    "No new parent thresholds, quote/price caps, time extensions, position sizing or partial exits",
+    "No historical clock-skew policy change",
+    "No live-order authority",
+    "No six-hour capture authorization"
+  ],
+  "release_id": "TACHYOS_PID17224_APPROVED_CORRECTIONS_45M_20261104",
+  "schema": "tachyos.approved_strategy_changes.v1",
+  "scope": {
+    "A": "Resolve current confirmed Release custody at fresh admission; prevent genuine unpromoted tactical entry when its existing mandatory exit already applies. Existing seed promotion precedence remains.",
+    "B": "Apply the existing established-parent terminal/TP transfer predicate before ordinary Mountain MAIN continuation and candidate-family bypasses, at publication and Commander admission.",
+    "C": "Exempt only a current calibrated later tactical MARKET_HEIST visit from the obsolete generic counter-parent fade pause; continue all later checks."
+  },
+  "unchanged_core_config_ui_files": 64,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  }
+}

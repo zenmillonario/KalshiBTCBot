@@ -1,0 +1,308 @@
+{
+  "archive": {
+    "archive": "/workspace/scratch/7e09ca6439b6/inputs/TOOL_RACK_PAPER_20261105T011602Z_PID4596_FULL_ORIGINAL_20261105T013609Z_dc1c00c2.zip",
+    "archive_bytes": 242007740,
+    "archive_sha256": "41db8f7b7bfd5b6f6bfd190e17d130eef33584418e1ea7c17dc23fcd899533e1",
+    "extracted_root": "/workspace/scratch/7e09ca6439b6/inputs/pid4596_recovered",
+    "members_verified": 276,
+    "original_bytes": 1051361106,
+    "parts": [
+      {
+        "bytes": 95000000,
+        "file_name": "01_RUN_PART_001_OF_003.zip",
+        "offset": 0,
+        "part_number": 1,
+        "payload_name": "archive_chunk.bin",
+        "sha256": "3fe2ca2e592c476952c99b92961ca48c581cb6f7a6675c13898ad3633e9438d6"
+      },
+      {
+        "bytes": 95000000,
+        "file_name": "01_RUN_PART_002_OF_003.zip",
+        "offset": 95000000,
+        "part_number": 2,
+        "payload_name": "archive_chunk.bin",
+        "sha256": "7f4fd0915c1a298b25c24a0b617fefdc0c7f36c98197b181c92339cbbcc168f6"
+      },
+      {
+        "bytes": 52007740,
+        "file_name": "01_RUN_PART_003_OF_003.zip",
+        "offset": 190000000,
+        "part_number": 3,
+        "payload_name": "archive_chunk.bin",
+        "sha256": "fa168f1c17f75f2213956d247e8f46e882733562a9c147459005db0f244cb199"
+      }
+    ],
+    "pass": true,
+    "program_bytes": 39276317,
+    "reported_capture_state": "REPORTED_INCOMPLETE",
+    "reported_program_state": "MATCHED_CAPTURE",
+    "review_members_match_complete_archive": true,
+    "run_id": "TOOL_RACK_PAPER_20261105T011602Z_PID4596"
+  },
+  "crash": {
+    "atomic_failed_process_input_retained": false,
+    "callsite": "strategy_core/mission_policy.py:743 review",
+    "confirmed_by_original_console_traceback": true,
+    "error_type": "TypeError",
+    "exception_operand": "estimated_exit_bid=None",
+    "expression": "economics[\"estimated_exit_bid\"] / (1 + self.config.minimum_gross_roi)",
+    "failed_process_and_close_absent_from_typed_tape": true,
+    "message": "unsupported operand type(s) for /: 'NoneType' and 'float'",
+    "partial_failed_call_source_and_quote_evidence_retained": true,
+    "recorded_error_time_est": "2026-11-04T20:35:42.968461-05:00"
+  },
+  "created_utc": "2026-11-05T01:48:46.472291+00:00",
+  "elapsed_seconds": 72.875,
+  "full_engine_replay_performed": false,
+  "full_exact_replay_accepted": false,
+  "journal": {
+    "cash": "1000.0",
+    "committed_records": 1,
+    "entry_count": 0,
+    "exit_count": 0,
+    "fees_paid": "0",
+    "final_ledger_and_summary_match": true,
+    "hash_chain_and_economics_reconciled": true,
+    "journal_sha256": "06ca78814c9744ec79bac9bdecc24affbb2da543796e86caf032a397af3ef523",
+    "kinds": {
+      "BASELINE": 1
+    },
+    "open_positions": 0,
+    "realized_net": "0",
+    "starting_cash": "1000.0",
+    "state": "PASS",
+    "uncommitted_temporary_files": []
+  },
+  "raw_btc_recording": {
+    "compressed_bytes": 278480,
+    "compressed_sha256": "af8220f1407a6345809578eb3ab1c2a938f8ba03757a8c0e47fc48732d5fa805",
+    "first_record_scalars": {
+      "epoch": 1,
+      "kind": "PUBLIC_SEED",
+      "received_wall": 1793841366.4562812
+    },
+    "gzip_crc_and_eof_verified": true,
+    "jsonl_records": 3844,
+    "last_record_scalars": {
+      "epoch": 1,
+      "kind": "PUBLIC_FRAME",
+      "received_monotonic": 278418.0978142,
+      "received_utc": "2026-11-05T01:35:43.064102+00:00",
+      "received_wall": 1793842543.0641017
+    },
+    "outside_engine_output_replay_inventory": true,
+    "record_kinds": {
+      "PUBLIC_FRAME": 3843,
+      "PUBLIC_SEED": 1
+    },
+    "state": "PASS",
+    "uncompressed_bytes": 2136160,
+    "uncompressed_sha256": "a4ea571da82eb39335c72c557d77f914e37c0bf1f3e03eb34bc77f0724106785"
+  },
+  "run": {
+    "cash": "1000.0",
+    "closed_est": "2026-11-04T20:35:43.115472-05:00",
+    "completed_engine_decisions": 4259,
+    "decision_hash_chain_verified": true,
+    "duration_seconds": 1177.4101212024689,
+    "engine_output_bytes": 894767616,
+    "engine_output_files": 10,
+    "original_bytes": 1051361106,
+    "original_files": 18,
+    "original_files_modified": false,
+    "started_est": "2026-11-04T20:16:05.705351-05:00",
+    "stop_reason": "RUNTIME_ERROR_TypeError",
+    "strategy_modified_by_audit": false,
+    "unresolved_positions": 0
+  },
+  "run_id": "TOOL_RACK_PAPER_20261105T011602Z_PID4596",
+  "schema": "tachyos.pid4596.capture_audit.v1",
+  "scope": "Exact delivered program, committed journal, every saved typed-tape prefix call/hash/delta and original decision pointers, raw BTC gzip, and retained failure components. Root reconstruction verified all276archive members. The complete failed session is not an accepted replay recording.",
+  "source": {
+    "added_from_previous": [
+      "strategy_core/source_freshness.py"
+    ],
+    "all_declared_source_hashes_verified": true,
+    "bundle_manifest_sha256": "495df90708965d843d1c1113db2aa3e2527c06340c4991f2959b819db9a866ee",
+    "captured_program_files": 257,
+    "changed_from_previous": [
+      "strategy_core/commander.py",
+      "strategy_core/commander_candidates.py",
+      "strategy_core/custody_evidence.py",
+      "strategy_core/leg_ledger.py",
+      "strategy_core/mission_policy.py",
+      "strategy_core/paper_runtime.py",
+      "strategy_core/position_roles.py",
+      "strategy_core/recovery.py",
+      "strategy_core/tool_rack.py",
+      "strategy_core/tools/heist.py",
+      "strategy_core/tools/management.py",
+      "strategy_core/tools/mountain.py"
+    ],
+    "core_config_ui_files": 67,
+    "delivered_zip_sha256": "08134e26ce2a6066ded3ce7cc978583cf756265d1db5dac6c83eb7b786e490ed",
+    "entire_captured_program_matches_delivered_zip": true,
+    "historical_A_B_C_changes_preserved": [
+      "strategy_core/commander.py",
+      "strategy_core/commander_candidates.py"
+    ],
+    "release_id": "TACHYOS_PID19996_RAIL_VALUE_PAPER_45M_20261104",
+    "run_manifest_source_entries": 78,
+    "source_and_config_sha256": "8c1f3d50bf94454037bfedba4fdca081a9b33766a666667d41b58322668f2c22",
+    "state": "PASS",
+    "unchanged_previous_files": 54,
+    "unchanged_recorder_modules": 7
+  },
+  "source_clock": {
+    "age_distributions": {
+      "book_observed_age_seconds": {
+        "count": 4259,
+        "maximum": 7.426459789276123,
+        "median": 0.027852296829223633,
+        "minimum": 0.0038826465606689453,
+        "negative_count": 0
+      },
+      "feed_observed_age_seconds": {
+        "count": 4259,
+        "maximum": 0.27556419372558594,
+        "median": 0.004648447036743164,
+        "minimum": 0.002125978469848633,
+        "negative_count": 0
+      },
+      "geometry_source_age_seconds": {
+        "count": 4256,
+        "maximum": 4.057981014251709,
+        "median": -0.9746589660644531,
+        "minimum": -1.641726016998291,
+        "negative_count": 4174
+      }
+    },
+    "backward_engine_clock_reads": 0,
+    "interpretation": "Exchange/source timestamps ahead of the engine clock are separate from engine-clock backsteps; no source timestamps were changed."
+  },
+  "source_logs": {
+    "component_evidence_file": "failed_frame_component_evidence.json",
+    "failed_call_quote_id": "Q4:1:221432:4225",
+    "failed_call_shadow_time_est": "2026-11-04T20:35:42.843458-05:00",
+    "failed_call_source_ms": 1793842544391.147,
+    "failed_call_top_book": {
+      "btc": 80463.65,
+      "btc_current": true,
+      "exchange_ts": 1793842544.453,
+      "execution_authority": false,
+      "mode": "SHADOW_ONLY",
+      "no_ask": 0.15,
+      "no_bid": 0.14,
+      "no_bid_qty": 13636.87,
+      "observed_ts": 1793842542.8034358,
+      "quote_id": "Q4:1:221432:4225",
+      "ticker": "KXBTC15M-26NOV042045-45",
+      "time": 1793842542.8434577,
+      "version": "QUOTE_ECHO_SHADOW_V1",
+      "yes_ask": 0.86,
+      "yes_bid": 0.85,
+      "yes_bid_qty": 6366.88
+    },
+    "full_folded_native_book_component_retained": true,
+    "last_btc_geometry_component_logged_at": 1793842542.8376567,
+    "last_native_book_component_logged_at": 1793842542.83873,
+    "last_successful_process_time_est": "2026-11-04T20:35:42.587200-05:00",
+    "last_successful_quote_id": "Q4:1:221197:4224",
+    "market_source_kinds": {
+      "BTC_GEOMETRY": 957,
+      "BTC_STATUS": 1,
+      "MARKET_DISCOVERY": 110,
+      "MARKET_DISCOVERY_WAIT": 2,
+      "MARKET_ROLLOVER": 2,
+      "NATIVE_BOOK_PROVENANCE": 5495,
+      "NATIVE_RECEIVER_EVENT": 2,
+      "NATIVE_SEQUENCE_CHECKED_BOOK": 4225,
+      "REST_BOOK_DIAGNOSTIC": 2,
+      "SOURCE_START": 1,
+      "SOURCE_STOP": 1,
+      "SOURCE_TASK_COMPLETED": 112,
+      "SOURCE_TASK_REQUESTED": 112,
+      "SOURCE_TASK_STARTED": 112
+    },
+    "market_source_lines": 11134,
+    "physical_geometry_lines": 957,
+    "quote_echo_lines": 4222
+  },
+  "state": "VERIFIED_ARCHIVE_WITH_INCOMPLETE_ENGINE_CAPTURE",
+  "tape": {
+    "all_4259_expected_decision_and_journal_pointers_match_original_logs": true,
+    "bytes": 126782363,
+    "call_counts": {
+      "init": 1,
+      "process": 4259
+    },
+    "calls": 4260,
+    "captured_clock_reads_total": 4261,
+    "captured_completed_calls_measured": 4261,
+    "captured_platform": "Windows-11-10.0.26200-SP0",
+    "captured_python": "3.14.7",
+    "clock_backsteps": [],
+    "clock_reads": 4260,
+    "close_call_present": false,
+    "count_interpretation": "The failing process raises before recorder submit and metrics update. The completed orderly close then attempts one submission against the failed writer; that close is the single dropped submission. Prefix contains init plus4259successful processes. Failed process, close and END are absent.",
+    "end_record_present": false,
+    "every_saved_record_hash_sequence_delta_and_typed_call_verified": true,
+    "expected_decision_hash_file": "tape_expected_decision_hashes.json",
+    "failed_process_call_present": false,
+    "first_clock": 1793841365.7053509,
+    "first_successful_process": {
+      "book_observed_ts": 1793841366.4348462,
+      "clock_reads": [
+        1793841366.641965
+      ],
+      "decision_sequence": 1,
+      "expected": {
+        "decision_seq": 1,
+        "decision_sha256": "6831c768e23a9a06ed38fd05f23815f602e1e901433873e59ae90390f3391afe",
+        "journal_seq": 1,
+        "journal_sha256": "06ca78814c9744ec79bac9bdecc24affbb2da543796e86caf032a397af3ef523"
+      },
+      "feed_observed_ts": 1793841366.6253202,
+      "geometry_rows_in_snapshot": 0,
+      "geometry_source_ms": null,
+      "geometry_source_sequence": null,
+      "quote_id": "Q1:None:None:0",
+      "source_generation": 2,
+      "ticker": "KXBTC15M-26NOV042030-30"
+    },
+    "header_sha256": "eb538e7044dc4855c06352e7f64297b760c78585dcadd82b565ab876549d2104",
+    "last_call": "process",
+    "last_clock": 1793842542.5872004,
+    "last_sha256": "019e697de15dd5ae93382c63941e0cfc4d19dd0a9cf3223b4c08c6efe5b4fc64",
+    "last_successful_process": {
+      "book_observed_ts": 1793842542.5435812,
+      "clock_reads": [
+        1793842542.5872004
+      ],
+      "decision_sequence": 4259,
+      "expected": {
+        "decision_seq": 4259,
+        "decision_sha256": "5d8277a743dd3be9e5e8db73598f18f785af4c70d2ed1f5619a303d7aecdbaef",
+        "journal_seq": 1,
+        "journal_sha256": "06ca78814c9744ec79bac9bdecc24affbb2da543796e86caf032a397af3ef523"
+      },
+      "feed_observed_ts": 1793842542.5834384,
+      "geometry_rows_in_snapshot": 956,
+      "geometry_source_ms": 1793842543318.288,
+      "geometry_source_sequence": null,
+      "quote_id": "Q4:1:221197:4224",
+      "source_generation": 5185,
+      "ticker": "KXBTC15M-26NOV042045-45"
+    },
+    "record_kinds": {
+      "CALL": 4260,
+      "HEADER": 1
+    },
+    "recorder_source_files_verified": 7,
+    "records": 4261,
+    "scope": "Custom read-only verification of all actually saved records; it deliberately does not relax or change the standard replay loader, original tape or manifest. No engine call was replayed.",
+    "source_files_verified": 67,
+    "state": "VALID_SUCCESSFUL_CALL_PREFIX_INCOMPLETE_SESSION",
+    "strict_replay_loader_rejection": "CAPTURE_NOT_COMPLETE"
+  }
+}

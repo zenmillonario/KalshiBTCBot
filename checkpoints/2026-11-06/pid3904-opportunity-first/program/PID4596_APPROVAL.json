@@ -1,0 +1,75 @@
+{
+  "added_core_files": {},
+  "approval": {
+    "basis": "IMPLEMENTATION_FAULT_REPAIR_WITHIN_EXISTING_AUTHORIZED_PAPER_WORK",
+    "date": "2026-11-04",
+    "new_strategy_permission_requested_or_inferred": false,
+    "prior_explicit_approval_record": "PID19996_APPROVAL.json",
+    "review_file": "PID4596_RUN_REVIEW.txt",
+    "review_sha256": "560688abca667ea3ddc745985ec34078ba0ff857129b0172a3ca42c75d6b96bf",
+    "source": "The user returned the new run's review ZIP and all three complete recording parts after the previously authorized PID19996 work. The evidence exposes a runtime fault in that delivered build. This record scopes its repair and preserves the prior strategy authorization; it does not claim a new user instruction to change trading rules."
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C",
+    "PID19996_RAIL_VALUE",
+    "PID19996_SOURCE_FRESHNESS",
+    "PID19996_RESEARCH_IDENTITY",
+    "PID19996_COMPLETE_UPLOADS",
+    "PID4596_NULL_EXIT_ESTIMATE"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "changed_core_files": {
+    "strategy_core/mission_policy.py": {
+      "baseline_sha256": "67ea2ae2e33b5a6ced74a6ab1e5dc80bdca69d78872dbd396b293d726f5ba9df",
+      "release_sha256": "83b7474efaf71ceb07cc735bd3088ce59f82ff5d3a5383efef0f41eed4667d75"
+    },
+    "strategy_core/paper_runtime.py": {
+      "baseline_sha256": "2878c2d2d48322c86ce8a00be0505ab90f1e8a70c4d2a6db51fbbb7db70c1fd3",
+      "release_sha256": "89bb49e30ff0af7a97ee10ae5f4b454803b6b83a0da65b97cf296b273377a7ee"
+    }
+  },
+  "default_workflow_change": "None from PID19996: 45-minute PAPER entry window, normal drain, verified complete original archive and exact numbered upload parts; replay remains optional.",
+  "excluded_changes": [
+    "No new profit floor percentage",
+    "No partial exit",
+    "No price-cap widening",
+    "No position-size increase",
+    "No live-order authority",
+    "No six-hour commissioning acceptance",
+    "No Looking Glass forecast display change",
+    "No historical recording/source edits",
+    "No new entry permission or strategy parameter change",
+    "No first counter-parent fade or legacy Mountain reactivation",
+    "No fabricated failed-call envelope, END record or replay-completeness claim"
+  ],
+  "historical_approval": "PREVIOUS_RELEASE_APPROVAL.json",
+  "immediate_previous_approval": "PID19996_APPROVAL.json",
+  "original_run_archive_sha256": "41db8f7b7bfd5b6f6bfd190e17d130eef33584418e1ea7c17dc23fcd899533e1",
+  "original_run_id": "TOOL_RACK_PAPER_20261105T011602Z_PID4596",
+  "previous_package_sha256": "08134e26ce2a6066ded3ce7cc978583cf756265d1db5dac6c83eb7b786e490ed",
+  "previous_source_manifest": "PID19996_SOURCE_SHA256.json",
+  "previous_source_manifest_sha256": "1dceda9ce2bdbb5993522cb5da558742d701084d12c2c143d0d15463394722d6",
+  "release_id": "TACHYOS_PID4596_ADVISORY_RUNTIME_REPAIR_45M_20261104",
+  "schema": "tachyos.approved_strategy_changes.v3",
+  "scope": {
+    "A_B_C": "Preserve the previously authorized Release custody, established-parent transfer and calibrated later Heist corrections.",
+    "PID19996_COMPLETE_UPLOADS": "Include normal raw BTC source recording, keep file-backed export progress independent of console display, publish only verified complete bytes, and automatically make smaller lossless uploads from the exact new archive.",
+    "PID19996_RAIL_VALUE": "Defer an earned expensive opening continuation during an opposed short-window dip; retain the same parent opportunity through the existing first300s observation window and admit only a current cheaper <=35c rejoin with existing route, runway, source, book, inventory and admission proof. Bind and consume the original opportunity at authoritative admission.",
+    "PID19996_RESEARCH_IDENTITY": "Keep physical legs across harmless labels and rollover, scope quote returns by exact ticker, distinguish partial observation from true leg end, reject invalid legacy comparables, and correct enum/string same-side diagnostics.",
+    "PID19996_SOURCE_FRESHNESS": "Share the existing bounded physical-source clock policy using exact captured receipt, epoch, sequence and continuity evidence; preserve strict local quote time and conservative historical proofs. Never rewrite timestamps.",
+    "PID4596_NULL_EXIT_ESTIMATE": "Repair an implementation error exposed by the returned PID4596 recording. An unavailable optional tactical exit estimate retains its advisory reason and produces no suggested price. Re-review clears a stale suggestion. Finite estimates and the full-arc fallback retain their formulas. All proposed non-metadata intent fields remain unchanged for One Commander. The only other production edit is the runtime release identity."
+  },
+  "strategy_parameters_changed_by_this_repair": false,
+  "unchanged_previous_core_config_ui_files": 65,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  }
+}

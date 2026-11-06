@@ -1,0 +1,332 @@
+{
+  "schema": "tachyos.pid4596.leg_ledger_v2_check.v1",
+  "status": "PASS_NO_OBSERVED_REGRESSION",
+  "original_rows": 8,
+  "same_ticker_side_opportunities_checked": 18,
+  "bid_endpoints_matched_to_original_decisions": 15,
+  "opportunities_with_no_later_bid_correctly_left_null": 3,
+  "mixed_ticker_aggregate_roi_count": 0,
+  "terrain_only_leg_end_count": 0,
+  "record_results": [
+    {
+      "leg_id": "E000A000001",
+      "side": "NO",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:16:16.885-05:00",
+      "end_et": "2026-11-04T20:17:13.744-05:00",
+      "sample_count": 224,
+      "contract_quote_samples": 224,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 2,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN",
+        "UNKNOWN"
+      ],
+      "comparable_eligible": false,
+      "start_boundary_observed": false,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.21,
+          "max_later_bid": 0.25,
+          "min_sequence": 258,
+          "max_sequence": 263
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.74,
+          "max_later_bid": 0.79,
+          "min_sequence": 78,
+          "max_sequence": 258
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000002",
+      "side": "YES",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:17:13.998-05:00",
+      "end_et": "2026-11-04T20:17:54.743-05:00",
+      "sample_count": 160,
+      "contract_quote_samples": 160,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 1,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.21,
+          "max_later_bid": 0.22,
+          "min_sequence": 379,
+          "max_sequence": 381
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.73,
+          "max_later_bid": 0.79,
+          "min_sequence": 307,
+          "max_sequence": 379
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000003",
+      "side": "NO",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:17:54.995-05:00",
+      "end_et": "2026-11-04T20:18:53.339-05:00",
+      "sample_count": 227,
+      "contract_quote_samples": 227,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 1,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.16,
+          "max_later_bid": 0.22,
+          "min_sequence": 594,
+          "max_sequence": 651
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.77,
+          "max_later_bid": 0.84,
+          "min_sequence": 446,
+          "max_sequence": 594
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000004",
+      "side": "YES",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:18:53.601-05:00",
+      "end_et": "2026-11-04T20:18:58.345-05:00",
+      "sample_count": 19,
+      "contract_quote_samples": 19,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 1,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.19,
+          "max_later_bid": 0.18,
+          "min_sequence": 666,
+          "max_sequence": 666
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.79,
+          "max_later_bid": 0.81,
+          "min_sequence": 654,
+          "max_sequence": 666
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000005",
+      "side": "NO",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:18:58.599-05:00",
+      "end_et": "2026-11-04T20:23:59.511-05:00",
+      "sample_count": 1152,
+      "contract_quote_samples": 1152,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 1,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.035,
+          "max_later_bid": 0.14,
+          "min_sequence": 1504,
+          "max_sequence": 1753
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.83,
+          "max_later_bid": 0.965,
+          "min_sequence": 673,
+          "max_sequence": 1504
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000006",
+      "side": "YES",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:23:59.945-05:00",
+      "end_et": "2026-11-04T20:29:02.926-05:00",
+      "sample_count": 1082,
+      "contract_quote_samples": 1082,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 1,
+      "terrain_values": [
+        "ROLLING_MOUNTAIN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.001,
+          "max_later_bid": null,
+          "min_sequence": 2896,
+          "max_sequence": null
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.71,
+          "max_later_bid": 0.999,
+          "min_sequence": 2091,
+          "max_sequence": 2896
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000007",
+      "side": "NO",
+      "record_kind": "PHYSICAL_LEG",
+      "end_reason": "PHYSICAL_LEG_CHANGED",
+      "start_et": "2026-11-04T20:29:03.402-05:00",
+      "end_et": "2026-11-04T20:30:51.425-05:00",
+      "sample_count": 407,
+      "contract_quote_samples": 370,
+      "noncurrent_quote_samples_excluded": 37,
+      "contract_count": 2,
+      "terrain_segments": 34,
+      "terrain_values": [
+        "MARKET_HEIST",
+        "RELEASE_TRANSITION",
+        "ROLLING_MOUNTAIN",
+        "UNKNOWN"
+      ],
+      "comparable_eligible": true,
+      "start_boundary_observed": true,
+      "end_boundary_observed": true,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": 0.001,
+          "max_later_bid": null,
+          "min_sequence": 2907,
+          "max_sequence": null
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042030-30",
+          "minimum_ask": null,
+          "max_later_bid": null,
+          "min_sequence": null,
+          "max_sequence": null
+        },
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042045-45",
+          "minimum_ask": 0.39,
+          "max_later_bid": 0.62,
+          "min_sequence": 3161,
+          "max_sequence": 3308
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042045-45",
+          "minimum_ask": 0.38,
+          "max_later_bid": 0.38,
+          "min_sequence": 3308,
+          "max_sequence": 3309
+        }
+      ]
+    },
+    {
+      "leg_id": "E000A000008",
+      "side": "YES",
+      "record_kind": "OBSERVATION_SEGMENT",
+      "end_reason": "RUNTIME_ERROR_TypeError",
+      "start_et": "2026-11-04T20:30:51.686-05:00",
+      "end_et": "2026-11-04T20:35:42.587-05:00",
+      "sample_count": 938,
+      "contract_quote_samples": 938,
+      "noncurrent_quote_samples_excluded": 0,
+      "contract_count": 1,
+      "terrain_segments": 72,
+      "terrain_values": [
+        "MARKET_HEIST",
+        "RELEASE_TRANSITION",
+        "ROLLING_MOUNTAIN",
+        "UNKNOWN"
+      ],
+      "comparable_eligible": false,
+      "start_boundary_observed": true,
+      "end_boundary_observed": false,
+      "pairs": [
+        {
+          "side": "YES",
+          "ticker": "KXBTC15M-26NOV042045-45",
+          "minimum_ask": 0.62,
+          "max_later_bid": 0.87,
+          "min_sequence": 3356,
+          "max_sequence": 4016
+        },
+        {
+          "side": "NO",
+          "ticker": "KXBTC15M-26NOV042045-45",
+          "minimum_ask": 0.13,
+          "max_later_bid": 0.19,
+          "min_sequence": 4016,
+          "max_sequence": 4218
+        }
+      ]
+    }
+  ],
+  "limits": "Top-of-book research ledger; no executable whole-lot or realized profit authority. This check addresses ticker separation and label continuity only."
+}

@@ -1,0 +1,377 @@
+{
+  "run_id": "TOOL_RACK_PAPER_20261106T024325Z_PID10760",
+  "source_archive": {
+    "name": "TOOL_RACK_PAPER_20261106T024325Z_PID10760_FULL_ORIGINAL_20261106T032932Z_7ce3716b.zip",
+    "sha256": "f676cdc8b44688f92382972c489dbb2eb745096ab1f8a6216493e7b00a61a0ff",
+    "size_bytes": 601531000,
+    "parts": 7,
+    "zip_member_count": 399,
+    "zip_crc_bad": null,
+    "capture_attempted": 7607,
+    "capture_written": 7607,
+    "dropped": 0
+  },
+  "release": {
+    "id": "TACHYOS_PID14156_HEIST_HANDOFF_PATIENT_MOUNTAIN_45M_PAPER_20261105",
+    "sealed_source_count": 67,
+    "sealed_source_sha256_verified": 67,
+    "commander_sha256": "476d5b8682c5ab2946dbea617ba7495521ff7f6f0e0d62ede21c6cb35c42151d",
+    "candidates_sha256": "2c09ab892d9aead4d53c07f60cdbea97c09f8b27bf1c8359eeadd040a99252ca"
+  },
+  "ledger": {
+    "starting_cash": "1000.0",
+    "cash": "984.3300",
+    "gross_pnl": "-11.6600",
+    "fees": "4.01",
+    "net_pnl": "-15.6700",
+    "closed_count": 3,
+    "open_count": 0
+  },
+  "rollover": {
+    "contract": "KXBTC15M-26NOV052200-00",
+    "contract_open_et": "2026-11-05 21:45:00",
+    "observed_market_discovery_et": "2026-11-05 21:45:20.531",
+    "observed_market_rollover_et": "2026-11-05 21:45:20.669",
+    "last_old_contract_missed_20s_discovery_reason": "NO_CURRENT_OPEN_KXBTC15M_MARKET",
+    "first_valid_native_yes_ask_et": "2026-11-05 21:45:21",
+    "first_valid_native_yes_ask": 0.49,
+    "first_ema9_gap_positive_et": "2026-11-05 21:46:00.590",
+    "first_native_parent_up_et": "2026-11-05 21:46:27.335",
+    "first_parent_up_yes_ask": 0.62,
+    "main_yes_candidates_enter_first_five_minutes": 0,
+    "opening_conditional_requirements": [
+      "qualified observed inherited directional parent",
+      "arc age > contract age + 1s",
+      "historical residence start predates ticker open",
+      "tp and gap parent confirmation",
+      "ask <= $0.55 for exceptional continuation"
+    ]
+  },
+  "entry_observations": [
+    {
+      "id": "1",
+      "side": "NO",
+      "position_role": "PRIMARY",
+      "entry_ts": 1793933385.4738495,
+      "entry_et": "2026-11-05 21:49:45.473",
+      "entry_price": "0.1800",
+      "exit_reason": "COMMANDER_EXIT_PRIMARY_OPPOSES_LIVING_EMA9_PARENT",
+      "entry_reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN",
+      "peak_bid": "0.2300",
+      "qty": 131,
+      "exit_ts": 1793933637.8641229,
+      "exit_price": "0.1400",
+      "realized_net_pnl": "-7.7100"
+    },
+    {
+      "id": "2",
+      "side": "NO",
+      "position_role": "TACTICAL",
+      "entry_ts": 1793934069.988787,
+      "entry_et": "2026-11-05 22:01:09.988",
+      "entry_price": "0.3500",
+      "exit_reason": "TACTICAL_MAX_HOLD_EXIT",
+      "entry_reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+      "peak_bid": "0.4100",
+      "qty": 27,
+      "exit_ts": 1793934250.3435645,
+      "exit_price": "0.2900",
+      "realized_net_pnl": "-2.4400"
+    },
+    {
+      "id": "3",
+      "side": "YES",
+      "position_role": "PRIMARY",
+      "entry_ts": 1793935257.653139,
+      "entry_et": "2026-11-05 22:20:57.653",
+      "entry_price": "0.3100",
+      "exit_reason": "LAZARUS_HARD_ADVERSE_STRUCTURE",
+      "entry_reason": "COMMANDER_MOUNTAIN_BOUNCE_OWNS_CONTRACT",
+      "peak_bid": "0.3000",
+      "qty": 30,
+      "exit_ts": 1793935365.1395345,
+      "exit_price": "0.1500",
+      "realized_net_pnl": "-5.5200"
+    }
+  ],
+  "same_contract_no_later_quotes": {
+    "after_trade_2_exit_et": "2026-11-05 22:04:10",
+    "observed_no_bid_220410": 0.29,
+    "observed_no_bid_221200": 0.78,
+    "observed_no_top_qty_221200": 5338.96,
+    "observed_no_bid_221359": 0.999,
+    "observed_no_top_qty_221359": 711459.36,
+    "execution_authority": false,
+    "source": "quote_echo_shadow; exact recorded original ticker"
+  },
+  "exact_original_engine_replay_performed": false,
+  "counterfactual_orders_performed": false,
+  "trading_source_modified": false,
+  "selected_source_bound_frames": [
+    {
+      "seq": 1480,
+      "et": "21:49:45.413",
+      "geometry": {
+        "btc_price": 76174.19,
+        "ema9": 76076.96136083647,
+        "ema30": 76034.94650659263,
+        "ema_gap": 42.01485424384009,
+        "arc_direction": "UP",
+        "parent_direction": "UP",
+        "arc_age_sec": 80.32825803756714,
+        "arc_amplitude": 35.95515979088668,
+        "arc_phase": "EXPANDING",
+        "arc_origin_observed": true,
+        "btc_change6": -0.8899999999994179,
+        "btc_change9": 11.290000000008149,
+        "btc_change30": 17.529999999998836,
+        "btc_change60": 64.10000000000582,
+        "ema9_change6": -0.17799999999988358,
+        "ema9_change30": 3.5060000000084983,
+        "ema9_change60": 30.579159790897393,
+        "range60": 57.61999999999534,
+        "range180": 148.07000000000698
+      },
+      "tp": {
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "YES",
+        "required_move_to_target_btc": 162.54000000000815,
+        "comparable_parent_amplitude_btc": null,
+        "target_between_ema9_ema30": false
+      },
+      "rack": {
+        "owned_territory": "ALTERNATING_MOUNTAIN",
+        "owned_side": "YES",
+        "active_tool": "ALTERNATING_MOUNTAIN",
+        "ownership_reason": "MOUNTAIN_TERRITORY_PERSISTS_ACROSS_EDGE_RELAYS",
+        "lane_resolution_reason": "PRIMARY_TOOL_WAIT",
+        "handoff_confirmed": false
+      },
+      "physical": {
+        "ema9_direction": "YES",
+        "ema30_direction": "YES",
+        "parent_extended": false,
+        "parent_slow_rolling": false,
+        "parent_terminal_ready": false,
+        "qualified_heist": false,
+        "rail_launch_qualified": false,
+        "release_candidate_side": null,
+        "release_handoff_confirmed": false
+      },
+      "mountain_summary": {
+        "owner_side": "YES",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "meaningful_retreat": false
+      },
+      "engine_decision": [
+        [
+          "ENTRY",
+          "ENTER",
+          "COMMANDER_ACCEPTED_TOOL_INTENT"
+        ]
+      ]
+    },
+    {
+      "seq": 3969,
+      "et": "22:01:09.893",
+      "geometry": {
+        "btc_price": 76117.99,
+        "ema9": 76097.36725873363,
+        "ema30": 76073.09003742212,
+        "ema_gap": 24.277221311509493,
+        "arc_direction": "UP",
+        "parent_direction": "UP",
+        "arc_age_sec": 37.10550379753113,
+        "arc_amplitude": 17.011685316596413,
+        "arc_phase": "BUILDING",
+        "arc_origin_observed": true,
+        "btc_change6": 9.900000000008731,
+        "btc_change9": 13.130000000004657,
+        "btc_change30": 75.18000000000757,
+        "btc_change60": 62.11000000000058,
+        "ema9_change6": 1.9800000000104774,
+        "ema9_change30": 16.229685316589894,
+        "ema9_change60": 13.615685316588497,
+        "range60": 79.09000000001106,
+        "range180": 79.09000000001106
+      },
+      "tp": {
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "YES",
+        "required_move_to_target_btc": 41.01000000000931,
+        "comparable_parent_amplitude_btc": 126.15050739175058,
+        "target_between_ema9_ema30": true
+      },
+      "rack": {
+        "owned_territory": "MARKET_HEIST",
+        "owned_side": "NO",
+        "active_tool": "MARKET_HEIST",
+        "ownership_reason": "HEIST_STRICT_BOX_REMAINS_OWNER_WHILE_QUALIFIED",
+        "lane_resolution_reason": "PRIMARY_TERRITORY_TOOL_CONTINUES",
+        "handoff_confirmed": false
+      },
+      "physical": {
+        "ema9_direction": null,
+        "ema30_direction": "YES",
+        "parent_extended": false,
+        "parent_slow_rolling": false,
+        "parent_terminal_ready": false,
+        "qualified_heist": true,
+        "rail_launch_qualified": false,
+        "release_candidate_side": null,
+        "release_handoff_confirmed": false
+      },
+      "mountain_summary": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "meaningful_retreat": false
+      },
+      "engine_decision": [
+        [
+          "ENTRY",
+          "ENTER",
+          "COMMANDER_ACCEPTED_TOOL_INTENT"
+        ]
+      ]
+    },
+    {
+      "seq": 4546,
+      "et": "22:04:10.208",
+      "geometry": {
+        "btc_price": 76143.81,
+        "ema9": 76125.08782847162,
+        "ema30": 76088.16831917306,
+        "ema_gap": 36.919509298561024,
+        "arc_direction": "UP",
+        "parent_direction": "UP",
+        "arc_age_sec": 97.35533499717712,
+        "arc_amplitude": 24.445221484726062,
+        "arc_phase": "EXPANDING",
+        "arc_origin_observed": true,
+        "btc_change6": -14.60000000000582,
+        "btc_change9": -14.60000000000582,
+        "btc_change30": -12.040000000008149,
+        "btc_change60": 2.4899999999906868,
+        "ema9_change6": -2.9199999999982538,
+        "ema9_change30": 5.192542882097769,
+        "ema9_change60": 8.098542882100446,
+        "range60": 17.119999999995343,
+        "range180": 57.169999999998254
+      },
+      "tp": {
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "YES",
+        "required_move_to_target_btc": 66.83000000000175,
+        "comparable_parent_amplitude_btc": 126.15050739175058,
+        "target_between_ema9_ema30": false
+      },
+      "rack": {
+        "owned_territory": "ROLLING_MOUNTAIN",
+        "owned_side": "YES",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "ownership_reason": "MOUNTAIN_TERRITORY_PERSISTS_ACROSS_EDGE_RELAYS",
+        "lane_resolution_reason": "PRIMARY_TOOL_WAIT",
+        "handoff_confirmed": false
+      },
+      "physical": {
+        "ema9_direction": "YES",
+        "ema30_direction": "YES",
+        "parent_extended": false,
+        "parent_slow_rolling": false,
+        "parent_terminal_ready": false,
+        "qualified_heist": true,
+        "rail_launch_qualified": false,
+        "release_candidate_side": null,
+        "release_handoff_confirmed": false
+      },
+      "mountain_summary": {
+        "owner_side": "YES",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "meaningful_retreat": true
+      },
+      "engine_decision": [
+        [
+          "POSITION",
+          "EXIT",
+          "COMMANDER_ACCEPTED_EXACT_HELD_SIDE_EXIT"
+        ],
+        [
+          "ENTRY",
+          "WAIT",
+          "EXIT_COMMITTED_WAIT_FOR_NEXT_NATIVE_QUOTE"
+        ]
+      ]
+    },
+    {
+      "seq": 6953,
+      "et": "22:20:57.380",
+      "geometry": {
+        "btc_price": 75946.19,
+        "ema9": 75960.29642410226,
+        "ema30": 76023.84605309824,
+        "ema_gap": -63.549628995984676,
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "arc_age_sec": 13.998847007751465,
+        "arc_amplitude": 6.948000000003958,
+        "arc_phase": "MATURE",
+        "arc_origin_observed": true,
+        "btc_change6": 1.9000000000087311,
+        "btc_change9": -10.910000000003492,
+        "btc_change30": -1.389999999999418,
+        "btc_change60": 34.229999999995925,
+        "ema9_change6": 0.3800000000046566,
+        "ema9_change30": -0.27800000000570435,
+        "ema9_change60": -0.5526060255651828,
+        "range60": 55.2899999999936,
+        "range180": 79.25
+      },
+      "tp": {
+        "contract_ownership": "BOUNCE_FAVORED",
+        "contract_ownership_side": "YES",
+        "required_move_to_target_btc": 66.11000000000058,
+        "comparable_parent_amplitude_btc": 37.04088914186286,
+        "target_between_ema9_ema30": true
+      },
+      "rack": {
+        "owned_territory": "ALTERNATING_MOUNTAIN",
+        "owned_side": "NO",
+        "active_tool": "ALTERNATING_MOUNTAIN",
+        "ownership_reason": "MOUNTAIN_TERRITORY_PERSISTS_ACROSS_EDGE_RELAYS",
+        "lane_resolution_reason": "PRIMARY_TOOL_WAIT",
+        "handoff_confirmed": false
+      },
+      "physical": {
+        "ema9_direction": "NO",
+        "ema30_direction": "NO",
+        "parent_extended": true,
+        "parent_slow_rolling": false,
+        "parent_terminal_ready": true,
+        "qualified_heist": false,
+        "rail_launch_qualified": false,
+        "release_candidate_side": null,
+        "release_handoff_confirmed": false
+      },
+      "mountain_summary": {
+        "owner_side": "NO",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "meaningful_retreat": true
+      },
+      "engine_decision": [
+        [
+          "ENTRY",
+          "ENTER",
+          "COMMANDER_ACCEPTED_TOOL_INTENT"
+        ]
+      ]
+    }
+  ]
+}

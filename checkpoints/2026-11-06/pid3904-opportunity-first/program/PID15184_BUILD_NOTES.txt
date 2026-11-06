@@ -1,0 +1,64 @@
+PID15184 CURRENT-PARENT FIRST-COUNTER CALIBRATION - BUILD SCOPE
+
+Original run: TOOL_RACK_PAPER_20261105T034728Z_PID15184
+Original archive SHA256: 535740efcdb5f4313fa5b0ffd1e7c3d72ddcc81b50c061a3fad62528fb04747f
+Immediate baseline ZIP SHA256: 02a48450d412b96d70b474a910c5f28457f82b0bdabaff03252d67d995bfac98
+
+Existing-rule implementation basis:
+The previously approved PID15740/two-lane rule observes the first opposing
+physical swing across all entry families, including Commander-created cheap
+MAIN return candidates. Current parent context must not disappear simply because
+long continuously observed historical residence has not yet qualified.
+
+The narrow integration uses current, source-bound living mission-parent evidence
+in the existing calibration mechanism, maintains the correct physical chapter,
+and aligns the later-Heist calibration marker with that same keyed observation.
+It preserves historical and confirmed-Release precedence, genuine earned
+terminal/TP-transfer exceptions, mirrored directions, and contract continuity.
+It does not invent a witnessed parent origin or a fixed startup waiting timer.
+
+Production scope: strategy_core/dual_lane.py and strategy_core/tool_rack.py;
+strategy_core/paper_runtime.py changes only the release identity. All other
+sealed strategy/configuration/UI files retain the immediate baseline hashes.
+Every original capture/codec/replay module retains its prior hash.
+
+Recorded boundary: original decision26/trade1 becomes observation-only for lack
+of a current physical swing identity under an already current NO mission parent.
+Original entries2-5 remain eligible in the bounded observation comparison.
+The first3 losses are not all explained by this omission. Trades2-5 carry
+qualified anticipated full-arc evidence; their actual filled position policies
+remain distinct from that advisory qualification.
+
+Explicitly outside this correction:
+- New startup durations, price/size thresholds, or a blanket opposite-parent ban.
+- Removing developed/anticipated mature-edge return exceptions.
+- Changing unresolved-TP eligibility,180-second transition grace,100%/150%
+  return-seed profit thresholds, whole-lot liquidation, or official settlement.
+- Promotion-profitability policy, generic Heist/full-arc harvesting changes,
+  Quote-Wave activation, or Looking Glass pattern projections.
+
+Preserve all inherited behavioral tests and Constructs, including successful
+opening/Release/rail returns and the previous missing-estimate/late-scout repairs.
+The new recorded Construct must verify original case bindings, ordered calibration
+chronology, the exact first-entry change, preserved later admissions, source and
+parent identity, mirror/rollover/history-qualification behavior, and qualified
+later-Heist marker integrity. No inherited behavioral test is rewritten to hide
+an outcome change. Package identity tests evolve only for the new source lineage.
+
+The full extracted strategy gate, all12 capture/export modules, fresh synthetic
+three-way proof, final sealed-manifest preflight and final ZIP byte verification
+must pass before delivery. Final results belong to PID15184_VALIDATION.json.
+
+Reports in PID15184_REVIEW_EVIDENCE.zip are read-only forensics of the captured
+original program. Any references there to a diagnostic/proposed repair describe
+that original-run audit. This separate release's source, approval and validation
+files are authoritative for the delivered implementation.
+
+Preserved PID17588 winning-entry control:
+Its existing single-frame test setup lacked earlier observation memory. The
+support helper now observes a hash-bound original prefix before the unchanged
+PID17588 decision4416. Original parentP000L000005 remains NO with unchanged
+continuity through that interval; an actual earlier UP swing at3509 precedes
+the later winning entry. Original case bytes, historical fixture manifest,
+behavioral test and ENTER expectation remain unchanged. This corrects causal
+state initialization without a production exemption or a weaker expected result.

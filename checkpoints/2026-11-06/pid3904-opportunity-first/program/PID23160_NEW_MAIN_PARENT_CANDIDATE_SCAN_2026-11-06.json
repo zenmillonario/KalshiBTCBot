@@ -1,0 +1,61 @@
+{
+  "frames": 7652,
+  "candidate_frames": 3,
+  "unique_arc_opportunities": 1,
+  "first_unique_cases": [
+    {
+      "seq": 4973,
+      "time": "00:21:01",
+      "side": "NO",
+      "ask": 0.29000000000000004,
+      "ticker": "KXBTC15M-26NOV060030-30",
+      "arc": "G000A000020",
+      "arc_age": 119.9,
+      "btc9": -20.1,
+      "btc60": -49.9,
+      "near": 25.1,
+      "tp": 33.8
+    }
+  ],
+  "all_candidate_frames": [
+    {
+      "seq": 4973,
+      "time": "00:21:01",
+      "side": "NO",
+      "ask": 0.29000000000000004,
+      "ticker": "KXBTC15M-26NOV060030-30",
+      "arc": "G000A000020",
+      "arc_age": 119.9,
+      "btc9": -20.1,
+      "btc60": -49.9,
+      "near": 25.1,
+      "tp": 33.8
+    },
+    {
+      "seq": 4974,
+      "time": "00:21:02",
+      "side": "NO",
+      "ask": 0.29000000000000004,
+      "ticker": "KXBTC15M-26NOV060030-30",
+      "arc": "G000A000020",
+      "arc_age": 119.9,
+      "btc9": -20.1,
+      "btc60": -49.9,
+      "near": 25.1,
+      "tp": 33.8
+    },
+    {
+      "seq": 4975,
+      "time": "00:21:02",
+      "side": "NO",
+      "ask": 0.29000000000000004,
+      "ticker": "KXBTC15M-26NOV060030-30",
+      "arc": "G000A000020",
+      "arc_age": 119.9,
+      "btc9": -20.1,
+      "btc60": -49.9,
+      "near": 25.1,
+      "tp": 33.8
+    }
+  ]
+}

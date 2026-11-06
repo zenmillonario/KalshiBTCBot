@@ -1,0 +1,324 @@
+{
+  "schema": "PID10092_MISSION_CANDIDATE_REVIEW_V1",
+  "status": "SOURCE_ACCEPTED_PAPER_CANDIDATE",
+  "candidate_runtime_revision": "TOOL_RACK_PAPER_PID10092_MISSIONS_20261028",
+  "complete_historical_chart_inputs_available": false,
+  "profitability_claim": false,
+  "performance_improvement_claim": false,
+  "original_run_id": "TOOL_RACK_PAPER_20261028T010410Z_PID10092",
+  "original_diagnostics_zip_sha256": "db1e95ae78fd89691e93aca81fca2949540dd6d385903646c8e98f1bce3365bf",
+  "original_export_hashes_verified": {
+    "decisions.jsonl": "1eddd60d29af99bb6aabf3cd1e5eb380b2b6c95823a094a17fadf370bdaa4b1f",
+    "physical_geometry.jsonl": "646d19ae443128435ecc9679f5ba5dc70fb9786d3271bfd4ba26ccb7afec844e",
+    "market_data_source.jsonl": "f82f2dad8f13af549948e1bdb99833e3e0e8d801f32c13a570fd1d623eced185",
+    "PAPER_LEDGER.json": "ad6fafb86407e21d3492eeb19de56cdf783e98f75e3161acc353dcd03763f073",
+    "RUN_MANIFEST.json": "f65b21de6df842b2ea0d822181741fe7f94bb7a18aacf98c309160733176c9e5"
+  },
+  "verified_frames": 15804,
+  "causal_geometry_rows": 3445,
+  "baseline_control": {
+    "source_git_commit": "547315a3241050407a9a0fa1457f957c39a4f26a",
+    "source_python_config_sha256": "07f90a19c8fef8668df54a1df4ba79c8fc967d9712b749816cef96b755583c7c",
+    "ordered_economic_events_equal": true,
+    "economic_events": 43,
+    "equality_fields": [
+      "event",
+      "ticker",
+      "side",
+      "qty",
+      "price",
+      "fees",
+      "gross_pnl",
+      "net_pnl",
+      "cash_delta"
+    ],
+    "all_intermediate_decisions_or_timestamps_asserted_equal": false,
+    "entries": 22,
+    "closed_positions": 21,
+    "open_positions": 1,
+    "accounting": {
+      "starting_cash": "1000.0",
+      "cash": "933.6540",
+      "realized_gross": "-38.6420",
+      "realized_net": "-56.3920",
+      "fees_paid": "18.38"
+    },
+    "journal_verification": {
+      "records": 230,
+      "seq": 230,
+      "sha256": "220e4dfef1e01e02c3d7d427e3cf6fb495d9d4c6ab0d0f864c2b07ca29a6cba8",
+      "committed_boundary": true
+    },
+    "separate_later_result_derived_net": "-66.3460",
+    "later_result_supplied_to_replay": false
+  },
+  "revised_archive_diagnostic": {
+    "classification": "OFFLINE_CAUSAL_ARCHIVE_REPLAY_WITH_MISSING_CHART_HISTORY",
+    "frames_processed": 15804,
+    "source_python_config_files": 54,
+    "source_python_config_sha256": "0d54c79a5669e01c34b44e145d279855e34a53454445a8baa0c9ed79e61d0fe0",
+    "main_contract_entries": 0,
+    "purpose_counts": {
+      "TACTICAL_RETURN": 5
+    },
+    "thesis_frame_counts": {
+      "UNKNOWN": 15804
+    },
+    "entries": 5,
+    "closed_positions": 5,
+    "open_positions": 0,
+    "closed_wins": 1,
+    "closed_losses": 4,
+    "accounting": {
+      "starting_cash": "1000.0",
+      "cash": "970.0408",
+      "realized_gross": "-26.5592",
+      "realized_net": "-29.9592",
+      "fees_paid": "3.40"
+    },
+    "journal_verification": {
+      "records": 52,
+      "seq": 52,
+      "sha256": "214750b897a358477d2fa1cc83b7fd9b4fff1c6924998451b03954f7852a6916",
+      "committed_boundary": true
+    },
+    "admission_review": {
+      "classification": "LIMITED_ARCHIVE_REPLAY_ADMISSION_AND_ACCOUNTING_CHECKS",
+      "not_production_performance_estimate": true,
+      "checks": {
+        "all_tactical_entries_have_passed_estimated_gross_40pct_and_positive_net": true,
+        "all_scenario_quantities_equal_actual_fills": true,
+        "all_response_evidence_known_before_entry": true,
+        "all_mission_sources_known_before_entry": true,
+        "no_future_depth_claim": true,
+        "no_discretionary_sale_on_entry_candle": true
+      },
+      "trades": [
+        {
+          "id": "1",
+          "entry_frame": 6842,
+          "entry_et": "21:33:22",
+          "entry_ask": 0.3,
+          "actual_fill_vwap": "0.3000",
+          "gross_roi": 0.5516666666666669,
+          "estimated_net_after_fees": 4.1305,
+          "estimated_exit_bid": 0.4655,
+          "required_exit_bid": 0.42,
+          "same_quantity": true,
+          "all_response_known_at_entry": true,
+          "mission_known_at_entry": true,
+          "scenario_status": "SCENARIO_PASSES",
+          "future_exit_depth_proven": false,
+          "exit_rows": [
+            {
+              "event": "SETTLEMENT",
+              "time_et": "21:45:07",
+              "hold_seconds": 705.4147822856903,
+              "same_candle": false,
+              "reason": "OFFICIAL_FINAL_RESULT_PAPER_SETTLEMENT"
+            }
+          ],
+          "net": "-9.7600"
+        },
+        {
+          "id": "2",
+          "entry_frame": 11552,
+          "entry_et": "21:56:28",
+          "entry_ask": 0.2,
+          "actual_fill_vwap": "0.2000",
+          "gross_roi": 0.4000000000000001,
+          "estimated_net_after_fees": 2.56,
+          "estimated_exit_bid": 0.28,
+          "required_exit_bid": 0.28,
+          "same_quantity": true,
+          "all_response_known_at_entry": true,
+          "mission_known_at_entry": true,
+          "scenario_status": "SCENARIO_PASSES",
+          "future_exit_depth_proven": false,
+          "exit_rows": [
+            {
+              "event": "SETTLEMENT",
+              "time_et": "22:00:16",
+              "hold_seconds": 228.77609658241272,
+              "same_candle": false,
+              "reason": "OFFICIAL_FINAL_RESULT_PAPER_SETTLEMENT"
+            }
+          ],
+          "net": "-9.9300"
+        },
+        {
+          "id": "3",
+          "entry_frame": 13470,
+          "entry_et": "22:10:41",
+          "entry_ask": 0.29,
+          "actual_fill_vwap": "0.2900",
+          "gross_roi": 0.4475862068965518,
+          "estimated_net_after_fees": 3.1336,
+          "estimated_exit_bid": 0.4198,
+          "required_exit_bid": 0.406,
+          "same_quantity": true,
+          "all_response_known_at_entry": true,
+          "mission_known_at_entry": true,
+          "scenario_status": "SCENARIO_PASSES",
+          "future_exit_depth_proven": false,
+          "exit_rows": [
+            {
+              "event": "EXIT",
+              "time_et": "22:11:19",
+              "hold_seconds": 38.56990075111389,
+              "same_candle": false,
+              "reason": "MOUNTAIN_ENTRY_EDGE_PERSISTENT_PHYSICAL_FAILURE"
+            }
+          ],
+          "net": "-7.0792"
+        },
+        {
+          "id": "4",
+          "entry_frame": 13699,
+          "entry_et": "22:12:46",
+          "entry_ask": 0.039,
+          "actual_fill_vwap": "0.0390",
+          "gross_roi": 2.1333333333333333,
+          "estimated_net_after_fees": 17.528,
+          "estimated_exit_bid": 0.1222,
+          "required_exit_bid": 0.0546,
+          "same_quantity": true,
+          "all_response_known_at_entry": true,
+          "mission_known_at_entry": true,
+          "scenario_status": "SCENARIO_PASSES",
+          "future_exit_depth_proven": false,
+          "exit_rows": [
+            {
+              "event": "SETTLEMENT",
+              "time_et": "22:15:09",
+              "hold_seconds": 143.2860929965973,
+              "same_candle": false,
+              "reason": "OFFICIAL_FINAL_RESULT_PAPER_SETTLEMENT"
+            }
+          ],
+          "net": "-9.9900"
+        },
+        {
+          "id": "5",
+          "entry_frame": 14172,
+          "entry_et": "22:16:48",
+          "entry_ask": 0.26,
+          "actual_fill_vwap": "0.2600",
+          "gross_roi": 0.4823076923076923,
+          "estimated_net_after_fees": 3.4244,
+          "estimated_exit_bid": 0.3854,
+          "required_exit_bid": 0.364,
+          "same_quantity": true,
+          "all_response_known_at_entry": true,
+          "mission_known_at_entry": true,
+          "scenario_status": "SCENARIO_PASSES",
+          "future_exit_depth_proven": false,
+          "exit_rows": [
+            {
+              "event": "EXIT",
+              "time_et": "22:21:11",
+              "hold_seconds": 262.76784229278564,
+              "same_candle": false,
+              "reason": "MOUNTAIN_NEXT_MATURE_PHYSICAL_EDGE"
+            }
+          ],
+          "net": "6.8000"
+        }
+      ],
+      "limitations": [
+        "All 15804 contract thesis states UNKNOWN: original archive contains no completed candle history; no MAIN_CONTRACT position is represented.",
+        "Passing a conditional 40% return scenario is not a realized return prediction or proof of future exit liquidity.",
+        "This file validates only the frozen source snapshot named in PROVENANCE.json; post-freeze changes are reviewed separately."
+      ]
+    },
+    "interpretation": "Diagnostic replay only. Complete chart history was not retained in PID10092, so new contract-thesis admission cannot be reconstructed faithfully. No supplied main thesis is inferred from future prices, settlements, or original profitable trades."
+  },
+  "final_source_coverage": {
+    "classification": "POST_FREEZE_SOURCE_DIFF_REVIEW_NOT_A_SECOND_PORTFOLIO_REPLAY",
+    "compared_at_utc": "2026-10-28T05:16:55.958080+00:00",
+    "frozen_source_python_config_sha256": "0d54c79a5669e01c34b44e145d279855e34a53454445a8baa0c9ed79e61d0fe0",
+    "changed_files": [
+      {
+        "path": "strategy_core/mission_context.py",
+        "frozen_sha256": "d3613d44f14b915cfe2cf88e35fc9f3911c147a70126f35cda3a407ea85f1ff5",
+        "current_sha256": "9db712b69dbb424e79b4941ef24c0ea0d7ca7084281426c977e7f57de182bf16"
+      },
+      {
+        "path": "strategy_core/mission_policy.py",
+        "frozen_sha256": "e1eff91e6fcffb70d02803f4bb31ccac18a7d5b7ee439a7c60066636c0f8f4b0",
+        "current_sha256": "32384689d7e60e272e73a746bb07585662f1f299cb3a95b13e67a82c44146cc5"
+      },
+      {
+        "path": "strategy_core/paper_runtime.py",
+        "frozen_sha256": "8f3ccd7d7f2428754137ce67fd165f6f1fb8606c5463f2e7e1673b057c89896e",
+        "current_sha256": "54a4048bb8656280bdf9e32c501bd7d77c38e189b067b9388524722668c947f1"
+      },
+      {
+        "path": "strategy_core/tool_rack.py",
+        "frozen_sha256": "d50c851c5573459a63f3af4593d57b378278e3024c9105d798b70b6981f7d9a6",
+        "current_sha256": "e73ab02422b38f5fb2cc84513f121d0a2d9f180089ae91d1179d939d85fb255e"
+      },
+      {
+        "path": "strategy_core/tools/management.py",
+        "frozen_sha256": "1ec1963927c13a00fbce6842bb8f26b5bede6be5c1c83c8b47e494f28c0b1169",
+        "current_sha256": "17e869fe62006615bb0211c35d1f27d3ce009679efc305a23da13f5d12722f64"
+      }
+    ],
+    "recorded_input_scope": {
+      "geometry_rows": 3445,
+      "connection_epochs": [
+        1
+      ],
+      "maximum_geometry_gap_seconds": 11.002853271484375,
+      "entry_mission_generations": [
+        0
+      ],
+      "main_contract_entries": 0
+    },
+    "assessment": [
+      "mission_context, paper_runtime and tool_rack additions adopt interrupted held MAIN scopes after current verified reacquisition and pin held MAIN ancestry. No MAIN position exists in this archived replay.",
+      "mission_policy difference aligns mountain handoff IDs only when main is true. Contract thesis was UNKNOWN at every recorded frame, so that branch was not reached.",
+      "management changes permit explicit later-generation MAIN scope adoption and require equal generation for tactical local terminals. Original geometry has one connection epoch and a maximum gap below the configured 15-second reset boundary; replay entries all have generation 0.",
+      "Therefore these reviewed additions concern paths absent from this recording. Their correctness requires the separate focused tests reported by their owners; this file is not a claim that a changed source snapshot was replayed.",
+      "The final repository may change after this comparison. Recheck this file list before asserting release-source coverage.",
+      "Final staged whitespace cleanup removed exactly one extra EOF newline from mission_policy.py. Byte-hash reconstruction verifies that no functional source changed; no replay or test rerun is required for that cleanup."
+    ],
+    "nonfunctional_followup": {
+      "path": "strategy_core/mission_policy.py",
+      "previous_sha256": "d9e8f834d1359c2bd83ccd2623e84729111f8313d24a7f6e08316d14027464e3",
+      "current_sha256": "32384689d7e60e272e73a746bb07585662f1f299cb3a95b13e67a82c44146cc5",
+      "change": "One extra trailing newline removed at EOF; final newline retained.",
+      "verification": "SHA256(current file bytes plus one LF) equals the previously reviewed SHA256.",
+      "functional_change": false
+    }
+  },
+  "validation": {
+    "source_gate": "PASSED",
+    "python_tests": 522,
+    "skips": 0,
+    "elapsed_seconds": 67.944,
+    "python": "3.12.14",
+    "platform": "Linux",
+    "cryptography": "50.0.2",
+    "websockets": "16.0",
+    "strict_package_file_count_excluding_manifest": 145,
+    "nautilus_mission_dom_checks": "PASSED",
+    "nautilus_looking_glass_js_checks": "PASSED",
+    "javascript_syntax_checks": "PASSED",
+    "diff_whitespace_check": "PASSED",
+    "archive_verification_policy": "Actual ZIP is extracted and must pass the full gate with manifest validation and without PYTHONPATH before builder publishes it.",
+    "fresh_visual_browser_inspection": false,
+    "remote_windows_ci_executed": false,
+    "market_feed_started": false,
+    "trading_session_started": false,
+    "venue_order_authority": "NONE"
+  },
+  "limitations": [
+    "No completed chart/seed OHLC was present in the original diagnostics. Sampled geometry is not relabelled complete candles. The new contract thesis is UNKNOWN on all archived frames.",
+    "The archive diagnostic represents five tactical NO positions and no main position; it is not a full-strategy performance result or evidence of improvement.",
+    "Conditional estimated return and net-profit screens are uncalibrated and do not establish future execution price, depth or profitability.",
+    "The frozen revised-source replay predates five reviewed module changes. Those absent MAIN/post-gap paths are verified separately by the final-source focused/runtime gate.",
+    "No repaired finality request or next-contract native book after 22:30 was available; the replay cannot measure the scheduling repair economic effect.",
+    "No new trading run or market feed was started. No new visual browser review or remote Windows CI run was performed."
+  ]
+}

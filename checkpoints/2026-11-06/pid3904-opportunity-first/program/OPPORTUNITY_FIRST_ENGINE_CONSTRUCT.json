@@ -1,0 +1,437 @@
+{
+  "schema": "tachyos.opportunity_first_engine_construct.v1",
+  "complete": true,
+  "scope": "CHRONOLOGICAL_MODIFIED_ENGINE_CONSTRUCT",
+  "exact_engine_replay": false,
+  "source_time_clock": "First original per-call clock value; each engine read advances 10us. No original clock-count equivalence claimed.",
+  "actual_captured_feed_book_arguments_unchanged": true,
+  "fresh_candidate_engine_and_inventory": true,
+  "hypothetical_model_fills_possible": true,
+  "execution_model": "Existing conservative integer native-depth PAPER model; never venue fills.",
+  "profit_claim": false,
+  "source_changed_during_construct": false,
+  "construct_driver_sha256": "79f2d00850bc37fbd3acc3127e2c131d07294569bec4caff772788dad7c74b68",
+  "driver_changed_during_construct": false,
+  "baseline_source_sha256": {
+    "strategy_core/__init__.py": "5ff360092eff50e0f6e90b876eb92f68afdfab48c661f090fc1ed212c95fd3d3",
+    "strategy_core/commander.py": "f7074d1d540dd22f65d8c35b332ec2907221028ff4a5eafbf4c051988ff33e93",
+    "strategy_core/commander_candidates.py": "c224c731597fa51687ed799b5e37661842740edc46426497ce58b2841e980492",
+    "strategy_core/compatibility.py": "548783fc907a10e83a88d9214e910dbf08503e465bf10815d05d4983795f439e",
+    "strategy_core/config/heist.json": "f02de29d5b884667e23198947fe9388d1bfe0599a19af137c61e9a9a218d7c56",
+    "strategy_core/config/looking_glass.json": "1bfbe703751e73026a57ce4cbd9df30e5c8f7aa4edb0337f50e542ad33167fc4",
+    "strategy_core/config/mission.json": "13d7b7c286a54d1c95e9b2d26cfbd0dfb8d9304a5dc46dda0f51c3ce19855ecf",
+    "strategy_core/config/mountain.json": "9a1b46dd9df540d5dcd3b76d616e2e857200acf259535b240a3c1cf29296762d",
+    "strategy_core/config/physical.json": "18e107a484d9af54a073219608f9a02dcde55b43988e6b446917e2618d260055",
+    "strategy_core/config/rail.json": "8fc11ddfce119bcb08a50e689dd8f7d834beab705bd2cf8565b374b1c6e97f4e",
+    "strategy_core/config/release.json": "adadffb1e475ef208a232a750aa9ee25d901a6085a927eed4f9b3433f0031015",
+    "strategy_core/config_loader.py": "8abcfe33fad988fdde7e50c06d99a8acdc2709f2404e6088166041c805125497",
+    "strategy_core/counter_observers.py": "96d87b5decd86ca738793d4bdaf58e45cf28773a2034f2c0ad295356532d4e13",
+    "strategy_core/custody_evidence.py": "0c8825a5271bb63813ee453dcf8dde016ede5a146cf578da1dd361e0dc2c7ba3",
+    "strategy_core/detectors/__init__.py": "acde2e6b24abe985b6d2a5dafe7659a28b40bb11499a3baa31ba0c0f7b2e16cd",
+    "strategy_core/detectors/heist_geometry.py": "791e9e7ca015eb02a5e945b81b1a907b6e7f28b73b101c10cebc96f0232ef98f",
+    "strategy_core/detectors/mountain_geometry.py": "526bb40624782685ac92f37bb523f9226697338d456140747825d9985f7037db",
+    "strategy_core/detectors/rail_geometry.py": "1b48131a8e0a8cccf09fc3dacdadac6c01faa49c2d8b5f405e33858d18b6c21a",
+    "strategy_core/detectors/release_geometry.py": "8bd4e39e93835f264ba04cea1973b027c7a34167f8783d58456b8e54c853062e",
+    "strategy_core/directional_parent.py": "bd736e3d4c3c98054afcf42fca9ea3d16ec90c9b2ff40cc7bf370217e0b56e01",
+    "strategy_core/dual_lane.py": "352f12e182328abed323c04a5381e131e2dd51af61bb840874c7808c5740dfdb",
+    "strategy_core/fade_evidence.py": "c73dc3862aca5b66599e6c1aa16c06ade0c0ff275dd1452d7eccf23c29dc3867",
+    "strategy_core/lane_resolver.py": "8eb846c0537493946b7cfc50e06a8ddd6a18755e769691713233edb3fa70fd04",
+    "strategy_core/leg_ledger.py": "edf48d262c880a375bcc243eaa6af844e857d22982c024fd97f24fae16e60972",
+    "strategy_core/leg_weakness.py": "0001c26fbb71c78553cd7bb7ab88336b4bb32861d665b60b024ab4d4bf873492",
+    "strategy_core/looking_glass.py": "d2315e327a8f4035db878443e2ecdd93ade37f480bbaf3f0712efe39f3b04b28",
+    "strategy_core/marketdata/VENDOR_PROVENANCE.json": "f244e04d0ab3e68a54ecd9db1287fe47df229bc9e35277d86c8814e97c5a53b5",
+    "strategy_core/marketdata/__init__.py": "6fe387a6828e4012fa90c3816ebaf18702e158b4da298e238e1a70baa8a00980",
+    "strategy_core/marketdata/btc_observation.py": "399ff10edd45c8ba5127f12a3b4162e12f51e7e931c9a14101873fc619ee2f8c",
+    "strategy_core/marketdata/btc_transport.py": "a788fee263c9f710092f99f92df6c421ffdca164c4aab55cc591594252e56f14",
+    "strategy_core/marketdata/common.py": "595725066ac7d5ee98796a596785ba2be029c65bd4452c4532e17c3f2f44248a",
+    "strategy_core/marketdata/kalshi_public.py": "afb7bac3198a93e9c8aa41d8e7e9db62c908381a222ecc015574ac905806374a",
+    "strategy_core/marketdata/native_book.py": "4e07cf21863321af6a8064ac7ce82946a3f683dddcbe9507b73ff7b50924a927",
+    "strategy_core/marketdata/native_receiver.py": "caca426ffa7bb05ed767d0993fc1d216227c769e245d5852a0783c828d4672f4",
+    "strategy_core/mission_context.py": "19583b8574b277fefc313a3d0cec4ec0d78f5d337d85b7d2515b55cd16062f47",
+    "strategy_core/mission_policy.py": "83b7474efaf71ceb07cc735bd3088ce59f82ff5d3a5383efef0f41eed4667d75",
+    "strategy_core/mission_scopes.py": "c4d80e242a4ca5206a9d165f6265302e5a66682c4adcf4353594c70d3dde8381",
+    "strategy_core/nautilus/PROVENANCE.json": "acb6c81fe10aa57cec01c2bea58449714da74abe23767cfa9ae542daf7f85fe0",
+    "strategy_core/nautilus/app.js": "7899748e2d572b9df422a52e7092dd2403f91fb3db1bcbf4bdee2ccff03954ae",
+    "strategy_core/nautilus/bridge.css": "30d37846d72f994bb90a167e47f6e900feb4f2ba09f6f56454c8374472b52cbd",
+    "strategy_core/nautilus/bridge.js": "d0cefbeef76c2591837100160c35c741fd34c8bfd68e4d777223e41918006201",
+    "strategy_core/nautilus/chart.js": "862cc29acd0595c9f122b9862732b956a7c02b3ede41ee3449461de53eb6b5ee",
+    "strategy_core/nautilus/index.html": "df2fcdea0c6c506e9a0a69bcc52fdcce8ba496819fe04ae09c68c5813f6f2df6",
+    "strategy_core/nautilus/reliability-ui.js": "9b060fc046b8b8691eea659086ddf40cb5429eacb714926bbb729b7dcede3009",
+    "strategy_core/nautilus/style.css": "c97861e6270521defade19ce1ba31cb7d01e86cce0d2d24380d1b8b7f4298ca1",
+    "strategy_core/nautilus_projection.py": "a583c887fbdf04ed6f23b211198157832e8dad14fd76cddf08febf2e903e5aba",
+    "strategy_core/navigator_briefing.py": "cbd4bae4bb56f3ec8d9f2099373385c9b63d4f88bf766371a6fde7f076220c04",
+    "strategy_core/paper_dashboard.py": "90c5d67e2da5ffc39dd7e2e9ba4f4eee1b3415d468de76da90ef21a24a7a5441",
+    "strategy_core/paper_execution.py": "7c975ccd4da949404397485c7ac8abe6868a32968d7f8501d131b61cb1c9a5fd",
+    "strategy_core/paper_feed.py": "afaa3fe730c9181f0eca2b44266b9ce948ce65cf835549520654126c6c4c7536",
+    "strategy_core/paper_runtime.py": "c02af95418283848190a54a23c49a8dcbf984bc74324616c9208b6cc8f46a100",
+    "strategy_core/parent_references.py": "1e5cc5fc0172e4364f3180616e66e81c9ad8a27dfa41d8ac185e27eb66ff2aad",
+    "strategy_core/physical_source.py": "6959fc444560678e85f8ef79f223e16ee28c3dec9e380022976d10dcaedb24f5",
+    "strategy_core/position_roles.py": "37abb34c894de3e5585e5fc7661f8573658e550210c478584274b573f1b493f3",
+    "strategy_core/recovery.py": "9647efd9e5da5834d0b156baf6bc065960b9d48fc64f0690d3c25051944180fc",
+    "strategy_core/router.py": "1a092a367bf38fefb5defb00561ec8ec263a67773cec4560cba1583ff809e94a",
+    "strategy_core/source_freshness.py": "3892c40d16138df7682ea339b1ff3df295b88b196e542f2ecdaf029b583e2fb8",
+    "strategy_core/tool_rack.py": "5580aaf1bf3361a7fd265d19d1dc32ed9f391c4c7fa89cae4c471c17acb62d74",
+    "strategy_core/tools/__init__.py": "96a511665adfa0a8d59bca187578f13cd8eff000ff9133f909349bba21576ef8",
+    "strategy_core/tools/base.py": "c23cc54cd25c429a1f620220737d7d63dfec7ae1c44391496eed5a7383e636ae",
+    "strategy_core/tools/heist.py": "d2cfee4ab6f7600a280d42b4e55900537ec74e90a4d59eaceead03ecc2dc50bf",
+    "strategy_core/tools/management.py": "e96ecc1dc03753223a7fde2411af2c958d7de2065ded9ca4b01d8eaf43011491",
+    "strategy_core/tools/mountain.py": "2c612533aa54d0b37208e3db1883c5e4f5440a734e49b36e5c6ef9056432bd8b",
+    "strategy_core/tools/rail.py": "a422c99f85d654c7ca3a28c365a97d6c2ca8510be5b295ea5303fbf176583200",
+    "strategy_core/tools/release.py": "e3bdc15b984ca5c7e6347f8e43d5f7d93fe1263060e40657a7bbc5aa6cf30bea",
+    "strategy_core/tp_geometry.py": "ffa63858830ec740a81bc9849107994a3c0063ef8e6a0fbe0fea4c569846b449",
+    "strategy_core/types.py": "7fcad93ea276a416bbcba308b7b107d0bd70a2f471ba5b1ba34b73b5511b77da"
+  },
+  "candidate_source_sha256": {
+    "strategy_core/__init__.py": "5ff360092eff50e0f6e90b876eb92f68afdfab48c661f090fc1ed212c95fd3d3",
+    "strategy_core/commander.py": "3a25564bae2b6b13db575a3305d8da99c37ba61b8118c589766ddfe404db1a20",
+    "strategy_core/commander_candidates.py": "c224c731597fa51687ed799b5e37661842740edc46426497ce58b2841e980492",
+    "strategy_core/compatibility.py": "548783fc907a10e83a88d9214e910dbf08503e465bf10815d05d4983795f439e",
+    "strategy_core/config/heist.json": "f02de29d5b884667e23198947fe9388d1bfe0599a19af137c61e9a9a218d7c56",
+    "strategy_core/config/looking_glass.json": "1bfbe703751e73026a57ce4cbd9df30e5c8f7aa4edb0337f50e542ad33167fc4",
+    "strategy_core/config/mission.json": "13d7b7c286a54d1c95e9b2d26cfbd0dfb8d9304a5dc46dda0f51c3ce19855ecf",
+    "strategy_core/config/mountain.json": "9a1b46dd9df540d5dcd3b76d616e2e857200acf259535b240a3c1cf29296762d",
+    "strategy_core/config/physical.json": "18e107a484d9af54a073219608f9a02dcde55b43988e6b446917e2618d260055",
+    "strategy_core/config/rail.json": "8fc11ddfce119bcb08a50e689dd8f7d834beab705bd2cf8565b374b1c6e97f4e",
+    "strategy_core/config/release.json": "adadffb1e475ef208a232a750aa9ee25d901a6085a927eed4f9b3433f0031015",
+    "strategy_core/config_loader.py": "8abcfe33fad988fdde7e50c06d99a8acdc2709f2404e6088166041c805125497",
+    "strategy_core/counter_observers.py": "96d87b5decd86ca738793d4bdaf58e45cf28773a2034f2c0ad295356532d4e13",
+    "strategy_core/custody_evidence.py": "8345e765b4fdfa054c241e6f60ecab58ba46c44027eaae368a379e79f3b908fe",
+    "strategy_core/detectors/__init__.py": "acde2e6b24abe985b6d2a5dafe7659a28b40bb11499a3baa31ba0c0f7b2e16cd",
+    "strategy_core/detectors/heist_geometry.py": "791e9e7ca015eb02a5e945b81b1a907b6e7f28b73b101c10cebc96f0232ef98f",
+    "strategy_core/detectors/mountain_geometry.py": "526bb40624782685ac92f37bb523f9226697338d456140747825d9985f7037db",
+    "strategy_core/detectors/rail_geometry.py": "1b48131a8e0a8cccf09fc3dacdadac6c01faa49c2d8b5f405e33858d18b6c21a",
+    "strategy_core/detectors/release_geometry.py": "8bd4e39e93835f264ba04cea1973b027c7a34167f8783d58456b8e54c853062e",
+    "strategy_core/directional_parent.py": "bd736e3d4c3c98054afcf42fca9ea3d16ec90c9b2ff40cc7bf370217e0b56e01",
+    "strategy_core/dual_lane.py": "352f12e182328abed323c04a5381e131e2dd51af61bb840874c7808c5740dfdb",
+    "strategy_core/fade_evidence.py": "c73dc3862aca5b66599e6c1aa16c06ade0c0ff275dd1452d7eccf23c29dc3867",
+    "strategy_core/lane_resolver.py": "8eb846c0537493946b7cfc50e06a8ddd6a18755e769691713233edb3fa70fd04",
+    "strategy_core/leg_ledger.py": "edf48d262c880a375bcc243eaa6af844e857d22982c024fd97f24fae16e60972",
+    "strategy_core/leg_weakness.py": "0001c26fbb71c78553cd7bb7ab88336b4bb32861d665b60b024ab4d4bf873492",
+    "strategy_core/looking_glass.py": "d2315e327a8f4035db878443e2ecdd93ade37f480bbaf3f0712efe39f3b04b28",
+    "strategy_core/marketdata/VENDOR_PROVENANCE.json": "f244e04d0ab3e68a54ecd9db1287fe47df229bc9e35277d86c8814e97c5a53b5",
+    "strategy_core/marketdata/__init__.py": "6fe387a6828e4012fa90c3816ebaf18702e158b4da298e238e1a70baa8a00980",
+    "strategy_core/marketdata/btc_observation.py": "399ff10edd45c8ba5127f12a3b4162e12f51e7e931c9a14101873fc619ee2f8c",
+    "strategy_core/marketdata/btc_transport.py": "a788fee263c9f710092f99f92df6c421ffdca164c4aab55cc591594252e56f14",
+    "strategy_core/marketdata/common.py": "595725066ac7d5ee98796a596785ba2be029c65bd4452c4532e17c3f2f44248a",
+    "strategy_core/marketdata/kalshi_public.py": "afb7bac3198a93e9c8aa41d8e7e9db62c908381a222ecc015574ac905806374a",
+    "strategy_core/marketdata/native_book.py": "4e07cf21863321af6a8064ac7ce82946a3f683dddcbe9507b73ff7b50924a927",
+    "strategy_core/marketdata/native_receiver.py": "caca426ffa7bb05ed767d0993fc1d216227c769e245d5852a0783c828d4672f4",
+    "strategy_core/mission_context.py": "19583b8574b277fefc313a3d0cec4ec0d78f5d337d85b7d2515b55cd16062f47",
+    "strategy_core/mission_policy.py": "83b7474efaf71ceb07cc735bd3088ce59f82ff5d3a5383efef0f41eed4667d75",
+    "strategy_core/mission_scopes.py": "c4d80e242a4ca5206a9d165f6265302e5a66682c4adcf4353594c70d3dde8381",
+    "strategy_core/nautilus/PROVENANCE.json": "acb6c81fe10aa57cec01c2bea58449714da74abe23767cfa9ae542daf7f85fe0",
+    "strategy_core/nautilus/app.js": "7899748e2d572b9df422a52e7092dd2403f91fb3db1bcbf4bdee2ccff03954ae",
+    "strategy_core/nautilus/bridge.css": "30d37846d72f994bb90a167e47f6e900feb4f2ba09f6f56454c8374472b52cbd",
+    "strategy_core/nautilus/bridge.js": "d0cefbeef76c2591837100160c35c741fd34c8bfd68e4d777223e41918006201",
+    "strategy_core/nautilus/chart.js": "862cc29acd0595c9f122b9862732b956a7c02b3ede41ee3449461de53eb6b5ee",
+    "strategy_core/nautilus/index.html": "df2fcdea0c6c506e9a0a69bcc52fdcce8ba496819fe04ae09c68c5813f6f2df6",
+    "strategy_core/nautilus/reliability-ui.js": "9b060fc046b8b8691eea659086ddf40cb5429eacb714926bbb729b7dcede3009",
+    "strategy_core/nautilus/style.css": "c97861e6270521defade19ce1ba31cb7d01e86cce0d2d24380d1b8b7f4298ca1",
+    "strategy_core/nautilus_projection.py": "a583c887fbdf04ed6f23b211198157832e8dad14fd76cddf08febf2e903e5aba",
+    "strategy_core/navigator_briefing.py": "cbd4bae4bb56f3ec8d9f2099373385c9b63d4f88bf766371a6fde7f076220c04",
+    "strategy_core/opportunity_first.py": "e762443cfb87cd9e307d065d63c6f62001bbe6946f60cf540fb06d7c0b44cf6c",
+    "strategy_core/paper_dashboard.py": "90c5d67e2da5ffc39dd7e2e9ba4f4eee1b3415d468de76da90ef21a24a7a5441",
+    "strategy_core/paper_execution.py": "7c975ccd4da949404397485c7ac8abe6868a32968d7f8501d131b61cb1c9a5fd",
+    "strategy_core/paper_feed.py": "afaa3fe730c9181f0eca2b44266b9ce948ce65cf835549520654126c6c4c7536",
+    "strategy_core/paper_runtime.py": "b73d39cd6f66972ff5108aecc96be9b7dd91c0b5072aedaa7d472605f6a84de7",
+    "strategy_core/parent_references.py": "1e5cc5fc0172e4364f3180616e66e81c9ad8a27dfa41d8ac185e27eb66ff2aad",
+    "strategy_core/physical_source.py": "6959fc444560678e85f8ef79f223e16ee28c3dec9e380022976d10dcaedb24f5",
+    "strategy_core/position_roles.py": "37abb34c894de3e5585e5fc7661f8573658e550210c478584274b573f1b493f3",
+    "strategy_core/recovery.py": "9647efd9e5da5834d0b156baf6bc065960b9d48fc64f0690d3c25051944180fc",
+    "strategy_core/router.py": "1a092a367bf38fefb5defb00561ec8ec263a67773cec4560cba1583ff809e94a",
+    "strategy_core/source_freshness.py": "3892c40d16138df7682ea339b1ff3df295b88b196e542f2ecdaf029b583e2fb8",
+    "strategy_core/tool_rack.py": "5580aaf1bf3361a7fd265d19d1dc32ed9f391c4c7fa89cae4c471c17acb62d74",
+    "strategy_core/tools/__init__.py": "96a511665adfa0a8d59bca187578f13cd8eff000ff9133f909349bba21576ef8",
+    "strategy_core/tools/base.py": "c23cc54cd25c429a1f620220737d7d63dfec7ae1c44391496eed5a7383e636ae",
+    "strategy_core/tools/heist.py": "d2cfee4ab6f7600a280d42b4e55900537ec74e90a4d59eaceead03ecc2dc50bf",
+    "strategy_core/tools/management.py": "e96ecc1dc03753223a7fde2411af2c958d7de2065ded9ca4b01d8eaf43011491",
+    "strategy_core/tools/mountain.py": "2c612533aa54d0b37208e3db1883c5e4f5440a734e49b36e5c6ef9056432bd8b",
+    "strategy_core/tools/rail.py": "a422c99f85d654c7ca3a28c365a97d6c2ca8510be5b295ea5303fbf176583200",
+    "strategy_core/tools/release.py": "e3bdc15b984ca5c7e6347f8e43d5f7d93fe1263060e40657a7bbc5aa6cf30bea",
+    "strategy_core/tp_geometry.py": "ffa63858830ec740a81bc9849107994a3c0063ef8e6a0fbe0fea4c569846b449",
+    "strategy_core/types.py": "7fcad93ea276a416bbcba308b7b107d0bd70a2f471ba5b1ba34b73b5511b77da"
+  },
+  "recorded_decisions_sha256": "da03d3ff02f8d718670212d93606df39a126f70a65b96d26a360776c108e4506",
+  "program": "/workspace/scratch/69c519af7eea/work/opportunity_first/program",
+  "baseline": "/workspace/scratch/69c519af7eea/work/recovered/program",
+  "recording": "/workspace/scratch/69c519af7eea/work/recovered/original/TOOL_RACK_PAPER_20261106T121055Z_PID3904",
+  "recorded_tape_sha256": "8949f50fbde0c06a8d853e3a2c061657dc219beaf3c151e88410dfb78d133c5d",
+  "recorded_python": "3.14.7",
+  "recorded_platform": "Windows-11-10.0.26200-SP0",
+  "construct_python": "3.12.14",
+  "construct_platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "call_count": 6965,
+  "method_counts": {
+    "init": 1,
+    "process": 6963,
+    "close": 1
+  },
+  "trace_sha256": "ad69d34c9270807c9bba3fc4c1e5632b82a34722d98ef64c9e9dd5f77edf45c8",
+  "source_run": "TOOL_RACK_PAPER_20261106T121055Z_PID3904",
+  "run_dir": "/workspace/scratch/69c519af7eea/work/validation/engine_construct_final_v2/TOOL_RACK_PAPER_20261106T121055Z_PID3904",
+  "verification_seconds": 282.7714530530002,
+  "execution_seconds": 1492.4939756530002,
+  "error": null,
+  "limitations": [
+    "Modified source and authored clock preclude exact historical replay equivalence.",
+    "Paper depth sweeps are modeled; live matching, latency and venue fills are not validated.",
+    "The captured feed is fixed and cannot respond to hypothetical strategy actions.",
+    "No simulated or alternate net profit is reported as an actual result.",
+    "The captured tape contains no settlement calls. Ending modeled inventory remains unsettled; no terminal liquidation, settlement result, or final counterfactual P&L is invented."
+  ],
+  "journal_integrity": {
+    "records": 62,
+    "sha256": "41073b746abffc3e832e2b74544ba2f99c6c0d9f87ec635a5fea64ee921961c6"
+  },
+  "pass_semantic": true,
+  "semantic_controls": [
+    {
+      "name": "all_original_calls_executed",
+      "pass": true,
+      "evidence": {
+        "init": 1,
+        "process": 6963,
+        "close": 1
+      }
+    },
+    {
+      "name": "all_source_frame_identities_preserved",
+      "pass": true,
+      "evidence": {
+        "frames": 6963,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "fresh_model_sequence_has_positive_admission",
+      "pass": true,
+      "evidence": {
+        "admission_frames": 3,
+        "species": {
+          "MAIN_EMA9_REJOIN": 2,
+          "MOUNTAIN_RETURN": 1
+        }
+      }
+    },
+    {
+      "name": "every_entry_has_positive_commander_species",
+      "pass": true,
+      "evidence": {
+        "failures": []
+      }
+    },
+    {
+      "name": "original_negative_source_frame_2932",
+      "pass": true,
+      "evidence": {
+        "action": "WAIT",
+        "reason": "OPPORTUNITY_MOUNTAIN_PARENT_TERMINAL_PROOF_REQUIRED",
+        "intent_reason": null,
+        "side": null,
+        "observed_parent_side": "YES",
+        "species": null,
+        "forbidden_original_side": "NO",
+        "independently_earned_correct_side_main_allowed": true,
+        "independent_main_admitted": false
+      }
+    },
+    {
+      "name": "original_negative_source_frame_3192",
+      "pass": true,
+      "evidence": {
+        "action": "WAIT",
+        "reason": "OPPORTUNITY_MOUNTAIN_PARENT_TERMINAL_PROOF_REQUIRED",
+        "intent_reason": null,
+        "side": null,
+        "observed_parent_side": "YES",
+        "species": null,
+        "forbidden_original_side": "NO",
+        "independently_earned_correct_side_main_allowed": true,
+        "independent_main_admitted": false
+      }
+    },
+    {
+      "name": "original_negative_source_frame_6295",
+      "pass": true,
+      "evidence": {
+        "action": "WAIT",
+        "reason": "OPPORTUNITY_TP_EMA_JUNCTION_WAIT",
+        "intent_reason": null,
+        "side": null,
+        "observed_parent_side": "NO",
+        "species": null,
+        "forbidden_original_side": "YES",
+        "independently_earned_correct_side_main_allowed": true,
+        "independent_main_admitted": false
+      }
+    },
+    {
+      "name": "original_negative_source_frame_6466",
+      "pass": true,
+      "evidence": {
+        "action": "WAIT",
+        "reason": "OPPORTUNITY_HEIST_REPEATED_BILATERAL_WALLS_REQUIRED",
+        "intent_reason": null,
+        "side": null,
+        "observed_parent_side": "NO",
+        "species": null,
+        "forbidden_original_side": "YES",
+        "independently_earned_correct_side_main_allowed": true,
+        "independent_main_admitted": false
+      }
+    },
+    {
+      "name": "fresh_inventory_and_custody_exercised",
+      "pass": true,
+      "evidence": {
+        "model_entries": 3,
+        "model_exits": 2,
+        "custody_reviews": 6795
+      }
+    },
+    {
+      "name": "whole_lot_model_exits",
+      "pass": true,
+      "evidence": {
+        "model_exits": 2
+      }
+    },
+    {
+      "name": "no_venue_fill_claim",
+      "pass": true,
+      "evidence": {
+        "model_entries": 3,
+        "model_exits": 2
+      }
+    }
+  ],
+  "frame_count": 6963,
+  "source_bounds": {
+    "first": {
+      "sequence": 1,
+      "now_ts": 1793967058.0123968
+    },
+    "last": {
+      "sequence": 6963,
+      "now_ts": 1793969758.0345168
+    }
+  },
+  "entry_actions": {
+    "WAIT": 6960,
+    "ENTER": 3
+  },
+  "custody_reasons": {
+    "COMMANDER_MOUNTAIN_ONLY_LEG_STILL_ACTIVE": 666,
+    "EXACT_CONTRACT_AWAITING_OFFICIAL_FINALITY": 6011,
+    "TACTICAL_RETURN_STILL_ADVANCING_OR_END_UNPROVEN": 116,
+    "ALREADY_ARMED_EXECUTABLE_BID_FLOOR": 2
+  },
+  "model_ending_positions": [
+    {
+      "position_id": "1",
+      "ticker": "KXBTC15M-26NOV060715-15",
+      "side": "NO",
+      "qty": 28,
+      "position_role": "PRIMARY",
+      "custody_state": "NORMAL"
+    }
+  ],
+  "settlement_coverage": {
+    "recorded_settlement_calls": 0,
+    "ending_model_position_count": 1,
+    "invented_settlement_or_liquidation": false
+  },
+  "forced_hypothetical_liquidation": false,
+  "original_decision_chain_sha256": "e04c479f0013063889d1ffb16d2227a80895d2e2ef64ed4e50ff42f9dd6f8251",
+  "construct_decision_chain_sha256": "1c96b683f37b60f33f2e68321a02df61e7ea9eddced268323f2dcf564f4b83c9",
+  "construct_decisions_sha256": "0b356c3711a63fea00449ace8f6fbb7c35d8c83f293dc08b78cce878b39f437f",
+  "species_admissions": {
+    "MAIN_EMA9_REJOIN": 2,
+    "MOUNTAIN_RETURN": 1
+  },
+  "entry_admissions": [
+    {
+      "seq": 448,
+      "source_ts": 1793967171.6602418,
+      "ticker": "KXBTC15M-26NOV060715-15",
+      "action": "ENTER",
+      "reason": "COMMANDER_OPPORTUNITY_MAIN_EMA9_VALUE_REJOIN",
+      "side": "NO",
+      "species": "MAIN_EMA9_REJOIN",
+      "qualified": true,
+      "parent_side": "NO",
+      "proof_source_ms": 1793967171300.145
+    },
+    {
+      "seq": 4972,
+      "source_ts": 1793968547.3603208,
+      "ticker": "KXBTC15M-26NOV060745-45",
+      "action": "ENTER",
+      "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "side": "YES",
+      "species": "MOUNTAIN_RETURN",
+      "qualified": true,
+      "parent_side": "NO",
+      "proof_source_ms": 1793968546213.503
+    },
+    {
+      "seq": 5381,
+      "source_ts": 1793968753.6502597,
+      "ticker": "KXBTC15M-26NOV060745-45",
+      "action": "ENTER",
+      "reason": "COMMANDER_OPPORTUNITY_MAIN_EMA9_VALUE_REJOIN",
+      "side": "YES",
+      "species": "MAIN_EMA9_REJOIN",
+      "qualified": true,
+      "parent_side": "YES",
+      "proof_source_ms": 1793968753125.5168
+    }
+  ],
+  "model_entries": [
+    {
+      "source_seq": 448,
+      "position_id": "1",
+      "ticker": "KXBTC15M-26NOV060715-15",
+      "side": "NO",
+      "reason": "COMMANDER_OPPORTUNITY_MAIN_EMA9_VALUE_REJOIN",
+      "quantity": 28,
+      "venue_fill_claim": false
+    },
+    {
+      "source_seq": 4972,
+      "position_id": "2",
+      "ticker": "KXBTC15M-26NOV060745-45",
+      "side": "YES",
+      "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "quantity": 134,
+      "venue_fill_claim": false
+    },
+    {
+      "source_seq": 5381,
+      "position_id": "3",
+      "ticker": "KXBTC15M-26NOV060745-45",
+      "side": "YES",
+      "reason": "COMMANDER_OPPORTUNITY_MAIN_EMA9_VALUE_REJOIN",
+      "quantity": 95,
+      "venue_fill_claim": false
+    }
+  ],
+  "model_exits": [
+    {
+      "source_seq": 5089,
+      "position_id": "2",
+      "reason": "ALREADY_ARMED_EXECUTABLE_BID_FLOOR",
+      "quantity": 134,
+      "remaining": 0,
+      "venue_fill_claim": false
+    },
+    {
+      "source_seq": 5544,
+      "position_id": "3",
+      "reason": "ALREADY_ARMED_EXECUTABLE_BID_FLOOR",
+      "quantity": 95,
+      "remaining": 0,
+      "venue_fill_claim": false
+    }
+  ]
+}

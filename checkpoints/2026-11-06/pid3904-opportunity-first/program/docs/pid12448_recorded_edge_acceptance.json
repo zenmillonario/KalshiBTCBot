@@ -1,0 +1,42 @@
+{
+  "schema": "PID12448_PARENT_EDGE_LOCATION_ACCEPTANCE_V1",
+  "declared_before_corrected_edge_candidate_replay": true,
+  "basis": "Operator instruction to enter around the full peak or valley. The preceding candidate exposed a paired-gap fallback which still bought after a material return. This is an entry-location correction, not a hindsight profitability filter.",
+  "original_run": "TOOL_RACK_PAPER_20261028T055826Z_PID12448",
+  "time_zone": "America/New_York",
+  "requirements": [
+    {
+      "id": "all_full_parent_entry_routes_require_current_edge_location",
+      "level": "required",
+      "expectation": "Every committed full ARC_RETURN must carry current, exact-parent entry evidence showing that actual price remains within the existing observed parent-scale extreme region. Paired-gap, completed-minute, comparable-duration and witnessed-retest routes share this entry-location condition. A historical qualified gap, unfinished EMA contact, or old peak timestamp cannot admit an underway return. Collection and parent-completion proof remain separate."
+    },
+    {
+      "id": "late_paired_gap_frame_8357_rejected_at_source",
+      "level": "required",
+      "original_frame": 8357,
+      "observed_time_et": "2026-10-28T02:34:14.522454-04:00",
+      "observed_btc": 80795.71,
+      "preceding_candidate_parent_extreme_btc": 80772.64,
+      "preceding_candidate_retreat_btc": 23.070000000006985,
+      "preceding_candidate_parent_boundary_btc": 9.619200000000419,
+      "expectation": "The old whole-parent paired-gap fallback cannot authorize a fresh YES ARC_RETURN from this spent edge. Check source qualification independently of whether inventory happens to block a trade. No requirement to make this trade profitable or to replace it with a different forced trade."
+    },
+    {
+      "id": "preserve_broad_upper_arc_and_subcent_entries",
+      "level": "required",
+      "expectation": "Retain the previously declared actual upper-arc committed NO entry at an observed ask no greater than .15, and mirrored Construct peak/valley entries including .005. Do not add an outgoing EMA-direction veto, 40-percent tactical screen, fixed opening timer, or future minimum-quote input to ARC_RETURN."
+    },
+    {
+      "id": "complete_durable_replay_trace",
+      "level": "required",
+      "expectation": "All 20,535 executed frames must also exist in durable sequential evidence, with each original frame hash checked. Verify persisted trace after the writer closes, every ledger event, frozen production hashes, and the exact delivered production subset. An in-memory processed count does not substitute for missing saved frames."
+    }
+  ],
+  "retained_constraints": [
+    "Existing first-two-weakness holds, spent-third or independently proved completed full-parent collection",
+    "No ordinary entry-candle sale",
+    "Existing Rail value path and exact-contract execution",
+    "No new loser-to-settlement redesign or forced expiry profit target",
+    "No market-fed run during preparation"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "source_archive": "TOOL_RACK_PAPER_20261104T005836Z_PID17744_ULTRA_FORENSICS.zip",
+  "purpose": "Immutable exact 21:30:16 and 21:30:50 live observations; no future outcome used",
+  "rows": {
+    "213016": {
+      "t": 1793759416.9491096,
+      "ticker": "KXBTC15M-26NOV032145-45",
+      "contract_age_s": 16.94910955429077,
+      "book": {
+        "quote_id": "Q21:1:5364:10802",
+        "observed_ts": 1793759416.9467146,
+        "current": true,
+        "entry_allowed": true,
+        "yes_bid": 0.51,
+        "yes_ask": 0.52,
+        "no_bid": 0.48,
+        "no_ask": 0.49,
+        "yes_bid_qty": 19377.95,
+        "no_bid_qty": 5637.19
+      },
+      "geometry": {
+        "epoch_ms": 1793759417603.909,
+        "btc_price": 76667.23,
+        "ema9": 76661.62954735868,
+        "ema30": 76750.5998046909,
+        "ema_gap": -88.9702573322138,
+        "range60": 71.08000000000175,
+        "range180": 114.50999999999476,
+        "btc_change6": 10.119999999995343,
+        "btc_change9": 23.539999999993597,
+        "btc_change30": -4.320000000006985,
+        "btc_change60": -14.930000000007567,
+        "ema9_change6": 2.0240000000048894,
+        "ema9_change30": 0.6221131603233516,
+        "ema9_change60": -1.4998868396796752,
+        "arc_id": "G000A000115",
+        "arc_direction": "UP",
+        "arc_phase": "BUILDING",
+        "arc_age_sec": 11.562335014343262,
+        "arc_amplitude": 8.884000000005472,
+        "parent_direction": "DOWN"
+      },
+      "gap": {
+        "signed_gap": -88.9702573322138,
+        "side": "NO",
+        "touching_spine": false,
+        "observed_cross_count": 19,
+        "stage": "MATURE",
+        "age_s": 1097.3896748046875,
+        "gap_side": "NO",
+        "abs_gap": 88.9702573322138,
+        "expanding_6s": false,
+        "continued_on_cross_side": true,
+        "classification_only": true
+      },
+      "tp": {
+        "target": 76674.95,
+        "btc": 76667.23,
+        "observed_target_side": "NO",
+        "required_move_to_target_btc": 7.720000000001164,
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "YES",
+        "comparable_parent_amplitude_btc": 159.98420136941422,
+        "target_between_ema9_ema30": true
+      },
+      "mountain_parent": {
+        "parent_id": "E000A000045",
+        "parent_side": "YES",
+        "parent_age_s": 94.1981770992279,
+        "parent_amplitude": 12.535754610726144,
+        "parent_terminal_ready": false,
+        "parent_turning_or_flat": false,
+        "slow_rolling_parent": false,
+        "extended_parent": false,
+        "child_arc_count": 4
+      }
+    },
+    "213050": {
+      "t": 1793759450.2798553,
+      "ticker": "KXBTC15M-26NOV032145-45",
+      "contract_age_s": 50.279855251312256,
+      "book": {
+        "quote_id": "Q21:1:32241:10835",
+        "observed_ts": 1793759450.2774935,
+        "current": true,
+        "entry_allowed": true,
+        "yes_bid": 0.38,
+        "yes_ask": 0.39,
+        "no_bid": 0.61,
+        "no_ask": 0.62,
+        "yes_bid_qty": 2335.52,
+        "no_bid_qty": 11489.6
+      },
+      "geometry": {
+        "epoch_ms": 1793759451248.881,
+        "btc_price": 76618.58,
+        "ema9": 76651.89954735868,
+        "ema30": 76747.46109501347,
+        "ema_gap": -95.56154765478277,
+        "range60": 57.38999999999942,
+        "range180": 99.33000000000175,
+        "btc_change6": -29.55999999999767,
+        "btc_change9": -27.74000000000524,
+        "btc_change30": -57.38999999999942,
+        "btc_change60": -44.080000000001746,
+        "ema9_change6": -5.911999999996624,
+        "ema9_change30": -11.478000000002794,
+        "ema9_change60": -7.3298868396668695,
+        "arc_id": "G000A000116",
+        "arc_direction": "DOWN",
+        "arc_phase": "TROUGH_FORMING",
+        "arc_age_sec": 29.726963996887207,
+        "arc_amplitude": 11.478000000002794,
+        "parent_direction": "DOWN"
+      },
+      "gap": {
+        "signed_gap": -95.56154765478277,
+        "side": "NO",
+        "touching_spine": false,
+        "observed_cross_count": 19,
+        "stage": "MATURE",
+        "age_s": 1131.0346469726562,
+        "gap_side": "NO",
+        "abs_gap": 95.56154765478277,
+        "expanding_6s": true,
+        "continued_on_cross_side": true,
+        "classification_only": true
+      },
+      "tp": {
+        "target": 76674.95,
+        "btc": 76618.58,
+        "observed_target_side": "NO",
+        "required_move_to_target_btc": 56.36999999999534,
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "comparable_parent_amplitude_btc": 248.29209997526777,
+        "target_between_ema9_ema30": true
+      },
+      "mountain_parent": {
+        "parent_id": "E000A000046",
+        "parent_side": "NO",
+        "parent_age_s": 29.726963996887207,
+        "parent_amplitude": 11.478000000002794,
+        "parent_terminal_ready": false,
+        "parent_turning_or_flat": false,
+        "slow_rolling_parent": false,
+        "extended_parent": false,
+        "child_arc_count": 2
+      }
+    }
+  }
+}

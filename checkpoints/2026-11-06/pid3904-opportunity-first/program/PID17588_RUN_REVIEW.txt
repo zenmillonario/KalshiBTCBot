@@ -1,0 +1,132 @@
+PID17588 RUN REVIEW AND NARROW REPAIR
+November 4, 2026 - all times Eastern
+
+RESULT
+
+The run completed from 9:16:44 p.m. to 10:01:46 p.m., made five whole-lot PAPER
+trades, and closed flat. Starting cash was $1,000. Ending cash was $988.9762.
+Gross P/L was -$3.4938, total modeled fees were $7.53, and net P/L was -$11.0238.
+The prior TypeError did not recur. Its repaired source was present, although this
+run did not directly exercise the previously failing missing-estimate branch.
+
+ACTUAL TRADES
+
+#  Side  Entry time   Exit time   Buy -> sell        Gross %    Net P/L
+1  YES   9:28:43 pm   9:29:00 pm   7.7c -> 1.61c       -79.09%    -$12.2038
+2  YES   9:37:53 pm   9:41:16 pm    16c -> 21c         +31.25%     +$4.2500
+3  YES   9:50:44 pm   9:53:00 pm    35c -> 28c         -20.00%     -$2.7100
+4  YES   9:52:35 pm   9:55:36 pm    25c -> 17c         -32.00%     -$3.9200
+5  NO   10:00:19 pm  10:01:42 pm    51c -> 62c         +21.57%     +$3.5600
+
+Gross percent is the change from entry price to actual sale price. Net P/L
+includes entry and exit fees. Trades #2 through #5 sum to +$1.18; that arithmetic
+is not a replay of what the whole run would do without trade #1.
+
+TRADE #1: EXISTING LATE-CONTRACT CHECK WAS OMITTED
+
+This Historical Extreme scout bought YES with about 76 seconds left, while TP
+ownership still favored NO and the broader parent was down. Its own bounded
+custody required it to leave before the final 60 seconds, giving it only about
+16 seconds before forced collection. It never had a profitable held quote.
+
+The existing final-120-second return helper rejected this exact scene, but this
+scout factory did not call the helper. Related return factories did. The PID8552
+backbone already requires current contract-owning TP support for speculative
+opposite entries inside that last-two-minute window.
+
+The replacement applies that existing helper only to this scout factory. The
+recorded component comparison changes original decision 2729 from ENTER to WAIT,
+while preserving the actual PID19996 first-two winning opening trajectories and
+PID17588 trades #2 and #5. Earlier scouts and favored-side late return controls
+remain in the focused test suite. The final full extracted-package gate is in
+PID17588_VALIDATION.json. There is no new numerical cutoff or minimum hold time.
+
+TRADES #3 AND #4: MANAGEMENT NEEDS AN EXPLICIT POLICY DECISION
+
+Both entered through currently permitted anticipated full-arc return missions.
+At #4 admission, #3 was already in Lazarus and a distinct anticipated mission
+carried the documented independent-recovery receipt. The overlap was not an
+accidental duplicate order.
+
+Both positions later received living-EMA9 promotion while losing. At promotion,
+#3 marked 29c against 35c basis (-$2.44 after modeled fees); #4 marked 22c against 25c
+basis (-$2.10 after fees), less than one second after its fill. Neither had a
+confirmed same-side Release. Current 30/60-second motion and TP did not agree
+with the local UP-arc continuation used to promote them.
+
+The backbone says profitable seeds can promote, but an inherited accepted test
+and Construct promote a 40c basis at 39c bid. A blanket profit gate would change
+that accepted behavior and can disagree with entry-time promotion assumptions.
+This is a specification conflict requiring a deliberate strategy decision.
+
+Trade #4 reached a full-lot 37c bid, +48% gross and +$3.43 after modeled fees,
+before eventually exiting 17c for -$3.92. It was also an ARC_RETURN mission with
+third-weakness collection. Its first-arm permission was false at the peak;
+the immediate arm remained +100%. Resetting only its promotion state to NORMAL
+in an isolated component still leaves first-arm permission false. Promotion
+alone therefore does not explain or solve the lost quick profit. The peak 37c
+was brief; the next sample was 34c. No hypothetical 37c fill is claimed.
+
+My recommended next policy decision is to keep an ordinary counter-parent Heist
+return under its existing quick tactical protection until it earns profitable,
+current same-side runner custody. Genuine confirmed-Release handoffs and already
+armed floors need their separate protections preserved. The exact profitable
+criterion and interaction with anticipated full-arc missions must be agreed
+and tested together. That broader behavior is not changed in this repair.
+
+GOOD ENTRIES TO PRESERVE
+
+#2's 16c entry and 21c terminal exit earned +$4.25 net. It previously reached 29c,
+then 9.9c, before recovering. The held peak was +81.25% gross, below the existing
+immediate +100% lock, and current evidence at that peak still treated the leg as
+active. Stronger low-expansion collection is a separate research choice.
+
+#5's earned opening continuation bought 51c and sold 62c for +$3.56, matching its
+best held bid. Earlier 44c asks did not yet have an earned opening candidate.
+At the first eligible entry the short view was neutral/settling, so the special
+opposed-dip watch was not armed. A 48c ask appeared about 2.6 seconds later. No 35c
+or cheaper ask appears in the recorded new-contract quotes, which begin around
+10:00:11 and end around 10:01:45. The rest of that contract and opening watch
+window were not recorded. This is not a traded test of the dip-fishing watch.
+
+MISSED COVERAGE
+
+At 9:48:10 p.m. the first stronger NO-return proposal asked 24c; that local window
+also offered 21-26c. Current short movement had turned down, but the current
+parent mission and TP still favored YES. The old broad NO residence persisted;
+its meaningful-gap qualification had fallen away near the spine. The existing
+fade pause rejected the local return. Historical NO qualification reappeared
+at 42c; the mission/TP handoff arrived around 9:50:06 at 63c. None of that makes the
+earlier proposal an already-approved order. This is a concrete case for reviewing
+how the old direction resumes after a local push, without simply enabling fades.
+
+A recorded Quote-Wave briefing also fails to reach the Commander's entry snapshot.
+A bounded probe supplying the original field finds one later calibrated YES scalp
+episode at 9:56:53-59, 6.1-8c, under a NO Rail. That older family has explicit strategy
+authorization distinct from shadow-only Quote Echo, but enabling its integration
+changes executable behavior. The first 8c quote fell to 0.6c before an 11c later bid;
+it also fails some Mountain counter-return guards outside this family's scope.
+Its guards need review before activating it. No missed-winner claim is made.
+
+RECORDING AND FRESHNESS
+
+All six upload parts reconstruct the exact 503,938,043-byte source archive. All 337
+members, 271 program files, 49 journals and 7,209 typed tape records verify. There
+are 7,205 completed decisions, zero dropped calls and no engine-clock backsteps.
+
+Fresh quotes were current when marked current. There were brief market-discovery
+gaps at rollover, longest through 9:45:31 p.m.; local observation timing does not
+prove when the venue first offered the market. The leg ledger kept contract
+returns separate and did not split physical legs merely on terrain labels.
+
+Exact full engine replay was not performed. The unchanged standard verifier
+accepted the complete tape, then strict replay stopped because capture used
+CPython 3.14.7 and the audit runtime is 3.12.14. No version check was bypassed.
+All original recordings and captured source remain unchanged.
+
+NEXT STEP
+
+The supplied replacement repairs the late-scout omission within the already
+approved rule. Use a fresh 45-minute PAPER session with the same one-click launcher.
+Promotion, anticipated-full-arc collection, 9:48 coverage and Quote-Wave execution
+remain explicit follow-up decisions, with the evidence preserved in this package.

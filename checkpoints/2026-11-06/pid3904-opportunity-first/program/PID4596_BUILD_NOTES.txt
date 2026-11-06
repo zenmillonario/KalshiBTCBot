@@ -1,0 +1,54 @@
+PID4596 OPTIONAL ADVISORY ESTIMATE - BUILD NOTES
+
+Immediate baseline: delivered PID19996 Rail Value PAPER package.
+Baseline archive SHA256:
+08134e26ce2a6066ded3ce7cc978583cf756265d1db5dac6c83eb7b786e490ed
+Returned original run archive SHA256:
+41db8f7b7bfd5b6f6bfd190e17d130eef33584418e1ea7c17dc23fcd899533e1
+Run: TOOL_RACK_PAPER_20261105T011602Z_PID4596 (November 4 Eastern).
+
+CURRENT SCOPE
+
+This is an implementation fault repair within the prior authorized PAPER
+work. The returned evidence demonstrates an unhandled missing optional exit
+estimate. No new trading permission, price cap, size, floor, hold period,
+physical classification or live-order authority is introduced.
+
+strategy_core/mission_policy.py:
+- Clear an earlier optional suggested price before re-review.
+- Use the existing finite-number parser on estimated_exit_bid.
+- Emit a new suggestion only when a finite estimate exists.
+- Preserve the current advisory reason and all non-metadata ToolIntent fields.
+- Preserve the existing full-arc current-ask fallback.
+
+strategy_core/paper_runtime.py:
+- Runtime identity string only, so the next run identifies this repair.
+
+All other 65 sealed strategy/config/UI files are unchanged from PID19996.
+All seven recording/codec source files retain their pinned original hashes.
+The PID17224 A/B/C and PID19996 approvals/source seals remain immutable in
+separate pinned files; the current seal declares the two-file repair delta.
+
+REPRODUCTION SCOPE
+
+The original code divides None in MissionPolicy.review. The recorder
+marks itself failed before submitting that failed method envelope. The correct
+standard-loader result remains CAPTURE_NOT_COMPLETE. No synthetic END is
+appended and no old source recording is rewritten.
+
+The new Construct reconstructs adviser context from exact retained source
+components and preceding quote observations, verifies the original successful
+boundary, then demonstrates the original failure and repaired WAIT advice.
+The missing failed atomic FeedSnapshot and original call/clock envelope are
+explicit limitations. The fixture's manifest identifies retained original
+components and any reconstruction assumptions. This is not a full failed-call
+exact replay and is not a counterfactual performance replay.
+
+VERIFICATION
+
+The builder runs all inherited mandatory strategy tests and Constructs plus
+the new repair Construct on the actual extracted archive. Capture/export/
+lossless upload controls and a fresh synthetic three-way replay remain mandatory.
+Final payload hashes and package preflight must pass before publication.
+PID4596_VALIDATION.json records actual results. Native Windows market behavior
+of this patched build remains to be observed in the next PAPER run.

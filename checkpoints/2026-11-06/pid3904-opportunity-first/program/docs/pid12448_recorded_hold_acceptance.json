@@ -1,0 +1,36 @@
+{
+  "schema": "PID12448_RECORDED_HOLD_ACCEPTANCE_SUPPLEMENT_V1",
+  "base_declaration_sha256": "efd1b3130c08a27894d6ef681f52175e4939a56a30b26179b4df0bf111353b35",
+  "declared_before_corrected_holding_replay": true,
+  "reason_for_supplement": "The first corrected runtime bought the required NO return at frame 5180 but sold it at frame 5501 while its own incoming parent was still anticipated, uninvalidated, with no terminal or collection proof. A qualified peak and committed entry alone therefore did not satisfy the requested holding behavior.",
+  "source_failure": {
+    "frame": 5501,
+    "entry_frame": 5180,
+    "position_id": "2",
+    "purpose": "ARC_RETURN",
+    "entry_price": 0.14,
+    "exit_price": 0.12,
+    "holding_seconds": 82.02706933021545,
+    "exit_reason": "MOUNTAIN_CONFIRMED_OPPOSING_RELEASE",
+    "scope_status": "ANTICIPATED",
+    "parent_invalidated": false,
+    "terminal_qualified": false,
+    "collection_qualified": false,
+    "weakness_count": 0
+  },
+  "requirements": [
+    {
+      "id": "full_arc_opposing_release_cannot_bypass_held_scope",
+      "expectation": "An ARC_RETURN exit due to an opposing release must be justified by the exact held incoming parent invalidation or collection authority. The outgoing leg continuing through a broad top is not sufficient while that held scope is still anticipated and uninvalidated.",
+      "scope": "All committed ARC_RETURN exits in the recorded replay, plus actual position management around the broad-top region.",
+      "forbidden_proof": "MOUNTAIN_CONFIRMED_OPPOSING_RELEASE with neither parent_invalidated nor collection_qualified in the exact held mission collection evidence.",
+      "does_not_require": [
+        "A hindsight peak or best bid",
+        "A fixed holding duration",
+        "Holding through a proved full-parent failure",
+        "An invented official settlement receipt"
+      ]
+    }
+  ],
+  "production_logic": "No frame, timestamp, price window or run-specific rule from this file is a production strategy input."
+}

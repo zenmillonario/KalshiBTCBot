@@ -1,0 +1,330 @@
+TACHYOS / PAPER RUN REVIEW
+Three MAIN returns fought
+the downward move
+PID15184 - November 4, 2026 - 10:47:31 to 11:32:33 p.m. Eastern
+Ending cash
+Net result
+Positions closed
+Open positions
+$950.34
+-$49.66 after fees
+5
+0
+The run completed its 45-minute entry window and exported correctly. All five entries bought YES. The
+first three MAIN return attempts lost $61.0180; two later tactical scouts recovered $11.3575. The
+review found a narrow missing connection in the existing first-counter observation rule. The replacement
+applies it to the already known current parent.
+Trade /
+YES
+Buy to result
+Quantity
+Gross return
+Net after fees
+#1
+15c to 6.2c
+157
+-58.67%
+$-15.87
+#2
+2.7c to 0.6c
+866
+-77.78%
+$-20.16
+#3
+0.7c to 0c
+Official settlement
+3,338
+-100.00%
+$-25.00
+#4
+15c to 19c
+94
++26.67%
+$+1.90
+#5
+0.4c to 0.75c
+3,505
++87.50%
+$+9.46
+Included correction: the existing first-counter observer now recognizes the current EMA9 mission
+parent before long historical residence qualifies. Original trade #1 becomes observation-only because
+its current swing identity is missing. Original entry controls #2-#5 remain eligible.
+Still a separate policy question: trades #2 and #3 had accepted developed/anticipated return
+evidence. Their losses are not both explained by this missing connection. Their 180-second transition
+allowance and demanding profit thresholds remain unchanged in this replacement.
+Gross -$39.3405 minus $10.32 in modeled fees equals -$49.6605 net. There were four whole-lot sales and one official losing
+settlement. No partial-lot exits or unresolved positions remain.
+Evidence: Original PAPER_LEDGER.json; D26, D1337, D2006, D4050, D5341; trade_audit.json. Evidence methods and
+complete-capture limits are on page 9.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+1 / 9
+
+
+WHOLE-RUN CONTEXT
+Cheap YES prices did not mean small exposure
+The recorded EMA9 declined through most of the traded portion. All five entries attempted YES returns
+within the broader NO direction. The first three shared the same broad NO parent and occurred in the
+11:00 p.m. contract; the two winning scouts occurred in the following contract. A low opposite quote is a
+separate return thesis, not proof that the current downward leg has ended.
+Entry
+Price / quantity
+Money spent, including entry fee
+#1 MAIN
+15c / 157
+$24.9600
+#2 MAIN
+2.7c / 866
+$24.9820
+#3 MAIN
+0.7c / 3,338
+$24.9960
+#4 and #5 scouts
+15c / 94; 0.4c / 3,505
+$14.9400 and $15.0000
+The declining unit price increased contract quantity while keeping almost $25 exposed on each of the
+first three attempts. They did not overlap. Trade #3 followed trade #2's sale by about 0.442 seconds
+under a new opportunity identity.
+The P/L curve changes only at the four recorded sales and the official settlement. It does not count sampled peaks as banked
+gains. The decomposition of losses and winners is accounting of the original run, not a profit prediction for a run with
+changed entries.
+Evidence: Original ledger and every-row geometry; trade_audit.json. Vertical dashed lines identify 15-minute contract
+boundaries. No physical leg is ended merely by a ticker change.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+2 / 9
+
+
+1 / INCLUDED CORRECTION
+A known parent, but no current swing
+Trade #1 bought 157 YES at 15c at 10:47:38.752 p.m., about 7.68 seconds after the engine started and
+2 minutes 38.75 seconds into the contract. Older completed candles were available, but current live
+geometry covered only 6.011 seconds. There was no current native arc identity; the six-second BTC
+change was +$0.06 and EMA9's was +$0.012. Nine-, 30- and 60-second changes were unavailable.
+Existing context
+What the original code did
+Current mission P000L000001: NO
+Commander already recognized this active parent from completed-close
+observations.
+Long historical residence: unqualified
+The first-counter observer recognized neither that current mission nor a
+strong current Release, so its parent lookup returned no side.
+Current native swing: no identity
+The observer's existing missing-swing requirement was bypassed
+because it had not recognized the parent.
+Repair: feed the existing observation rule the same current, source-bound mission-parent evidence.
+This withholds the recorded first entry without inventing a startup waiting timer, a witnessed parent
+origin, or a new price threshold.
+The recorded lot never showed a fee-positive held mark. Its best full-lot bid was 14c, already -$4.31 after
+both modeled fees. It sold at 6.2c after its 180-second transition allowance, losing $15.8660. Later
+same-contract bids reached only 6.4c.
+The full original observation chronology was reconstructed with zero briefing mismatches. A bounded current-parent
+comparison withholds #1 while preserving the other original entry times, including a sensitivity that does not consume the
+denied opportunity. It does not simulate alternative fills or an alternative final balance.
+Evidence: D26-D27, D373, D728-D729, D741; entry_context_probes.json; counterfade_chronology_probe.json;
+dual_lane_scope_evidence.json. Origin was not witnessed; completed-close parent evidence was causally available.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+3 / 9
+
+
+2 / ACCEPTED RETURN EXCEPTION
+Trade #2 had stronger proof, then failed
+Trade #2 bought 866 YES at 2.7c at 10:53:15.630 p.m., with about 404 seconds until close. Its current
+return was much stronger than #1: BTC six seconds +$22.89, nine seconds +$18.31 and 30 seconds
++$9.02; EMA9 six seconds +$4.578. The longer 30/60-second EMA9 movement still pointed down.
+TP ownership favored NO. The existing developed-counter-arc exception evaluated that opposing context
+and passed: more than 300 seconds remained, and the current 30-second BTC move exceeded its
+$4.5306 requirement. The snapshot also contained qualified anticipated full-arc evidence. Its actual filled
+position used the generic Commander Mountain return policy.
+Observed point
+Economic meaning
+Quoted top ask 2.6c
+Only 0.01 displayed contract was present; integer execution correctly
+skipped that level and bought 866 at 2.7c.
+Best held bid 3.2c
++18.52% gross, but only +$0.85 after both modeled fees.
+Final sale 0.6c after 180.21s
+-$20.1560 net; the existing +100% ordinary / +150% immediate profit
+thresholds were never reached.
+Policy boundary: the current-parent calibration repair leaves this original entry eligible. Removing its
+developed/anticipated return exception or changing its protection thresholds would change accepted
+strategy behavior. This losing example alone does not prove the route was coded incorrectly.
+Evidence: D1337, D1356, D1929, D2004-D2005; original entry depth sweep; trade_component_probes.json. The first
+protection policy also contains an initial 30-second breathing period.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+4 / 9
+
+
+3 / RISK AND LIQUIDITY
+A return attempt outlived its selling bid
+Trade #3 bought 3,338 YES at 0.7c only 0.442 seconds after #2 sold. It used a new
+extended-Mountain opportunity under the same broad NO parent. The snapshot had qualified anticipated
+YES successor P000L000004. Current TP ownership was unresolved, which let the existing briefing helper
+return before evaluating its less-than-300-second opposing-parent restriction.
+A 1.1c full-lot bid appeared 16.37 seconds after entry: +57.14% gross and +$9.1720 after modeled
+fees. The actual return-seed policy required +100% / +150%, so no floor armed. This was not the
+previous run's promoted Heist with a separate full-arc first-floor suppression.
+Time (p.m.)
+What the original recording shows
+10:57:41.401
+Last full-lot YES bid: 0.1c; held age 85.119s. The fee-adjusted mark was already
+-$21.8980.
+10:57:41.654
+Fresh native book has no YES bid levels. NO bids remain; YES sell permission is false.
+10:59:16.485
+The 180-second opposing-parent exit obligation begins. There is still no selling bid.
+11:00:03.687
+Recorded official NO result settles YES to zero: -$24.9960 net.
+Bids disappeared about 95 seconds before the exit obligation began. The engine then waited for a valid
+bid or official finality and did not fabricate a sale. This was a one-sided recorded book, rather than
+insufficient size for this particular lot.
+Separate choices to evaluate: unresolved target ownership for a fresh opposing attempt, rapid
+renewed exposure against the same parent, and the 180-second / +100%-plus management of these
+returns. The narrow first-counter repair does not change those rules or exclude this qualified
+anticipated entry.
+Evidence: D2005-D2006, D2064, D2311-D2312, D2674-D2675, D2834-D2850; official_settlement_audit.json; 64 selected
+exact decisions; 51 held-state comparisons. Earlier maximum quotes are not promised alternate fills.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+5 / 9
+
+
+4 / POSITIVE CONTROLS
+Preserve the two successful scouts
+#4: 15c to 19c, +$1.90 net. This 94-contract scout entered with over nine minutes remaining. It
+recovered from a 9.1c bid, briefly passed through Lazarus and recovered custody, then sold at the
+existing 120-second tactical limit. Its 19c sale matched the best held bid. A later 21c quote is descriptive
+evidence, not a guaranteed alternative exit.
+#5: 0.4c to 0.75c, +$9.4575 net. This 3,505-contract scout entered 147.13 seconds before close,
+outside the final-120-second guard. It later reached a 0.87c full-lot bid: +117.5% gross and a +$13.3735
+fee-adjusted mark. Its actual exit returned +87.5% gross.
+Its floor first armed at a 0.67c bid when the Release signal temporarily cleared. When Release returned,
+the already armed protection remained and tightened to 0.8091c. A later selling quote crossed the floor,
+and the full lot sold at the available 0.75c. The floor is an exit trigger, not a guaranteed fill price.
+#5 was promoted earlier at nominal breakeven, which was still -$1.96 after fees. That repeats the prior promotion
+wording/test inconsistency, but it did not cause the first three losses and did not prevent this successful floor. Preserve both
+winning entries and the actual protection behavior.
+Evidence: #4 D4050, D4379, D4398, D4417, D4435-D4437, D4441; #5 D5341, D5401, D5424, D5432, D5436,
+D5439-D5441. Existing whole-lot, recovery and irreversible-floor rules remain.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+6 / 9
+
+
+5 / REPLACEMENT SCOPE
+Connect the existing observation rule consistently
+The governing two-lane rule already says to observe the first opposing physical swing across all entry
+families, including Commander-created cheap MAIN returns. It also says to use current parent context
+rather than treating unknown or unqualified historical age as permission to fade. PID15184 exposes a
+missing connection between that rule and an already current completed-close mission parent.
+Boundary
+Required behavior in this correction
+Current parent evidence
+Use the current source-bound active mission, without inventing a native origin or
+borrowing a stale retained tool owner.
+Physical chapter
+Keep the correct same-parent identity across contract changes and historical
+qualification; do not borrow an unrelated gap's chapter.
+First opposing swing
+Keep the existing observation-only behavior and missing-swing requirement;
+repeated quote updates do not create a second swing.
+Later qualified Heist
+Attach calibration evidence only to the matching current observation and a
+genuinely distinct later swing; all existing Heist admission requirements continue.
+Preserved exceptions
+Keep historical/confirmed-Release precedence, genuine terminal/TP transfers,
+mirrored directions and accepted anticipated returns.
+Recorded effect: the first entry at D26 becomes observation-only. Original entries #2-#5 remain
+eligible in the bounded observation comparison. This is a calibration integration correction, not a new
+broad direction ban or an alternative-run profit result.
+The new Construct retains source-bound original cases and ordered calibration evidence. Its mandatory
+delivery gate includes every inherited strategy test and Construct, all recording/export checks, a fresh
+synthetic capture/replay proof, final sealed-source validation and exact ZIP-byte verification. The final
+actual results are in PID15184_VALIDATION.json in the supplied program.
+An inherited winning-entry setup now includes its actual preceding observation prefix. Its original entry-frame bytes and
+expected ENTER result remain unchanged; no special production exemption is introduced.
+Production changes are confined to dual_lane.py, the corresponding calibration annotation in tool_rack.py, and the runtime
+revision label. No price, size, hold duration, profit threshold, settlement rule or live-order authority is changed.
+Evidence: TACHYOS_STRATEGY_BACKBONE_V1.md / PID15740 and Dual-Lane; dual_lane_scope_review.md; original and
+repaired recorded Constructs; APPROVED_STRATEGY_CHANGES.json and sealed source manifests.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+7 / 9
+
+
+6 / MISSED COVERAGE
+Why the broad NO move produced no NO entry
+All five accepted instructions booked. There is no approved NO order missing from execution. The raw
+physical factories proposed only YES level-match and extended-edge returns in this recording. Directional
+history, current parent, target ownership, quote value and opening eligibility did not coincide for an
+earned NO proposal.
+Window (p.m.)
+Recorded NO quote and current evidence
+First contract / from 10:47:32
+Lowest fresh available NO ask was 86c. The NO side was already expensive during
+the first three YES losses.
+11:00 rollover
+First-minute minimum was 57c, above the existing 55c premium ceiling. 54c
+appeared at 11:01:03 with target ownership unresolved. Historical NO first
+qualified at 11:02:33, at 65c.
+11:15 rollover / after the last
+exit
+A 41c NO ask at 11:15:31 had current YES mission and unresolved TP. At 11:18:09,
+48c had NO mission/NO TP, but current short evidence still did not earn a factory
+proposal.
+Later cheap quotes
+209 fresh NO asks at 35c or less appeared after the current YES turn, never with
+both NO mission and NO TP. At 11:31:10, 40c NO likewise opposed current YES
+mission/TP.
+There were 888 qualifying opening contexts, but no otherwise-earned opening continuation armed the
+dip/rejoin watch. Therefore this run still does not test the cheaper opening-rail entry requested earlier. A
+cheaper ask on its own does not establish the rest of that setup.
+The previous late-scout guard also remained unexercised as a denial: removing only that predicate in a
+read-only diagnostic produced the same six scout callbacks. Both actual scouts entered with more than
+120 seconds left. Supplying the recorded Quote-Wave field produced zero candidates here.
+Next strategy review: assess the accepted opposing-return exceptions and their holding/profit policy
+together, while preserving real early reversals and successful scouts. Widening opening price caps,
+removing the ordinary pause or adding new entry permissions is outside this calibration correction.
+Evidence: NO quote boundaries D2, D3053, D3068, D3085, D3389, D5892, D6280, D7768; opportunity_audit.json;
+opportunity_component_scan_summary.json. Callback counts are not distinct tradable setups.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+8 / 9
+
+
+7 / EVIDENCE AND NEXT RUN
+Complete original evidence; a bounded repair
+Evidence check
+Result
+Original archive
+Six verified parts; 486,758,513 reconstructed bytes; all 347 archive members
+verified.
+Captured program
+All 284 files match the delivered PID17588 baseline program; all 67 sealed
+strategy/config/UI files and historical lineage verify.
+Economic record
+46 journals; 5 entries, 4 whole-lot sales and 1 official settlement; all cash, fees and
+quantities reconcile; flat finish.
+Complete tape
+7,920 records: HEADER, init, 7,915 process calls, settle, close and END. All 16,020
+clock reads and output pointers verify; no dropped calls or clock backsteps.
+Source and research
+Current-book local observed ages 0.00389-0.51179s. V2 ledger: 8 physical legs, 22
+contract/side pairs, 19 later bids matched and 3 unavailable/null.
+The recording includes 157 market-discovery waits at rollover and 81 one-sided-book resnapshot
+requests. No recorded source/REST error, receiver reconnect=True event or runtime crash was found.
+Fresh current quotes do not mean every rollover or side of the book was continuously available.
+The unchanged standard loader accepted the complete tape. Full original engine replay stopped before
+engine construction because capture used CPython 3.14.7 and this host uses 3.12.14. That strict check
+remains intact. No altered-run profit replay or native Windows verification is claimed.
+How to run the replacement
+Extract the whole new ZIP into a new folder and double-click
+00_PREPARE_AND_RUN_45M_PAPER.cmd. Leave the computer awake for the 45-minute entry window
+and normal held-position drain. Let it export, then send the small review ZIP followed by every numbered
+part from that run's upload folder. Exact original replay remains optional after export.
+Chart method: current same-ticker full-lot displayed bid depth, integer quantities and conservative VWAP rounding. Missing
+executable bids are left unavailable, not plotted as zero. Entry/sale markers are journaled PAPER fills; the zero marker on #3
+is official settlement. Net marks include both modeled fees; later quote highs are descriptive, not promised fills. D numbers
+identify original decision sequences and bind to hashes/byte offsets in the JSON audits.
+Original archive SHA256
+535740efcdb5f4313fa5b0ffd1e7c3d72ddcc81b50c061a3fad62528fb04747f
+Immediate baseline program ZIP SHA256
+02a48450d412b96d70b474a910c5f28457f82b0bdabaff03252d67d995bfac98
+Evidence: capture_audit.json; economic_arithmetic_audit.json; official_settlement_audit.json; source_health_audit.json;
+leg_ledger_v2_audit.json. Final replacement validation is separate from original-run verification.
+TACHYOS - PID15184 - PAPER REVIEW - NOVEMBER 4, 2026
+9 / 9

@@ -1,0 +1,50 @@
+{
+  "revision": "TOOL_RACK_STOPPED_PAPER_FINALITY_V1_20261028",
+  "classification": "ACTUAL_PID10092_COPY_OFFLINE_REHEARSAL",
+  "passed": true,
+  "original_run_untouched": true,
+  "network_requests": 0,
+  "market_feed_started": false,
+  "new_trading_session_started": false,
+  "saved_receipt_sha256": "907d1d7685ab794160d2203f38f0de8718ea40aa1211939d085049c26c4011e1",
+  "official_result": "NO",
+  "before": {
+    "cash": "933.6540",
+    "events": 43,
+    "fees_paid": "18.38",
+    "open_positions": 1,
+    "realized_gross": "-38.6420",
+    "realized_net": "-56.3920",
+    "starting_cash": "1000.0"
+  },
+  "before_journal_seq": 230,
+  "before_journal_sha256": "cad10b45e6a4ef2978551dab78de18e5fdbf362304af4f26bb14891e3af3f420",
+  "after": {
+    "cash": "933.6540",
+    "events": 44,
+    "fees_paid": "18.38",
+    "open_positions": 0,
+    "realized_gross": "-47.9660",
+    "realized_net": "-66.3460",
+    "starting_cash": "1000.0"
+  },
+  "after_journal_seq": 231,
+  "after_journal_sha256": "7c497344eab966dd95968ad83f73918e5f7125323a22f910fbff5f1a574c27ce",
+  "old_journal_records_preserved_byte_for_byte": 230,
+  "settled_position_ids": [
+    "22"
+  ],
+  "settlement_net": "-9.9540",
+  "settlement_cash_delta": "0",
+  "settlement_fee": "0",
+  "backup_created_and_verified": true,
+  "normal_restart_guard_accepts_reconciled_journal": true,
+  "projections_stopped_and_match_final_boundary": true,
+  "successful_calls_on_retained_copy": 3,
+  "first_two_calls_instrumentation": "Subclass logged lock tokens and delegated unchanged settlement/close methods to the actual writer.",
+  "third_call_uninstrumented_production_path": true,
+  "retry_no_additional_request_or_economic_commit": true,
+  "writer_lock_absent_after_successful_calls": true,
+  "initial_probe_limit": "An earlier parallel rehearsal completed settlement but met an existing writer lock on retry. Its cause was not established. Two instrumented serial calls and this uninstrumented serial call succeeded; no lock override or relaxed ownership rule was introduced.",
+  "limitation": "Rehearsal used a copy and a previously captured official receipt. The Windows command fetches a fresh receipt and has not been executed on the user computer."
+}

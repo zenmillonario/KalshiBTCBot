@@ -1,0 +1,32 @@
+{
+  "schema": "TACHYOS_PID7812_SPROUT_PROMOTION_CONTROLS_V1",
+  "source_run": "TOOL_RACK_PAPER_20261103T151522Z_PID7812",
+  "controls": [
+    {
+      "trade": 18,
+      "side": "YES",
+      "entry": 0.40,
+      "old_exit": 0.76,
+      "later_bid": 0.999,
+      "positive_control": "TACTICAL_SEED_PROMOTES_TO_LIVING_EMA9_LEG",
+      "lesson": "A profitable Heist return seed aligned with a developing YES EMA9 arc must promote before the quick-renter floor arms."
+    },
+    {
+      "trade": 19,
+      "side": "NO",
+      "entry": 0.24,
+      "negative_control": "NO_OPPOSITE_HEIST_BRIEFING_DURING_YES_CONTINUATION_PRECEDENT",
+      "lesson": "Prior comparable EMA9 crossings plus current positive BTC/EMA9 motion mean the developing YES arc gets continuation room."
+    },
+    {
+      "trade": 20,
+      "side": "NO",
+      "entry": 0.021,
+      "negative_control": "NO_CHEAP_FADE_AGAINST_FRESH_YES_SPROUT",
+      "lesson": "Cheapness cannot create a return briefing against a fresh same-side EMA9 SPROUT."
+    }
+  ],
+  "mirrors_required": true,
+  "confirmed_opposite_release_may_replace_sprout": true,
+  "weakness_retires_continuation_precedent": true
+}

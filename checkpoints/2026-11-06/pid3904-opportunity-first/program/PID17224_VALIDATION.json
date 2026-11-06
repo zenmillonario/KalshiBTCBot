@@ -1,0 +1,848 @@
+{
+  "approved_corrections": [
+    "A",
+    "B",
+    "C"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "capture_test_counts": {
+    "test_capture_integrity": 8,
+    "test_capture_session": 4,
+    "test_complete_paper_run": 17,
+    "test_next_run_capture": 4,
+    "test_snapshot_delta": 6,
+    "tests.tool_rack.test_paper_launcher_export": 7,
+    "tests.tool_rack.test_paper_reconcile_launcher": 16,
+    "tests.tool_rack.test_recorded_session_launcher": 11,
+    "tests.tool_rack.test_session_draining_launcher": 6,
+    "tests.tool_rack.test_windows_text_encoding_contract": 1
+  },
+  "check_transcript": "Extracted check: CHECK_TOOL_RACK_PAPER.py --require-manifest --workers 3\nTool Rack PAPER | offline package and execution checks\nRelease: TACHYOS_PID17224_APPROVED_CORRECTIONS_45M_20261104 | Nautilus included | recommended 45-minute recorded PAPER run, then normal held-position drain\nPython 3.12.14 | cryptography 50.0.2 | websockets 16.0\nStrict whitelist: 238 files; bundle manifest: verified\nSealed release source: 66/66 files verified; 2 approved core corrections files, 64 baseline files unchanged.\nRunning 415 tests in 34 isolated modules.\n  passed 10/34 modules \u00b7 103/415 tests\n  passed 20/34 modules \u00b7 243/415 tests\n  passed 30/34 modules \u00b7 379/415 tests\n  passed 34/34 modules \u00b7 415/415 tests\nMountain-only Construct: 82/82 plotted controls passed.\nEMA9 AUTHORITY CONSTRUCT: 7/7 PASS\nPASS wrong_side_primary_exits COMMANDER_ACCEPTED_EXACT_HELD_SIDE_EXIT\nPASS physical_parent_extends_floor_to_200 arm=2.0 immediate=2.0\nPASS terminal_return_seed_not_killed_by_old_parent COMMANDER_MOUNTAIN_ONLY_WAIT_FOR_TRUE_EDGE\nPASS opposite_inventory_no_veto CURRENT_CONTRACT_OPPOSITE_INVENTORY_EXIT_PENDING_CORRECTIVE_HANDOFF\nPASS rollover_continuation_transition_custody COMMANDER_MOUNTAIN_ONLY_WAIT_FOR_TRUE_EDGE\nPASS heist_return_transition_custody COMMANDER_MOUNTAIN_ONLY_WAIT_FOR_TRUE_EDGE\nPASS tactical_custody_bounded COMMANDER_ACCEPTED_EXACT_HELD_SIDE_EXIT\nPASS | MOUNTAIN WAIT is telemetry only\nPASS | MARKET_HEIST WAIT is telemetry only\nPASS | RAIL WAIT is telemetry only\nPASS | RELEASE WAIT is telemetry only\nPASS | ALL SPECIALIST WAITs cannot form a committee veto\nPASS | MissionPolicy cannot mutate action\nPASS | LaneResolver is diagnostic only\nPASS | Multiple adviser entries go to Commander ranking\nPASS | Release actionable handoff is evaluated; Release WAIT is ignored\nPASS | QUOTE_WAVE path cannot be vetoed by specialist WAITs\nPASS | EDGE_HEIST path cannot be vetoed by specialist WAITs\nPASS | MOUNTAIN emits FISH briefing\nPASS | MARKET_HEIST emits PREPARE briefing\nPASS | RAIL emits ENTRY_WINDOW briefing\nPASS | RELEASE emits FISH briefing\nPASS | QUOTE_WAVE emits ENTRY_WINDOW briefing\nPASS | EDGE_HEIST emits ENTRY_WINDOW briefing\nPASS | Objective stale quote still blocks\nPASS | Objective missing depth still blocks\nPASS | Objective entry-disabled still blocks\nPASS | TOOL ADVISORY AUTHORITY CONSTRUCT | 19/19 controls\nPID13560 POSITIVE CONTROL CONSTRUCT: 11/11 PASS\nPASS eight_frozen_positive_controls count=8\nPASS trade_2_HEIST_OUTER_WALL_RENTER HEIST_OUTER_EDGE_TACTICAL_RENTER 0.1800->0.3400 roi=0.889\nPASS trade_9_RECENT_LEVEL_MATCH_RETURN COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN 0.1700->0.5200 roi=2.059\nPASS trade_12_RECENT_LEVEL_MATCH_RETURN COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN 0.1600->0.3900 roi=1.438\nPASS trade_14_PARALLEL_HEIST_STALLED_EDGE HEIST_PARALLEL_STALLED_EDGE_RETURN 0.1900->0.3900 roi=1.053\nPASS trade_18_INHERITED_ROLLOVER_CONTINUATION COMMANDER_INHERITED_YOUNG_LEG_ROLLOVER_CONTINUATION 0.4500->0.9200 roi=1.044\nPASS trade_22_EXTENDED_EXTREME_SUB20_RETURN COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN 0.0640->0.2800 roi=3.375\nPASS trade_30_EXTENDED_EXTREME_SUB20_RETURN COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN 0.1800->0.3600 roi=1.000\nPASS trade_35_RECENT_LEVEL_MATCH_RETURN COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN 0.2000->0.4000 roi=1.000\nPASS covers_level_match_both_sides level-match mirror\nPASS covers_rollover_and_extreme_and_heist families present\nPID7812 SPROUT PROMOTION CONSTRUCT: 9/9 PASS\nPASS pid7812_18_yes_cross_precedent {'qualified': True, 'side': 'YES', 'basis': 'COMPARABLE_PRIOR_EMA9_CROSS_CONTINUATION', 'gap_side': 'NO', 'gap_stage': 'SPROUT', 'gap_abs_btc': 11.0, 'prior_same_side_cross_observed': True, 'current_motion_supports': True, 'direct_arc_support': False, 'arc_side': None, 'arc_phase': '', 'tp_support': False, 'tp_side': None, 'tp_status': 'UNRESOLVED', 'weakness_observed': False, 'release_same_side': False, 'entry_authority': False, 'veto_authority': False}\nPASS pid7812_18_promotes_to_main COMMANDER_HEIST_SEED_PROMOTED_TO_LIVING_EMA9_CUSTODY\nPASS pid7812_18_old_quick_floor_deferred arm=2.0 immediate=2.0\nPASS pid7812_19_no_briefing_suppressed NO vs YES precedent\nPASS pid7812_20_cheap_no_fade_suppressed raw=0 filtered=0\nPASS mirror_yes_fade_suppressed YES vs NO sprout\nPASS confirmed_opposite_release_can_replace_sprout release handoff\nPASS weakness_retires_precedent {'qualified': False, 'side': 'YES', 'basis': 'NO_CURRENT_CONTINUATION_PRECEDENT', 'gap_side': 'NO', 'gap_stage': 'SPROUT', 'gap_abs_btc': 11.0, 'prior_same_side_cross_observed': True, 'current_motion_supports': True, 'direct_arc_support': False, 'arc_side': None, 'arc_phase': '', 'tp_support': False, 'tp_side': None, 'tp_status': 'UNRESOLVED', 'weakness_observed': True, 'release_same_side': False, 'entry_authority': False, 'veto_authority': False}\nPASS promoted_seed_survives_old_tactical_timeout COMMANDER_HEIST_SEED_PROMOTED_TO_LIVING_EMA9_CUSTODY\n----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nOK\nPID14312 ARC SELECTION / CUSTODY CONSTRUCT: 4/4 PASS \u00b7 live controls 11/11\nPASS nine_trade_forensic_corpus count=9\nPASS positive_and_negative_entry_controls all classifications frozen\nPASS run_economics_frozen PID14312 ledger summary\nPASS pid14312_live_path_controls 11/11 tests\n----------------------------------------------------------------------\nRan 9 tests in 0.004s\n\nOK\nPID7412 DIRECTIONAL TRANSFER / QUOTE ECHO CONSTRUCT: 5/5 PASS; source controls 9\nPASS eight_causal_entry_time_snapshots\nPASS up_to_down_handoff_is_observed\nPASS all_twenty_trade_entry_examples_preserved\nPASS with_wind_good_and_counterwind_negative_retained\nPASS pid7412_current_source_regressions\n----------------------------------------------------------------------\nRan 9 tests in 0.003s\n\nOK\nPID8552 RAIL WICK / WHOLE LOT CONSTRUCT: 4/4 PASS; 9 scenario tests\nPASS five_frozen_causal_checkpoints\nPASS early_young_fades_saved\nPASS rail_floors_have_real_entry_time_evidence\nPASS all_nine_recorded_and_mirrored_strategy_controls\n----------------------------------------------------------------------\nRan 15 tests in 0.002s\n\nOK\nPID17744 RETURN BRIEFING CONSTRUCT: 5/5 PASS; 15 scenarios\nPASS six_distinct_frozen_trade_inputs\nPASS source_is_pid17744_archive\nPASS entry_time_scenarios\nPASS rail_window_checkpoint_set\nPASS no_navigator_entry_or_veto\n..............\n----------------------------------------------------------------------\nRan 14 tests in 0.005s\n\nOK\nDUAL LANE CONSTRUCT PASS: 14/14 controls passed\n........\n----------------------------------------------------------------------\nRan 8 tests in 0.006s\n\nOK\nPID15740 CONSTRUCT PASS: 8/8 recorded/mirrored controls passed\n{\"elapsed_seconds\": 1.615565, \"groups\": {\"A_RELEASE_CUSTODY\": {\"passed\": 10, \"tests_run\": 10}, \"B_MAIN_PARENT_QUALITY\": {\"passed\": 9, \"tests_run\": 9}, \"C_LATER_HEIST\": {\"passed\": 13, \"tests_run\": 13}}, \"passed\": 32, \"report\": \"PID17224_APPROVED_CORRECTIONS_CONSTRUCT_RESULTS/report.json\", \"status\": \"PASS\", \"tests_run\": 32}\nPID17224 APPROVED CORRECTIONS CONSTRUCT PASS\nCHECK PASSED: 415 current tests + Mountain-only + EMA9 Authority + Tool Advisory Authority + PID13560 Positive Control + PID7812 Sprout Promotion + PID14312 Arc Selection/Custody + PID7412 Directional Transfer/Quote Echo + PID8552 Rail Wick Custody + PID17744 Return/Navigator + Dual Lane Main/Tactical + PID15740 Inherited UP Rail + PID17224 Approved Corrections Constructs. No live market session or venue order was started.\nExtracted check: -m unittest -q test_complete_paper_run\n----------------------------------------------------------------------\nRan 17 tests in 2.326s\n\nOK\nExtracted check: -m unittest -q test_capture_integrity\n----------------------------------------------------------------------\nRan 8 tests in 0.313s\n\nOK\nExtracted check: -m unittest -q test_snapshot_delta\n----------------------------------------------------------------------\nRan 6 tests in 0.230s\n\nOK\nExtracted check: -m unittest -q test_next_run_capture\n----------------------------------------------------------------------\nRan 4 tests in 0.074s\n\nOK\nExtracted check: -m unittest -q test_capture_session\n----------------------------------------------------------------------\nRan 4 tests in 0.262s\n\nOK\nExtracted check: -m unittest -q tests.tool_rack.test_recorded_session_launcher\nPAPER start blocked: PREVIOUS_TOOL_RACK_INVENTORY_UNRESOLVED\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpd4jz3ugh/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 20 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: PAPER_ENTRY_WINDOW_COMPLETE_FLAT\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmpd4jz3ugh/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpvnx6pa45/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 20 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nAutomatic drain deadline reached with unresolved PAPER inventory. No exit or settlement is invented; review/export this run before a new ledger.\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: PAPER_ENTRY_WINDOW_FINALITY_TIMEOUT_UNRESOLVED\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmpvnx6pa45/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpow_0mqpb/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: PAPER_ENTRY_WINDOW_COMPLETE_FLAT\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmpow_0mqpb/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmptoixm9cs/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: OPERATOR_STOP\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmptoixm9cs/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmps8v4gnlr/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nStop grace ended; unresolved PAPER positions will remain explicit in the final ledger.\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: OPERATOR_STOP_GRACE_EXPIRED_UNRESOLVED\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmps8v4gnlr/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nREPLAY_CAPTURE {\"dropped\": 0, \"reason\": null, \"status\": \"running\"}\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpkbk7q3uz/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nREPLAY_CAPTURE {\"complete\": true, \"dropped\": 0, \"reason\": null, \"status\": \"complete\"}\nPAPER session ended: OPERATOR_IMMEDIATE_STOP\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmpkbk7q3uz/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\n----------------------------------------------------------------------\nRan 11 tests in 0.058s\n\nOK\nExtracted check: -m unittest -q tests.tool_rack.test_session_draining_launcher\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmp3pbw3y2m/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 20 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nPAPER session ended: PAPER_ENTRY_WINDOW_COMPLETE_FLAT\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmp3pbw3y2m/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmp77tb0urh/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 20 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nAutomatic drain deadline reached with unresolved PAPER inventory. No exit or settlement is invented; review/export this run before a new ledger.\nPAPER session ended: PAPER_ENTRY_WINDOW_FINALITY_TIMEOUT_UNRESOLVED\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmp77tb0urh/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpi1utyp4r/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nPAPER session ended: PAPER_ENTRY_WINDOW_COMPLETE_FLAT\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmpi1utyp4r/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmp2y_njqw5/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nDRAINING: waiting for an ordinary strategy exit or exact-contract official finality; the timer does not sell positions.\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nPAPER session ended: OPERATOR_STOP\nCash $990.00; unresolved positions 0.\nReview: /tmp/tmp2y_njqw5/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpqxxver6i/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nStop grace ended; unresolved PAPER positions will remain explicit in the final ledger.\nPAPER session ended: OPERATOR_STOP_GRACE_EXPIRED_UNRESOLVED\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmpqxxver6i/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpoy3tbqpo/DRAINING_LAUNCHER_FIXTURE\nNew-entry window: 1 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:8580/\nPAPER stop requested. Commander will close at current held-side depth where available.\nPress Ctrl+C again to stop immediately and preserve unresolved PAPER inventory.\nPAPER session ended: OPERATOR_IMMEDIATE_STOP\nCash $990.00; unresolved positions 1.\nReview: /tmp/tmpoy3tbqpo/DRAINING_LAUNCHER_FIXTURE/RUN_SUMMARY.json\n----------------------------------------------------------------------\nRan 6 tests in 0.031s\n\nOK\nExtracted check: -m unittest -q tests.tool_rack.test_paper_launcher_export\nPAPER KXBTC15M-FIXTURE-A | SOURCE_WARMUP | DIRECT_PHYSICAL_SOURCE_WARMING_OR_STALE\nPAPER ENTRY KXBTC15M-FIXTURE-A NO qty=118 @ 0.2000 | RAIL | RAIL_MAIN_VALUE\nPAPER KXBTC15M-FIXTURE-A | RAIL | COMMANDER_ACCEPTED_TOOL_INTENT\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpdrcbt0cu/TOOL_RACK_START_FAILURE_FIXTURE\nNew-entry window: 90 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nThe Nautilus | Tool Rack PAPER | live engine feed: http://127.0.0.1:1/\nPAPER runtime stopped: MarketDataError: MARKET_DATA_KEY_ID_NOT_CONFIGURED\nTraceback (most recent call last):\n  File \"/tmp/tachyos_paper_bundle_zfczmv3a/extracted/TOOL_RACK_PAPER.py\", line 161, in run_session\n    await feed.start()\n  File \"/tmp/tachyos_paper_bundle_zfczmv3a/extracted/tests/tool_rack/test_paper_launcher_export.py\", line 157, in start\n    raise MarketDataError(\"MARKET_DATA_KEY_ID_NOT_CONFIGURED\")\nstrategy_core.marketdata.kalshi_public.MarketDataError: MARKET_DATA_KEY_ID_NOT_CONFIGURED\nNAUTILUS_FINAL_SNAPSHOT_UNAVAILABLE AttributeError\nPAPER session ended: RUNTIME_ERROR_MarketDataError\nCash $1000.00; unresolved positions 0.\nReview: /tmp/tmpdrcbt0cu/TOOL_RACK_START_FAILURE_FIXTURE/RUN_SUMMARY.json\nTACHYOS TOOL RACK PAPER | PID15740 INHERITED PARENT DUAL LANE | one Commander | PAPER only\nRun: /tmp/tmpyr5tvnl2/DASHBOARD_ASSET_FAILURE_FIXTURE\nNew-entry window: 0 minutes; held positions then continue normal strategy management.\nAutomatic drain is bounded at the latest held contract close plus 120 seconds for official finality.\nCtrl+C requests an orderly PAPER flatten; it is separate from the entry-window timer.\nEMAs use validated minute closes; physical territories form from actual forward observations.\nRead-only bridge unavailable (FileNotFoundError); console and journal remain available.\nPAPER entry window closed. No new entries; held strategy and already-armed protection continue normally.\nPAPER KXBTC15M-FIXTURE-A | SOURCE_WARMUP | PAPER_ENTRY_WINDOW_CLOSED_DRAINING\nPAPER session ended: PAPER_ENTRY_WINDOW_COMPLETE_FLAT\nCash $1000.00; unresolved positions 0.\nReview: /tmp/tmpyr5tvnl2/DASHBOARD_ASSET_FAILURE_FIXTURE/RUN_SUMMARY.json\nPAPER KXBTC15M-FIXTURE-A | SOURCE_WARMUP | DIRECT_PHYSICAL_SOURCE_WARMING_OR_STALE\n----------------------------------------------------------------------\nRan 7 tests in 1.752s\n\nOK\nExtracted check: -m unittest -q tests.tool_rack.test_paper_reconcile_launcher\nVerifying stopped PAPER journal: /tmp/tmpu3ozknyu/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpnrfibf8m/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpoy45xy_n/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmp7d7z1eaj/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmpxij9yi86/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpc4mwvg_r/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmp9hp24bpu/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmp9hp24bpu/STOPPED_PAPER_FIXTURE\nVerified 3 journal records; backing up the original economic record.\nOriginal economic backup verified.\nVerifying stopped PAPER journal: /tmp/tmp9wgikz0y/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpelsaytrr/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpelsaytrr/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpelsaytrr/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpelsaytrr/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmpelsaytrr/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmp6ni3dsuu/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmp6ni3dsuu/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmp6ni3dsuu/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmppzj8tjp5/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\nVerifying stopped PAPER journal: /tmp/tmppzj8tjp5/STOPPED_PAPER_FIXTURE\nVerified 3 journal records; backing up the original economic record.\nOriginal economic backup verified.\nVerifying stopped PAPER journal: /tmp/tmp0g2a9gop/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmpxv1udajn/STOPPED_PAPER_FIXTURE\nVerifying stopped PAPER journal: /tmp/tmptvbo6roh/STOPPED_PAPER_FIXTURE\nVerified 2 journal records; backing up the original economic record.\nOriginal economic backup verified.\nChecking exact official result: KXBTC15M-FIXTURE-A\n----------------------------------------------------------------------\nRan 16 tests in 0.259s\n\nOK\nExtracted check: -m unittest -q tests.tool_rack.test_windows_text_encoding_contract\n----------------------------------------------------------------------\nRan 1 test in 0.459s\n\nOK\nExtracted check: run_validation.py --out /tmp/tachyos_paper_bundle_zfczmv3a/three_way_proof\n1/4: unchanged original engine\n2/4: unchanged engine with ordered input capture\n3/4: fresh unchanged engine from verified captured inputs\n4/4: first-divergence and evidence-integrity controls\n{\n  \"pass\": true,\n  \"report\": \"/tmp/tachyos_paper_bundle_zfczmv3a/three_way_proof/validation_report.json\",\n  \"process_calls\": 309,\n  \"journal_records\": 9\n}\n",
+  "created_at": "2026-11-04T21:50:39.987387+00:00",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "python": "3.12.14"
+  },
+  "profitability_proven": false,
+  "real_market_counterfactual_replay": false,
+  "recorded_cases_construct": {
+    "captured_test_output": "",
+    "cases": [
+      {
+        "elapsed_seconds": 0.180263,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_4561_release_resolves_role_and_mission_before_committed_fill",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.059216,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_4562_next_callback_holds_the_corrected_release",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.036863,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_4601_remains_a_valid_late_release_when_inventory_is_clear",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.017368,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_confirmed_release_resolution_is_idempotent_in_candidate_selection",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.061092,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_corrected_4561_custody_prevents_duplicate_4601_entry",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.061014,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_existing_same_side_seed_promotion_precedes_the_tactical_clock",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_existing_same_side_seed_promotion_precedes_the_tactical_clock (mode='RELEASE')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_existing_same_side_seed_promotion_precedes_the_tactical_clock (mode='CONTINUATION')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.081495,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_objective_floor_and_manual_stop_authority_remain_prior_to_release_custody",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_objective_floor_and_manual_stop_authority_remain_prior_to_release_custody (flag='floor_breached')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_objective_floor_and_manual_stop_authority_remain_prior_to_release_custody (flag='stop_requested')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.02219,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_only_tactical_entry_waits_when_its_existing_final_minute_exit_applies",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_only_tactical_entry_waits_when_its_existing_final_minute_exit_applies (age=840.0)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_only_tactical_entry_waits_when_its_existing_final_minute_exit_applies (age=845.409)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_only_tactical_entry_waits_when_its_existing_final_minute_exit_applies (age=899.0)",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.017982,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_primary_label_alone_cannot_hide_an_existing_tactical_exit_family",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.021811,
+        "group": "A_RELEASE_CUSTODY",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224ReleaseCustodyTests.test_unconfirmed_release_cannot_obtain_primary_admission",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.021693,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_current_confirmed_release_transfer_retires_old_parent_claim",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.032725,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mirrored_up_parent_rejects_the_same_short_no_bounce",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.018063,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mountain_family_cannot_escape_by_changing_role_lane_or_family_variant",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mountain_family_cannot_escape_by_changing_role_lane_or_family_variant (family='MOUNTAIN_EDGE', lane=<Lane.MAIN: 'MAIN'>)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mountain_family_cannot_escape_by_changing_role_lane_or_family_variant (family='MOUNTAIN_EDGE', lane=<Lane.TACTICAL: 'TACTICAL'>)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mountain_family_cannot_escape_by_changing_role_lane_or_family_variant (family='MOUNTAIN_CONTRACT_LEG', lane=<Lane.MAIN: 'MAIN'>)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_mountain_family_cannot_escape_by_changing_role_lane_or_family_variant (family='MOUNTAIN_CONTRACT_LEG', lane=<Lane.TACTICAL: 'TACTICAL'>)",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.020383,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_original_recorded_main_intent_cannot_bypass_the_commander_boundary",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.043659,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_partial_terminal_or_tp_claims_do_not_inherit_the_transfer_exception",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_partial_terminal_or_tp_claims_do_not_inherit_the_transfer_exception (proof='tp_still_old_side')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_partial_terminal_or_tp_claims_do_not_inherit_the_transfer_exception (proof='ema9_still_old_side')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_partial_terminal_or_tp_claims_do_not_inherit_the_transfer_exception (proof='no_current_terminal')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_partial_terminal_or_tp_claims_do_not_inherit_the_transfer_exception (proof='no_current_edge_window')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.048175,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_quality_check_does_not_rewrite_original_inputs_or_return_floor",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.02103,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_recorded_bounce_does_not_erase_the_established_no_parent",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.069815,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_separate_tactical_and_release_species_keep_their_own_checks",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_separate_tactical_and_release_species_keep_their_own_checks (family='EDGE_HEIST')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_separate_tactical_and_release_species_keep_their_own_checks (family='QUOTE_WAVE_SCALP')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_separate_tactical_and_release_species_keep_their_own_checks (family='HISTORICAL_EXTREME_RELEASE_PREP')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.032252,
+        "group": "B_MAIN_PARENT_QUALITY",
+        "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_terminal_and_tp_transfer_remain_eligible_before_an_ema_cross",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_terminal_and_tp_transfer_remain_eligible_before_an_ema_cross (side=<Side.YES: 'YES'>)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_main_returns.PID17224MainReturnTests.test_terminal_and_tp_transfer_remain_eligible_before_an_ema_cross (side=<Side.NO: 'NO'>)",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.069956,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_actual_qualified_5377_and_5600_reach_execution_without_promoting_role",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_actual_qualified_5377_and_5600_reach_execution_without_promoting_role (sequence=5377)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_actual_qualified_5377_and_5600_reach_execution_without_promoting_role (sequence=5600)",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.021392,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_both_inventory_directions_remain_blocked",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_both_inventory_directions_remain_blocked (side='YES')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_both_inventory_directions_remain_blocked (side='NO')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.018148,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_calibration_marker_without_current_qualified_box_does_not_exempt_pause",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.02871,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_current_or_in_progress_release_removes_only_the_pause_exception",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_current_or_in_progress_release_removes_only_the_pause_exception (key='release_in_progress')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_current_or_in_progress_release_removes_only_the_pause_exception (key='release_confirmed_current')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.014003,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_current_visit_survives_rolling_box_window_id_change",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.023788,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_executor_still_rejects_a_stale_command_even_with_qualified_heist_metadata",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.088722,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_first_and_repeat_callbacks_stay_observation_later_swing_can_qualify",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.048456,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_main_lane_primary_role_or_missing_calibration_keeps_old_pause",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_main_lane_primary_role_or_missing_calibration_keeps_old_pause (case='MAIN lane')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_main_lane_primary_role_or_missing_calibration_keeps_old_pause (case='PRIMARY role')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_main_lane_primary_role_or_missing_calibration_keeps_old_pause (case='uncalibrated')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.025695,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_missing_or_wrong_current_visit_cannot_reuse_calibration",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_missing_or_wrong_current_visit_cannot_reuse_calibration (visit=None)",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_missing_or_wrong_current_visit_cannot_reuse_calibration (visit='EARLIER_VISIT')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.033914,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run (reason='OBJECTIVE_QUOTE_STALE')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run (reason='OBJECTIVE_DEPTH_UNAVAILABLE')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run (reason='OBJECTIVE_ENTRY_NOT_ALLOWED')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run (reason='OBJECTIVE_PHYSICAL_SOURCE_STALE')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_objective_source_quote_depth_permission_and_price_checks_still_run (reason='OBJECTIVE_PRICE_MOVED_ABOVE_TOOL_LIMIT')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.024954,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_other_tools_and_unauthorized_heist_reasons_receive_no_exception",
+        "status": "PASS",
+        "subtests": [
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_other_tools_and_unauthorized_heist_reasons_receive_no_exception (tool='RAIL', reason='RAIL_MAIN_VALUE')",
+            "status": "PASS"
+          },
+          {
+            "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_other_tools_and_unauthorized_heist_reasons_receive_no_exception (tool='MARKET_HEIST', reason='HEIST_UNAUTHORIZED_ENTRY')",
+            "status": "PASS"
+          }
+        ]
+      },
+      {
+        "elapsed_seconds": 0.018309,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_strong_opposing_release_check_still_runs_after_pause_exception",
+        "status": "PASS",
+        "subtests": []
+      },
+      {
+        "elapsed_seconds": 0.019751,
+        "group": "C_LATER_HEIST",
+        "id": "tests.tool_rack.test_pid17224_release_heist.PID17224LaterHeistTests.test_tp_economics_still_runs_after_the_old_pause_is_exempted",
+        "status": "PASS",
+        "subtests": []
+      }
+    ],
+    "counterfactual_profit_claimed": false,
+    "elapsed_seconds": 1.30386,
+    "evidence_notes": [
+      "4561 is booked through PaperExecutioner; 4562 must HOLD that same whole lot.",
+      "4601 is eligible with clear inventory; holding corrected 4561 prevents a duplicate entry.",
+      "6087 boundary tests use the original entry intent and original physical snapshot.",
+      "6087 generator tests restore only the exact same-decision recent_level_match cache copied into the recorded intent; the unchecked original route is also asserted.",
+      "Mirror and completed-transfer controls are labelled derived contemporaneous inputs.",
+      "5377 and 5600 test admission and native-book PAPER fills; no later profit is assumed.",
+      "First/repeated fade memory, current qualified visit, Release, floor, stop, inventory, source, quote, depth, permission, price and stale-command controls remain required."
+    ],
+    "expected_tests": 32,
+    "fixture_sha256": "03f5bb3cc5316c33c07767901f6a7edfeafffe739ae2856facb5233758103685",
+    "full_session_replay": false,
+    "groups": {
+      "A_RELEASE_CUSTODY": {
+        "passed": 10,
+        "tests_run": 10
+      },
+      "B_MAIN_PARENT_QUALITY": {
+        "passed": 9,
+        "tests_run": 9
+      },
+      "C_LATER_HEIST": {
+        "passed": 13,
+        "tests_run": 13
+      }
+    },
+    "paper_only": true,
+    "passed": 32,
+    "recorded_controls": [
+      {
+        "original_byte_length": 255853,
+        "original_byte_offset": 824819569,
+        "original_line_sha256": "aca3ac6c4a2c71e137d5761dedd42a705218b9f56f7e2b9272c82c453828223f",
+        "record_sha256": "286a979adf293e0bffdf75b704bc6170064d00e283ef50c2637f8bbda8fc9a85",
+        "sequence": 4561
+      },
+      {
+        "original_byte_length": 268131,
+        "original_byte_offset": 825075422,
+        "original_line_sha256": "53516308232327b129b835294def20d290663659559501d6e82bce951c584168",
+        "record_sha256": "e4f0e50fede94c9ed0592cf0fe2d634aa10f68c829c68c21823349026c5056cf",
+        "sequence": 4562
+      },
+      {
+        "original_byte_length": 254174,
+        "original_byte_offset": 834107190,
+        "original_line_sha256": "ad39a8d43992b678cf8256dbff96dcb7c5516051bd60722d5c406a645eaa5c6d",
+        "record_sha256": "ba8a6dffe36a560334687dfc18eae029dfa55bfb2cf26b9281aeb5359e55409b",
+        "sequence": 4601
+      },
+      {
+        "original_byte_length": 263938,
+        "original_byte_offset": 1022141737,
+        "original_line_sha256": "aa9184067cca98d365db324ec0ecdd134a008dd2c4cef42b5e513a0a1dff7b55",
+        "record_sha256": "542e807f7b4fd538b368d41a0a9dafeaaf38dde704b632288f49dc3b8991d085",
+        "sequence": 5377
+      },
+      {
+        "original_byte_length": 280402,
+        "original_byte_offset": 1081597588,
+        "original_line_sha256": "1072e707ff339a6754bc2b67629662160c6a0831ea347c74562f314efcf35e85",
+        "record_sha256": "e18fa0ea9e8358805c0201e5e32902d9a73667f61d0c7a5be518e1af6404979e",
+        "sequence": 5600
+      },
+      {
+        "original_byte_length": 297306,
+        "original_byte_offset": 1217566198,
+        "original_line_sha256": "91c92ac170beaf6ca9247db3304d218d0502ef836c76d49f14a758149b056afe",
+        "record_sha256": "82cfcbbd6e4f1c616918585444d7ad674dd880dd5914a7e30cda6be0fb805d0a",
+        "sequence": 6087
+      }
+    ],
+    "schema": "TACHYOS_PID17224_APPROVED_CORRECTIONS_CONSTRUCT_V1",
+    "scope": "Selected recorded admission/custody/execution controls and labelled derived variants",
+    "source_sha256": {
+      "CONSTRUCT_PID17224_APPROVED_CORRECTIONS.py": "83e75d0d0061b2828ee6c13e548992b6549e69d22fe7dff7f7da1b168bd53efd",
+      "strategy_core/commander.py": "be14b8b76bcb9de32c5126cd6b1ebedc605c52c7dc066046694efc0ff73a4b48",
+      "strategy_core/commander_candidates.py": "941598e6ad7f4c16b3fc6e814f4a19d29dee47a905b2f9c1795ce5fe1f891604",
+      "strategy_core/directional_parent.py": "bd736e3d4c3c98054afcf42fca9ea3d16ec90c9b2ff40cc7bf370217e0b56e01",
+      "strategy_core/paper_execution.py": "7c975ccd4da949404397485c7ac8abe6868a32968d7f8501d131b61cb1c9a5fd",
+      "strategy_core/paper_runtime.py": "9673bbc8e5a0957787aa16422c9d4d395b2da2c60f9f51aee96cee5dd9cb3de8",
+      "strategy_core/tool_rack.py": "29bde3d3eca4cbdd6435d58bcf1ba21c2a691bce74cd3423a334546144fb150d",
+      "strategy_core/types.py": "7fcad93ea276a416bbcba308b7b107d0bd70a2f471ba5b1ba34b73b5511b77da",
+      "tests/tool_rack/pid17224_recorded_fixtures.py": "5cb8336a9c66c3ecfce1dc6ed72e9920c0ceb44f2316f29055c2f772f30bc4ce",
+      "tests/tool_rack/test_pid17224_main_returns.py": "47eb2b4977b4601b634403fcc251d7b940e1ebbb6842a123f3529d32165e0ea5",
+      "tests/tool_rack/test_pid17224_release_heist.py": "8ac84ec0773094687195c7f0eb1437d8a49a65c8cb59e776ff2a6e3aaceb1d24"
+    },
+    "status": "PASS",
+    "tests_run": 32,
+    "total_elapsed_seconds": 1.615565,
+    "worker_returncode": 0,
+    "worker_stderr": "",
+    "worker_timeout_seconds": 50
+  },
+  "release_id": "TACHYOS_PID17224_APPROVED_CORRECTIONS_45M_20261104",
+  "schema": "tachyos.pid17224.delivery_validation.v1",
+  "scope": "Full checks ran on the extracted code and assets. Only this validation report and the bundle manifest were then finalized; their final integrity/preflight gate is required before publication.",
+  "sealed_strategy_config_ui_files": 66,
+  "six_hour_capture_accepted": false,
+  "status": "PASS",
+  "strategy_modified": true,
+  "strategy_test_count": 415,
+  "strategy_test_module_count": 34,
+  "three_way_strategy_modified_field_scope": "The unchanged recorder validation helper reports whether recorder interposition modifies its selected engine. False there does not mean this release is the prior strategy: the selected engine contains approved A/B/C.",
+  "three_way_synthetic_proof": {
+    "altered_input_control": {
+      "change": "First NO ask 0.10 -> 0.11",
+      "pass": true,
+      "report": {
+        "actual": {
+          "decision_seq": 1,
+          "decision_sha256": "3bacbb22ea8459ba538a7736d251dc3be3680e46b55414a3897585e2d4edeb08",
+          "journal_seq": 2,
+          "journal_sha256": "b7409a5fe9d63f868afced929d3700125a4c5de7b2b26cdc7162c084c4c2484a"
+        },
+        "call_index": 2,
+        "difference": {
+          "actual": 0.89,
+          "expected": 0.9,
+          "file": "decisions.jsonl",
+          "path": "$.native_book.yes_bids[0].price",
+          "reason": "VALUE"
+        },
+        "expected": {
+          "decision_seq": 1,
+          "decision_sha256": "67a2586fa3af01fe571e15a10797c3ce36812339b99043f226d3d20e12cb275b",
+          "journal_seq": 2,
+          "journal_sha256": "385aae032118457990b33c7a4154fab6eadc5ec0185391c27f0025349b375c52"
+        },
+        "method": "process",
+        "reason": "FIRST_ENGINE_OUTPUT_DIVERGENCE"
+      },
+      "scope": "Three-call authored negative fixture with valid integrity chain"
+    },
+    "capture_manifest": {
+      "accepted": 313,
+      "attempted": 313,
+      "backlog_high_water": 2,
+      "bytes": 2057831,
+      "complete": true,
+      "delta": {
+        "calls": 313,
+        "enabled": true,
+        "encoding": "tachyos.snapshot_delta.v1",
+        "geometry_encodes": 7207,
+        "geometry_rows": {
+          "bytes": 0,
+          "rows": 0
+        },
+        "historical_candles": {
+          "bytes": 0,
+          "rows": 0
+        },
+        "immutable_geometry_reuses": 595959,
+        "literal_rows": 7462,
+        "max_snapshot_bytes": 32000000,
+        "max_snapshot_rows": 10000,
+        "reused_rows": 619517
+      },
+      "dropped": 0,
+      "header_sha256": "2717bfc7672a7bb51985cacd2591cc3ec8c059306679f3c1030c2e218d46688e",
+      "last_sha256": "43e6a45510cb9cb91b472b709a59c9f03a508fe29e4aa3af51746b0166587f2f",
+      "max_bytes": 512000000,
+      "queue_capacity": 64,
+      "queue_high_water": 2,
+      "reason": null,
+      "schema": "tachyos.engine_input_tape_manifest.v2",
+      "tape_schema": "tachyos.engine_input_tape.v2",
+      "writer_alive": false,
+      "written": 313
+    },
+    "capture_timing": {
+      "clock_read_count": 870,
+      "clock_recording_including_supplier": {
+        "count": 313,
+        "max_us": 32.819,
+        "median_us": 4.778,
+        "p95_us": 6.179,
+        "p99_us": 7.883
+      },
+      "elapsed_seconds": 30.337427,
+      "finish_and_enqueue": {
+        "count": 313,
+        "max_us": 808.467,
+        "median_us": 60.4,
+        "p95_us": 126.938,
+        "p99_us": 212.094
+      },
+      "measured_capture_work": {
+        "count": 313,
+        "max_us": 1572.42,
+        "median_us": 632.046,
+        "p95_us": 956.237,
+        "p99_us": 1302.518
+      },
+      "notes": [
+        "Includes synchronous history/auxiliary-input detachment.",
+        "No tracemalloc during latency measurement.",
+        "Clock read measurement includes the synthetic clock supplier.",
+        "No Commander/ToolRack collection traversals or state-witness hashing.",
+        "Observed local timings, not hard latency bounds or acceptance on another machine."
+      ],
+      "pin_call": {
+        "count": 313,
+        "max_us": 1476.557,
+        "median_us": 558.928,
+        "p95_us": 873.995,
+        "p99_us": 1168.15
+      }
+    },
+    "date": "2026-11-04",
+    "environment": {
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+      "python": "3.12.14"
+    },
+    "fixture": {
+      "base_ts": 1800000000.0,
+      "builder_attribution": "frozen PID15740 tests/tool_rack/test_direct_paper_runtime.py",
+      "clock_policy": "ORIGINAL_DEFAULT_CLOCK_PATH_WITH_EXTERNAL_RECORDED_READS",
+      "contract_rollovers": 2,
+      "first_process_ts": 1800001200.0,
+      "geometry_history_limit": 3600,
+      "geometry_sample_interval_seconds": 1,
+      "geometry_snapshot": "FULL_ROLLING_WINDOW_MATCHING_DIRECT_PAPER_FEED",
+      "initial_geometry_rows": 1201,
+      "intended_lifecycle": [
+        "RAIL_ENTRY_A",
+        "EARNED_FLOOR_A",
+        "WHOLE_POSITION_EXIT_A",
+        "STALE_QUOTE_INPUT",
+        "ROLLOVER_ENTRY_B",
+        "DRAINING_AT_SECOND_ROLLOVER",
+        "HELD_EXPIRY_AND_SETTLEMENT_B"
+      ],
+      "kind": "SYNTHETIC_ENGINE_BOUNDARY_SESSION",
+      "last_process_ts": 1800002702.0,
+      "not_venue_evidence": true,
+      "process_calls": 309,
+      "routine_process_interval_seconds": 5,
+      "run_id": "TACHYOS_SYNTHETIC_SESSION",
+      "settle_calls": 2,
+      "source_label_policy": "SOURCE_SCHEMA_COMPATIBILITY_ONLY; ALL_INPUTS_SYNTHETIC",
+      "stale_quote_limit": "Stale input occurs without a viable fresh entry; no threatened-order rejection is claimed.",
+      "synthetic": true,
+      "unexercised": [
+        "TACTICAL_TO_MAIN_PROMOTION",
+        "PARENT_HANDOFF",
+        "NATIVE_RECEIVER_OR_TRANSPORT_REPLAY",
+        "SOURCE_DISCONNECT_AND_REACQUISITION",
+        "HELD_BOOK_REFRESH",
+        "RESTART_WITH_OPEN_INVENTORY",
+        "INTERRUPTED_PROCESS_RECOVERY",
+        "REAL_CAPTURED_MARKET_HISTORY"
+      ]
+    },
+    "integrity_tests": {
+      "errors": 0,
+      "failures": 0,
+      "pass": true,
+      "run": 18,
+      "suites": [
+        "test_capture_integrity.py",
+        "test_snapshot_delta.py",
+        "test_capture_session.py"
+      ]
+    },
+    "native_transport_replay": false,
+    "observed_lifecycle": {
+      "custody_transitions": [
+        {
+          "position_id": "1",
+          "previous_state": "NORMAL",
+          "reason": "ALREADY_ARMED_EXECUTABLE_BID_FLOOR",
+          "state": "EXIT_PENDING"
+        }
+      ],
+      "decision_reasons": {
+        "COMMANDER_ACCEPTED_EXACT_HELD_SIDE_EXIT": 1,
+        "COMMANDER_ACCEPTED_TOOL_INTENT": 2,
+        "COMMANDER_MOUNTAIN_ONLY_LEG_STILL_ACTIVE": 183,
+        "CURRENT_CONTRACT_INVENTORY_NO_NEW_COMMANDER_CANDIDATE": 183,
+        "EXACT_CONTRACT_AWAITING_OFFICIAL_FINALITY": 2,
+        "EXIT_COMMITTED_WAIT_FOR_NEXT_NATIVE_QUOTE": 1,
+        "NO_TOOL_INTENT": 120,
+        "PAPER_ENTRY_WINDOW_CLOSED_DRAINING": 3
+      },
+      "fees_synthetic_only": "6.86",
+      "final_cash_synthetic_only": "1270.4400",
+      "final_open_positions": 0,
+      "financial_events": [
+        {
+          "event": "ENTRY",
+          "position_id": "1",
+          "price": "0.1000",
+          "qty": 235,
+          "reason": "RAIL_MAIN_VALUE",
+          "side": "NO",
+          "ticker": "KXBTC15M-FIXTURE-A",
+          "timestamp": 1800001200.00001
+        },
+        {
+          "event": "EXIT",
+          "position_id": "1",
+          "price": "0.3800",
+          "qty": 235,
+          "reason": "ALREADY_ARMED_EXECUTABLE_BID_FLOOR",
+          "side": "NO",
+          "ticker": "KXBTC15M-FIXTURE-A",
+          "timestamp": 1800001202.00004
+        },
+        {
+          "event": "ENTRY",
+          "position_id": "2",
+          "price": "0.1000",
+          "qty": 235,
+          "reason": "RAIL_MAIN_VALUE",
+          "side": "NO",
+          "ticker": "KXBTC15M-FIXTURE-B",
+          "timestamp": 1800001800.00001
+        },
+        {
+          "event": "SETTLEMENT",
+          "position_id": "2",
+          "price": "1",
+          "qty": 235,
+          "reason": "OFFICIAL_FINAL_RESULT_PAPER_SETTLEMENT",
+          "side": "NO",
+          "ticker": "KXBTC15M-FIXTURE-B",
+          "timestamp": 1800002701.0
+        }
+      ],
+      "floor_observations_in_decisions": 184,
+      "journal_kinds": {
+        "BASELINE": 1,
+        "CUSTODY_TRANSITION": 1,
+        "ENTRY": 2,
+        "EXIT": 1,
+        "FLOOR_OBSERVATION": 3,
+        "OFFICIAL_SETTLEMENT": 1
+      },
+      "journal_records": 9,
+      "process_calls": 309,
+      "profitability_evidence": false,
+      "promotion_events": 0
+    },
+    "original_elapsed_seconds": 25.13219,
+    "original_vs_recorded": {
+      "differences": [],
+      "excluded": [
+        "ephemeral paper_writer.lock only"
+      ],
+      "files_compared": 18,
+      "output_sha256": {
+        "PAPER_LEDGER.json": "7dc350d66d0a4a6eea4e350f4ed508d23a824800ec7d49294f5a826c5d1beb18",
+        "RUN_MANIFEST.json": "c3ac62b45c098c387440688afea1b656642823459ea9e4eedc7806ac6d291c99",
+        "RUN_SUMMARY.json": "4014193f06661f68e7c22968c5d8c82a78a93407d7b41bde6b41e62ff0686372",
+        "STATUS.json": "4014193f06661f68e7c22968c5d8c82a78a93407d7b41bde6b41e62ff0686372",
+        "decisions.jsonl": "7fa509f2d80240c921ab964969a4aa756adfc1192d7ffef53bd6436fa37e5cec",
+        "leg_performance.jsonl": "ebb9915b92ebc86945c7b71acac7770da7374c00f0124fba0af9fd13b913fb61",
+        "mission_history.jsonl": "5c2b0683f87ace076ff8832304fd59cae37454f0c293865f0ba68c150bc4e9b8",
+        "paper_journal/00000001.json": "6606e52593d3100d7bce40d9114a2b278f0a532eede3099f2fa362d9fc5ce312",
+        "paper_journal/00000002.json": "dc653ab1f71080bf5767e43b9470208db8a19f7aca951e46d87749280370ea70",
+        "paper_journal/00000003.json": "d8a1a68c3737efb9ac8f4f61e2ee003cbf245f50ff6b1bd3126a3208f7ecced4",
+        "paper_journal/00000004.json": "3252e61cec89fb80433414568409d9fcbf93cdb49db5de46270ff9c4653748e2",
+        "paper_journal/00000005.json": "e958fd275d4f3b0b96502b7d8163bcd13a9ae37d50f04739975c36b435e4be7e",
+        "paper_journal/00000006.json": "6fc58f1bf74bcb7e1086ffac7e40ceec9637d0b0492927a113b47e8a1fa516d9",
+        "paper_journal/00000007.json": "16c280a4bb869dcd7b1ee09d394831f2dd06a5f4afa7379e1629369f7cbbc40b",
+        "paper_journal/00000008.json": "cee33563a36d0d649af666449400befad42c8b60bb1dc8bd48843112d4c7e7f4",
+        "paper_journal/00000009.json": "4cfa9bce9a6cfaee99116363982e0298858f9cc6283c73a239cb086dc750093a",
+        "physical_geometry.jsonl": "9885ba6f87eb63f1933469f1abe717cbacd7b6eb947942f18eb3e3495a98bf4f",
+        "quote_echo_shadow.jsonl": "9c04f28ee3f8bb52947be1811cef4ced6de300ff4fbc2634c3cadaefb7a4a87d"
+      },
+      "pass": true,
+      "scope": "ALL_PERSISTENT_ENGINE_OUTPUTS"
+    },
+    "pass": true,
+    "real_market_replay": false,
+    "recorded_vs_replay": {
+      "differences": [],
+      "excluded": [
+        "ephemeral paper_writer.lock only"
+      ],
+      "files_compared": 18,
+      "output_sha256": {
+        "PAPER_LEDGER.json": "7dc350d66d0a4a6eea4e350f4ed508d23a824800ec7d49294f5a826c5d1beb18",
+        "RUN_MANIFEST.json": "c3ac62b45c098c387440688afea1b656642823459ea9e4eedc7806ac6d291c99",
+        "RUN_SUMMARY.json": "4014193f06661f68e7c22968c5d8c82a78a93407d7b41bde6b41e62ff0686372",
+        "STATUS.json": "4014193f06661f68e7c22968c5d8c82a78a93407d7b41bde6b41e62ff0686372",
+        "decisions.jsonl": "7fa509f2d80240c921ab964969a4aa756adfc1192d7ffef53bd6436fa37e5cec",
+        "leg_performance.jsonl": "ebb9915b92ebc86945c7b71acac7770da7374c00f0124fba0af9fd13b913fb61",
+        "mission_history.jsonl": "5c2b0683f87ace076ff8832304fd59cae37454f0c293865f0ba68c150bc4e9b8",
+        "paper_journal/00000001.json": "6606e52593d3100d7bce40d9114a2b278f0a532eede3099f2fa362d9fc5ce312",
+        "paper_journal/00000002.json": "dc653ab1f71080bf5767e43b9470208db8a19f7aca951e46d87749280370ea70",
+        "paper_journal/00000003.json": "d8a1a68c3737efb9ac8f4f61e2ee003cbf245f50ff6b1bd3126a3208f7ecced4",
+        "paper_journal/00000004.json": "3252e61cec89fb80433414568409d9fcbf93cdb49db5de46270ff9c4653748e2",
+        "paper_journal/00000005.json": "e958fd275d4f3b0b96502b7d8163bcd13a9ae37d50f04739975c36b435e4be7e",
+        "paper_journal/00000006.json": "6fc58f1bf74bcb7e1086ffac7e40ceec9637d0b0492927a113b47e8a1fa516d9",
+        "paper_journal/00000007.json": "16c280a4bb869dcd7b1ee09d394831f2dd06a5f4afa7379e1629369f7cbbc40b",
+        "paper_journal/00000008.json": "cee33563a36d0d649af666449400befad42c8b60bb1dc8bd48843112d4c7e7f4",
+        "paper_journal/00000009.json": "4cfa9bce9a6cfaee99116363982e0298858f9cc6283c73a239cb086dc750093a",
+        "physical_geometry.jsonl": "9885ba6f87eb63f1933469f1abe717cbacd7b6eb947942f18eb3e3495a98bf4f",
+        "quote_echo_shadow.jsonl": "9c04f28ee3f8bb52947be1811cef4ced6de300ff4fbc2634c3cadaefb7a4a87d"
+      },
+      "pass": true,
+      "scope": "ALL_PERSISTENT_ENGINE_OUTPUTS"
+    },
+    "replay": {
+      "calls": 313,
+      "files_compared": 18,
+      "input_kind": "SYNTHETIC_ENGINE_BOUNDARY_SESSION",
+      "journal_records": 9,
+      "journal_sha256": "7e9c47f5cd8f30aee5f4bcd100ffcfbe6e3ac0fcc2538c6cae80458bc50a87dc",
+      "pass": true,
+      "python_version_match": true,
+      "run_dir": "/tmp/tachyos_paper_bundle_zfczmv3a/three_way_proof/replayed/TACHYOS_SYNTHETIC_SESSION",
+      "transport_replay": false,
+      "validation_scope": "ALL_PERSISTENT_ENGINE_OUTPUT_FILES"
+    },
+    "source_files_verified": 66,
+    "strategy_modified": false,
+    "trading_release": false
+  },
+  "unchanged_baseline_files": 64,
+  "windows_runtime_verified": false
+}

@@ -1,0 +1,302 @@
+{
+  "schema": "PID13432_FORENSIC_SUMMARY_V1",
+  "source_archive_sha256": "0517e3e4efb2f8a48b948082fba042694a273ab08d03c34d8d2275ba8ae9d3e2",
+  "runtime_revision": "TOOL_RACK_PAPER_PID16280_CORRECTIONS_20261027",
+  "start": {
+    "utc": "2026-10-27T20:28:42.260857+00:00",
+    "et": "2026-10-27T16:28:42.260857-04:00"
+  },
+  "end": {
+    "utc": "2026-10-27T21:20:03.445523+00:00",
+    "et": "2026-10-27T17:20:03.445523-04:00"
+  },
+  "duration_seconds": 3081.1846663951874,
+  "stop_reason": "OPERATOR_STOP",
+  "total_decisions": 12004,
+  "trades": 0,
+  "fees_paid": "0",
+  "realized_net": "0",
+  "ending_cash": "1000.0",
+  "decision_chain_verified": 12004,
+  "run_manifest_all_56_files_match_delivered_baseline": true,
+  "entry_reason_counts": {
+    "DIRECT_PHYSICAL_SOURCE_WARMING_OR_STALE": 649,
+    "NO_TOOL_INTENT": 3295,
+    "ASK_0.998_ABOVE_MAX_0.400": 22,
+    "ASK_0.999_ABOVE_MAX_0.400": 29,
+    "ASK_0.996_ABOVE_MAX_0.400": 1,
+    "MAIN_SIDE_ASK_UNAVAILABLE": 233,
+    "RELEASE_SIDE_ASK_UNAVAILABLE": 103,
+    "RELEASE_CONFIRMED_BUT_PRICE_ABOVE_SOFT_VALUE": 1070,
+    "MOUNTAIN_WAIT_FOR_MATURE_EDGE_NEVER_MIDDLE": 1816,
+    "MOUNTAIN_EDGE_DEFER_ACTIVE_RELEASE": 183,
+    "PHYSICAL_CONTINUITY_RESET_AWAIT_TOOL_REACQUISITION": 4460,
+    "RELEASE_OWNER_RETAINED_NEW_ENTRY_PROOF_NOT_CURRENT": 143
+  },
+  "entry_reason_duration_seconds": {
+    "DIRECT_PHYSICAL_SOURCE_WARMING_OR_STALE": 165.890573,
+    "NO_TOOL_INTENT": 842.030528,
+    "ASK_0.998_ABOVE_MAX_0.400": 5.605093,
+    "ASK_0.999_ABOVE_MAX_0.400": 7.383936,
+    "ASK_0.996_ABOVE_MAX_0.400": 0.252792,
+    "MAIN_SIDE_ASK_UNAVAILABLE": 59.365597,
+    "RELEASE_SIDE_ASK_UNAVAILABLE": 25.878588,
+    "RELEASE_CONFIRMED_BUT_PRICE_ABOVE_SOFT_VALUE": 276.015734,
+    "MOUNTAIN_WAIT_FOR_MATURE_EDGE_NEVER_MIDDLE": 465.661526,
+    "MOUNTAIN_EDGE_DEFER_ACTIVE_RELEASE": 47.374349,
+    "PHYSICAL_CONTINUITY_RESET_AWAIT_TOOL_REACQUISITION": 1146.681848,
+    "RELEASE_OWNER_RETAINED_NEW_ENTRY_PROOF_NOT_CURRENT": 36.905632
+  },
+  "duration_method": "Left-held state from one recorded decision timestamp to next; total covered3079.046194s; excludes startup/tail. Counts include repeated evaluation of same physical sample.",
+  "territory_counts": {
+    "NO_RACK": 649,
+    "UNKNOWN": 1845,
+    "COMPRESSION_UNRESOLVED": 4175,
+    "ROLLING_MOUNTAIN": 2553,
+    "DOWN_RAIL": 285,
+    "ALTERNATING_MOUNTAIN": 2438,
+    "MARKET_HEIST": 59
+  },
+  "owned_territory_counts": {
+    "NO_RACK": 649,
+    "UNKNOWN": 3295,
+    "DOWN_RAIL": 286,
+    "RELEASE_TRANSITION": 3714,
+    "ALTERNATING_MOUNTAIN": 4060
+  },
+  "physical_geometry_samples": 1833,
+  "physical_current_frames": 11355,
+  "native_book_current_frames": 11687,
+  "mountain_mature_edge_frames": 0,
+  "max_recorded_same_direction_completed_reference_count": 1,
+  "continuity_events": [
+    {
+      "generation": 0,
+      "sequence": 1,
+      "now_ts": 1793132923.1585286,
+      "et": "2026-10-27T16:28:43.158529-04:00",
+      "reason": "COLD_START_REAL_OBSERVATIONS_ONLY",
+      "rows_used": 0,
+      "geometry_last_epoch_ms": null
+    },
+    {
+      "generation": 1,
+      "sequence": 6349,
+      "now_ts": 1793134547.241896,
+      "et": "2026-10-27T16:55:47.241896-04:00",
+      "reason": "ConnectionClosedError",
+      "rows_used": 0,
+      "geometry_last_epoch_ms": null
+    },
+    {
+      "generation": 2,
+      "sequence": 6355,
+      "now_ts": 1793134548.7693868,
+      "et": "2026-10-27T16:55:48.769387-04:00",
+      "reason": "BTC_CONNECTION_EPOCH_CHANGED",
+      "rows_used": 1,
+      "geometry_last_epoch_ms": 1793134548575.0261
+    },
+    {
+      "generation": 3,
+      "sequence": 9407,
+      "now_ts": 1793135333.5462406,
+      "et": "2026-10-27T17:08:53.546241-04:00",
+      "reason": "NO_PUBLIC_ENVELOPE_15S",
+      "rows_used": 0,
+      "geometry_last_epoch_ms": null
+    },
+    {
+      "generation": 4,
+      "sequence": 9416,
+      "now_ts": 1793135335.849204,
+      "et": "2026-10-27T17:08:55.849204-04:00",
+      "reason": "BTC_CONNECTION_EPOCH_CHANGED",
+      "rows_used": 1,
+      "geometry_last_epoch_ms": 1793135335579.242
+    }
+  ],
+  "actual_geometry_gaps_over_15s": [
+    {
+      "gap_seconds": 18.056364013671875,
+      "from_ms": 1793135317522.878,
+      "to_ms": 1793135335579.242,
+      "from_et": "2026-10-27T17:08:37.522878-04:00",
+      "to_et": "2026-10-27T17:08:55.579242-04:00",
+      "before_arc": "G002A000006",
+      "after_arc": null,
+      "before_epoch": 2,
+      "after_epoch": 3,
+      "reset_reason": "BTC_CONNECTION_EPOCH_CHANGED"
+    }
+  ],
+  "routing_missing_primary_rolling_frames": 1859,
+  "null_direction_blocks_matching_mountain_transition_frames": 438,
+  "matching_rolling_release_transition_frames": 768,
+  "blocked_release_proposal_frames": 44,
+  "blocked_release_proposals_are_same_unfilled_mission": true,
+  "blocked_release_first": {
+    "sequence": 11090,
+    "now_ts": 1793135766.3603933,
+    "action_without_runtime_reacquisition_veto": "RELAY",
+    "reason_without_runtime_reacquisition_veto": "COMMANDER_ACCEPTED_TOOL_INTENT",
+    "ask": 0.44,
+    "physical_current": true,
+    "quote_current": true,
+    "entry_allowed": true,
+    "time_to_close_seconds": 833.6396067142487,
+    "original_runtime_reason": "PHYSICAL_CONTINUITY_RESET_AWAIT_TOOL_REACQUISITION"
+  },
+  "blocked_release_last": {
+    "sequence": 11211,
+    "now_ts": 1793135797.2279594,
+    "action_without_runtime_reacquisition_veto": "RELAY",
+    "reason_without_runtime_reacquisition_veto": "COMMANDER_ACCEPTED_TOOL_INTENT",
+    "ask": 0.49,
+    "physical_current": true,
+    "quote_current": true,
+    "entry_allowed": true,
+    "time_to_close_seconds": 802.772040605545,
+    "original_runtime_reason": "PHYSICAL_CONTINUITY_RESET_AWAIT_TOOL_REACQUISITION"
+  },
+  "isolated_baseline_commander_accepted_proposals": 44,
+  "actual_or_simulated_fills_claimed": false,
+  "ownership_transitions": [
+    {
+      "seq": 2,
+      "ts": 1793132923.4184642,
+      "state": [
+        "UNKNOWN",
+        null,
+        null
+      ],
+      "raw": {
+        "territory": "UNKNOWN",
+        "side": null,
+        "reason": "NO_TOOL_TERRITORY"
+      },
+      "reason": "NO_TOOL_TERRITORY"
+    },
+    {
+      "seq": 3531,
+      "ts": 1793133825.4668858,
+      "state": [
+        "DOWN_RAIL",
+        "NO",
+        "RAIL"
+      ],
+      "raw": {
+        "territory": "DOWN_RAIL",
+        "side": "NO",
+        "reason": "PARALLEL_EMAS_WITH_PERSISTENT_SAME_DIRECTION_ROLLING_STRUCTURE"
+      },
+      "reason": "PARALLEL_EMAS_WITH_PERSISTENT_SAME_DIRECTION_ROLLING_STRUCTURE"
+    },
+    {
+      "seq": 3826,
+      "ts": 1793133900.6332176,
+      "state": [
+        "RELEASE_TRANSITION",
+        "YES",
+        null
+      ],
+      "raw": {
+        "territory": "ALTERNATING_MOUNTAIN",
+        "side": null,
+        "reason": "ALTERNATING_EMA9_MOUNTAIN"
+      },
+      "reason": "RELEASE_TRANSITION_AWAITING_NEXT_TOOL_TERRITORY"
+    },
+    {
+      "seq": 4297,
+      "ts": 1793134020.7128844,
+      "state": [
+        "ALTERNATING_MOUNTAIN",
+        "YES",
+        "ALTERNATING_MOUNTAIN"
+      ],
+      "raw": {
+        "territory": "ALTERNATING_MOUNTAIN",
+        "side": "YES",
+        "reason": "ALTERNATING_EMA9_MOUNTAIN"
+      },
+      "reason": "RELEASE_TRANSITION_TO_NEW_TERRITORY"
+    },
+    {
+      "seq": 8465,
+      "ts": 1793135090.0761287,
+      "state": [
+        "RELEASE_TRANSITION",
+        "NO",
+        null
+      ],
+      "raw": {
+        "territory": "MARKET_HEIST",
+        "side": null,
+        "reason": "QUALIFIED_REPEATABLE_SIDEWAYS_BOX"
+      },
+      "reason": "RELEASE_TRANSITION_AWAITING_NEXT_TOOL_TERRITORY"
+    }
+  ],
+  "safe_completed_references": [
+    {
+      "epoch": 1,
+      "arc_id": "G000A000002",
+      "side": "UP",
+      "start_ms": 1793133541042.0571,
+      "end_ms": 1793133601263.594,
+      "duration_s": 60.22153686523438,
+      "completion_known_ms": 1793133833359.905,
+      "native_reversal_observed": true,
+      "coverage": {
+        "observed_from_start": true,
+        "source_continuous": true,
+        "sample_count": 45,
+        "first_source_ms": 1793133541042.0571,
+        "last_source_ms": 1793133601263.594,
+        "max_sample_gap_s": 2.267304931640625,
+        "complete_observed_path": true,
+        "endpoints_are_actual_observations": true,
+        "completion_known_ms": 1793133833359.905,
+        "completion_source_continuous": true,
+        "completion_max_sample_gap_s": 9.67873388671875,
+        "native_extreme_preserved_to_completion": true
+      },
+      "actual_path_rows": 45,
+      "paired_reference_count": 4,
+      "origin_is_cold_or_reconnect_initialization": false,
+      "observed_prior_turn_origin_proven": true,
+      "safe_complete_reference": true
+    },
+    {
+      "epoch": 1,
+      "arc_id": "G000A000003",
+      "side": "DOWN",
+      "start_ms": 1793133710259.9421,
+      "end_ms": 1793133840295.872,
+      "duration_s": 130.03592993164062,
+      "completion_known_ms": 1793133900137.5662,
+      "native_reversal_observed": true,
+      "coverage": {
+        "observed_from_start": true,
+        "source_continuous": true,
+        "sample_count": 60,
+        "first_source_ms": 1793133710259.9421,
+        "last_source_ms": 1793133840295.872,
+        "max_sample_gap_s": 9.67873388671875,
+        "complete_observed_path": true,
+        "endpoints_are_actual_observations": true,
+        "completion_known_ms": 1793133900137.5662,
+        "completion_source_continuous": true,
+        "completion_max_sample_gap_s": 9.67873388671875,
+        "native_extreme_preserved_to_completion": true
+      },
+      "actual_path_rows": 60,
+      "paired_reference_count": 4,
+      "origin_is_cold_or_reconnect_initialization": false,
+      "observed_prior_turn_origin_proven": true,
+      "safe_complete_reference": true
+    }
+  ],
+  "cold_origin_caution": "Baseline _coverage labels sampled paths complete from first recognized direction, but first arc per connection starts midstream. No previous physical turn proven; do not seed as full comparable merely from baseline coverage flag."
+}

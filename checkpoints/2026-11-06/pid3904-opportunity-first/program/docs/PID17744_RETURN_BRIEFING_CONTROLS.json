@@ -1,0 +1,552 @@
+{
+  "source_archive": "TOOL_RACK_PAPER_20261104T005836Z_PID17744_ULTRA_FORENSICS.zip",
+  "protocol": "entry-time observations only; historical-extreme/level-match candidate metadata reconstructed from entry-route evidence; outcomes excluded",
+  "rows": {
+    "11": {
+      "trade_id": "11",
+      "ticker": "KXBTC15M-26NOV032115-15",
+      "recorded_at_epoch": 1793758145.636765,
+      "seconds_left": 354.36323499679565,
+      "entry_price": 0.084,
+      "side": "NO",
+      "entry_reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN",
+      "book": {
+        "yes_ask": 0.917,
+        "no_ask": 0.08399999999999996,
+        "yes_bid": 0.916,
+        "no_bid": 0.083
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793758146260.842,
+        "btc_price": 77042.36,
+        "ema9": 77020.12982747992,
+        "ema30": 76942.9472693799,
+        "ema_gap": 77.18255810001574,
+        "btc_change6": -6.710000000006403,
+        "btc_change9": -14.789999999993597,
+        "btc_change30": -18.55999999999767,
+        "btc_change60": 6.309999999997672,
+        "ema9_change6": -1.342000000004191,
+        "ema9_change30": 3.1875431300286436,
+        "ema9_change60": 8.161543130030623,
+        "arc_phase": "CREST_FORMING",
+        "arc_direction": "UP",
+        "parent_direction": "UP",
+        "range60": 51.84999999999127,
+        "range180": 69.91999999999825,
+        "arc_id": "G000A000085"
+      },
+      "gap": {
+        "side": "YES",
+        "stage": "DEVELOPING",
+        "age_s": 849.40895703125,
+        "gap_side": "YES",
+        "abs_gap": 77.18255810001574,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": false
+      },
+      "mountain": {
+        "owner_side": "YES",
+        "phase": "CREST_FORMING",
+        "terminal_evidence_qualified": false,
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": false,
+        "spent_edge": false,
+        "current_arc_id": "G000A000085",
+        "edge_id": "G000A000085:1793758123796",
+        "source_ms": 1793758146260.842,
+        "parent": {
+          "parent_id": "E000A000043",
+          "parent_side": "YES",
+          "parent_age_s": 616.8631761074066,
+          "parent_amplitude": 159.98420136941422,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": false,
+          "extended_parent": true,
+          "child_arc_count": 12
+        },
+        "edge_extreme_ms": 1793758123796
+      },
+      "tp": {
+        "observed_target_side": "YES",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "YES",
+        "required_move_to_target_btc": 150.86999999999534,
+        "target_between_ema9_ema30": false,
+        "target": 76891.49
+      },
+      "strategy": {
+        "active_tool": "RAIL",
+        "owned_side": "YES",
+        "owned_territory": "UP_RAIL"
+      }
+    },
+    "12": {
+      "trade_id": "12",
+      "ticker": "KXBTC15M-26NOV032130-30",
+      "recorded_at_epoch": 1793758894.0987475,
+      "seconds_left": 505.90125250816345,
+      "entry_price": 0.19,
+      "side": "YES",
+      "entry_reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN",
+      "book": {
+        "yes_ask": 0.18999999999999995,
+        "no_ask": 0.8200000000000001,
+        "yes_bid": 0.18,
+        "no_bid": 0.81
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793758895219.315,
+        "btc_price": 76705.62,
+        "ema9": 76754.26206191609,
+        "ema30": 76836.62465673692,
+        "ema_gap": -82.36259482083551,
+        "btc_change6": 8.299999999988358,
+        "btc_change9": 8.299999999988358,
+        "btc_change30": -34.73000000001048,
+        "btc_change60": 1.4799999999959255,
+        "ema9_change6": 1.6600000000034925,
+        "ema9_change30": -6.945999999996275,
+        "ema9_change60": -6.1645154790167,
+        "arc_phase": "TROUGH_FORMING",
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "range60": 74.70999999999185,
+        "range180": 138.36999999999534,
+        "arc_id": "G000A000098"
+      },
+      "gap": {
+        "side": "NO",
+        "stage": "DEVELOPING",
+        "age_s": 575.0050808105469,
+        "gap_side": "NO",
+        "abs_gap": 82.36259482083551,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": false
+      },
+      "mountain": {
+        "owner_side": "NO",
+        "phase": "TROUGH_FORMING",
+        "terminal_evidence_qualified": false,
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": false,
+        "spent_edge": false,
+        "current_arc_id": "G000A000098",
+        "edge_id": "G000A000098:1793758884579",
+        "source_ms": 1793758895219.315,
+        "parent": {
+          "parent_id": "E000A000044",
+          "parent_side": "NO",
+          "parent_age_s": 752.2640709877014,
+          "parent_amplitude": 271.61576556383807,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": false,
+          "extended_parent": true,
+          "child_arc_count": 14
+        },
+        "edge_extreme_ms": 1793758884579
+      },
+      "tp": {
+        "observed_target_side": "NO",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "required_move_to_target_btc": 151.7100000000064,
+        "target_between_ema9_ema30": false,
+        "target": 76857.33
+      },
+      "strategy": {
+        "active_tool": "MARKET_HEIST",
+        "owned_side": "NO",
+        "owned_territory": "MARKET_HEIST"
+      }
+    },
+    "13": {
+      "trade_id": "13",
+      "ticker": "KXBTC15M-26NOV032130-30",
+      "recorded_at_epoch": 1793759106.1578202,
+      "seconds_left": 293.84217977523804,
+      "entry_price": 0.035,
+      "side": "YES",
+      "entry_reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN",
+      "book": {
+        "yes_ask": 0.03500000000000003,
+        "no_ask": 0.966,
+        "yes_bid": 0.034,
+        "no_bid": 0.965
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793759106723.238,
+        "btc_price": 76635.45,
+        "ema9": 76692.82393896082,
+        "ema30": 76794.38072032295,
+        "ema_gap": -101.556781362131,
+        "btc_change6": 25.319999999992433,
+        "btc_change9": 26.989999999990687,
+        "btc_change30": -14.839999999996508,
+        "btc_change60": -26.05999999999767,
+        "ema9_change6": 5.063999999998487,
+        "ema9_change30": -22.005484740206157,
+        "ema9_change60": -24.24948474021221,
+        "arc_phase": "EXPANDING",
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "range60": 71.77999999999884,
+        "range180": 139.00999999999476,
+        "arc_id": "G000A000104"
+      },
+      "gap": {
+        "side": "NO",
+        "stage": "DEVELOPING",
+        "age_s": 786.50900390625,
+        "gap_side": "NO",
+        "abs_gap": 101.556781362131,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": false
+      },
+      "mountain": {
+        "owner_side": "NO",
+        "phase": "EXPANDING",
+        "terminal_evidence_qualified": false,
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": false,
+        "spent_edge": false,
+        "current_arc_id": "G000A000104",
+        "edge_id": "G000A000104:1793759097506",
+        "source_ms": 1793759106723.238,
+        "parent": {
+          "parent_id": "E000A000044",
+          "parent_side": "NO",
+          "parent_age_s": 963.767993927002,
+          "parent_amplitude": 336.4578885191004,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": true,
+          "extended_parent": true,
+          "child_arc_count": 20
+        },
+        "edge_extreme_ms": 1793759097506
+      },
+      "tp": {
+        "observed_target_side": "NO",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "required_move_to_target_btc": 221.88000000000466,
+        "target_between_ema9_ema30": false,
+        "target": 76857.33
+      },
+      "strategy": {
+        "active_tool": "MARKET_HEIST",
+        "owned_side": "NO",
+        "owned_territory": "MARKET_HEIST"
+      }
+    },
+    "14": {
+      "trade_id": "14",
+      "ticker": "KXBTC15M-26NOV032145-45",
+      "recorded_at_epoch": 1793760028.8694336,
+      "seconds_left": 271.1305663585663,
+      "entry_price": 0.1,
+      "side": "YES",
+      "entry_reason": "COMMANDER_HISTORICAL_EXTREME_RELEASE_PREP_SCOUT",
+      "book": {
+        "yes_ask": 0.09899999999999998,
+        "no_ask": 0.902,
+        "yes_bid": 0.098,
+        "no_bid": 0.901
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793760029416.352,
+        "btc_price": 76572.96,
+        "ema9": 76606.39188921908,
+        "ema30": 76682.19886748973,
+        "ema_gap": -75.80697827064432,
+        "btc_change6": 5.330000000001746,
+        "btc_change9": 5.320000000006985,
+        "btc_change30": -8.839999999996508,
+        "btc_change60": -18.29999999998836,
+        "ema9_change6": 1.065999999991618,
+        "ema9_change30": -8.355972304780153,
+        "ema9_change60": -10.247972304772702,
+        "arc_phase": "EXPANDING",
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "range60": 25.54999999998836,
+        "range180": 64.41999999999825,
+        "arc_id": "G000A000126"
+      },
+      "gap": {
+        "side": "NO",
+        "stage": "MATURE",
+        "age_s": 1709.2021179199219,
+        "gap_side": "NO",
+        "abs_gap": 75.80697827064432,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": false
+      },
+      "mountain": {
+        "owner_side": "NO",
+        "phase": "EXPANDING",
+        "terminal_evidence_qualified": true,
+        "mature_edge": true,
+        "edge_window_active": true,
+        "stall": true,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": true,
+        "strong_active_release": false,
+        "spent_edge": false,
+        "current_arc_id": "G000A000126",
+        "edge_id": "G000A000126:1793760019730",
+        "source_ms": 1793760029416.352,
+        "parent": {
+          "parent_id": "E000A000050",
+          "parent_side": "NO",
+          "parent_age_s": 252.38405799865723,
+          "parent_amplitude": 52.294277819702984,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": false,
+          "extended_parent": false,
+          "child_arc_count": 6
+        }
+      },
+      "tp": {
+        "observed_target_side": "NO",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "required_move_to_target_btc": 101.98999999999069,
+        "target_between_ema9_ema30": true,
+        "target": 76674.95
+      },
+      "strategy": {
+        "active_tool": "ROLLING_MOUNTAIN",
+        "owned_side": "NO",
+        "owned_territory": "ROLLING_MOUNTAIN"
+      },
+      "metadata_mission_evidence": {
+        "historical_extreme_release": {
+          "qualified": true,
+          "side": "YES"
+        }
+      }
+    },
+    "15": {
+      "trade_id": "15",
+      "ticker": "KXBTC15M-26NOV032145-45",
+      "recorded_at_epoch": 1793760155.629295,
+      "seconds_left": 144.37070488929749,
+      "entry_price": 0.057,
+      "side": "YES",
+      "entry_reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN",
+      "book": {
+        "yes_ask": 0.05700000000000005,
+        "no_ask": 0.944,
+        "yes_bid": 0.056,
+        "no_bid": 0.943
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793760156003.4849,
+        "btc_price": 76586.62,
+        "ema9": 76601.11592910021,
+        "ema30": 76670.96029127733,
+        "ema_gap": -69.84436217711482,
+        "btc_change6": 9.819999999992433,
+        "btc_change9": 0.819999999992433,
+        "btc_change30": -27.620000000009895,
+        "btc_change60": 10.0,
+        "ema9_change6": 1.9640000000072177,
+        "ema9_change30": -5.524000000004889,
+        "ema9_change60": 0.6480177249468397,
+        "arc_phase": "MATURE",
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "range60": 39.63999999999942,
+        "range180": 98.19999999999709,
+        "arc_id": "G000A000130"
+      },
+      "gap": {
+        "side": "NO",
+        "stage": "ROLLING",
+        "age_s": 1835.7892507324218,
+        "gap_side": "NO",
+        "abs_gap": 69.84436217711482,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": false
+      },
+      "mountain": {
+        "owner_side": "NO",
+        "phase": "MATURE",
+        "terminal_evidence_qualified": false,
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": false,
+        "spent_edge": false,
+        "current_arc_id": "G000A000130",
+        "edge_id": "G000A000130:1793760148997",
+        "source_ms": 1793760156003.4849,
+        "parent": {
+          "parent_id": "E000A000050",
+          "parent_side": "NO",
+          "parent_age_s": 378.97119092941284,
+          "parent_amplitude": 61.82427781970182,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": false,
+          "extended_parent": true,
+          "child_arc_count": 10
+        }
+      },
+      "tp": {
+        "observed_target_side": "NO",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "required_move_to_target_btc": 88.33000000000175,
+        "target_between_ema9_ema30": false,
+        "target": 76674.95
+      },
+      "strategy": {
+        "active_tool": "ROLLING_MOUNTAIN",
+        "owned_side": "NO",
+        "owned_territory": "ROLLING_MOUNTAIN"
+      },
+      "metadata_mission_evidence": {
+        "historical_extreme_release": {
+          "recent_level_match": {
+            "side": "YES",
+            "anchor_time": 1793759699.629295,
+            "anchor": 76586.62
+          }
+        }
+      }
+    },
+    "16": {
+      "trade_id": "16",
+      "ticker": "KXBTC15M-26NOV032200-00",
+      "recorded_at_epoch": 1793760325.8930984,
+      "seconds_left": 874.1069016456604,
+      "entry_price": 0.55,
+      "side": "NO",
+      "entry_reason": "COMMANDER_INHERITED_YOUNG_LEG_ROLLOVER_CONTINUATION",
+      "book": {
+        "yes_ask": 0.45999999999999996,
+        "no_ask": 0.55,
+        "yes_bid": 0.45,
+        "no_bid": 0.54
+      },
+      "source": {
+        "physical_current": true
+      },
+      "geometry": {
+        "epoch_ms": 1793760326626.843,
+        "btc_price": 76517.62,
+        "ema9": 76561.11109969931,
+        "ema30": 76642.82054870666,
+        "ema_gap": -81.70944900735049,
+        "btc_change6": -12.790000000008149,
+        "btc_change9": -6.30000000000291,
+        "btc_change30": -28.080000000001746,
+        "btc_change60": -26.5,
+        "ema9_change6": -2.55800000000454,
+        "ema9_change30": -11.910774924836005,
+        "ema9_change60": -11.594774924829835,
+        "arc_phase": "EXPANDING",
+        "arc_direction": "DOWN",
+        "parent_direction": "DOWN",
+        "range60": 33.60000000000582,
+        "range180": 91.05999999999767,
+        "arc_id": "G000A000132"
+      },
+      "gap": {
+        "side": "NO",
+        "stage": "ROLLING",
+        "age_s": 2006.4126088867188,
+        "gap_side": "NO",
+        "abs_gap": 81.70944900735049,
+        "touching_spine": false,
+        "continued_on_cross_side": true,
+        "expanding_6s": true
+      },
+      "mountain": {
+        "owner_side": "NO",
+        "phase": "EXPANDING",
+        "terminal_evidence_qualified": false,
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": true,
+        "spent_edge": false,
+        "current_arc_id": "G000A000132",
+        "edge_id": "G000A000132:1793760195426",
+        "source_ms": 1793760326626.843,
+        "parent": {
+          "parent_id": "E000A000050",
+          "parent_side": "NO",
+          "parent_age_s": 549.5945489406586,
+          "parent_amplitude": 96.48106733948225,
+          "parent_terminal_ready": false,
+          "parent_turning_or_flat": false,
+          "slow_rolling_parent": false,
+          "extended_parent": true,
+          "child_arc_count": 12
+        }
+      },
+      "tp": {
+        "observed_target_side": "NO",
+        "contract_ownership": "STARTING_LEG_FAVORED",
+        "contract_ownership_side": "NO",
+        "required_move_to_target_btc": 30.70000000001164,
+        "target_between_ema9_ema30": false,
+        "target": 76548.32
+      },
+      "strategy": {
+        "active_tool": "RAIL",
+        "owned_side": "NO",
+        "owned_territory": "DOWN_RAIL"
+      }
+    }
+  }
+}

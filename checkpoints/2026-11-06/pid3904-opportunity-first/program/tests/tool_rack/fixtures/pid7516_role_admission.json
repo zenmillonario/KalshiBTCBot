@@ -1,0 +1,5685 @@
+{
+  "source_run": "TOOL_RACK_PAPER_20261027T221127Z_PID7516",
+  "notice": "Frozen recorded admission evidence; no later quote or revised-policy profitability claim.",
+  "primary": {
+    "sequence": 9780,
+    "original_sha256": "5927b922263020ce1226e7bedfcfde3ae651c227e0627736c92c457b1993c5eb",
+    "now_ts": 1793141582.5348334,
+    "native_book": {
+      "ticker": "KXBTC15M-26OCT271900-00",
+      "quote_id": "Q8:1:283002:9581",
+      "observed_ts": 1793141582.5280738,
+      "exchange_ts": 1793141582.533,
+      "yes_bids": [
+        {
+          "price": 0.48,
+          "quantity": 5223.62
+        },
+        {
+          "price": 0.47,
+          "quantity": 4849.97
+        },
+        {
+          "price": 0.46,
+          "quantity": 2298.28
+        },
+        {
+          "price": 0.45,
+          "quantity": 3814.0
+        },
+        {
+          "price": 0.44,
+          "quantity": 1921.01
+        },
+        {
+          "price": 0.43,
+          "quantity": 12693.33
+        },
+        {
+          "price": 0.42,
+          "quantity": 3376.89
+        },
+        {
+          "price": 0.41,
+          "quantity": 3346.66
+        },
+        {
+          "price": 0.4,
+          "quantity": 2971.6
+        },
+        {
+          "price": 0.39,
+          "quantity": 3049.74
+        },
+        {
+          "price": 0.38,
+          "quantity": 2110.55
+        },
+        {
+          "price": 0.37,
+          "quantity": 2499.94
+        },
+        {
+          "price": 0.36,
+          "quantity": 4036.8
+        },
+        {
+          "price": 0.35,
+          "quantity": 3676.93
+        },
+        {
+          "price": 0.34,
+          "quantity": 3243.78
+        },
+        {
+          "price": 0.33,
+          "quantity": 7086.24
+        },
+        {
+          "price": 0.32,
+          "quantity": 2620.73
+        },
+        {
+          "price": 0.31,
+          "quantity": 3541.93
+        },
+        {
+          "price": 0.3,
+          "quantity": 2883.33
+        },
+        {
+          "price": 0.29,
+          "quantity": 3312.0
+        },
+        {
+          "price": 0.28,
+          "quantity": 2976.7
+        },
+        {
+          "price": 0.27,
+          "quantity": 3105.02
+        },
+        {
+          "price": 0.26,
+          "quantity": 3122.82
+        },
+        {
+          "price": 0.25,
+          "quantity": 7572.95
+        },
+        {
+          "price": 0.24,
+          "quantity": 1603.82
+        },
+        {
+          "price": 0.23,
+          "quantity": 1203.27
+        },
+        {
+          "price": 0.22,
+          "quantity": 1532.48
+        },
+        {
+          "price": 0.21,
+          "quantity": 1546.89
+        },
+        {
+          "price": 0.2,
+          "quantity": 6973.86
+        },
+        {
+          "price": 0.19,
+          "quantity": 10885.22
+        },
+        {
+          "price": 0.18,
+          "quantity": 23451.23
+        },
+        {
+          "price": 0.17,
+          "quantity": 9775.94
+        },
+        {
+          "price": 0.16,
+          "quantity": 9205.86
+        },
+        {
+          "price": 0.15,
+          "quantity": 11066.19
+        },
+        {
+          "price": 0.14,
+          "quantity": 10762.33
+        },
+        {
+          "price": 0.13,
+          "quantity": 11478.1
+        },
+        {
+          "price": 0.12,
+          "quantity": 5354.98
+        },
+        {
+          "price": 0.11,
+          "quantity": 12158.13
+        },
+        {
+          "price": 0.1,
+          "quantity": 22427.92
+        },
+        {
+          "price": 0.099,
+          "quantity": 9603.0
+        },
+        {
+          "price": 0.098,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.097,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.096,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.095,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.094,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.093,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.092,
+          "quantity": 5249.01
+        },
+        {
+          "price": 0.091,
+          "quantity": 15644.0
+        },
+        {
+          "price": 0.09,
+          "quantity": 8176.78
+        },
+        {
+          "price": 0.089,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.088,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.087,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.086,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.085,
+          "quantity": 235.53
+        },
+        {
+          "price": 0.084,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.083,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.082,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.081,
+          "quantity": 5754.1
+        },
+        {
+          "price": 0.08,
+          "quantity": 9949.66
+        },
+        {
+          "price": 0.079,
+          "quantity": 286.55
+        },
+        {
+          "price": 0.078,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.077,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.076,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.075,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.074,
+          "quantity": 1067.39
+        },
+        {
+          "price": 0.073,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.072,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.071,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.07,
+          "quantity": 8417.66
+        },
+        {
+          "price": 0.069,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.068,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.067,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.066,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.065,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.064,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.063,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.062,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.061,
+          "quantity": 5283.0
+        },
+        {
+          "price": 0.06,
+          "quantity": 51321.09
+        },
+        {
+          "price": 0.059,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.058,
+          "quantity": 19920.4
+        },
+        {
+          "price": 0.057,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.056,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.055,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.054,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.053,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.052,
+          "quantity": 2320.0
+        },
+        {
+          "price": 0.051,
+          "quantity": 53.0
+        },
+        {
+          "price": 0.05,
+          "quantity": 5708.99
+        },
+        {
+          "price": 0.049,
+          "quantity": 9477.6
+        },
+        {
+          "price": 0.048,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.047,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.046,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.045,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.044,
+          "quantity": 1014.0
+        },
+        {
+          "price": 0.043,
+          "quantity": 26.0
+        },
+        {
+          "price": 0.042,
+          "quantity": 2464.0
+        },
+        {
+          "price": 0.041,
+          "quantity": 1870.0
+        },
+        {
+          "price": 0.04,
+          "quantity": 9993.68
+        },
+        {
+          "price": 0.039,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.038,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.037,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.036,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.035,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.034,
+          "quantity": 2636.0
+        },
+        {
+          "price": 0.033,
+          "quantity": 33.0
+        },
+        {
+          "price": 0.032,
+          "quantity": 1412.0
+        },
+        {
+          "price": 0.031,
+          "quantity": 303.0
+        },
+        {
+          "price": 0.03,
+          "quantity": 7068.34
+        },
+        {
+          "price": 0.029,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.028,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.027,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.026,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.025,
+          "quantity": 716.0
+        },
+        {
+          "price": 0.024,
+          "quantity": 1353.0
+        },
+        {
+          "price": 0.023,
+          "quantity": 19.0
+        },
+        {
+          "price": 0.022,
+          "quantity": 2182.0
+        },
+        {
+          "price": 0.021,
+          "quantity": 6654.0
+        },
+        {
+          "price": 0.02,
+          "quantity": 9271.37
+        },
+        {
+          "price": 0.019,
+          "quantity": 491.0
+        },
+        {
+          "price": 0.018,
+          "quantity": 2740.0
+        },
+        {
+          "price": 0.017,
+          "quantity": 587.0
+        },
+        {
+          "price": 0.016,
+          "quantity": 2928.0
+        },
+        {
+          "price": 0.015,
+          "quantity": 1110.0
+        },
+        {
+          "price": 0.014,
+          "quantity": 2347.0
+        },
+        {
+          "price": 0.013,
+          "quantity": 1779.0
+        },
+        {
+          "price": 0.012,
+          "quantity": 26378.0
+        },
+        {
+          "price": 0.011,
+          "quantity": 10842.64
+        },
+        {
+          "price": 0.01,
+          "quantity": 21009.63
+        },
+        {
+          "price": 0.009,
+          "quantity": 7089.67
+        },
+        {
+          "price": 0.008,
+          "quantity": 13017.0
+        },
+        {
+          "price": 0.007,
+          "quantity": 16879.43
+        },
+        {
+          "price": 0.006,
+          "quantity": 23083.0
+        },
+        {
+          "price": 0.005,
+          "quantity": 39110.0
+        },
+        {
+          "price": 0.004,
+          "quantity": 28585.0
+        },
+        {
+          "price": 0.003,
+          "quantity": 45536.0
+        },
+        {
+          "price": 0.002,
+          "quantity": 166660.0
+        },
+        {
+          "price": 0.001,
+          "quantity": 1126278.29
+        }
+      ],
+      "no_bids": [
+        {
+          "price": 0.51,
+          "quantity": 3514.06
+        },
+        {
+          "price": 0.5,
+          "quantity": 4276.77
+        },
+        {
+          "price": 0.49,
+          "quantity": 4225.35
+        },
+        {
+          "price": 0.48,
+          "quantity": 2778.25
+        },
+        {
+          "price": 0.47,
+          "quantity": 1636.69
+        },
+        {
+          "price": 0.46,
+          "quantity": 1662.86
+        },
+        {
+          "price": 0.45,
+          "quantity": 2108.7
+        },
+        {
+          "price": 0.44,
+          "quantity": 12336.64
+        },
+        {
+          "price": 0.43,
+          "quantity": 1414.91
+        },
+        {
+          "price": 0.42,
+          "quantity": 1372.19
+        },
+        {
+          "price": 0.41,
+          "quantity": 1458.87
+        },
+        {
+          "price": 0.4,
+          "quantity": 2569.99
+        },
+        {
+          "price": 0.39,
+          "quantity": 2358.22
+        },
+        {
+          "price": 0.38,
+          "quantity": 2557.94
+        },
+        {
+          "price": 0.37,
+          "quantity": 2380.18
+        },
+        {
+          "price": 0.36,
+          "quantity": 3229.14
+        },
+        {
+          "price": 0.35,
+          "quantity": 2724.81
+        },
+        {
+          "price": 0.34,
+          "quantity": 5903.01
+        },
+        {
+          "price": 0.33,
+          "quantity": 1788.26
+        },
+        {
+          "price": 0.32,
+          "quantity": 1964.51
+        },
+        {
+          "price": 0.31,
+          "quantity": 2421.38
+        },
+        {
+          "price": 0.3,
+          "quantity": 2599.34
+        },
+        {
+          "price": 0.29,
+          "quantity": 1350.88
+        },
+        {
+          "price": 0.28,
+          "quantity": 1459.64
+        },
+        {
+          "price": 0.27,
+          "quantity": 1351.6
+        },
+        {
+          "price": 0.26,
+          "quantity": 2760.62
+        },
+        {
+          "price": 0.25,
+          "quantity": 7554.17
+        },
+        {
+          "price": 0.24,
+          "quantity": 1586.71
+        },
+        {
+          "price": 0.23,
+          "quantity": 1948.75
+        },
+        {
+          "price": 0.22,
+          "quantity": 1593.86
+        },
+        {
+          "price": 0.21,
+          "quantity": 2196.28
+        },
+        {
+          "price": 0.2,
+          "quantity": 21551.41
+        },
+        {
+          "price": 0.19,
+          "quantity": 9838.03
+        },
+        {
+          "price": 0.18,
+          "quantity": 8630.4
+        },
+        {
+          "price": 0.17,
+          "quantity": 10248.98
+        },
+        {
+          "price": 0.16,
+          "quantity": 7082.82
+        },
+        {
+          "price": 0.15,
+          "quantity": 10750.19
+        },
+        {
+          "price": 0.14,
+          "quantity": 10489.44
+        },
+        {
+          "price": 0.13,
+          "quantity": 11385.87
+        },
+        {
+          "price": 0.12,
+          "quantity": 6410.81
+        },
+        {
+          "price": 0.11,
+          "quantity": 13905.82
+        },
+        {
+          "price": 0.1,
+          "quantity": 30578.49
+        },
+        {
+          "price": 0.099,
+          "quantity": 9603.0
+        },
+        {
+          "price": 0.098,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.097,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.096,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.095,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.094,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.093,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.092,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.091,
+          "quantity": 19844.0
+        },
+        {
+          "price": 0.09,
+          "quantity": 13660.23
+        },
+        {
+          "price": 0.089,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.088,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.087,
+          "quantity": 289.21
+        },
+        {
+          "price": 0.086,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.085,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.084,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.083,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.082,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.081,
+          "quantity": 9215.92
+        },
+        {
+          "price": 0.08,
+          "quantity": 9309.95
+        },
+        {
+          "price": 0.079,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.078,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.077,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.076,
+          "quantity": 1098.64
+        },
+        {
+          "price": 0.075,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.074,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.073,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.072,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.071,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.07,
+          "quantity": 12773.23
+        },
+        {
+          "price": 0.069,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.068,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.067,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.066,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.065,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.064,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.063,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.062,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.061,
+          "quantity": 5283.0
+        },
+        {
+          "price": 0.06,
+          "quantity": 56484.11
+        },
+        {
+          "price": 0.059,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.058,
+          "quantity": 19920.4
+        },
+        {
+          "price": 0.057,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.056,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.055,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.054,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.053,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.052,
+          "quantity": 1084.0
+        },
+        {
+          "price": 0.051,
+          "quantity": 53.0
+        },
+        {
+          "price": 0.05,
+          "quantity": 11156.56
+        },
+        {
+          "price": 0.049,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.048,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.047,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.046,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.045,
+          "quantity": 25.0
+        },
+        {
+          "price": 0.044,
+          "quantity": 10509.6
+        },
+        {
+          "price": 0.043,
+          "quantity": 48.0
+        },
+        {
+          "price": 0.042,
+          "quantity": 2566.0
+        },
+        {
+          "price": 0.041,
+          "quantity": 325.0
+        },
+        {
+          "price": 0.04,
+          "quantity": 17997.49
+        },
+        {
+          "price": 0.039,
+          "quantity": 21.0
+        },
+        {
+          "price": 0.038,
+          "quantity": 1030.0
+        },
+        {
+          "price": 0.037,
+          "quantity": 19.0
+        },
+        {
+          "price": 0.036,
+          "quantity": 1028.0
+        },
+        {
+          "price": 0.035,
+          "quantity": 31.0
+        },
+        {
+          "price": 0.034,
+          "quantity": 1042.0
+        },
+        {
+          "price": 0.033,
+          "quantity": 61.0
+        },
+        {
+          "price": 0.032,
+          "quantity": 2680.0
+        },
+        {
+          "price": 0.031,
+          "quantity": 2274.68
+        },
+        {
+          "price": 0.03,
+          "quantity": 16928.29
+        },
+        {
+          "price": 0.029,
+          "quantity": 24.0
+        },
+        {
+          "price": 0.028,
+          "quantity": 1033.0
+        },
+        {
+          "price": 0.027,
+          "quantity": 24.0
+        },
+        {
+          "price": 0.026,
+          "quantity": 1650.0
+        },
+        {
+          "price": 0.025,
+          "quantity": 316.0
+        },
+        {
+          "price": 0.024,
+          "quantity": 1369.0
+        },
+        {
+          "price": 0.023,
+          "quantity": 2697.0
+        },
+        {
+          "price": 0.022,
+          "quantity": 2182.0
+        },
+        {
+          "price": 0.021,
+          "quantity": 648.0
+        },
+        {
+          "price": 0.02,
+          "quantity": 24800.0
+        },
+        {
+          "price": 0.019,
+          "quantity": 491.0
+        },
+        {
+          "price": 0.018,
+          "quantity": 1555.0
+        },
+        {
+          "price": 0.017,
+          "quantity": 645.0
+        },
+        {
+          "price": 0.016,
+          "quantity": 2990.0
+        },
+        {
+          "price": 0.015,
+          "quantity": 22105.0
+        },
+        {
+          "price": 0.014,
+          "quantity": 2355.0
+        },
+        {
+          "price": 0.013,
+          "quantity": 6466.0
+        },
+        {
+          "price": 0.012,
+          "quantity": 25178.0
+        },
+        {
+          "price": 0.011,
+          "quantity": 4777.18
+        },
+        {
+          "price": 0.01,
+          "quantity": 56739.5
+        },
+        {
+          "price": 0.009,
+          "quantity": 7089.67
+        },
+        {
+          "price": 0.008,
+          "quantity": 12559.0
+        },
+        {
+          "price": 0.007,
+          "quantity": 16984.43
+        },
+        {
+          "price": 0.006,
+          "quantity": 19278.0
+        },
+        {
+          "price": 0.005,
+          "quantity": 32801.0
+        },
+        {
+          "price": 0.004,
+          "quantity": 26900.0
+        },
+        {
+          "price": 0.003,
+          "quantity": 43558.0
+        },
+        {
+          "price": 0.002,
+          "quantity": 171058.0
+        },
+        {
+          "price": 0.001,
+          "quantity": 965677.38
+        }
+      ],
+      "close_ts": 1793142000.0,
+      "current": true,
+      "entry_allowed": true,
+      "yes_sell_allowed": true,
+      "no_sell_allowed": true,
+      "source": "WS_SEQUENCE_CHECKED_BOOK",
+      "provenance": {
+        "feed_revision": "TOOL_RACK_DIRECT_MARKET_DATA_V1",
+        "source_generation": 11038,
+        "receiver_generation": 1,
+        "native_quote_generation": 8,
+        "sid": 1,
+        "seq": 283002,
+        "sequence_checked": true,
+        "snapshot_verified": true,
+        "monotonic_receive_fresh": true,
+        "received_monotonic": 284653.9460467,
+        "receive_age_seconds": 0.006373199983499944,
+        "exchange_timestamp_known": true,
+        "exchange_time_basis": "WS_ENVELOPE_SENDING_TS",
+        "quote_reason": "VALID",
+        "raw_depth_is_not_a_venue_fill": true
+      }
+    },
+    "metadata": {
+      "source": "DIRECT_BTC_AND_NATIVE_KALSHI",
+      "physical_current": true,
+      "geometry_age_seconds": 0.33702754974365234,
+      "geometry_rows_used": 1448,
+      "geometry_max_source_age_seconds": 5.0,
+      "geometry_last_epoch_ms": 1793141582197.806,
+      "geometry_reset_reason": "COLD_START_REAL_OBSERVATIONS_ONLY",
+      "geometry_continuity_generation": 0,
+      "observed_history_seconds": 2493.042965888977,
+      "persistence_seconds": 0.0,
+      "rail_alignment_fraction": 0.0,
+      "rail_residence_fraction": 0.0,
+      "rail_detector": {
+        "residence_samples": 0,
+        "ema9_sides": [
+          "YES",
+          "NO",
+          "NO"
+        ],
+        "qualification_min_persistence_s": 900.0
+      },
+      "current_geometry": {
+        "epoch_ms": 1793141582197.806,
+        "btc_price": 80774.1,
+        "ema9": 80755.00704382185,
+        "ema30": 80774.05171964614,
+        "connection_epoch": 1,
+        "source_sequence": 3683,
+        "struct_slope3m": 0.8189738572982606,
+        "struct_slope6m": -19.237280327666667,
+        "struct_slope9m": -13.763495532679372,
+        "ema30_slope3m": -4.936930937386933,
+        "micro_slope3s": 4.773239044545335,
+        "micro_slope6s": 7.251239044548129,
+        "micro_slope9s": 6.8112390445458,
+        "btc_change9": 10.190000000002328,
+        "btc_change6": 12.389999999999418,
+        "btc_change30": 42.75,
+        "btc_change60": 56.38000000000466,
+        "ema9_change6": 7.251239044548129,
+        "ema9_change30": 13.323239044548245,
+        "ema9_change60": 16.049239044543356,
+        "range60": 58.63999999999942,
+        "range180": 65.4600000000064,
+        "ema_gap": -19.044675824290607,
+        "arc_id": "G000A000010",
+        "arc_direction": "UP",
+        "arc_phase": "BUILDING",
+        "arc_start_ms": 1793141520887.1702,
+        "arc_origin_observed": true,
+        "arc_known_ms": 1793141582197.806,
+        "arc_start_ema9": 80738.6678047773,
+        "arc_extreme_ms": 1793141582197.806,
+        "arc_extreme_ema9": 80755.00704382185,
+        "arc_age_sec": 61.310635805130005,
+        "arc_amplitude": 16.339239044551505,
+        "arc_prominence_threshold": 7.03679999999993,
+        "parent_direction": "DOWN",
+        "measurement_source": "DIRECT_CAUSAL_BTC_EMA9_V1",
+        "observed_history_seconds": 2493.042965888977,
+        "geometry_reset": "COLD_START_REAL_OBSERVATIONS_ONLY"
+      },
+      "ema9_ema30_cross_context": {
+        "zero_authority": true,
+        "source_ms": 1793141582197.806,
+        "observed_at": 1793141582.197806,
+        "current_signed_gap_btc": -19.044675824290607,
+        "current_side": "NO",
+        "current_arc_id": "G000A000010",
+        "current_arc_origin_ms": 1793141520887.1702,
+        "touching_spine": false,
+        "previous_observed_cross_present": true,
+        "latest_observed_cross": {
+          "direction": "NO",
+          "known_source_ms": 1793139961187.5051,
+          "before": {
+            "source_ms": 1793139957605.904,
+            "ema9": 80837.37684229782,
+            "ema30": 80836.04517377629,
+            "signed_gap_btc": 1.331668521524989,
+            "side": "YES",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000005"
+          },
+          "after": {
+            "source_ms": 1793139961187.5051,
+            "ema9": 80833.26747383825,
+            "ema30": 80834.80548405093,
+            "signed_gap_btc": -1.538010212680092,
+            "side": "NO",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000005"
+          },
+          "zero_gap_samples_between": 0,
+          "continuity_segment": 0,
+          "observed_continuously": true,
+          "interpolated_crossing_time": null
+        },
+        "previous_observed_cross": {
+          "direction": "YES",
+          "known_source_ms": 1793139420341.389,
+          "before": {
+            "source_ms": 1793139419074.624,
+            "ema9": 80824.7712972371,
+            "ema30": 80829.0040942482,
+            "signed_gap_btc": -4.232797011107323,
+            "side": "NO",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000002"
+          },
+          "after": {
+            "source_ms": 1793139420341.389,
+            "ema9": 80836.82303778967,
+            "ema30": 80832.64139369084,
+            "signed_gap_btc": 4.181644098833203,
+            "side": "YES",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000002"
+          },
+          "zero_gap_samples_between": 0,
+          "continuity_segment": 0,
+          "observed_continuously": true,
+          "interpolated_crossing_time": null
+        },
+        "recent_crossings": [
+          {
+            "direction": "YES",
+            "known_source_ms": 1793139420341.389,
+            "before": {
+              "source_ms": 1793139419074.624,
+              "ema9": 80824.7712972371,
+              "ema30": 80829.0040942482,
+              "signed_gap_btc": -4.232797011107323,
+              "side": "NO",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000002"
+            },
+            "after": {
+              "source_ms": 1793139420341.389,
+              "ema9": 80836.82303778967,
+              "ema30": 80832.64139369084,
+              "signed_gap_btc": 4.181644098833203,
+              "side": "YES",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000002"
+            },
+            "zero_gap_samples_between": 0,
+            "continuity_segment": 0,
+            "observed_continuously": true,
+            "interpolated_crossing_time": null
+          },
+          {
+            "direction": "NO",
+            "known_source_ms": 1793139961187.5051,
+            "before": {
+              "source_ms": 1793139957605.904,
+              "ema9": 80837.37684229782,
+              "ema30": 80836.04517377629,
+              "signed_gap_btc": 1.331668521524989,
+              "side": "YES",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000005"
+            },
+            "after": {
+              "source_ms": 1793139961187.5051,
+              "ema9": 80833.26747383825,
+              "ema30": 80834.80548405093,
+              "signed_gap_btc": -1.538010212680092,
+              "side": "NO",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000005"
+            },
+            "zero_gap_samples_between": 0,
+            "continuity_segment": 0,
+            "observed_continuously": true,
+            "interpolated_crossing_time": null
+          }
+        ],
+        "observed_cross_count": 2,
+        "current_leg_cross_count": 0,
+        "continued_on_latest_cross_side": true,
+        "current_gap_motion_6s": {
+          "covered": true,
+          "start_source_ms": 1793141575308.967,
+          "end_source_ms": 1793141582197.806,
+          "actual_elapsed_seconds": 6.8888388671875,
+          "signed_gap_change_btc": 6.227713396059698,
+          "ema9_change_btc": 6.925239044547197
+        },
+        "coverage": {
+          "first_source_ms": 1793139089154.84,
+          "last_source_ms": 1793141582197.806,
+          "sample_count": 1448,
+          "connection_epoch": 1,
+          "max_observed_source_gap_seconds": 12.710543701171876,
+          "max_allowed_source_gap_seconds": 15.0
+        },
+        "history_before_segment": "UNKNOWN",
+        "cross_alone_renews_mission": false,
+        "cross_alone_terminates_owner": false
+      },
+      "recovery_swing_terrain": {
+        "active": false,
+        "lookback_seconds": 1200.0,
+        "observed_ts": 1793141582.197806,
+        "transitions": 0,
+        "completed_walls": [],
+        "reason": "RECENT_SWING_CAPACITY_NOT_PROVED"
+      },
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "edge_window_active": false,
+        "stall": false,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": true,
+        "edge_id": "G000A000010:1793141577661",
+        "current_arc_id": "G000A000010",
+        "owner_extreme_btc": 80776.36,
+        "edge_tolerance_dollars": 4.691199999999953,
+        "retreat_dollars": 2.2599999999947613,
+        "quality": "REGULAR",
+        "detector": "TOOL_RACK_CAUSAL_COMPARABLE_EDGE_V3",
+        "source_ms": 1793141582197.806,
+        "current_btc": 80774.1,
+        "current_ema9": 80755.00704382185,
+        "current_ema30": 80774.05171964614,
+        "owner_price_gap": 19.092956178152235,
+        "contact_width": 7.03679999999993,
+        "spent_edge": false,
+        "shallow_edge_exception": false,
+        "current_motion": {
+          "6": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 7,
+            "first_source_ms": 1793141575308.967,
+            "last_source_ms": 1793141582197.806,
+            "max_sample_gap_s": 1.21897412109375,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 6.0,
+            "source_ms": 1793141582197.806,
+            "start_source_ms": 1793141575308.967,
+            "observed_duration_s": 6.8888388671875,
+            "first_price": 80763.34,
+            "current_price": 80774.1,
+            "owner_price_rate_btc_s": 1.5619468255035973,
+            "first_ema9": 80748.0818047773,
+            "current_ema9": 80755.00704382185,
+            "owner_ema9_rate_btc_s": 1.0052839350812917,
+            "first_ema30": 80773.35419399766,
+            "current_ema30": 80774.05171964614,
+            "owner_ema30_rate_btc_s": 0.10125445839790373
+          },
+          "12": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 12,
+            "first_source_ms": 1793141569257.26,
+            "last_source_ms": 1793141582197.806,
+            "max_sample_gap_s": 1.312177978515625,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 12.0,
+            "source_ms": 1793141582197.806,
+            "start_source_ms": 1793141569257.26,
+            "observed_duration_s": 12.9405458984375,
+            "first_price": 80753.89,
+            "current_price": 80774.1,
+            "owner_price_rate_btc_s": 1.561757916445136,
+            "first_ema9": 80746.1918047773,
+            "current_ema9": 80755.00704382185,
+            "owner_ema9_rate_btc_s": 0.681210755228727,
+            "first_ema30": 80772.7445165783,
+            "current_ema30": 80774.05171964614,
+            "owner_ema30_rate_btc_s": 0.10101606826361197
+          },
+          "30": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 23,
+            "first_source_ms": 1793141550746.881,
+            "last_source_ms": 1793141582197.806,
+            "max_sample_gap_s": 5.074011962890625,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 30.0,
+            "source_ms": 1793141582197.806,
+            "start_source_ms": 1793141550746.881,
+            "observed_duration_s": 31.4509248046875,
+            "first_price": 80731.35,
+            "current_price": 80774.1,
+            "owner_price_rate_btc_s": 1.3592605071386794,
+            "first_ema9": 80741.6838047773,
+            "current_ema9": 80755.00704382185,
+            "owner_ema9_rate_btc_s": 0.423619945273041,
+            "first_ema30": 80771.29032302991,
+            "current_ema30": 80774.05171964614,
+            "owner_ema30_rate_btc_s": 0.08780017228046938
+          },
+          "60": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 46,
+            "first_source_ms": 1793141520887.1702,
+            "last_source_ms": 1793141582197.806,
+            "max_sample_gap_s": 5.074011962890625,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 60.0,
+            "source_ms": 1793141582197.806,
+            "start_source_ms": 1793141520887.1702,
+            "observed_duration_s": 61.3106357421875,
+            "first_price": 80716.27,
+            "current_price": 80774.1,
+            "owner_price_rate_btc_s": 0.9432294951756511,
+            "first_ema9": 80738.6678047773,
+            "current_ema9": 80755.00704382185,
+            "owner_ema9_rate_btc_s": 0.26649925982268957,
+            "first_ema30": 80770.31741980411,
+            "current_ema30": 80774.05171964614,
+            "owner_ema30_rate_btc_s": 0.06090786364927297
+          }
+        },
+        "slowdown": {
+          "observed": false,
+          "sideways_velocity_resolution_btc_s": 0.5863999999999941,
+          "positive_rate_reduction_resolution": 0.18,
+          "current_owner_price_rate_btc_s": 1.5619468255035973,
+          "previous_owner_price_rate_btc_s": 1.5615428756215188,
+          "outward_rate_reduction_fraction": -0.00025868638535953004,
+          "positive_outward_rate_slowing": false,
+          "sideways_observed": false,
+          "owner_price_retreat_observed": false,
+          "current_interval": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 7,
+            "first_source_ms": 1793141575308.967,
+            "last_source_ms": 1793141582197.806,
+            "max_sample_gap_s": 1.21897412109375,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 6.0,
+            "source_ms": 1793141582197.806,
+            "start_source_ms": 1793141575308.967,
+            "observed_duration_s": 6.8888388671875,
+            "first_price": 80763.34,
+            "current_price": 80774.1,
+            "owner_price_rate_btc_s": 1.5619468255035973,
+            "first_ema9": 80748.0818047773,
+            "current_ema9": 80755.00704382185,
+            "owner_ema9_rate_btc_s": 1.0052839350812917,
+            "first_ema30": 80773.35419399766,
+            "current_ema30": 80774.05171964614,
+            "owner_ema30_rate_btc_s": 0.10125445839790373
+          },
+          "previous_start_source_ms": 1793141569257.26,
+          "previous_end_source_ms": 1793141575308.967,
+          "previous_observed_duration_s": 6.05170703125
+        },
+        "equal_duration_accelerating": false,
+        "terminal_evidence_qualified": false,
+        "retreat_threshold": 7.03679999999993,
+        "sample_interval_s": 1.007933837890625,
+        "edge_extreme_ms": 1793141577661.976,
+        "arc_origin_ms": 1793141520887.1702,
+        "entry_routes": [],
+        "paired_gap_evidence": {
+          "eligible": false,
+          "reference_count": 4,
+          "references": [
+            {
+              "arc_id": "G000A000002",
+              "start_ms": 1793139310156.61,
+              "end_ms": 1793139540489.4841,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793139657642.195,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 160,
+                "first_source_ms": 1793139310156.61,
+                "last_source_ms": 1793139540489.4841,
+                "max_sample_gap_s": 6.7333798828125,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793139657642.195,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 6.7333798828125,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793139540489.4841,
+                  "btc": 80889.07,
+                  "ema9": 80857.8130641854,
+                  "ema30": 80840.6497092858,
+                  "signed_ema_gap_btc": 17.16335489958874,
+                  "signed_price_gap_btc": 31.256935814613826
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000004",
+              "start_ms": 1793139721047.242,
+              "end_ms": 1793139900087.455,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793139945237.3198,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 114,
+                "first_source_ms": 1793139721047.242,
+                "last_source_ms": 1793139900087.455,
+                "max_sample_gap_s": 8.884138916015624,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793139945237.3198,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 8.884138916015624,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793139900087.455,
+                  "btc": 80849.88,
+                  "ema9": 80844.39084229781,
+                  "ema30": 80838.30775442146,
+                  "signed_ema_gap_btc": 6.083087876351783,
+                  "signed_price_gap_btc": 5.489157702191733
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793139743151.588,
+                  "btc": 80851.73,
+                  "ema9": 80840.23748886291,
+                  "ema30": 80836.06620191208,
+                  "signed_ema_gap_btc": 4.171286950833746,
+                  "signed_price_gap_btc": 11.492511137083056
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793139900087.455,
+                  "btc": 80849.88,
+                  "ema9": 80844.39084229781,
+                  "ema30": 80838.30775442146,
+                  "signed_ema_gap_btc": 6.083087876351783,
+                  "signed_price_gap_btc": 5.489157702191733
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793139743151.588,
+                  "btc": 80851.73,
+                  "ema9": 80840.23748886291,
+                  "ema30": 80836.06620191208,
+                  "signed_ema_gap_btc": 4.171286950833746,
+                  "signed_price_gap_btc": 11.492511137083056
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000006",
+              "start_ms": 1793140321110.097,
+              "end_ms": 1793140456535.021,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793140520485.369,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 82,
+                "first_source_ms": 1793140321110.097,
+                "last_source_ms": 1793140456535.021,
+                "max_sample_gap_s": 6.48293994140625,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793140520485.369,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 6.868252197265625,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000008",
+              "start_ms": 1793140843965.6702,
+              "end_ms": 1793141160564.073,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793141281366.477,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 160,
+                "first_source_ms": 1793140843965.6702,
+                "last_source_ms": 1793141160564.073,
+                "max_sample_gap_s": 12.710543701171876,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793141281366.477,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 12.710543701171876,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793141160564.073,
+                  "btc": 80793.57,
+                  "ema9": 80778.05290518691,
+                  "ema30": 80791.4742011843,
+                  "signed_ema_gap_btc": -13.421295997395646,
+                  "signed_price_gap_btc": 15.517094813098083
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793141160564.073,
+                  "btc": 80793.57,
+                  "ema9": 80778.05290518691,
+                  "ema30": 80791.4742011843,
+                  "signed_ema_gap_btc": -13.421295997395646,
+                  "signed_price_gap_btc": 15.517094813098083
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                }
+              ]
+            }
+          ],
+          "matches": [
+            {
+              "arc_id": "G000A000008",
+              "completion_known_ms": 1793141281366.477,
+              "actual_paired_snapshot": {
+                "kind": "PRICE_EXTREME",
+                "source_ms": 1793141130925.088,
+                "btc": 80793.58,
+                "ema9": 80774.17563148362,
+                "ema30": 80791.3303084257,
+                "signed_ema_gap_btc": -17.154676942082006,
+                "signed_price_gap_btc": 19.404368516377872
+              },
+              "ema_gap_relative_difference": 0.11017397113275039,
+              "price_gap_relative_difference": 0.01604856854593311
+            },
+            {
+              "arc_id": "G000A000008",
+              "completion_known_ms": 1793141281366.477,
+              "actual_paired_snapshot": {
+                "kind": "PRICE_GAP_EXTREME",
+                "source_ms": 1793141130925.088,
+                "btc": 80793.58,
+                "ema9": 80774.17563148362,
+                "ema30": 80791.3303084257,
+                "signed_ema_gap_btc": -17.154676942082006,
+                "signed_price_gap_btc": 19.404368516377872
+              },
+              "ema_gap_relative_difference": 0.11017397113275039,
+              "price_gap_relative_difference": 0.01604856854593311
+            }
+          ],
+          "selected_match": {
+            "arc_id": "G000A000008",
+            "completion_known_ms": 1793141281366.477,
+            "actual_paired_snapshot": {
+              "kind": "PRICE_EXTREME",
+              "source_ms": 1793141130925.088,
+              "btc": 80793.58,
+              "ema9": 80774.17563148362,
+              "ema30": 80791.3303084257,
+              "signed_ema_gap_btc": -17.154676942082006,
+              "signed_price_gap_btc": 19.404368516377872
+            },
+            "ema_gap_relative_difference": 0.11017397113275039,
+            "price_gap_relative_difference": 0.01604856854593311
+          },
+          "current_pair": {
+            "kind": "CURRENT",
+            "source_ms": 1793141582197.806,
+            "btc": 80774.1,
+            "ema9": 80755.00704382185,
+            "ema30": 80774.05171964614,
+            "signed_ema_gap_btc": -19.044675824290607,
+            "signed_price_gap_btc": 19.092956178152235
+          },
+          "current_slowdown": {
+            "observed": false,
+            "sideways_velocity_resolution_btc_s": 0.5863999999999941,
+            "positive_rate_reduction_resolution": 0.18,
+            "current_owner_price_rate_btc_s": 1.5619468255035973,
+            "previous_owner_price_rate_btc_s": 1.5615428756215188,
+            "outward_rate_reduction_fraction": -0.00025868638535953004,
+            "positive_outward_rate_slowing": false,
+            "sideways_observed": false,
+            "owner_price_retreat_observed": false,
+            "current_interval": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 7,
+              "first_source_ms": 1793141575308.967,
+              "last_source_ms": 1793141582197.806,
+              "max_sample_gap_s": 1.21897412109375,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "covered": true,
+              "window_s": 6.0,
+              "source_ms": 1793141582197.806,
+              "start_source_ms": 1793141575308.967,
+              "observed_duration_s": 6.8888388671875,
+              "first_price": 80763.34,
+              "current_price": 80774.1,
+              "owner_price_rate_btc_s": 1.5619468255035973,
+              "first_ema9": 80748.0818047773,
+              "current_ema9": 80755.00704382185,
+              "owner_ema9_rate_btc_s": 1.0052839350812917,
+              "first_ema30": 80773.35419399766,
+              "current_ema30": 80774.05171964614,
+              "owner_ema30_rate_btc_s": 0.10125445839790373
+            },
+            "previous_start_source_ms": 1793141569257.26,
+            "previous_end_source_ms": 1793141575308.967,
+            "previous_observed_duration_s": 6.05170703125
+          },
+          "steep_observed": true,
+          "gap_relative_tolerance": 0.18,
+          "steepness_formula": "ALL_CURRENT_6_30_60_EMA9_RATES_TIMES_60_GE_GAP_RESOLUTION_TIMES_MATCHED_OUTWARD_PRICE_GAP",
+          "shape_age_height_prerequisites": false,
+          "measurement_calibration": "INHERITED_PROVISIONAL_PAPER_NOT_PROFITABILITY_FIT",
+          "selected_reference_family": "WHOLE_MOUNTAIN",
+          "reference_family_selection": "MOST_RECENT_ACTUAL_MATCH_BEFORE_STEEPNESS_AMONG_INDEPENDENTLY_SUFFICIENT_FAMILIES",
+          "reference_families": {
+            "WHOLE_MOUNTAIN": {
+              "reference_count": 4,
+              "distinct_physical_turns": [
+                [
+                  "UP",
+                  1793139540489.4841
+                ],
+                [
+                  "UP",
+                  1793139900087.455
+                ],
+                [
+                  "UP",
+                  1793140456535.021
+                ],
+                [
+                  "UP",
+                  1793141160564.073
+                ]
+              ],
+              "references": "SEE_SELECTED_REFERENCES",
+              "matches": [
+                {
+                  "arc_id": "G000A000008",
+                  "completion_known_ms": 1793141281366.477,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.11017397113275039,
+                  "price_gap_relative_difference": 0.01604856854593311
+                },
+                {
+                  "arc_id": "G000A000008",
+                  "completion_known_ms": 1793141281366.477,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_GAP_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.11017397113275039,
+                  "price_gap_relative_difference": 0.01604856854593311
+                }
+              ],
+              "selected_match": {
+                "arc_id": "G000A000008",
+                "completion_known_ms": 1793141281366.477,
+                "actual_paired_snapshot": {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                "ema_gap_relative_difference": 0.11017397113275039,
+                "price_gap_relative_difference": 0.01604856854593311
+              },
+              "selected": true
+            },
+            "DESCRIPTIVE_NATIVE_EMA9": {
+              "reference_count": 4,
+              "distinct_physical_turns": [
+                [
+                  "UP",
+                  1793139900087.455
+                ],
+                [
+                  "UP",
+                  1793140456535.021
+                ],
+                [
+                  "UP",
+                  1793140603467.665
+                ],
+                [
+                  "UP",
+                  1793141160564.073
+                ]
+              ],
+              "references": [
+                {
+                  "arc_id": "NATIVE:1793139721047:UP",
+                  "start_ms": 1793139721047.242,
+                  "end_ms": 1793139900087.455,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793139945237.3198,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 114,
+                    "first_source_ms": 1793139721047.242,
+                    "last_source_ms": 1793139900087.455,
+                    "max_sample_gap_s": 8.884138916015624,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793139945237.3198,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 8.884138916015624,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793139900087.455,
+                      "btc": 80849.88,
+                      "ema9": 80844.39084229781,
+                      "ema30": 80838.30775442146,
+                      "signed_ema_gap_btc": 6.083087876351783,
+                      "signed_price_gap_btc": 5.489157702191733
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793139743151.588,
+                      "btc": 80851.73,
+                      "ema9": 80840.23748886291,
+                      "ema30": 80836.06620191208,
+                      "signed_ema_gap_btc": 4.171286950833746,
+                      "signed_price_gap_btc": 11.492511137083056
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793139900087.455,
+                      "btc": 80849.88,
+                      "ema9": 80844.39084229781,
+                      "ema30": 80838.30775442146,
+                      "signed_ema_gap_btc": 6.083087876351783,
+                      "signed_price_gap_btc": 5.489157702191733
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793139743151.588,
+                      "btc": 80851.73,
+                      "ema9": 80840.23748886291,
+                      "ema30": 80836.06620191208,
+                      "signed_ema_gap_btc": 4.171286950833746,
+                      "signed_price_gap_btc": 11.492511137083056
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793140321110:UP",
+                  "start_ms": 1793140321110.097,
+                  "end_ms": 1793140456535.021,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793140515215.896,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 82,
+                    "first_source_ms": 1793140321110.097,
+                    "last_source_ms": 1793140456535.021,
+                    "max_sample_gap_s": 6.48293994140625,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793140515215.896,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 6.868252197265625,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793140561040:UP",
+                  "start_ms": 1793140561040.636,
+                  "end_ms": 1793140603467.665,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793140621861.161,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 31,
+                    "first_source_ms": 1793140561040.636,
+                    "last_source_ms": 1793140603467.665,
+                    "max_sample_gap_s": 3.38752685546875,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793140621861.161,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 3.95881494140625,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "start_ms": 1793140843965.6702,
+                  "end_ms": 1793141160564.073,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793141230719.544,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 160,
+                    "first_source_ms": 1793140843965.6702,
+                    "last_source_ms": 1793141160564.073,
+                    "max_sample_gap_s": 12.710543701171876,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793141230719.544,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 12.710543701171876,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793141160564.073,
+                      "btc": 80793.57,
+                      "ema9": 80778.05290518691,
+                      "ema30": 80791.4742011843,
+                      "signed_ema_gap_btc": -13.421295997395646,
+                      "signed_price_gap_btc": 15.517094813098083
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793141130925.088,
+                      "btc": 80793.58,
+                      "ema9": 80774.17563148362,
+                      "ema30": 80791.3303084257,
+                      "signed_ema_gap_btc": -17.154676942082006,
+                      "signed_price_gap_btc": 19.404368516377872
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793141160564.073,
+                      "btc": 80793.57,
+                      "ema9": 80778.05290518691,
+                      "ema30": 80791.4742011843,
+                      "signed_ema_gap_btc": -13.421295997395646,
+                      "signed_price_gap_btc": 15.517094813098083
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793141130925.088,
+                      "btc": 80793.58,
+                      "ema9": 80774.17563148362,
+                      "ema30": 80791.3303084257,
+                      "signed_ema_gap_btc": -17.154676942082006,
+                      "signed_price_gap_btc": 19.404368516377872
+                    }
+                  ]
+                }
+              ],
+              "matches": [
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "completion_known_ms": 1793141230719.544,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.11017397113275039,
+                  "price_gap_relative_difference": 0.01604856854593311
+                },
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "completion_known_ms": 1793141230719.544,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_GAP_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.11017397113275039,
+                  "price_gap_relative_difference": 0.01604856854593311
+                }
+              ],
+              "selected_match": {
+                "arc_id": "NATIVE:1793140843965:UP",
+                "completion_known_ms": 1793141230719.544,
+                "actual_paired_snapshot": {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                "ema_gap_relative_difference": 0.11017397113275039,
+                "price_gap_relative_difference": 0.01604856854593311
+              },
+              "selected": false
+            }
+          }
+        },
+        "shape_comparisons": [
+          {
+            "arc_id": "G000A000002",
+            "duration_s": 230.3328740234375,
+            "completion_known_ms": 1793139657642.195,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 160,
+              "first_source_ms": 1793139310156.61,
+              "last_source_ms": 1793139540489.4841,
+              "max_sample_gap_s": 6.7333798828125,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793139657642.195,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 6.7333798828125,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 61.3106357421875,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141520887.1702,
+                "prior_source_ms": 1793139310156.61,
+                "current_ema9": 80738.6678047773,
+                "prior_ema9": 80802.20862154636
+              },
+              {
+                "elapsed_target_s": 15.327658935546875,
+                "current_source_ms": 1793141536560.7021,
+                "prior_source_ms": 1793139325594.107,
+                "current_ema9": 80742.1158047773,
+                "prior_ema9": 80803.49062154636
+              },
+              {
+                "elapsed_target_s": 30.65531787109375,
+                "current_source_ms": 1793141552244.732,
+                "prior_source_ms": 1793139340295.521,
+                "current_ema9": 80741.6838047773,
+                "prior_ema9": 80805.32062154636
+              },
+              {
+                "elapsed_target_s": 45.98297680664062,
+                "current_source_ms": 1793141566842.419,
+                "prior_source_ms": 1793139356381.147,
+                "current_ema9": 80743.6118047773,
+                "prior_ema9": 80810.72462154635
+              },
+              {
+                "elapsed_target_s": 61.3106357421875,
+                "current_source_ms": 1793141582197.806,
+                "prior_source_ms": 1793139371834.388,
+                "current_ema9": 80755.00704382185,
+                "prior_ema9": 80822.9492972371
+              }
+            ],
+            "current_equal_age_height": 16.339239044551505,
+            "prior_equal_age_height": 20.740675690729404,
+            "height_relative_difference": 0.2122127895835736,
+            "normalized_shape_distance": 0.058353499429738276,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000004",
+            "duration_s": 179.04021313476562,
+            "completion_known_ms": 1793139945237.3198,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 114,
+              "first_source_ms": 1793139721047.242,
+              "last_source_ms": 1793139900087.455,
+              "max_sample_gap_s": 8.884138916015624,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793139945237.3198,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 8.884138916015624,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 61.3106357421875,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141520887.1702,
+                "prior_source_ms": 1793139721047.242,
+                "current_ema9": 80738.6678047773,
+                "prior_ema9": 80835.1294888629
+              },
+              {
+                "elapsed_target_s": 15.327658935546875,
+                "current_source_ms": 1793141536560.7021,
+                "prior_source_ms": 1793139736919.677,
+                "current_ema9": 80742.1158047773,
+                "prior_ema9": 80840.2354888629
+              },
+              {
+                "elapsed_target_s": 30.65531787109375,
+                "current_source_ms": 1793141552244.732,
+                "prior_source_ms": 1793139748781.444,
+                "current_ema9": 80741.6838047773,
+                "prior_ema9": 80840.2354888629
+              },
+              {
+                "elapsed_target_s": 45.98297680664062,
+                "current_source_ms": 1793141566842.419,
+                "prior_source_ms": 1793139766165.841,
+                "current_ema9": 80743.6118047773,
+                "prior_ema9": 80840.2354888629
+              },
+              {
+                "elapsed_target_s": 61.3106357421875,
+                "current_source_ms": 1793141582197.806,
+                "prior_source_ms": 1793139782132.987,
+                "current_ema9": 80755.00704382185,
+                "prior_ema9": 80841.60719109033
+              }
+            ],
+            "current_equal_age_height": 16.339239044551505,
+            "prior_equal_age_height": 6.477702227421105,
+            "height_relative_difference": 1.5223819297196166,
+            "normalized_shape_distance": 0.3333061757060596,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000006",
+            "duration_s": 135.4249240722656,
+            "completion_known_ms": 1793140520485.369,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 82,
+              "first_source_ms": 1793140321110.097,
+              "last_source_ms": 1793140456535.021,
+              "max_sample_gap_s": 6.48293994140625,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793140520485.369,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 6.868252197265625,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 61.3106357421875,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141520887.1702,
+                "prior_source_ms": 1793140321110.097,
+                "current_ema9": 80738.6678047773,
+                "prior_ema9": 80807.51243627784
+              },
+              {
+                "elapsed_target_s": 15.327658935546875,
+                "current_source_ms": 1793141536560.7021,
+                "prior_source_ms": 1793140336859.087,
+                "current_ema9": 80742.1158047773,
+                "prior_ema9": 80812.70443627784
+              },
+              {
+                "elapsed_target_s": 30.65531787109375,
+                "current_source_ms": 1793141552244.732,
+                "prior_source_ms": 1793140351358.356,
+                "current_ema9": 80741.6838047773,
+                "prior_ema9": 80814.66643627784
+              },
+              {
+                "elapsed_target_s": 45.98297680664062,
+                "current_source_ms": 1793141566842.419,
+                "prior_source_ms": 1793140367555.239,
+                "current_ema9": 80743.6118047773,
+                "prior_ema9": 80812.49443627785
+              },
+              {
+                "elapsed_target_s": 61.3106357421875,
+                "current_source_ms": 1793141582197.806,
+                "prior_source_ms": 1793140382499.879,
+                "current_ema9": 80755.00704382185,
+                "prior_ema9": 80817.04314902228
+              }
+            ],
+            "current_equal_age_height": 16.339239044551505,
+            "prior_equal_age_height": 9.53071274443937,
+            "height_relative_difference": 0.7143774534684747,
+            "normalized_shape_distance": 0.2239851251797812,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000008",
+            "duration_s": 316.59840283203124,
+            "completion_known_ms": 1793141281366.477,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 160,
+              "first_source_ms": 1793140843965.6702,
+              "last_source_ms": 1793141160564.073,
+              "max_sample_gap_s": 12.710543701171876,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793141281366.477,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 12.710543701171876,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 61.3106357421875,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141520887.1702,
+                "prior_source_ms": 1793140843965.6702,
+                "current_ema9": 80738.6678047773,
+                "prior_ema9": 80755.35940272103
+              },
+              {
+                "elapsed_target_s": 15.327658935546875,
+                "current_source_ms": 1793141536560.7021,
+                "prior_source_ms": 1793140859027.831,
+                "current_ema9": 80742.1158047773,
+                "prior_ema9": 80760.49940272103
+              },
+              {
+                "elapsed_target_s": 30.65531787109375,
+                "current_source_ms": 1793141552244.732,
+                "prior_source_ms": 1793140873263.7961,
+                "current_ema9": 80741.6838047773,
+                "prior_ema9": 80760.27352217682
+              },
+              {
+                "elapsed_target_s": 45.98297680664062,
+                "current_source_ms": 1793141566842.419,
+                "prior_source_ms": 1793140889202.27,
+                "current_ema9": 80743.6118047773,
+                "prior_ema9": 80759.97152217683
+              },
+              {
+                "elapsed_target_s": 61.3106357421875,
+                "current_source_ms": 1793141582197.806,
+                "prior_source_ms": 1793140905717.171,
+                "current_ema9": 80755.00704382185,
+                "prior_ema9": 80759.03752217683
+              }
+            ],
+            "current_equal_age_height": 16.339239044551505,
+            "prior_equal_age_height": 3.6781194557988783,
+            "height_relative_difference": 3.4422806928663667,
+            "normalized_shape_distance": 0.6578464248834424,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          }
+        ],
+        "current_path_coverage": {
+          "observed_from_start": true,
+          "source_continuous": true,
+          "sample_count": 46,
+          "first_source_ms": 1793141520887.1702,
+          "last_source_ms": 1793141582197.806,
+          "max_sample_gap_s": 5.074011962890625,
+          "complete_observed_path": true,
+          "endpoints_are_actual_observations": true,
+          "origin_observed": true
+        },
+        "arc_origin_observed": true,
+        "reference_history": {
+          "completed_whole_mountain_count": 4,
+          "completed_peak_gap_reference_count": 4,
+          "selected_peak_reference_family": "WHOLE_MOUNTAIN",
+          "whole_peak_reference_count": 4,
+          "native_peak_reference_count": 4,
+          "descriptive_native_reference_count": 0,
+          "retained_completed_reference_count": 0,
+          "minimum_required": 2,
+          "no_interpolation_or_gap_stitching": true,
+          "descriptive_references_renew_missions": false
+        },
+        "diagnostics": {
+          "phase": "BUILDING",
+          "current_age_s": 61.310635805130005,
+          "comparable_durations_s": [],
+          "mature_by_comparison": false,
+          "mature_by_phase_fallback": false,
+          "mature_by_paired_gap": false,
+          "extreme_owner_price_gap": 25.67419522270211,
+          "current_owner_180s_advance": 0.8189738572982606,
+          "previous_owner_180s_advance": -20.056254184964928,
+          "completed_same_direction_reference_count": 4,
+          "range60": 58.63999999999942,
+          "alternating_recent_arcs": true
+        }
+      },
+      "heist": {
+        "qualified_box": false,
+        "at_lower_edge": false,
+        "at_upper_edge": true,
+        "box_id": "BOX:10275:10283:1793141403067",
+        "visit_id": "UPPER:1793141577661",
+        "lower": 80710.9,
+        "upper": 80776.36,
+        "edge_tolerance": 7.855200000000768,
+        "current_zone": "UPPER",
+        "lean_side": null,
+        "release_confirmed": false,
+        "detector": "TOOL_RACK_RAW_SIDEWAYS_BOX_V1",
+        "repeatability_proof": {
+          "source": "OBSERVED_HEIST_REPEATABILITY_V1",
+          "window_start_ms": 1793141403067.16,
+          "window_end_ms": 1793141582197.806,
+          "observed_span_s": 179.13064599609376,
+          "observed_samples": 113,
+          "connection_epoch": 1,
+          "single_connection_epoch": true,
+          "strict_source_times": true,
+          "lower": 80710.9,
+          "upper": 80776.36,
+          "edge_tolerance": 7.855200000000768,
+          "ema9_drift": 0.8189738572982606,
+          "ema30_drift": -4.936930937386933,
+          "lower_visits": 1,
+          "upper_visits": 1,
+          "center_traversals": 2,
+          "repeatability_visits": [
+            {
+              "epoch_ms": 1793141426245.508,
+              "zone": "CENTER"
+            },
+            {
+              "epoch_ms": 1793141439715.59,
+              "zone": "LOWER"
+            },
+            {
+              "epoch_ms": 1793141531868.356,
+              "zone": "CENTER"
+            },
+            {
+              "epoch_ms": 1793141577661.976,
+              "zone": "UPPER"
+            }
+          ]
+        },
+        "diagnostics": {
+          "ema9_drift": 0.8189738572982606,
+          "ema30_drift": -4.936930937386933,
+          "sideways_enough": true,
+          "compressed_zones": [
+            [
+              1793141403067.16,
+              "INNER"
+            ],
+            [
+              1793141426245.508,
+              "CENTER"
+            ],
+            [
+              1793141437560.354,
+              "INNER"
+            ],
+            [
+              1793141439715.59,
+              "LOWER"
+            ],
+            [
+              1793141495655.8298,
+              "INNER"
+            ],
+            [
+              1793141516725.966,
+              "LOWER"
+            ],
+            [
+              1793141524100.1848,
+              "INNER"
+            ],
+            [
+              1793141531868.356,
+              "CENTER"
+            ],
+            [
+              1793141536560.7021,
+              "INNER"
+            ],
+            [
+              1793141537575.67,
+              "CENTER"
+            ],
+            [
+              1793141545218.455,
+              "INNER"
+            ],
+            [
+              1793141555255.0781,
+              "CENTER"
+            ],
+            [
+              1793141567973.655,
+              "INNER"
+            ],
+            [
+              1793141577661.976,
+              "UPPER"
+            ]
+          ],
+          "current_zone": "UPPER",
+          "minimum_box_range": 20.0
+        }
+      },
+      "release_probe": {
+        "btc": 80774.1,
+        "ema9": 80755.00704382185,
+        "ema30": 80774.05171964614,
+        "range60": 58.63999999999942,
+        "arc_side": "YES",
+        "arc_phase": "BUILDING",
+        "short_struct_side": "YES",
+        "medium_struct_side": "NO",
+        "micro_side": "YES",
+        "yes_residence_fraction": 0.20967741935483872,
+        "no_residence_fraction": 0.7903225806451613,
+        "yes_stack_fraction": 0.0,
+        "no_stack_fraction": 0.7903225806451613,
+        "heist_lower": 80769.62,
+        "heist_upper": 80793.58,
+        "heist_edge_tolerance": 3.0,
+        "mountain_extreme_btc": 80776.36,
+        "mountain_edge_age_s": 4.535829833984375,
+        "diagnostics": {
+          "recent_rows": 62,
+          "arc_phase": "BUILDING"
+        }
+      },
+      "territory_detector_summary": {
+        "rail_established": false,
+        "qualified_heist": false,
+        "qualified_mountain": true,
+        "compression_unresolved": false
+      },
+      "legacy_strategy_routes_used": false,
+      "r22_process_required": false,
+      "source_generation": 11038
+    },
+    "physical": {
+      "ema9_direction": null,
+      "ema30_direction": "NO",
+      "ema_pair_parallel": false,
+      "directional_residence": false,
+      "rolling_mountain_repetitions": 0,
+      "contracts_persistent": 0.0,
+      "alternating_mountain": true,
+      "rolling_mountain": false,
+      "mountain_direction": "YES",
+      "qualified_heist": false,
+      "compression_unresolved": false,
+      "heist_takeover_confirmed": false,
+      "release_candidate_side": null,
+      "release_boundary_break": false,
+      "release_directional_expansion": false,
+      "release_old_owner_failed_reextension": false,
+      "release_new_side_residence": false,
+      "release_first_slowdown_only": false,
+      "release_handoff_confirmed": false,
+      "release_side": null
+    },
+    "entry_decision": {
+      "action": "RELAY",
+      "intent": {
+        "tool": "RELEASE_WATCHER",
+        "territory_id": "DOWN_RAIL_0019",
+        "lane": "HANDOFF",
+        "side": "YES",
+        "action": "RELAY",
+        "opportunity_id": "DOWN_RAIL_0019:RELEASE:YES:KXBTC15M-26OCT271900-00",
+        "max_price": 0.5,
+        "size_tier": 25.0,
+        "reason": "RELEASE_CONFIRMED_LEVIATHAN_HANDOFF",
+        "source_time": 1793141582.5348334,
+        "expires_when": "RELEASE_INVALIDATES_OR_NEXT_TERRITORY_OWNS",
+        "metadata": {
+          "custody": "LEVIATHAN_RELEASE",
+          "old_owner_side": "NO",
+          "boundary_break": true,
+          "directional_expansion": true,
+          "old_owner_failed_reextension": true,
+          "new_side_residence": false,
+          "floor_policy": {
+            "arm_roi": 0.5,
+            "trail_fraction": 0.1,
+            "min_age_s": 30.0,
+            "immediate_arm_roi": 1.0,
+            "first_arm_allowed": true,
+            "roi_trail_tiers": [
+              [
+                1.5,
+                0.03
+              ],
+              [
+                6.0,
+                0.02
+              ]
+            ],
+            "tighten_armed_to": null,
+            "management_evidence": {}
+          },
+          "physical_mission_id": "DOWN_RAIL_0019:RELEASE:YES",
+          "physical_renewal": {
+            "independent": true,
+            "renewal_kind": "CONFIRMED_RELEASE_TRANSFER",
+            "observed_at": 1793141582.197806
+          },
+          "release_entry_proof": {
+            "source": "CURRENT_TRANSFER",
+            "qualified": true,
+            "fresh_transfer": true,
+            "observed_at": 1793141582.197806,
+            "candidate_side": "YES",
+            "boundary_break": true,
+            "directional_expansion": true,
+            "old_owner_failed_reextension": true,
+            "new_side_residence": false,
+            "revalidation": {}
+          },
+          "entry_geometry": {
+            "epoch_ms": 1793141582197.806,
+            "btc_price": 80774.1,
+            "ema9": 80755.00704382185,
+            "ema30": 80774.05171964614,
+            "connection_epoch": 1,
+            "source_sequence": 3683,
+            "struct_slope3m": 0.8189738572982606,
+            "struct_slope6m": -19.237280327666667,
+            "struct_slope9m": -13.763495532679372,
+            "ema30_slope3m": -4.936930937386933,
+            "micro_slope3s": 4.773239044545335,
+            "micro_slope6s": 7.251239044548129,
+            "micro_slope9s": 6.8112390445458,
+            "btc_change9": 10.190000000002328,
+            "btc_change6": 12.389999999999418,
+            "btc_change30": 42.75,
+            "btc_change60": 56.38000000000466,
+            "ema9_change6": 7.251239044548129,
+            "ema9_change30": 13.323239044548245,
+            "ema9_change60": 16.049239044543356,
+            "range60": 58.63999999999942,
+            "range180": 65.4600000000064,
+            "ema_gap": -19.044675824290607,
+            "arc_id": "G000A000010",
+            "arc_direction": "UP",
+            "arc_phase": "BUILDING",
+            "arc_start_ms": 1793141520887.1702,
+            "arc_origin_observed": true,
+            "arc_known_ms": 1793141582197.806,
+            "arc_start_ema9": 80738.6678047773,
+            "arc_extreme_ms": 1793141582197.806,
+            "arc_extreme_ema9": 80755.00704382185,
+            "arc_age_sec": 61.310635805130005,
+            "arc_amplitude": 16.339239044551505,
+            "arc_prominence_threshold": 7.03679999999993,
+            "parent_direction": "DOWN",
+            "measurement_source": "DIRECT_CAUSAL_BTC_EMA9_V1",
+            "observed_history_seconds": 2493.042965888977,
+            "geometry_reset": "COLD_START_REAL_OBSERVATIONS_ONLY"
+          }
+        }
+      },
+      "reason": "COMMANDER_ACCEPTED_TOOL_INTENT",
+      "custody_update": null,
+      "custody_review": null
+    }
+  },
+  "candidate": {
+    "sequence": 10076,
+    "original_sha256": "082d972aa297c538e5f0303a2850b4134c0288c2b49e8966c53bc168c801b63e",
+    "now_ts": 1793141658.7698846,
+    "native_book": {
+      "ticker": "KXBTC15M-26OCT271900-00",
+      "quote_id": "Q8:1:337836:9877",
+      "observed_ts": 1793141658.7655718,
+      "exchange_ts": 1793141658.76,
+      "yes_bids": [
+        {
+          "price": 0.56,
+          "quantity": 3600.4
+        },
+        {
+          "price": 0.55,
+          "quantity": 3970.73
+        },
+        {
+          "price": 0.54,
+          "quantity": 2218.0
+        },
+        {
+          "price": 0.53,
+          "quantity": 4726.28
+        },
+        {
+          "price": 0.52,
+          "quantity": 1273.0
+        },
+        {
+          "price": 0.51,
+          "quantity": 2142.01
+        },
+        {
+          "price": 0.5,
+          "quantity": 1284.87
+        },
+        {
+          "price": 0.49,
+          "quantity": 1261.02
+        },
+        {
+          "price": 0.48,
+          "quantity": 1639.67
+        },
+        {
+          "price": 0.47,
+          "quantity": 1313.53
+        },
+        {
+          "price": 0.46,
+          "quantity": 2111.02
+        },
+        {
+          "price": 0.45,
+          "quantity": 2368.14
+        },
+        {
+          "price": 0.44,
+          "quantity": 10317.41
+        },
+        {
+          "price": 0.43,
+          "quantity": 5322.33
+        },
+        {
+          "price": 0.42,
+          "quantity": 1327.4
+        },
+        {
+          "price": 0.41,
+          "quantity": 2120.66
+        },
+        {
+          "price": 0.4,
+          "quantity": 1160.0
+        },
+        {
+          "price": 0.39,
+          "quantity": 1212.0
+        },
+        {
+          "price": 0.38,
+          "quantity": 1233.0
+        },
+        {
+          "price": 0.37,
+          "quantity": 1214.0
+        },
+        {
+          "price": 0.36,
+          "quantity": 1733.0
+        },
+        {
+          "price": 0.35,
+          "quantity": 1215.0
+        },
+        {
+          "price": 0.34,
+          "quantity": 1236.0
+        },
+        {
+          "price": 0.33,
+          "quantity": 1218.0
+        },
+        {
+          "price": 0.32,
+          "quantity": 1283.26
+        },
+        {
+          "price": 0.31,
+          "quantity": 1221.2
+        },
+        {
+          "price": 0.3,
+          "quantity": 1265.5
+        },
+        {
+          "price": 0.29,
+          "quantity": 1322.0
+        },
+        {
+          "price": 0.28,
+          "quantity": 15624.0
+        },
+        {
+          "price": 0.27,
+          "quantity": 1226.2
+        },
+        {
+          "price": 0.26,
+          "quantity": 3757.77
+        },
+        {
+          "price": 0.25,
+          "quantity": 5401.18
+        },
+        {
+          "price": 0.24,
+          "quantity": 1530.0
+        },
+        {
+          "price": 0.23,
+          "quantity": 1558.7
+        },
+        {
+          "price": 0.22,
+          "quantity": 1458.16
+        },
+        {
+          "price": 0.21,
+          "quantity": 4970.71
+        },
+        {
+          "price": 0.2,
+          "quantity": 6913.01
+        },
+        {
+          "price": 0.19,
+          "quantity": 9604.79
+        },
+        {
+          "price": 0.18,
+          "quantity": 7465.8
+        },
+        {
+          "price": 0.17,
+          "quantity": 9725.94
+        },
+        {
+          "price": 0.16,
+          "quantity": 7308.15
+        },
+        {
+          "price": 0.15,
+          "quantity": 10962.37
+        },
+        {
+          "price": 0.14,
+          "quantity": 10807.04
+        },
+        {
+          "price": 0.13,
+          "quantity": 14545.15
+        },
+        {
+          "price": 0.12,
+          "quantity": 5421.96
+        },
+        {
+          "price": 0.11,
+          "quantity": 10774.13
+        },
+        {
+          "price": 0.1,
+          "quantity": 22464.77
+        },
+        {
+          "price": 0.099,
+          "quantity": 9603.0
+        },
+        {
+          "price": 0.098,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.097,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.096,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.095,
+          "quantity": 4.11
+        },
+        {
+          "price": 0.094,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.093,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.092,
+          "quantity": 5212.0
+        },
+        {
+          "price": 0.091,
+          "quantity": 15644.0
+        },
+        {
+          "price": 0.09,
+          "quantity": 8024.78
+        },
+        {
+          "price": 0.089,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.088,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.087,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.086,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.085,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.084,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.083,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.082,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.081,
+          "quantity": 4961.1
+        },
+        {
+          "price": 0.08,
+          "quantity": 7016.59
+        },
+        {
+          "price": 0.079,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.078,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.077,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.076,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.075,
+          "quantity": 232.82
+        },
+        {
+          "price": 0.074,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.073,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.072,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.071,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.07,
+          "quantity": 8446.5
+        },
+        {
+          "price": 0.069,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.068,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.067,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.066,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.065,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.064,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.063,
+          "quantity": 1344.0
+        },
+        {
+          "price": 0.062,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.061,
+          "quantity": 5368.2
+        },
+        {
+          "price": 0.06,
+          "quantity": 51161.09
+        },
+        {
+          "price": 0.059,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.058,
+          "quantity": 19920.4
+        },
+        {
+          "price": 0.057,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.056,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.055,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.054,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.053,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.052,
+          "quantity": 1084.0
+        },
+        {
+          "price": 0.051,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.05,
+          "quantity": 5315.0
+        },
+        {
+          "price": 0.049,
+          "quantity": 9477.6
+        },
+        {
+          "price": 0.048,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.047,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.046,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.045,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.044,
+          "quantity": 1014.0
+        },
+        {
+          "price": 0.043,
+          "quantity": 26.0
+        },
+        {
+          "price": 0.042,
+          "quantity": 2464.0
+        },
+        {
+          "price": 0.041,
+          "quantity": 303.0
+        },
+        {
+          "price": 0.04,
+          "quantity": 9982.68
+        },
+        {
+          "price": 0.039,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.038,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.037,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.036,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.035,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.034,
+          "quantity": 2636.0
+        },
+        {
+          "price": 0.033,
+          "quantity": 33.0
+        },
+        {
+          "price": 0.032,
+          "quantity": 1412.0
+        },
+        {
+          "price": 0.031,
+          "quantity": 303.0
+        },
+        {
+          "price": 0.03,
+          "quantity": 6794.71
+        },
+        {
+          "price": 0.029,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.028,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.027,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.026,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.025,
+          "quantity": 716.0
+        },
+        {
+          "price": 0.024,
+          "quantity": 1353.0
+        },
+        {
+          "price": 0.023,
+          "quantity": 19.0
+        },
+        {
+          "price": 0.022,
+          "quantity": 2182.0
+        },
+        {
+          "price": 0.021,
+          "quantity": 3595.0
+        },
+        {
+          "price": 0.02,
+          "quantity": 10821.66
+        },
+        {
+          "price": 0.019,
+          "quantity": 491.0
+        },
+        {
+          "price": 0.018,
+          "quantity": 1500.0
+        },
+        {
+          "price": 0.017,
+          "quantity": 587.0
+        },
+        {
+          "price": 0.016,
+          "quantity": 2928.0
+        },
+        {
+          "price": 0.015,
+          "quantity": 1110.0
+        },
+        {
+          "price": 0.014,
+          "quantity": 2347.0
+        },
+        {
+          "price": 0.013,
+          "quantity": 1779.0
+        },
+        {
+          "price": 0.012,
+          "quantity": 26378.0
+        },
+        {
+          "price": 0.011,
+          "quantity": 10842.64
+        },
+        {
+          "price": 0.01,
+          "quantity": 21384.83
+        },
+        {
+          "price": 0.009,
+          "quantity": 7089.67
+        },
+        {
+          "price": 0.008,
+          "quantity": 12397.0
+        },
+        {
+          "price": 0.007,
+          "quantity": 16879.43
+        },
+        {
+          "price": 0.006,
+          "quantity": 23083.0
+        },
+        {
+          "price": 0.005,
+          "quantity": 39110.0
+        },
+        {
+          "price": 0.004,
+          "quantity": 28585.0
+        },
+        {
+          "price": 0.003,
+          "quantity": 45536.0
+        },
+        {
+          "price": 0.002,
+          "quantity": 166660.0
+        },
+        {
+          "price": 0.001,
+          "quantity": 1106024.3
+        }
+      ],
+      "no_bids": [
+        {
+          "price": 0.43,
+          "quantity": 5849.0
+        },
+        {
+          "price": 0.42,
+          "quantity": 1680.11
+        },
+        {
+          "price": 0.41,
+          "quantity": 1989.48
+        },
+        {
+          "price": 0.4,
+          "quantity": 3392.24
+        },
+        {
+          "price": 0.39,
+          "quantity": 2488.7
+        },
+        {
+          "price": 0.38,
+          "quantity": 2616.15
+        },
+        {
+          "price": 0.37,
+          "quantity": 2601.49
+        },
+        {
+          "price": 0.36,
+          "quantity": 1547.13
+        },
+        {
+          "price": 0.35,
+          "quantity": 2192.19
+        },
+        {
+          "price": 0.34,
+          "quantity": 1720.17
+        },
+        {
+          "price": 0.33,
+          "quantity": 1440.47
+        },
+        {
+          "price": 0.32,
+          "quantity": 1717.44
+        },
+        {
+          "price": 0.31,
+          "quantity": 10818.3
+        },
+        {
+          "price": 0.3,
+          "quantity": 3314.94
+        },
+        {
+          "price": 0.29,
+          "quantity": 1251.88
+        },
+        {
+          "price": 0.28,
+          "quantity": 1459.03
+        },
+        {
+          "price": 0.27,
+          "quantity": 1326.17
+        },
+        {
+          "price": 0.26,
+          "quantity": 1260.62
+        },
+        {
+          "price": 0.25,
+          "quantity": 9249.7
+        },
+        {
+          "price": 0.24,
+          "quantity": 1336.71
+        },
+        {
+          "price": 0.23,
+          "quantity": 1342.88
+        },
+        {
+          "price": 0.22,
+          "quantity": 1921.13
+        },
+        {
+          "price": 0.21,
+          "quantity": 2319.15
+        },
+        {
+          "price": 0.2,
+          "quantity": 10779.77
+        },
+        {
+          "price": 0.19,
+          "quantity": 9795.06
+        },
+        {
+          "price": 0.18,
+          "quantity": 7152.83
+        },
+        {
+          "price": 0.17,
+          "quantity": 11130.62
+        },
+        {
+          "price": 0.16,
+          "quantity": 7539.08
+        },
+        {
+          "price": 0.15,
+          "quantity": 10997.05
+        },
+        {
+          "price": 0.14,
+          "quantity": 10549.91
+        },
+        {
+          "price": 0.13,
+          "quantity": 12934.15
+        },
+        {
+          "price": 0.12,
+          "quantity": 6501.21
+        },
+        {
+          "price": 0.11,
+          "quantity": 25903.63
+        },
+        {
+          "price": 0.1,
+          "quantity": 25444.11
+        },
+        {
+          "price": 0.099,
+          "quantity": 9603.0
+        },
+        {
+          "price": 0.098,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.097,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.096,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.095,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.094,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.093,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.092,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.091,
+          "quantity": 19844.0
+        },
+        {
+          "price": 0.09,
+          "quantity": 9036.23
+        },
+        {
+          "price": 0.089,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.088,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.087,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.086,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.085,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.084,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.083,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.082,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.081,
+          "quantity": 5754.1
+        },
+        {
+          "price": 0.08,
+          "quantity": 8273.31
+        },
+        {
+          "price": 0.079,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.078,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.077,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.076,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.075,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.074,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.073,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.072,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.071,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.07,
+          "quantity": 9646.23
+        },
+        {
+          "price": 0.069,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.068,
+          "quantity": 1029.96
+        },
+        {
+          "price": 0.067,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.066,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.065,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.064,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.063,
+          "quantity": 38.71
+        },
+        {
+          "price": 0.062,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.061,
+          "quantity": 5283.0
+        },
+        {
+          "price": 0.06,
+          "quantity": 52813.11
+        },
+        {
+          "price": 0.059,
+          "quantity": 228.63
+        },
+        {
+          "price": 0.058,
+          "quantity": 19920.4
+        },
+        {
+          "price": 0.057,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.056,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.055,
+          "quantity": 278.96
+        },
+        {
+          "price": 0.054,
+          "quantity": 1013.0
+        },
+        {
+          "price": 0.053,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.052,
+          "quantity": 2320.0
+        },
+        {
+          "price": 0.051,
+          "quantity": 503.0
+        },
+        {
+          "price": 0.05,
+          "quantity": 6548.87
+        },
+        {
+          "price": 0.049,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.048,
+          "quantity": 1095.99
+        },
+        {
+          "price": 0.047,
+          "quantity": 3.0
+        },
+        {
+          "price": 0.046,
+          "quantity": 1012.0
+        },
+        {
+          "price": 0.045,
+          "quantity": 25.0
+        },
+        {
+          "price": 0.044,
+          "quantity": 10509.6
+        },
+        {
+          "price": 0.043,
+          "quantity": 48.0
+        },
+        {
+          "price": 0.042,
+          "quantity": 2566.0
+        },
+        {
+          "price": 0.041,
+          "quantity": 3132.0
+        },
+        {
+          "price": 0.04,
+          "quantity": 12245.49
+        },
+        {
+          "price": 0.039,
+          "quantity": 821.0
+        },
+        {
+          "price": 0.038,
+          "quantity": 1030.0
+        },
+        {
+          "price": 0.037,
+          "quantity": 19.0
+        },
+        {
+          "price": 0.036,
+          "quantity": 1028.0
+        },
+        {
+          "price": 0.035,
+          "quantity": 31.0
+        },
+        {
+          "price": 0.034,
+          "quantity": 1042.0
+        },
+        {
+          "price": 0.033,
+          "quantity": 61.0
+        },
+        {
+          "price": 0.032,
+          "quantity": 1440.0
+        },
+        {
+          "price": 0.031,
+          "quantity": 2274.68
+        },
+        {
+          "price": 0.03,
+          "quantity": 12452.46
+        },
+        {
+          "price": 0.029,
+          "quantity": 24.0
+        },
+        {
+          "price": 0.028,
+          "quantity": 1033.0
+        },
+        {
+          "price": 0.027,
+          "quantity": 24.0
+        },
+        {
+          "price": 0.026,
+          "quantity": 1030.0
+        },
+        {
+          "price": 0.025,
+          "quantity": 316.0
+        },
+        {
+          "price": 0.024,
+          "quantity": 1369.0
+        },
+        {
+          "price": 0.023,
+          "quantity": 2697.0
+        },
+        {
+          "price": 0.022,
+          "quantity": 2182.0
+        },
+        {
+          "price": 0.021,
+          "quantity": 3707.0
+        },
+        {
+          "price": 0.02,
+          "quantity": 13395.32
+        },
+        {
+          "price": 0.019,
+          "quantity": 491.0
+        },
+        {
+          "price": 0.018,
+          "quantity": 1555.0
+        },
+        {
+          "price": 0.017,
+          "quantity": 645.0
+        },
+        {
+          "price": 0.016,
+          "quantity": 2990.0
+        },
+        {
+          "price": 0.015,
+          "quantity": 6774.0
+        },
+        {
+          "price": 0.014,
+          "quantity": 2355.0
+        },
+        {
+          "price": 0.013,
+          "quantity": 6466.0
+        },
+        {
+          "price": 0.012,
+          "quantity": 25178.0
+        },
+        {
+          "price": 0.011,
+          "quantity": 4777.18
+        },
+        {
+          "price": 0.01,
+          "quantity": 32824.81
+        },
+        {
+          "price": 0.009,
+          "quantity": 7089.67
+        },
+        {
+          "price": 0.008,
+          "quantity": 12559.0
+        },
+        {
+          "price": 0.007,
+          "quantity": 16984.43
+        },
+        {
+          "price": 0.006,
+          "quantity": 19278.0
+        },
+        {
+          "price": 0.005,
+          "quantity": 32801.0
+        },
+        {
+          "price": 0.004,
+          "quantity": 26900.0
+        },
+        {
+          "price": 0.003,
+          "quantity": 43558.0
+        },
+        {
+          "price": 0.002,
+          "quantity": 171058.0
+        },
+        {
+          "price": 0.001,
+          "quantity": 949851.38
+        }
+      ],
+      "close_ts": 1793142000.0,
+      "current": true,
+      "entry_allowed": true,
+      "yes_sell_allowed": true,
+      "no_sell_allowed": true,
+      "source": "WS_SEQUENCE_CHECKED_BOOK",
+      "provenance": {
+        "feed_revision": "TOOL_RACK_DIRECT_MARKET_DATA_V1",
+        "source_generation": 11392,
+        "receiver_generation": 1,
+        "native_quote_generation": 8,
+        "sid": 1,
+        "seq": 337836,
+        "sequence_checked": true,
+        "snapshot_verified": true,
+        "monotonic_receive_fresh": true,
+        "received_monotonic": 284730.1834992,
+        "receive_age_seconds": 0.0035670000361278653,
+        "exchange_timestamp_known": true,
+        "exchange_time_basis": "WS_ENVELOPE_SENDING_TS",
+        "quote_reason": "VALID",
+        "raw_depth_is_not_a_venue_fill": true
+      }
+    },
+    "metadata": {
+      "source": "DIRECT_BTC_AND_NATIVE_KALSHI",
+      "physical_current": true,
+      "geometry_age_seconds": 0.11969661712646484,
+      "geometry_rows_used": 1506,
+      "geometry_max_source_age_seconds": 5.0,
+      "geometry_last_epoch_ms": 1793141658650.188,
+      "geometry_reset_reason": "COLD_START_REAL_OBSERVATIONS_ONLY",
+      "geometry_continuity_generation": 0,
+      "observed_history_seconds": 2569.4953479766846,
+      "persistence_seconds": 0.0,
+      "rail_alignment_fraction": 0.0,
+      "rail_residence_fraction": 0.0,
+      "rail_detector": {
+        "residence_samples": 0,
+        "ema9_sides": [
+          "YES",
+          "NO",
+          "NO"
+        ],
+        "qualification_min_persistence_s": 900.0
+      },
+      "current_geometry": {
+        "epoch_ms": 1793141658650.188,
+        "btc_price": 80780.58,
+        "ema9": 80758.31523505748,
+        "ema30": 80773.79150725216,
+        "connection_epoch": 1,
+        "source_sequence": 3868,
+        "struct_slope3m": 15.41197908585309,
+        "struct_slope6m": -9.99462426212267,
+        "struct_slope9m": -15.858396426148829,
+        "ema30_slope3m": 0.18668093303858768,
+        "micro_slope3s": -0.001999999993131496,
+        "micro_slope6s": -0.001999999993131496,
+        "micro_slope9s": 1.0720000000001164,
+        "btc_change9": 5.360000000000582,
+        "btc_change6": -0.00999999999476131,
+        "btc_change30": 27.930000000007567,
+        "btc_change60": 25.60000000000582,
+        "ema9_change6": -0.001999999993131496,
+        "ema9_change30": 7.598191235636477,
+        "ema9_change60": 7.132191235636128,
+        "range60": 33.16000000000349,
+        "range180": 69.69000000000233,
+        "ema_gap": -15.476272194675403,
+        "arc_id": "G000A000012",
+        "arc_direction": "UP",
+        "arc_phase": "BUILDING",
+        "arc_start_ms": 1793141629677.5452,
+        "arc_origin_observed": true,
+        "arc_known_ms": 1793141634276.8708,
+        "arc_start_ema9": 80749.80304382184,
+        "arc_extreme_ms": 1793141652130.551,
+        "arc_extreme_ema9": 80758.31723505748,
+        "arc_age_sec": 28.97264289855957,
+        "arc_amplitude": 8.514191235633916,
+        "arc_prominence_threshold": 5.0,
+        "parent_direction": "UP",
+        "measurement_source": "DIRECT_CAUSAL_BTC_EMA9_V1",
+        "observed_history_seconds": 2569.4953479766846,
+        "geometry_reset": "COLD_START_REAL_OBSERVATIONS_ONLY"
+      },
+      "ema9_ema30_cross_context": {
+        "zero_authority": true,
+        "source_ms": 1793141658650.188,
+        "observed_at": 1793141658.650188,
+        "current_signed_gap_btc": -15.476272194675403,
+        "current_side": "NO",
+        "current_arc_id": "G000A000012",
+        "current_arc_origin_ms": 1793141629677.5452,
+        "touching_spine": false,
+        "previous_observed_cross_present": true,
+        "latest_observed_cross": {
+          "direction": "NO",
+          "known_source_ms": 1793139961187.5051,
+          "before": {
+            "source_ms": 1793139957605.904,
+            "ema9": 80837.37684229782,
+            "ema30": 80836.04517377629,
+            "signed_gap_btc": 1.331668521524989,
+            "side": "YES",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000005"
+          },
+          "after": {
+            "source_ms": 1793139961187.5051,
+            "ema9": 80833.26747383825,
+            "ema30": 80834.80548405093,
+            "signed_gap_btc": -1.538010212680092,
+            "side": "NO",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000005"
+          },
+          "zero_gap_samples_between": 0,
+          "continuity_segment": 0,
+          "observed_continuously": true,
+          "interpolated_crossing_time": null
+        },
+        "previous_observed_cross": {
+          "direction": "YES",
+          "known_source_ms": 1793139420341.389,
+          "before": {
+            "source_ms": 1793139419074.624,
+            "ema9": 80824.7712972371,
+            "ema30": 80829.0040942482,
+            "signed_gap_btc": -4.232797011107323,
+            "side": "NO",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000002"
+          },
+          "after": {
+            "source_ms": 1793139420341.389,
+            "ema9": 80836.82303778967,
+            "ema30": 80832.64139369084,
+            "signed_gap_btc": 4.181644098833203,
+            "side": "YES",
+            "connection_epoch": 1,
+            "continuity_segment": 0,
+            "arc_id_at_observation": "G000A000002"
+          },
+          "zero_gap_samples_between": 0,
+          "continuity_segment": 0,
+          "observed_continuously": true,
+          "interpolated_crossing_time": null
+        },
+        "recent_crossings": [
+          {
+            "direction": "YES",
+            "known_source_ms": 1793139420341.389,
+            "before": {
+              "source_ms": 1793139419074.624,
+              "ema9": 80824.7712972371,
+              "ema30": 80829.0040942482,
+              "signed_gap_btc": -4.232797011107323,
+              "side": "NO",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000002"
+            },
+            "after": {
+              "source_ms": 1793139420341.389,
+              "ema9": 80836.82303778967,
+              "ema30": 80832.64139369084,
+              "signed_gap_btc": 4.181644098833203,
+              "side": "YES",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000002"
+            },
+            "zero_gap_samples_between": 0,
+            "continuity_segment": 0,
+            "observed_continuously": true,
+            "interpolated_crossing_time": null
+          },
+          {
+            "direction": "NO",
+            "known_source_ms": 1793139961187.5051,
+            "before": {
+              "source_ms": 1793139957605.904,
+              "ema9": 80837.37684229782,
+              "ema30": 80836.04517377629,
+              "signed_gap_btc": 1.331668521524989,
+              "side": "YES",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000005"
+            },
+            "after": {
+              "source_ms": 1793139961187.5051,
+              "ema9": 80833.26747383825,
+              "ema30": 80834.80548405093,
+              "signed_gap_btc": -1.538010212680092,
+              "side": "NO",
+              "connection_epoch": 1,
+              "continuity_segment": 0,
+              "arc_id_at_observation": "G000A000005"
+            },
+            "zero_gap_samples_between": 0,
+            "continuity_segment": 0,
+            "observed_continuously": true,
+            "interpolated_crossing_time": null
+          }
+        ],
+        "observed_cross_count": 2,
+        "current_leg_cross_count": 0,
+        "continued_on_latest_cross_side": true,
+        "current_gap_motion_6s": {
+          "covered": true,
+          "start_source_ms": 1793141652130.551,
+          "end_source_ms": 1793141658650.188,
+          "actual_elapsed_seconds": 6.519636962890625,
+          "signed_gap_change_btc": -0.0013548387069022283,
+          "ema9_change_btc": -0.001999999993131496
+        },
+        "coverage": {
+          "first_source_ms": 1793139089154.84,
+          "last_source_ms": 1793141658650.188,
+          "sample_count": 1506,
+          "connection_epoch": 1,
+          "max_observed_source_gap_seconds": 12.710543701171876,
+          "max_allowed_source_gap_seconds": 15.0
+        },
+        "history_before_segment": "UNKNOWN",
+        "cross_alone_renews_mission": false,
+        "cross_alone_terminates_owner": false
+      },
+      "recovery_swing_terrain": {
+        "active": false,
+        "lookback_seconds": 1200.0,
+        "observed_ts": 1793141658.650188,
+        "transitions": 0,
+        "completed_walls": [
+          {
+            "arc_id": "G000A000010",
+            "direction": "UP",
+            "end_ts": 1793141628.6748,
+            "observed_span_seconds": 46.476994037628174,
+            "btc_span": 26.680000000007567,
+            "ema9_span": 5.335999999995693
+          }
+        ],
+        "reason": "RECENT_SWING_CAPACITY_NOT_PROVED"
+      },
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": true,
+        "edge_window_active": true,
+        "stall": true,
+        "hesitation": false,
+        "failed_reextension": false,
+        "meaningful_retreat": false,
+        "strong_active_release": false,
+        "edge_id": "G000A000012:1793141652130",
+        "current_arc_id": "G000A000012",
+        "owner_extreme_btc": 80780.59,
+        "edge_tolerance_dollars": 2.6528000000002794,
+        "retreat_dollars": 0.00999999999476131,
+        "quality": "REGULAR",
+        "detector": "TOOL_RACK_CAUSAL_COMPARABLE_EDGE_V3",
+        "source_ms": 1793141658650.188,
+        "current_btc": 80780.58,
+        "current_ema9": 80758.31523505748,
+        "current_ema30": 80773.79150725216,
+        "owner_price_gap": 22.264764942519832,
+        "contact_width": 3.979200000000419,
+        "spent_edge": false,
+        "shallow_edge_exception": false,
+        "current_motion": {
+          "6": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 6,
+            "first_source_ms": 1793141652130.551,
+            "last_source_ms": 1793141658650.188,
+            "max_sample_gap_s": 1.535302978515625,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 6.0,
+            "source_ms": 1793141658650.188,
+            "start_source_ms": 1793141652130.551,
+            "observed_duration_s": 6.519636962890625,
+            "first_price": 80780.59,
+            "current_price": 80780.58,
+            "owner_price_rate_btc_s": -0.0015338277348387185,
+            "first_ema9": 80758.31723505748,
+            "current_ema9": 80758.31523505748,
+            "owner_ema9_rate_btc_s": -0.0003067655460749385,
+            "first_ema30": 80773.79215241344,
+            "current_ema30": 80773.79150725216,
+            "owner_ema30_rate_btc_s": -9.89566274781075e-05
+          },
+          "12": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 10,
+            "first_source_ms": 1793141646062.078,
+            "last_source_ms": 1793141658650.188,
+            "max_sample_gap_s": 2.1855810546875,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 12.0,
+            "source_ms": 1793141658650.188,
+            "start_source_ms": 1793141646062.078,
+            "observed_duration_s": 12.588110107421874,
+            "first_price": 80770.27,
+            "current_price": 80780.58,
+            "owner_price_rate_btc_s": 0.8190268365955075,
+            "first_ema9": 80756.25323505748,
+            "current_ema9": 80758.31523505748,
+            "owner_ema9_rate_btc_s": 0.1638053673195639,
+            "first_ema30": 80773.12634596183,
+            "current_ema30": 80773.79150725216,
+            "owner_ema30_rate_btc_s": 0.0528404410706779
+          },
+          "30": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 25,
+            "first_source_ms": 1793141627463.0352,
+            "last_source_ms": 1793141658650.188,
+            "max_sample_gap_s": 2.1855810546875,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 30.0,
+            "source_ms": 1793141658650.188,
+            "start_source_ms": 1793141627463.0352,
+            "observed_duration_s": 31.18715283203125,
+            "first_price": 80752.65,
+            "current_price": 80780.58,
+            "owner_price_rate_btc_s": 0.8955610712665514,
+            "first_ema9": 80750.71704382185,
+            "current_ema9": 80758.31523505748,
+            "owner_ema9_rate_btc_s": 0.24363209032126323,
+            "first_ema30": 80772.66784867841,
+            "current_ema30": 80773.79150725216,
+            "owner_ema30_rate_btc_s": 0.03602953369297748
+          },
+          "60": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 45,
+            "first_source_ms": 1793141598528.258,
+            "last_source_ms": 1793141658650.188,
+            "max_sample_gap_s": 2.1855810546875,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 60.0,
+            "source_ms": 1793141658650.188,
+            "start_source_ms": 1793141598528.258,
+            "observed_duration_s": 60.12192993164062,
+            "first_price": 80754.98,
+            "current_price": 80780.58,
+            "owner_price_rate_btc_s": 0.42580136780561334,
+            "first_ema9": 80751.18304382185,
+            "current_ema9": 80758.31523505748,
+            "owner_ema9_rate_btc_s": 0.11862878060876485,
+            "first_ema30": 80772.81817125904,
+            "current_ema30": 80773.79150725216,
+            "owner_ema30_rate_btc_s": 0.01618936707818776
+          }
+        },
+        "slowdown": {
+          "observed": true,
+          "sideways_velocity_resolution_btc_s": 0.3316000000000349,
+          "positive_rate_reduction_resolution": 0.18,
+          "current_owner_price_rate_btc_s": -0.0015338277348387185,
+          "previous_owner_price_rate_btc_s": 1.7005925138339861,
+          "outward_rate_reduction_fraction": 1.0009019372497299,
+          "positive_outward_rate_slowing": false,
+          "sideways_observed": true,
+          "owner_price_retreat_observed": true,
+          "current_interval": {
+            "observed_from_start": true,
+            "source_continuous": true,
+            "sample_count": 6,
+            "first_source_ms": 1793141652130.551,
+            "last_source_ms": 1793141658650.188,
+            "max_sample_gap_s": 1.535302978515625,
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "covered": true,
+            "window_s": 6.0,
+            "source_ms": 1793141658650.188,
+            "start_source_ms": 1793141652130.551,
+            "observed_duration_s": 6.519636962890625,
+            "first_price": 80780.59,
+            "current_price": 80780.58,
+            "owner_price_rate_btc_s": -0.0015338277348387185,
+            "first_ema9": 80758.31723505748,
+            "current_ema9": 80758.31523505748,
+            "owner_ema9_rate_btc_s": -0.0003067655460749385,
+            "first_ema30": 80773.79215241344,
+            "current_ema30": 80773.79150725216,
+            "owner_ema30_rate_btc_s": -9.89566274781075e-05
+          },
+          "previous_start_source_ms": 1793141646062.078,
+          "previous_end_source_ms": 1793141652130.551,
+          "previous_observed_duration_s": 6.06847314453125
+        },
+        "equal_duration_accelerating": false,
+        "terminal_evidence_qualified": true,
+        "retreat_threshold": 3.979200000000419,
+        "sample_interval_s": 1.08713916015625,
+        "edge_extreme_ms": 1793141652130.551,
+        "arc_origin_ms": 1793141629677.5452,
+        "entry_routes": [
+          "PAIRED_PEAK_GAPS_AND_CURRENT_SLOWDOWN"
+        ],
+        "paired_gap_evidence": {
+          "eligible": true,
+          "reference_count": 4,
+          "references": [
+            {
+              "arc_id": "G000A000002",
+              "start_ms": 1793139310156.61,
+              "end_ms": 1793139540489.4841,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793139657642.195,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 160,
+                "first_source_ms": 1793139310156.61,
+                "last_source_ms": 1793139540489.4841,
+                "max_sample_gap_s": 6.7333798828125,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793139657642.195,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 6.7333798828125,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793139540489.4841,
+                  "btc": 80889.07,
+                  "ema9": 80857.8130641854,
+                  "ema30": 80840.6497092858,
+                  "signed_ema_gap_btc": 17.16335489958874,
+                  "signed_price_gap_btc": 31.256935814613826
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793139496515.707,
+                  "btc": 80923.91,
+                  "ema9": 80856.96683023173,
+                  "ema30": 80839.5581200397,
+                  "signed_ema_gap_btc": 17.408710192030412,
+                  "signed_price_gap_btc": 66.94316976827395
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000004",
+              "start_ms": 1793139721047.242,
+              "end_ms": 1793139900087.455,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793139945237.3198,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 114,
+                "first_source_ms": 1793139721047.242,
+                "last_source_ms": 1793139900087.455,
+                "max_sample_gap_s": 8.884138916015624,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793139945237.3198,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 8.884138916015624,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793139900087.455,
+                  "btc": 80849.88,
+                  "ema9": 80844.39084229781,
+                  "ema30": 80838.30775442146,
+                  "signed_ema_gap_btc": 6.083087876351783,
+                  "signed_price_gap_btc": 5.489157702191733
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793139743151.588,
+                  "btc": 80851.73,
+                  "ema9": 80840.23748886291,
+                  "ema30": 80836.06620191208,
+                  "signed_ema_gap_btc": 4.171286950833746,
+                  "signed_price_gap_btc": 11.492511137083056
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793139900087.455,
+                  "btc": 80849.88,
+                  "ema9": 80844.39084229781,
+                  "ema30": 80838.30775442146,
+                  "signed_ema_gap_btc": 6.083087876351783,
+                  "signed_price_gap_btc": 5.489157702191733
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793139743151.588,
+                  "btc": 80851.73,
+                  "ema9": 80840.23748886291,
+                  "ema30": 80836.06620191208,
+                  "signed_ema_gap_btc": 4.171286950833746,
+                  "signed_price_gap_btc": 11.492511137083056
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000006",
+              "start_ms": 1793140321110.097,
+              "end_ms": 1793140456535.021,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793140520485.369,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 82,
+                "first_source_ms": 1793140321110.097,
+                "last_source_ms": 1793140456535.021,
+                "max_sample_gap_s": 6.48293994140625,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793140520485.369,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 6.868252197265625,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793140456535.021,
+                  "btc": 80843.78,
+                  "ema9": 80822.01931921783,
+                  "ema30": 80827.29507603993,
+                  "signed_ema_gap_btc": -5.275756822098629,
+                  "signed_price_gap_btc": 21.76068078217213
+                }
+              ]
+            },
+            {
+              "arc_id": "G000A000008",
+              "start_ms": 1793140843965.6702,
+              "end_ms": 1793141160564.073,
+              "reference_kind": "SOVEREIGN_EMA9_ARC",
+              "origin_observed": true,
+              "completion_known_ms": 1793141281366.477,
+              "coverage": {
+                "observed_from_start": true,
+                "source_continuous": true,
+                "sample_count": 160,
+                "first_source_ms": 1793140843965.6702,
+                "last_source_ms": 1793141160564.073,
+                "max_sample_gap_s": 12.710543701171876,
+                "complete_observed_path": true,
+                "endpoints_are_actual_observations": true,
+                "origin_observed": true,
+                "completion_known_ms": 1793141281366.477,
+                "completion_source_continuous": true,
+                "completion_max_sample_gap_s": 12.710543701171876,
+                "native_extreme_preserved_to_completion": true
+              },
+              "peak_pairs": [
+                {
+                  "kind": "EMA9_EXTREME",
+                  "source_ms": 1793141160564.073,
+                  "btc": 80793.57,
+                  "ema9": 80778.05290518691,
+                  "ema30": 80791.4742011843,
+                  "signed_ema_gap_btc": -13.421295997395646,
+                  "signed_price_gap_btc": 15.517094813098083
+                },
+                {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                {
+                  "kind": "EMA_GAP_EXTREME",
+                  "source_ms": 1793141160564.073,
+                  "btc": 80793.57,
+                  "ema9": 80778.05290518691,
+                  "ema30": 80791.4742011843,
+                  "signed_ema_gap_btc": -13.421295997395646,
+                  "signed_price_gap_btc": 15.517094813098083
+                },
+                {
+                  "kind": "PRICE_GAP_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                }
+              ]
+            }
+          ],
+          "matches": [
+            {
+              "arc_id": "G000A000008",
+              "completion_known_ms": 1793141281366.477,
+              "actual_paired_snapshot": {
+                "kind": "PRICE_EXTREME",
+                "source_ms": 1793141130925.088,
+                "btc": 80793.58,
+                "ema9": 80774.17563148362,
+                "ema30": 80791.3303084257,
+                "signed_ema_gap_btc": -17.154676942082006,
+                "signed_price_gap_btc": 19.404368516377872
+              },
+              "ema_gap_relative_difference": 0.09783948442009544,
+              "price_gap_relative_difference": 0.1474099207983862
+            },
+            {
+              "arc_id": "G000A000008",
+              "completion_known_ms": 1793141281366.477,
+              "actual_paired_snapshot": {
+                "kind": "PRICE_GAP_EXTREME",
+                "source_ms": 1793141130925.088,
+                "btc": 80793.58,
+                "ema9": 80774.17563148362,
+                "ema30": 80791.3303084257,
+                "signed_ema_gap_btc": -17.154676942082006,
+                "signed_price_gap_btc": 19.404368516377872
+              },
+              "ema_gap_relative_difference": 0.09783948442009544,
+              "price_gap_relative_difference": 0.1474099207983862
+            }
+          ],
+          "selected_match": {
+            "arc_id": "G000A000008",
+            "completion_known_ms": 1793141281366.477,
+            "actual_paired_snapshot": {
+              "kind": "PRICE_EXTREME",
+              "source_ms": 1793141130925.088,
+              "btc": 80793.58,
+              "ema9": 80774.17563148362,
+              "ema30": 80791.3303084257,
+              "signed_ema_gap_btc": -17.154676942082006,
+              "signed_price_gap_btc": 19.404368516377872
+            },
+            "ema_gap_relative_difference": 0.09783948442009544,
+            "price_gap_relative_difference": 0.1474099207983862
+          },
+          "current_pair": {
+            "kind": "CURRENT",
+            "source_ms": 1793141658650.188,
+            "btc": 80780.58,
+            "ema9": 80758.31523505748,
+            "ema30": 80773.79150725216,
+            "signed_ema_gap_btc": -15.476272194675403,
+            "signed_price_gap_btc": 22.264764942519832
+          },
+          "current_slowdown": {
+            "observed": true,
+            "sideways_velocity_resolution_btc_s": 0.3316000000000349,
+            "positive_rate_reduction_resolution": 0.18,
+            "current_owner_price_rate_btc_s": -0.0015338277348387185,
+            "previous_owner_price_rate_btc_s": 1.7005925138339861,
+            "outward_rate_reduction_fraction": 1.0009019372497299,
+            "positive_outward_rate_slowing": false,
+            "sideways_observed": true,
+            "owner_price_retreat_observed": true,
+            "current_interval": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 6,
+              "first_source_ms": 1793141652130.551,
+              "last_source_ms": 1793141658650.188,
+              "max_sample_gap_s": 1.535302978515625,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "covered": true,
+              "window_s": 6.0,
+              "source_ms": 1793141658650.188,
+              "start_source_ms": 1793141652130.551,
+              "observed_duration_s": 6.519636962890625,
+              "first_price": 80780.59,
+              "current_price": 80780.58,
+              "owner_price_rate_btc_s": -0.0015338277348387185,
+              "first_ema9": 80758.31723505748,
+              "current_ema9": 80758.31523505748,
+              "owner_ema9_rate_btc_s": -0.0003067655460749385,
+              "first_ema30": 80773.79215241344,
+              "current_ema30": 80773.79150725216,
+              "owner_ema30_rate_btc_s": -9.89566274781075e-05
+            },
+            "previous_start_source_ms": 1793141646062.078,
+            "previous_end_source_ms": 1793141652130.551,
+            "previous_observed_duration_s": 6.06847314453125
+          },
+          "steep_observed": false,
+          "gap_relative_tolerance": 0.18,
+          "steepness_formula": "ALL_CURRENT_6_30_60_EMA9_RATES_TIMES_60_GE_GAP_RESOLUTION_TIMES_MATCHED_OUTWARD_PRICE_GAP",
+          "shape_age_height_prerequisites": false,
+          "measurement_calibration": "INHERITED_PROVISIONAL_PAPER_NOT_PROFITABILITY_FIT",
+          "selected_reference_family": "WHOLE_MOUNTAIN",
+          "reference_family_selection": "MOST_RECENT_ACTUAL_MATCH_BEFORE_STEEPNESS_AMONG_INDEPENDENTLY_SUFFICIENT_FAMILIES",
+          "reference_families": {
+            "WHOLE_MOUNTAIN": {
+              "reference_count": 4,
+              "distinct_physical_turns": [
+                [
+                  "UP",
+                  1793139540489.4841
+                ],
+                [
+                  "UP",
+                  1793139900087.455
+                ],
+                [
+                  "UP",
+                  1793140456535.021
+                ],
+                [
+                  "UP",
+                  1793141160564.073
+                ]
+              ],
+              "references": "SEE_SELECTED_REFERENCES",
+              "matches": [
+                {
+                  "arc_id": "G000A000008",
+                  "completion_known_ms": 1793141281366.477,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.09783948442009544,
+                  "price_gap_relative_difference": 0.1474099207983862
+                },
+                {
+                  "arc_id": "G000A000008",
+                  "completion_known_ms": 1793141281366.477,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_GAP_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.09783948442009544,
+                  "price_gap_relative_difference": 0.1474099207983862
+                }
+              ],
+              "selected_match": {
+                "arc_id": "G000A000008",
+                "completion_known_ms": 1793141281366.477,
+                "actual_paired_snapshot": {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                "ema_gap_relative_difference": 0.09783948442009544,
+                "price_gap_relative_difference": 0.1474099207983862
+              },
+              "selected": true
+            },
+            "DESCRIPTIVE_NATIVE_EMA9": {
+              "reference_count": 4,
+              "distinct_physical_turns": [
+                [
+                  "UP",
+                  1793140456535.021
+                ],
+                [
+                  "UP",
+                  1793140603467.665
+                ],
+                [
+                  "UP",
+                  1793141160564.073
+                ],
+                [
+                  "UP",
+                  1793141585349.685
+                ]
+              ],
+              "references": [
+                {
+                  "arc_id": "NATIVE:1793140321110:UP",
+                  "start_ms": 1793140321110.097,
+                  "end_ms": 1793140456535.021,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793140515215.896,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 82,
+                    "first_source_ms": 1793140321110.097,
+                    "last_source_ms": 1793140456535.021,
+                    "max_sample_gap_s": 6.48293994140625,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793140515215.896,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 6.868252197265625,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793140456535.021,
+                      "btc": 80843.78,
+                      "ema9": 80822.01931921783,
+                      "ema30": 80827.29507603993,
+                      "signed_ema_gap_btc": -5.275756822098629,
+                      "signed_price_gap_btc": 21.76068078217213
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793140561040:UP",
+                  "start_ms": 1793140561040.636,
+                  "end_ms": 1793140603467.665,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793140621861.161,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 31,
+                    "first_source_ms": 1793140561040.636,
+                    "last_source_ms": 1793140603467.665,
+                    "max_sample_gap_s": 3.38752685546875,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793140621861.161,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 3.95881494140625,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793140601228.141,
+                      "btc": 80746.46,
+                      "ema9": 80786.40260429941,
+                      "ema30": 80813.89461583139,
+                      "signed_ema_gap_btc": -27.492011531983735,
+                      "signed_price_gap_btc": -39.942604299401864
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "start_ms": 1793140843965.6702,
+                  "end_ms": 1793141160564.073,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793141230719.544,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 160,
+                    "first_source_ms": 1793140843965.6702,
+                    "last_source_ms": 1793141160564.073,
+                    "max_sample_gap_s": 12.710543701171876,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793141230719.544,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 12.710543701171876,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793141160564.073,
+                      "btc": 80793.57,
+                      "ema9": 80778.05290518691,
+                      "ema30": 80791.4742011843,
+                      "signed_ema_gap_btc": -13.421295997395646,
+                      "signed_price_gap_btc": 15.517094813098083
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793141130925.088,
+                      "btc": 80793.58,
+                      "ema9": 80774.17563148362,
+                      "ema30": 80791.3303084257,
+                      "signed_ema_gap_btc": -17.154676942082006,
+                      "signed_price_gap_btc": 19.404368516377872
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793141160564.073,
+                      "btc": 80793.57,
+                      "ema9": 80778.05290518691,
+                      "ema30": 80791.4742011843,
+                      "signed_ema_gap_btc": -13.421295997395646,
+                      "signed_price_gap_btc": 15.517094813098083
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793141130925.088,
+                      "btc": 80793.58,
+                      "ema9": 80774.17563148362,
+                      "ema30": 80791.3303084257,
+                      "signed_ema_gap_btc": -17.154676942082006,
+                      "signed_price_gap_btc": 19.404368516377872
+                    }
+                  ]
+                },
+                {
+                  "arc_id": "NATIVE:1793141520887:UP",
+                  "start_ms": 1793141520887.1702,
+                  "end_ms": 1793141585349.685,
+                  "reference_kind": "DESCRIPTIVE_NATIVE_EMA9_ARC",
+                  "origin_observed": true,
+                  "completion_known_ms": 1793141629677.5452,
+                  "coverage": {
+                    "observed_from_start": true,
+                    "source_continuous": true,
+                    "sample_count": 49,
+                    "first_source_ms": 1793141520887.1702,
+                    "last_source_ms": 1793141585349.685,
+                    "max_sample_gap_s": 5.074011962890625,
+                    "complete_observed_path": true,
+                    "endpoints_are_actual_observations": true,
+                    "origin_observed": true,
+                    "completion_known_ms": 1793141629677.5452,
+                    "completion_source_continuous": true,
+                    "completion_max_sample_gap_s": 5.074011962890625,
+                    "native_extreme_preserved_to_completion": true,
+                    "confirmation_windows_s": [
+                      6,
+                      9
+                    ],
+                    "completion_prominence_dollars": 5.0
+                  },
+                  "peak_pairs": [
+                    {
+                      "kind": "EMA9_EXTREME",
+                      "source_ms": 1793141585349.685,
+                      "btc": 80774.11,
+                      "ema9": 80755.00904382185,
+                      "ema30": 80774.05236480743,
+                      "signed_ema_gap_btc": -19.043320985583705,
+                      "signed_price_gap_btc": 19.100956178153865
+                    },
+                    {
+                      "kind": "PRICE_EXTREME",
+                      "source_ms": 1793141577661.976,
+                      "btc": 80776.36,
+                      "ema9": 80750.6858047773,
+                      "ema30": 80774.19419399765,
+                      "signed_ema_gap_btc": -23.50838922035473,
+                      "signed_price_gap_btc": 25.67419522270211
+                    },
+                    {
+                      "kind": "EMA_GAP_EXTREME",
+                      "source_ms": 1793141585349.685,
+                      "btc": 80774.11,
+                      "ema9": 80755.00904382185,
+                      "ema30": 80774.05236480743,
+                      "signed_ema_gap_btc": -19.043320985583705,
+                      "signed_price_gap_btc": 19.100956178153865
+                    },
+                    {
+                      "kind": "PRICE_GAP_EXTREME",
+                      "source_ms": 1793141577661.976,
+                      "btc": 80776.36,
+                      "ema9": 80750.6858047773,
+                      "ema30": 80774.19419399765,
+                      "signed_ema_gap_btc": -23.50838922035473,
+                      "signed_price_gap_btc": 25.67419522270211
+                    }
+                  ]
+                }
+              ],
+              "matches": [
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "completion_known_ms": 1793141230719.544,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.09783948442009544,
+                  "price_gap_relative_difference": 0.1474099207983862
+                },
+                {
+                  "arc_id": "NATIVE:1793140843965:UP",
+                  "completion_known_ms": 1793141230719.544,
+                  "actual_paired_snapshot": {
+                    "kind": "PRICE_GAP_EXTREME",
+                    "source_ms": 1793141130925.088,
+                    "btc": 80793.58,
+                    "ema9": 80774.17563148362,
+                    "ema30": 80791.3303084257,
+                    "signed_ema_gap_btc": -17.154676942082006,
+                    "signed_price_gap_btc": 19.404368516377872
+                  },
+                  "ema_gap_relative_difference": 0.09783948442009544,
+                  "price_gap_relative_difference": 0.1474099207983862
+                }
+              ],
+              "selected_match": {
+                "arc_id": "NATIVE:1793140843965:UP",
+                "completion_known_ms": 1793141230719.544,
+                "actual_paired_snapshot": {
+                  "kind": "PRICE_EXTREME",
+                  "source_ms": 1793141130925.088,
+                  "btc": 80793.58,
+                  "ema9": 80774.17563148362,
+                  "ema30": 80791.3303084257,
+                  "signed_ema_gap_btc": -17.154676942082006,
+                  "signed_price_gap_btc": 19.404368516377872
+                },
+                "ema_gap_relative_difference": 0.09783948442009544,
+                "price_gap_relative_difference": 0.1474099207983862
+              },
+              "selected": false
+            }
+          }
+        },
+        "shape_comparisons": [
+          {
+            "arc_id": "G000A000002",
+            "duration_s": 230.3328740234375,
+            "completion_known_ms": 1793139657642.195,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 160,
+              "first_source_ms": 1793139310156.61,
+              "last_source_ms": 1793139540489.4841,
+              "max_sample_gap_s": 6.7333798828125,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793139657642.195,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 6.7333798828125,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 28.972642822265627,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141629677.5452,
+                "prior_source_ms": 1793139310156.61,
+                "current_ema9": 80749.80304382184,
+                "prior_ema9": 80802.20862154636
+              },
+              {
+                "elapsed_target_s": 7.243160705566407,
+                "current_source_ms": 1793141636844.1218,
+                "prior_source_ms": 1793139316805.694,
+                "current_ema9": 80755.23104382184,
+                "prior_ema9": 80803.55862154636
+              },
+              {
+                "elapsed_target_s": 14.486321411132813,
+                "current_source_ms": 1793141643835.461,
+                "prior_source_ms": 1793139324435.058,
+                "current_ema9": 80755.36123505748,
+                "prior_ema9": 80803.49062154636
+              },
+              {
+                "elapsed_target_s": 21.72948211669922,
+                "current_source_ms": 1793141651043.4119,
+                "prior_source_ms": 1793139332253.4412,
+                "current_ema9": 80757.56923505748,
+                "prior_ema9": 80805.32062154636
+              },
+              {
+                "elapsed_target_s": 28.972642822265627,
+                "current_source_ms": 1793141658650.188,
+                "prior_source_ms": 1793139339195.638,
+                "current_ema9": 80758.31523505748,
+                "prior_ema9": 80805.32062154636
+              }
+            ],
+            "current_equal_age_height": 8.512191235640785,
+            "prior_equal_age_height": 3.1119999999937136,
+            "height_relative_difference": 1.735279960044338,
+            "normalized_shape_distance": 0.10650452404949692,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000004",
+            "duration_s": 179.04021313476562,
+            "completion_known_ms": 1793139945237.3198,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 114,
+              "first_source_ms": 1793139721047.242,
+              "last_source_ms": 1793139900087.455,
+              "max_sample_gap_s": 8.884138916015624,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793139945237.3198,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 8.884138916015624,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 28.972642822265627,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141629677.5452,
+                "prior_source_ms": 1793139721047.242,
+                "current_ema9": 80749.80304382184,
+                "prior_ema9": 80835.1294888629
+              },
+              {
+                "elapsed_target_s": 7.243160705566407,
+                "current_source_ms": 1793141636844.1218,
+                "prior_source_ms": 1793139727968.403,
+                "current_ema9": 80755.23104382184,
+                "prior_ema9": 80835.1294888629
+              },
+              {
+                "elapsed_target_s": 14.486321411132813,
+                "current_source_ms": 1793141643835.461,
+                "prior_source_ms": 1793139735749.732,
+                "current_ema9": 80755.36123505748,
+                "prior_ema9": 80840.2354888629
+              },
+              {
+                "elapsed_target_s": 21.72948211669922,
+                "current_source_ms": 1793141651043.4119,
+                "prior_source_ms": 1793139743151.588,
+                "current_ema9": 80757.56923505748,
+                "prior_ema9": 80840.23748886291
+              },
+              {
+                "elapsed_target_s": 28.972642822265627,
+                "current_source_ms": 1793141658650.188,
+                "prior_source_ms": 1793139748781.444,
+                "current_ema9": 80758.31523505748,
+                "prior_ema9": 80840.2354888629
+              }
+            ],
+            "current_equal_age_height": 8.512191235640785,
+            "prior_equal_age_height": 5.105999999999767,
+            "height_relative_difference": 0.6670958158325838,
+            "normalized_shape_distance": 0.21454720503478103,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000006",
+            "duration_s": 135.4249240722656,
+            "completion_known_ms": 1793140520485.369,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 82,
+              "first_source_ms": 1793140321110.097,
+              "last_source_ms": 1793140456535.021,
+              "max_sample_gap_s": 6.48293994140625,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793140520485.369,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 6.868252197265625,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 28.972642822265627,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141629677.5452,
+                "prior_source_ms": 1793140321110.097,
+                "current_ema9": 80749.80304382184,
+                "prior_ema9": 80807.51243627784
+              },
+              {
+                "elapsed_target_s": 7.243160705566407,
+                "current_source_ms": 1793141636844.1218,
+                "prior_source_ms": 1793140328376.929,
+                "current_ema9": 80755.23104382184,
+                "prior_ema9": 80812.49243627784
+              },
+              {
+                "elapsed_target_s": 14.486321411132813,
+                "current_source_ms": 1793141643835.461,
+                "prior_source_ms": 1793140336859.087,
+                "current_ema9": 80755.36123505748,
+                "prior_ema9": 80812.70443627784
+              },
+              {
+                "elapsed_target_s": 21.72948211669922,
+                "current_source_ms": 1793141651043.4119,
+                "prior_source_ms": 1793140345550.224,
+                "current_ema9": 80757.56923505748,
+                "prior_ema9": 80814.40643627784
+              },
+              {
+                "elapsed_target_s": 28.972642822265627,
+                "current_source_ms": 1793141658650.188,
+                "prior_source_ms": 1793140349959.371,
+                "current_ema9": 80758.31523505748,
+                "prior_ema9": 80814.40443627784
+              }
+            ],
+            "current_equal_age_height": 8.512191235640785,
+            "prior_equal_age_height": 6.891999999992549,
+            "height_relative_difference": 0.235082883872604,
+            "normalized_shape_distance": 0.05464026736471887,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          },
+          {
+            "arc_id": "G000A000008",
+            "duration_s": 316.59840283203124,
+            "completion_known_ms": 1793141281366.477,
+            "coverage": {
+              "observed_from_start": true,
+              "source_continuous": true,
+              "sample_count": 160,
+              "first_source_ms": 1793140843965.6702,
+              "last_source_ms": 1793141160564.073,
+              "max_sample_gap_s": 12.710543701171876,
+              "complete_observed_path": true,
+              "endpoints_are_actual_observations": true,
+              "origin_observed": true,
+              "completion_known_ms": 1793141281366.477,
+              "completion_source_continuous": true,
+              "completion_max_sample_gap_s": 12.710543701171876,
+              "native_extreme_preserved_to_completion": true
+            },
+            "shape_comparable": false,
+            "reason": "OBSERVED_DIFFERENT_SHAPE_OR_SCALE",
+            "equal_age_s": 28.972642822265627,
+            "actual_samples": [
+              {
+                "elapsed_target_s": 0.0,
+                "current_source_ms": 1793141629677.5452,
+                "prior_source_ms": 1793140843965.6702,
+                "current_ema9": 80749.80304382184,
+                "prior_ema9": 80755.35940272103
+              },
+              {
+                "elapsed_target_s": 7.243160705566407,
+                "current_source_ms": 1793141636844.1218,
+                "prior_source_ms": 1793140851504.549,
+                "current_ema9": 80755.23104382184,
+                "prior_ema9": 80758.86740272104
+              },
+              {
+                "elapsed_target_s": 14.486321411132813,
+                "current_source_ms": 1793141643835.461,
+                "prior_source_ms": 1793140859027.831,
+                "current_ema9": 80755.36123505748,
+                "prior_ema9": 80760.49940272103
+              },
+              {
+                "elapsed_target_s": 21.72948211669922,
+                "current_source_ms": 1793141651043.4119,
+                "prior_source_ms": 1793140866305.634,
+                "current_ema9": 80757.56923505748,
+                "prior_ema9": 80760.19152217683
+              },
+              {
+                "elapsed_target_s": 28.972642822265627,
+                "current_source_ms": 1793141658650.188,
+                "prior_source_ms": 1793140873263.7961,
+                "current_ema9": 80758.31523505748,
+                "prior_ema9": 80760.27352217682
+              }
+            ],
+            "current_equal_age_height": 8.512191235640785,
+            "prior_equal_age_height": 4.91411945578875,
+            "height_relative_difference": 0.7321905403853312,
+            "normalized_shape_distance": 0.10802748213778224,
+            "height_relative_tolerance": 0.2,
+            "normalized_shape_tolerance": 0.25
+          }
+        ],
+        "current_path_coverage": {
+          "observed_from_start": true,
+          "source_continuous": true,
+          "sample_count": 23,
+          "first_source_ms": 1793141629677.5452,
+          "last_source_ms": 1793141658650.188,
+          "max_sample_gap_s": 2.1855810546875,
+          "complete_observed_path": true,
+          "endpoints_are_actual_observations": true,
+          "origin_observed": true
+        },
+        "arc_origin_observed": true,
+        "reference_history": {
+          "completed_whole_mountain_count": 4,
+          "completed_peak_gap_reference_count": 4,
+          "selected_peak_reference_family": "WHOLE_MOUNTAIN",
+          "whole_peak_reference_count": 4,
+          "native_peak_reference_count": 4,
+          "descriptive_native_reference_count": 0,
+          "retained_completed_reference_count": 0,
+          "minimum_required": 2,
+          "no_interpolation_or_gap_stitching": true,
+          "descriptive_references_renew_missions": false
+        },
+        "diagnostics": {
+          "phase": "BUILDING",
+          "current_age_s": 28.97264289855957,
+          "comparable_durations_s": [],
+          "mature_by_comparison": false,
+          "mature_by_phase_fallback": false,
+          "mature_by_paired_gap": true,
+          "extreme_owner_price_gap": 22.272764942521462,
+          "current_owner_180s_advance": 15.41197908585309,
+          "previous_owner_180s_advance": -25.40660334797576,
+          "completed_same_direction_reference_count": 4,
+          "range60": 33.16000000000349,
+          "alternating_recent_arcs": true
+        }
+      },
+      "heist": {
+        "qualified_box": false,
+        "at_lower_edge": false,
+        "at_upper_edge": true,
+        "box_id": "BOX:9651:9660:1793141479002",
+        "visit_id": "UPPER:1793141634276",
+        "lower": 80710.9,
+        "upper": 80780.59,
+        "edge_tolerance": 8.362800000000279,
+        "current_zone": "UPPER",
+        "lean_side": "YES",
+        "release_confirmed": false,
+        "detector": "TOOL_RACK_RAW_SIDEWAYS_BOX_V1",
+        "repeatability_proof": {
+          "source": "OBSERVED_HEIST_REPEATABILITY_V1",
+          "window_start_ms": 1793141479002.63,
+          "window_end_ms": 1793141658650.188,
+          "observed_span_s": 179.64755810546876,
+          "observed_samples": 128,
+          "connection_epoch": 1,
+          "single_connection_epoch": true,
+          "strict_source_times": true,
+          "lower": 80710.9,
+          "upper": 80780.59,
+          "edge_tolerance": 8.362800000000279,
+          "ema9_drift": 15.41197908585309,
+          "ema30_drift": 0.18668093303858768,
+          "lower_visits": 1,
+          "upper_visits": 2,
+          "center_traversals": 2,
+          "repeatability_visits": [
+            {
+              "epoch_ms": 1793141479002.63,
+              "zone": "LOWER"
+            },
+            {
+              "epoch_ms": 1793141531868.356,
+              "zone": "CENTER"
+            },
+            {
+              "epoch_ms": 1793141577661.976,
+              "zone": "UPPER"
+            },
+            {
+              "epoch_ms": 1793141591195.853,
+              "zone": "CENTER"
+            },
+            {
+              "epoch_ms": 1793141634276.8708,
+              "zone": "UPPER"
+            }
+          ]
+        },
+        "diagnostics": {
+          "ema9_drift": 15.41197908585309,
+          "ema30_drift": 0.18668093303858768,
+          "sideways_enough": true,
+          "compressed_zones": [
+            [
+              1793141479002.63,
+              "LOWER"
+            ],
+            [
+              1793141495655.8298,
+              "INNER"
+            ],
+            [
+              1793141516725.966,
+              "LOWER"
+            ],
+            [
+              1793141524100.1848,
+              "INNER"
+            ],
+            [
+              1793141531868.356,
+              "CENTER"
+            ],
+            [
+              1793141536560.7021,
+              "INNER"
+            ],
+            [
+              1793141542391.7,
+              "CENTER"
+            ],
+            [
+              1793141545218.455,
+              "INNER"
+            ],
+            [
+              1793141555255.0781,
+              "CENTER"
+            ],
+            [
+              1793141571814.959,
+              "INNER"
+            ],
+            [
+              1793141577661.976,
+              "UPPER"
+            ],
+            [
+              1793141589131.48,
+              "INNER"
+            ],
+            [
+              1793141591195.853,
+              "CENTER"
+            ],
+            [
+              1793141634276.8708,
+              "UPPER"
+            ],
+            [
+              1793141639212.136,
+              "INNER"
+            ],
+            [
+              1793141647478.364,
+              "UPPER"
+            ]
+          ],
+          "current_zone": "UPPER",
+          "minimum_box_range": 20.0
+        }
+      },
+      "release_probe": {
+        "btc": 80780.58,
+        "ema9": 80758.31523505748,
+        "ema30": 80773.79150725216,
+        "range60": 33.16000000000349,
+        "arc_side": "YES",
+        "arc_phase": "BUILDING",
+        "short_struct_side": "YES",
+        "medium_struct_side": "NO",
+        "micro_side": "YES",
+        "yes_residence_fraction": 0.7142857142857143,
+        "no_residence_fraction": 0.2857142857142857,
+        "yes_stack_fraction": 0.0,
+        "no_stack_fraction": 0.2857142857142857,
+        "heist_lower": 80769.62,
+        "heist_upper": 80793.58,
+        "heist_edge_tolerance": 3.0,
+        "mountain_extreme_btc": 80780.59,
+        "mountain_edge_age_s": 6.519636962890625,
+        "diagnostics": {
+          "recent_rows": 70,
+          "arc_phase": "BUILDING"
+        }
+      },
+      "territory_detector_summary": {
+        "rail_established": false,
+        "qualified_heist": false,
+        "qualified_mountain": true,
+        "compression_unresolved": false
+      },
+      "legacy_strategy_routes_used": false,
+      "r22_process_required": false,
+      "source_generation": 11392
+    },
+    "physical": {
+      "ema9_direction": null,
+      "ema30_direction": "YES",
+      "ema_pair_parallel": false,
+      "directional_residence": false,
+      "rolling_mountain_repetitions": 0,
+      "contracts_persistent": 0.0,
+      "alternating_mountain": true,
+      "rolling_mountain": false,
+      "mountain_direction": "YES",
+      "qualified_heist": false,
+      "compression_unresolved": false,
+      "heist_takeover_confirmed": false,
+      "release_candidate_side": null,
+      "release_boundary_break": false,
+      "release_directional_expansion": false,
+      "release_old_owner_failed_reextension": false,
+      "release_new_side_residence": false,
+      "release_first_slowdown_only": false,
+      "release_handoff_confirmed": false,
+      "release_side": null
+    },
+    "entry_decision": {
+      "action": "WAIT",
+      "intent": null,
+      "reason": "CURRENT_CONTRACT_INVENTORY_OWNS_CUSTODY",
+      "custody_update": null,
+      "custody_review": null
+    }
+  }
+}

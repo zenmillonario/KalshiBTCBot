@@ -1,0 +1,46 @@
+{
+  "changed_core_files": [
+    "strategy_core/commander_candidates.py"
+  ],
+  "focused_tests": {
+    "includes_recorded_scenarios": true,
+    "passed": 126,
+    "source": "/mnt/data/pid21672_focused4.log"
+  },
+  "full_bundle_gate": {
+    "capture_test_counts": {
+      "test_capture_integrity": 8,
+      "test_capture_session": 4,
+      "test_complete_paper_run": 17,
+      "test_next_run_capture": 4,
+      "test_post_run_workflow": 12,
+      "test_snapshot_delta": 6,
+      "test_upload_parts": 11,
+      "tests.tool_rack.test_paper_launcher_export": 7,
+      "tests.tool_rack.test_paper_reconcile_launcher": 16,
+      "tests.tool_rack.test_pid21672_confirmed_parent_transfer": 6,
+      "tests.tool_rack.test_recorded_session_launcher": 11,
+      "tests.tool_rack.test_session_draining_launcher": 6,
+      "tests.tool_rack.test_windows_text_encoding_contract": 1
+    },
+    "embedded_gate_report": "PID10656_VALIDATION.json",
+    "embedded_manifest": "TOOL_RACK_PAPER_BUNDLE_MANIFEST.json",
+    "final_preflight_pending_at_this_point": true,
+    "isolated_test_modules": 45,
+    "passed": true,
+    "state": "EXTRACTED_PACKAGE_TESTS_CONSTRUCTS_CAPTURE_JS_REPLAY_FINAL_INTEGRITY_PASSED",
+    "strategy_tests": 650
+  },
+  "native_windows_verified": false,
+  "next_action": "Use 00_PREPARE_AND_RUN_45M_PAPER.cmd after extracting to a normal Windows folder; local Windows runtime remains unverified until actually launched",
+  "original_full_engine_replay": false,
+  "original_source_archive_sha256": "8cf5be466d24ebc11f62f680602dd629b619708d12b6b727b76939669f1a8364",
+  "preflight": {
+    "core_files": 67,
+    "passed": true,
+    "source": "/mnt/data/pid21672_preflight2.log"
+  },
+  "recorded_four_trade_net_paper": "-7.9750",
+  "schema": "tachyos.pid21672.validation_checkpoint.v1",
+  "source_run": "TOOL_RACK_PAPER_20261105T170438Z_PID21672"
+}

@@ -1,0 +1,1824 @@
+{
+  "fixture_is_original_frozen_input_not_simulated_outcome": true,
+  "frames": {
+    "11090": {
+      "decisions": [
+        {
+          "decision": {
+            "action": "WAIT",
+            "custody_review": null,
+            "custody_update": null,
+            "intent": null,
+            "reason": "PHYSICAL_CONTINUITY_RESET_AWAIT_TOOL_REACQUISITION"
+          },
+          "scope": "ENTRY"
+        }
+      ],
+      "ledger_seq": 1,
+      "ledger_sha256": "06ca78814c9744ec79bac9bdecc24affbb2da543796e86caf032a397af3ef523",
+      "market": {
+        "close_ts": 1793136600.0,
+        "open_ts": 1793135700.0,
+        "status": "active",
+        "target": 80618.24,
+        "target_source": "KALSHI_MARKET_FLOOR_STRIKE",
+        "ticker": "KXBTC15M-26OCT271730-30",
+        "title": "BTC price up in next 15 mins?"
+      },
+      "native_book": {
+        "close_ts": 1793136600.0,
+        "current": true,
+        "entry_allowed": true,
+        "exchange_ts": 1793135766.311,
+        "no_bids": [
+          {
+            "price": 0.43,
+            "quantity": 2201.0
+          },
+          {
+            "price": 0.42,
+            "quantity": 1934.99
+          },
+          {
+            "price": 0.41,
+            "quantity": 1957.2
+          },
+          {
+            "price": 0.4,
+            "quantity": 3222.42
+          },
+          {
+            "price": 0.39,
+            "quantity": 1081.0
+          },
+          {
+            "price": 0.38,
+            "quantity": 2361.0
+          },
+          {
+            "price": 0.37,
+            "quantity": 2488.09
+          },
+          {
+            "price": 0.36,
+            "quantity": 2444.11
+          },
+          {
+            "price": 0.35,
+            "quantity": 2716.39
+          },
+          {
+            "price": 0.34,
+            "quantity": 2551.09
+          },
+          {
+            "price": 0.33,
+            "quantity": 2661.37
+          },
+          {
+            "price": 0.32,
+            "quantity": 2639.73
+          },
+          {
+            "price": 0.31,
+            "quantity": 2624.34
+          },
+          {
+            "price": 0.3,
+            "quantity": 2689.34
+          },
+          {
+            "price": 0.29,
+            "quantity": 2817.34
+          },
+          {
+            "price": 0.28,
+            "quantity": 2889.43
+          },
+          {
+            "price": 0.27,
+            "quantity": 3225.38
+          },
+          {
+            "price": 0.26,
+            "quantity": 1913.34
+          },
+          {
+            "price": 0.25,
+            "quantity": 5672.13
+          },
+          {
+            "price": 0.24,
+            "quantity": 1643.17
+          },
+          {
+            "price": 0.23,
+            "quantity": 1572.73
+          },
+          {
+            "price": 0.22,
+            "quantity": 6921.53
+          },
+          {
+            "price": 0.21,
+            "quantity": 6866.26
+          },
+          {
+            "price": 0.2,
+            "quantity": 7324.79
+          },
+          {
+            "price": 0.19,
+            "quantity": 12549.98
+          },
+          {
+            "price": 0.18,
+            "quantity": 9711.61
+          },
+          {
+            "price": 0.17,
+            "quantity": 9773.58
+          },
+          {
+            "price": 0.16,
+            "quantity": 7676.03
+          },
+          {
+            "price": 0.15,
+            "quantity": 17292.0
+          },
+          {
+            "price": 0.14,
+            "quantity": 17191.12
+          },
+          {
+            "price": 0.13,
+            "quantity": 26881.01
+          },
+          {
+            "price": 0.12,
+            "quantity": 11691.24
+          },
+          {
+            "price": 0.11,
+            "quantity": 20716.58
+          },
+          {
+            "price": 0.1,
+            "quantity": 20469.57
+          },
+          {
+            "price": 0.099,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.098,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.097,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.096,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.095,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.094,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.093,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.092,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.091,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.09,
+            "quantity": 20698.65
+          },
+          {
+            "price": 0.089,
+            "quantity": 192.0
+          },
+          {
+            "price": 0.088,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.087,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.086,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.085,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.084,
+            "quantity": 16037.5
+          },
+          {
+            "price": 0.083,
+            "quantity": 12603.0
+          },
+          {
+            "price": 0.082,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.081,
+            "quantity": 793.0
+          },
+          {
+            "price": 0.08,
+            "quantity": 2777.0
+          },
+          {
+            "price": 0.079,
+            "quantity": 182.0
+          },
+          {
+            "price": 0.078,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.077,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.076,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.075,
+            "quantity": 178.0
+          },
+          {
+            "price": 0.074,
+            "quantity": 1186.0
+          },
+          {
+            "price": 0.073,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.072,
+            "quantity": 1184.0
+          },
+          {
+            "price": 0.071,
+            "quantity": 174.0
+          },
+          {
+            "price": 0.07,
+            "quantity": 18797.8
+          },
+          {
+            "price": 0.069,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.068,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.067,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.066,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.065,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.064,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.063,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.062,
+            "quantity": 7499.5
+          },
+          {
+            "price": 0.061,
+            "quantity": 164.0
+          },
+          {
+            "price": 0.06,
+            "quantity": 38261.0
+          },
+          {
+            "price": 0.059,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.058,
+            "quantity": 19709.7
+          },
+          {
+            "price": 0.057,
+            "quantity": 160.0
+          },
+          {
+            "price": 0.056,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.055,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.054,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.053,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.052,
+            "quantity": 11268.5
+          },
+          {
+            "price": 0.051,
+            "quantity": 53.0
+          },
+          {
+            "price": 0.05,
+            "quantity": 4968.0
+          },
+          {
+            "price": 0.049,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.048,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.047,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.046,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.045,
+            "quantity": 25.0
+          },
+          {
+            "price": 0.044,
+            "quantity": 1034.0
+          },
+          {
+            "price": 0.043,
+            "quantity": 48.0
+          },
+          {
+            "price": 0.042,
+            "quantity": 1146.0
+          },
+          {
+            "price": 0.041,
+            "quantity": 3299.0
+          },
+          {
+            "price": 0.04,
+            "quantity": 4603.81
+          },
+          {
+            "price": 0.039,
+            "quantity": 21.0
+          },
+          {
+            "price": 0.038,
+            "quantity": 6286.15
+          },
+          {
+            "price": 0.037,
+            "quantity": 19.0
+          },
+          {
+            "price": 0.036,
+            "quantity": 1028.0
+          },
+          {
+            "price": 0.035,
+            "quantity": 31.0
+          },
+          {
+            "price": 0.034,
+            "quantity": 2804.0
+          },
+          {
+            "price": 0.033,
+            "quantity": 61.0
+          },
+          {
+            "price": 0.032,
+            "quantity": 1440.0
+          },
+          {
+            "price": 0.031,
+            "quantity": 540.68
+          },
+          {
+            "price": 0.03,
+            "quantity": 6556.83
+          },
+          {
+            "price": 0.029,
+            "quantity": 24.0
+          },
+          {
+            "price": 0.028,
+            "quantity": 1033.0
+          },
+          {
+            "price": 0.027,
+            "quantity": 24.0
+          },
+          {
+            "price": 0.026,
+            "quantity": 1030.0
+          },
+          {
+            "price": 0.025,
+            "quantity": 316.0
+          },
+          {
+            "price": 0.024,
+            "quantity": 1345.0
+          },
+          {
+            "price": 0.023,
+            "quantity": 19.0
+          },
+          {
+            "price": 0.022,
+            "quantity": 2301.0
+          },
+          {
+            "price": 0.021,
+            "quantity": 6894.0
+          },
+          {
+            "price": 0.02,
+            "quantity": 9358.49
+          },
+          {
+            "price": 0.019,
+            "quantity": 491.0
+          },
+          {
+            "price": 0.018,
+            "quantity": 1500.0
+          },
+          {
+            "price": 0.017,
+            "quantity": 587.0
+          },
+          {
+            "price": 0.016,
+            "quantity": 2928.0
+          },
+          {
+            "price": 0.015,
+            "quantity": 1225.0
+          },
+          {
+            "price": 0.014,
+            "quantity": 2347.0
+          },
+          {
+            "price": 0.013,
+            "quantity": 6441.0
+          },
+          {
+            "price": 0.012,
+            "quantity": 25178.0
+          },
+          {
+            "price": 0.011,
+            "quantity": 152169.18
+          },
+          {
+            "price": 0.01,
+            "quantity": 20448.15
+          },
+          {
+            "price": 0.009,
+            "quantity": 7089.67
+          },
+          {
+            "price": 0.008,
+            "quantity": 9302.0
+          },
+          {
+            "price": 0.007,
+            "quantity": 18785.53
+          },
+          {
+            "price": 0.006,
+            "quantity": 23653.0
+          },
+          {
+            "price": 0.005,
+            "quantity": 22763.0
+          },
+          {
+            "price": 0.004,
+            "quantity": 27107.0
+          },
+          {
+            "price": 0.003,
+            "quantity": 46330.0
+          },
+          {
+            "price": 0.002,
+            "quantity": 186558.0
+          },
+          {
+            "price": 0.001,
+            "quantity": 2183501.56
+          }
+        ],
+        "no_sell_allowed": true,
+        "observed_ts": 1793135766.3543925,
+        "provenance": {
+          "exchange_time_basis": "WS_ENVELOPE_SENDING_TS",
+          "exchange_timestamp_known": true,
+          "feed_revision": "TOOL_RACK_DIRECT_MARKET_DATA_V1",
+          "monotonic_receive_fresh": true,
+          "native_quote_generation": 10,
+          "quote_reason": "VALID_NATIVE_BOOK_WS_TICKER_DISAGREEMENT_ADVISORY",
+          "raw_depth_is_not_a_venue_fill": true,
+          "receive_age_seconds": 0.005713400023523718,
+          "received_monotonic": 278837.7761049,
+          "receiver_generation": 1,
+          "seq": 20321,
+          "sequence_checked": true,
+          "sid": 1,
+          "snapshot_verified": true,
+          "source_generation": 12495
+        },
+        "quote_id": "Q10:1:20321:10786",
+        "source": "WS_SEQUENCE_CHECKED_BOOK",
+        "ticker": "KXBTC15M-26OCT271730-30",
+        "yes_bids": [
+          {
+            "price": 0.56,
+            "quantity": 4161.31
+          },
+          {
+            "price": 0.55,
+            "quantity": 6969.02
+          },
+          {
+            "price": 0.54,
+            "quantity": 3506.22
+          },
+          {
+            "price": 0.53,
+            "quantity": 2657.0
+          },
+          {
+            "price": 0.52,
+            "quantity": 2833.0
+          },
+          {
+            "price": 0.51,
+            "quantity": 2017.0
+          },
+          {
+            "price": 0.5,
+            "quantity": 2062.0
+          },
+          {
+            "price": 0.49,
+            "quantity": 1569.31
+          },
+          {
+            "price": 0.48,
+            "quantity": 11316.37
+          },
+          {
+            "price": 0.47,
+            "quantity": 1649.64
+          },
+          {
+            "price": 0.46,
+            "quantity": 13768.0
+          },
+          {
+            "price": 0.45,
+            "quantity": 1895.34
+          },
+          {
+            "price": 0.44,
+            "quantity": 1407.34
+          },
+          {
+            "price": 0.43,
+            "quantity": 1680.04
+          },
+          {
+            "price": 0.42,
+            "quantity": 1633.2
+          },
+          {
+            "price": 0.41,
+            "quantity": 1622.93
+          },
+          {
+            "price": 0.4,
+            "quantity": 2880.37
+          },
+          {
+            "price": 0.39,
+            "quantity": 3055.19
+          },
+          {
+            "price": 0.38,
+            "quantity": 3770.36
+          },
+          {
+            "price": 0.37,
+            "quantity": 2704.09
+          },
+          {
+            "price": 0.36,
+            "quantity": 2752.11
+          },
+          {
+            "price": 0.35,
+            "quantity": 2912.61
+          },
+          {
+            "price": 0.34,
+            "quantity": 2844.1
+          },
+          {
+            "price": 0.33,
+            "quantity": 4542.24
+          },
+          {
+            "price": 0.32,
+            "quantity": 2861.09
+          },
+          {
+            "price": 0.31,
+            "quantity": 2778.19
+          },
+          {
+            "price": 0.3,
+            "quantity": 2986.49
+          },
+          {
+            "price": 0.29,
+            "quantity": 2994.75
+          },
+          {
+            "price": 0.28,
+            "quantity": 2979.34
+          },
+          {
+            "price": 0.27,
+            "quantity": 3254.08
+          },
+          {
+            "price": 0.26,
+            "quantity": 1299.09
+          },
+          {
+            "price": 0.25,
+            "quantity": 5609.58
+          },
+          {
+            "price": 0.24,
+            "quantity": 3188.33
+          },
+          {
+            "price": 0.23,
+            "quantity": 1454.97
+          },
+          {
+            "price": 0.22,
+            "quantity": 6151.08
+          },
+          {
+            "price": 0.21,
+            "quantity": 6871.42
+          },
+          {
+            "price": 0.2,
+            "quantity": 7319.31
+          },
+          {
+            "price": 0.19,
+            "quantity": 11062.35
+          },
+          {
+            "price": 0.18,
+            "quantity": 9558.02
+          },
+          {
+            "price": 0.17,
+            "quantity": 10176.18
+          },
+          {
+            "price": 0.16,
+            "quantity": 7509.68
+          },
+          {
+            "price": 0.15,
+            "quantity": 17430.44
+          },
+          {
+            "price": 0.14,
+            "quantity": 17021.39
+          },
+          {
+            "price": 0.13,
+            "quantity": 22226.28
+          },
+          {
+            "price": 0.12,
+            "quantity": 18230.92
+          },
+          {
+            "price": 0.11,
+            "quantity": 17058.82
+          },
+          {
+            "price": 0.1,
+            "quantity": 20236.9
+          },
+          {
+            "price": 0.099,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.098,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.097,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.096,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.095,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.094,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.093,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.092,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.091,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.09,
+            "quantity": 20484.48
+          },
+          {
+            "price": 0.089,
+            "quantity": 192.0
+          },
+          {
+            "price": 0.088,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.087,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.086,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.085,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.084,
+            "quantity": 16037.5
+          },
+          {
+            "price": 0.083,
+            "quantity": 12603.0
+          },
+          {
+            "price": 0.082,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.081,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.08,
+            "quantity": 2655.42
+          },
+          {
+            "price": 0.079,
+            "quantity": 182.0
+          },
+          {
+            "price": 0.078,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.077,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.076,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.075,
+            "quantity": 178.0
+          },
+          {
+            "price": 0.074,
+            "quantity": 1186.0
+          },
+          {
+            "price": 0.073,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.072,
+            "quantity": 1184.0
+          },
+          {
+            "price": 0.071,
+            "quantity": 174.0
+          },
+          {
+            "price": 0.07,
+            "quantity": 18621.46
+          },
+          {
+            "price": 0.069,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.068,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.067,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.066,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.065,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.064,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.063,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.062,
+            "quantity": 7499.5
+          },
+          {
+            "price": 0.061,
+            "quantity": 164.0
+          },
+          {
+            "price": 0.06,
+            "quantity": 20117.95
+          },
+          {
+            "price": 0.059,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.058,
+            "quantity": 19709.7
+          },
+          {
+            "price": 0.057,
+            "quantity": 160.0
+          },
+          {
+            "price": 0.056,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.055,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.054,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.053,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.052,
+            "quantity": 10037.5
+          },
+          {
+            "price": 0.051,
+            "quantity": 22161.0
+          },
+          {
+            "price": 0.05,
+            "quantity": 7832.97
+          },
+          {
+            "price": 0.049,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.048,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.047,
+            "quantity": 3.0
+          },
+          {
+            "price": 0.046,
+            "quantity": 1012.0
+          },
+          {
+            "price": 0.045,
+            "quantity": 25.0
+          },
+          {
+            "price": 0.044,
+            "quantity": 1034.0
+          },
+          {
+            "price": 0.043,
+            "quantity": 48.0
+          },
+          {
+            "price": 0.042,
+            "quantity": 1146.0
+          },
+          {
+            "price": 0.041,
+            "quantity": 1866.0
+          },
+          {
+            "price": 0.04,
+            "quantity": 4287.52
+          },
+          {
+            "price": 0.039,
+            "quantity": 21.0
+          },
+          {
+            "price": 0.038,
+            "quantity": 6286.15
+          },
+          {
+            "price": 0.037,
+            "quantity": 19.0
+          },
+          {
+            "price": 0.036,
+            "quantity": 1028.0
+          },
+          {
+            "price": 0.035,
+            "quantity": 31.0
+          },
+          {
+            "price": 0.034,
+            "quantity": 1040.0
+          },
+          {
+            "price": 0.033,
+            "quantity": 61.0
+          },
+          {
+            "price": 0.032,
+            "quantity": 3279.0
+          },
+          {
+            "price": 0.031,
+            "quantity": 531.0
+          },
+          {
+            "price": 0.03,
+            "quantity": 6593.23
+          },
+          {
+            "price": 0.029,
+            "quantity": 24.0
+          },
+          {
+            "price": 0.028,
+            "quantity": 1033.0
+          },
+          {
+            "price": 0.027,
+            "quantity": 24.0
+          },
+          {
+            "price": 0.026,
+            "quantity": 1030.0
+          },
+          {
+            "price": 0.025,
+            "quantity": 716.0
+          },
+          {
+            "price": 0.024,
+            "quantity": 1345.0
+          },
+          {
+            "price": 0.023,
+            "quantity": 2413.0
+          },
+          {
+            "price": 0.022,
+            "quantity": 2301.0
+          },
+          {
+            "price": 0.021,
+            "quantity": 722.0
+          },
+          {
+            "price": 0.02,
+            "quantity": 9326.18
+          },
+          {
+            "price": 0.019,
+            "quantity": 491.0
+          },
+          {
+            "price": 0.018,
+            "quantity": 1500.0
+          },
+          {
+            "price": 0.017,
+            "quantity": 587.0
+          },
+          {
+            "price": 0.016,
+            "quantity": 2928.0
+          },
+          {
+            "price": 0.015,
+            "quantity": 1225.0
+          },
+          {
+            "price": 0.014,
+            "quantity": 2347.0
+          },
+          {
+            "price": 0.013,
+            "quantity": 1779.0
+          },
+          {
+            "price": 0.012,
+            "quantity": 26378.0
+          },
+          {
+            "price": 0.011,
+            "quantity": 157554.64
+          },
+          {
+            "price": 0.01,
+            "quantity": 19565.01
+          },
+          {
+            "price": 0.009,
+            "quantity": 7089.67
+          },
+          {
+            "price": 0.008,
+            "quantity": 12421.0
+          },
+          {
+            "price": 0.007,
+            "quantity": 14049.43
+          },
+          {
+            "price": 0.006,
+            "quantity": 20631.0
+          },
+          {
+            "price": 0.005,
+            "quantity": 29365.0
+          },
+          {
+            "price": 0.004,
+            "quantity": 27351.0
+          },
+          {
+            "price": 0.003,
+            "quantity": 47303.0
+          },
+          {
+            "price": 0.002,
+            "quantity": 193160.0
+          },
+          {
+            "price": 0.001,
+            "quantity": 2095542.55
+          }
+        ],
+        "yes_sell_allowed": true
+      },
+      "now_ts": 1793135766.3603933,
+      "physical": {
+        "alternating_mountain": false,
+        "compression_unresolved": false,
+        "contracts_persistent": 0.0,
+        "directional_residence": false,
+        "ema30_direction": "NO",
+        "ema9_direction": "NO",
+        "ema_pair_parallel": false,
+        "heist_takeover_confirmed": false,
+        "qualified_heist": false,
+        "release_boundary_break": false,
+        "release_candidate_side": null,
+        "release_directional_expansion": false,
+        "release_first_slowdown_only": false,
+        "release_handoff_confirmed": false,
+        "release_new_side_residence": false,
+        "release_old_owner_failed_reextension": false,
+        "release_side": null,
+        "rolling_mountain": true,
+        "rolling_mountain_repetitions": 0
+      },
+      "physical_metadata": {
+        "current_geometry": {
+          "arc_age_sec": 421.7524449825287,
+          "arc_amplitude": 36.98676369096211,
+          "arc_direction": "DOWN",
+          "arc_extreme_ema9": 80627.69017975595,
+          "arc_extreme_ms": 1793135762308.5452,
+          "arc_id": "G004A000008",
+          "arc_known_ms": 1793135412067.838,
+          "arc_phase": "MATURE",
+          "arc_prominence_threshold": 5.0,
+          "arc_start_ema9": 80664.67694344692,
+          "arc_start_ms": 1793135344437.521,
+          "btc_change30": 1.6300000000046566,
+          "btc_change6": 1.6200000000098953,
+          "btc_change60": 1.6200000000098953,
+          "btc_change9": 1.6200000000098953,
+          "btc_price": 80616.16,
+          "connection_epoch": 3,
+          "ema30": 80635.4770844439,
+          "ema30_slope3m": -4.580717616554466,
+          "ema9": 80628.01417975596,
+          "ema9_change30": -2.961544938996667,
+          "ema9_change6": -2.9635449389897985,
+          "ema9_change60": -2.9635449389897985,
+          "ema_gap": -7.462904687941773,
+          "epoch_ms": 1793135766189.966,
+          "geometry_reset": "BTC_CONNECTION_EPOCH_CHANGED",
+          "measurement_source": "DIRECT_CAUSAL_BTC_EMA9_V1",
+          "micro_slope3s": 0.2620000000024447,
+          "micro_slope6s": -2.9635449389897985,
+          "micro_slope9s": -2.9635449389897985,
+          "observed_history_seconds": 430.61072397232056,
+          "parent_direction": "DOWN",
+          "range180": 13.870000000009895,
+          "range60": 1.6300000000046566,
+          "source_sequence": 637,
+          "struct_slope3m": -12.429765079898061,
+          "struct_slope6m": -32.13177500157326,
+          "struct_slope9m": null
+        },
+        "geometry_age_seconds": 0.1704273223876953,
+        "geometry_continuity_generation": 4,
+        "geometry_last_epoch_ms": 1793135766189.966,
+        "geometry_max_source_age_seconds": 5.0,
+        "geometry_reset_reason": "BTC_CONNECTION_EPOCH_CHANGED",
+        "geometry_rows_used": 241,
+        "heist": {
+          "at_lower_edge": false,
+          "at_upper_edge": false,
+          "box_id": null,
+          "current_zone": null,
+          "detector": "TOOL_RACK_RAW_SIDEWAYS_BOX_V1",
+          "diagnostics": {
+            "reason": "NO_REPEATABLE_SIDEWAYS_BOX"
+          },
+          "edge_tolerance": null,
+          "lean_side": null,
+          "lower": null,
+          "qualified_box": false,
+          "release_confirmed": false,
+          "upper": null,
+          "visit_id": null
+        },
+        "legacy_strategy_routes_used": false,
+        "mountain": {
+          "arc_origin_ms": 1793135344437.521,
+          "contact_width": 3.0,
+          "current_arc_id": "G004A000008",
+          "current_btc": 80616.16,
+          "current_ema30": 80635.4770844439,
+          "current_ema9": 80628.01417975596,
+          "current_motion": {
+            "12": {
+              "complete_observed_path": true,
+              "covered": true,
+              "current_ema30": 80635.4770844439,
+              "current_ema9": 80628.01417975596,
+              "current_price": 80616.16,
+              "endpoints_are_actual_observations": true,
+              "first_ema30": 80636.80864964219,
+              "first_ema9": 80630.97572469496,
+              "first_price": 80614.53,
+              "first_source_ms": 1793135753115.791,
+              "last_source_ms": 1793135766189.966,
+              "max_sample_gap_s": 3.05580322265625,
+              "observed_duration_s": 13.074175048828126,
+              "observed_from_start": true,
+              "owner_ema30_rate_btc_s": 0.10184697644874799,
+              "owner_ema9_rate_btc_s": 0.22651868495994465,
+              "owner_price_rate_btc_s": -0.1246732580768649,
+              "sample_count": 9,
+              "source_continuous": true,
+              "source_ms": 1793135766189.966,
+              "start_source_ms": 1793135753115.791,
+              "window_s": 12.0
+            },
+            "30": {
+              "complete_observed_path": true,
+              "covered": true,
+              "current_ema30": 80635.4770844439,
+              "current_ema9": 80628.01417975596,
+              "current_price": 80616.16,
+              "endpoints_are_actual_observations": true,
+              "first_ema30": 80636.80929480349,
+              "first_ema9": 80630.97772469495,
+              "first_price": 80614.54,
+              "first_source_ms": 1793135734165.72,
+              "last_source_ms": 1793135766189.966,
+              "max_sample_gap_s": 4.736837158203125,
+              "observed_duration_s": 32.02424609375,
+              "observed_from_start": true,
+              "owner_ema30_rate_btc_s": 0.04160005377443025,
+              "owner_ema9_rate_btc_s": 0.09254066216934854,
+              "owner_price_rate_btc_s": -0.05058667096385017,
+              "sample_count": 17,
+              "source_continuous": true,
+              "source_ms": 1793135766189.966,
+              "start_source_ms": 1793135734165.72,
+              "window_s": 30.0
+            },
+            "6": {
+              "complete_observed_path": true,
+              "covered": true,
+              "current_ema30": 80635.4770844439,
+              "current_ema9": 80628.01417975596,
+              "current_price": 80616.16,
+              "endpoints_are_actual_observations": true,
+              "first_ema30": 80636.80929480349,
+              "first_ema9": 80630.97772469495,
+              "first_price": 80614.54,
+              "first_source_ms": 1793135759252.742,
+              "last_source_ms": 1793135766189.966,
+              "max_sample_gap_s": 3.05580322265625,
+              "observed_duration_s": 6.93722412109375,
+              "observed_from_start": true,
+              "owner_ema30_rate_btc_s": 0.19203795874704224,
+              "owner_ema9_rate_btc_s": 0.42719463682579634,
+              "owner_price_rate_btc_s": -0.23352279985938812,
+              "sample_count": 5,
+              "source_continuous": true,
+              "source_ms": 1793135766189.966,
+              "start_source_ms": 1793135759252.742,
+              "window_s": 6.0
+            },
+            "60": {
+              "complete_observed_path": true,
+              "covered": true,
+              "current_ema30": 80635.4770844439,
+              "current_ema9": 80628.01417975596,
+              "current_price": 80616.16,
+              "endpoints_are_actual_observations": true,
+              "first_ema30": 80636.80929480349,
+              "first_ema9": 80630.97772469495,
+              "first_price": 80614.54,
+              "first_source_ms": 1793135705001.8699,
+              "last_source_ms": 1793135766189.966,
+              "max_sample_gap_s": 4.736837158203125,
+              "observed_duration_s": 61.18809619140625,
+              "observed_from_start": true,
+              "owner_ema30_rate_btc_s": 0.021772378003365532,
+              "owner_ema9_rate_btc_s": 0.04843335752299518,
+              "owner_price_rate_btc_s": -0.02647573794324755,
+              "sample_count": 34,
+              "source_continuous": true,
+              "source_ms": 1793135766189.966,
+              "start_source_ms": 1793135705001.8699,
+              "window_s": 60.0
+            }
+          },
+          "current_path_coverage": {
+            "complete_observed_path": true,
+            "endpoints_are_actual_observations": true,
+            "first_source_ms": 1793135344437.521,
+            "last_source_ms": 1793135766189.966,
+            "max_sample_gap_s": 8.718187744140625,
+            "observed_from_start": true,
+            "sample_count": 240,
+            "source_continuous": true
+          },
+          "detector": "TOOL_RACK_CAUSAL_COMPARABLE_EDGE_V2",
+          "diagnostics": {
+            "alternating_recent_arcs": false,
+            "comparable_durations_s": [],
+            "completed_same_direction_reference_count": 0,
+            "current_age_s": 421.75244506835935,
+            "current_owner_180s_advance": 12.429765079898061,
+            "extreme_owner_price_gap": 23.035155868696165,
+            "mature_by_comparison": false,
+            "mature_by_paired_gap": false,
+            "mature_by_phase_fallback": false,
+            "phase": "MATURE",
+            "previous_owner_180s_advance": 19.7020099216752,
+            "range60": 1.6300000000046566
+          },
+          "edge_extreme_ms": 1793135665801.023,
+          "edge_id": "G004A000008:1793135665801",
+          "edge_tolerance_dollars": 2.0,
+          "edge_window_active": false,
+          "entry_routes": [],
+          "equal_duration_accelerating": false,
+          "failed_reextension": false,
+          "hesitation": false,
+          "mature_edge": false,
+          "meaningful_retreat": false,
+          "owner_extreme_btc": 80611.43,
+          "owner_price_gap": 11.854179755959194,
+          "owner_side": "NO",
+          "paired_gap_evidence": {
+            "current_pair": {
+              "btc": 80616.16,
+              "ema30": 80635.4770844439,
+              "ema9": 80628.01417975596,
+              "kind": "CURRENT",
+              "signed_ema_gap_btc": -7.462904687941773,
+              "signed_price_gap_btc": -11.854179755959194,
+              "source_ms": 1793135766189.966
+            },
+            "current_slowdown": {
+              "current_interval": {
+                "complete_observed_path": true,
+                "covered": true,
+                "current_ema30": 80635.4770844439,
+                "current_ema9": 80628.01417975596,
+                "current_price": 80616.16,
+                "endpoints_are_actual_observations": true,
+                "first_ema30": 80636.80929480349,
+                "first_ema9": 80630.97772469495,
+                "first_price": 80614.54,
+                "first_source_ms": 1793135759252.742,
+                "last_source_ms": 1793135766189.966,
+                "max_sample_gap_s": 3.05580322265625,
+                "observed_duration_s": 6.93722412109375,
+                "observed_from_start": true,
+                "owner_ema30_rate_btc_s": 0.19203795874704224,
+                "owner_ema9_rate_btc_s": 0.42719463682579634,
+                "owner_price_rate_btc_s": -0.23352279985938812,
+                "sample_count": 5,
+                "source_continuous": true,
+                "source_ms": 1793135766189.966,
+                "start_source_ms": 1793135759252.742,
+                "window_s": 6.0
+              },
+              "current_owner_price_rate_btc_s": -0.23352279985938812,
+              "observed": true,
+              "outward_rate_reduction_fraction": null,
+              "owner_price_retreat_observed": true,
+              "positive_outward_rate_slowing": false,
+              "positive_rate_reduction_resolution": 0.18,
+              "previous_end_source_ms": 1793135759252.742,
+              "previous_observed_duration_s": 6.136950927734375,
+              "previous_owner_price_rate_btc_s": -0.0016294736771592675,
+              "previous_start_source_ms": 1793135753115.791,
+              "sideways_observed": false,
+              "sideways_velocity_resolution_btc_s": 0.15
+            },
+            "eligible": false,
+            "gap_relative_tolerance": 0.18,
+            "matches": [],
+            "measurement_calibration": "INHERITED_PROVISIONAL_PAPER_NOT_PROFITABILITY_FIT",
+            "reference_count": 0,
+            "references": [],
+            "selected_match": null,
+            "shape_age_height_prerequisites": false,
+            "steep_observed": null,
+            "steepness_formula": "ALL_CURRENT_6_30_60_EMA9_RATES_TIMES_60_GE_GAP_RESOLUTION_TIMES_MATCHED_OUTWARD_PRICE_GAP"
+          },
+          "quality": "REGULAR",
+          "retreat_dollars": 4.730000000010477,
+          "retreat_threshold": 2.0,
+          "sample_interval_s": 1.121798095703125,
+          "shallow_edge_exception": false,
+          "shape_comparisons": [],
+          "slowdown": {
+            "current_interval": {
+              "complete_observed_path": true,
+              "covered": true,
+              "current_ema30": 80635.4770844439,
+              "current_ema9": 80628.01417975596,
+              "current_price": 80616.16,
+              "endpoints_are_actual_observations": true,
+              "first_ema30": 80636.80929480349,
+              "first_ema9": 80630.97772469495,
+              "first_price": 80614.54,
+              "first_source_ms": 1793135759252.742,
+              "last_source_ms": 1793135766189.966,
+              "max_sample_gap_s": 3.05580322265625,
+              "observed_duration_s": 6.93722412109375,
+              "observed_from_start": true,
+              "owner_ema30_rate_btc_s": 0.19203795874704224,
+              "owner_ema9_rate_btc_s": 0.42719463682579634,
+              "owner_price_rate_btc_s": -0.23352279985938812,
+              "sample_count": 5,
+              "source_continuous": true,
+              "source_ms": 1793135766189.966,
+              "start_source_ms": 1793135759252.742,
+              "window_s": 6.0
+            },
+            "current_owner_price_rate_btc_s": -0.23352279985938812,
+            "observed": true,
+            "outward_rate_reduction_fraction": null,
+            "owner_price_retreat_observed": true,
+            "positive_outward_rate_slowing": false,
+            "positive_rate_reduction_resolution": 0.18,
+            "previous_end_source_ms": 1793135759252.742,
+            "previous_observed_duration_s": 6.136950927734375,
+            "previous_owner_price_rate_btc_s": -0.0016294736771592675,
+            "previous_start_source_ms": 1793135753115.791,
+            "sideways_observed": false,
+            "sideways_velocity_resolution_btc_s": 0.15
+          },
+          "source_ms": 1793135766189.966,
+          "spent_edge": false,
+          "stall": false,
+          "strong_active_release": false,
+          "terminal_evidence_qualified": false
+        },
+        "observed_history_seconds": 430.61072397232056,
+        "persistence_seconds": 0.0,
+        "physical_current": true,
+        "r22_process_required": false,
+        "rail_alignment_fraction": 0.0,
+        "rail_detector": {
+          "ema9_sides": [
+            "NO",
+            "NO",
+            null
+          ],
+          "qualification_min_persistence_s": 900.0,
+          "residence_samples": 241
+        },
+        "rail_residence_fraction": 0.0,
+        "recovery_swing_terrain": {
+          "active": false,
+          "completed_walls": [],
+          "lookback_seconds": 1200.0,
+          "observed_ts": 1793135766.189966,
+          "reason": "RECENT_SWING_CAPACITY_NOT_PROVED",
+          "transitions": 0
+        },
+        "release_probe": {
+          "arc_phase": "MATURE",
+          "arc_side": "NO",
+          "btc": 80616.16,
+          "diagnostics": {
+            "arc_phase": "MATURE",
+            "recent_rows": 51
+          },
+          "ema30": 80635.4770844439,
+          "ema9": 80628.01417975596,
+          "heist_edge_tolerance": null,
+          "heist_lower": null,
+          "heist_upper": null,
+          "medium_struct_side": "NO",
+          "micro_side": "NO",
+          "mountain_edge_age_s": 100.38894311523437,
+          "mountain_extreme_btc": 80611.43,
+          "no_residence_fraction": 1.0,
+          "no_stack_fraction": 1.0,
+          "range60": 1.6300000000046566,
+          "short_struct_side": "NO",
+          "yes_residence_fraction": 0.0,
+          "yes_stack_fraction": 0.0
+        },
+        "source": "DIRECT_BTC_AND_NATIVE_KALSHI",
+        "source_generation": 12495,
+        "territory_detector_summary": {
+          "compression_unresolved": false,
+          "qualified_heist": false,
+          "qualified_mountain": false,
+          "rail_established": false
+        }
+      },
+      "previous_sha256": "f7a7739b21ce764fd57050c3a77c6d7d92d0f10304513a43bcfdf08065b69a8a",
+      "rack": {
+        "active_overlays": [
+          "RELEASE_WATCHER"
+        ],
+        "active_tool": null,
+        "handoff_confirmed": true,
+        "intents": [
+          {
+            "action": "RELAY",
+            "expires_when": "RELEASE_INVALIDATES_OR_NEXT_TERRITORY_OWNS",
+            "lane": "HANDOFF",
+            "max_price": 0.5,
+            "metadata": {
+              "boundary_break": true,
+              "custody": "LEVIATHAN_RELEASE",
+              "directional_expansion": true,
+              "floor_policy": {
+                "arm_roi": 0.5,
+                "first_arm_allowed": true,
+                "immediate_arm_roi": 1.0,
+                "management_evidence": {},
+                "min_age_s": 30.0,
+                "roi_trail_tiers": [
+                  [
+                    1.5,
+                    0.03
+                  ],
+                  [
+                    6.0,
+                    0.02
+                  ]
+                ],
+                "tighten_armed_to": null,
+                "trail_fraction": 0.1
+              },
+              "new_side_residence": false,
+              "old_owner_failed_reextension": true,
+              "old_owner_side": "YES",
+              "physical_mission_id": "ALTERNATING_MOUNTAIN_0003:RELEASE:NO",
+              "physical_renewal": {
+                "independent": false,
+                "observed_at": 1793135766.189966,
+                "renewal_kind": "CONFIRMED_RELEASE_TRANSFER"
+              },
+              "release_entry_proof": {
+                "boundary_break": true,
+                "candidate_side": "NO",
+                "directional_expansion": true,
+                "fresh_transfer": false,
+                "new_side_residence": true,
+                "observed_at": 1793135766.189966,
+                "old_owner_failed_reextension": true,
+                "qualified": true,
+                "revalidation": {
+                  "arc_side": "NO",
+                  "boundary": "PRICE_BELOW_EMA9_AGAINST_OLD_OWNER",
+                  "candidate": "NO",
+                  "micro_side": "NO",
+                  "residence_fraction": 1.0,
+                  "short_struct_side": "NO",
+                  "stack_fraction": 1.0
+                },
+                "source": "CURRENT_REVALIDATED_TRANSFER"
+              }
+            },
+            "opportunity_id": "ALTERNATING_MOUNTAIN_0003:RELEASE:NO:KXBTC15M-26OCT271730-30",
+            "reason": "RELEASE_CONFIRMED_LEVIATHAN_HANDOFF",
+            "side": "NO",
+            "size_tier": 25.0,
+            "source_time": 1793135766.3603933,
+            "territory_id": "ALTERNATING_MOUNTAIN_0003",
+            "tool": "RELEASE_WATCHER"
+          }
+        ],
+        "lane_resolution_reason": "CONFIRMED_HANDOFF_SUPPRESSES_OUTGOING_TERRITORY_INTENTS",
+        "overlay_intents": [
+          {
+            "action": "RELAY",
+            "expires_when": "RELEASE_INVALIDATES_OR_NEXT_TERRITORY_OWNS",
+            "lane": "HANDOFF",
+            "max_price": 0.5,
+            "metadata": {
+              "boundary_break": true,
+              "custody": "LEVIATHAN_RELEASE",
+              "directional_expansion": true,
+              "floor_policy": {
+                "arm_roi": 0.5,
+                "first_arm_allowed": true,
+                "immediate_arm_roi": 1.0,
+                "management_evidence": {},
+                "min_age_s": 30.0,
+                "roi_trail_tiers": [
+                  [
+                    1.5,
+                    0.03
+                  ],
+                  [
+                    6.0,
+                    0.02
+                  ]
+                ],
+                "tighten_armed_to": null,
+                "trail_fraction": 0.1
+              },
+              "new_side_residence": false,
+              "old_owner_failed_reextension": true,
+              "old_owner_side": "YES",
+              "physical_mission_id": "ALTERNATING_MOUNTAIN_0003:RELEASE:NO",
+              "physical_renewal": {
+                "independent": false,
+                "observed_at": 1793135766.189966,
+                "renewal_kind": "CONFIRMED_RELEASE_TRANSFER"
+              },
+              "release_entry_proof": {
+                "boundary_break": true,
+                "candidate_side": "NO",
+                "directional_expansion": true,
+                "fresh_transfer": false,
+                "new_side_residence": true,
+                "observed_at": 1793135766.189966,
+                "old_owner_failed_reextension": true,
+                "qualified": true,
+                "revalidation": {
+                  "arc_side": "NO",
+                  "boundary": "PRICE_BELOW_EMA9_AGAINST_OLD_OWNER",
+                  "candidate": "NO",
+                  "micro_side": "NO",
+                  "residence_fraction": 1.0,
+                  "short_struct_side": "NO",
+                  "stack_fraction": 1.0
+                },
+                "source": "CURRENT_REVALIDATED_TRANSFER"
+              }
+            },
+            "opportunity_id": "ALTERNATING_MOUNTAIN_0003:RELEASE:NO:KXBTC15M-26OCT271730-30",
+            "reason": "RELEASE_CONFIRMED_LEVIATHAN_HANDOFF",
+            "side": "NO",
+            "size_tier": 25.0,
+            "source_time": 1793135766.3603933,
+            "territory_id": "ALTERNATING_MOUNTAIN_0003",
+            "tool": "RELEASE_WATCHER"
+          }
+        ],
+        "owned_side": "NO",
+        "owned_territory": "RELEASE_TRANSITION",
+        "ownership_reason": "RELEASE_TRANSITION_AWAITING_NEXT_TOOL_TERRITORY",
+        "primary_intents": [],
+        "raw_decision": {
+          "reason": "SAME_DIRECTION_MOUNTAIN_NOT_YET_RAIL",
+          "side": "NO",
+          "territory": "ROLLING_MOUNTAIN"
+        },
+        "release_boundary_name": "RELEASE_TRANSITION_LATCHED",
+        "release_diagnostics": {
+          "entry_evidence": {
+            "boundary_break": true,
+            "candidate_side": "NO",
+            "directional_expansion": true,
+            "first_slowdown_only": false,
+            "new_side_residence": true,
+            "old_owner_failed_reextension": true
+          },
+          "entry_revalidation": {
+            "arc_side": "NO",
+            "boundary": "PRICE_BELOW_EMA9_AGAINST_OLD_OWNER",
+            "candidate": "NO",
+            "micro_side": "NO",
+            "residence_fraction": 1.0,
+            "short_struct_side": "NO",
+            "stack_fraction": 1.0
+          },
+          "from_side": "YES",
+          "from_territory": "ALTERNATING_MOUNTAIN",
+          "source": "LATCHED_CONFIRMED_RELEASE"
+        },
+        "release_transition_pending": false,
+        "territory_id": "RELEASE_TRANSITION_0004"
+      },
+      "sequence": 11090,
+      "sha256": "ab164ff73a3dbcd64cb7acbf3cc0e89e2c3680a0e972bbcdd7c0078a90a3782f",
+      "source_generation": 12495,
+      "source_status": {
+        "book_current": true,
+        "btc": {
+          "connection_epoch": 3,
+          "engine_controls": false,
+          "error_type_or_code": null,
+          "geometry_samples": 1694,
+          "last_receive_wall": 1793135766.354934,
+          "last_recoverable_fault": {
+            "exception_type": "FeedFault",
+            "occurred_utc": "2026-10-27T21:08:53.310508+00:00",
+            "occurred_wall": 1793135333.3105085,
+            "reason": "NO_PUBLIC_ENVELOPE_15S"
+          },
+          "public_only": true,
+          "queue_length": 0,
+          "raw_frames": 4406,
+          "raw_uncompressed_bytes": 2695324,
+          "state": "PUBLIC_GEOMETRY_READY"
+        },
+        "btc_connection_epoch": 3,
+        "btc_current": true,
+        "btc_geometry_age_seconds": 0.17014002799987793,
+        "btc_geometry_receive_age_seconds": 0.1072719999938272,
+        "captured_together_without_producer_reread": true,
+        "closed": false,
+        "different_exchanges_are_not_claimed_simultaneous": true,
+        "discovery_error": null,
+        "entry_quote_available": true,
+        "geometry_rows": 241,
+        "geometry_source": "DIRECT_COINBASE_PUBLIC_TRADES",
+        "legacy_strategy_authority": false,
+        "native": {
+          "backlog_drops": 0,
+          "book_invalidations": 0,
+          "book_updates_folded": 20321,
+          "connected": true,
+          "current_book_receive_age_sec": 0.005918,
+          "current_book_seq": 20321,
+          "current_book_sid": 1,
+          "current_book_valid": true,
+          "deltas_before_snapshot": 0,
+          "generation": 1,
+          "last_error": null,
+          "messages_received": 20367,
+          "oldest_pending_age_sec": 0.0,
+          "pending_messages": 0,
+          "reconnects": 0,
+          "revision": "TOOL-RACK-NATIVE-RECEIVER-1",
+          "telemetry_drops": 0,
+          "telemetry_oldest_pending_age_sec": 0.0,
+          "telemetry_pending_messages": 0
+        },
+        "rest_book": {
+          "body_sha256": "004de065fa15ced0725b0f1563c5a3ef59be3469fed2f162ac82a3f6caf02bcc",
+          "diagnostic_only": true,
+          "observed_ts": 1793135721.9842782,
+          "ticker": "KXBTC15M-26OCT271730-30"
+        },
+        "rest_diagnostic_error": null,
+        "revision": "TOOL_RACK_DIRECT_MARKET_DATA_V1",
+        "source_error": null,
+        "started": true
+      }
+    }
+  },
+  "schema": "PID13432_RECORDED_RELEASE_REACQUISITION_V1",
+  "source_archive_sha256": "0517e3e4efb2f8a48b948082fba042694a273ab08d03c34d8d2275ba8ae9d3e2",
+  "source_revision": "4153789",
+  "source_run": "TOOL_RACK_PAPER_20261027T202810Z_PID13432"
+}

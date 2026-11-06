@@ -1,0 +1,14 @@
+{
+  "source_run": "TOOL_RACK_PAPER_20261103T083112Z_PID13560",
+  "purpose": "Frozen positive controls from the first high-participation Positive Briefing run. Preserve entry family and custody lessons; outcomes do not grant authority by themselves.",
+  "controls": [
+    {"trade": 2, "setup": "HEIST_OUTER_WALL_RENTER", "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER", "side": "NO", "entry": 0.18, "mfe_bid": 0.34, "mfe_roi": 0.8888888889, "lesson": "Genuine Heist outer-wall renter; tactical harvest, never settlement custody."},
+    {"trade": 9, "setup": "RECENT_LEVEL_MATCH_RETURN", "reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN", "side": "YES", "entry": 0.17, "mfe_bid": 0.52, "mfe_roi": 2.0588235294, "lesson": "Matched recent low plus sub-20 return value is a strong positive control."},
+    {"trade": 12, "setup": "RECENT_LEVEL_MATCH_RETURN", "reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN", "side": "NO", "entry": 0.16, "mfe_bid": 0.39, "mfe_roi": 1.4375, "lesson": "Mirror matched-high return positive control."},
+    {"trade": 14, "setup": "PARALLEL_HEIST_STALLED_EDGE", "reason": "HEIST_PARALLEL_STALLED_EDGE_RETURN", "side": "YES", "entry": 0.19, "mfe_bid": 0.39, "mfe_roi": 1.0526315789, "lesson": "Stalled parallel Heist edge can be rented early; tactical harvest or promotion."},
+    {"trade": 18, "setup": "INHERITED_ROLLOVER_CONTINUATION", "reason": "COMMANDER_INHERITED_YOUNG_LEG_ROLLOVER_CONTINUATION", "side": "YES", "entry": 0.45, "mfe_bid": 0.92, "mfe_roi": 1.0444444444, "lesson": "Young physical leg may continue across rollover at higher opening economics and should receive transition custody."},
+    {"trade": 22, "setup": "EXTENDED_EXTREME_SUB20_RETURN", "reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN", "side": "YES", "entry": 0.064, "mfe_bid": 0.28, "mfe_roi": 3.375, "lesson": "Cheap extended-Mountain extreme return can seed a large leg; do not kill it because the outgoing parent has not flipped yet."},
+    {"trade": 30, "setup": "EXTENDED_EXTREME_SUB20_RETURN", "reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN", "side": "YES", "entry": 0.18, "mfe_bid": 0.36, "mfe_roi": 1.0, "lesson": "Second extended-extreme positive control at ordinary sub-20 value."},
+    {"trade": 35, "setup": "RECENT_LEVEL_MATCH_RETURN", "reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN", "side": "NO", "entry": 0.20, "mfe_bid": 0.40, "mfe_roi": 1.0, "lesson": "Exact 20c matched-level return positive control."}
+  ]
+}

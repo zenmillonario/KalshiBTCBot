@@ -1,0 +1,41 @@
+{
+  "schema": "PID12448_RECORDED_HOLDING_CONTINUITY_SUPPLEMENT_V1",
+  "base_declaration_sha256": "efd1b3130c08a27894d6ef681f52175e4939a56a30b26179b4df0bf111353b35",
+  "prior_hold_supplement_sha256": "fc090652b2b3cf15b936e9b9cf7c2bf179a970f3aaffa2f9aad6a20f6c003370",
+  "declared_before_corrected_continuity_replay": true,
+  "reason_for_supplement": "The second corrected runtime retained the peak NO through the broad top, but the anticipated incoming parent was invalidated by a later high. After the actual NO return and source gap, the rack reacquired NO while the held mission remained UNKNOWN and could not collect on its actual return leg. Retention alone did not prove working position management.",
+  "source_failure": {
+    "entry_frame": 5180,
+    "anticipated_parent_id": "P002L000008",
+    "anticipation_invalidation_frame": 5609,
+    "new_observed_parent_frame": 5971,
+    "new_observed_parent_id": "P004L000009",
+    "first_reacquired_rack_frame": 6657,
+    "last_observed_orphan_frame": 7091,
+    "reason": "HELD_PARENT_REACQUISITION_NOT_VERIFIED",
+    "scope_status": "UNKNOWN",
+    "current_parent_side": "NO",
+    "held_side": "NO",
+    "held_collection_qualified": false,
+    "held_weakness_count": 0
+  },
+  "requirements": [
+    {
+      "id": "retained_full_arc_has_observed_return_management",
+      "expectation": "A still-held full ARC that survives anticipation invalidation must be managed by a legitimate observed same-side return once the rack reacquires that current return. The original invalidation and frozen entry remain intact; an explicit causal holding link may adopt the later observed scope without asserting an observed path across a missing source interval.",
+      "required_evidence": [
+        "The held mission references the actual observed return scope or a verified causal link to it.",
+        "The actual return's weakness and terminal evidence can govern collection of that lot.",
+        "Original anticipation invalidation and the source gap are preserved as historical facts.",
+        "The link creates no entry, replenishes no entry budget, and invents no weakness or terminal."
+      ],
+      "failure_condition": "After runtime reacquisition clears on a current same-side active parent in the same open contract, a retained ARC remains UNKNOWN or HELD_PARENT_REACQUISITION_NOT_VERIFIED with no legitimate scope link.",
+      "exclusions": [
+        "A transient source outage while reacquisition is still pending is not itself failure.",
+        "An absent official final result is disclosed separately and cannot be synthesized.",
+        "A valid proved structural exit may close the lot before later adoption is needed."
+      ]
+    }
+  ],
+  "production_logic": "Frame identifiers and this historical region are offline acceptance evidence only. They are not inputs to production strategy logic."
+}

@@ -1,0 +1,1425 @@
+{
+  "schema": "PID12448_MAIN_SOURCE_LOCATION_REGRESSION_V1",
+  "provenance": {
+    "replay_directory": "final_simple_zone_complete",
+    "frame": 19337,
+    "source_frame_sha256": "a0b55d97e61755fd3e80b3a0f061b5e528af89f32e79fd5bfd1446581e2f1667",
+    "selected_frame_sha256": "6f64cf35ddf39a48106354886a117923374f29c301ecb704b8340d6f269d006c",
+    "recorded_source_candidate_unmodified": true,
+    "heist_box_premise": "Minimal locally-qualified box premise, bound to recorded actual Heist offer and its edge/source. This is a policy regression, not an independent replay of box detection.",
+    "future_outcome_used": false
+  },
+  "snapshot": {
+    "now_ts": 1793172175.7656744,
+    "ticker": "KXBTC15M-26OCT280330-30",
+    "contract_age_s": 475.7656743526459,
+    "yes_ask": 0.6,
+    "no_ask": 0.41,
+    "yes_bid": 0.59,
+    "no_bid": 0.4,
+    "quote_current": true,
+    "depth_available": true,
+    "entry_allowed": true,
+    "yes_sell_allowed": true,
+    "no_sell_allowed": true,
+    "metadata": {
+      "source": "DIRECT_BTC_AND_NATIVE_KALSHI",
+      "physical_current": true,
+      "mission_context": {
+        "version": "CAUSAL_MISSION_CONTEXT_V1",
+        "current": true,
+        "source_ms": 1793172175360.774,
+        "continuity_generation": 7,
+        "parent": {
+          "id": "P007L000017",
+          "side": "NO",
+          "status": "ACTIVE",
+          "source_ms": 1793172175360.774,
+          "continuity_generation": 7,
+          "origin_ms": 1793171520518.33,
+          "origin_observed": true,
+          "origin_btc": 80826.74,
+          "extreme_btc": 80782.26
+        },
+        "contract": {
+          "ticker": "KXBTC15M-26OCT280330-30",
+          "open_ts": 1793171700.0,
+          "close_ts": 1793172600.0,
+          "target": 80803.93,
+          "thesis_side": "NO",
+          "reason": "Conditional endpoints support this side."
+        },
+        "candidates": {
+          "NO": {
+            "classification": "MAIN_CONTINUATION",
+            "side": "NO",
+            "qualified_edge": false,
+            "parent_leg_id": "P007L000017",
+            "swing_id": "G007A000028",
+            "source_ms": 1793172175360.774,
+            "continuity_generation": 7,
+            "reason": "PERSISTENT_PARENT_DIRECTION",
+            "continuation_supported": false,
+            "current_progress_supported": false,
+            "local_edge_supports_parent": false,
+            "entry_location_qualified": false,
+            "location_evidence": {
+              "near_living_ema9": false,
+              "parent_entry_zone": {
+                "basis": "ACTUAL_PARENT_PRICE_ZONE",
+                "parent_id": "P007L000017",
+                "parent_side": "NO",
+                "source_ms": 1793172175360.774,
+                "continuity_generation": 7,
+                "origin_ms": 1793171520518.33,
+                "origin_observed": true,
+                "origin_btc": 80826.74,
+                "current_btc": 80802.91,
+                "extreme_btc": 80782.26,
+                "directional_travel_from_origin_btc": 23.830000000001746,
+                "directional_extreme_travel_btc": 44.48000000001048,
+                "retreat_from_extreme_btc": 20.65000000000873,
+                "zone_width_btc": 10.570800000001327,
+                "near_origin": false,
+                "near_extreme": false,
+                "location": "LEG_INTERIOR",
+                "age_is_location_permission": false
+              },
+              "ema_contact_alone_is_entry_permission": false,
+              "observed_early_parent": false,
+              "observed_early_parent_is_permission": false,
+              "parent_reference_durations_s": [
+                720.0,
+                900.0,
+                1200.0,
+                540.0
+              ],
+              "parent_reference_family": "COMPLETED_MINUTE_PARENT",
+              "material_parent_return_observed": true,
+              "inherited_contract_value_location": false,
+              "current_rail_value": {
+                "qualified": false,
+                "basis": "CURRENT_OBSERVED_RAIL_CONTINUATION_VALUE",
+                "parent_leg_id": "P007L000017",
+                "side": "NO",
+                "source_ms": 1793172175360.774,
+                "continuity_generation": 7,
+                "rail_established": false,
+                "observed_persistence_seconds": 0.0,
+                "required_persistence_seconds": 900.0,
+                "current_structure_same_side": true,
+                "current_progress_supported": false,
+                "near_living_ema9": false,
+                "material_parent_return_observed": true,
+                "retained_owner_alone_is_permission": false
+              },
+              "contract_continuation": {
+                "qualified": true,
+                "ticker": "KXBTC15M-26OCT280330-30",
+                "from_ticker": "KXBTC15M-26OCT280315-15",
+                "parent_leg_id": "P007L000017",
+                "side": "NO",
+                "continuity_generation": 7,
+                "known_ms": 1793171720352.584,
+                "prior_source_ms": 1793171696675.015,
+                "opening_ms": 1793171700000.0,
+                "prior_earned_location": false,
+                "prior_held_scope": true,
+                "basis": "OBSERVED_SAME_PARENT_ROLLOVER_WITH_PRIOR_EARNED_SCOPE",
+                "opening_time_alone_is_permission": false
+              },
+              "recognition_freshness_used": false,
+              "opening_time_used_as_permission": false
+            },
+            "observed_release_continuation": {
+              "qualified": false,
+              "source_ms": 1793172175360.774,
+              "side": "NO",
+              "confirmed_handoff": false,
+              "basis": "COVERED_CURRENT_BTC_EMA9_EXPANSION",
+              "requires_confirmed_release_intent": true
+            },
+            "contract_thesis_supports_side": true,
+            "destination": {
+              "kind": "PARENT_TERMINAL",
+              "btc": null,
+              "tolerance": 3.0,
+              "reference_source_ms": 1793172175360.774,
+              "scope_id": "P007L000017"
+            }
+          }
+        }
+      },
+      "quote_id": "Q14:1:273766:18865",
+      "current_geometry": {
+        "epoch_ms": 1793172175360.774,
+        "btc_price": 80802.91,
+        "ema9": 80795.94886651289,
+        "ema30": 80793.60357510114
+      },
+      "heist": {
+        "qualified_box": true,
+        "release_confirmed": false,
+        "box_id": "BOX:26927:26935:1793171639482",
+        "at_upper_edge": true,
+        "at_lower_edge": false,
+        "upper": 80805.85,
+        "lower": 80782.26,
+        "edge_tolerance": 3.0,
+        "repeatability_proof": {
+          "window_end_ms": 1793172175360.774
+        }
+      }
+    }
+  },
+  "intent": {
+    "tool": "MARKET_HEIST",
+    "territory_id": "ROLLING_MOUNTAIN_0009:TACTICAL_HEIST",
+    "lane": "MAIN",
+    "side": "NO",
+    "action": "ENTER",
+    "opportunity_id": "ROLLING_MOUNTAIN_0009:TACTICAL_HEIST:HEIST_VISIT:UPPER:1793171325853:NO",
+    "max_price": 0.5,
+    "size_tier": 10.0,
+    "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+    "source_time": 1793172175.7656744,
+    "expires_when": "BOX_EDGE_LEAVES_OR_RELEASE_CONFIRMS",
+    "metadata": {
+      "box_id": "BOX:26927:26935:1793171639482",
+      "visit_id": "UPPER:1793171325853",
+      "lean_side": "YES",
+      "lean_aligned": false,
+      "lean_evidence": {
+        "version": "CURRENT_EMA9_LEG_LEAN_V2",
+        "source_ms": 1793172175360.774,
+        "side": "YES",
+        "status": "DIRECTIONAL",
+        "basis": "COVERED_CURRENT_EMA9_6_30_60_SECONDS",
+        "horizons": {
+          "6": {
+            "source_ms": 1793172175360.774,
+            "start_source_ms": 1793172165651.0352,
+            "observed_duration_s": 9.70973876953125,
+            "ema9_change": 1.7679999999963911,
+            "resolution": 0.12216146003911975,
+            "covered": true,
+            "connection_epoch": 4,
+            "single_connection_epoch": true
+          },
+          "30": {
+            "source_ms": 1793172175360.774,
+            "start_source_ms": 1793172139649.135,
+            "observed_duration_s": 35.71163891601562,
+            "ema9_change": 2.1600000000034925,
+            "resolution": 0.4493000330822419,
+            "covered": true,
+            "connection_epoch": 4,
+            "single_connection_epoch": true
+          },
+          "60": {
+            "source_ms": 1793172175360.774,
+            "start_source_ms": 1793172112159.01,
+            "observed_duration_s": 63.20176391601562,
+            "ema9_change": 1.7422833717719186,
+            "resolution": 0.795162459082404,
+            "covered": true,
+            "connection_epoch": 4,
+            "single_connection_epoch": true
+          }
+        },
+        "historical_ema30_can_override": false
+      },
+      "observed_ask": 0.41,
+      "entry_box_lower": 80782.26,
+      "entry_box_upper": 80805.85,
+      "entry_edge_tolerance": 3.0,
+      "floor_policy": {
+        "arm_roi": 0.5,
+        "trail_fraction": 0.03,
+        "min_age_s": 30.0,
+        "immediate_arm_roi": null,
+        "first_arm_allowed": false,
+        "first_arm_from_current_bid": true,
+        "roi_trail_tiers": [],
+        "tighten_armed_to": null,
+        "profit_protection_state": "ENTRY_CANDLE_BREATHING",
+        "profit_policy_revision": "PID7516_PHYSICAL_COLLECTION_CURRENT_BID",
+        "management_evidence": {}
+      },
+      "position_role": "PRIMARY",
+      "physical_mission_id": "MAIN:P007L000017:NO",
+      "physical_renewal": {
+        "independent": true,
+        "renewal_kind": "HEIST_NEW_EDGE_VISIT",
+        "observed_at": 1793172175.360774
+      },
+      "mission": {
+        "version": "PID10092_PERSISTENT_MISSIONS_V1",
+        "purpose": "MAIN_CONTRACT",
+        "side": "NO",
+        "parent_leg_id": "P007L000017",
+        "swing_id": "G007A000028",
+        "source_ms": 1793172175360.774,
+        "continuity_generation": 7,
+        "classification": "MAIN_CONTINUATION",
+        "target_kind": "PARENT_TERMINAL",
+        "destination": {
+          "kind": "PARENT_TERMINAL"
+        },
+        "contract_thesis_at_entry": "NO",
+        "contract_thesis_reason": "Conditional endpoints support this side.",
+        "scope_status_at_entry": "ACTIVE",
+        "collection_policy": "THIRD_DISTINCT_WEAKNESS_V1"
+      }
+    }
+  },
+  "native_book": {
+    "close_ts": 1793172600.0,
+    "current": true,
+    "entry_allowed": true,
+    "exchange_ts": 1793172175.732,
+    "no_bids": [
+      {
+        "price": 0.4,
+        "quantity": 9915.84
+      },
+      {
+        "price": 0.39,
+        "quantity": 4744.4
+      },
+      {
+        "price": 0.38,
+        "quantity": 3386.62
+      },
+      {
+        "price": 0.37,
+        "quantity": 2548.37
+      },
+      {
+        "price": 0.36,
+        "quantity": 2603.0
+      },
+      {
+        "price": 0.35,
+        "quantity": 4045.58
+      },
+      {
+        "price": 0.34,
+        "quantity": 3807.81
+      },
+      {
+        "price": 0.33,
+        "quantity": 12484.37
+      },
+      {
+        "price": 0.32,
+        "quantity": 3194.73
+      },
+      {
+        "price": 0.31,
+        "quantity": 3493.66
+      },
+      {
+        "price": 0.3,
+        "quantity": 4264.65
+      },
+      {
+        "price": 0.29,
+        "quantity": 3752.93
+      },
+      {
+        "price": 0.28,
+        "quantity": 4236.11
+      },
+      {
+        "price": 0.27,
+        "quantity": 3928.24
+      },
+      {
+        "price": 0.26,
+        "quantity": 4604.63
+      },
+      {
+        "price": 0.25,
+        "quantity": 8835.19
+      },
+      {
+        "price": 0.24,
+        "quantity": 5537.17
+      },
+      {
+        "price": 0.23,
+        "quantity": 4476.75
+      },
+      {
+        "price": 0.22,
+        "quantity": 4922.8
+      },
+      {
+        "price": 0.21,
+        "quantity": 5847.97
+      },
+      {
+        "price": 0.2,
+        "quantity": 9815.3
+      },
+      {
+        "price": 0.19,
+        "quantity": 15696.73
+      },
+      {
+        "price": 0.18,
+        "quantity": 9807.62
+      },
+      {
+        "price": 0.17,
+        "quantity": 13339.0
+      },
+      {
+        "price": 0.16,
+        "quantity": 8002.47
+      },
+      {
+        "price": 0.15,
+        "quantity": 18616.82
+      },
+      {
+        "price": 0.14,
+        "quantity": 17079.16
+      },
+      {
+        "price": 0.13,
+        "quantity": 17363.26
+      },
+      {
+        "price": 0.12,
+        "quantity": 12199.16
+      },
+      {
+        "price": 0.11,
+        "quantity": 18053.04
+      },
+      {
+        "price": 0.1,
+        "quantity": 30879.47
+      },
+      {
+        "price": 0.099,
+        "quantity": 9605.0
+      },
+      {
+        "price": 0.098,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.097,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.096,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.095,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.094,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.093,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.092,
+        "quantity": 28014.0
+      },
+      {
+        "price": 0.091,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.09,
+        "quantity": 15974.08
+      },
+      {
+        "price": 0.089,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.088,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.087,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.086,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.085,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.084,
+        "quantity": 1246.24
+      },
+      {
+        "price": 0.083,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.082,
+        "quantity": 16170.0
+      },
+      {
+        "price": 0.081,
+        "quantity": 795.0
+      },
+      {
+        "price": 0.08,
+        "quantity": 2989.2
+      },
+      {
+        "price": 0.079,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.078,
+        "quantity": 1297.23
+      },
+      {
+        "price": 0.077,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.076,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.075,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.074,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.073,
+        "quantity": 15845.0
+      },
+      {
+        "price": 0.072,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.071,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.07,
+        "quantity": 3133.39
+      },
+      {
+        "price": 0.069,
+        "quantity": 90.96
+      },
+      {
+        "price": 0.068,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.067,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.066,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.065,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.064,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.063,
+        "quantity": 15845.0
+      },
+      {
+        "price": 0.062,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.061,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.06,
+        "quantity": 51817.4
+      },
+      {
+        "price": 0.059,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.058,
+        "quantity": 10592.55
+      },
+      {
+        "price": 0.057,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.056,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.055,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.054,
+        "quantity": 5101.8
+      },
+      {
+        "price": 0.053,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.052,
+        "quantity": 2316.0
+      },
+      {
+        "price": 0.051,
+        "quantity": 55.0
+      },
+      {
+        "price": 0.05,
+        "quantity": 5676.27
+      },
+      {
+        "price": 0.049,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.048,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.047,
+        "quantity": 4468.55
+      },
+      {
+        "price": 0.046,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.045,
+        "quantity": 27.0
+      },
+      {
+        "price": 0.044,
+        "quantity": 1036.0
+      },
+      {
+        "price": 0.043,
+        "quantity": 27.0
+      },
+      {
+        "price": 0.042,
+        "quantity": 2620.0
+      },
+      {
+        "price": 0.041,
+        "quantity": 1887.0
+      },
+      {
+        "price": 0.04,
+        "quantity": 8145.91
+      },
+      {
+        "price": 0.039,
+        "quantity": 23.0
+      },
+      {
+        "price": 0.038,
+        "quantity": 1032.0
+      },
+      {
+        "price": 0.037,
+        "quantity": 21.0
+      },
+      {
+        "price": 0.036,
+        "quantity": 1030.0
+      },
+      {
+        "price": 0.035,
+        "quantity": 33.0
+      },
+      {
+        "price": 0.034,
+        "quantity": 1042.0
+      },
+      {
+        "price": 0.033,
+        "quantity": 1906.0
+      },
+      {
+        "price": 0.032,
+        "quantity": 1442.0
+      },
+      {
+        "price": 0.031,
+        "quantity": 342.68
+      },
+      {
+        "price": 0.03,
+        "quantity": 7306.7
+      },
+      {
+        "price": 0.029,
+        "quantity": 646.0
+      },
+      {
+        "price": 0.028,
+        "quantity": 1655.0
+      },
+      {
+        "price": 0.027,
+        "quantity": 26.0
+      },
+      {
+        "price": 0.026,
+        "quantity": 1032.0
+      },
+      {
+        "price": 0.025,
+        "quantity": 288.0
+      },
+      {
+        "price": 0.024,
+        "quantity": 3744.0
+      },
+      {
+        "price": 0.023,
+        "quantity": 21.0
+      },
+      {
+        "price": 0.022,
+        "quantity": 1940.0
+      },
+      {
+        "price": 0.021,
+        "quantity": 3405.0
+      },
+      {
+        "price": 0.02,
+        "quantity": 9832.24
+      },
+      {
+        "price": 0.019,
+        "quantity": 249.0
+      },
+      {
+        "price": 0.018,
+        "quantity": 1258.0
+      },
+      {
+        "price": 0.017,
+        "quantity": 345.0
+      },
+      {
+        "price": 0.016,
+        "quantity": 2686.0
+      },
+      {
+        "price": 0.015,
+        "quantity": 742.0
+      },
+      {
+        "price": 0.014,
+        "quantity": 1979.0
+      },
+      {
+        "price": 0.013,
+        "quantity": 1537.0
+      },
+      {
+        "price": 0.012,
+        "quantity": 29417.0
+      },
+      {
+        "price": 0.011,
+        "quantity": 4783.18
+      },
+      {
+        "price": 0.01,
+        "quantity": 20685.5
+      },
+      {
+        "price": 0.009,
+        "quantity": 6896.67
+      },
+      {
+        "price": 0.008,
+        "quantity": 11118.0
+      },
+      {
+        "price": 0.007,
+        "quantity": 13154.43
+      },
+      {
+        "price": 0.006,
+        "quantity": 21618.0
+      },
+      {
+        "price": 0.005,
+        "quantity": 27292.0
+      },
+      {
+        "price": 0.004,
+        "quantity": 22845.0
+      },
+      {
+        "price": 0.003,
+        "quantity": 38279.0
+      },
+      {
+        "price": 0.002,
+        "quantity": 200065.0
+      },
+      {
+        "price": 0.001,
+        "quantity": 744873.08
+      }
+    ],
+    "no_sell_allowed": true,
+    "observed_ts": 1793172175.7412312,
+    "provenance": {
+      "exchange_time_basis": "WS_ENVELOPE_SENDING_TS",
+      "exchange_timestamp_known": true,
+      "feed_revision": "TOOL_RACK_DIRECT_MARKET_DATA_V1",
+      "monotonic_receive_fresh": true,
+      "native_quote_generation": 14,
+      "quote_reason": "VALID",
+      "raw_depth_is_not_a_venue_fill": true,
+      "receive_age_seconds": 0.023829600017052144,
+      "received_monotonic": 315247.1150016,
+      "receiver_generation": 1,
+      "seq": 273766,
+      "sequence_checked": true,
+      "sid": 1,
+      "snapshot_verified": true,
+      "source_generation": 20778
+    },
+    "quote_id": "Q14:1:273766:18865",
+    "source": "WS_SEQUENCE_CHECKED_BOOK",
+    "ticker": "KXBTC15M-26OCT280330-30",
+    "yes_bids": [
+      {
+        "price": 0.59,
+        "quantity": 3396.03
+      },
+      {
+        "price": 0.58,
+        "quantity": 5635.04
+      },
+      {
+        "price": 0.57,
+        "quantity": 1065.4
+      },
+      {
+        "price": 0.56,
+        "quantity": 1204.0
+      },
+      {
+        "price": 0.55,
+        "quantity": 1889.01
+      },
+      {
+        "price": 0.54,
+        "quantity": 1592.78
+      },
+      {
+        "price": 0.53,
+        "quantity": 1707.47
+      },
+      {
+        "price": 0.52,
+        "quantity": 2645.23
+      },
+      {
+        "price": 0.51,
+        "quantity": 2528.16
+      },
+      {
+        "price": 0.5,
+        "quantity": 2126.96
+      },
+      {
+        "price": 0.49,
+        "quantity": 2017.2
+      },
+      {
+        "price": 0.48,
+        "quantity": 1951.49
+      },
+      {
+        "price": 0.47,
+        "quantity": 2408.0
+      },
+      {
+        "price": 0.46,
+        "quantity": 2958.22
+      },
+      {
+        "price": 0.45,
+        "quantity": 1951.49
+      },
+      {
+        "price": 0.44,
+        "quantity": 11051.83
+      },
+      {
+        "price": 0.43,
+        "quantity": 3009.49
+      },
+      {
+        "price": 0.42,
+        "quantity": 2949.49
+      },
+      {
+        "price": 0.41,
+        "quantity": 3074.49
+      },
+      {
+        "price": 0.4,
+        "quantity": 3474.0
+      },
+      {
+        "price": 0.39,
+        "quantity": 3319.96
+      },
+      {
+        "price": 0.38,
+        "quantity": 3029.56
+      },
+      {
+        "price": 0.37,
+        "quantity": 3120.56
+      },
+      {
+        "price": 0.36,
+        "quantity": 4695.56
+      },
+      {
+        "price": 0.35,
+        "quantity": 4768.62
+      },
+      {
+        "price": 0.34,
+        "quantity": 3430.68
+      },
+      {
+        "price": 0.33,
+        "quantity": 3531.79
+      },
+      {
+        "price": 0.32,
+        "quantity": 1844.3
+      },
+      {
+        "price": 0.31,
+        "quantity": 16290.2
+      },
+      {
+        "price": 0.3,
+        "quantity": 2041.47
+      },
+      {
+        "price": 0.29,
+        "quantity": 2119.36
+      },
+      {
+        "price": 0.28,
+        "quantity": 2327.4
+      },
+      {
+        "price": 0.27,
+        "quantity": 1648.32
+      },
+      {
+        "price": 0.26,
+        "quantity": 2451.77
+      },
+      {
+        "price": 0.25,
+        "quantity": 7050.54
+      },
+      {
+        "price": 0.24,
+        "quantity": 2359.2
+      },
+      {
+        "price": 0.23,
+        "quantity": 2132.81
+      },
+      {
+        "price": 0.22,
+        "quantity": 1834.21
+      },
+      {
+        "price": 0.21,
+        "quantity": 4801.77
+      },
+      {
+        "price": 0.2,
+        "quantity": 9484.94
+      },
+      {
+        "price": 0.19,
+        "quantity": 12864.87
+      },
+      {
+        "price": 0.18,
+        "quantity": 8978.55
+      },
+      {
+        "price": 0.17,
+        "quantity": 12951.14
+      },
+      {
+        "price": 0.16,
+        "quantity": 7729.32
+      },
+      {
+        "price": 0.15,
+        "quantity": 16664.85
+      },
+      {
+        "price": 0.14,
+        "quantity": 16673.59
+      },
+      {
+        "price": 0.13,
+        "quantity": 17557.5
+      },
+      {
+        "price": 0.12,
+        "quantity": 11554.8
+      },
+      {
+        "price": 0.11,
+        "quantity": 17123.82
+      },
+      {
+        "price": 0.1,
+        "quantity": 29647.57
+      },
+      {
+        "price": 0.099,
+        "quantity": 10865.0
+      },
+      {
+        "price": 0.098,
+        "quantity": 1051.3
+      },
+      {
+        "price": 0.097,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.096,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.095,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.094,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.093,
+        "quantity": 12605.0
+      },
+      {
+        "price": 0.092,
+        "quantity": 1069.53
+      },
+      {
+        "price": 0.091,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.09,
+        "quantity": 34238.16
+      },
+      {
+        "price": 0.089,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.088,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.087,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.086,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.085,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.084,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.083,
+        "quantity": 20273.0
+      },
+      {
+        "price": 0.082,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.081,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.08,
+        "quantity": 6813.35
+      },
+      {
+        "price": 0.079,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.078,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.077,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.076,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.075,
+        "quantity": 91.55
+      },
+      {
+        "price": 0.074,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.073,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.072,
+        "quantity": 16854.0
+      },
+      {
+        "price": 0.071,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.07,
+        "quantity": 3222.88
+      },
+      {
+        "price": 0.069,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.068,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.067,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.066,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.065,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.064,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.063,
+        "quantity": 15845.0
+      },
+      {
+        "price": 0.062,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.061,
+        "quantity": 28740.65
+      },
+      {
+        "price": 0.06,
+        "quantity": 51848.48
+      },
+      {
+        "price": 0.059,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.058,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.057,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.056,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.055,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.054,
+        "quantity": 13277.4
+      },
+      {
+        "price": 0.053,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.052,
+        "quantity": 1086.0
+      },
+      {
+        "price": 0.051,
+        "quantity": 55.0
+      },
+      {
+        "price": 0.05,
+        "quantity": 5817.33
+      },
+      {
+        "price": 0.049,
+        "quantity": 5.0
+      },
+      {
+        "price": 0.048,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.047,
+        "quantity": 4468.55
+      },
+      {
+        "price": 0.046,
+        "quantity": 1014.0
+      },
+      {
+        "price": 0.045,
+        "quantity": 27.0
+      },
+      {
+        "price": 0.044,
+        "quantity": 2417.0
+      },
+      {
+        "price": 0.043,
+        "quantity": 27.0
+      },
+      {
+        "price": 0.042,
+        "quantity": 1148.0
+      },
+      {
+        "price": 0.041,
+        "quantity": 327.0
+      },
+      {
+        "price": 0.04,
+        "quantity": 4623.85
+      },
+      {
+        "price": 0.039,
+        "quantity": 23.0
+      },
+      {
+        "price": 0.038,
+        "quantity": 1032.0
+      },
+      {
+        "price": 0.037,
+        "quantity": 21.0
+      },
+      {
+        "price": 0.036,
+        "quantity": 1030.0
+      },
+      {
+        "price": 0.035,
+        "quantity": 33.0
+      },
+      {
+        "price": 0.034,
+        "quantity": 1042.0
+      },
+      {
+        "price": 0.033,
+        "quantity": 33.0
+      },
+      {
+        "price": 0.032,
+        "quantity": 1442.0
+      },
+      {
+        "price": 0.031,
+        "quantity": 2393.0
+      },
+      {
+        "price": 0.03,
+        "quantity": 6943.14
+      },
+      {
+        "price": 0.029,
+        "quantity": 26.0
+      },
+      {
+        "price": 0.028,
+        "quantity": 1035.0
+      },
+      {
+        "price": 0.027,
+        "quantity": 26.0
+      },
+      {
+        "price": 0.026,
+        "quantity": 1032.0
+      },
+      {
+        "price": 0.025,
+        "quantity": 718.0
+      },
+      {
+        "price": 0.024,
+        "quantity": 3626.0
+      },
+      {
+        "price": 0.023,
+        "quantity": 21.0
+      },
+      {
+        "price": 0.022,
+        "quantity": 1940.0
+      },
+      {
+        "price": 0.021,
+        "quantity": 359.0
+      },
+      {
+        "price": 0.02,
+        "quantity": 9214.27
+      },
+      {
+        "price": 0.019,
+        "quantity": 249.0
+      },
+      {
+        "price": 0.018,
+        "quantity": 1258.0
+      },
+      {
+        "price": 0.017,
+        "quantity": 345.0
+      },
+      {
+        "price": 0.016,
+        "quantity": 2686.0
+      },
+      {
+        "price": 0.015,
+        "quantity": 742.0
+      },
+      {
+        "price": 0.014,
+        "quantity": 1979.0
+      },
+      {
+        "price": 0.013,
+        "quantity": 6506.0
+      },
+      {
+        "price": 0.012,
+        "quantity": 25878.0
+      },
+      {
+        "price": 0.011,
+        "quantity": 4898.64
+      },
+      {
+        "price": 0.01,
+        "quantity": 19785.9
+      },
+      {
+        "price": 0.009,
+        "quantity": 6896.67
+      },
+      {
+        "price": 0.008,
+        "quantity": 11203.0
+      },
+      {
+        "price": 0.007,
+        "quantity": 13102.43
+      },
+      {
+        "price": 0.006,
+        "quantity": 21347.0
+      },
+      {
+        "price": 0.005,
+        "quantity": 33280.0
+      },
+      {
+        "price": 0.004,
+        "quantity": 23086.0
+      },
+      {
+        "price": 0.003,
+        "quantity": 38437.0
+      },
+      {
+        "price": 0.002,
+        "quantity": 205867.0
+      },
+      {
+        "price": 0.001,
+        "quantity": 786501.07
+      }
+    ],
+    "yes_sell_allowed": true
+  }
+}

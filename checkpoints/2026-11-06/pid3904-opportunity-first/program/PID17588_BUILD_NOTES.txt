@@ -1,0 +1,44 @@
+PID17588 LATE-SCOUT EXISTING-RULE REPAIR
+
+Immediate baseline: exact delivered PID4596 runtime-repair package.
+Baseline ZIP SHA256: 3d18b5a70fb1e189a8223116f25f477f27de8787f45450aa810d6ffcf8caaac0
+Original PID17588 archive SHA256: dc1198df8675bb8f8b1b8f48faed26178798568b2a7c997eda7e6d4b7e0f72eb
+
+Production scope:
+1. strategy_core/commander_candidates.py: apply the existing
+   _late_counter_return_has_runway predicate inside historical_extreme_release_candidates.
+   This completes the previously authorized PID8552 last-120-second rule for the
+   route that omitted it. Existing favorable-TP logic and timing are unchanged.
+2. strategy_core/paper_runtime.py: release identity string only.
+
+The other65 sealed strategy/config/UI files are unchanged. All7 original recorder
+modules are unchanged. Original baseline, PID17224, PID19996 and PID4596 seals and
+approval declarations are retained with fixed hashes. No historical program or
+recording is rewritten.
+
+Recorded proof: original PID17588 decision2729 reproduces original ENTER and
+corrected WAIT; two earlier PID19996 winner trajectories and current #2/#5 retain
+entry identity. Runtime-derived Historical Extreme evidence is rebuilt from exact
+contemporaneous hash-referenced mission history. Fixture manifests and the new
+Construct state the component scope. This is not an altered full-run P/L replay.
+
+Current technical and strategy limits:
+- Promotion profitability wording conflicts with a historical accepted losing-
+  seed fixture. No promotion rule or inherited positive control was rewritten.
+- #4 first-arm suppression is separately explained by full-arc/third-weakness
+  custody; a promotion-only change does not establish a37-cent sale.
+- 9:48 NO local-return coverage and the Quote-Wave observation-path mismatch are
+  separate proposals, not newly enabled permissions.
+- Original full engine replay remains unperformed because interpreter3.14.7
+  differs from audit3.12.14. Standard complete typed verification passed.
+- Newly repaired build is verified offline; native Windows market behavior awaits
+  the next PAPER observation. No real venue order authority exists.
+
+Delivery gate:
+Every inherited current strategy module and Construct, new scout Construct,
+12 capture/export modules, fresh synthetic three-way replay, final manifest
+preflight and archive byte verification must pass. PID17588_VALIDATION.json is
+produced from the actual extracted archive before publication.
+
+Forensic reports inside PID17588_REVIEW_EVIDENCE.zip describe the original program
+read-only. This separate release applies only the explicit two-file delta above.

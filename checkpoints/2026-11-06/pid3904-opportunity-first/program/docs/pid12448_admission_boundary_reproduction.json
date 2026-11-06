@@ -1,0 +1,219 @@
+{
+  "actual_pid12448_diagnostics_available": false,
+  "baseline_git": "4100b41",
+  "cases": [
+    {
+      "label": "center_only_40_percent",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 112.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "WAIT",
+          "collection_boundary_btc": 112.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.41,
+          "estimated_gross_roi": 0.36666666666666664,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 12.0,
+          "probe_btc": 112.0,
+          "reason": "TACTICAL_SWING_BELOW_GROSS_OR_NET_HURDLE"
+        }
+      },
+      "side": "YES",
+      "synthetic_input": true,
+      "target_distance": 13.0,
+      "tolerance": 1.0
+    },
+    {
+      "label": "already_inside_collection_band",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 100.001,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "WAIT",
+          "collection_boundary_btc": 100.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": null,
+          "estimated_gross_roi": null,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 0.0,
+          "probe_btc": 100.001,
+          "reason": "TACTICAL_PHYSICAL_COLLECTION_BAND_ALREADY_REACHED"
+        }
+      },
+      "side": "YES",
+      "synthetic_input": true,
+      "target_distance": 13.0,
+      "tolerance": 13.0
+    },
+    {
+      "label": "genuine_40_percent_at_boundary",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.44,
+          "estimated_gross_roi": 0.46666666666666673,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 15.0,
+          "probe_btc": 113.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "ENTER",
+          "collection_boundary_btc": 113.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 113.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        }
+      },
+      "side": "YES",
+      "synthetic_input": true,
+      "target_distance": 15.0,
+      "tolerance": 2.0
+    },
+    {
+      "label": "center_only_40_percent",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 88.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "WAIT",
+          "collection_boundary_btc": 88.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.41,
+          "estimated_gross_roi": 0.36666666666666664,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 12.0,
+          "probe_btc": 88.0,
+          "reason": "TACTICAL_SWING_BELOW_GROSS_OR_NET_HURDLE"
+        }
+      },
+      "side": "NO",
+      "synthetic_input": true,
+      "target_distance": 13.0,
+      "tolerance": 1.0
+    },
+    {
+      "label": "already_inside_collection_band",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 99.999,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "WAIT",
+          "collection_boundary_btc": 100.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": null,
+          "estimated_gross_roi": null,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": -0.0,
+          "probe_btc": 99.999,
+          "reason": "TACTICAL_PHYSICAL_COLLECTION_BAND_ALREADY_REACHED"
+        }
+      },
+      "side": "NO",
+      "synthetic_input": true,
+      "target_distance": 13.0,
+      "tolerance": 13.0
+    },
+    {
+      "label": "genuine_40_percent_at_boundary",
+      "outcomes": {
+        "base_4100b41": {
+          "admission": "ENTER",
+          "collection_boundary_btc": null,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.44,
+          "estimated_gross_roi": 0.46666666666666673,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 15.0,
+          "probe_btc": 87.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        },
+        "corrected_source": {
+          "admission": "ENTER",
+          "collection_boundary_btc": 87.0,
+          "entry_ask": 0.3,
+          "estimated_exit_bid": 0.42,
+          "estimated_gross_roi": 0.4,
+          "exit_hold_reason_at_probe": null,
+          "hypothetical_probe_seconds_after_fill": 0.4,
+          "manager_collects_at_probe": true,
+          "physical_distance": 13.0,
+          "probe_btc": 87.0,
+          "reason": "QUALIFIED_PHYSICAL_EDGE"
+        }
+      },
+      "side": "NO",
+      "synthetic_input": true,
+      "target_distance": 15.0,
+      "tolerance": 2.0
+    }
+  ],
+  "evidence_type": "CONTROLLED_SOURCE_COMPARISON_NOT_PID12448_REPLAY",
+  "note": "Post-entry collection probes exercise management separately; a corrected WAIT creates no position. These conditional response fixtures do not establish future fills or price outcomes.",
+  "screenshot": "image(20261028-061128).png"
+}

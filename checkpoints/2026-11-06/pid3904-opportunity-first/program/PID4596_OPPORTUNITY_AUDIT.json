@@ -1,0 +1,1572 @@
+{
+  "schema": "tachyos.pid4596.opportunity_audit.v1",
+  "run_id": "TOOL_RACK_PAPER_20261105T011602Z_PID4596",
+  "scope": "Read-only every-successful-decision entry coverage review. No strategy edits, threshold tuning, live orders, alternate P/L, or full exact replay acceptance.",
+  "source_root": "/workspace/scratch/7e09ca6439b6/inputs/pid4596_recovered/original/TOOL_RACK_PAPER_20261105T011602Z_PID4596",
+  "program_root": "/workspace/scratch/7e09ca6439b6/inputs/pid4596_recovered/program",
+  "canonical_decisions_index": "/workspace/scratch/7e09ca6439b6/work/PID4596_FORENSICS/decisions_index.sqlite",
+  "rows_reviewed": 4259,
+  "admitted_entries_or_orders": 0,
+  "cash_end": 1000.0,
+  "positions_end": 0,
+  "realized_net": 0.0,
+  "entry_reason_counts": {
+    "DIRECT_PHYSICAL_SOURCE_WARMING_OR_STALE": 13,
+    "NO_TOOL_INTENT": 3621,
+    "COMMANDER_LEGACY_MOUNTAIN_SPECIALIST_ENTRY_PAUSED_USE_PRIMARY": 86,
+    "COMMANDER_TACTICAL_FADES_PAUSED": 539
+  },
+  "review_reason_counts": {
+    "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY": 3150,
+    "MOUNTAIN_ARMED_VALUE_DIRECT_AUTHORITY": 86,
+    "TACTICAL_CURRENT_EMA9_DIRECTION_MIXED": 374,
+    "TACTICAL_FADES_PAUSED": 176
+  },
+  "review_status_counts": {
+    "NOT_OFFERED": 3150,
+    "ELIGIBLE": 86,
+    "WAIT": 550
+  },
+  "mission_parent_episodes": [
+    {
+      "parent_id": null,
+      "side": null,
+      "first_sequence": 1,
+      "last_sequence": 3,
+      "start_et": "2026-11-04T20:16:06.641-05:00",
+      "end_et": "2026-11-04T20:16:07.144-05:00"
+    },
+    {
+      "parent_id": "P000L000001",
+      "side": "NO",
+      "first_sequence": 4,
+      "last_sequence": 1824,
+      "start_et": "2026-11-04T20:16:07.398-05:00",
+      "end_et": "2026-11-04T20:23:59.511-05:00"
+    },
+    {
+      "parent_id": "P000L000002",
+      "side": "YES",
+      "first_sequence": 1825,
+      "last_sequence": 2906,
+      "start_et": "2026-11-04T20:23:59.945-05:00",
+      "end_et": "2026-11-04T20:29:02.926-05:00"
+    },
+    {
+      "parent_id": "P000L000003",
+      "side": "NO",
+      "first_sequence": 2907,
+      "last_sequence": 3313,
+      "start_et": "2026-11-04T20:29:03.402-05:00",
+      "end_et": "2026-11-04T20:30:51.425-05:00"
+    },
+    {
+      "parent_id": "P000L000004",
+      "side": "YES",
+      "first_sequence": 3314,
+      "last_sequence": 4259,
+      "start_et": "2026-11-04T20:30:51.686-05:00",
+      "end_et": "2026-11-04T20:35:42.587-05:00"
+    }
+  ],
+  "historical_parent_episodes": [
+    {
+      "first_sequence": 1,
+      "start_et": "2026-11-04T20:16:06.641-05:00",
+      "last_sequence": 3,
+      "end_et": "2026-11-04T20:16:07.144-05:00",
+      "evidence_at_start": {
+        "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+        "qualified": false,
+        "side": null,
+        "gap_side": null,
+        "gap_age_s": null,
+        "observed_residence_age_s": null,
+        "observed_residence_start_source_ms": null,
+        "qualification_age_s": null,
+        "gap_stage": "",
+        "gap_btc": 0.0,
+        "gap_minimum_btc": 8.0,
+        "historical_contracts_observed": 0.0,
+        "terminal_watch": false,
+        "opposite_release": false,
+        "source_ms": null,
+        "can_veto": false,
+        "creates_entry": false,
+        "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+      }
+    },
+    {
+      "first_sequence": 4,
+      "start_et": "2026-11-04T20:16:07.398-05:00",
+      "last_sequence": 3372,
+      "end_et": "2026-11-04T20:31:07.803-05:00",
+      "evidence_at_start": {
+        "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+        "qualified": false,
+        "side": null,
+        "gap_side": "NO",
+        "gap_age_s": null,
+        "observed_residence_age_s": 0.0,
+        "observed_residence_start_source_ms": 1793841368749.777,
+        "qualification_age_s": 0.0,
+        "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+        "gap_btc": 61.4013,
+        "gap_minimum_btc": 8.0,
+        "historical_contracts_observed": 0.0,
+        "terminal_watch": false,
+        "opposite_release": false,
+        "source_ms": 1793841368749.777,
+        "can_veto": false,
+        "creates_entry": false,
+        "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+      }
+    },
+    {
+      "first_sequence": 3373,
+      "start_et": "2026-11-04T20:31:08.072-05:00",
+      "last_sequence": 3547,
+      "end_et": "2026-11-04T20:31:58.672-05:00",
+      "evidence_at_start": {
+        "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+        "qualified": true,
+        "side": "NO",
+        "gap_side": "NO",
+        "gap_age_s": null,
+        "observed_residence_age_s": 900.8648168945313,
+        "observed_residence_start_source_ms": 1793841368749.777,
+        "qualification_age_s": 900.8648168945313,
+        "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+        "gap_btc": 34.6624,
+        "gap_minimum_btc": 14.3175,
+        "historical_contracts_observed": 1.0,
+        "terminal_watch": false,
+        "opposite_release": false,
+        "source_ms": 1793842269614.594,
+        "can_veto": false,
+        "creates_entry": false,
+        "basis": "OBSERVED_INHERITED_SAME_SIDE_RESIDENCE"
+      }
+    },
+    {
+      "first_sequence": 3548,
+      "start_et": "2026-11-04T20:31:58.915-05:00",
+      "last_sequence": 3938,
+      "end_et": "2026-11-04T20:33:58.479-05:00",
+      "evidence_at_start": {
+        "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+        "qualified": false,
+        "side": null,
+        "gap_side": "NO",
+        "gap_age_s": null,
+        "observed_residence_age_s": 951.551921875,
+        "observed_residence_start_source_ms": 1793841368749.777,
+        "qualification_age_s": 951.551921875,
+        "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+        "gap_btc": 14.6953,
+        "gap_minimum_btc": 23.2845,
+        "historical_contracts_observed": 1.06,
+        "terminal_watch": false,
+        "opposite_release": false,
+        "source_ms": 1793842320301.699,
+        "can_veto": false,
+        "creates_entry": false,
+        "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+      }
+    },
+    {
+      "first_sequence": 3939,
+      "start_et": "2026-11-04T20:33:58.739-05:00",
+      "last_sequence": 4259,
+      "end_et": "2026-11-04T20:35:42.587-05:00",
+      "evidence_at_start": {
+        "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+        "qualified": false,
+        "side": null,
+        "gap_side": "YES",
+        "gap_age_s": 0.0,
+        "observed_residence_age_s": 0.0,
+        "observed_residence_start_source_ms": 1793842440294.821,
+        "qualification_age_s": 0.0,
+        "gap_stage": "SPROUT",
+        "gap_btc": 4.6097,
+        "gap_minimum_btc": 15.249,
+        "historical_contracts_observed": 0.0,
+        "terminal_watch": false,
+        "opposite_release": false,
+        "source_ms": 1793842440294.821,
+        "can_veto": false,
+        "creates_entry": false,
+        "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+      }
+    }
+  ],
+  "physical_flags_true_counts": {
+    "rolling_mountain": 445,
+    "alternating_mountain": 1011,
+    "ema_pair_parallel": 1125,
+    "directional_residence": 1125,
+    "qualified_heist": 2595,
+    "parent_extended": 15
+  },
+  "release_confirmed_but_price_wait_episodes": [
+    {
+      "first_sequence": 3202,
+      "last_sequence": 3206,
+      "first_et": "2026-11-04T20:30:21.798-05:00",
+      "last_et": "2026-11-04T20:30:22.839-05:00",
+      "side": "NO",
+      "count": 5,
+      "min_ask": 0.59,
+      "max_ask": 0.6,
+      "value_limit": 0.3
+    },
+    {
+      "first_sequence": 3530,
+      "last_sequence": 3578,
+      "first_et": "2026-11-04T20:31:53.732-05:00",
+      "last_et": "2026-11-04T20:32:07.930-05:00",
+      "side": "YES",
+      "count": 49,
+      "min_ask": 0.76,
+      "max_ask": 0.8,
+      "value_limit": 0.3
+    }
+  ],
+  "component_scan": {
+    "physically_current_snapshots_examined": 4246,
+    "raw_physical_candidates": 0,
+    "commander_approved_positive_physical_candidates": 0,
+    "historical_extreme_candidates": 0,
+    "edge_heist_candidates": 0,
+    "quote_wave_candidates_even_with_recorded_briefing_injected": 0,
+    "qualified_opening_rail_contexts": 0,
+    "opening_rail_watch_armed_rows": 0,
+    "historical_cache_method": "Captured ToolRackController._historical_extreme_release_context; exact per-row mission_history_reference, known-at verified.",
+    "limits": "Component inspection and an unconsumed Commander watch, not full stateful ToolRack replay."
+  },
+  "actual_positive_advisers": {
+    "mountain_legacy_yes_proposal_rows": 86,
+    "mountain_commander_pause_rows": 86,
+    "heist_no_proposal_rows": 550,
+    "heist_tactical_fade_pause_rows": 539,
+    "heist_first_counterfade_filtered_rows": 11,
+    "heist_first_counterfade_sequences": [
+      3970,
+      3980
+    ],
+    "heist_calibrated_exemption_flag_rows": 0,
+    "description": "Counts are callbacks, not distinct tradable opportunities. All Heist proposals had counter_parent_fade true, neutral/strict/parallel exceptions false, and no later-calibrated permission flag."
+  },
+  "quote_wave_and_freshness": {
+    "physical_current": 4246,
+    "entry_quote_available": 4004,
+    "current_physical_with_negative_source_age": 4174,
+    "wave_absent": 13,
+    "wave_present": 4246,
+    "wave_present_and_entry_quote_available": 3992,
+    "wave_exactly_matches_both_current_available_sides": 3992,
+    "wave_zero_points": 31,
+    "wrong_ticker_wave_rows": 0,
+    "wave_last_series_age_when_entry_quote_available_s": 0.0,
+    "non_entry_available_one_sided_book_wave_quote_mismatch_rows": 217,
+    "one_sided_mismatch_first_sequence": 2896,
+    "one_sided_mismatch_last_sequence": 3112,
+    "current_geometry_age_range_s": [
+      -1.641726016998291,
+      1.4577064514160156
+    ],
+    "propagation_note": "Captured paper_runtime logs quote_wave but does not copy it onto its live Commander snapshot; ToolRack advisers receive it. The enriched component probe yielded zero quote-wave candidates on this run, so no lost entry is established from that wiring observation."
+  },
+  "same_contract_quote_research_leads": [
+    {
+      "id": "EARLY_YES_SMALL_REBOUND",
+      "classification": "HINDSIGHT_QUOTE_AND_DISPLAYED_DEPTH_RESEARCH_LEAD",
+      "side": "YES",
+      "ticker": "KXBTC15M-26NOV042030-30",
+      "entry": {
+        "sequence": 594,
+        "time_et": "2026-11-04T20:18:38.311-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.16,
+        "yes_bid": 0.15,
+        "no_ask": 0.85,
+        "no_bid": 0.84,
+        "btc": 80305.97,
+        "ema9": 80385.15359758565,
+        "ema30": 80470.45143922458,
+        "parent_side": "NO",
+        "parent_id": "P000L000001",
+        "native_direction": "DOWN",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "NO_TOOL_INTENT",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 150.91084985351563,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 150.91084985351563,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 85.2978,
+          "gap_minimum_btc": 11.9715,
+          "historical_contracts_observed": 0.17,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841519660.627,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": "NO",
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "MAIN_CONTINUATION",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": 0.85,
+            "max_price": 0.2,
+            "source_ms": 1793841519660.627,
+            "candidate_source_ms": 1793841519660.627,
+            "parent_leg_id": "P000L000001",
+            "swing_id": "G000A000003",
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": "NO",
+            "economics": null
+          }
+        ],
+        "receipt_sha256": "dab7efa65d82b29973881558c6bf9cb882cc472dbe6333f7a4b4d7965eafe94c",
+        "byte_offset": 76790682,
+        "byte_length": 140701
+      },
+      "later_quote": {
+        "sequence": 651,
+        "time_et": "2026-11-04T20:18:52.831-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.23,
+        "yes_bid": 0.22,
+        "no_ask": 0.78,
+        "no_bid": 0.77,
+        "btc": 80288.49,
+        "ema9": 80381.65759758565,
+        "ema30": 80469.32369728909,
+        "parent_side": "NO",
+        "parent_id": "P000L000001",
+        "native_direction": "DOWN",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "NO_TOOL_INTENT",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 165.3401630859375,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 165.3401630859375,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 87.6661,
+          "gap_minimum_btc": 12.414,
+          "historical_contracts_observed": 0.18,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841534089.9402,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": "NO",
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "MAIN_CONTINUATION",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": 0.78,
+            "max_price": 0.2,
+            "source_ms": 1793841534089.9402,
+            "candidate_source_ms": 1793841534089.9402,
+            "parent_leg_id": "P000L000001",
+            "swing_id": "G000A000003",
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": "NO",
+            "economics": null
+          }
+        ],
+        "receipt_sha256": "47252951fd0368d53b2c8df0ab3f7d0049eb45aba429c11c392c294412edc9e9",
+        "byte_offset": 84806427,
+        "byte_length": 140643
+      },
+      "elapsed_s": 14.519620418548584,
+      "top_quote_gross_change_fraction": 0.375,
+      "lot_probe": {
+        "budget_including_nominal_entry_fee": 15.0,
+        "basis": "Illustrative $15 all-in lot; no positive entry proposal at the selected first quote.",
+        "entry_limit": 0.16,
+        "whole_contracts": 88,
+        "entry_full_lot_vwap": 0.16,
+        "entry_nominal_fee": 0.83,
+        "entry_cash_cost_including_nominal_fee": 14.91,
+        "later_full_lot_bid_vwap": 0.22,
+        "entry_taken_levels": [
+          [
+            "0.16",
+            88
+          ]
+        ],
+        "later_bid_taken_levels": [
+          [
+            "0.22",
+            88
+          ]
+        ],
+        "entry_top_displayed_quantity": 9845.09,
+        "later_bid_top_displayed_quantity": 2277.59,
+        "all_quantity_visible_at_both_endpoints": true,
+        "venue_fill_claim": false,
+        "counterfactual_trade_or_exit_policy_simulated": false
+      },
+      "minimum_intervening_top_bid": {
+        "sequence": 594,
+        "time_et": "2026-11-04T20:18:38.311-05:00",
+        "bid": 0.15,
+        "gross_change_from_entry_ask_fraction": -0.0625
+      }
+    },
+    {
+      "id": "FIRST_ACTUAL_LEGACY_YES_PROPOSAL",
+      "classification": "HINDSIGHT_QUOTE_AND_DISPLAYED_DEPTH_RESEARCH_LEAD",
+      "side": "YES",
+      "ticker": "KXBTC15M-26NOV042030-30",
+      "entry": {
+        "sequence": 1280,
+        "time_et": "2026-11-04T20:21:35.557-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.056,
+        "yes_bid": 0.055,
+        "no_ask": 0.945,
+        "no_bid": 0.944,
+        "btc": 80212.37,
+        "ema9": 80300.60096196385,
+        "ema30": 80423.87219943493,
+        "parent_side": "NO",
+        "parent_id": "P000L000001",
+        "native_direction": "NONE",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "COMMANDER_LEGACY_MOUNTAIN_SPECIALIST_ENTRY_PAUSED_USE_PRIMARY",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 327.86142578125,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 327.86142578125,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 123.2712,
+          "gap_minimum_btc": 25.572,
+          "historical_contracts_observed": 0.36,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841696611.203,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": "NO",
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "UNRESOLVED",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": 0.945,
+            "max_price": 0.2,
+            "source_ms": 1793841696611.203,
+            "candidate_source_ms": 1793841696611.203,
+            "parent_leg_id": "P000L000001",
+            "swing_id": "G000A000006",
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": "NO",
+            "economics": null
+          },
+          {
+            "tool": "ROLLING_MOUNTAIN",
+            "side": "YES",
+            "purpose": "EMA9_EDGE_VALUE",
+            "classification": "MOUNTAIN_EDGE",
+            "decision": "ELIGIBLE",
+            "reason": "MOUNTAIN_ARMED_VALUE_DIRECT_AUTHORITY",
+            "parent_leg_id": null,
+            "swing_id": "P000L000001:1793841655685",
+            "economics": null,
+            "authority": "ADVISORY_ONLY"
+          }
+        ],
+        "receipt_sha256": "02808a2fb9969eeb4801fa2689ef5d1082760002e39b954f8c011a4651933e37",
+        "byte_offset": 188861132,
+        "byte_length": 200032
+      },
+      "later_quote": {
+        "sequence": 2091,
+        "time_et": "2026-11-04T20:25:11.303-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.3,
+        "yes_bid": 0.29,
+        "no_ask": 0.71,
+        "no_bid": 0.7,
+        "btc": 80408.26,
+        "ema9": 80340.99401322039,
+        "ema30": 80409.2547326791,
+        "parent_side": "YES",
+        "parent_id": "P000L000002",
+        "native_direction": "UP",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "NO_TOOL_INTENT",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 543.6433356933594,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 543.6433356933594,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 68.2607,
+          "gap_minimum_btc": 31.035,
+          "historical_contracts_observed": 0.6,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841912393.1128,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": null,
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "UNRESOLVED",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": null,
+            "max_price": 0.2,
+            "source_ms": 1793841912393.1128,
+            "candidate_source_ms": null,
+            "parent_leg_id": null,
+            "swing_id": null,
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": null,
+            "economics": null
+          }
+        ],
+        "receipt_sha256": "7b5c5ee9c269d71ffb7456450ebf5b5dfbb01b02fe4a67bd6cf216ca89bb3c6d",
+        "byte_offset": 350345147,
+        "byte_length": 218706
+      },
+      "elapsed_s": 215.74636030197144,
+      "top_quote_gross_change_fraction": 4.178571428571428,
+      "lot_probe": {
+        "budget_including_nominal_entry_fee": 15.0,
+        "basis": "Actual legacy adviser budget $15; Commander explicitly pauses this adviser route.",
+        "entry_limit": 0.056,
+        "whole_contracts": 251,
+        "entry_full_lot_vwap": 0.056,
+        "entry_nominal_fee": 0.93,
+        "entry_cash_cost_including_nominal_fee": 14.986,
+        "later_full_lot_bid_vwap": 0.29,
+        "entry_taken_levels": [
+          [
+            "0.056",
+            251
+          ]
+        ],
+        "later_bid_taken_levels": [
+          [
+            "0.29",
+            251
+          ]
+        ],
+        "entry_top_displayed_quantity": 3599.52,
+        "later_bid_top_displayed_quantity": 9310.87,
+        "all_quantity_visible_at_both_endpoints": true,
+        "venue_fill_claim": false,
+        "counterfactual_trade_or_exit_policy_simulated": false
+      },
+      "minimum_intervening_top_bid": {
+        "sequence": 1504,
+        "time_et": "2026-11-04T20:22:34.492-05:00",
+        "bid": 0.034,
+        "gross_change_from_entry_ask_fraction": -0.3928571428571428
+      }
+    },
+    {
+      "id": "LATER_LOWEST_YES_QUOTE",
+      "classification": "HINDSIGHT_QUOTE_AND_DISPLAYED_DEPTH_RESEARCH_LEAD",
+      "side": "YES",
+      "ticker": "KXBTC15M-26NOV042030-30",
+      "entry": {
+        "sequence": 1504,
+        "time_et": "2026-11-04T20:22:34.492-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.035,
+        "yes_bid": 0.034,
+        "no_ask": 0.966,
+        "no_bid": 0.965,
+        "btc": 80217.46,
+        "ema9": 80284.87836957109,
+        "ema30": 80410.89688651507,
+        "parent_side": "NO",
+        "parent_id": "P000L000001",
+        "native_direction": "UP",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "COMMANDER_LEGACY_MOUNTAIN_SPECIALIST_ENTRY_PAUSED_USE_PRIMARY",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 386.5675139160156,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 386.5675139160156,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 126.0185,
+          "gap_minimum_btc": 14.0295,
+          "historical_contracts_observed": 0.43,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841755317.291,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": "NO",
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "UNRESOLVED",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": 0.966,
+            "max_price": 0.2,
+            "source_ms": 1793841755317.291,
+            "candidate_source_ms": 1793841755317.291,
+            "parent_leg_id": "P000L000001",
+            "swing_id": "G000A000007",
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": "NO",
+            "economics": null
+          },
+          {
+            "tool": "ROLLING_MOUNTAIN",
+            "side": "YES",
+            "purpose": "EMA9_EDGE_VALUE",
+            "classification": "MOUNTAIN_EDGE",
+            "decision": "ELIGIBLE",
+            "reason": "MOUNTAIN_ARMED_VALUE_DIRECT_AUTHORITY",
+            "parent_leg_id": null,
+            "swing_id": "P000L000001:1793841655685",
+            "economics": null,
+            "authority": "ADVISORY_ONLY"
+          }
+        ],
+        "receipt_sha256": "91a9841757ee40d94859104c7f2d5ea57fca24f2d70da9819f0c3b6361893aa1",
+        "byte_offset": 232304562,
+        "byte_length": 198150
+      },
+      "later_quote": {
+        "sequence": 2091,
+        "time_et": "2026-11-04T20:25:11.303-05:00",
+        "ticker": "KXBTC15M-26NOV042030-30",
+        "yes_ask": 0.3,
+        "yes_bid": 0.29,
+        "no_ask": 0.71,
+        "no_bid": 0.7,
+        "btc": 80408.26,
+        "ema9": 80340.99401322039,
+        "ema30": 80409.2547326791,
+        "parent_side": "YES",
+        "parent_id": "P000L000002",
+        "native_direction": "UP",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "NO_TOOL_INTENT",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 543.6433356933594,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 543.6433356933594,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 68.2607,
+          "gap_minimum_btc": 31.035,
+          "historical_contracts_observed": 0.6,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793841912393.1128,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "side": null,
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "UNRESOLVED",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": null,
+            "max_price": 0.2,
+            "source_ms": 1793841912393.1128,
+            "candidate_source_ms": null,
+            "parent_leg_id": null,
+            "swing_id": null,
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": null,
+            "economics": null
+          }
+        ],
+        "receipt_sha256": "7b5c5ee9c269d71ffb7456450ebf5b5dfbb01b02fe4a67bd6cf216ca89bb3c6d",
+        "byte_offset": 350345147,
+        "byte_length": 218706
+      },
+      "elapsed_s": 156.81119513511658,
+      "top_quote_gross_change_fraction": 7.285714285714285,
+      "lot_probe": {
+        "budget_including_nominal_entry_fee": 15.0,
+        "basis": "Actual legacy adviser budget $15; choosing this later low is hindsight, not evidence of an approved order.",
+        "entry_limit": 0.035,
+        "whole_contracts": 401,
+        "entry_full_lot_vwap": 0.035,
+        "entry_nominal_fee": 0.95,
+        "entry_cash_cost_including_nominal_fee": 14.985,
+        "later_full_lot_bid_vwap": 0.29,
+        "entry_taken_levels": [
+          [
+            "0.035",
+            401
+          ]
+        ],
+        "later_bid_taken_levels": [
+          [
+            "0.29",
+            401
+          ]
+        ],
+        "entry_top_displayed_quantity": 1865.67,
+        "later_bid_top_displayed_quantity": 9310.87,
+        "all_quantity_visible_at_both_endpoints": true,
+        "venue_fill_claim": false,
+        "counterfactual_trade_or_exit_policy_simulated": false
+      },
+      "minimum_intervening_top_bid": {
+        "sequence": 1504,
+        "time_et": "2026-11-04T20:22:34.492-05:00",
+        "bid": 0.034,
+        "gross_change_from_entry_ask_fraction": -0.02857142857142858
+      }
+    },
+    {
+      "id": "NEW_CONTRACT_YES_CONTINUATION",
+      "classification": "HINDSIGHT_QUOTE_AND_DISPLAYED_DEPTH_RESEARCH_LEAD",
+      "side": "YES",
+      "ticker": "KXBTC15M-26NOV042045-45",
+      "entry": {
+        "sequence": 3161,
+        "time_et": "2026-11-04T20:30:11.082-05:00",
+        "ticker": "KXBTC15M-26NOV042045-45",
+        "yes_ask": 0.39,
+        "yes_bid": 0.38,
+        "no_ask": 0.62,
+        "no_bid": 0.61,
+        "btc": 80302.41,
+        "ema9": 80337.44649457205,
+        "ema30": 80390.18638458582,
+        "parent_side": "NO",
+        "parent_id": "P000L000003",
+        "native_direction": "DOWN",
+        "active_tool": "ROLLING_MOUNTAIN",
+        "reason": "NO_TOOL_INTENT",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "NO",
+          "gap_age_s": null,
+          "observed_residence_age_s": 843.2264951171875,
+          "observed_residence_start_source_ms": 1793841368749.777,
+          "qualification_age_s": 843.2264951171875,
+          "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+          "gap_btc": 52.7399,
+          "gap_minimum_btc": 15.693,
+          "historical_contracts_observed": 0.94,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793842211976.2722,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "stage": "PHYSICAL_PROPOSAL",
+            "tool": "ROLLING_MOUNTAIN",
+            "ticker": "KXBTC15M-26NOV042045-45",
+            "side": "NO",
+            "purpose": "MAIN_CONTRACT",
+            "decision": "NOT_OFFERED",
+            "classification": "MAIN_CONTINUATION",
+            "reason": "MOUNTAIN_EDGE_ONLY_NO_MIDLEG_ALIGNED_ENTRY",
+            "observed_ask": 0.62,
+            "max_price": 0.2,
+            "source_ms": 1793842211976.2722,
+            "candidate_source_ms": 1793842211976.2722,
+            "parent_leg_id": "P000L000003",
+            "swing_id": "G000A000019",
+            "continuity_generation": 0,
+            "qualified_edge": false,
+            "entry_location_qualified": false,
+            "contract_thesis_side": "NO",
+            "economics": null
+          }
+        ],
+        "receipt_sha256": "bf92f3d5d1b910c14b3739b95166d73b4f7dba701d6da36dca3b4220921e6a2b",
+        "byte_offset": 598797939,
+        "byte_length": 226212
+      },
+      "later_quote": {
+        "sequence": 4016,
+        "time_et": "2026-11-04T20:34:23.087-05:00",
+        "ticker": "KXBTC15M-26NOV042045-45",
+        "yes_ask": 0.88,
+        "yes_bid": 0.87,
+        "no_ask": 0.13,
+        "no_bid": 0.12,
+        "btc": 80488.06,
+        "ema9": 80419.9197865767,
+        "ema30": 80411.3146550456,
+        "parent_side": "YES",
+        "parent_id": "P000L000004",
+        "native_direction": "UP",
+        "active_tool": "MARKET_HEIST",
+        "reason": "COMMANDER_TACTICAL_FADES_PAUSED",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "YES",
+          "gap_age_s": 24.03022900390625,
+          "observed_residence_age_s": 24.03022900390625,
+          "observed_residence_start_source_ms": 1793842440294.821,
+          "qualification_age_s": 24.03022900390625,
+          "gap_stage": "SPROUT",
+          "gap_btc": 8.6051,
+          "gap_minimum_btc": 10.68,
+          "historical_contracts_observed": 0.03,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793842464325.05,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "tool": "MARKET_HEIST",
+            "side": "NO",
+            "purpose": "TACTICAL_RETURN",
+            "classification": "BOX_RETURN",
+            "decision": "WAIT",
+            "reason": "TACTICAL_CURRENT_EMA9_DIRECTION_MIXED",
+            "parent_leg_id": "P000L000004",
+            "swing_id": "G000A000022",
+            "economics": null,
+            "authority": "ADVISORY_ONLY"
+          }
+        ],
+        "receipt_sha256": "bb235126dc1241e7326b72b7377e77b4e183f63507ea2e41d556afdcd6ec79a4",
+        "byte_offset": 822216324,
+        "byte_length": 278798
+      },
+      "elapsed_s": 252.00469207763672,
+      "top_quote_gross_change_fraction": 1.2307692307692308,
+      "lot_probe": {
+        "budget_including_nominal_entry_fee": 25.0,
+        "basis": "Illustrative $25 all-in lot only; no Commander candidate or actionable adviser entry at 39 cents.",
+        "entry_limit": 0.39,
+        "whole_contracts": 61,
+        "entry_full_lot_vwap": 0.39,
+        "entry_nominal_fee": 1.02,
+        "entry_cash_cost_including_nominal_fee": 24.81,
+        "later_full_lot_bid_vwap": 0.87,
+        "entry_taken_levels": [
+          [
+            "0.39",
+            61
+          ]
+        ],
+        "later_bid_taken_levels": [
+          [
+            "0.87",
+            61
+          ]
+        ],
+        "entry_top_displayed_quantity": 10734.19,
+        "later_bid_top_displayed_quantity": 8031.06,
+        "all_quantity_visible_at_both_endpoints": true,
+        "venue_fill_claim": false,
+        "counterfactual_trade_or_exit_policy_simulated": false
+      },
+      "minimum_intervening_top_bid": {
+        "sequence": 3161,
+        "time_et": "2026-11-04T20:30:11.082-05:00",
+        "bid": 0.38,
+        "gross_change_from_entry_ask_fraction": -0.02564102564102566
+      }
+    },
+    {
+      "id": "LATE_HEIST_NO_REBOUND",
+      "classification": "HINDSIGHT_QUOTE_AND_DISPLAYED_DEPTH_RESEARCH_LEAD",
+      "side": "NO",
+      "ticker": "KXBTC15M-26NOV042045-45",
+      "entry": {
+        "sequence": 4016,
+        "time_et": "2026-11-04T20:34:23.087-05:00",
+        "ticker": "KXBTC15M-26NOV042045-45",
+        "yes_ask": 0.88,
+        "yes_bid": 0.87,
+        "no_ask": 0.13,
+        "no_bid": 0.12,
+        "btc": 80488.06,
+        "ema9": 80419.9197865767,
+        "ema30": 80411.3146550456,
+        "parent_side": "YES",
+        "parent_id": "P000L000004",
+        "native_direction": "UP",
+        "active_tool": "MARKET_HEIST",
+        "reason": "COMMANDER_TACTICAL_FADES_PAUSED",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "YES",
+          "gap_age_s": 24.03022900390625,
+          "observed_residence_age_s": 24.03022900390625,
+          "observed_residence_start_source_ms": 1793842440294.821,
+          "qualification_age_s": 24.03022900390625,
+          "gap_stage": "SPROUT",
+          "gap_btc": 8.6051,
+          "gap_minimum_btc": 10.68,
+          "historical_contracts_observed": 0.03,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793842464325.05,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "tool": "MARKET_HEIST",
+            "side": "NO",
+            "purpose": "TACTICAL_RETURN",
+            "classification": "BOX_RETURN",
+            "decision": "WAIT",
+            "reason": "TACTICAL_CURRENT_EMA9_DIRECTION_MIXED",
+            "parent_leg_id": "P000L000004",
+            "swing_id": "G000A000022",
+            "economics": null,
+            "authority": "ADVISORY_ONLY"
+          }
+        ],
+        "receipt_sha256": "bb235126dc1241e7326b72b7377e77b4e183f63507ea2e41d556afdcd6ec79a4",
+        "byte_offset": 822216324,
+        "byte_length": 278798
+      },
+      "later_quote": {
+        "sequence": 4218,
+        "time_et": "2026-11-04T20:35:29.136-05:00",
+        "ticker": "KXBTC15M-26NOV042045-45",
+        "yes_ask": 0.81,
+        "yes_bid": 0.8,
+        "no_ask": 0.2,
+        "no_bid": 0.19,
+        "btc": 80471.07,
+        "ema9": 80429.72902926136,
+        "ema30": 80415.01110806716,
+        "parent_side": "YES",
+        "parent_id": "P000L000004",
+        "native_direction": "NONE",
+        "active_tool": "MARKET_HEIST",
+        "reason": "COMMANDER_TACTICAL_FADES_PAUSED",
+        "book_current": 1,
+        "physical_current": 1,
+        "entry_quote_available": 1,
+        "historical_parent": {
+          "version": "PID15740_OBSERVED_RESIDENCE_PARENT_V2",
+          "qualified": false,
+          "side": null,
+          "gap_side": "YES",
+          "gap_age_s": 90.22838305664062,
+          "observed_residence_age_s": 90.22838305664062,
+          "observed_residence_start_source_ms": 1793842440294.821,
+          "qualification_age_s": 90.22838305664062,
+          "gap_stage": "SPROUT",
+          "gap_btc": 14.7179,
+          "gap_minimum_btc": 8.7735,
+          "historical_contracts_observed": 0.1,
+          "terminal_watch": false,
+          "opposite_release": false,
+          "source_ms": 1793842530523.204,
+          "can_veto": false,
+          "creates_entry": false,
+          "basis": "NOT_ESTABLISHED_OR_GAP_COLLAPSING"
+        },
+        "component_candidate_counts": {
+          "raw_physical": 0,
+          "parent_quality_physical": 0,
+          "actual_snapshot_commander": 0,
+          "historical_extreme": 0,
+          "edge_heist": 0,
+          "quote_wave_if_propagated": 0
+        },
+        "candidate_review": [
+          {
+            "tool": "MARKET_HEIST",
+            "side": "NO",
+            "purpose": "TACTICAL_RETURN",
+            "classification": "BOX_RETURN",
+            "decision": "WAIT",
+            "reason": "TACTICAL_CURRENT_EMA9_DIRECTION_MIXED",
+            "parent_leg_id": "P000L000004",
+            "swing_id": "G000A000024",
+            "economics": null,
+            "authority": "ADVISORY_ONLY"
+          }
+        ],
+        "receipt_sha256": "309105f60d85413bf7e09513c98263d0be0dc8aad6bddbb3a48143a5eb8b991d",
+        "byte_offset": 878004352,
+        "byte_length": 278705
+      },
+      "elapsed_s": 66.04921269416809,
+      "top_quote_gross_change_fraction": 0.46153846153846145,
+      "lot_probe": {
+        "budget_including_nominal_entry_fee": 10.0,
+        "basis": "Actual Heist adviser budget $10; counter-parent permission remains unqualified under captured rules.",
+        "entry_limit": 0.13,
+        "whole_contracts": 72,
+        "entry_full_lot_vwap": 0.13,
+        "entry_nominal_fee": 0.58,
+        "entry_cash_cost_including_nominal_fee": 9.94,
+        "later_full_lot_bid_vwap": 0.19,
+        "entry_taken_levels": [
+          [
+            "0.13",
+            72
+          ]
+        ],
+        "later_bid_taken_levels": [
+          [
+            "0.19",
+            72
+          ]
+        ],
+        "entry_top_displayed_quantity": 8031.06,
+        "later_bid_top_displayed_quantity": 15694.3,
+        "all_quantity_visible_at_both_endpoints": true,
+        "venue_fill_claim": false,
+        "counterfactual_trade_or_exit_policy_simulated": false
+      },
+      "minimum_intervening_top_bid": {
+        "sequence": 4016,
+        "time_et": "2026-11-04T20:34:23.087-05:00",
+        "bid": 0.12,
+        "gross_change_from_entry_ask_fraction": -0.07692307692307698
+      }
+    }
+  ],
+  "findings": [
+    "No successful decision admitted an order, and no executor-rejected qualified entry exists in the completed prefix.",
+    "The new inherited-parent rail fishing behavior never armed and cannot be judged as a missed rejoin by this run.",
+    "There were real same-contract price rebounds with displayed full-lot depth, but the selected lows/highs are hindsight endpoints and no captured Commander-approved entry existed.",
+    "The Mountain legacy pause and ordinary tactical-fade pause explain actual positive adviser proposals. Removing these controls would change strategy, not repair the missing-number exception.",
+    "ReleaseWatcher independently confirmed two handoffs, but its desired side cost 59\u201360c and 76\u201380c against the captured 30c soft value limit.",
+    "Current per-ticker quote-wave capture advanced on every physically current entry-available row, and bounded future source timestamps with current receipt evidence were accepted."
+  ],
+  "recommended_next_step": "Complete narrow missing-number crash repair and validation, preserve entry policy, and use the next clean PAPER run to test rail dip/rejoin when an eligible inherited parent actually occurs.",
+  "future_research_options": [
+    "Review the 86 legacy Mountain 3.5\u20135.9c YES proposal callbacks as an intentional coverage question; assess all entry/exit paths and adverse movement, not only the chosen 3.5c-to-29c endpoints.",
+    "Review the 20:30 new-contract YES move as physical transfer/price timing research. The active Mountain rollover edge was fishing at <=20c; Release used <=30c and Heist <=35c. The 39c low exceeded those prices, and the inherited rail exception did not qualify.",
+    "Review short-lived/new-parent Heist counter-swings separately from established-parent later-calibration. Do not infer that the existing exemption should be widened from one 13c-to-19c rebound."
+  ],
+  "no_strategy_changes_made": true,
+  "leg_ledger_v2_regression_check": {
+    "schema": "tachyos.pid4596.leg_ledger_v2_check.v1",
+    "status": "PASS_NO_OBSERVED_REGRESSION",
+    "original_rows": 8,
+    "same_ticker_side_opportunities_checked": 18,
+    "bid_endpoints_matched_to_original_decisions": 15,
+    "opportunities_with_no_later_bid_correctly_left_null": 3,
+    "mixed_ticker_aggregate_roi_count": 0,
+    "terrain_only_leg_end_count": 0,
+    "record_results": [
+      {
+        "leg_id": "E000A000001",
+        "side": "NO",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:16:16.885-05:00",
+        "end_et": "2026-11-04T20:17:13.744-05:00",
+        "sample_count": 224,
+        "contract_quote_samples": 224,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 2,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN",
+          "UNKNOWN"
+        ],
+        "comparable_eligible": false,
+        "start_boundary_observed": false,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.21,
+            "max_later_bid": 0.25,
+            "min_sequence": 258,
+            "max_sequence": 263
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.74,
+            "max_later_bid": 0.79,
+            "min_sequence": 78,
+            "max_sequence": 258
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000002",
+        "side": "YES",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:17:13.998-05:00",
+        "end_et": "2026-11-04T20:17:54.743-05:00",
+        "sample_count": 160,
+        "contract_quote_samples": 160,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 1,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.21,
+            "max_later_bid": 0.22,
+            "min_sequence": 379,
+            "max_sequence": 381
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.73,
+            "max_later_bid": 0.79,
+            "min_sequence": 307,
+            "max_sequence": 379
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000003",
+        "side": "NO",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:17:54.995-05:00",
+        "end_et": "2026-11-04T20:18:53.339-05:00",
+        "sample_count": 227,
+        "contract_quote_samples": 227,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 1,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.16,
+            "max_later_bid": 0.22,
+            "min_sequence": 594,
+            "max_sequence": 651
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.77,
+            "max_later_bid": 0.84,
+            "min_sequence": 446,
+            "max_sequence": 594
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000004",
+        "side": "YES",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:18:53.601-05:00",
+        "end_et": "2026-11-04T20:18:58.345-05:00",
+        "sample_count": 19,
+        "contract_quote_samples": 19,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 1,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.19,
+            "max_later_bid": 0.18,
+            "min_sequence": 666,
+            "max_sequence": 666
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.79,
+            "max_later_bid": 0.81,
+            "min_sequence": 654,
+            "max_sequence": 666
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000005",
+        "side": "NO",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:18:58.599-05:00",
+        "end_et": "2026-11-04T20:23:59.511-05:00",
+        "sample_count": 1152,
+        "contract_quote_samples": 1152,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 1,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.035,
+            "max_later_bid": 0.14,
+            "min_sequence": 1504,
+            "max_sequence": 1753
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.83,
+            "max_later_bid": 0.965,
+            "min_sequence": 673,
+            "max_sequence": 1504
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000006",
+        "side": "YES",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:23:59.945-05:00",
+        "end_et": "2026-11-04T20:29:02.926-05:00",
+        "sample_count": 1082,
+        "contract_quote_samples": 1082,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 1,
+        "terrain_values": [
+          "ROLLING_MOUNTAIN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.001,
+            "max_later_bid": null,
+            "min_sequence": 2896,
+            "max_sequence": null
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.71,
+            "max_later_bid": 0.999,
+            "min_sequence": 2091,
+            "max_sequence": 2896
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000007",
+        "side": "NO",
+        "record_kind": "PHYSICAL_LEG",
+        "end_reason": "PHYSICAL_LEG_CHANGED",
+        "start_et": "2026-11-04T20:29:03.402-05:00",
+        "end_et": "2026-11-04T20:30:51.425-05:00",
+        "sample_count": 407,
+        "contract_quote_samples": 370,
+        "noncurrent_quote_samples_excluded": 37,
+        "contract_count": 2,
+        "terrain_segments": 34,
+        "terrain_values": [
+          "MARKET_HEIST",
+          "RELEASE_TRANSITION",
+          "ROLLING_MOUNTAIN",
+          "UNKNOWN"
+        ],
+        "comparable_eligible": true,
+        "start_boundary_observed": true,
+        "end_boundary_observed": true,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": 0.001,
+            "max_later_bid": null,
+            "min_sequence": 2907,
+            "max_sequence": null
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042030-30",
+            "minimum_ask": null,
+            "max_later_bid": null,
+            "min_sequence": null,
+            "max_sequence": null
+          },
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042045-45",
+            "minimum_ask": 0.39,
+            "max_later_bid": 0.62,
+            "min_sequence": 3161,
+            "max_sequence": 3308
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042045-45",
+            "minimum_ask": 0.38,
+            "max_later_bid": 0.38,
+            "min_sequence": 3308,
+            "max_sequence": 3309
+          }
+        ]
+      },
+      {
+        "leg_id": "E000A000008",
+        "side": "YES",
+        "record_kind": "OBSERVATION_SEGMENT",
+        "end_reason": "RUNTIME_ERROR_TypeError",
+        "start_et": "2026-11-04T20:30:51.686-05:00",
+        "end_et": "2026-11-04T20:35:42.587-05:00",
+        "sample_count": 938,
+        "contract_quote_samples": 938,
+        "noncurrent_quote_samples_excluded": 0,
+        "contract_count": 1,
+        "terrain_segments": 72,
+        "terrain_values": [
+          "MARKET_HEIST",
+          "RELEASE_TRANSITION",
+          "ROLLING_MOUNTAIN",
+          "UNKNOWN"
+        ],
+        "comparable_eligible": false,
+        "start_boundary_observed": true,
+        "end_boundary_observed": false,
+        "pairs": [
+          {
+            "side": "YES",
+            "ticker": "KXBTC15M-26NOV042045-45",
+            "minimum_ask": 0.62,
+            "max_later_bid": 0.87,
+            "min_sequence": 3356,
+            "max_sequence": 4016
+          },
+          {
+            "side": "NO",
+            "ticker": "KXBTC15M-26NOV042045-45",
+            "minimum_ask": 0.13,
+            "max_later_bid": 0.19,
+            "min_sequence": 4016,
+            "max_sequence": 4218
+          }
+        ]
+      }
+    ],
+    "limits": "Top-of-book research ledger; no executable whole-lot or realized profit authority. This check addresses ticker separation and label continuity only."
+  }
+}

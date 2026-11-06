@@ -1,0 +1,43 @@
+PID4824 - EXISTING RECOVERY IDENTITY AND FLOOR AUTHORITY COMPLETION
+
+Immediate baseline: delivered PID15184 current-parent calibration program.
+ZIP SHA256: 82bc70e6a8362fc4b291cdf5c0a0a9c9fa1e1eb5769a0238708b18dc283c1ca4
+Original run: TOOL_RACK_PAPER_20261105T062845Z_PID4824
+Original archive: 32d08917a7e3fd0a2a0ce89bf909573760fa1f683f3295847b7eef324bc61aa4
+
+This is enforcement of previously authorized rules, not new policy permission
+inferred from a losing run or a file upload. The governing same-parent recovery
+anti-spray rule and current living-parent/Release profit-floor authority are
+documented in the strategy backbone and independent policy_scope_review.
+
+EXACT CORE SCOPE
+- strategy_core/tool_rack.py: current causal physical recovery identity.
+- strategy_core/paper_runtime.py: bind the continuation-only first-floor
+  exception to current living-parent authority; update runtime identity.
+No added core files. The other 65 sealed strategy/configuration/UI files and all
+original capture modules stay byte-identical to the immediately prior release.
+
+PRESERVATION
+Keep normal flat-inventory entries, genuinely renewed physical missions,
+validated retreat/retest evidence, opposite handoffs, explicit parent-scope
+acquisition, source receipt bounds and actual post-entry evidence ordering.
+Retain unknown/stale-parent continuation fallback and current same-side Release.
+Retain existing +100%/+150% return protection, +200% aligned-runner behavior,
+all irreversible armed floors, PID8552 true directional runway, the current
+winning Heist and older positive cases. No broad countertrend ban, new price
+cap, size, timing, profit percentage, settlement rule or order authority.
+
+EVIDENCE BOUNDARY
+Original-inventory reentry denials are conditional. Denying #2 can change the
+inventory that #3 later sees; no complete altered run or eliminated-loss total
+is claimed. The isolated #3 floor trace uses original ordered quotes and a
+reconstructed real entry, then stops at an exit obligation without booking a
+counterfactual sale. Its protection result is not additive to an entry denial.
+
+GATE
+Every prior strategy/capture module and mandatory method remains. Both new
+Constructs must report PASS, then the actual extracted bundle must pass all
+checks, fresh synthetic three-way replay, final source/manifest preflight and
+exact final ZIP-byte verification. PID4824_VALIDATION.json is finalized only
+after those checks. Original market replay remains blocked by the unchanged
+interpreter-identity check; no original evidence is edited or replay bypassed.

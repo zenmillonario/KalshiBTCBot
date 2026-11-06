@@ -1,0 +1,267 @@
+PAGE 1
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+1
+The Nautilus
+A better next run
+PID10656 review and complete PAPER program update
+November 5, 2026 | 10:34:06-11:21:45 a.m. Eastern
++$30.78
+4 trades
+0 open
+Net after $7.00 fees
+Two gains, two losses
+Session ended normally
+The first two trades did the work; the last two faded a fresh upward leg too soon. The
+recording supports that distinction. This update preserves the successful entry controls, closes the
+premature Heist exception, and adds the brighter pattern continuation to Looking Glass. [1-3]
+#
+Side
+Entry ET
+Buy
+Sell
+Qty
+Net after fees
+1
+NO
+10:45:22
+51c
+94.6c
+47
++$19.492
+2
+YES
+10:56:32
+7.5c
+16c
+312
++$22.060
+3
+NO
+11:15:24
+34c
+22c
+28
+-$4.140
+4
+NO
+11:18:43
+20c
+7.5c
+47
+-$6.635
+First two: +$41.552. Last two: -$10.775. Exact net: +$30.777; final simulated cash: $1,030.777. Table amounts retain
+three decimals so the totals reconcile before cent rounding. There were four buys, four whole-lot sales and no settlements.
+[1]
+What is ready for the next observation
+A complete Windows PAPER package with the entry-quality repair and the Nautilus display update.
+The recommended run is still a 45-minute entry window followed by normal position management
+and the automatic recording export.
+The new rules withhold the two recorded bad entry proposals in isolated checks. That is evidence for
+the specific repair; it does not establish a replacement YES trade, a different completed run balance
+or future profitability. [3]
+
+
+PAGE 2
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+2
+The physical move the bot actually saw
+Source: source-time BTC and EMA observations from the original decision recording. Markers are the four actual entries.
+The dotted line is the 11:15 contract boundary. This is the bot's recorded series, which need not match another chart's
+forming candle exactly. [1-2]
+The downside ride in trade 1 and the short upside Release in trade 2 are separate from the later
+11:15 sprout. By trades 3 and 4, the current mission parent was YES and both the 30-second and
+60-second BTC/EMA9 observations were advancing upward. There was no recorded causal parent
+turn at either entry. [3]
+At the entry
+Trade 3
+Trade 4
+Current parent
+YES / upward
+YES / upward
+Fresh gap age
+23.13 seconds
+222.05 seconds
+BTC change over 30 seconds
++$145.52
++$58.62
+EMA9 change over 30 seconds
++$86.62
++$11.72
+Actual position bought
+NO at 34c
+NO at 20c
+The exact repair
+A calibrated box visit can no longer reopen an opposite Heist entry against a current, witnessed,
+still-growing sprout without the existing causal-turn evidence. Actual retreat, failed re-extension, a
+joint price/EMA9 turn or a confirmed corrective transfer retains its existing route. Cheapness and a
+mature-edge label alone do not prove a turn.
+The rule uses matching current source observations and applies in both directions. Unknown or
+stale context does not manufacture a new parent veto. EMA9 remains primary; an EMA9/EMA30
+crossing is not required for every genuine Release. [3]
+
+
+PAGE 3
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+3
+Keep the first two trades as controls
+Trade 1: NO, 51c to 94.6c. It joined the inherited downward leg at 10:45:22, held for about 11
+minutes 10 seconds, and exited when the living EMA9 parent opposed the held side. Net after fees:
++$19.492. Its original entry remains eligible with the same intent, size and fee in the new
+recorded-case checks. [1,3]
+Trade 2: YES, 7.5c to 16c. This was the confirmed upward handoff at 10:56:32. The whole-lot bid
+armed protection at 15c, rose to 18c, and set a 17.1c floor. The next breach executed at the
+actually available 16c, producing +$22.060 after fees. The floor is a trigger, not a promised fill
+price. [1]
+This Release happened well before the later EMA9/EMA30 cross. Preserving it is why the update does not make that cross a
+universal entry requirement. Charts show recorded integer-depth whole-lot sale bids; entry markers and realized exits
+come from the original ledger. [1,3]
+
+
+PAGE 4
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+4
+Why trades 3 and 4 still lost
+Trade 3: NO, 34c to 22c; net -$4.140. It briefly reached a 56c whole-lot bid, a 64.7% gross price
+gain. Its held policy was giving the return room to develop and required +100% for the immediate
+profit lock. The ordinary early floor was not armed. It later exited at the existing 180-second tactical
+limit. That behavior is distinct from the earlier +200% floor-authority defect. [1]
+Trade 4: NO, 20c to 7.5c; net -$6.635. The observed whole-lot bid peaked at only 21c. It again
+reached the tactical hold limit while the larger upward move continued. The new entry-quality check
+withholds this original proposal as well. [1,3]
+The improvement here is entry selection. Existing profit thresholds, return breathing, whole-lot exits and tactical hold limits
+remain unchanged. A peak on these charts is hindsight evidence, not an alternative realized profit. [1,3]
+
+
+PAGE 5
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+5
+The 11:15 dip: cheaper price, then recovery
+The shaded interval is the first minute of the new contract. Quotes are current native YES asks. Blank quote space means
+the new contract did not yet have an eligible recorded book. The 55c line is an existing exceptional opening ceiling, not a
+new permission to buy. [3]
+Time ET
+Recorded observation
+Why it matters
+11:15:00.484
+First observed upward EMA cross
+Physical context; the new contract book was not
+ready.
+11:15:18.689
+First eligible new-contract book; YES
+65c
+Above the existing 55c opening ceiling.
+11:15:52.235
+YES 54c
+Cheaper, but the short-window BTC and EMA9 dip
+was still falling.
+11:15:56.985
+First-minute low ask: 46c
+Still falling; contract target ownership was
+unresolved.
+11:16:04.804
+After-dip rejoin; YES 47c
+Recovery evidence appeared after the first
+minute; target still unresolved.
+11:16:13.712
+Rejoin plus YES target agreement; ask
+55c
+Also after the first-minute premium exception.
+Your long-down-rail reading is consistent with the retained historical context. The bot's own live
+source records this cross just after rollover; the screenshot places it around the same boundary.
+Neither version should be treated as an automatically qualified fill. The update does not raise caps
+or extend the first-minute exception. [2-3]
+
+
+PAGE 6
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+6
+Looking Glass now follows the active pattern
+The brighter line gives you one clearly named continuation to inspect. It follows the current
+engine-reported physical pattern, so a supported fresh upward leg can take precedence over a local
+Heist label. The display remains separate from trading authority. [4]
+Current pattern
+What the bright line represents
+Up or down rail
+A comparable observed directional continuation.
+Alternating mountain
+A comparable next arc, including a witnessed historical turn.
+Rolling mountain
+A comparable arc in the current local direction, while the parent remains visible.
+Fresh leg / sprout
+Continuation of the current supported leg. A cross alone is not labeled a
+confirmed Release.
+Confirmed Release
+Continuation in the confirmed handoff direction. A forming handoff keeps a
+forming label.
+Heist
+A comparable observed rotation when that is the supported active pattern.
+How to read the lines
+Bright: the active pattern illustration. Fainter: alternative conditional paths. Pale fixed trace: the
+earlier as-issued sample, held at its original coordinates so the realized candles can be compared
+against it.
+Paths come from already observed historical shapes. When a shorter historical segment is used, the
+line stops at that segment's observed duration or the current contract close. It is not stretched
+across the rest of the contract. Mirrored examples are labeled. If suitable history or a current source
+is unavailable, the display says so. [4]
+Research comparison has a defined boundary
+The fixed samples survive a browser refresh while the same engine process runs. They are bounded
+to 16 samples and clear on engine restart. This update does not create a durable forecast archive.
+It also does not display calibrated win probabilities or turn line brightness into confidence. [4]
+The actual chart drawing code was checked with an offline canvas renderer. That verifies drawing and guards; it is not a
+native Windows browser-layout test. The complete default TV layout and position panels are retained. [4]
+
+
+PAGE 7
+TACHYOS  /  THE NAUTILUS
+PID10656  |  November 5, 2026
+PAPER only  |  Original evidence and bounded checks  |  Times: Eastern
+7
+Verified evidence and the next run
+The original recording is complete
+All seven transfer parts reconstruct the expected 597,362,110-byte original archive. Every archived
+member and all 317 program files reconcile. The audit binds all 7,833 decision records to the
+recorded input calls and the 118 committed ledger states. All eight fills and all 2,682 held decisions
+had current physical and native-book evidence. [1-2]
+The raw Bitcoin replay of the source parser accepted the original unshifted timestamps and
+reproduces the 2,577 consumed geometry samples. The earlier future-clock failure is absent.
+Normal startup accounts for the only two noncurrent physical observations. [2]
+What the software checks establish
+The delivered ZIP is published only after checks run on its actual extracted contents: every retained
+strategy test and historical Construct, the new sprout and pattern controls, capture/export controls,
+the actual JavaScript chart tests, a fresh synthetic three-way recorder replay, and final
+source/manifest/archive integrity. Exact results are in PID10656_VALIDATION.json inside the
+package. [5]
+The full original typed tape passed validation. Original full-engine replay stopped at the unchanged
+environment-identity gate: capture used Python 3.14.7 on Windows; this review uses Python
+3.12.14 on Linux. The gate was not bypassed. Component checks and synthetic replay are not an
+altered whole-run profit simulation. [2,5]
+Start it without pasting commands
+1. Extract the complete new ZIP into a new folder.
+2. Double-click 00_PREPARE_AND_RUN_45M_PAPER.cmd.
+3. Keep the computer awake and the window open through the entry window, normal position drain
+and export.
+4. Turn on Looking Glass in Nautilus.
+5. Send the new review ZIP and every numbered run part from that run's upload folder.
+Evidence references
+[1] trade_audit.json / .md; 15 hash-bound selected original decision records; original PAPER_LEDGER.json and
+RUN_SUMMARY.json.
+[2] capture_audit.json / .md; decision_index_audit.json; source_time_audit.json; typed_tape_audit.json;
+reconstruction_audit.json.
+[3] opportunity_audit.json / .md; pid10656_sprout_manifest.json; recorded sprout Construct.
+[4] Looking Glass model, adapter and chart tests; independent_readonly_review.json; PID10656 Looking Glass Construct.
+[5] Final PID10656_VALIDATION.json and TOOL_RACK_PAPER_BUNDLE_MANIFEST.json in the delivered program.
+Original archive SHA-256:
+187a2fa705d5aa609c3b84e6de2213322821e9ccb04b233b742e43d90f3864f7
+

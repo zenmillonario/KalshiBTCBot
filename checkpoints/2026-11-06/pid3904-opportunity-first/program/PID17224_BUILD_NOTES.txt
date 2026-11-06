@@ -1,0 +1,106 @@
+PID17224 APPROVED CORRECTIONS - BUILD NOTES
+2026-11-04 | PAPER only | recommended 45-minute entry window plus normal drain
+
+Approval: user agreed to A/B/C in TACHYOS_PID17224_RUN_REVIEW_2026-11-04.pdf.
+The immutable input is the prior delivered capture-candidate ZIP, SHA-256:
+0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2
+
+STRATEGY DIFF
+
+Only strategy_core/commander.py and strategy_core/commander_candidates.py
+changed among the 66 strategy/configuration/dashboard files. The other 64
+and the seven original recorder integration modules are byte-identical to the
+captured baseline. The approval record binds the two reviewed hashes. Resealing
+an unapproved configuration or core file cannot pass the authorized-delta gate.
+
+A - RELEASE ADMISSION
+
+Recorded 4561 was a confirmed Release but MissionPolicy labelled its mixed
+contract thesis TACTICAL_RETURN. The fresh fill inherited TACTICAL custody;
+4562 then invoked the generic <=60-second tactical exit. Commander now resolves
+current confirmed Release to PRIMARY / LEVIATHAN_RELEASE before booking and,
+when needed, resolves its purpose to MAIN_CONTRACT / parent terminal. Original
+advisory role/custody/mission are retained under an audit field. Mission ID,
+geometry, conditional thesis, source timestamps and committed floor policy stay
+intact. Genuine unpromoted tactics wait if the existing mandatory exit already
+applies. Existing same-side Release/continuation seed promotion and separate
+Edge-Heist/Quote-Wave custody branches retain their precedence.
+
+Tests book 57 YES at recorded 4561 and HOLD that same lot at 4562. The original
+journal's already-booked TACTICAL control still exits under the unchanged timer.
+Isolated 4601 remains eligible for 26 YES; retained 4561 correctly prevents a
+second same-contract entry. We do not assume both original trades recur.
+
+B - ORDINARY MAIN RETURN QUALITY
+
+Recorded 6087 briefly bounced upward while the established NO parent remained
+separated, its broader EMA9 movement still pointed down, and TP ownership still
+favored NO. The existing terminal/TP transfer predicate was hidden behind an
+unqualified short-continuation early return; the primary-family admission
+shortcut also bypassed it. That same predicate is now shared by positive
+publication and Commander admission for ordinary Mountain MAIN families. No
+numeric threshold, timer, price cap or custody extension was added.
+
+The raw 6087 intent and its mirrored UP-parent case now WAIT. Proper completed
+terminal, current reversal and TP-transfer variants still enter before a
+cosmetic EMA cross. Generator tests first show the original unchecked proposal,
+then verify it is filtered: they restore only the exact contemporaneous level
+match cached in the original intent because the decision's physical_metadata
+was captured before ToolRack attached that cache. They do not invent history.
+
+C - CALIBRATED LATER HEIST
+
+The old counter_parent_fade pause now exempts only an authorized MARKET_HEIST
+reason with TACTICAL lane and role, calibration marker, a current qualified box,
+matching physical visit, and no in-progress/currently confirmed Release.
+It is not an early admission return: subsequent strategy and objective checks
+still apply. The detector's rolling box-window ID may change during one visit,
+so exact box-ID equality is deliberately not required. Exact visit identity and
+current box qualification are required.
+
+Recorded 5377 and 5600 reach the actual PAPER executor in bounded clear-inventory
+controls and retain TACTICAL custody. The first swing and repeated messages of
+that first swing remain observation only. Those controls do not establish how
+many trades would occur in a changed full session or what their profit would be.
+
+POST-RUN WORKFLOW
+
+The recommended 00_ command exports the closed original session before any
+replay. The separate complete_paper_run.py tool uses a streaming, low-compression
+ZIP with a complete original-file and program-source inventory. It verifies all
+archived bytes before atomic publication and reports periodic progress. Capture,
+export and replay states are separate. It does not construct an engine for the
+default export. 07_ explicitly requests replay from the verified saved archive.
+The old finish_recorded_run.py remains unchanged for historical compatibility.
+
+VALIDATION AND LIMITS
+
+The builder requires the full current strategy suite and every prior Construct,
+the new 32-case recorded Construct, all capture/export modules, and a fresh
+three-way synthetic proof: direct selected engine, same engine with recording,
+then replay into a fresh engine. The synthetic fixture is not the old 45-minute
+market run. The older Tool Advisory Authority Construct now checks exact
+Release identity/evidence and original-input immutability instead of Python
+object identity, because correction A returns a custody-resolved copy. Its
+original market scenario remains unchanged. The finalized validation report and file manifest are the only bytes
+written after those checks; the builder then preflights and verifies the final
+archive before publishing it.
+
+Recorder helper reports use strategy_modified:false to mean recorder
+interposition did not alter its selected engine. That field is scoped to the
+recorder proof. This release explicitly has strategy_modified:true and approved
+corrections A/B/C, recorded in the approval, status and bundle manifest.
+
+The old run's Windows exact replay was historical baseline evidence. The new
+strategy build has not yet completed a native Windows market session. No claim
+of improved profit, whole-run counterfactual profit, six-hour recorder capacity,
+or live-order authority is made. Check PID17224_VALIDATION.json for the actual
+machine, counts, source hashes, case outcomes and check transcript.
+
+DEFERRED ITEMS
+
+No change to the held late-Release floor precedence discrepancy, source clock-
+skew policy, custody durations, risk sizing, price ceilings or model assumptions.
+Existing enum formatting can label same-side inventory as an opposite-inventory
+WAIT reason when actual PaperPosition objects are supplied; both paths block the
+duplicate correctly. This unrelated diagnostic behavior was left unchanged.

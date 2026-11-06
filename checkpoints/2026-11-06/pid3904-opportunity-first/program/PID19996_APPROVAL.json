@@ -1,0 +1,107 @@
+{
+  "added_core_files": {
+    "strategy_core/source_freshness.py": "3892c40d16138df7682ea339b1ff3df295b88b196e542f2ecdaf029b583e2fb8"
+  },
+  "approval": {
+    "date": "2026-11-04",
+    "review_file": "TACHYOS_PID19996_RUN_REVIEW_2026-11-04.pdf",
+    "review_sha256": "d680a212e01a80bb93bb4ca83463978bb97b213d95c974085026ec23bc222d68",
+    "source": "User authorized the four PID19996 review repairs and explicitly corrected trade #3 as a too-early expensive entry within a continuing rail.",
+    "user_instruction": "agree go on, trade number 3 enter too early and too expensive I checked trading view and it was a rail that kept going so what he needs in the first few minutes to fish for a little while longer for a cheaper price if the candles are dipping"
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C",
+    "PID19996_RAIL_VALUE",
+    "PID19996_SOURCE_FRESHNESS",
+    "PID19996_RESEARCH_IDENTITY",
+    "PID19996_COMPLETE_UPLOADS"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "changed_core_files": {
+    "strategy_core/commander.py": {
+      "baseline_sha256": "be14b8b76bcb9de32c5126cd6b1ebedc605c52c7dc066046694efc0ff73a4b48",
+      "release_sha256": "6511c85cf0ceb434a15a895f3c52708c89667e5a3b31c514cc92f104e7f91fe1"
+    },
+    "strategy_core/commander_candidates.py": {
+      "baseline_sha256": "941598e6ad7f4c16b3fc6e814f4a19d29dee47a905b2f9c1795ce5fe1f891604",
+      "release_sha256": "4395706356c14d49f0e91cfab6ff4f4cec7c66cfdfe0903021489cf2b6d31daf"
+    },
+    "strategy_core/custody_evidence.py": {
+      "baseline_sha256": "0d02308f46a6d7cf72dd9a480198b61ab109e213e6bec68d4999ae56ade7513f",
+      "release_sha256": "98b6e98dc1dd353ac88c80753f6143922dbb239bebcb4ecf047d1ef126cdd497"
+    },
+    "strategy_core/leg_ledger.py": {
+      "baseline_sha256": "2221257ee6373351356afdeb5d85b54e5ec433cd50d0edbad115ff5828903b9c",
+      "release_sha256": "edf48d262c880a375bcc243eaa6af844e857d22982c024fd97f24fae16e60972"
+    },
+    "strategy_core/mission_policy.py": {
+      "baseline_sha256": "353d72d0dfd7aa7b586d168b4952daee42a788c9c3f07b00ecf8a5ef216453e3",
+      "release_sha256": "67ea2ae2e33b5a6ced74a6ab1e5dc80bdca69d78872dbd396b293d726f5ba9df"
+    },
+    "strategy_core/paper_runtime.py": {
+      "baseline_sha256": "9673bbc8e5a0957787aa16422c9d4d395b2da2c60f9f51aee96cee5dd9cb3de8",
+      "release_sha256": "2878c2d2d48322c86ce8a00be0505ab90f1e8a70c4d2a6db51fbbb7db70c1fd3"
+    },
+    "strategy_core/position_roles.py": {
+      "baseline_sha256": "6e9bed7dbf2fc424dfdb88484a4cdb58b7e053092a3dbd479701751f8b56e4be",
+      "release_sha256": "37abb34c894de3e5585e5fc7661f8573658e550210c478584274b573f1b493f3"
+    },
+    "strategy_core/recovery.py": {
+      "baseline_sha256": "0005ce2a0d4e4f80fb763dc755ebdee000694337bf2ad635e7132caf35fe919e",
+      "release_sha256": "9647efd9e5da5834d0b156baf6bc065960b9d48fc64f0690d3c25051944180fc"
+    },
+    "strategy_core/tool_rack.py": {
+      "baseline_sha256": "29bde3d3eca4cbdd6435d58bcf1ba21c2a691bce74cd3423a334546144fb150d",
+      "release_sha256": "237fbea74a7374f075ac3001cfc14d99edb1932c4350c25372ae42da549cdca8"
+    },
+    "strategy_core/tools/heist.py": {
+      "baseline_sha256": "4972d597673bc468494b51c04a94afa507dedd0c34dd51cd31bc6521ce6dcfba",
+      "release_sha256": "d2cfee4ab6f7600a280d42b4e55900537ec74e90a4d59eaceead03ecc2dc50bf"
+    },
+    "strategy_core/tools/management.py": {
+      "baseline_sha256": "147f82943cb2400a76e8b6139dc986971497811ebdf29dc31d5088f627c59830",
+      "release_sha256": "e96ecc1dc03753223a7fde2411af2c958d7de2065ded9ca4b01d8eaf43011491"
+    },
+    "strategy_core/tools/mountain.py": {
+      "baseline_sha256": "ca2c4eec0c6ca17f49081170e3ac3ef7cee682830b2f1c9fcd3fdd0abb1b0386",
+      "release_sha256": "2c612533aa54d0b37208e3db1883c5e4f5440a734e49b36e5c6ef9056432bd8b"
+    }
+  },
+  "default_workflow_change": "45-minute PAPER entry window, normal drain, verified full original ZIP then bounded review ZIP and lossless numbered upload pieces. Replay remains optional.",
+  "excluded_changes": [
+    "No new profit floor percentage",
+    "No partial exit",
+    "No price-cap widening",
+    "No position-size increase",
+    "No live-order authority",
+    "No six-hour commissioning acceptance",
+    "No Looking Glass forecast display change",
+    "No historical recording/source edits"
+  ],
+  "historical_approval": "PREVIOUS_RELEASE_APPROVAL.json",
+  "original_run_archive_sha256": "2771056cd93fffe40527c529265b02891089bca31e4f77978f78e3acb9b0bd79",
+  "previous_package_sha256": "1017bb355dc1ac9fd90181ecd031c836ae72568df8cf1f4e4673645e85ad1484",
+  "previous_source_manifest": "PREVIOUS_RELEASE_SOURCE_SHA256.json",
+  "previous_source_manifest_sha256": "cf5b43a901d1c6fd0f3a2b31acfca97e6d87e3fe11f97885c34c47fbc5185fe1",
+  "release_id": "TACHYOS_PID19996_RAIL_VALUE_PAPER_45M_20261104",
+  "schema": "tachyos.approved_strategy_changes.v2",
+  "scope": {
+    "A_B_C": "Preserve the previously authorized Release custody, established-parent transfer and calibrated later Heist corrections.",
+    "PID19996_COMPLETE_UPLOADS": "Include normal raw BTC source recording, keep file-backed export progress independent of console display, publish only verified complete bytes, and automatically make smaller lossless uploads from the exact new archive.",
+    "PID19996_RAIL_VALUE": "Defer an earned expensive opening continuation during an opposed short-window dip; retain the same parent opportunity through the existing first300s observation window and admit only a current cheaper <=35c rejoin with existing route, runway, source, book, inventory and admission proof. Bind and consume the original opportunity at authoritative admission.",
+    "PID19996_RESEARCH_IDENTITY": "Keep physical legs across harmless labels and rollover, scope quote returns by exact ticker, distinguish partial observation from true leg end, reject invalid legacy comparables, and correct enum/string same-side diagnostics.",
+    "PID19996_SOURCE_FRESHNESS": "Share the existing bounded physical-source clock policy using exact captured receipt, epoch, sequence and continuity evidence; preserve strict local quote time and conservative historical proofs. Never rewrite timestamps."
+  },
+  "unchanged_previous_core_config_ui_files": 54,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  }
+}

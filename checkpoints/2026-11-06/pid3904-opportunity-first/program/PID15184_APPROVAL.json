@@ -1,0 +1,81 @@
+{
+  "added_core_files": {},
+  "approval": {
+    "basis": "IMPLEMENTATION_COMPLETENESS_OF_PREVIOUSLY_AUTHORIZED_PID15740_FIRST_COUNTER_RULE",
+    "date": "2026-11-04",
+    "date_timezone": "America/New_York",
+    "governing_rule_reference": "TACHYOS_STRATEGY_BACKBONE_V1.md / PID15740 and Dual-Lane First Counterfade",
+    "immediate_prior_record": "PID17588_APPROVAL.json",
+    "new_strategy_permission_requested_or_inferred": false,
+    "review_file": "PID15184_RUN_REVIEW.txt",
+    "review_sha256": "09f6460c250dc31e9976aeadbe9c656f18896625558bd20ce5c054f93264e1ca",
+    "source": "The earlier approved two-lane/PID15740 rule observes the first opposing physical swing across all entry families and uses current parent context without treating unqualified historical residence as permission to fade. PID15184 decision26 already has a current NO mission parent from completed-close observations but no native swing identity. The separate calibration direction lookup omitted that parent. This completes that existing rule; no new strategy permission is inferred from the upload or its losses."
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C",
+    "PID19996_RAIL_VALUE",
+    "PID19996_SOURCE_FRESHNESS",
+    "PID19996_RESEARCH_IDENTITY",
+    "PID19996_COMPLETE_UPLOADS",
+    "PID4596_NULL_EXIT_ESTIMATE",
+    "PID17588_SCOUT_LATE_TP",
+    "PID15184_CURRENT_PARENT_CALIBRATION"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "changed_core_files": {
+    "strategy_core/dual_lane.py": {
+      "baseline_sha256": "d604d2c7fe988d8605dca952d682ffdc2cbb80d42181b54aa495015d118abaa2",
+      "release_sha256": "352f12e182328abed323c04a5381e131e2dd51af61bb840874c7808c5740dfdb"
+    },
+    "strategy_core/paper_runtime.py": {
+      "baseline_sha256": "616f046ac3c30cd2d500fc87c8fba31e98c3cd631d6f6724e03e9b3cf00d4476",
+      "release_sha256": "8b82028c1f5961b393eb642046c6c72e7230a2b57b702900d1f5e604604e0bcb"
+    },
+    "strategy_core/tool_rack.py": {
+      "baseline_sha256": "237fbea74a7374f075ac3001cfc14d99edb1932c4350c25372ae42da549cdca8",
+      "release_sha256": "5886d0cca39badabc5b7b314d26311dbdaff8c0f517d812b6afbfc4129b5fe16"
+    }
+  },
+  "default_workflow_change": "None: 45-minute PAPER entry window, normal drain, verified complete original archive and exact numbered upload parts; replay remains optional.",
+  "excluded_changes": [
+    "No startup timer, new observed-origin requirement, price cap or position-size change",
+    "No blanket opposite-parent ban or removal of accepted developed/anticipated edge returns",
+    "No unresolved-TP,180-second transition allowance,100%/150% return-seed floor or settlement change",
+    "No promotion-profitability, Heist/full-arc custody, Lazarus or armed-floor policy change",
+    "No Quote-Wave propagation or Looking Glass projection change",
+    "No original recording/source edit or bypass of strict original replay interpreter validation",
+    "No real venue orders, native Windows verification claim, profit claim or six-hour acceptance"
+  ],
+  "historical_approval": "PREVIOUS_RELEASE_APPROVAL.json",
+  "immediate_previous_approval": "PID17588_APPROVAL.json",
+  "original_run_archive_sha256": "535740efcdb5f4313fa5b0ffd1e7c3d72ddcc81b50c061a3fad62528fb04747f",
+  "original_run_id": "TOOL_RACK_PAPER_20261105T034728Z_PID15184",
+  "previous_package_sha256": "02a48450d412b96d70b474a910c5f28457f82b0bdabaff03252d67d995bfac98",
+  "previous_source_manifest": "PID17588_SOURCE_SHA256.json",
+  "previous_source_manifest_sha256": "36495faeeccf77b891fbabbbc1f0309ae260c0462fb64f119daee11409edd345",
+  "release_id": "TACHYOS_PID15184_CURRENT_PARENT_CALIBRATION_45M_20261104",
+  "schema": "tachyos.approved_strategy_changes.v5",
+  "scope": {
+    "A_B_C": "Preserve the previously authorized Release custody, established-parent transfer and calibrated later Heist corrections.",
+    "PID15184_CURRENT_PARENT_CALIBRATION": "Complete the previously authorized first-counter observation rule using the already current, source-bound living EMA9 mission parent before long historical residence qualifies. Preserve correct chapter continuity and make the later-Heist calibration marker use the same keyed observation. No price, size, clock, custody or profit-floor parameter changes. The remaining source change is runtime identity only.",
+    "PID17588_SCOUT_LATE_TP": "Complete the already-authorized PID8552 last-120-second return rule by calling the existing _late_counter_return_has_runway predicate inside historical_extreme_release_candidates. Keep existing timing, target, price, custody and independent entry-family rules. The other source edit is runtime identity only.",
+    "PID19996_COMPLETE_UPLOADS": "Include normal raw BTC source recording, keep file-backed export progress independent of console display, publish only verified complete bytes, and automatically make smaller lossless uploads from the exact new archive.",
+    "PID19996_RAIL_VALUE": "Defer an earned expensive opening continuation during an opposed short-window dip; retain the same parent opportunity through the existing first300s observation window and admit only a current cheaper <=35c rejoin with existing route, runway, source, book, inventory and admission proof. Bind and consume the original opportunity at authoritative admission.",
+    "PID19996_RESEARCH_IDENTITY": "Keep physical legs across harmless labels and rollover, scope quote returns by exact ticker, distinguish partial observation from true leg end, reject invalid legacy comparables, and correct enum/string same-side diagnostics.",
+    "PID19996_SOURCE_FRESHNESS": "Share the existing bounded physical-source clock policy using exact captured receipt, epoch, sequence and continuity evidence; preserve strict local quote time and conservative historical proofs. Never rewrite timestamps.",
+    "PID4596_NULL_EXIT_ESTIMATE": "Repair an implementation error exposed by the returned PID4596 recording. An unavailable optional tactical exit estimate retains its advisory reason and produces no suggested price. Re-review clears a stale suggestion. Finite estimates and the full-arc fallback retain their formulas. All proposed non-metadata intent fields remain unchanged for One Commander. The only other production edit is the runtime release identity."
+  },
+  "strategy_parameters_changed_by_this_repair": false,
+  "unchanged_previous_core_config_ui_files": 64,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  }
+}

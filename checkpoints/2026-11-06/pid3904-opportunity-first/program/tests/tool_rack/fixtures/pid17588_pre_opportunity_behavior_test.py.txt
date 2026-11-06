@@ -1,0 +1,198 @@
+"""Existing late-scout guard: original cases plus labeled synthetic boundaries.
+
+The exact recorded tests never alter market time, geometry, quotes or history.
+Tests whose names start with synthetic change specified attributes for isolated
+unit coverage; those variants are not original evidence or trade outcomes.
+"""
+from __future__ import annotations
+
+from copy import deepcopy
+from dataclasses import replace
+import unittest
+
+from strategy_core.commander import OneCommander
+from strategy_core.commander_candidates import (
+    _late_counter_return_has_runway, historical_extreme_release_candidates,
+)
+from strategy_core.types import Action, Lane, Side
+from tests.tool_rack.pid17588_late_scout_fixtures import (
+    manifest, probe_group, record, snapshot,
+)
+
+
+def synthetic_scout(*, seconds_left=None, tp_side=None, tp_status=None, mirror=False):
+    """Original scout attributes with explicitly synthetic clock/TP/mirror edits."""
+    snap = snapshot()
+    md = deepcopy(snap.metadata)
+    if tp_side is not None:
+        md['tp_geometry']['contract_ownership_side'] = tp_side
+    if tp_status is not None:
+        md['tp_geometry']['contract_ownership'] = tp_status
+    if mirror:
+        swap = {'YES':'NO', 'NO':'YES', 'UP':'DOWN', 'DOWN':'UP'}
+        md['historical_extreme_release']['side'] = 'NO'
+        md['mountain']['owner_side'] = swap[md['mountain']['owner_side']]
+        for key in ('btc_change6','btc_change9','ema9_change6'):
+            md['current_geometry'][key] = -md['current_geometry'][key]
+        cross = md['ema9_ema30_cross_context']
+        for target in (cross, cross['gap_lifecycle']):
+            if target.get('current_side') in swap:
+                target['current_side'] = swap[target['current_side']]
+        tp = md['tp_geometry']
+        if tp.get('contract_ownership_side') in swap:
+            tp['contract_ownership_side'] = swap[tp['contract_ownership_side']]
+        snap = replace(snap, yes_ask=snap.no_ask, no_ask=snap.yes_ask,
+            yes_bid=snap.no_bid, no_bid=snap.yes_bid)
+    if seconds_left is not None:
+        # Only synthetic unit coverage changes the contract clock. Preserve
+        # the source/quote observation clock; adjust its contextual close too.
+        if isinstance(md.get('contract_value_context'), dict):
+            md['contract_value_context']['close_ts'] = snap.now_ts + seconds_left
+        snap = replace(snap, contract_age_s=900.0-seconds_left)
+    return replace(snap, metadata=md)
+
+
+class PID17588LateScoutTests(unittest.TestCase):
+    def test_original_fixture_bytes_and_histories_are_verified(self):
+        corpus = manifest()
+        self.assertEqual(len(corpus['records']), 74)
+        self.assertEqual(len(corpus['histories']), 7)
+        for key in corpus['record_order']:
+            self.assertEqual(record(key)['sha256'], corpus['records'][key]['decision_sha256'])
+
+    def test_original_2729_context_is_recomputed_from_contemporaneous_history(self):
+        data, snap = record(), snapshot()
+        original = next(row for row in data['decisions'] if row['scope']=='ENTRY')
+        self.assertEqual(original['decision']['intent']['reason'],
+            'COMMANDER_HISTORICAL_EXTREME_RELEASE_PREP_SCOUT')
+        self.assertEqual(original['receipt']['status'], 'BOOKED')
+        self.assertEqual(snap.metadata['historical_extreme_release'],
+            original['decision']['intent']['metadata']['historical_extreme_release'])
+        self.assertTrue(snap.metadata['historical_extreme_release']['qualified'])
+        self.assertEqual(snap.metadata['tp_geometry']['contract_ownership_side'], 'NO')
+        self.assertGreater(900.-snap.contract_age_s, 76.)
+        self.assertLess(900.-snap.contract_age_s, 77.)
+
+    def test_original_late_scout_is_not_proposed_or_admitted(self):
+        snap = snapshot()
+        self.assertFalse(_late_counter_return_has_runway(snap, Side.YES))
+        self.assertEqual(historical_extreme_release_candidates(snap), [])
+        rows = probe_group('PID17588_trade1_entry')
+        self.assertEqual(rows[0]['decision']['action'], 'WAIT')
+        self.assertEqual(rows[0]['decision']['reason'], 'NO_TOOL_INTENT')
+
+    def test_original_adjacent_held_scout_does_not_reappear(self):
+        self.assertEqual(historical_extreme_release_candidates(snapshot('PID17588:2730')), [])
+
+    def test_original_120_second_source_boundary_retains_existing_meaning(self):
+        before, after = snapshot('PID17588:2580'), snapshot('PID17588:2581')
+        self.assertGreater(900.-before.contract_age_s, 120.)
+        self.assertLess(900.-after.contract_age_s, 120.)
+        self.assertTrue(_late_counter_return_has_runway(before, Side.YES))
+        self.assertFalse(_late_counter_return_has_runway(after, Side.YES))
+
+    def test_original_first_two_pid19996_winner_trajectories_are_identical(self):
+        corpus = manifest()
+        for group, expected_seq, expected_price in (
+            ('PID19996_trade1_positive_opening',3126,.36),
+            ('PID19996_trade2_positive_opening',6320,.47),
+        ):
+            with self.subTest(group=group):
+                rows = probe_group(group)
+                self.assertEqual([r['decision'] for r in rows], corpus['expected_baseline_components'][group])
+                enters = [r for r in rows if r['decision']['action']=='ENTER']
+                self.assertEqual([r['reference'] for r in enters], [f'PID19996:{expected_seq}'])
+                self.assertEqual(snapshot(enters[0]['reference']).yes_ask, expected_price)
+                self.assertFalse(any(r['opening_watch_retained'] for r in rows))
+
+    def test_original_pid17588_winners_keep_exact_entry_components(self):
+        corpus = manifest()
+        for group, side, price in (
+            ('PID17588_trade2_positive','YES',.16),
+            ('PID17588_trade5_positive','NO',.51),
+        ):
+            with self.subTest(group=group):
+                rows = probe_group(group)
+                self.assertEqual([r['decision'] for r in rows], corpus['expected_baseline_components'][group])
+                self.assertEqual(rows[-1]['decision']['action'], 'ENTER')
+                self.assertEqual(rows[-1]['decision']['side'], side)
+                self.assertEqual(snapshot(rows[-1]['reference']).ask_for(Side(side)), price)
+
+    def test_synthetic_known_scout_above_120_remains_eligible(self):
+        snap = synthetic_scout(seconds_left=120.000001)
+        candidates = historical_extreme_release_candidates(snap)
+        self.assertEqual(len(candidates), 1)
+        intent = candidates[0]
+        self.assertIs(intent.side, Side.YES)
+        self.assertIs(intent.lane, Lane.TACTICAL)
+        self.assertEqual((intent.max_price,intent.size_tier), (.15,15.))
+        self.assertEqual(intent.metadata['floor_policy']['arm_roi'], .60)
+        self.assertEqual(intent.metadata['floor_policy']['trail_fraction'], .10)
+
+    def test_synthetic_exact_120_boundary_requires_target_support(self):
+        for remaining in (120.,119.999999,76.):
+            with self.subTest(seconds_left=remaining):
+                self.assertEqual(historical_extreme_release_candidates(
+                    synthetic_scout(seconds_left=remaining)), [])
+
+    def test_synthetic_late_favored_return_remains_eligible(self):
+        for status in ('BOUNCE_FAVORED','STARTING_LEG_FAVORED'):
+            for remaining in (120.,76.):
+                with self.subTest(status=status,seconds_left=remaining):
+                    snap = synthetic_scout(seconds_left=remaining,tp_side='YES',tp_status=status)
+                    self.assertTrue(_late_counter_return_has_runway(snap,Side.YES))
+                    candidates = historical_extreme_release_candidates(snap)
+                    self.assertEqual(len(candidates),1)
+                    self.assertIs(candidates[0].side,Side.YES)
+
+    def test_synthetic_tp_unavailable_or_unresolved_blocks_only_late_route(self):
+        for remaining in (120.,76.):
+            for tp in ({},{'contract_ownership':'UNRESOLVED','contract_ownership_side':'YES'},
+                       {'contract_ownership':'BOUNCE_FAVORED','contract_ownership_side':None}):
+                with self.subTest(seconds_left=remaining,tp=tp):
+                    snap=synthetic_scout(seconds_left=remaining)
+                    snap=replace(snap,metadata={**snap.metadata,'tp_geometry':tp})
+                    self.assertEqual(historical_extreme_release_candidates(snap),[])
+        snap=synthetic_scout(seconds_left=121.)
+        snap=replace(snap,metadata={**snap.metadata,'tp_geometry':{}})
+        self.assertEqual(len(historical_extreme_release_candidates(snap)),1)
+
+    def test_synthetic_mirror_has_same_existing_clock_and_tp_requirement(self):
+        late=synthetic_scout(seconds_left=76.,mirror=True)
+        self.assertEqual(late.metadata['historical_extreme_release']['side'],'NO')
+        self.assertEqual(late.metadata['tp_geometry']['contract_ownership_side'],'YES')
+        self.assertEqual(historical_extreme_release_candidates(late),[])
+        early=synthetic_scout(seconds_left=121.,mirror=True)
+        self.assertEqual(historical_extreme_release_candidates(early)[0].side,Side.NO)
+        favored=synthetic_scout(seconds_left=76.,tp_side='YES',
+            tp_status='BOUNCE_FAVORED',mirror=True)
+        self.assertEqual(historical_extreme_release_candidates(favored)[0].side,Side.NO)
+
+    def test_synthetic_favored_tp_does_not_replace_actual_reversal_or_value(self):
+        snap=synthetic_scout(seconds_left=76.,tp_side='YES',tp_status='BOUNCE_FAVORED')
+        self.assertEqual(historical_extreme_release_candidates(replace(snap,yes_ask=.151)),[])
+        for key in ('btc_change6','btc_change9','ema9_change6'):
+            md=deepcopy(snap.metadata);md['current_geometry'][key]=-1.
+            self.assertEqual(historical_extreme_release_candidates(replace(snap,metadata=md)),[])
+
+    def test_synthetic_current_source_and_quote_safety_still_apply(self):
+        snap=synthetic_scout(seconds_left=121.)
+        candidates=tuple(historical_extreme_release_candidates(snap))
+        self.assertEqual(len(candidates),1)
+        stale_source=replace(snap,metadata={**snap.metadata,'physical_current':False})
+        stale_quote=replace(snap,quote_current=False)
+        for unavailable in (stale_source,stale_quote):
+            with self.subTest(physical_current=unavailable.metadata.get('physical_current'),quote_current=unavailable.quote_current):
+                self.assertIs(OneCommander().decide_entry(candidates,unavailable,{}).action,Action.WAIT)
+
+    def test_synthetic_final_60_second_tactical_admission_limit_is_unchanged(self):
+        snap=synthetic_scout(seconds_left=59.,tp_side='YES',tp_status='BOUNCE_FAVORED')
+        candidates=tuple(historical_extreme_release_candidates(snap))
+        self.assertEqual(len(candidates),1)
+        decision=OneCommander().decide_entry(candidates,snap,{})
+        self.assertIs(decision.action,Action.WAIT)
+        self.assertEqual(decision.reason,'COMMANDER_TACTICAL_ENTRY_MANDATORY_EXIT_WINDOW')
+
+
+if __name__=='__main__':
+    unittest.main()

@@ -1,0 +1,71 @@
+PID19996 RAIL VALUE PAPER - BUILD NOTES
+
+User authorization: "agree go on, trade number 3 enter too early and too expensive
+I checked trading view and it was a rail that kept going so what he needs in the
+first few minutes to fish for a little while longer for a cheaper price if the
+candles are dipping". This governs the rail entry correction: continuing parent
+opportunity, deferred expensive dip, causal later cheaper rejoin. It does not
+authorize choosing a new profit floor or inventing a future price target.
+
+SOURCE EVIDENCE
+
+Original: TOOL_RACK_PAPER_20261104T220216Z_PID19996.
+Complete original archive SHA256:
+2771056cd93fffe40527c529265b02891089bca31e4f77978f78e3acb9b0bd79
+Review PDF SHA256:
+d680a212e01a80bb93bb4ca83463978bb97b213d95c974085026ec23bc222d68
+Previous corrected program archive SHA256:
+1017bb355dc1ac9fd90181ecd031c836ae72568df8cf1f4e4673645e85ad1484
+
+All original evidence and captured program files are immutable. The new build
+was staged from the previously delivered corrected package. Seven recorder/
+codec/launcher recording modules retain their previous hashes. Strategy
+metadata adds already-captured source receive evidence; the input tape schema
+and source timestamps are unchanged. New output behavior naturally has new
+source hashes and must not certify an old strategy tape as an exact replay.
+
+RECORDED CONTROLS
+
+Rail fixture: 681 complete, source-hashed original JSONL records, including
+all 609 callbacks of the third contract's first 300 seconds and all 65 callbacks
+through the first two winning entries. No future movement is injected.
+The third opening arms a watch at sequence8723 and first qualifies a current
+35-cent rejoin at8860 (17:46:23.441 ET, contract age83.441s). Original53/54-cent
+opposed entries8723-8731 defer. Entrywindow remains open at8860; its later
+closure begins8964. First two original entries3126 at36c and6320 at47c stay
+eligible. The later25-cent quote is not selected as though it were foreknown.
+
+Source freshness exact controls include4608,4609,4728,7793. Quote-wave memory
+can update from11c to the current6c at4728 and accept current4.7c at7793.
+This fixes an evidence rejection inconsistency; it does not assert those quote
+moves independently qualified a new trade. Frozen receive proof and local
+elapsed time bound every source-clock allowance. Entry candle completion also
+waits for the actual local minute boundary.
+
+Research fixture:254 original callback extracts with source hashes spanning
+every original ledger boundary. Continuous E000A000001 survives terrain labels
+and rollover; opportunities use exact contract identity. The old cross-contract
+63,900% and79,900% return pairs are invalid research, not trading gains.
+The genuine same-contract NO6c-to21c observation remains250% before costs.
+A run close is a right-censored observation, not proof that the market leg ended.
+
+DELIVERY REQUIREMENTS
+
+The builder verifies exact current and historical source identity, syntax,
+imports and Windows CRLF/UTF-8 launchers. It tests the actual extracted archive,
+all current strategy modules and Constructs, the new recorded rail Construct,
+recording/export/upload failure paths, and a fresh synthetic three-way replay.
+Only after all gates pass may it publish the ZIP. The generated validation
+report and its final bundle hashes are checked once more before publication.
+
+The export worker preserves the optional raw BTC gzip byte-for-byte outside
+the engine-output replay inventory. Unknown persistent files cause an explicit
+error; they are not silently dropped. Original/program file statistics and the
+complete source file set are rechecked through publication. Every numbered
+upload ZIP is below100,000,000 bytes; its raw payload is a slice of the original
+ZIP, and concatenated payload hashes must equal the exported archive hash.
+
+No native Windows market execution or full PID19996 counterfactual profit is
+claimed by the offline gate. The next new45-minute PAPER session evaluates the
+combined changes in observed market conditions. Looking Glass projections are
+deferred; current source work does not change that display.

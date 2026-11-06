@@ -1,0 +1,41 @@
+{
+  "schema": "PID12448_ACTIVE_MINUTE_PARENT_ACCEPTANCE_V1",
+  "declared_before_corrected_candidate_replay": true,
+  "original_run": "TOOL_RACK_PAPER_20261028T055826Z_PID12448",
+  "extends": "pid12448_recorded_simple_zone_acceptance.json",
+  "retained_interrupted_source_sha256": "503d223950437f461e1abd31b3c4ecf1b820607c1e4e7b1a0a949e47518c41c6",
+  "objective": "Recognize the already-known broader down leg through its minor native children, buy its observed lower return zone, and keep unfinished major up legs protected.",
+  "interpretation": "All dates, contract IDs and frame references below locate archived evidence only. They are not production rules. This extends the earlier declared behavior checks without replacing their two upper peaks, protected03:02-03:05 upswing, late MAIN exclusion, holding identity, source integrity or reporting requirements.",
+  "requirements": [
+    {
+      "id": "capture_0205_0207_lower_valley_yes",
+      "level": "required",
+      "window_et": ["2026-10-28T02:05:00-04:00", "2026-10-28T02:07:00-04:00"],
+      "ticker": "KXBTC15M-26OCT280215-15",
+      "side": "YES",
+      "purpose": "ARC_RETURN",
+      "reference_observations": [
+        {"frame": 1504, "time_et": "2026-10-28T02:05:04.235628-04:00", "btc": 80781.61, "observed_yes_ask": "0.48", "quote_id": "Q4:1:172219:1438"},
+        {"frame": 1732, "time_et": "2026-10-28T02:06:02.465899-04:00", "btc": 80781.62, "observed_yes_ask": "0.52", "quote_id": "Q4:1:203315:1666"}
+      ],
+      "expectation": "Commit an actual full-return YES in the observed lower-edge region using the current executable ask and depth. Bind the real current return zone, outgoing broader parent and incoming paid mission. A proposal, local tactical event, later MAIN purchase or missing wrong-side NO does not count. The quoted reference asks are historical observations, not a required fill price or permission to buy an unavailable quote.",
+      "earlier_fill_policy": "An earlier actual YES in the same contract may be eligible only after explicit review of its then-current lower-zone and broader-parent evidence. Report it as REVIEW_REQUIRED rather than automatically failing or automatically passing the bounded window. An earlier losing/invalidated return cannot silently substitute for this valley.",
+      "no_future_minimum_or_profit_requirement": true
+    },
+    {
+      "id": "protect_0216_0218_ongoing_upswing",
+      "level": "required",
+      "window_et": ["2026-10-28T02:16:00-04:00", "2026-10-28T02:18:00-04:00"],
+      "ticker": "KXBTC15M-26OCT280230-30",
+      "forbidden_side": "NO",
+      "forbidden_purpose": "ARC_RETURN",
+      "expectation": "Do not qualify or commit a full-parent NO while this observed major upswing is still developing. Check every current source observation independently of held inventory. A separately qualified local tactical event must remain explicitly local and does not prove whole-arc coverage. The required later02:20 full NO peak entry remains in force."
+    },
+    {
+      "id": "bind_active_minute_parent_without_inventing_path",
+      "level": "required",
+      "expectation": "Any history-backed active parent authority must use one coherent already-known minute path with actual endpoints and correct side, current source/continuity binding, and an explicit resolution. Its age, extension, price range and entry zone must refer to the same parent. It must not claim observed intraminute continuity, erase recorded gaps, revise paid-lot identity or acquire future candles. Preserve source-owned terminal and distinct weakness evidence for holding; history scale alone cannot create an exit."
+    }
+  ],
+  "retained_reporting": "Report all new fills, missed zones, losses, expiry/finality gaps and actual holding/exit authority. A positive ledger or one successful valley does not establish every-leg strategy readiness."
+}

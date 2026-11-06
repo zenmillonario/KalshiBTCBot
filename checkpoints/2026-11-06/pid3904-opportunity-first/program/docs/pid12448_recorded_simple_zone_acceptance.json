@@ -1,0 +1,74 @@
+{
+  "schema": "PID12448_SIMPLE_ENTRY_ZONE_ACCEPTANCE_V1",
+  "declared_before_simplified_candidate_replay": true,
+  "original_run": "TOOL_RACK_PAPER_20261028T055826Z_PID12448",
+  "prior_review_candidate_source_sha256": "a892f7c356f27b3ca055c54a599402f780e1a3fb8a3498420a7e3a4b77d2e2df",
+  "objective": "Territory -> observed entry zone -> correct return side -> hold the physical leg.",
+  "interpretation": "These recorded times locate acceptance evidence only. They must not become production time, price, frame-number, or contract-ID rules. Winning P&L cannot substitute for correct entry and holding behavior.",
+  "supersession": "Earlier declaration files and completed evidence remain unchanged. This simplification replaces internal composite-maturity, minimum-reference-count, and route-label requirements where the new source design deliberately changes them. It retains source integrity, current executable depth, paid-lot identity, no future information, genuine holding continuity and observed exit authority.",
+  "requirements": [
+    {
+      "id": "preserve_0220_upper_edge_no",
+      "level": "required",
+      "window_et": ["2026-10-28T02:20:34-04:00", "2026-10-28T02:22:36.999-04:00"],
+      "ticker": "KXBTC15M-26OCT280230-30",
+      "side": "NO",
+      "purpose": "ARC_RETURN",
+      "maximum_actual_entry_price": 0.15,
+      "expectation": "Commit a real full-return NO purchase in this already established cheap upper-edge zone. A WAIT, proposed intent, local tactical purchase, or later position cannot count. If an outgoing YES lot is held, report its actual release and the incoming acquisition. Do not require the future cheapest quote."
+    },
+    {
+      "id": "capture_0310_upper_plateau_no",
+      "level": "required",
+      "window_et": ["2026-10-28T03:10:00-04:00", "2026-10-28T03:12:59.999-04:00"],
+      "ticker": "KXBTC15M-26OCT280315-15",
+      "side": "NO",
+      "purpose": "ARC_RETURN",
+      "reference_observations": {"first_higher_plateau_frame": 16736, "last_higher_plateau_frame": 17004, "observed_plateau_btc": 80826.74},
+      "expectation": "Commit an actual full-return NO in the later upper region, supported by current observed upper-zone evidence. Report entry location, current ask/depth and physical-side reasoning. The earlier03:08 local NO trade does not count as coverage. No profit target, future cheapest quote, outgoing EMA-direction veto, or tactical40% hurdle is imposed on this full arc."
+    },
+    {
+      "id": "protect_0302_0305_ongoing_leg",
+      "level": "required",
+      "window_et": ["2026-10-28T03:02:00-04:00", "2026-10-28T03:05:00-04:00"],
+      "reference_frame": 15065,
+      "forbidden_side": "NO",
+      "forbidden_purpose": "ARC_RETURN",
+      "expectation": "Do not promote the early/current upswing into a full-parent NO return anywhere across this protected observed-leg window. Verify current source classification independently of inventory; blocking only frame15065 or shifting the same entry by one frame is insufficient. A separately qualified local tactical event must be identified as local and reviewed on its own rules, not relabeled as full arc."
+    },
+    {
+      "id": "prevent_late_main_repurchase",
+      "level": "required",
+      "window_et": ["2026-10-28T02:43:00-04:00", "2026-10-28T02:45:00-04:00"],
+      "ticker": "KXBTC15M-26OCT280245-45",
+      "reference_frame": 10459,
+      "forbidden_same_leg_side": "YES",
+      "forbidden_same_leg_purpose": "MAIN_CONTRACT",
+      "expectation": "Prevent the repeated late MAIN YES acquisition on this same upswing/contract after the earlier cheap return. Check current zone/paid-leg evidence independently of position occupancy, and inspect the whole late region so a shifted timestamp cannot pass. A genuinely distinct new arc must be shown explicitly for review; absence caused only by an unrelated held position is not proof of the fix. This offline region does not create a blanket production cutoff."
+    },
+    {
+      "id": "hold_the_admitted_leg",
+      "level": "required",
+      "expectation": "For every actual position show its immutable purpose/leg, entry candle, subsequent weakness events, actual exit authority, and any source-gap adoption. Ordinary collection cannot sell on the entry candle or merely because the first/second slowdown or EMA contact occurs. Full-leg collection requires the held leg to be spent with its distinct weakness evidence, or an explicitly supported existing contract interruption. A hold with no usable current management scope is reported as a gap, not successful patience."
+    },
+    {
+      "id": "report_all_zones_entries_and_misses",
+      "level": "required_reporting",
+      "expectation": "Publish a concise ledger-to-chart map for both named upper zones, the original early YES areas, the original02:39 return and03:08 local attempt, all actual new entries/exits, and any remaining missed peak. Identify wrong-side, late, duplicate, local-versus-full and unresolved cases explicitly. Preserve losing trades and missed opportunities; a positive total cannot satisfy these objectives."
+    },
+    {
+      "id": "complete_frozen_source_execution",
+      "level": "required",
+      "frames": 20535,
+      "expectation": "Run every original observation in order from an empty paper ledger through current source, tools, Commander and the actual paper writer. Use only actual known-as-of history, native books, and archived official finality. Verify all sealed frame/source hashes, every event and the complete journal against the final ledger, all frozen source/declaration/harness/helper hashes, and the delivered production subset. Any harness-only omission of duplicate audit serialization must be declared and parity-checked; it cannot skip source decisions, financial events, quote consumption, or journal writes."
+    }
+  ],
+  "retained_constraints": [
+    "No live feed or orders during preparation.",
+    "No replay injection of historical strategy labels, positions, or future candles.",
+    "No new loser-settlement policy or forced losing-exit strategy.",
+    "No future maximum profit, minimum quote, or winner-based acceptance threshold.",
+    "Preserve raw actual observations and report absent official finality honestly.",
+    "One final complete simplified-candidate replay after root source freeze; bounded harness parity is separate."
+  ]
+}

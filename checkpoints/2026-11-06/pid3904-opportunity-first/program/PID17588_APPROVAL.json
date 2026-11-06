@@ -1,0 +1,74 @@
+{
+  "added_core_files": {},
+  "approval": {
+    "basis": "IMPLEMENTATION_COMPLETENESS_OF_PREVIOUSLY_AUTHORIZED_PID8552_RULE",
+    "date": "2026-11-04",
+    "date_timezone": "America/New_York",
+    "governing_rule_reference": "TACHYOS_STRATEGY_BACKBONE_V1.md / PID8552 Counterfades",
+    "immediate_prior_record": "PID4596_APPROVAL.json",
+    "new_strategy_permission_requested_or_inferred": false,
+    "review_file": "PID17588_RUN_REVIEW.txt",
+    "review_sha256": "f4a0b46be2fb8cdd8be1b5ccc7c8f111a11b639caa25978782f1546affbfea74",
+    "source": "The user returned the next complete PAPER run for continuing review. Its Historical Extreme scout omitted the existing late-counter-return predicate mandated by the governing PID8552 rule. This applies that already-authorized rule to the omitted route; no new threshold or broader strategy permission is inferred from the file upload."
+  },
+  "approved_corrections": [
+    "A",
+    "B",
+    "C",
+    "PID19996_RAIL_VALUE",
+    "PID19996_SOURCE_FRESHNESS",
+    "PID19996_RESEARCH_IDENTITY",
+    "PID19996_COMPLETE_UPLOADS",
+    "PID4596_NULL_EXIT_ESTIMATE",
+    "PID17588_SCOUT_LATE_TP"
+  ],
+  "baseline_package_sha256": "0f87e79842e6ec29b8a9b6b5b73fd608de3c3b27b75074bb178ce8c39ccc09f2",
+  "changed_core_files": {
+    "strategy_core/commander_candidates.py": {
+      "baseline_sha256": "4395706356c14d49f0e91cfab6ff4f4cec7c66cfdfe0903021489cf2b6d31daf",
+      "release_sha256": "db75778ef91e3b8df27741bebff3884817ef21d513aa6722cc6bf3a7adadb62d"
+    },
+    "strategy_core/paper_runtime.py": {
+      "baseline_sha256": "89bb49e30ff0af7a97ee10ae5f4b454803b6b83a0da65b97cf296b273377a7ee",
+      "release_sha256": "616f046ac3c30cd2d500fc87c8fba31e98c3cd631d6f6724e03e9b3cf00d4476"
+    }
+  },
+  "default_workflow_change": "None: 45-minute PAPER entry window, normal drain, verified complete original archive and exact numbered upload parts; replay remains optional.",
+  "excluded_changes": [
+    "No new timing or price threshold, floor percentage, size increase or minimum hold",
+    "No promotion, confirmed-Release, Lazarus or anticipated-full-arc policy change",
+    "No 9:48 local-return permission broadening or generic fade reactivation",
+    "No Quote-Wave propagation or Looking Glass projection change",
+    "No original recording/source edit or bypass of strict replay interpreter validation",
+    "No real venue order authority or six-hour acceptance"
+  ],
+  "historical_approval": "PREVIOUS_RELEASE_APPROVAL.json",
+  "immediate_previous_approval": "PID4596_APPROVAL.json",
+  "original_run_archive_sha256": "dc1198df8675bb8f8b1b8f48faed26178798568b2a7c997eda7e6d4b7e0f72eb",
+  "original_run_id": "TOOL_RACK_PAPER_20261105T021644Z_PID17588",
+  "previous_package_sha256": "3d18b5a70fb1e189a8223116f25f477f27de8787f45450aa810d6ffcf8caaac0",
+  "previous_source_manifest": "PID4596_SOURCE_SHA256.json",
+  "previous_source_manifest_sha256": "64271ca0ac5d937e1803e948efd2af769e61e5c1f2cec8546f12daeec56ad230",
+  "release_id": "TACHYOS_PID17588_LATE_SCOUT_TP_GUARD_45M_20261104",
+  "schema": "tachyos.approved_strategy_changes.v4",
+  "scope": {
+    "A_B_C": "Preserve the previously authorized Release custody, established-parent transfer and calibrated later Heist corrections.",
+    "PID17588_SCOUT_LATE_TP": "Complete the already-authorized PID8552 last-120-second return rule by calling the existing _late_counter_return_has_runway predicate inside historical_extreme_release_candidates. Keep existing timing, target, price, custody and independent entry-family rules. The other source edit is runtime identity only.",
+    "PID19996_COMPLETE_UPLOADS": "Include normal raw BTC source recording, keep file-backed export progress independent of console display, publish only verified complete bytes, and automatically make smaller lossless uploads from the exact new archive.",
+    "PID19996_RAIL_VALUE": "Defer an earned expensive opening continuation during an opposed short-window dip; retain the same parent opportunity through the existing first300s observation window and admit only a current cheaper <=35c rejoin with existing route, runway, source, book, inventory and admission proof. Bind and consume the original opportunity at authoritative admission.",
+    "PID19996_RESEARCH_IDENTITY": "Keep physical legs across harmless labels and rollover, scope quote returns by exact ticker, distinguish partial observation from true leg end, reject invalid legacy comparables, and correct enum/string same-side diagnostics.",
+    "PID19996_SOURCE_FRESHNESS": "Share the existing bounded physical-source clock policy using exact captured receipt, epoch, sequence and continuity evidence; preserve strict local quote time and conservative historical proofs. Never rewrite timestamps.",
+    "PID4596_NULL_EXIT_ESTIMATE": "Repair an implementation error exposed by the returned PID4596 recording. An unavailable optional tactical exit estimate retains its advisory reason and produces no suggested price. Re-review clears a stale suggestion. Finite estimates and the full-arc fallback retain their formulas. All proposed non-metadata intent fields remain unchanged for One Commander. The only other production edit is the runtime release identity."
+  },
+  "strategy_parameters_changed_by_this_repair": false,
+  "unchanged_previous_core_config_ui_files": 65,
+  "unchanged_recorder_source_files": {
+    "TOOL_RACK_PAPER.py": "7490b02e96b77f1083d5300739c02f5d71cd578442edd016c50fb6a9ef360cca",
+    "bounded_tape.py": "5730dabb0cf6b353629f9d2a0e3db1698281da338915d45e0672efb47750238d",
+    "capture_session.py": "32074d5f089b5ccaf60ca5dfae9d47c8f6c6dc558c5d230c1ad5199f550ee37c",
+    "engine_replay.py": "87993638f61a741bd5c8624a44e9e64a19c079d751d908eb44c788ecd2fa6aec",
+    "finish_recorded_run.py": "f8651462f199bb89f584b3afe757146201d4e473ac145207e3505d337cd976fe",
+    "input_codec.py": "cdeb053a74e01661483451213f8743b63e448ccead942fac112b95de5c188ecd",
+    "snapshot_delta.py": "662921968527cab8ce99c8ca382699668a01747afa075a332852e250bb3f9aef"
+  }
+}

@@ -1,0 +1,127 @@
+PID4596 RUN REVIEW
+November 4, 2026 - Eastern time
+
+THE RESULT
+
+The run lasted about 19 minutes 37 seconds, from 8:16:05 p.m. to 8:35:43 p.m.
+It stopped on a TypeError rather than completing its 45-minute entry window.
+There were no trades, fees or open positions. Starting and closing PAPER
+cash were both $1,000. One baseline journal record is the entire economic ledger.
+
+The upload is intact. All three pieces reconstruct the 242,007,740-byte original
+ZIP. All 276 archive members verify, and every one of the 257 captured program
+files matches the package supplied for this run. The export and smaller-upload
+workflow worked; the error occurred inside trading analysis before export.
+
+WHY IT STOPPED
+
+At 8:35:42.843 p.m., separately retained market logs show the next book/geometry
+frame. Its Heist classification moved from MIXED to NEUTRAL. The adviser then
+tried to assess a tactical return. In a bounded reconstruction, 34 prior response
+pairs produced a conservative price response of 0.0. The model therefore left
+its estimated exit price unavailable and returned:
+TACTICAL_RESPONSE_OR_REMAINING_TIME_INSUFFICIENT.
+
+That is an ordinary unavailable-estimate result. A later line nevertheless
+attempted to divide the missing value to form a suggested entry price. Python
+raised TypeError, and the engine stopped. The patch checks whether the estimate
+is a finite number before calculating the suggestion. If it is unavailable,
+the adviser retains its WAIT reason and emits no suggested price. A stale old
+suggestion is removed. The proposed trade fields and Commander authority are
+preserved.
+
+WHY THERE WERE NO TRADES BEFORE THE ERROR
+
+All 4,259 completed entry decisions were WAIT:
+- 3,621 had no surviving entry proposal.
+- 539 were Heist NO proposals opposed to the current YES parent without an
+ already-permitted neutral, strict-wall, parallel or calibrated-later exception.
+- 86 were older Mountain YES proposals reaching the deliberate legacy-route
+ pause. Commander-owned Mountain candidates did not qualify at those times.
+- 13 occurred while physical market data was warming or briefly not current.
+
+These are repeated callback counts, not thousands of separate missed trades.
+There was no approved entry that failed at execution, and no failed fill.
+
+The new rail value-fishing watch never armed. Rail was not the active tool;
+more importantly, the actual inherited-parent/current-source conditions never
+qualified together. This run therefore provides no traded test of the new
+54-cent-to-cheaper-dip behavior from the preceding review.
+
+ReleaseWatcher did recognize transfers, but the relevant asks were already
+above its limit: NO at 59-60 cents around 8:30:22 p.m. and YES at 76-80 cents around
+8:31:54-8:32:08 p.m. The captured Release value limit was 30 cents. These were
+price-limited waits, not execution errors.
+
+PRICE MOVES WORTH STUDYING
+
+The following are real same-contract quotes. Both endpoints had sufficient
+displayed depth for the stated whole-lot probe. The later highs are hindsight
+research endpoints; no alternate exit policy or trade profit is claimed.
+
+1. Older Mountain YES proposals, contract closing 8:30 p.m.
+   The first actual proposal was 5.6 cents at 8:21:35.557 p.m. A later quoted
+   opportunity was 3.5 cents at 8:22:34.492. The bid later reached 29 cents at
+   8:25:11.303. Under the actual $15 adviser budget, the 3.5-cent probe fits 401
+   contracts at both endpoints. The legacy route was paused and the newer
+   current Mountain criteria did not produce a Commander candidate.
+   Taking the first 5.6-cent proposal would first have seen a 3.4-cent bid,
+   about 39.3% below entry before costs. Choosing the later low conceals that
+   earlier adverse movement, so it is not used as proof of easy profit.
+
+2. New-contract YES move, contract closing 8:45 p.m.
+   A 39-cent ask at 8:30:11.082 later had an 87-cent bid at 8:34:23.087.
+   An illustrative $25/61-contract lot fits both displayed books. No inherited
+   opening exception qualified at the cheap quote. The selected Mountain,
+   Release and Heist routes then had 20-, 30- and 35-cent limits respectively.
+   This is a concrete coverage example for later review of earlier physical
+   recognition; it does not establish an approved order lost by the engine.
+
+3. Late Heist NO rebound, same 8:45 p.m. contract.
+   A 13-cent ask at 8:34:23.087 later had a 19-cent bid at 8:35:29.136.
+   The actual $10 adviser budget supports a 72-contract depth probe. At the
+   cheap quote, current native movement still favored YES, and the NO proposal
+   remained outside the permitted counter-parent exceptions.
+
+The detailed report also includes the 16-to-22-cent early YES rebound and the
+exact decision hashes, timestamps, native depth and rule evidence for each lead.
+
+WHAT DID WORK
+
+The source-freshness repair was operating. All 3,992 callbacks that combined
+current physical data with an entry-available two-sided book had quote-wave
+current asks/bids matching the native book on both sides, with current sample
+timestamps. There were zero wrong-contract quote-wave briefings. Source-clock
+lead was bounded and backed by local receive evidence; it was not the crash.
+
+The physical-move research ledger also held up. Eight leg records contained
+18 contract/side opportunities. Every one of the 15 available later bids matched
+its original same-contract quote; the other three correctly kept no return
+estimate. One physical move continued across a contract rollover and 34 terrain
+segments while keeping the contracts' price histories separate. The final move
+continued through 72 terrain segments and correctly ended as an incomplete
+observation when the program stopped. Terrain labels did not split those moves.
+
+The original export preserved the raw BTC recording, complete available run
+files and exact program. The three upload parts reproduce the original ZIP.
+
+RECORDING LIMIT
+
+The tape contains initialization and 4,259 successful process calls, all hash
+and journal-pointer verified. The failed call was not submitted to the tape;
+there is also no close envelope or END. The normal replay loader correctly
+rejects this as CAPTURE_NOT_COMPLETE. No queue overflow or recording-size limit
+caused that state.
+
+Independent raw logs retain the failed frame's book, quote and geometry. They
+allow a bounded adviser-context reconstruction with prior observations. They
+do not replace the missing complete atomic FeedSnapshot and original clock
+capture. The report and Construct keep that distinction explicit.
+
+NEXT STEP
+
+Run the narrow repaired build for a fresh 45-minute PAPER session. Its rail
+watch, price discipline and existing entry permissions remain in place. Use a
+complete clean run to judge behavior. Keep the three price examples as separate
+research cases if entry coverage is revisited; a broader permission change is
+not bundled into this missing-number repair.

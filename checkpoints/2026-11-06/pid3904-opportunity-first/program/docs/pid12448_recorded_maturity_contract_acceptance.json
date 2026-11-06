@@ -1,0 +1,106 @@
+{
+  "schema": "PID12448_MATURITY_PROFITABLE_INTERRUPTION_ACCEPTANCE_V1",
+  "declared_before_corrected_candidate_portfolio_replay": true,
+  "original_run": "TOOL_RACK_PAPER_20261028T055826Z_PID12448",
+  "supersedes_baseline_for_final_candidate": "0c440a259082a6e32e84d85c1c46ed3966490306a06092ee408e60ff8200c649",
+  "prior_declaration_sha256": {
+    "pid12448_recorded_acceptance.json": "efd1b3130c08a27894d6ef681f52175e4939a56a30b26179b4df0bf111353b35",
+    "pid12448_recorded_hold_acceptance.json": "fc090652b2b3cf15b936e9b9cf7c2bf179a970f3aaffa2f9aad6a20f6c003370",
+    "pid12448_recorded_continuity_acceptance.json": "7efb4b2f1b78c830c3ea5e626f17f1b63a4cadbab0c33dafb7056ab28cd8d43c",
+    "pid12448_recorded_edge_acceptance.json": "c23d97c19f23a41ac8f3ffcad9ec770dde63172a31d99b8585a882721d4bbe20"
+  },
+  "basis": "The complete baseline exposes paired-gap-only promotion without current independent maturity and a profitable return which outlives its contract. Correct both without retrofitting legacy entry provenance or requiring a future maximum quote.",
+  "requirements": [
+    {
+      "id": "full_arc_paired_gap_requires_independent_current_scale",
+      "level": "required",
+      "expectation": "Every committed ARC using only the WHOLE_MOUNTAIN paired-gap alternative must have exact current parent/source-bound independent scale evidence. A gap match and near-extreme location alone are insufficient. Existing comparable-shape, mature minute-envelope and causal witnessed-retest entry routes remain independently available.",
+      "evidence_field": "parent.geometry.full_leg_scale_evidence",
+      "evidence_basis": "INDEPENDENT_CURRENT_PARENT_SCALE_V1",
+      "predicate": "primary_collection_evidence.comparable_current_leg_mature is true OR completed_minute_parent_reference.mature_extension is true; both evaluated on the current exact outgoing parent."
+    },
+    {
+      "id": "paired_gap_only_source_regressions",
+      "level": "required",
+      "frames": [
+        {
+          "frame": 8357,
+          "return_side": "YES",
+          "baseline_parent_age_seconds": 609.2297331542969
+        },
+        {
+          "frame": 9535,
+          "return_side": "YES",
+          "baseline_parent_age_seconds": 192.75005590820314
+        },
+        {
+          "frame": 15065,
+          "return_side": "NO",
+          "baseline_parent_age_seconds": 74.82673583984375
+        }
+      ],
+      "expectation": "At these unchanged recorded source observations the two independent maturity predicates are false. The bare paired-gap route must not qualify a fresh full ARC. Check current source candidates independently of inventory. Preserve local classification for its own tactical test. Parent serial IDs may change when rejected speculative scopes are no longer minted; do not treat serial equality as physical identity."
+    },
+    {
+      "id": "retain_existing_mature_upper_peak",
+      "level": "required",
+      "reference_frame": 5180,
+      "expectation": "Preserve the already declared actual upper-arc NO acquisition at an executable ask no greater than .15 in the original declared peak window. Its mature completed-minute-parent evidence remains valid. Do not introduce an outgoing EMA-direction veto, tactical 40% rule, opening timer, or future cheap-quote minimum into full ARC entry."
+    },
+    {
+      "id": "profitable_contract_interruption_requires_earned_immutable_family",
+      "level": "required",
+      "entry_field": "entry_metadata.arc_entry_scale",
+      "entry_version": "ARC_ENTRY_SCALE_V1",
+      "timing_field": "ACTIVE parent.return_timing_reference",
+      "timing_version": "PARENT_RETURN_TIMING_REFERENCE_V1",
+      "expectation": "The entry must have earned and frozen its independent comparison family with exact outgoing/incoming identity, entry source and generation. Bind that proof to the immutable paid ARC mission. Later geometry cannot enrich it or switch to a longer family. The ACTIVE held parent must have an observed origin and contiguous actual path, a once-bound timing snapshot, and the existing minimum number of completed references from that same separately named family, all known by its bind time."
+    },
+    {
+      "id": "profitable_contract_interruption_exact_predicate",
+      "level": "required",
+      "authority": "ARC_PROFITABLE_CONTRACT_INTERRUPTION",
+      "proof_field": "mission_collection.contract_interruption",
+      "proof_version": "ARC_PROFITABLE_CONTRACT_INTERRUPTION_V1",
+      "expectation": "Every conditional profit exit requires current valid ACTIVE held ARC scope/adoption, normal custody without an existing floor or exit obligation, a completed entry candle, an active post-entry weakness that has not rearmed or gapped, covered current 6/12-second owner-price motion no faster than the weakness frozen velocity resolution, actual complete-lot bid giveback, and strictly positive current remaining-lot net after both fees. The contract must close before parent origin plus the shortest duration in the immutable entry-earned family. This observed-duration comparison is conditional, not a guaranteed future leg finishing time."
+    },
+    {
+      "id": "profitable_contract_interruption_commit_guard",
+      "level": "required",
+      "expectation": "At execution recheck exact position, side, ticker, current quote, full remaining quantity, unconsumed integer depth, entry costs/remaining entry fee and strictly positive net after exit fees. A failed guard produces no partial or losing sale and leaves no persistent conditional exit latch. The exception creates no floor, completed-parent label, new weakness, renewed entry permission, or automatic opposite entry."
+    },
+    {
+      "id": "legacy_paid_lot_cannot_acquire_later_scale_proof",
+      "level": "required_control",
+      "historical_entry_frame": 9535,
+      "expectation": "A historical YES 45 at $0.21 paid-lot management regression is explicitly separate from current entry admission. If its immutable original entry lacks earned ARC scale-family proof, the new exception must fail closed. Do not insert later maturity or select a longer family to force a profitable exit. No profitable exit is required from this legacy control."
+    },
+    {
+      "id": "positive_and_mirrored_contract_interruption_controls",
+      "level": "required_control",
+      "expectation": "Separate positive and mirrored controls must start with newly earned immutable ARC scale and valid matching-family timing evidence. Prove that a current profitable bid-giveback interruption executes when all predicates hold. Also preserve holds for ordinary first/two weaknesses without the complete exception, resumed advance, gapped/unknown origins, insufficient or switched references, same entry candle, nonpositive net, unavailable/consumed depth, existing floor and nonnormal custody. Use actual available bids in each control; no future-best-price requirement."
+    },
+    {
+      "id": "current_original_3_area_management_is_role_specific",
+      "level": "conditional",
+      "window_et": [
+        "2026-10-28T02:37:00-04:00",
+        "2026-10-28T02:40:00-04:00"
+      ],
+      "expectation": "Report any actual current-engine trade in this area with its real purpose and complete holding/exit proof. A local tactical entry may be admitted only by its own 40% economics and observed-return collection rules. Do not force the old ARC entry or classify a held-lot probe as fresh portfolio replay. If no full-ARC conditional exception is naturally exercised, report NOT_APPLICABLE for that recorded path and require the separate positive controls."
+    },
+    {
+      "id": "complete_final_frozen_source_replay",
+      "level": "required",
+      "frames": 20535,
+      "expectation": "Process every original observation from an empty paper ledger with raw known-as-of history/books and archived official results only. Persist and verify every frame/source hash in sealed chunks, actual events and journal, all five declarations, frozen runtime/harness/helper hashes and exact delivered production subset. Keep old failed and verified baseline artifacts unchanged. Report all losing trades, no-fills, missing finality and open positions; do not manufacture settlement or profitability."
+    }
+  ],
+  "retained_constraints": [
+    "Original four declarations remain unchanged.",
+    "No new losing-position settlement or forced losing-exit strategy.",
+    "No live feed or orders during preparation.",
+    "No future minimum or maximum quote as a trigger or acceptance target.",
+    "Declared time/frame examples are offline regression observations, not production hardcoding."
+  ]
+}

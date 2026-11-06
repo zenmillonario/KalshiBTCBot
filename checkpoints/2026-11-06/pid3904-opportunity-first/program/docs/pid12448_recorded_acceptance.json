@@ -1,0 +1,71 @@
+{
+  "schema": "PID12448_RECORDED_CORRECTION_ACCEPTANCE_V1",
+  "declared_before_corrected_candidate_replay": true,
+  "basis": "Operator annotations and independently verified original recorded source/quote evidence; time regions belong only to the offline evaluator, never production strategy.",
+  "original_run": "TOOL_RACK_PAPER_20261028T055826Z_PID12448",
+  "time_zone": "America/New_York",
+  "requirements": [
+    {
+      "id": "largest_upper_arc_committed_return",
+      "level": "required",
+      "start_et": "2026-10-28T02:20:34-04:00",
+      "end_et": "2026-10-28T02:22:36.999-04:00",
+      "ticker": "KXBTC15M-26OCT280230-30",
+      "expectation": "At least one committed NO ARC_RETURN in the declared broad upper-arc area at an actual recorded entry-allowed quote, based on the exact current larger parent and supported incoming parent. No original peak/intent labels are inputs.",
+      "reference_ask_ceiling": 0.15,
+      "ceiling_basis": "41 distinct actual source observations had a current entry-allowed NO ask at or below .15 in this area. This is an offline location/value check, not a new universal production price ceiling.",
+      "forbidden_proof": ["future bars", "outgoing EMA direction permission", "40 percent tactical economics for ARC_RETURN", "hindsight exact minimum", "cross-ticker quote credit"]
+    },
+    {
+      "id": "late_main_contact_trade_1",
+      "level": "required",
+      "original_frame": 1836,
+      "original_entry_et": "2026-10-28T02:06:29.038634-04:00",
+      "expectation": "Current frame must not authorize fresh MAIN NO solely because price is near EMA9 on an old outgoing DOWN parent already materially above its previous low. Track both rejected old route and current return-side qualification rather than reporting inactivity as success."
+    },
+    {
+      "id": "late_main_contact_trade_5",
+      "level": "required",
+      "original_frame": 18517,
+      "original_entry_et": "2026-10-28T03:19:01.092589-04:00",
+      "expectation": "Current frame must not authorize the old late MAIN NO proximity-to-EMA9 shortcut. Broader parent, completed arc history and cross context must be represented explicitly; no blanket cross/EMA veto is permitted on a qualified full return."
+    },
+    {
+      "id": "heist_lean_trade_2",
+      "level": "required",
+      "original_frame": 2340,
+      "expectation": "Heist cannot label NO aligned with the current EMA9 leg when current EMA9 motion/native leg/full parent are UP. A separately proved counter-swing may still be eligible under its own existing tactical purpose and economics."
+    },
+    {
+      "id": "tactical_collection_trade_2",
+      "level": "conditional",
+      "original_quote_frame": 3298,
+      "original_full_lot_bid": 0.45,
+      "expectation": "If a corresponding NO tactical return is purchased, collection must inspect the actually purchased local swing and current executable economics instead of waiting exclusively for a frozen obsolete box bottom. A later quote maximum is evidence only; exact .45 execution is not required."
+    },
+    {
+      "id": "advancing_return_trade_3",
+      "level": "conditional",
+      "original_entry_frame": 9535,
+      "original_exit_frame": 9809,
+      "expectation": "If the corresponding YES return is purchased, first EMA9 contact alone must not sell a still-advancing purchased leg. Exit proof must identify an actually spent local return or qualified full-parent completion as appropriate. No requirement to catch the hindsight .59 maximum."
+    },
+    {
+      "id": "contract_runway_trade_4",
+      "level": "conditional",
+      "original_quote_frame": 16383,
+      "expectation": "If a corresponding NO tactical position is purchased before 03:15 expiry, its current remaining opportunity and physical destination must be evaluated within that exact contract; a bid swing cannot silently require a near-strike crossing of an obsolete far box boundary. No fake late settlement and no invented future bid liquidity."
+    },
+    {
+      "id": "source_and_execution_integrity",
+      "level": "required",
+      "expectation": "No network; exact captured observations/books/as-of histories and known official finality; production detectors/mission/Commander/executor; no original positions or strategy intents injected; all original decision captures processed for final acceptance; journal reconciles. Differences due to actual code changes remain explicit."
+    },
+    {
+      "id": "preserve_existing_strategy_controls",
+      "level": "required",
+      "expectation": "Retain quiet/no-excursion and ongoing-acceleration controls, mirrored peak/valley subcent entries, no ordinary same-candle sale, distinct first-two weakness holding and spent-third/full-arc handoff controls. Existing validated fixtures are regression controls, not substitutes for this recording."
+    }
+  ],
+  "not_acceptance": ["Higher P&L from refusing all entries", "A qualified intent that never becomes a committed required peak entry", "Hindsight exact best-price execution", "Unit-test count alone", "Relabeling local children as whole parents to inflate reference count"]
+}

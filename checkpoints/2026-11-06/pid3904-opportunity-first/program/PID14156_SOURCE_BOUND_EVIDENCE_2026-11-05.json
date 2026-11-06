@@ -1,0 +1,1693 @@
+{
+  "schema": "tachyos.pid14156.source_bound_forensic_intake.v1",
+  "run_id": "TOOL_RACK_PAPER_20261106T002757Z_PID14156",
+  "mode": "PAPER",
+  "original_recording_sha256": "5ee2434582df7924a19c507c82df62d098316ab20e74ec1cd5eb8f35b7bab5f4",
+  "original_size": 650678961,
+  "reconstructed_original_members": 411,
+  "part_count": 7,
+  "recorded_capture": {
+    "complete": true,
+    "attempted": 8116,
+    "written": 8116,
+    "dropped": 0,
+    "replay_ready": true,
+    "stop_reason": "PAPER_ENTRY_WINDOW_COMPLETE_FLAT"
+  },
+  "actual_replay_performed": false,
+  "run_final": {
+    "cash": "948.4650",
+    "realized_net": "-51.5350",
+    "realized_gross": "-46.7250",
+    "fees_paid": "4.81",
+    "stop_reason": "PAPER_ENTRY_WINDOW_COMPLETE_FLAT",
+    "unresolved_inventory_count": 0
+  },
+  "recorded_trades": [
+    {
+      "trade_id": 1,
+      "side": "NO",
+      "role": "TACTICAL",
+      "lane": "TACTICAL",
+      "qty": 35,
+      "entry_et": "2026-11-05 19:34:18.288",
+      "exit_et": "2026-11-05 19:37:18.603",
+      "entry_ts": 1793925258.2883806,
+      "exit_exchange_ts": 1793925438.603,
+      "entry_price": 0.27,
+      "exit_price": 0.18,
+      "peak_bid": 0.29,
+      "net_paper": -4.01,
+      "gross_paper": -3.15,
+      "entry_fee": 0.49,
+      "exit_fee": 0.37,
+      "entry_reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "exit_reason": "TACTICAL_MAX_HOLD_EXIT",
+      "floor_policy_at_entry": {
+        "arm_roi": 0.4,
+        "first_arm_allowed": true,
+        "first_arm_from_current_bid": true,
+        "immediate_arm_roi": 0.4,
+        "min_age_s": 0.0,
+        "profit_policy_revision": "OPERATOR_AUTHORIZED_QUICK_HEIST_40_ARM_3_TRAIL_V1",
+        "roi_trail_tiers": [],
+        "trail_fraction": 0.03
+      },
+      "commander_physical_evidence": {},
+      "mission": {
+        "side": "NO",
+        "purpose": "TACTICAL_RETURN",
+        "parent_leg_id": "P000L000003",
+        "swing_id": "G000A000007",
+        "counter_parent_fade": true,
+        "classification": "UNRESOLVED",
+        "contract_thesis_at_entry": "MIXED"
+      },
+      "custody_transitions": [
+        {
+          "from": "NORMAL",
+          "reason": "TACTICAL_MAX_HOLD_EXIT",
+          "timestamp": 1793925438.7344992,
+          "to": "EXIT_PENDING"
+        }
+      ],
+      "entry_geometry": {
+        "et": "2026-11-05 19:34:18.818",
+        "source_ms": 1793925258818.643,
+        "btc_price": 76188.24,
+        "ema9": 76126.81591082916,
+        "ema30": 76073.54048300907,
+        "ema_gap": 53.275427820088225,
+        "btc_change6": -0.3099999999976717,
+        "btc_change9": 7.320000000006985,
+        "btc_change30": 18.660000000003492,
+        "btc_change60": 40.70000000001164,
+        "ema9_change6": -0.06199999999080319,
+        "ema9_change30": 13.624022292715381,
+        "ema9_change60": 18.032022292725742,
+        "range60": 81.16999999999825,
+        "range180": 154.9499999999971,
+        "arc_direction": "UP",
+        "arc_phase": "BUILDING",
+        "arc_age_sec": 167.59525299072266,
+        "arc_amplitude": 53.26833499096392,
+        "connection_epoch": 1,
+        "parent_direction": "UP"
+      }
+    },
+    {
+      "trade_id": 2,
+      "side": "NO",
+      "role": "PRIMARY",
+      "lane": "MAIN",
+      "qty": 147,
+      "entry_et": "2026-11-05 19:38:50.540",
+      "exit_et": "2026-11-05 19:41:34.507",
+      "entry_ts": 1793925530.540522,
+      "exit_exchange_ts": 1793925694.507,
+      "entry_price": 0.16,
+      "exit_price": 0.03,
+      "peak_bid": 0.18,
+      "net_paper": -20.8,
+      "gross_paper": -19.11,
+      "entry_fee": 1.39,
+      "exit_fee": 0.3,
+      "entry_reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN",
+      "exit_reason": "LAZARUS_HARD_ADVERSE_STRUCTURE",
+      "floor_policy_at_entry": {
+        "arm_roi": 1.0,
+        "first_arm_allowed": true,
+        "first_arm_from_current_bid": true,
+        "immediate_arm_roi": 1.5,
+        "min_age_s": 30.0,
+        "profit_policy_revision": "PID14312_RETURN_SEED_30S_BREATHING_100_5_150_3",
+        "roi_trail_tiers": [
+          [
+            1.5,
+            0.03
+          ],
+          [
+            6.0,
+            0.02
+          ]
+        ],
+        "trail_fraction": 0.05
+      },
+      "commander_physical_evidence": {
+        "completed_minute_parent_reference": {},
+        "current_source_ms": 1793925530327.46,
+        "edge_id": "G000A000015:1793925528117",
+        "entry_location": "FRESH_EXTENDED_MOUNTAIN_EXTREME",
+        "entry_side": "NO",
+        "extended_mountain": true,
+        "extreme_age_s": 2.209923828125,
+        "extreme_source_ms": 1793925528117.5361,
+        "fresh_extreme": true,
+        "full_leg_scale_evidence": {},
+        "identity": "G000A000015:1793925528117",
+        "outgoing_owner_side": "YES",
+        "overlay_veto_authority": false,
+        "release_wait_veto_authority": false,
+        "return_ask": 0.16,
+        "return_runway": {
+          "basis": "OPERATOR_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20",
+          "fast_return_override": true,
+          "ordinary_runway_veto_authority": false
+        }
+      },
+      "mission": {},
+      "custody_transitions": [
+        {
+          "from": "NORMAL",
+          "reason": "LAZARUS_MATURE_WOUND_WITH_CREDIBLE_RECLAIM_TERRAIN",
+          "timestamp": 1793925592.0020776,
+          "to": "LAZARUS"
+        },
+        {
+          "from": "LAZARUS",
+          "reason": "LAZARUS_HARD_ADVERSE_STRUCTURE",
+          "timestamp": 1793925694.6352048,
+          "to": "EXIT_PENDING"
+        }
+      ],
+      "entry_geometry": {
+        "et": "2026-11-05 19:38:50.327",
+        "source_ms": 1793925530327.46,
+        "btc_price": 76196.01,
+        "ema9": 76168.02467067563,
+        "ema30": 76102.3147102128,
+        "ema_gap": 65.70996046283108,
+        "btc_change6": -7.580000000001746,
+        "btc_change9": -3.6200000000098953,
+        "btc_change30": -23.210000000006403,
+        "btc_change60": -7.150000000008731,
+        "ema9_change6": -1.5160000000032596,
+        "ema9_change30": -4.641999999992549,
+        "ema9_change60": 9.336332331091398,
+        "range60": 71.85000000000582,
+        "range180": 85.05999999999767,
+        "arc_direction": "UP",
+        "arc_phase": "MATURE",
+        "arc_age_sec": 12.487256050109863,
+        "arc_amplitude": 9.693999999988591,
+        "connection_epoch": 1,
+        "parent_direction": "UP"
+      }
+    },
+    {
+      "trade_id": 3,
+      "side": "YES",
+      "role": "TACTICAL",
+      "lane": "TACTICAL",
+      "qty": 23,
+      "entry_et": "2026-11-05 20:03:24.626",
+      "exit_et": "2026-11-05 20:10:37.642",
+      "entry_ts": 1793927004.626576,
+      "exit_exchange_ts": 1793927437.642,
+      "entry_price": 0.4,
+      "exit_price": 0.32,
+      "peak_bid": 0.73,
+      "net_paper": -2.59,
+      "gross_paper": -1.84,
+      "entry_fee": 0.39,
+      "exit_fee": 0.36,
+      "entry_reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+      "exit_reason": "COMMANDER_MOUNTAIN_ONLY_HELD_LEG_TERMINAL_EDGE",
+      "floor_policy_at_entry": {
+        "arm_roi": 0.4,
+        "first_arm_allowed": true,
+        "first_arm_from_current_bid": true,
+        "immediate_arm_roi": 0.4,
+        "min_age_s": 0.0,
+        "profit_policy_revision": "OPERATOR_AUTHORIZED_QUICK_HEIST_40_ARM_3_TRAIL_V1",
+        "roi_trail_tiers": [],
+        "trail_fraction": 0.03
+      },
+      "commander_physical_evidence": {},
+      "mission": {
+        "side": "YES",
+        "purpose": "TACTICAL_RETURN",
+        "parent_leg_id": "P004L000015",
+        "swing_id": "G004A000046",
+        "counter_parent_fade": true,
+        "classification": "BOX_RETURN",
+        "contract_thesis_at_entry": "NO"
+      },
+      "custody_transitions": [
+        {
+          "from": "NORMAL",
+          "reason": "COMMANDER_HEIST_SEED_PROMOTED_TO_RELEASE_CUSTODY",
+          "timestamp": 1793927153.7316406,
+          "to": "PROMOTED_MAIN"
+        },
+        {
+          "from": "PROMOTED_MAIN",
+          "reason": "COMMANDER_MOUNTAIN_ONLY_HELD_LEG_TERMINAL_EDGE",
+          "timestamp": 1793927437.7836132,
+          "to": "EXIT_PENDING"
+        }
+      ],
+      "entry_geometry": {
+        "et": "2026-11-05 20:03:24.244",
+        "source_ms": 1793927004244.936,
+        "btc_price": 76145.38,
+        "ema9": 76178.2257891222,
+        "ema30": 76179.61414742937,
+        "ema_gap": -1.3883583071728935,
+        "btc_change6": 5.820000000006985,
+        "btc_change9": -6.330000000001746,
+        "btc_change30": -12.470000000001164,
+        "btc_change60": -27.90999999998894,
+        "ema9_change6": 1.1640000000043074,
+        "ema9_change30": -8.65544728054374,
+        "ema9_change60": -11.743447280547116,
+        "range60": 47.580000000001746,
+        "range180": 120.36999999999534,
+        "arc_direction": "DOWN",
+        "arc_phase": "EXPANDING",
+        "arc_age_sec": 47.383018016815186,
+        "arc_amplitude": 15.677447280555498,
+        "connection_epoch": 3,
+        "parent_direction": "DOWN"
+      }
+    },
+    {
+      "trade_id": 4,
+      "side": "YES",
+      "role": "PRIMARY",
+      "lane": "MAIN",
+      "qty": 181,
+      "entry_et": "2026-11-05 20:11:38.603",
+      "exit_et": "2026-11-05 20:14:01.060",
+      "entry_ts": 1793927498.6039274,
+      "exit_exchange_ts": 1793927641.06,
+      "entry_price": 0.13,
+      "exit_price": 0.005,
+      "peak_bid": 0.2,
+      "net_paper": -24.135,
+      "gross_paper": -22.625,
+      "entry_fee": 1.44,
+      "exit_fee": 0.07,
+      "entry_reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN",
+      "exit_reason": "LAZARUS_HARD_ADVERSE_STRUCTURE",
+      "floor_policy_at_entry": {
+        "arm_roi": 1.0,
+        "first_arm_allowed": true,
+        "first_arm_from_current_bid": true,
+        "immediate_arm_roi": 1.5,
+        "min_age_s": 30.0,
+        "profit_policy_revision": "PID14312_RETURN_SEED_30S_BREATHING_100_5_150_3",
+        "roi_trail_tiers": [
+          [
+            1.5,
+            0.03
+          ],
+          [
+            6.0,
+            0.02
+          ]
+        ],
+        "trail_fraction": 0.05
+      },
+      "commander_physical_evidence": {
+        "btc_change6": 0.7399999999906868,
+        "btc_change9": -10.960000000006403,
+        "ema9_change6": 0.14799999998649582,
+        "entry_location": "RECENT_LEVEL_MATCH_RETURN",
+        "entry_side": "YES",
+        "identity": "LEVEL:YES:1793926200:76083.12",
+        "ordinary_tool_wait_veto_authority": false,
+        "overlay_veto_authority": false,
+        "recent_level_match": {
+          "age_s": 1298.4282891750336,
+          "anchor": 76083.12,
+          "anchor_time": 1793926200.0,
+          "distance_btc": 19.110000000000582,
+          "side": "YES"
+        },
+        "rejection_proven": true,
+        "release_wait_veto_authority": false,
+        "return_ask": 0.13,
+        "runway_veto_authority": false
+      },
+      "mission": {},
+      "custody_transitions": [
+        {
+          "from": "NORMAL",
+          "reason": "LAZARUS_MATURE_WOUND_WITH_CREDIBLE_RECLAIM_TERRAIN",
+          "timestamp": 1793927558.9484878,
+          "to": "LAZARUS"
+        },
+        {
+          "from": "LAZARUS",
+          "reason": "LAZARUS_RECOVERED_WITH_CURRENT_HELD_SUPPORT",
+          "timestamp": 1793927560.257342,
+          "to": "RECOVERED_NORMAL"
+        },
+        {
+          "from": "RECOVERED_NORMAL",
+          "reason": "LAZARUS_MATURE_WOUND_WITH_CREDIBLE_RECLAIM_TERRAIN",
+          "timestamp": 1793927630.415968,
+          "to": "LAZARUS"
+        },
+        {
+          "from": "LAZARUS",
+          "reason": "LAZARUS_HARD_ADVERSE_STRUCTURE",
+          "timestamp": 1793927641.3722095,
+          "to": "EXIT_PENDING"
+        }
+      ],
+      "entry_geometry": {
+        "et": "2026-11-05 20:11:38.268",
+        "source_ms": 1793927498268.333,
+        "btc_price": 76102.23,
+        "ema9": 76164.12933640681,
+        "ema30": 76173.23195948443,
+        "ema_gap": -9.102623077618773,
+        "btc_change6": 0.7399999999906868,
+        "btc_change9": -10.960000000006403,
+        "btc_change30": -16.320000000006985,
+        "btc_change60": -49.279999999998836,
+        "ema9_change6": 0.14799999998649582,
+        "ema9_change30": -3.264000000010128,
+        "ema9_change60": -20.188834101703833,
+        "range60": 54.45999999999185,
+        "range180": 139.1299999999901,
+        "arc_direction": "DOWN",
+        "arc_phase": "BUILDING",
+        "arc_age_sec": 97.81193804740906,
+        "arc_amplitude": 36.25483410169545,
+        "connection_epoch": 3,
+        "parent_direction": "DOWN"
+      }
+    }
+  ],
+  "decision_frames": {
+    "1444": {
+      "sequence": 1444,
+      "et": "2026-11-05 19:34:18.178",
+      "btc_price": 76187.08,
+      "ema9": 76126.58391082915,
+      "ema30": 76073.46564429939,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "YES",
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "UPPER",
+        "at_lower_edge": false,
+        "at_upper_edge": true,
+        "lean_side": null,
+        "lower": 76037.94,
+        "upper": 76192.89
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "NO",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "NO",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "NO",
+          "action": "ENTER",
+          "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_PARALLEL_RETURN:UPPER:1793925246403:NO"
+        }
+      ],
+      "commander_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "NO",
+          "action": "ENTER",
+          "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_PARALLEL_RETURN:UPPER:1793925246403:NO"
+        }
+      ],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_PARALLEL_RETURN:UPPER:1793925246403:NO"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "ENTER",
+      "reason": "COMMANDER_ACCEPTED_TOOL_INTENT"
+    },
+    "2384": {
+      "sequence": 2384,
+      "et": "2026-11-05 19:38:50.452",
+      "btc_price": 76196.01,
+      "ema9": 76168.02467067563,
+      "ema30": 76102.3147102128,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "MARKET_HEIST",
+      "owned_side": "YES",
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76037.94,
+        "upper": 76242.03
+      },
+      "primary_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": null,
+          "action": "WAIT",
+          "reason": "HEIST_PARALLEL_EXCURSION_ARMED_AWAIT_RETURN",
+          "max_price": 0.35,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": null,
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "ENTER",
+      "reason": "COMMANDER_ACCEPTED_TOOL_INTENT"
+    },
+    "4250": {
+      "sequence": 4250,
+      "et": "2026-11-05 19:50:01.338",
+      "btc_price": 76084.09,
+      "ema9": 76177.60424618305,
+      "ema30": 76158.5238023048,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "LOWER",
+        "at_lower_edge": true,
+        "at_upper_edge": false,
+        "lean_side": "NO",
+        "lower": 76083.12,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "commander_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "COMMANDER_TACTICAL_FADES_PAUSED"
+    },
+    "4285": {
+      "sequence": 4285,
+      "et": "2026-11-05 19:50:11.363",
+      "btc_price": 76103.35,
+      "ema9": 76181.45624618305,
+      "ema30": 76159.76638294997,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "LOWER",
+        "at_lower_edge": true,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76083.12,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "commander_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "COMMANDER_TACTICAL_FADES_PAUSED"
+    },
+    "4329": {
+      "sequence": 4329,
+      "et": "2026-11-05 19:50:24.128",
+      "btc_price": 76087.33,
+      "ema9": 76178.25224618305,
+      "ema30": 76158.73283456288,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "LOWER",
+        "at_lower_edge": true,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76071.85,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "commander_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        }
+      ],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.35,
+          "size_tier": 10.0,
+          "opportunity_id": "PARALLEL_TACTICAL_HEIST:HEIST_VISIT:LOWER:1793926143572:YES"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "COMMANDER_TACTICAL_FADES_PAUSED"
+    },
+    "4345": {
+      "sequence": 4345,
+      "et": "2026-11-05 19:50:29.124",
+      "btc_price": 76105.72,
+      "ema9": 76181.93024618305,
+      "ema30": 76159.91928617578,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76071.85,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "NO_TOOL_INTENT"
+    },
+    "4375": {
+      "sequence": 4375,
+      "et": "2026-11-05 19:50:37.694",
+      "btc_price": 76130.4,
+      "ema9": 76186.86624618305,
+      "ema30": 76161.51154424029,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76071.85,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "NO",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "NO_TOOL_INTENT"
+    },
+    "4390": {
+      "sequence": 4390,
+      "et": "2026-11-05 19:50:41.992",
+      "btc_price": 76150.31,
+      "ema9": 76190.84824618304,
+      "ema30": 76162.79606036932,
+      "gap_side": "YES",
+      "gap_stage": "INHERITED_OR_UNOBSERVED_CROSS",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": true,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "CENTER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76071.85,
+        "upper": 76295.42
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "NO",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_WAIT_FOR_TERMINAL_EMA9_EDGE_NEVER_MIDDLE",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "WAIT",
+      "reason": "NO_TOOL_INTENT"
+    },
+    "6902": {
+      "sequence": 6902,
+      "et": "2026-11-05 20:03:24.561",
+      "btc_price": 76145.38,
+      "ema9": 76178.2257891222,
+      "ema30": 76179.61414742937,
+      "gap_side": "NO",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "MARKET_HEIST",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "stall": true,
+        "meaningful_retreat": true
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "LOWER",
+        "at_lower_edge": true,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76132.99,
+        "upper": 76253.36
+      },
+      "primary_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.4,
+          "size_tier": 10.0,
+          "opportunity_id": "MARKET_HEIST_0458:HEIST_VISIT:LOWER:1793926967513:YES"
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": null,
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "ENTER",
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.4,
+          "size_tier": 10.0,
+          "opportunity_id": "MARKET_HEIST_0458:HEIST_VISIT:LOWER:1793926967513:YES"
+        }
+      ],
+      "briefings": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "HEIST_OUTER_EDGE_TACTICAL_RENTER",
+          "max_price": 0.4,
+          "size_tier": 10.0,
+          "opportunity_id": "MARKET_HEIST_0458:HEIST_VISIT:LOWER:1793926967513:YES"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "ENTER",
+      "reason": "COMMANDER_ACCEPTED_TOOL_INTENT"
+    },
+    "7110": {
+      "sequence": 7110,
+      "et": "2026-11-05 20:05:10.462",
+      "btc_price": 76075.47,
+      "ema9": 76133.90282503821,
+      "ema30": 76163.90275859901,
+      "gap_side": "NO",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "stall": true,
+        "meaningful_retreat": true
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76023.74,
+        "upper": 76253.36
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_EDGE_ARMED_AWAIT_SUB20_PULLBACK",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "MOUNTAIN_EDGE_ARMED_AWAIT_SUB20_PULLBACK",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "HOLD",
+      "reason": "COMMANDER_MOUNTAIN_ONLY_WAIT_FOR_TRUE_EDGE"
+    },
+    "7250": {
+      "sequence": 7250,
+      "et": "2026-11-05 20:06:20.729",
+      "btc_price": 76189.11,
+      "ema9": 76161.60826003057,
+      "ema30": 76171.81487773004,
+      "gap_side": "NO",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "ALTERNATING_MOUNTAIN",
+      "owned_side": "NO",
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": "YES",
+        "lower": 76023.74,
+        "upper": 76253.36
+      },
+      "primary_intents": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": "MAIN",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "MOUNTAIN_EDGE_ARMED_AWAIT_SUB20_PULLBACK",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "ALTERNATING_MOUNTAIN",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "MOUNTAIN_EDGE_ARMED_AWAIT_SUB20_PULLBACK",
+          "max_price": 0.2,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "HOLD",
+      "reason": "COMMANDER_HEIST_SEED_PROMOTED_TO_RELEASE_CUSTODY"
+    },
+    "7490": {
+      "sequence": 7490,
+      "et": "2026-11-05 20:08:36.616",
+      "btc_price": 76218.66,
+      "ema9": 76186.85376641958,
+      "ema30": 76179.31201961322,
+      "gap_side": "YES",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "MARKET_HEIST",
+      "owned_side": null,
+      "mountain": {
+        "owner_side": "YES",
+        "mature_edge": false,
+        "terminal_evidence_qualified": false,
+        "edge_window_active": false,
+        "stall": false,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "INNER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76023.74,
+        "upper": 76288.14
+      },
+      "primary_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "NO",
+          "action": "WAIT",
+          "reason": "HEIST_EDGE_PRICE_ABOVE_EXCEPTIONAL_VALUE",
+          "max_price": 0.35,
+          "size_tier": null,
+          "opportunity_id": "MARKET_HEIST_0478:HEIST_PARALLEL_RETURN:UPPER:1793927271273:NO"
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": null,
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": "HEIST_EDGE_PRICE_ABOVE_EXCEPTIONAL_VALUE",
+          "max_price": 0.35,
+          "size_tier": null,
+          "opportunity_id": "MARKET_HEIST_0478:HEIST_PARALLEL_RETURN:UPPER:1793927271273:NO"
+        },
+        {
+          "tool": "EMA9_CONTINUATION_PRECEDENT",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": "FRESH_SAME_SIDE_EMA9_SPROUT",
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": "EMA9_CONTINUATION:KXBTC15M-26NOV052015-15:YES"
+        },
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "HOLD",
+      "reason": "COMMANDER_HEIST_SEED_PROMOTED_TO_LIVING_EMA9_CUSTODY"
+    },
+    "7739": {
+      "sequence": 7739,
+      "et": "2026-11-05 20:10:37.681",
+      "btc_price": 76151.51,
+      "ema9": 76184.31817050852,
+      "ema30": 76179.6492903034,
+      "gap_side": "YES",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "MARKET_HEIST",
+      "owned_side": null,
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "stall": true,
+        "meaningful_retreat": false
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "CENTER",
+        "at_lower_edge": false,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76023.74,
+        "upper": 76288.14
+      },
+      "primary_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": null,
+          "action": "WAIT",
+          "reason": "HEIST_PARALLEL_EXCURSION_ARMED_AWAIT_RETURN",
+          "max_price": 0.35,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": null,
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "NO",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "EXIT",
+      "reason": "COMMANDER_ACCEPTED_EXACT_HELD_SIDE_EXIT"
+    },
+    "7868": {
+      "sequence": 7868,
+      "et": "2026-11-05 20:11:38.428",
+      "btc_price": 76102.23,
+      "ema9": 76164.12933640681,
+      "ema30": 76173.23195948443,
+      "gap_side": "NO",
+      "gap_stage": "SPROUT",
+      "physical_current": true,
+      "owned_territory": "MARKET_HEIST",
+      "owned_side": null,
+      "mountain": {
+        "owner_side": "NO",
+        "mature_edge": true,
+        "terminal_evidence_qualified": true,
+        "edge_window_active": true,
+        "stall": true,
+        "meaningful_retreat": true
+      },
+      "heist": {
+        "qualified_box": true,
+        "current_zone": "LOWER",
+        "at_lower_edge": true,
+        "at_upper_edge": false,
+        "lean_side": null,
+        "lower": 76088.91,
+        "upper": 76288.14
+      },
+      "primary_intents": [
+        {
+          "tool": "MARKET_HEIST",
+          "lane": "TACTICAL",
+          "side": "YES",
+          "action": "WAIT",
+          "reason": "HEIST_LATE_DYNAMIC_TP_RUNWAY_BLOCK",
+          "max_price": 0.35,
+          "size_tier": null,
+          "opportunity_id": "MARKET_HEIST_0481:HEIST_PARALLEL_RETURN:LOWER:1793927491386:YES"
+        }
+      ],
+      "overlay_intents": [
+        {
+          "tool": "RELEASE_WATCHER",
+          "lane": "HANDOFF",
+          "side": null,
+          "action": "WAIT",
+          "reason": "RELEASE_WATCHING_FOR_AFFIRMATIVE_TRANSFER",
+          "max_price": 0.3,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "commander_intents": [],
+      "briefings": [
+        {
+          "tool": "TACTICAL_COUNTERFADE_CALIBRATION",
+          "lane": null,
+          "side": "YES",
+          "action": null,
+          "reason": null,
+          "max_price": null,
+          "size_tier": null,
+          "opportunity_id": null
+        }
+      ],
+      "action": "ENTER",
+      "reason": "COMMANDER_ACCEPTED_TOOL_INTENT"
+    }
+  },
+  "missed_window_quote_samples": {
+    "lower_heist_19_50_20": {
+      "ticker": "KXBTC15M-26NOV052000-00",
+      "time": 1793926219.9590333,
+      "btc": 76076.04,
+      "yes_bid": 0.1,
+      "yes_ask": 0.11,
+      "no_bid": 0.89,
+      "no_ask": 0.9,
+      "quote_id": "Q7:1:265713:4117",
+      "et": "2026-11-05 19:50:19.959"
+    },
+    "return_19_50_30": {
+      "ticker": "KXBTC15M-26NOV052000-00",
+      "time": 1793926230.0019083,
+      "btc": 76108.01,
+      "yes_bid": 0.13,
+      "yes_ask": 0.14,
+      "no_bid": 0.86,
+      "no_ask": 0.87,
+      "quote_id": "Q7:1:273303:4150",
+      "et": "2026-11-05 19:50:30.001"
+    },
+    "later_19_52_00": {
+      "ticker": "KXBTC15M-26NOV052000-00",
+      "time": 1793926319.8140023,
+      "btc": 76231.17,
+      "yes_bid": 0.38,
+      "yes_ask": 0.39,
+      "no_bid": 0.61,
+      "no_ask": 0.62,
+      "quote_id": "Q7:1:362254:4463",
+      "et": "2026-11-05 19:51:59.814"
+    },
+    "new_low_20_05_00": {
+      "ticker": "KXBTC15M-26NOV052015-15",
+      "time": 1793927099.8798268,
+      "btc": 76026.64,
+      "yes_bid": 0.15,
+      "yes_ask": 0.16,
+      "no_bid": 0.84,
+      "no_ask": 0.85,
+      "quote_id": "Q10:1:330591:6793",
+      "et": "2026-11-05 20:04:59.879"
+    },
+    "recover_20_05_30": {
+      "ticker": "KXBTC15M-26NOV052015-15",
+      "time": 1793927130.1779401,
+      "btc": 76093.9,
+      "yes_bid": 0.26,
+      "yes_ask": 0.27,
+      "no_bid": 0.73,
+      "no_ask": 0.74,
+      "quote_id": "Q10:1:369151:6855",
+      "et": "2026-11-05 20:05:30.177"
+    },
+    "up_20_07_50": {
+      "ticker": "KXBTC15M-26NOV052015-15",
+      "time": 1793927270.1767457,
+      "btc": 76230.2,
+      "yes_bid": 0.6,
+      "yes_ask": 0.61,
+      "no_bid": 0.39,
+      "no_ask": 0.4,
+      "quote_id": "Q10:1:568660:7099",
+      "et": "2026-11-05 20:07:50.176"
+    }
+  },
+  "sealed_source_sha256": {
+    "strategy_core/commander.py": "a48d2f2f4136d3fef288229506dc9882ba719ad6d8e4eef4291a94d6939751b2",
+    "strategy_core/commander_candidates.py": "6310feef2261a347a9141d66ba2062065cdbb093f59e5fd6e10955b30616e4ab",
+    "strategy_core/tools/heist.py": "d2cfee4ab6f7600a280d42b4e55900537ec74e90a4d59eaceead03ecc2dc50bf",
+    "strategy_core/paper_runtime.py": "c02af95418283848190a54a23c49a8dcbf984bc74324616c9208b6cc8f46a100"
+  },
+  "notes": [
+    "Recorded quotes are nonexecuted observations, not counterfactual fills",
+    "All times displayed in All timestamps are in Eastern Standard Time (UTC-05:00)",
+    "No strategy code modified by this forensic intake"
+  ]
+}

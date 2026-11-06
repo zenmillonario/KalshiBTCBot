@@ -1,0 +1,226 @@
+{
+  "schema": "tachyos.pid23160.chronological_observation_construct.v1",
+  "run_id": "TOOL_RACK_PAPER_20261106T045859Z_PID23160",
+  "source_integrity": "PASS",
+  "strategy_behavioral_acceptance": "FAIL_OBSERVED_SELECTIVITY",
+  "scope": "Unchanged original recorded decisions, not an engine redecision or trade counterfactual",
+  "original_sha256": "dd4f6eec165e1eaf6607e62dd4faeccc9ce41361c585ab1a7ed5ad2cb3dcfba5",
+  "ordered_frame_count": 7652,
+  "recorded_trade_count": 6,
+  "ledger_net_paper": "-13.5840",
+  "archive_member_crc": "PASS",
+  "entry_cases": [
+    {
+      "sequence": 2532,
+      "side": "YES",
+      "reason": "COMMANDER_RECENT_LEVEL_MATCH_SUB20_RETURN",
+      "tool": "ONE_COMMANDER_PRIMARY",
+      "parent": "DOWN",
+      "mission_parent": "NO",
+      "btc9": 21.429999999993015,
+      "btc30": 3.3399999999965075,
+      "btc60": 4.470000000001164,
+      "ema9_30": 0.6680000000051223,
+      "classic_heist": true,
+      "wide_heist": false,
+      "box_lower": 75478.61,
+      "box_upper": 75550.08,
+      "lower_visits": 2,
+      "upper_visits": 3
+    },
+    {
+      "sequence": 5587,
+      "side": "YES",
+      "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "tool": "MARKET_HEIST",
+      "parent": "DOWN",
+      "mission_parent": "NO",
+      "btc9": -11.089999999996508,
+      "btc30": -30.55000000000291,
+      "btc60": -63.26999999998952,
+      "ema9_30": -24.124279667114024,
+      "classic_heist": false,
+      "wide_heist": true,
+      "box_lower": 75390.8,
+      "box_upper": 75662.78,
+      "lower_visits": 1,
+      "upper_visits": 1
+    },
+    {
+      "sequence": 6398,
+      "side": "YES",
+      "reason": "HEIST_PARALLEL_STALLED_EDGE_RETURN",
+      "tool": "MARKET_HEIST",
+      "parent": "DOWN",
+      "mission_parent": "NO",
+      "btc9": -29.30999999999767,
+      "btc30": -42.25999999999476,
+      "btc60": -93.75,
+      "ema9_30": -8.452000000004773,
+      "classic_heist": false,
+      "wide_heist": true,
+      "box_lower": 75324.01,
+      "box_upper": 75530.26,
+      "lower_visits": 2,
+      "upper_visits": 1
+    },
+    {
+      "sequence": 6908,
+      "side": "NO",
+      "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "tool": "MARKET_HEIST",
+      "parent": "DOWN",
+      "mission_parent": "YES",
+      "btc9": 7.650000000008731,
+      "btc30": 54.0,
+      "btc60": 42.63000000000466,
+      "ema9_30": 19.784616955555975,
+      "classic_heist": false,
+      "wide_heist": true,
+      "box_lower": 75242.55,
+      "box_upper": 75465.66,
+      "lower_visits": 1,
+      "upper_visits": 2
+    },
+    {
+      "sequence": 7244,
+      "side": "NO",
+      "reason": "HEIST_PARALLEL_OUTER_EXCURSION_RETURN_CONFIRMED",
+      "tool": "MARKET_HEIST",
+      "parent": "UP",
+      "mission_parent": "YES",
+      "btc9": -5.460000000006403,
+      "btc30": 36.44999999999709,
+      "btc60": 9.559999999997672,
+      "ema9_30": 7.289999999993597,
+      "classic_heist": false,
+      "wide_heist": true,
+      "box_lower": 75242.55,
+      "box_upper": 75554.13,
+      "lower_visits": 1,
+      "upper_visits": 1
+    },
+    {
+      "sequence": 7533,
+      "side": "NO",
+      "reason": "COMMANDER_EXTENDED_MOUNTAIN_NEW_EXTREME_SUB20_RETURN",
+      "tool": "ONE_COMMANDER_PRIMARY",
+      "parent": "UP",
+      "mission_parent": "YES",
+      "btc9": -11.5,
+      "btc30": 5.5,
+      "btc60": 22.24000000000524,
+      "ema9_30": 7.954217064965633,
+      "classic_heist": false,
+      "wide_heist": true,
+      "box_lower": 75242.55,
+      "box_upper": 75617.21,
+      "lower_visits": 1,
+      "upper_visits": 1
+    }
+  ],
+  "case_frames": {
+    "4029": {
+      "action": "WAIT",
+      "reason": "COMMANDER_RELEASE_CHAPTER_OWNS_DIRECTION",
+      "parent": "DOWN",
+      "btc9": -5.639999999999418,
+      "btc60": 58.99000000000524,
+      "ema9_6": -3.2999999999883585,
+      "NO_ask": 0.35,
+      "zone": "INNER",
+      "target": 75489.05,
+      "btc": 75527.99,
+      "candidates": [
+        "PARENT_SCALE_RAIL_DIRECT_AUTHORITY"
+      ]
+    },
+    "4973": {
+      "action": "WAIT",
+      "reason": "NO_TOOL_INTENT",
+      "parent": "DOWN",
+      "btc9": -20.069999999992433,
+      "btc60": -49.94000000000233,
+      "ema9_6": -8.644889974864782,
+      "NO_ask": 0.29000000000000004,
+      "zone": "CENTER",
+      "target": 75489.05,
+      "btc": 75522.88,
+      "candidates": []
+    },
+    "6714": {
+      "action": "WAIT",
+      "reason": "EXIT_COMMITTED_WAIT_FOR_NEXT_NATIVE_QUOTE",
+      "parent": "DOWN",
+      "btc9": 19.080000000001746,
+      "btc60": 89.73000000001048,
+      "ema9_6": 3.5460000000020955,
+      "NO_ask": 0.62,
+      "zone": "CENTER",
+      "target": 75440.82,
+      "btc": 75368.49,
+      "candidates": []
+    }
+  },
+  "regression_flags_detected": {
+    "missed_cheap_down_parent_NO_00_21": true,
+    "wider_than_classic_heist_all_four_tactical": true,
+    "YES_0030_bought_during_heavy_DOWN": true,
+    "NO_0035_took_small_pause_during_rising_30s": true,
+    "NO_0038_faded_actual_UP_parent": true,
+    "no_verified_same_direction_main_entries": true
+  },
+  "all_regression_observations_confirmed": true,
+  "wait_reason_counts": [
+    [
+      "NO_TOOL_INTENT",
+      5450
+    ],
+    [
+      "CURRENT_CONTRACT_INVENTORY_NO_NEW_COMMANDER_CANDIDATE",
+      1373
+    ],
+    [
+      "COMMANDER_HEIST_FRESH_SPROUT_REQUIRES_CAUSAL_TURN",
+      345
+    ],
+    [
+      "COMMANDER_RELEASE_CHAPTER_OWNS_DIRECTION",
+      212
+    ],
+    [
+      "CURRENT_CONTRACT_SAME_SIDE_INVENTORY_NO_DUPLICATE",
+      68
+    ],
+    [
+      "COMMANDER_TACTICAL_FADES_PAUSED",
+      65
+    ],
+    [
+      "COMMANDER_OPENING_RAIL_DIP_KEEP_FISHING",
+      62
+    ],
+    [
+      "INDEPENDENT_RENEWED_PHYSICAL_MISSION_REQUIRED",
+      28
+    ],
+    [
+      "COMMANDER_BLOCK_COUNTER_EXPANDING_EMA_AWAIT_RELEASE",
+      27
+    ],
+    [
+      "COMMANDER_ACCEPTED_TOOL_INTENT",
+      6
+    ],
+    [
+      "EXIT_COMMITTED_WAIT_FOR_NEXT_NATIVE_QUOTE",
+      6
+    ],
+    [
+      "COMMANDER_HOUSE_CAUTION_BLOCK_PREMIUM_ENTRY",
+      6
+    ]
+  ],
+  "original_engine_replay_performed": false,
+  "note": "Detection of regression flags means the audit successfully reproduced the observed faults; it does NOT mean the trading policy passed acceptance."
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "TACHYOS_PID14312_ARC_SELECTION_CUSTODY_CONTROLS_V1",
+  "source_run": "TOOL_RACK_PAPER_20261103T174807Z_PID14312",
+  "source_runtime": "TOOL_RACK_PAPER_PID7812_SPROUT_PROMOTION_ANTIFADE_6H_20261103",
+  "realized_gross_usd": 44.708,
+  "realized_net_usd": 24.578,
+  "fees_usd": 20.13,
+  "closed_trades": 9,
+  "controls": [
+    {
+      "trade": 1,
+      "side": "NO",
+      "entry": 0.16,
+      "exit": 0.33,
+      "held_mfe_bid": 0.34,
+      "contract_max_bid": 0.999,
+      "classification": "GOOD_LEVEL_MATCH_ENTRY_EXIT_TOO_EARLY",
+      "lesson": "A true level-match return needs a 30-second breathing window; +100% protection may arm after that, while an exceptional +150% move may protect immediately."
+    },
+    {
+      "trade": 2,
+      "side": "NO",
+      "entry": 0.19,
+      "exit": 0.027,
+      "held_mfe_bid": 0.20,
+      "classification": "BAD_PREMATURE_COUNTER_BRIEFING",
+      "lesson": "Do not brief an opposite Heist return during a young same-side BUILDING/SPROUT arc with TP ownership and no current weakness."
+    },
+    {
+      "trade": 3,
+      "side": "NO",
+      "entry": 0.028,
+      "exit": 0.028,
+      "held_mfe_bid": 0.046,
+      "contract_max_bid": 0.082,
+      "classification": "VALID_ULTRACHEAP_EXTENDED_TOP_SEED_CUSTODY_TOO_SHORT",
+      "lesson": "An ultra-cheap seed at an extended parent top remains eligible even before visible weakness; promotion must survive beyond a blind 180-second timeout while the return arc is physically current."
+    },
+    {
+      "trade": 4,
+      "side": "NO",
+      "entry": 0.0298,
+      "exit": 0.0818,
+      "held_mfe_bid": 0.082,
+      "classification": "EXCELLENT_CONFIRMED_RELEASE",
+      "lesson": "Preserve the confirmed Release acquisition and immediate exceptional-profit protection."
+    },
+    {
+      "trade": 5,
+      "side": "YES",
+      "entry": 0.40,
+      "exit": 0.23,
+      "held_mfe_bid": 0.48,
+      "classification": "BAD_EXPENSIVE_FADE_OF_LIVING_DOWN_PARENT",
+      "lesson": "Do not send a 40-cent opposite briefing against a mature extended DOWN parent with NO TP ownership and no current weakness."
+    },
+    {
+      "trade": 6,
+      "side": "YES",
+      "entry": 0.20,
+      "exit": 0.12,
+      "held_mfe_bid": 0.42,
+      "classification": "GOOD_EXTREME_RETURN_PROFIT_SURRENDERED",
+      "lesson": "The bottom entry was valid and reached +110%; protect it after the breathing window, but exit after support genuinely fails rather than holding indefinitely."
+    },
+    {
+      "trade": 7,
+      "side": "NO",
+      "entry": 0.33,
+      "exit": 0.084,
+      "held_mfe_bid": 0.32,
+      "classification": "BAD_FADE_INTO_NEW_UP_RELEASE",
+      "lesson": "A directly observed UP BUILDING arc with YES TP ownership is positive continuation evidence even before the EMA gap fully flips; do not send the NO renter briefing."
+    },
+    {
+      "trade": 8,
+      "side": "NO",
+      "entry": 0.057,
+      "exit": 0.06,
+      "held_mfe_bid": 0.063,
+      "contract_max_bid": 0.20,
+      "classification": "EXCELLENT_CHEAP_TOP_SEED_CUSTODY_TOO_SHORT",
+      "lesson": "A mature stalled level-match seed should remain in transition custody while TP favors the NO bounce or the outgoing parent is turning."
+    },
+    {
+      "trade": 9,
+      "side": "NO",
+      "entry": 0.11,
+      "exit": 0.12,
+      "held_mfe_bid": 0.20,
+      "classification": "GOOD_LATE_RELEASE_PEAK_NOT_PROTECTED",
+      "lesson": "Inside the last five minutes, a confirmed Release that reaches +60% after 30 seconds earns a 5% peak trail; exceptional +150% may protect immediately."
+    }
+  ]
+}

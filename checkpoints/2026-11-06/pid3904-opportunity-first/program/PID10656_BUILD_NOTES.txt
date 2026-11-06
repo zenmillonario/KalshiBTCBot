@@ -1,0 +1,31 @@
+PID10656 RELEASE SCOPE | 2026-11-05 EASTERN
+
+Baseline is the exact 317-file PID4824 program captured in PID10656 and
+independently compared byte-for-byte with the prior PID24292 captured program.
+The recorded prior published ZIP hash is
+180a120d4096b7489fdc648cc34d55c505f98af63df68ec11d322d6320a7aff6.
+
+Strategy change: current fresh-sprout Heist quality at positive-candidate,
+calibrated fallback and Commander admission boundaries. Reuse existing causal
+turn evidence. No new price, size, duration, custody or floor parameter.
+
+Display change: current physical-pattern emphasis, observed comparable paths,
+bounded completed-leg fallback and as-issued research comparison. Advisory only.
+
+Runtime revision: label only. Capture, transport, execution, settlement,
+completion/export and launch scripts remain unchanged.
+
+The prior PID4824 source and approval records are retained and pinned, with all
+earlier lineage and legacy tests/Constructs. The final checker validates exact
+approved source hashes and rejects undeclared edits. New recorded-case and UI
+tests plus Constructs are mandatory. The builder checks the actual extracted
+ZIP, all capture modules, actual JavaScript chart tests, fresh synthetic
+three-way replay, final manifest and every archive member before publishing.
+
+Source/ledger auditing, bounded original component comparisons, full original
+engine replay and synthetic recorder replay are distinct. No relaxed interpreter
+gate or altered original recording is used. Original trades3/4 being withheld
+in component controls does not establish a new whole-run profit balance.
+
+The active program remains PAPER only and the recommended launcher remains
+00_PREPARE_AND_RUN_45M_PAPER.cmd. This package has no real venue order authority.
